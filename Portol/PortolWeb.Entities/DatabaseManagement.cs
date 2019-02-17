@@ -18,6 +18,11 @@ namespace PortolWeb.Entities
             _dataContext = dataContext;
         }
 
+        /// <summary>
+        /// Update the Database, execute any sql added in the sql folder and create the first table of the DB
+        /// </summary>
+        /// <param name="scriptsPath"></param>
+        /// <returns></returns>
         public bool UpgradeDB(string scriptsPath)
         {
             List<Script> dbScripts, newScripts;
@@ -108,8 +113,7 @@ namespace PortolWeb.Entities
             _dataContext.Database.ExecuteSqlCommand(sql);
 
         }
-
-
+               
         private bool  RunScript(string pathFile)
         {
             try

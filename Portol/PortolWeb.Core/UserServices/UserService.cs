@@ -21,17 +21,26 @@ namespace PortolWeb.Core.UserServices
         public UserDto Authenticate(string username, string password)
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
-                return null;
+            {
+                throw new AppException("Email or Password is incorrect");               
+            }
+                
 
             var user = _context.Users.SingleOrDefault(x => x.Email == username);
 
             // check if username exists
             if (user == null)
-                return null;
+            {
+                throw new AppException("Email or Password is incorrect");
+            }
+               
 
             // check if password is correct
             if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
-                return null;
+            {
+                throw new AppException("Email or Password is incorrect");
+            }
+               
 
             // authentication successful
             return new UserDto();
@@ -54,6 +63,31 @@ namespace PortolWeb.Core.UserServices
 
         public UserDto Create(UserDto newUser, string password)
         {
+            if(newUser.DOB ==DateTime.MinValue )
+            {
+                throw new AppException("DOB Required");
+            }
+
+            if(string.IsNullOrEmpty(newUser.Email ))
+            {
+                throw new AppException("Email Required");
+            }
+
+            if (string.IsNullOrEmpty(newUser.FirstName))
+            {
+                throw new AppException("FirstName Required");
+            }
+
+            if (string.IsNullOrEmpty(newUser.LastName))
+            {
+                throw new AppException("LastName Required");
+            }
+
+            if (newUser.PhoneNumber==0)
+            {
+                throw new AppException("Email PhoneNumber");
+            }           
+
             // validation
             //if (string.IsNullOrWhiteSpace(password))
             //    throw new AppException("Password is required");
@@ -121,8 +155,8 @@ namespace PortolWeb.Core.UserServices
 
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
-            if (password == null) throw new ArgumentNullException("password");
-            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "password");
+            if (password == null) throw new AppException("password");
+            if (string.IsNullOrWhiteSpace(password)) throw new AppException("Value cannot be empty or whitespace only string.", "password");
 
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
@@ -133,10 +167,10 @@ namespace PortolWeb.Core.UserServices
 
         private static bool VerifyPasswordHash(string password, byte[] storedHash, byte[] storedSalt)
         {
-            if (password == null) throw new ArgumentNullException("password");
-            if (string.IsNullOrWhiteSpace(password)) throw new ArgumentException("Value cannot be empty or whitespace only string.", "password");
-            if (storedHash.Length != 64) throw new ArgumentException("Invalid length of password hash (64 bytes expected).", "passwordHash");
-            if (storedSalt.Length != 128) throw new ArgumentException("Invalid length of password salt (128 bytes expected).", "passwordHash");
+            if (password == null) throw new AppException("password");
+            if (string.IsNullOrWhiteSpace(password)) throw new AppException("Value cannot be empty or whitespace only string.", "password");
+            if (storedHash.Length != 64) throw new AppException("Invalid length of password hash (64 bytes expected).", "passwordHash");
+            if (storedSalt.Length != 128) throw new AppException("Invalid length of password salt (128 bytes expected).", "passwordHash");
 
             using (var hmac = new System.Security.Cryptography.HMACSHA512(storedSalt))
             {
