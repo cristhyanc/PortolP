@@ -29,8 +29,10 @@ namespace PortolWeb.Entities
                 if (! Directory.Exists(scriptsPath))
                 {
                     return false;
-                }
-
+                }     
+                
+                CreateScriptTable();
+              
                 dbScripts = _dataContext.Scripts.ToList();
 
                 if(dbScripts==null)
@@ -62,7 +64,7 @@ namespace PortolWeb.Entities
 
                     if(newScripts?.Count>0)
                     {
-                        dbScripts = new List<Script>();
+                        dbScripts = new List<Script>();                     
                         newScripts = newScripts.OrderBy(x => x.Seq).ToList();
                         newScripts.ForEach((x) =>
                         {
@@ -83,11 +85,28 @@ namespace PortolWeb.Entities
             }
             catch (Exception ex)
             {
-
-                throw;
+                Serilog.Log.Error(ex, "UpgradeDB");
+                throw ex;
             }
 
             return true;
+        }
+
+        private void CreateScriptTable()
+        {
+            string sql= " if not exists (select * from sysobjects where name='tblScript' and xtype='U') Begin " +
+                        "CREATE TABLE [dbo].[tblScript]( " +
+                        "    [ScriptID][uniqueidentifier] NOT NULL, " +
+                        "    [ScriptName] [nvarchar] (100) NOT NULL, " +
+                        "    [Seq] [int] NOT NULL, " +
+                        "    [ScriptDate] [date] NOT NULL, " +
+                        "    CONSTRAINT[PK_tblScripts] PRIMARY KEY CLUSTERED( " +
+                        "    [ScriptID] ASC  " +
+                        "    )WITH(PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON[PRIMARY] " +
+                        "    ) ON[PRIMARY] End ";
+
+            _dataContext.Database.ExecuteSqlCommand(sql);
+
         }
 
 

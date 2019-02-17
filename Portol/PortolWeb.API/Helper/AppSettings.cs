@@ -10,5 +10,7 @@ namespace PortolWeb.API.Helper
         public string Secret { get; set; }
         public string ConnectionString { get; set; }
         public string DBScriptPath { get; set; }
+        public string LogPaht { get; set; }
+
     }
 }
