@@ -4,7 +4,7 @@ using System.Text;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PortolWeb.Services.DBContext.Entities
+namespace PortolWeb.Entities
 {
     public class Business
     {
@@ -12,7 +12,7 @@ namespace PortolWeb.Services.DBContext.Entities
         public Guid BusinessID { get; set; }
         public string BusinessName { get; set; }
 
-        [ForeignKey("BusinessFK")]
+        [ForeignKey("BusinessID")]
         public ICollection<User> Users { get; set; }
     }
 }

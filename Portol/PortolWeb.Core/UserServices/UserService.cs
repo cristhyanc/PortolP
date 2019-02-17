@@ -1,13 +1,13 @@
 ﻿using Portol.Common.Helper;
 using Portol.Common.Interfaces.PortolWeb;
 using Portol.DTO;
-using PortolWeb.Services.DBContext;
+using PortolWeb.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace PortolWeb.Services.UserServices
+namespace PortolWeb.Core.UserServices
 {
     public class UserService : IUserService
     {
@@ -35,47 +35,48 @@ namespace PortolWeb.Services.UserServices
 
             // authentication successful
             return new UserDto();
-           // return user;
+            // return user;
         }
 
         public IEnumerable<UserDto> GetAll()
         {
             return new List<UserDto>();
-           // return _context.Users;
+            // return _context.Users;
         }
 
         public UserDto GetById(Guid userId)
         {
             var user = _context.Users.Where(x => x.UserID == userId).FirstOrDefault();
-
+         
             return new UserDto();
-           // return _context.Users.Find(id);
+            // return _context.Users.Find(id);
         }
 
         public UserDto Create(UserDto newUser, string password)
         {
             // validation
-            if (string.IsNullOrWhiteSpace(password))
-                throw new AppException("Password is required");
+            //if (string.IsNullOrWhiteSpace(password))
+            //    throw new AppException("Password is required");
 
-            if (_context.Users.Any(x => x.Email == newUser.Email ))
-                throw new AppException("Username \"" + newUser.Email + "\" is already taken");
+            //if (_context.Users.Any(x => x.Email == newUser.Email))
+            //    throw new AppException("Username \"" + newUser.Email + "\" is already taken");
 
-            byte[] passwordHash, passwordSalt;
-            CreatePasswordHash(password, out passwordHash, out passwordSalt);
-            DBContext.Entities.User user = new DBContext.Entities.User();
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
+            //byte[] passwordHash, passwordSalt;
+            //CreatePasswordHash(password, out passwordHash, out passwordSalt);
+            //DBContext.Entities.User user = new DBContext.Entities.User();
+            //user.PasswordHash = passwordHash;
+            //user.PasswordSalt = passwordSalt;
 
-            _context.Users.Add(user);
-            _context.SaveChanges();
+            //_context.Users.Add(user);
+            //_context.SaveChanges();
 
-            return newUser;
+            //return newUser;
+            return null;
         }
 
         public void Update(UserDto userParam, string password = null)
         {
-           // var user = _context.Users.Find(userParam.Id);
+            // var user = _context.Users.Find(userParam.Id);
 
             //if (user == null)
             //    throw new AppException("User not found");

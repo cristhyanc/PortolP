@@ -16,8 +16,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Portol.Common.Interfaces.PortolWeb;
 using PortolWeb.API.Helper;
-using PortolWeb.Services.DBContext;
-using PortolWeb.Services.UserServices;
+using PortolWeb.Core.UserServices;
+using PortolWeb.Entities;
 
 namespace PortolWeb.API
 {
@@ -44,9 +44,7 @@ namespace PortolWeb.API
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 
             services.AddDbContext<DataContext>(x => x.UseSqlServer(appSettings.ConnectionString));
-
-           
-
+                        
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -81,6 +79,8 @@ namespace PortolWeb.API
             });
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IDatabaseManagement, DatabaseManagement>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

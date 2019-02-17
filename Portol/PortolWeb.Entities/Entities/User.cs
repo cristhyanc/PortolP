@@ -4,16 +4,14 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
-
-namespace PortolWeb.Services.DBContext.Entities
+namespace PortolWeb.Entities
 {
-    [Table("User")]
+    [Table("tblUser")]
     public class User
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid UserID { get; set; }
-        [ForeignKey("BusinessFK")]
+        [ForeignKey("BusinessID")]
         public Guid BusinessID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
