@@ -25,6 +25,7 @@ namespace PortolWeb.API
 {
     public class Startup
     {
+        //tes
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
