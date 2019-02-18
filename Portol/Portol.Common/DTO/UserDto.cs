@@ -6,7 +6,10 @@ namespace Portol.DTO
 {
     public class UserDto
     {
-
+        public UserDto()
+        {
+            UserAddress = new AddressDto();
+        }
         public Guid UserID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -16,5 +19,6 @@ namespace Portol.DTO
         public int PhoneCountryCode { get; set; }
         public string Password { get; set; }
         public AddressDto UserAddress { get; set; }
+        public bool Deleted { get; set; }
     }
 }

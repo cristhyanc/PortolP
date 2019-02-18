@@ -26,6 +26,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Portol.Common\Portol.Common.csproj" />
     <ProjectReference Include="..\PortolWeb.Core\PortolWeb.Core.csproj" />
+    <ProjectReference Include="..\PortolWeb.DA\PortolWeb.DA.csproj" />
     <ProjectReference Include="..\PortolWeb.Entities\PortolWeb.Entities.csproj" />
   </ItemGroup>
 

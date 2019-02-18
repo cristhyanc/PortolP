@@ -32,7 +32,7 @@ namespace PortolWeb.API.Controllers
         }
 
         // GET api/values
-        [AllowAnonymous]
+        
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {            
@@ -58,7 +58,7 @@ namespace PortolWeb.API.Controllers
                     Subject = new ClaimsIdentity(new Claim[]
                     {
                     new Claim(ClaimTypes.Name, user.UserID.ToString())
-                    }),
+                    }),                    
                     Expires = DateTime.UtcNow.AddDays(7),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
                 };
@@ -94,8 +94,8 @@ namespace PortolWeb.API.Controllers
            
             try
             {              
-                _userService.Create(userDto, userDto.Password);
-                return Ok();
+                var result=_userService.Create(userDto, userDto.Password);
+                return Ok(result);
             }
             catch (AppException ex)
             {                
@@ -145,11 +145,24 @@ namespace PortolWeb.API.Controllers
         //    }
         //}
 
-        //[HttpDelete("{id}")]
-        //public IActionResult Delete(int id)
-        //{
-        //    _userService.Delete(id);
-        //    return Ok();
-        //}
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
+        {
+            try
+            {
+                _userService.Delete(id);
+                return Ok();
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.Register");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
     }
 }

@@ -11,9 +11,9 @@ namespace PortolWeb.Entities
 {
   public  class DatabaseManagement: IDatabaseManagement
     {
-        DataContext _dataContext;
+        IDataContext _dataContext;
         FileInfo file;
-        public DatabaseManagement(DataContext dataContext)
+        public DatabaseManagement(IDataContext dataContext)
         {
             _dataContext = dataContext;
         }

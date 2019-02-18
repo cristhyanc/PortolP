@@ -11,11 +11,11 @@ namespace PortolWeb.Core.UserServices
 {
     public class UserService : IUserService
     {
-        private DataContext _context;
+        private IUnitOfWork _uow;
 
-        public UserService(DataContext context)
+        public UserService(IUnitOfWork uow)
         {
-            _context = context;
+            _uow = uow;
         }
 
         public UserDto Authenticate(string username, string password)
@@ -26,24 +26,19 @@ namespace PortolWeb.Core.UserServices
             }
                 
 
-            var user = _context.Users.SingleOrDefault(x => x.Email == username);
-
-            // check if username exists
+            var user = _uow.UserRepository.Get(x => x.Email == username);                      
             if (user == null)
             {
                 throw new AppException("Email or Password is incorrect");
-            }
-               
-
-            // check if password is correct
+            }               
+                      
             if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
             {
                 throw new AppException("Email or Password is incorrect");
             }
-               
 
-            // authentication successful
-            return new UserDto();
+
+            return User.ORM(user);
             // return user;
         }
 
@@ -55,10 +50,9 @@ namespace PortolWeb.Core.UserServices
 
         public UserDto GetById(Guid userId)
         {
-            var user = _context.Users.Where(x => x.UserID == userId).FirstOrDefault();
-         
-            return new UserDto();
-            // return _context.Users.Find(id);
+            var user = _uow.UserRepository.Get(x => x.UserID == userId);
+            return User.ORM(user);
+
         }
 
         public UserDto Create(UserDto newUser, string password)
@@ -85,27 +79,34 @@ namespace PortolWeb.Core.UserServices
 
             if (newUser.PhoneNumber==0)
             {
-                throw new AppException("Email PhoneNumber");
-            }           
+                throw new AppException("PhoneNumber Required");
+            }
 
-            // validation
-            //if (string.IsNullOrWhiteSpace(password))
-            //    throw new AppException("Password is required");
+            if (string.IsNullOrEmpty(password))
+            {
+                throw new AppException("Password Required");
+            }
 
-            //if (_context.Users.Any(x => x.Email == newUser.Email))
-            //    throw new AppException("Username \"" + newUser.Email + "\" is already taken");
 
-            //byte[] passwordHash, passwordSalt;
-            //CreatePasswordHash(password, out passwordHash, out passwordSalt);
-            //DBContext.Entities.User user = new DBContext.Entities.User();
-            //user.PasswordHash = passwordHash;
-            //user.PasswordSalt = passwordSalt;
+            if (_uow.UserRepository.Get(x => x.Email == newUser.Email) != null)
+            {
+                throw new AppException("The Email \"" + newUser.Email + "\" is already being used");
+            }
 
-            //_context.Users.Add(user);
-            //_context.SaveChanges();
 
-            //return newUser;
-            return null;
+            byte[] passwordHash, passwordSalt;
+            CreatePasswordHash(password, out passwordHash, out passwordSalt);
+
+            User user = User.ORM(newUser);
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
+
+            _uow.UserRepository.Insert(user);
+            _uow.SaveChanges();
+
+            newUser.UserID = user.UserID;
+            return newUser;
+           
         }
 
         public void Update(UserDto userParam, string password = null)
@@ -143,12 +144,15 @@ namespace PortolWeb.Core.UserServices
 
         public void Delete(Guid userId)
         {
-            //var user = _context.Users.Find(id);
-            //if (user != null)
-            //{
-            //    _context.Users.Remove(user);
-            //    _context.SaveChanges();
-            //}
+            var user = _uow.UserRepository.Get(x => x.UserID == userId);
+            if(user==null)
+            {
+                throw new AppException("User Does not Exist");
+            }
+
+            user.Deleted = true;
+            _uow.UserRepository.Update(user);
+            _uow.SaveChanges();
         }
 
         // private helper methods

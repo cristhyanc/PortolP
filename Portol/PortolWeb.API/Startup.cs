@@ -17,6 +17,7 @@ using Microsoft.IdentityModel.Tokens;
 using Portol.Common.Interfaces.PortolWeb;
 using PortolWeb.API.Helper;
 using PortolWeb.Core.UserServices;
+using PortolWeb.DA;
 using PortolWeb.Entities;
 using Serilog;
 
@@ -81,7 +82,10 @@ namespace PortolWeb.API
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IDatabaseManagement, DatabaseManagement>();
-           // loggerFactory.AddSerilog();
+            services.AddScoped<IDataContext, DataContext>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+          
+            // loggerFactory.AddSerilog();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

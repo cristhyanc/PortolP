@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using PortolWeb.Entities;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-
-namespace PortolWeb.Entities
+namespace PortolWeb.DA
 {
-    public class DataContext : DbContext
+   public class DataContext : DbContext, IDataContext
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Business> Businesses { get; set; }
@@ -14,15 +14,7 @@ namespace PortolWeb.Entities
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
-
-        }
-
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-
-        //    modelBuilder.Entity<User>()
-        //      .HasKey(p => new { p.UserID });
-        //}
-
+        
+        }      
     }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="84a82ebf-52bf-458e-af45-05aac05d2985" created="2.6.0" activeEnvironment="Default environment" name="PortolWeb.Api Test" resourceRoot="" updated="2.6.0 2019-01-14T14:47:06Z" xmlns:con="http://eviware.com/soapui/config">
+<con:soapui-project id="84a82ebf-52bf-458e-af45-05aac05d2985" created="2.6.0" activeEnvironment="Default environment" name="PortolWeb.Api Test" resourceRoot="" updated="2.6.0 2019-01-14T14:47:06Z" abortOnError="false" runType="SEQUENTIAL" soapui-version="5.5.0" encryptionMode="Not encrypted" xmlns:con="http://eviware.com/soapui/config">
   <con:settings/>
   <con:interface xsi:type="con:RestService" id="fca963cf-55b0-4dd3-a144-7dd22bbe2a24" wadlVersion="http://wadl.dev.java.net/2009/02" name="https://localhost:44346" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
@@ -42,10 +42,11 @@
           <con:endpoint>https://localhost:44346</con:endpoint>
           <con:request>{
 	Email: 'cristhyan@outlook.com',
-	Password: 'asdd'
+	Password: 'Systar*2015'
 }</con:request>
           <con:originalUri>https://localhost/api/users</con:originalUri>
           <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
             <con:authType>No Authorization</con:authType>
           </con:credentials>
           <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
@@ -73,11 +74,40 @@
         </con:representation>
         <con:representation type="RESPONSE">
           <con:mediaType xsi:nil="true"/>
-          <con:status>200</con:status>
+          <con:status>200 0</con:status>
           <con:params/>
           <con:element>data</con:element>
         </con:representation>
+        <con:representation type="RESPONSE">
+          <con:mediaType>application/json; charset=utf-8</con:mediaType>
+          <con:status>200</con:status>
+          <con:params/>
+          <con:element xmlns:reg="https://localhost/api/users/Register">reg:Response</con:element>
+        </con:representation>
         <con:request name="Request 1" id="2d914c5e-666b-4999-93ea-5f4804e55699" mediaType="application/json" postQueryString="false">
+          <con:settings>
+            <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
+          </con:settings>
+          <con:endpoint>https://localhost:44346</con:endpoint>
+          <con:request>{
+FirstName:'Sophie',
+LastName:'Chung',
+Email:'sophie@outlook.com',
+PhoneNumber:'0405593358',
+PhoneCountryCode:61,
+Password:'siii123',
+DOB:'1984/11/17'
+}</con:request>
+          <con:originalUri>https://localhost/api/users/Register</con:originalUri>
+          <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
+            <con:authType>No Authorization</con:authType>
+          </con:credentials>
+          <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
+          <con:jmsPropertyConfig/>
+          <con:parameters/>
+        </con:request>
+        <con:request name="Request2" id="63aa26d5-d235-4599-b9a1-f868e3566068" mediaType="application/json" postQueryString="false">
           <con:settings>
             <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
@@ -86,10 +116,18 @@
 FirstName:'Cristhyan Camilo',
 LastName:'Cardona Garcia',
 Email:'cristhyan@outlook.com',
-PhoneNumber:'0405593358',
+PhoneNumber:'0405593359',
 PhoneCountryCode:61,
-Password:'siii123',
-DOB:'1984/11/17'
+Password:'Systar*2015',
+DOB:'1984/11/17',
+UserAddress:{
+	City:'Brisbane',
+	Country:'Australia',
+	FlatNumber:'Unit 5',
+	State:'Qld',
+	StreetName:'71 Arthur Street',
+	Suburb:'Fortitude Valley'
+		  }
 }</con:request>
           <con:originalUri>https://localhost/api/users/Register</con:originalUri>
           <con:credentials>
@@ -102,43 +140,6 @@ DOB:'1984/11/17'
       </con:method>
     </con:resource>
   </con:interface>
-  <con:testSuite id="20601969-f082-45dd-80ee-c0912b1ea5a8" name="TestSuite 1">
-    <con:settings/>
-    <con:savedRecentRuns>1</con:savedRecentRuns>
-    <con:runType>SEQUENTIAL</con:runType>
-    <con:testCase id="e554edb7-054d-4508-8475-ce07e706d067" discardOkResults="false" failOnError="true" failTestCaseOnErrors="true" keepSession="false" name="TestCase 1" searchProperties="true" timeout="0">
-      <con:settings/>
-      <con:savedRecentRuns>1</con:savedRecentRuns>
-      <con:testStep type="restrequest" name="Users - Authenticate" id="9516f43f-e25a-4eb2-927d-80e78031e8f4">
-        <con:settings/>
-        <con:config service="https://localhost:44346" resourcePath="/api/users/authenticate" methodName="Users" xsi:type="con:RestRequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-          <con:restRequest name="Users - Authenticate" id="98ca1aad-27e7-4d29-a1c2-452489c5c6aa" mediaType="application/json" postQueryString="false">
-            <con:settings>
-              <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
-            </con:settings>
-            <con:endpoint>https://localhost:44346</con:endpoint>
-            <con:request>{
-	Email: 'cristhyan@outlook.com',
-	Password: 'asdd'
-}</con:request>
-            <con:originalUri>https://localhost/api/users</con:originalUri>
-            <con:credentials>
-              <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
-              <con:authType>No Authorization</con:authType>
-            </con:credentials>
-            <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>
-            <con:jmsPropertyConfig/>
-            <con:parameters/>
-            <con:parameterOrder/>
-          </con:restRequest>
-        </con:config>
-      </con:testStep>
-      <con:properties/>
-      <con:reportParameters/>
-    </con:testCase>
-    <con:properties/>
-    <con:reportParameters/>
-  </con:testSuite>
   <con:savedRecentRuns>1</con:savedRecentRuns>
   <con:properties/>
   <con:wssContainer/>
