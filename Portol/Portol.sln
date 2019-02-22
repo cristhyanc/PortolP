@@ -19,9 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortolWeb.Entities", "Porto
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortolWeb.Core", "PortolWeb.Core\PortolWeb.Core.csproj", "{450F71C3-1744-48F0-B4E3-65CD19BD49E1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortolWeb.DA", "PortolWeb.DA\PortolWeb.DA.csproj", "{B6DE9103-973E-4E31-9EB3-F9AEC4AEE7CA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortolWeb.DA", "PortolWeb.DA\PortolWeb.DA.csproj", "{B6DE9103-973E-4E31-9EB3-F9AEC4AEE7CA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9184C4E9-55F7-4320-B9A4-27891AE38A74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortolMobile.Core", "PortolMobile.Core\PortolMobile.Core.csproj", "{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortolMobile.Services", "PortolMobile.Services\PortolMobile.Services.csproj", "{F8F18404-A687-4A41-9884-986D15A9AC8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -121,6 +125,30 @@ Global
 		{B6DE9103-973E-4E31-9EB3-F9AEC4AEE7CA}.Release|iPhone.Build.0 = Release|Any CPU
 		{B6DE9103-973E-4E31-9EB3-F9AEC4AEE7CA}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{B6DE9103-973E-4E31-9EB3-F9AEC4AEE7CA}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}.Release|iPhone.Build.0 = Release|Any CPU
+		{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{F8F18404-A687-4A41-9884-986D15A9AC8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8F18404-A687-4A41-9884-986D15A9AC8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8F18404-A687-4A41-9884-986D15A9AC8E}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{F8F18404-A687-4A41-9884-986D15A9AC8E}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{F8F18404-A687-4A41-9884-986D15A9AC8E}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{F8F18404-A687-4A41-9884-986D15A9AC8E}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{F8F18404-A687-4A41-9884-986D15A9AC8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8F18404-A687-4A41-9884-986D15A9AC8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8F18404-A687-4A41-9884-986D15A9AC8E}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{F8F18404-A687-4A41-9884-986D15A9AC8E}.Release|iPhone.Build.0 = Release|Any CPU
+		{F8F18404-A687-4A41-9884-986D15A9AC8E}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{F8F18404-A687-4A41-9884-986D15A9AC8E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -132,6 +160,8 @@ Global
 		{9B84B581-323B-4E70-848E-1F174432C702} = {6C7E2CC0-DA4E-4206-B9B2-7C8CFA86DEA1}
 		{450F71C3-1744-48F0-B4E3-65CD19BD49E1} = {6C7E2CC0-DA4E-4206-B9B2-7C8CFA86DEA1}
 		{B6DE9103-973E-4E31-9EB3-F9AEC4AEE7CA} = {6C7E2CC0-DA4E-4206-B9B2-7C8CFA86DEA1}
+		{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6} = {CBDE2A30-EF68-4856-AD1C-4A0A12CCC201}
+		{F8F18404-A687-4A41-9884-986D15A9AC8E} = {CBDE2A30-EF68-4856-AD1C-4A0A12CCC201}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0229A645-7676-49AA-BC5C-E7338D6B3492}

@@ -65,6 +65,7 @@
     <Compile Include="AppDelegate.cs" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DetailViewController.cs" />
@@ -121,6 +122,16 @@
     </ImageAsset>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Acr.UserDialogs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Acr.UserDialogs.7.0.3\lib\xamarinios10\Acr.UserDialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="BTProgressHUD, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BTProgressHUD.1.2.0.6\lib\Xamarin.iOS10\BTProgressHUD.dll</HintPath>
+    </Reference>
+    <Reference Include="MvvmCross, Version=6.2.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmCross.6.2.3\lib\xamarinios10\MvvmCross.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK-1.0" />
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />

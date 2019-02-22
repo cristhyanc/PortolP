@@ -44,8 +44,8 @@ namespace PortolWeb.Core.UserServices
 
         public IEnumerable<UserDto> GetAll()
         {
-            return new List<UserDto>();
-            // return _context.Users;
+            var result = _uow.UserRepository.GetAll(x => !x.Deleted).Select(x => User.ORM(x)).ToList();
+            return result;
         }
 
         public UserDto GetById(Guid userId)

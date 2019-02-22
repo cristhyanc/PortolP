@@ -107,3 +107,5 @@ Parameter name: KeySize
    at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.CreateJwtSecurityTokenPrivate(String issuer, String audience, ClaimsIdentity subject, Nullable`1 notBefore, Nullable`1 expires, Nullable`1 issuedAt, SigningCredentials signingCredentials, EncryptingCredentials encryptingCredentials)
    at System.IdentityModel.Tokens.Jwt.JwtSecurityTokenHandler.CreateToken(SecurityTokenDescriptor tokenDescriptor)
    at PortolWeb.API.Controllers.UsersController.Authenticate(UserDto userDto) in D:\GitHub\Portol\PortolP\Portol\PortolWeb.API\Controllers\UsersController.cs:line 65
+2019-02-18 18:18:12.991 +07:00 [WRN] Failed to determine the https port for redirect.
+2019-02-18 18:19:57.482 +07:00 [WRN] Failed to determine the https port for redirect.

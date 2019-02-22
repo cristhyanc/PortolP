@@ -47,10 +47,7 @@ namespace PortolWeb.API.Controllers
             try
             {
                 var user = _userService.Authenticate(userDto.Email, userDto.Password);
-
-                //if (user == null)
-                //    return BadRequest(new { message = "Username or password is incorrect" });
-
+                               
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
                 var tokenDescriptor = new SecurityTokenDescriptor
@@ -109,13 +106,25 @@ namespace PortolWeb.API.Controllers
             }
         }
 
-        //[HttpGet]
-        //public IActionResult GetAll()
-        //{
-        //    var users = _userService.GetAll();
-        //    var userDtos = _mapper.Map<IList<UserDto>>(users);
-        //    return Ok(userDtos);
-        //}
+        [HttpGet("getall")]       
+        public IActionResult GetAll()
+        {
+            try
+            {
+                var result = _userService.GetAll();
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.GetAll");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
 
         //[HttpGet("{id}")]
         //public IActionResult GetById(int id)
@@ -159,7 +168,7 @@ namespace PortolWeb.API.Controllers
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "User.Register");
+                Log.Error(ex, "User.Delete");
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
