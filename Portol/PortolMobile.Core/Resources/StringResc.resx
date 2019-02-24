@@ -117,88 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AnotherOption" xml:space="preserve">
-    <value>Another option</value>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
   </data>
-  <data name="BirthYear" xml:space="preserve">
-    <value>Birth year</value>
+  <data name="GeneralError" xml:space="preserve">
+    <value>Oops, there was an error, we are working on it, Thanks</value>
   </data>
-  <data name="Climate" xml:space="preserve">
-    <value>Climate</value>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
   </data>
-  <data name="Close" xml:space="preserve">
-    <value>Close</value>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
   </data>
-  <data name="DeathStarStatus" xml:space="preserve">
-    <value>Death Star Status</value>
-  </data>
-  <data name="Destroy" xml:space="preserve">
-    <value>Destroy</value>
-  </data>
-  <data name="DestroyPlanet" xml:space="preserve">
-    <value>Destroy Planet</value>
-  </data>
-  <data name="Diameter" xml:space="preserve">
-    <value>Diameter</value>
-  </data>
-  <data name="EyeColor" xml:space="preserve">
-    <value>Eye color</value>
-  </data>
-  <data name="Gender" xml:space="preserve">
-    <value>Gender</value>
-  </data>
-  <data name="Gravity" xml:space="preserve">
-    <value>Gravity</value>
-  </data>
-  <data name="HairColor" xml:space="preserve">
-    <value>Hair color</value>
-  </data>
-  <data name="Height" xml:space="preserve">
-    <value>Height</value>
-  </data>
-  <data name="HomeWorld" xml:space="preserve">
-    <value>Home world</value>
-  </data>
-  <data name="Mass" xml:space="preserve">
-    <value>Mass</value>
-  </data>
-  <data name="Menu" xml:space="preserve">
-    <value>Menu</value>
-  </data>
-  <data name="Name" xml:space="preserve">
-    <value>Name</value>
-  </data>
-  <data name="No" xml:space="preserve">
-    <value>No</value>
-  </data>
-  <data name="Population" xml:space="preserve">
-    <value>Population</value>
-  </data>
-  <data name="SirAreYouSureYouWantToDestroyThisPlanet" xml:space="preserve">
-    <value>Sir, are you sure you want to destroy this planet?</value>
-  </data>
-  <data name="SkinColor" xml:space="preserve">
-    <value>Skin color</value>
-  </data>
-  <data name="Statistics" xml:space="preserve">
-    <value>Statistics</value>
-  </data>
-  <data name="TargetPeople" xml:space="preserve">
-    <value>Target: People</value>
-  </data>
-  <data name="TargetPlanets" xml:space="preserve">
-    <value>Target: Planets</value>
-  </data>
-  <data name="Targets" xml:space="preserve">
-    <value>Targets</value>
-  </data>
-  <data name="Terrain" xml:space="preserve">
-    <value>Terrain</value>
-  </data>
-  <data name="Time" xml:space="preserve">
-    <value>Time</value>
-  </data>
-  <data name="Yes" xml:space="preserve">
-    <value>Yes</value>
+  <data name="PasswordEmailRequired" xml:space="preserve">
+    <value>The Email and Password are required</value>
   </data>
 </root>

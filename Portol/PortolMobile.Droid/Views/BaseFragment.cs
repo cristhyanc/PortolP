@@ -27,7 +27,7 @@ namespace PortolMobile.Droid.Views
             var ignore = base.OnCreateView(inflater, container, savedInstanceState);
 
             var view = this.BindingInflate(FragmentId, null);
-
+            view.Touch += View_Touch;
             if(!IsLoginPages)
             {
                 _toolbar = view.FindViewById<Toolbar>(Resource.Id.toolbar);
@@ -50,6 +50,11 @@ namespace PortolMobile.Droid.Views
             }
 
             return view;
+        }
+
+        private void View_Touch(object sender, View.TouchEventArgs e)
+        {
+            ((MainView)Activity)?.HideSoftKeyboard();
         }
 
         protected abstract int FragmentId { get; }

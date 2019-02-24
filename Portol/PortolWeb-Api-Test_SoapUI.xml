@@ -131,6 +131,7 @@ UserAddress:{
 }</con:request>
           <con:originalUri>https://localhost/api/users/Register</con:originalUri>
           <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
             <con:authType>No Authorization</con:authType>
           </con:credentials>
           <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>

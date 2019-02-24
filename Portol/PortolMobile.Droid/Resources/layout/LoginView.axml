@@ -1,31 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:local="http://schemas.android.com/apk/res-auto"
-	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical">
-	<include
-		layout="@layout/toolbar_actionbar" />
-	<TextView
-		android:text="Email"
-		android:textAppearance="?android:attr/textAppearanceLarge"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/textView1" />
-	
-	<EditText 
-		local:MvxBind="Text EmailText"
-		android:inputType="textEmailAddress"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/editText1" />
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:local="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        layout="@layout/toolbar_actionbar" />
 
-	<Button 
-		local:MvxBind="Click LoginButtonCommand"
-		android:text="login"
-		android:layout_width="match_parent"
-		android:layout_height="wrap_content"
-		android:id="@+id/button1" />
-	
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblEmail"
+        android:text="@string/email" />
+    <EditText
+        local:MvxBind="Text EmailText"
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtEmail" />
+    <TextView
+        android:text="@string/password"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lblPassword" />
+    <EditText
+        local:MvxBind="Text PasswordText"
+        android:inputType="textPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtPassword" />
+
+    <Button
+        local:MvxBind="Click LoginButtonCommand"
+        android:text="@string/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnLogin" />
+    <Button
+        android:text="@string/signUp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnSignUp" />
+    <Button
+        android:text="@string/forgotPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnForgotPassword" />
 </LinearLayout>

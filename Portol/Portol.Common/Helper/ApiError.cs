@@ -7,12 +7,12 @@ namespace Portol.Common.Helper
 {
     public class ApiError
     {
-        public int StatusCode { get; private set; }
+        public int StatusCode { get;  set; }
 
-        public string StatusDescription { get; private set; }
+        public string StatusDescription { get;  set; }
 
-        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
-        public string Message { get; private set; }
+        //[JsonProperty(DefaultValueHandling = DefaultValueHandling.Ignore)]
+        public string Message { get;  set; }
 
         public ApiError(int statusCode, string statusDescription)
         {
@@ -24,6 +24,11 @@ namespace Portol.Common.Helper
             : this(statusCode, statusDescription)
         {
             this.Message = message;
+        }
+        
+        public ApiError()
+        {
+
         }
     }
 }

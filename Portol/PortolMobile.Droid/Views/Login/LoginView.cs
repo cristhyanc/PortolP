@@ -1,6 +1,7 @@
 ﻿using Android.OS;
 using Android.Runtime;
 using Android.Views;
+using Android.Widget;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 using PortolMobile.Core.Resources;
 using PortolMobile.Core.ViewModels;
@@ -19,10 +20,10 @@ namespace PortolMobile.Droid.Views.Login
             this.IsLoginPages = true;
             var view = base.OnCreateView(inflater, container, savedInstanceState);
 
-            //ParentActivity.SupportActionBar.Title = Strings.TargetPlanets;
-
-
+          //  ParentActivity.SupportActionBar.Title = StringResc.Login;
+         
             return view;
         }
+      
     }
 }

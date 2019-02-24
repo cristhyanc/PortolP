@@ -62,15 +62,9 @@ namespace PortolWeb.API.Controllers
                 var token = tokenHandler.CreateToken(tokenDescriptor);
                 var tokenString = tokenHandler.WriteToken(token);
 
+                user.Token = tokenString;
                 // return basic user info (without password) and token to store client side
-                return Ok(new
-                {
-                    Id = user.UserID,
-                    Username = user.Email,
-                    FirstName = user.FirstName,
-                    LastName = user.LastName,
-                    Token = tokenString
-                });
+                return Ok(user);
             }
             catch (AppException ex)
             {

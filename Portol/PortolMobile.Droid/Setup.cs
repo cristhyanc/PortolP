@@ -16,7 +16,7 @@ using PortolMobile.Droid.MvxBindings;
 namespace PortolMobile.Droid
 {
     public class Setup : MvxAppCompatSetup<App>
-    {
+    { 
         protected override IEnumerable<Assembly> AndroidViewAssemblies => new List<Assembly>(base.AndroidViewAssemblies)
         {
             typeof(NavigationView).Assembly,
@@ -35,8 +35,7 @@ namespace PortolMobile.Droid
         protected override void FillTargetFactories(IMvxTargetBindingFactoryRegistry registry)
         {
             MvxAppCompatSetupHelper.FillTargetFactories(registry);
-            base.FillTargetFactories(registry);
-
+            base.FillTargetFactories(registry);        
             registry.RegisterFactory(new MvxCustomBindingFactory<SwipeRefreshLayout>("IsRefreshing", (swipeRefreshLayout) => new SwipeRefreshLayoutIsRefreshingTargetBinding(swipeRefreshLayout)));
         }
 
