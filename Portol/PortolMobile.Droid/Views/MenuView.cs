@@ -8,7 +8,6 @@ using Android.Views;
 using MvvmCross.Droid.Support.V4;
 using MvvmCross.Platforms.Android.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
-using PortolMobile.Core.Resources;
 using PortolMobile.Core.ViewModels;
 
 namespace PortolMobile.Droid.Views

@@ -73,5 +73,58 @@ namespace PortolMobile.Services.Rest
             }
            
         }
+
+        public async Task<bool> MakeApiCall(string url, HttpMethod method, object data = null) 
+        {
+            try
+            {
+                //  url = url.Replace("http://", "https://");
+
+                using (var httpClient = new HttpClient())
+                {
+                    using (var request = new HttpRequestMessage { RequestUri = new Uri(url), Method = method })
+                    {
+                       
+                        if (method != HttpMethod.Get)
+                        {
+                            var json = JsonConvert.SerializeObject(data);
+                            request.Content = new StringContent(json, Encoding.UTF8, "application/json");
+                        }
+
+                        HttpResponseMessage response = new HttpResponseMessage();
+                        try
+                        {
+                            response = await httpClient.SendAsync(request).ConfigureAwait(false);
+                        }
+                        catch (Exception ex)
+                        {
+                            _mvxLog.ErrorException("MakeApiCall failed", ex);
+                        }
+
+                      
+                        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+                        {
+                            return true;
+                        }
+                        else
+                        {
+                            var stringSerialized = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                            var error = JsonConvert.DeserializeObject<ApiError>(stringSerialized);
+                            throw new AppException(error.StatusDescription);
+                        }
+                    }
+                }
+            }
+            catch (AppException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
     }
 }

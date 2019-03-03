@@ -13,6 +13,7 @@ using Portol.DTO;
 using Portol.Common.Helper;
 using Serilog;
 using System.Net;
+using Portol.Common;
 
 namespace PortolWeb.API.Controllers
 {
@@ -33,11 +34,11 @@ namespace PortolWeb.API.Controllers
 
         // GET api/values
         
-        [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
-        {            
-            return new string[] { "value1", "value2" };
-        }
+        //[HttpGet]
+        //public ActionResult<IEnumerable<string>> Get()
+        //{            
+        //    return new string[] { "value1", "value2" };
+        //}
 
         [AllowAnonymous]
         [HttpPost("authenticate")]
@@ -147,6 +148,55 @@ namespace PortolWeb.API.Controllers
         //        return BadRequest(new { message = ex.Message });
         //    }
         //}
+
+        [AllowAnonymous]
+        [HttpPost("VerifyCode")]
+        public IActionResult VerifyCode([FromBody]UserDto details)
+        {
+            try
+            {
+                if(details!=null && details.PhoneCountryCode==12345)
+                {
+                    return Ok();
+                }
+                else
+                {
+                    return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed,StringResources.WrongCode));
+                }               
+                
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.SendVerificationCode");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost("SendVerificationCode")]
+        public IActionResult SendVerificationCode([FromBody]string phoneNumber)
+        {
+            try
+            {
+               // _userService.Delete(id);
+                return Ok();
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.SendVerificationCode");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
 
         [HttpDelete("{id}")]
         public IActionResult Delete(Guid id)

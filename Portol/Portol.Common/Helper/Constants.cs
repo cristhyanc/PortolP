@@ -6,7 +6,8 @@ namespace Portol.Common.Helper
 {
   public  class Constants
     {
-        public const string BaseUrl = "http://192.168.8.237/PortolWeb/api/";
+        //public const string BaseUrl = "http://192.168.1.120/PortolWeb/api/";
+        public const string BaseUrl = "http://http://desktop-mkvm17a/PortolWeb/api/";
         public const string BaseUserApiUrl = BaseUrl + "users";
     }
 }

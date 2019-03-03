@@ -2,8 +2,10 @@
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using FFImageLoading;
+using FFImageLoading.Cross;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
-using PortolMobile.Core.Resources;
 using PortolMobile.Core.ViewModels;
 using PortolMobile.Core.ViewModels.Login;
 
@@ -19,9 +21,13 @@ namespace PortolMobile.Droid.Views.Login
         {
             this.IsLoginPages = true;
             var view = base.OnCreateView(inflater, container, savedInstanceState);
+            //var _imageView = view.FindViewById<MvxCachedImageView>(Resource.Id.imgLogin);
 
-          //  ParentActivity.SupportActionBar.Title = StringResc.Login;
-         
+            //ImageService.Instance
+            //       .LoadCompiledResource("logo_long_white.png")
+            //       .Into(_imageView);
+            //  ParentActivity.SupportActionBar.Title = StringResc.Login;
+
             return view;
         }
       

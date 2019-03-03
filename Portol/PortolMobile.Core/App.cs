@@ -1,4 +1,6 @@
 ﻿using Acr.UserDialogs;
+using FFImageLoading;
+using FFImageLoading.Svg.Platform;
 using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.IoC;
@@ -34,9 +36,9 @@ namespace PortolMobile.Core
                 Mvx.IoCProvider.RegisterType<IMvxJsonConverter, MvxJsonConverter>();
                 Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IRestClient, RestClient>();
                 Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ILoginService, LoginService>();
-                
-              
-              //  var asd = Mvx.IoCProvider.Resolve<ILoginService>();
+
+               
+                //  var asd = Mvx.IoCProvider.Resolve<ILoginService>();
                 //Mvx.IoCProvider.RegisterType<LoginViewModel>();
                 // register the appstart object
                 RegisterCustomAppStart<AppStart>();

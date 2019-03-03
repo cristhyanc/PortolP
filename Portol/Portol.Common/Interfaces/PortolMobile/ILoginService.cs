@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Portol.Common.Interfaces.PortolMobile
 {
-  public  interface ILoginService
+    public interface ILoginService
     {
         Task<UserDto> Authenticate(string email, string password);
+        Task<bool> SendVerificationCode(Int32 mobilePhoned);
+        Task<bool> VerifyCode(Int32 mobilePhoned, Int32 code);
     }
 }

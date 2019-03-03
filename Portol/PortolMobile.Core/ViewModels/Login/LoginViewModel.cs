@@ -3,9 +3,9 @@ using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using System.Threading.Tasks;
 using MvvmCross.Logging;
-using PortolMobile.Core.Resources;
 using Portol.Common.Interfaces.PortolMobile;
 using Portol.Common.Helper;
+using Portol.Common;
 
 namespace PortolMobile.Core.ViewModels.Login
 {
@@ -16,6 +16,8 @@ namespace PortolMobile.Core.ViewModels.Login
         private readonly ILoginService _loginService;
 
         public IMvxCommand LoginButtonCommand { get; private set; }
+        public IMvxCommand RecoverButtonCommand { get; private set; }
+
         private string _emailText;
         public string EmailText
         {
@@ -44,13 +46,34 @@ namespace PortolMobile.Core.ViewModels.Login
             }
         }
 
+      
         public LoginViewModel(IMvxNavigationService navigationService, ILoginService loginService)
         {
             _navigationService = navigationService;           
             _loginService = loginService;
             LoginButtonCommand = new MvxAsyncCommand(LoginUser);
+            RecoverButtonCommand = new MvxAsyncCommand(GoToRecoverPassword);
+            
         }
                
+        private async Task GoToRecoverPassword()
+        {
+            try
+            {
+                await _navigationService.Navigate<RecoverPasswordViewModel>();
+            }
+            catch (System.Exception ex)
+            {
+                Logs.Instance.ErrorException("GoToRecoverPassword", ex);
+                UserDialogs.Alert(new AlertConfig
+                {
+                    Message = StringResources.GeneralError,
+                    Title = StringResources.Error,
+                    OkText = StringResources.Ok
+                });
+            }
+        }
+
         private async Task LoginUser()
         {
             try
@@ -61,9 +84,9 @@ namespace PortolMobile.Core.ViewModels.Login
                 {
                     UserDialogs.Alert(new AlertConfig
                     {
-                        Message = StringResc.PasswordEmailRequired,
-                        Title = StringResc.Login,
-                        OkText = StringResc.Ok
+                        Message = StringResources.PasswordEmailRequired,
+                        Title = StringResources.Login,
+                        OkText = StringResources.Ok
                     });
 
                     return;
@@ -77,8 +100,8 @@ namespace PortolMobile.Core.ViewModels.Login
                 UserDialogs.Alert(new AlertConfig
                 {
                     Message = ex.Message,
-                    Title = StringResc.Error,
-                    OkText = StringResc.Ok
+                    Title = StringResources.Error,
+                    OkText = StringResources.Ok
                 });
             }
             catch (System.Exception ex)
@@ -86,9 +109,9 @@ namespace PortolMobile.Core.ViewModels.Login
                 Logs.Instance.ErrorException("LoginUser", ex);
                 UserDialogs.Alert(new AlertConfig
                 {
-                    Message = StringResc.GeneralError,
-                    Title = StringResc.Error,
-                    OkText = StringResc.Ok
+                    Message = StringResources.GeneralError,
+                    Title = StringResources.Error,
+                    OkText = StringResources.Ok
                 });
             }
             finally

@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CodeNumberRequired" xml:space="preserve">
+    <value>Code Number Required</value>
+  </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
@@ -126,10 +129,19 @@
   <data name="Login" xml:space="preserve">
     <value>Login</value>
   </data>
+  <data name="MobileNumberRequiered" xml:space="preserve">
+    <value>The mobile number is required</value>
+  </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
   </data>
   <data name="PasswordEmailRequired" xml:space="preserve">
     <value>The Email and Password are required</value>
+  </data>
+  <data name="RecoveringPassword" xml:space="preserve">
+    <value>Recovering Password</value>
+  </data>
+  <data name="WrongCode" xml:space="preserve">
+    <value>Wrong Code</value>
   </data>
 </root>

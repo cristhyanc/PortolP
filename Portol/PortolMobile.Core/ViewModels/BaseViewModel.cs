@@ -4,7 +4,7 @@ using System.Text;
 using Acr.UserDialogs;
 using MvvmCross;
 using MvvmCross.ViewModels;
-using PortolMobile.Core.Resources;
+using Portol.Common;
 
 namespace PortolMobile.Core.ViewModels
 {
@@ -18,16 +18,9 @@ namespace PortolMobile.Core.ViewModels
                 return _isBusy;
             }
             set
-            {
-               if(value)
-                {
-                    UserDialogs.ShowLoading();
-                }
-                else
-                {
-                    UserDialogs.HideLoading();
-                }
+            {              
                 _isBusy = value;
+                RaisePropertyChanged(() => IsBusy);
             }
         }
 
@@ -53,7 +46,7 @@ namespace PortolMobile.Core.ViewModels
         /// Gets the internationalized string at the given <paramref name="index"/>, which is the key of the resource.
         /// </summary>
         /// <param name="index">Index key of the string from the resources of internationalized strings.</param>
-        public string this[string index] => StringResc.ResourceManager.GetString(index);
+        public string this[string index] => StringResources.ResourceManager.GetString(index);
     }
 
     public abstract class BaseViewModel<TParameter, TResult> : MvxViewModel<TParameter, TResult>
@@ -68,6 +61,6 @@ namespace PortolMobile.Core.ViewModels
         /// Gets the internationalized string at the given <paramref name="index"/>, which is the key of the resource.
         /// </summary>
         /// <param name="index">Index key of the string from the resources of internationalized strings.</param>
-        public string this[string index] => StringResc.ResourceManager.GetString(index);
+        public string this[string index] => StringResources.ResourceManager.GetString(index);
     }
 }

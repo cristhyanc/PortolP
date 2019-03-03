@@ -10,8 +10,8 @@ using Portol.Common.Interfaces.PortolMobile;
 
 namespace PortolMobile.Services.User
 {
-  
-    public class LoginService: ILoginService
+
+    public class LoginService : ILoginService
     {
         private readonly IRestClient _restClient;
 
@@ -19,20 +19,23 @@ namespace PortolMobile.Services.User
         {
             _restClient = restClient;
         }
-        
+
         public async Task<UserDto> Authenticate(string email, string password)
-        {
-            try
-            {
+        {            
                 var user = new UserDto { Email = email, Password = password };
                 user = await _restClient.MakeApiCall<UserDto>($"{Constants.BaseUserApiUrl}/authenticate", HttpMethod.Post, user);
-                return user;
-            }
-            catch (Exception ex)
-            {
+                return user; 
+        }
 
-                throw ex;
-            }
+        public async Task<bool> VerifyCode(Int32 mobilePhoned, Int32 code)
+        {
+            UserDto user = new UserDto { PhoneNumber = mobilePhoned, PhoneCountryCode = code };
+            return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/VerifyCode", HttpMethod.Post, user);
+        }
+
+        public async Task<bool> SendVerificationCode(Int32 mobilePhoned)
+        {
+            return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/SendVerificationCode", HttpMethod.Post, mobilePhoned);
 
         }
 

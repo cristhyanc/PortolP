@@ -35,11 +35,23 @@
           <con:params/>
           <con:element xmlns:user="https://localhost/api/users">user:Fault</con:element>
         </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>text/html</con:mediaType>
+          <con:status>502</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>text/html; charset=us-ascii</con:mediaType>
+          <con:status>503</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
         <con:request name="Authenticate" id="98ca1aad-27e7-4d29-a1c2-452489c5c6aa" mediaType="application/json" postQueryString="false">
           <con:settings>
             <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
-          <con:endpoint>https://localhost:44346</con:endpoint>
+          <con:endpoint>http://192.168.8.237/PortolWeb</con:endpoint>
           <con:request>{
 	Email: 'cristhyan@outlook.com',
 	Password: 'Systar*2015'

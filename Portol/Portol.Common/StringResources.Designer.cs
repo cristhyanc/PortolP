@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PortolMobile.Core.Resources {
+namespace Portol.Common {
     using System;
     
     
@@ -22,14 +22,14 @@ namespace PortolMobile.Core.Resources {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    public class StringResc {
+    public class StringResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal StringResc() {
+        internal StringResources() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace PortolMobile.Core.Resources {
         public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PortolMobile.Core.Resources.StringResc", typeof(StringResc).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Portol.Common.StringResources", typeof(StringResources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -57,6 +57,15 @@ namespace PortolMobile.Core.Resources {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Code Number Required.
+        /// </summary>
+        public static string CodeNumberRequired {
+            get {
+                return ResourceManager.GetString("CodeNumberRequired", resourceCulture);
             }
         }
         
@@ -88,6 +97,15 @@ namespace PortolMobile.Core.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The mobile number is required.
+        /// </summary>
+        public static string MobileNumberRequiered {
+            get {
+                return ResourceManager.GetString("MobileNumberRequiered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
         public static string Ok {
@@ -102,6 +120,24 @@ namespace PortolMobile.Core.Resources {
         public static string PasswordEmailRequired {
             get {
                 return ResourceManager.GetString("PasswordEmailRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recovering Password.
+        /// </summary>
+        public static string RecoveringPassword {
+            get {
+                return ResourceManager.GetString("RecoveringPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Wrong Code.
+        /// </summary>
+        public static string WrongCode {
+            get {
+                return ResourceManager.GetString("WrongCode", resourceCulture);
             }
         }
     }
