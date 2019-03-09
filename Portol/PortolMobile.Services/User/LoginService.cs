@@ -27,16 +27,22 @@ namespace PortolMobile.Services.User
                 return user; 
         }
 
-        public async Task<bool> VerifyCode(Int32 mobilePhoned, Int32 code)
+        public async Task<bool> VerifyCode(decimal mobilePhoned, Int32 code)
         {
             UserDto user = new UserDto { PhoneNumber = mobilePhoned, PhoneCountryCode = code };
             return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/VerifyCode", HttpMethod.Post, user);
         }
 
-        public async Task<bool> SendVerificationCode(Int32 mobilePhoned)
+        public async Task<bool> ResetNewPassword(decimal mobilePhoned, string newPassword)
         {
-            return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/SendVerificationCode", HttpMethod.Post, mobilePhoned);
+            UserDto user = new UserDto { PhoneNumber = mobilePhoned, Password= newPassword };
+            return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/ResetPassword", HttpMethod.Post, user);
+        }
 
+        public async Task<bool> SendVerificationCode(decimal mobilePhoned, Int32 code)
+        {
+            UserDto user = new UserDto { PhoneNumber = mobilePhoned, PhoneCountryCode= code };
+            return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/SendVerificationCode", HttpMethod.Post, user);
         }
 
     }

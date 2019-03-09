@@ -2,6 +2,7 @@
 using MvvmCross.ViewModels;
 using PortolMobile.Core.ViewModels;
 using PortolMobile.Core.ViewModels.Login;
+using PortolMobile.Core.ViewModels.SignUp;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -18,7 +19,7 @@ namespace PortolMobile.Core
 
         protected override Task NavigateToFirstViewModel(object hint = null)
         {
-            return NavigationService.Navigate<MainViewModel>();
+            return NavigationService.Navigate<SignupStepMobileViewModel>();
         }
     }
 }

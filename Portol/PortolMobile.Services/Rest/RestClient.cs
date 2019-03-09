@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MvvmCross.Base;
 using MvvmCross.Logging;
 using Newtonsoft.Json;
+using Portol.Common;
 using Portol.Common.Helper;
 
 namespace PortolMobile.Services.Rest
@@ -45,6 +46,7 @@ namespace PortolMobile.Services.Rest
                         catch (Exception ex)
                         {
                             _mvxLog.ErrorException("MakeApiCall failed", ex);
+                            throw new AppException(StringResources.NetworkConnectionError);
                         }
 
                         var stringSerialized = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
@@ -56,9 +58,7 @@ namespace PortolMobile.Services.Rest
                         {
                             var error = JsonConvert.DeserializeObject<ApiError>(stringSerialized);
                             throw new AppException(error.StatusDescription);
-                        }
-
-                       
+                        }                       
                     }
                 }
             }

@@ -13,5 +13,6 @@ namespace Portol.Common.Interfaces.PortolWeb
         UserDto Create(UserDto user, string password);
         void Update(UserDto user, string password = null);
         void Delete(Guid userId);
+        void ResetPassword(UserDto user);
     }
 }

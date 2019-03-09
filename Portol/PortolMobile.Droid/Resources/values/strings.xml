@@ -5,6 +5,9 @@
   <string name="drawer_open">Open</string>
   <string name="drawer_close">Close</string>
   <string name="email">Email</string>
+  <string name="DOB">D.O.B</string>
+  <string name="lastName">Last Name</string>
+  <string name="firstName">First Name</string>
   <string name="password">Password</string>
   <string name="login">Login</string>
   <string name="forgotPassword">Forgot Password?</string>
@@ -12,6 +15,10 @@
   <string name="sendCode">Send Code</string>
   <string name="verifyCode">Verify Code</string>
   <string name="enterMobileNumber">Enter your mobile number</string>
-  <string name="reSendCode">Re-send a code</string>
+  <string name="reSendCode">Re-send code</string>
   <string name="WaitForCode">You will recive a code number within 5 minutes</string>
+  <string name="newPassword">Enter new password</string>
+  <string name="newPasswordConfirmation">Confirm new password</string>
+  <string name="letsCreateAPortol">Let\'s create a Portol</string>
+  <string name="insertCode">Insert the 4-digit code sent to you at</string>
 </resources>

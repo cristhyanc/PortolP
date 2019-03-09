@@ -7,6 +7,7 @@ using MvvmCross.Logging;
 using System.Threading.Tasks;
 using Portol.Common;
 using MvvmCross.UI;
+using PortolMobile.Core.Helper;
 
 namespace PortolMobile.Core.ViewModels.Login
 {
@@ -15,12 +16,39 @@ namespace PortolMobile.Core.ViewModels.Login
         public IMvxCommand VerifyCodeButtonCommand { get; private set; }
         public IMvxCommand ReSendCodeButtonCommand { get; private set; }
         public IMvxCommand SendCodeButtonCommand { get; private set; }
-
+        public IMvxCommand SaveNewPasswordCommand { get; private set; }
+        public IMvxCommand LoginCommand { get; private set; }
 
         
-
         private readonly IMvxNavigationService _navigationService;
         private readonly ILoginService _loginService;
+
+        private string _newPassword;
+        public string NewPassword {
+            get
+            {
+                return _newPassword;
+            }
+            set
+            {
+                _newPassword = value;
+                RaisePropertyChanged(() => NewPassword);
+            }
+        }
+
+        private string _confirmNewPassword;
+        public string ConfirmNewPassword
+        {
+            get
+            {
+                return _confirmNewPassword;
+            }
+            set
+            {
+                _confirmNewPassword = value;
+                RaisePropertyChanged(() => ConfirmNewPassword);
+            }
+        }
 
         private string _codeNumber;
         public string CodeNumber
@@ -54,6 +82,12 @@ namespace PortolMobile.Core.ViewModels.Login
             }
             set
             {
+                if (value)
+                {
+                    IsCodeSectionVisible = false;
+                    IsPasswordSectionVisible = false;
+
+                }
                 _isMobileSectionVisible = value;
                 RaisePropertyChanged(() => IsMobileSectionVisible);
             }
@@ -68,10 +102,37 @@ namespace PortolMobile.Core.ViewModels.Login
             }
             set
             {
+                if (value)
+                {
+                    IsMobileSectionVisible = false;
+                    IsPasswordSectionVisible = false;
+
+                }
                 _isCodeSectionVisible = value;
                 RaisePropertyChanged(() => IsCodeSectionVisible);
             }
         }
+
+        private bool _isPasswordSectionVisible = false;
+        public bool IsPasswordSectionVisible
+        {
+            get
+            {
+                return _isPasswordSectionVisible;
+            }
+            set
+            {
+                if(value)
+                {
+                    IsCodeSectionVisible = false;
+                    IsMobileSectionVisible = false;
+
+                }
+                _isPasswordSectionVisible = value;
+                RaisePropertyChanged(() => IsPasswordSectionVisible);
+            }
+        }
+
 
 
         private string _mobileNumber;
@@ -83,8 +144,8 @@ namespace PortolMobile.Core.ViewModels.Login
             }
             set
             {
-                int num = 0;
-                if (int.TryParse(value, out num))
+                long num = 0;
+                if (long.TryParse(value, out num))
                 {
                     _mobileNumber = value;
                 }
@@ -104,8 +165,63 @@ namespace PortolMobile.Core.ViewModels.Login
             SendCodeButtonCommand = new MvxAsyncCommand(SendCodeVerification);
             ReSendCodeButtonCommand = new MvxCommand(ResendCode);
             VerifyCodeButtonCommand = new MvxAsyncCommand(VerifyCodeVerification);
+            SaveNewPasswordCommand = new MvxAsyncCommand(SaveNewPassword);
+            LoginCommand = new MvxAsyncCommand(async () =>
+            {
+              await  _navigationService.Navigate<LoginViewModel>();
+            });
             this.IsMobileSectionVisible = true;
-            this.IsCodeSectionVisible = false ;
+        }
+
+        private async Task SaveNewPassword()
+        {
+            try
+            {
+                if(string.IsNullOrEmpty(this.NewPassword) || string.IsNullOrEmpty(this.ConfirmNewPassword) )
+                {
+                    UserDialogs.Alert(new AlertConfig
+                    {
+                        Message = StringResources.NewPasswordsRequired,
+                        Title = StringResources.RecoveringPassword,
+                        OkText = StringResources.Ok
+                    });
+
+                    return;
+                }
+
+                if(!this.NewPassword.Trim().Equals(this.ConfirmNewPassword.Trim()))
+                {
+                    UserDialogs.Alert(new AlertConfig
+                    {
+                        Message = StringResources.PasswordsNotEquals,
+                        Title = StringResources.RecoveringPassword,
+                        OkText = StringResources.Ok
+                    });
+
+                    return;
+                }
+
+                this.IsBusy = true;
+
+                await _loginService.ResetNewPassword(decimal.Parse(this.MobileNumber), this.NewPassword);
+
+                UserDialogs.Alert(new AlertConfig
+                {
+                    Message = StringResources.PasswordChanged,
+                    Title = StringResources.RecoveringPassword,
+                    OkText = StringResources.Ok
+                });
+
+                 _navigationService.Navigate<LoginViewModel>();
+            }           
+            catch (System.Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.RecoveringPassword, "SaveNewPassword");              
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
         }
 
         private async Task VerifyCodeVerification()
@@ -124,30 +240,16 @@ namespace PortolMobile.Core.ViewModels.Login
 
                     return;
                 }
-                var resutl = await _loginService.VerifyCode(int.Parse(this.MobileNumber), int.Parse(this.CodeNumber) );
+                var resutl = await _loginService.VerifyCode(decimal.Parse(this.MobileNumber), int.Parse(this.CodeNumber) );
                 if (resutl)
                 {
-                   
+                    this.IsPasswordSectionVisible = true;
                 }
             }
-            catch (AppException ex)
-            {
-                UserDialogs.Alert(new AlertConfig
-                {
-                    Message = ex.Message,
-                    Title = StringResources.RecoveringPassword,
-                    OkText = StringResources.Ok
-                });
-            }
+          
             catch (System.Exception ex)
             {
-                Logs.Instance.ErrorException("SendCodeVerification", ex);
-                UserDialogs.Alert(new AlertConfig
-                {
-                    Message = StringResources.GeneralError,
-                    Title = StringResources.Error,
-                    OkText = StringResources.Ok
-                });
+                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.RecoveringPassword, "VerifyCodeVerification");              
             }
             finally
             {
@@ -157,8 +259,7 @@ namespace PortolMobile.Core.ViewModels.Login
 
         private void ResendCode()
         {
-            this.IsMobileSectionVisible = true;
-            this.IsCodeSectionVisible = false ;
+            this.IsMobileSectionVisible = true;        
         }
 
         private async Task SendCodeVerification()
@@ -166,7 +267,7 @@ namespace PortolMobile.Core.ViewModels.Login
             try
             {
                 this.IsBusy = true;
-                if (string.IsNullOrEmpty(this.MobileNumber) || int.Parse(this.MobileNumber)==0)
+                if ((string.IsNullOrEmpty(this.MobileNumber) || decimal.Parse(this.MobileNumber)==0) && string.IsNullOrEmpty(this.CodeNumber))
                 {
                     UserDialogs.Alert(new AlertConfig
                     {
@@ -177,31 +278,15 @@ namespace PortolMobile.Core.ViewModels.Login
 
                     return;
                 }
-                var resutl = await _loginService.SendVerificationCode(int.Parse(this.MobileNumber));
+                var resutl = await _loginService.SendVerificationCode(decimal.Parse(this.MobileNumber), int.Parse(this.CodeNumber));
                 if(resutl )
-                {
-                    this.IsMobileSectionVisible = false;
+                {                  
                     this.IsCodeSectionVisible = true ;
                 }
-            }
-            catch (AppException ex)
-            {
-                UserDialogs.Alert(new AlertConfig
-                {
-                    Message = ex.Message,
-                    Title = StringResources.RecoveringPassword,
-                    OkText = StringResources.Ok
-                });
-            }
+            }          
             catch (System.Exception ex)
             {
-                Logs.Instance.ErrorException("SendCodeVerification", ex);
-                UserDialogs.Alert(new AlertConfig
-                {
-                    Message = StringResources.GeneralError,
-                    Title = StringResources.Error,
-                    OkText = StringResources.Ok
-                });
+                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.RecoveringPassword, "SendCodeVerification");              
             }
             finally
             {

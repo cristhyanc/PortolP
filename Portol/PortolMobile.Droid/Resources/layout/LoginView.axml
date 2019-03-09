@@ -6,12 +6,7 @@
 	android:orientation="vertical"
 	android:background="@drawable/login_background"
 	android:layout_height="match_parent">
-    <ProgressBar
-        style="?android:attr/progressBarStyleLarge"
-        local:MvxBind="Visible IsBusy"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar" />
+  
 	<ImageView
 		android:src="@drawable/logo_long_white"
 		android:layout_width="200dp"
@@ -45,6 +40,14 @@
 		android:layout_marginTop="20dp"
 		android:textColor="#ffffffff"
 		android:textColorHint="#ffb3a3a3" />
+    
+    <ProgressBar
+        local:MvxBind="Visible IsBusy"
+        android:layout_marginTop="15dp"		
+        android:layout_width="match_parent"        
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar2" />
+
 	<Button		
 		local:MvxBind="Click LoginButtonCommand"
 		android:layout_marginTop="30dp"		
@@ -53,10 +56,11 @@
 		android:layout_height="25dp"
 		android:id="@+id/btnLogin"
 		android:background="@drawable/ic_play_gray" />
-	
+    
 	<Button
 		local:MvxBind="Click RecoverButtonCommand"
 		android:text="@string/forgotPassword"
+        android:layout_marginTop="20dp"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:id="@+id/btnForgotPassword"
@@ -69,6 +73,7 @@
     android:orientation="vertical"
     android:gravity="bottom|end">
 		<Button
+			local:MvxBind="Click SignupCommand"
 			android:text="@string/signUp"
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"

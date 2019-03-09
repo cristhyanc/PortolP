@@ -32,40 +32,13 @@ namespace PortolWeb.API.Controllers
             _appSettings = appSettings.Value;
         }
 
-        // GET api/values
-        
-        //[HttpGet]
-        //public ActionResult<IEnumerable<string>> Get()
-        //{            
-        //    return new string[] { "value1", "value2" };
-        //}
-
-        [AllowAnonymous]
-        [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody]UserDto userDto)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(Guid id)
         {
-
             try
             {
-                var user = _userService.Authenticate(userDto.Email, userDto.Password);
-                               
-                var tokenHandler = new JwtSecurityTokenHandler();
-                var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
-                var tokenDescriptor = new SecurityTokenDescriptor
-                {
-                    Subject = new ClaimsIdentity(new Claim[]
-                    {
-                    new Claim(ClaimTypes.Name, user.UserID.ToString())
-                    }),                    
-                    Expires = DateTime.UtcNow.AddDays(7),
-                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-                };
-                var token = tokenHandler.CreateToken(tokenDescriptor);
-                var tokenString = tokenHandler.WriteToken(token);
-
-                user.Token = tokenString;
-                // return basic user info (without password) and token to store client side
-                return Ok(user);
+                _userService.Delete(id);
+                return Ok();
             }
             catch (AppException ex)
             {
@@ -73,34 +46,12 @@ namespace PortolWeb.API.Controllers
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "User.Authenticate");
-                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
-            }
-
-        }
-
-        [AllowAnonymous]
-        [HttpPost("register")]
-        public IActionResult Register([FromBody]UserDto userDto)
-        {
-           
-            try
-            {              
-                var result=_userService.Create(userDto, userDto.Password);
-                return Ok(result);
-            }
-            catch (AppException ex)
-            {                
-                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
-            }
-            catch(Exception ex)
-            {
-                Log.Error(ex, "User.Register");
+                Log.Error(ex, "User.Delete");
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
         }
-
+       
         [HttpGet("getall")]       
         public IActionResult GetAll()
         {
@@ -155,7 +106,7 @@ namespace PortolWeb.API.Controllers
         {
             try
             {
-                if(details!=null && details.PhoneCountryCode==12345)
+                if(details!=null && details.PhoneCountryCode==4321)
                 {
                     return Ok();
                 }
@@ -178,8 +129,30 @@ namespace PortolWeb.API.Controllers
         }
 
         [AllowAnonymous]
+        [HttpPost("ResetPassword")]
+        public IActionResult ResetPassword([FromBody]UserDto details)
+        {
+            try
+            {
+                _userService.ResetPassword(details);
+                return Ok();
+
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.ResetPassword");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
+
+        [AllowAnonymous]
         [HttpPost("SendVerificationCode")]
-        public IActionResult SendVerificationCode([FromBody]string phoneNumber)
+        public IActionResult SendVerificationCode([FromBody]UserDto details)
         {
             try
             {
@@ -198,13 +171,40 @@ namespace PortolWeb.API.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        public IActionResult Delete(Guid id)
+        // GET api/values
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult<IEnumerable<string>> Get()
         {
+            return new string[] { "value1", "value2" };
+        }
+
+        [AllowAnonymous]
+        [HttpPost("authenticate")]
+        public IActionResult Authenticate([FromBody]UserDto userDto)
+        {
+
             try
             {
-                _userService.Delete(id);
-                return Ok();
+                var user = _userService.Authenticate(userDto.Email, userDto.Password);
+
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
+                var tokenDescriptor = new SecurityTokenDescriptor
+                {
+                    Subject = new ClaimsIdentity(new Claim[]
+                    {
+                    new Claim(ClaimTypes.Name, user.UserID.ToString())
+                    }),
+                    Expires = DateTime.UtcNow.AddDays(7),
+                    SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+                };
+                var token = tokenHandler.CreateToken(tokenDescriptor);
+                var tokenString = tokenHandler.WriteToken(token);
+
+                user.Token = tokenString;
+                // return basic user info (without password) and token to store client side
+                return Ok(user);
             }
             catch (AppException ex)
             {
@@ -212,10 +212,34 @@ namespace PortolWeb.API.Controllers
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "User.Delete");
+                Log.Error(ex, "User.Authenticate");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+            }
+
+        }
+
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public IActionResult Register([FromBody]UserDto userDto)
+        {
+
+            try
+            {
+                var result = _userService.Create(userDto, userDto.Password);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.Register");
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
         }
+
+
     }
 }

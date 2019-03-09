@@ -6,6 +6,8 @@ using MvvmCross.Logging;
 using Portol.Common.Interfaces.PortolMobile;
 using Portol.Common.Helper;
 using Portol.Common;
+using PortolMobile.Core.ViewModels.SignUp;
+using PortolMobile.Core.Helper;
 
 namespace PortolMobile.Core.ViewModels.Login
 {
@@ -17,7 +19,8 @@ namespace PortolMobile.Core.ViewModels.Login
 
         public IMvxCommand LoginButtonCommand { get; private set; }
         public IMvxCommand RecoverButtonCommand { get; private set; }
-
+        public IMvxCommand SignupCommand { get; private set; }
+        
         private string _emailText;
         public string EmailText
         {
@@ -53,9 +56,22 @@ namespace PortolMobile.Core.ViewModels.Login
             _loginService = loginService;
             LoginButtonCommand = new MvxAsyncCommand(LoginUser);
             RecoverButtonCommand = new MvxAsyncCommand(GoToRecoverPassword);
-            
+            SignupCommand = new MvxAsyncCommand(GoToSignup);
         }
-               
+
+
+        private async Task GoToSignup()
+        {
+            try
+            {
+                await _navigationService.Navigate<SignupStepMobileViewModel>();
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.Login, "GoToSignup");
+            }
+        }
+
         private async Task GoToRecoverPassword()
         {
             try
@@ -64,14 +80,9 @@ namespace PortolMobile.Core.ViewModels.Login
             }
             catch (System.Exception ex)
             {
-                Logs.Instance.ErrorException("GoToRecoverPassword", ex);
-                UserDialogs.Alert(new AlertConfig
-                {
-                    Message = StringResources.GeneralError,
-                    Title = StringResources.Error,
-                    OkText = StringResources.Ok
-                });
+                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.Login, "GoToRecoverPassword");
             }
+               
         }
 
         private async Task LoginUser()
@@ -80,7 +91,12 @@ namespace PortolMobile.Core.ViewModels.Login
             {
                 
                 this.IsBusy = true;
-                if(this.PasswordText?.Length==0 || this.EmailText?.Length==0)
+                if(this.PasswordText?.Length>0 && this.EmailText?.Length>0)
+                {
+                    var result = await _loginService.Authenticate(this.EmailText, this.PasswordText);
+                    await _navigationService.Navigate<FirstPageViewModel>();
+                }
+                else
                 {
                     UserDialogs.Alert(new AlertConfig
                     {
@@ -92,27 +108,11 @@ namespace PortolMobile.Core.ViewModels.Login
                     return;
                 }
 
-                var result =await  _loginService.Authenticate(this.EmailText, this.PasswordText);
-                await _navigationService.Navigate<FirstPageViewModel>();
-            }
-            catch (AppException ex)
-            {
-                UserDialogs.Alert(new AlertConfig
-                {
-                    Message = ex.Message,
-                    Title = StringResources.Error,
-                    OkText = StringResources.Ok
-                });
-            }
+               
+            }           
             catch (System.Exception ex)
             {
-                Logs.Instance.ErrorException("LoginUser", ex);
-                UserDialogs.Alert(new AlertConfig
-                {
-                    Message = StringResources.GeneralError,
-                    Title = StringResources.Error,
-                    OkText = StringResources.Ok
-                });
+                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.Login , "LoginUser");              
             }
             finally
             {

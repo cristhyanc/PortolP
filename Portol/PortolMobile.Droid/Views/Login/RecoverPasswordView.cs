@@ -20,18 +20,27 @@ namespace PortolMobile.Droid.Views.Login
         {
             this.IsLoginPages = true;
             var view = base.OnCreateView(inflater, container, savedInstanceState);
-            //var bindingSet = this.CreateBindingSet<RecoverPasswordView, RecoverPasswordViewModel>();
+            var btn = view.FindViewById<Button>(Resource.Id.btnSendCode);
+            btn.Click += Btn_Click;
 
-            //var lny = view.FindViewById<LinearLayout>(Resource.Id.lnyPhoneNumber);
-            //bindingSet.Bind(lny).For(v => v.Visibility).To(vm => vm.IsMobileSectionVisible).WithConversion<MvxVisibilityValueConverter>();
+            btn = view.FindViewById<Button>(Resource.Id.btnVerifyCode);
+            btn.Click += Btn_Click;
 
-            //lny = view.FindViewById<LinearLayout>(Resource.Id.lnyCode);
-            //bindingSet.Bind(lny).For(v => v.Visibility).To(vm => vm.IsMobileSectionVisible).WithConversion<MvxInvertedVisibilityValueConverter>();
+            btn = view.FindViewById<Button>(Resource.Id.btnResend);
+            btn.Click += Btn_Click;
 
-            //bindingSet.Apply();
+            btn = view.FindViewById<Button>(Resource.Id.btnNewpassword);
+            btn.Click += Btn_Click;
 
+            btn = view.FindViewById<Button>(Resource.Id.btnLogin);
+            btn.Click += Btn_Click;
+            
             return view;
         }
 
+        private void Btn_Click(object sender, System.EventArgs e)
+        {
+            ((MainView)Activity)?.HideSoftKeyboard();
+        }
     }
 }

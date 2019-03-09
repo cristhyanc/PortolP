@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:local="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+	
+	<ImageView
+		android:src="@drawable/logo_long_white"
+		android:layout_width="200dp"
+		android:layout_marginTop="50dp"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center_horizontal"
+		android:id="@+id/imageView" />
+
+	<EditText
+		android:gravity="center"
+		android:layout_gravity="center"
+		android:hint="@string/firstName"
+		android:layout_width="match_parent"
+		android:layout_height="40dp"
+		android:id="@+id/txtFirsname"
+		android:layout_marginTop="30dp"
+		android:layout_marginRight="15dp"
+		android:layout_marginLeft="15dp"		
+		android:background="#fff8f8f8"/>
+	
+	<EditText
+		android:gravity="center"
+		android:layout_gravity="center"
+		android:hint="@string/lastName"
+		android:layout_width="match_parent"
+		android:layout_height="40dp"
+		android:id="@+id/txtLastName"
+		android:layout_marginTop="30dp"
+		android:layout_marginRight="15dp"
+		android:layout_marginLeft="15dp"		
+		android:background="#fff8f8f8" />
+
+	<EditText
+		android:gravity="center"
+		android:layout_gravity="center"
+		android:hint="@string/DOB"
+		android:inputType="date"
+		android:layout_width="match_parent"
+		android:layout_height="40dp"
+		android:id="@+id/txtDOB"
+		android:layout_marginTop="30dp"
+		android:layout_marginRight="15dp"
+		android:layout_marginLeft="15dp"		
+		android:background="#fff8f8f8" />
+	<MvvmCross.Platforms.Android.Binding.Views.MvxDatePicker
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/mvxDatePicker1" />
+	
+	
+		
+	<TextView
+		local:MvxBind="Visible IsValidationVisible; Text ErrorMessage"
+		android:gravity="center_horizontal"	
+		android:textAppearance="?android:attr/textAppearanceLarge"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:id="@+id/lblPhoneRequired"
+		android:textColor="#ffff0000"
+		android:textSize="14dp"
+		android:layout_marginTop="15dp" />
+
+	
+
+	<ProgressBar
+			local:MvxBind="Visible IsBusy"
+			android:layout_marginTop="15dp"		
+			android:layout_width="match_parent"        
+			android:layout_height="wrap_content"
+			android:id="@+id/progressBar2" />
+
+		<Button		
+			local:MvxBind="Click GotoNamesPageCommand"
+			android:layout_marginTop="30dp"		
+			android:layout_gravity="center_horizontal"
+			android:layout_width="15dp"
+			android:layout_height="25dp"
+			android:id="@+id/btnLogin"
+			android:background="@drawable/ic_play_gray" />
+		
+	
+	 
+</LinearLayout>

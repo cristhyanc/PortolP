@@ -51,7 +51,7 @@ namespace PortolMobile.Droid.Views
 
         public override void OnBackPressed()
         {
-            if (DrawerLayout != null && DrawerLayout.IsDrawerOpen(GravityCompat.Start))
+            if (DrawerLayout != null && DrawerLayout.IsDrawerOpen(GravityCompat.Start) )
                 DrawerLayout.CloseDrawers();
             else
                 base.OnBackPressed();

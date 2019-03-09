@@ -49,12 +49,39 @@ namespace PortolMobile.Core.ViewModels
         public string this[string index] => StringResources.ResourceManager.GetString(index);
     }
 
-    public abstract class BaseViewModel<TParameter, TResult> : MvxViewModel<TParameter, TResult>
+    public abstract class BaseViewModel<TParameter> : MvxViewModel<TParameter>
         where TParameter : class
-        where TResult : class
     {
         protected BaseViewModel()
         {
+        }
+
+        private bool _isBusy;
+        public bool IsBusy
+        {
+            get
+            {
+                return _isBusy;
+            }
+            set
+            {
+                _isBusy = value;
+                RaisePropertyChanged(() => IsBusy);
+            }
+        }
+
+        IUserDialogs _userDialogs;
+        public IUserDialogs UserDialogs
+        {
+            get
+            {
+                if (_userDialogs == null)
+                {
+                    _userDialogs = Mvx.IoCProvider.Resolve<IUserDialogs>();
+                }
+
+                return _userDialogs;
+            }
         }
 
         /// <summary>
