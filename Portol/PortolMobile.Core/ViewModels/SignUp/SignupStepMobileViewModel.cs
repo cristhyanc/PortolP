@@ -64,8 +64,21 @@ namespace PortolMobile.Core.ViewModels.SignUp
             }
         }
 
-        
 
+        string _validationMessage;
+        public string ValidationMessage
+        {
+            get
+            {
+                return _validationMessage;
+            }
+            set
+            {
+                _validationMessage = value;
+                RaisePropertyChanged(() => ValidationMessage);
+            }
+        }
+        
 
         private string _mobileNumber;
         public string MobileNumber
@@ -108,6 +121,7 @@ namespace PortolMobile.Core.ViewModels.SignUp
                 if (string.IsNullOrEmpty(MobileNumber))
                 {
                     IsMobileValidationVisible = true;
+                    ValidationMessage = StringResources.MobileNumberRequiered;
                     return;
                 }
 
@@ -115,10 +129,21 @@ namespace PortolMobile.Core.ViewModels.SignUp
                 UserDto user = new UserDto();
                 user.PhoneCountryCode = int.Parse(this.CountrySelected.CountryCode);
                 user.PhoneNumber = long.Parse(MobileNumber);
+
+               var isUniqui= await _loginService.VerifyMobileUniqueness(user.PhoneNumber, user.PhoneCountryCode);
+
+                if(!isUniqui)
+                {
+                    IsMobileValidationVisible = true;
+                    ValidationMessage = StringResources.MobileInUse;
+                    return;
+                }
+
                 var result = await _loginService.SendVerificationCode(user.PhoneNumber,user.PhoneCountryCode);
                 if(result)
                 {
                     await _navigationService.Navigate<SignupStepCodeViewModel, UserDto>(user);
+                  
                 }               
             }          
             catch (System.Exception ex)

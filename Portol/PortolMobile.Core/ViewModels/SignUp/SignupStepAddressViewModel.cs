@@ -1,6 +1,8 @@
-﻿using MvvmCross.Commands;
+﻿using Acr.UserDialogs;
+using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using Portol.Common;
+using Portol.Common.Interfaces.PortolMobile;
 using Portol.DTO;
 using PortolMobile.Core.Helper;
 using System;
@@ -15,6 +17,9 @@ namespace PortolMobile.Core.ViewModels.SignUp
 
         public IMvxCommand SaveAccountCommand { get; private set; }
         private readonly IMvxNavigationService _navigationService;
+        private readonly IUserMobileService _userMobileService;
+
+        
         UserDto _userDto;
 
         bool _isValidationVisible;
@@ -143,8 +148,9 @@ namespace PortolMobile.Core.ViewModels.SignUp
             }
         }
 
-        public SignupStepAddressViewModel(IMvxNavigationService navigationService)
+        public SignupStepAddressViewModel(IMvxNavigationService navigationService, IUserMobileService userMobileService )
         {
+            _userMobileService = userMobileService;
             _navigationService = navigationService;
             SaveAccountCommand = new MvxAsyncCommand(SaveNewAccount);
         }
@@ -153,7 +159,63 @@ namespace PortolMobile.Core.ViewModels.SignUp
         {
             try
             {
+                this.IsBusy = true;
+                IsValidationVisible = false;
+                ErrorMessage = "";
 
+                if (string.IsNullOrWhiteSpace(this.Street ) )
+                {
+                    IsValidationVisible = true;
+                    ErrorMessage = StringResources.StreetRequired;
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(this.Suburb ))
+                {
+                    IsValidationVisible = true;
+                    ErrorMessage = StringResources.SuburbRequired;
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(this.City ))
+                {
+                    IsValidationVisible = true;
+                    ErrorMessage = StringResources.CityRequired;
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(this.State))
+                {
+                    IsValidationVisible = true;
+                    ErrorMessage = StringResources.StateRequired;
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(this.Country))
+                {
+                    IsValidationVisible = true;
+                    ErrorMessage = StringResources.CountryRequired;
+                    return;
+                }
+
+                _userDto.UserAddress = new AddressDto();
+                _userDto.UserAddress.City = this.City;
+                _userDto.UserAddress.Country = this.Country;
+                _userDto.UserAddress.FlatNumber = this.UnitNumber;
+                _userDto.UserAddress.State = this.State;
+                _userDto.UserAddress.StreetName = this.Street;
+                _userDto.UserAddress.Suburb = this.Suburb;
+
+                if (await _userMobileService.CreateNewuser(_userDto))
+                {
+                    await UserDialogs.ConfirmAsync(StringResources.AccountCreated, StringResources.NewUser);
+                    await _navigationService.Navigate<MainViewModel>();
+
+                }
+
+               
+             // await  _navigationService.Close(this);
+               
             }
             catch (System.Exception ex)
             {

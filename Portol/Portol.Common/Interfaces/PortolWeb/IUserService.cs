@@ -14,5 +14,8 @@ namespace Portol.Common.Interfaces.PortolWeb
         void Update(UserDto user, string password = null);
         void Delete(Guid userId);
         void ResetPassword(UserDto user);
+        bool VerifyMobileUniqueness(UserDto phoneDetails);
+        bool VerifyEmailUniqueness(string email);
+
     }
 }

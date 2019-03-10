@@ -47,10 +47,10 @@
 			android:layout_height="wrap_content"
 			android:id="@+id/txtMobileNumber" />
 	</LinearLayout>
+	
 	<TextView
-		local:MvxBind="Visible IsMobileValidationVisible"
-		android:gravity="center_horizontal"
-		android:text="@string/enterMobileNumber"
+		local:MvxBind="Visible IsMobileValidationVisible; Text ValidationMessage"
+		android:gravity="center_horizontal"		
 		android:textAppearance="?android:attr/textAppearanceLarge"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"

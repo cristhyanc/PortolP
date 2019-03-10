@@ -1,6 +1,7 @@
 ﻿using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using Portol.Common;
+using Portol.Common.Interfaces.PortolMobile;
 using Portol.DTO;
 using PortolMobile.Core.Helper;
 using System;
@@ -14,6 +15,7 @@ namespace PortolMobile.Core.ViewModels.SignUp
     {
         public IMvxCommand GotoAddressPageCommand { get; private set; }
         private readonly IMvxNavigationService _navigationService;
+        private readonly ILoginService _loginService;
         UserDto _userDto;
 
         bool _isValidationVisible;
@@ -68,7 +70,7 @@ namespace PortolMobile.Core.ViewModels.SignUp
             set
             {
                 _confirmEmail = value;
-                RaisePropertyChanged(() => _confirmEmail);
+                RaisePropertyChanged(() => ConfirmEmail);
             }
         }
 
@@ -101,9 +103,10 @@ namespace PortolMobile.Core.ViewModels.SignUp
         }
 
 
-        public SignupStepEmailViewModel(IMvxNavigationService navigationService)
+        public SignupStepEmailViewModel(IMvxNavigationService navigationService, ILoginService loginService)
         {
             _navigationService = navigationService;
+            _loginService = loginService;
             GotoAddressPageCommand = new MvxAsyncCommand(GotoAddressPage);
         }
 
@@ -122,6 +125,8 @@ namespace PortolMobile.Core.ViewModels.SignUp
                     ErrorMessage = StringResources.AllFieldsRequired;
                     return;
                 }
+                this.Email = this.Email.Trim().ToLowerInvariant();
+                this.ConfirmEmail = this.ConfirmEmail.Trim().ToLowerInvariant();
 
                 if (!this.Email.Contains("@"))
                 {
@@ -144,10 +149,18 @@ namespace PortolMobile.Core.ViewModels.SignUp
                     return;
                 }
 
+                var result = await _loginService.VerifyEmailUniqueness(this.Email);
+                if(!result)
+                {
+                    IsValidationVisible = true;
+                    ErrorMessage = StringResources.EmailInUse;
+                    return;
+                }
+
                 _userDto.Password = this.Password;
                 _userDto.Email = this.Email;
                  await _navigationService.Navigate<SignupStepAddressViewModel, UserDto>(_userDto);
-
+               
             }
             catch (System.Exception ex)
             {

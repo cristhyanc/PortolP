@@ -61,6 +61,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The account was created.
+        /// </summary>
+        public static string AccountCreated {
+            get {
+                return ResourceManager.GetString("AccountCreated", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All fields are required.
         /// </summary>
         public static string AllFieldsRequired {
@@ -79,11 +88,29 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to City is required.
+        /// </summary>
+        public static string CityRequired {
+            get {
+                return ResourceManager.GetString("CityRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Code Number Required.
         /// </summary>
         public static string CodeNumberRequired {
             get {
                 return ResourceManager.GetString("CodeNumberRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country is required.
+        /// </summary>
+        public static string CountryRequired {
+            get {
+                return ResourceManager.GetString("CountryRequired", resourceCulture);
             }
         }
         
@@ -102,6 +129,15 @@ namespace Portol.Common {
         public static string DOBRequired {
             get {
                 return ResourceManager.GetString("DOBRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Email is already in use.
+        /// </summary>
+        public static string EmailInUse {
+            get {
+                return ResourceManager.GetString("EmailInUse", resourceCulture);
             }
         }
         
@@ -214,6 +250,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The mobile number is already in use.
+        /// </summary>
+        public static string MobileInUse {
+            get {
+                return ResourceManager.GetString("MobileInUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The mobile number is required.
         /// </summary>
         public static string MobileNumberRequiered {
@@ -237,6 +282,15 @@ namespace Portol.Common {
         public static string NewPasswordsRequired {
             get {
                 return ResourceManager.GetString("NewPasswordsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to New user.
+        /// </summary>
+        public static string NewUser {
+            get {
+                return ResourceManager.GetString("NewUser", resourceCulture);
             }
         }
         
@@ -345,6 +399,33 @@ namespace Portol.Common {
         public static string SignUp {
             get {
                 return ResourceManager.GetString("SignUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to State is required.
+        /// </summary>
+        public static string StateRequired {
+            get {
+                return ResourceManager.GetString("StateRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Street is required.
+        /// </summary>
+        public static string StreetRequired {
+            get {
+                return ResourceManager.GetString("StreetRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suburb is required.
+        /// </summary>
+        public static string SuburbRequired {
+            get {
+                return ResourceManager.GetString("SuburbRequired", resourceCulture);
             }
         }
         

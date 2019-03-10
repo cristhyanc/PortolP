@@ -88,7 +88,10 @@ namespace PortolWeb.Core.UserServices
                 throw new AppException(StringResources.PasswordRequired);
             }
 
-            //phone
+            if (_uow.UserRepository.Get(x => x.PhoneNumber  == newUser.PhoneNumber && x.PhoneCountryCode == newUser.PhoneCountryCode) != null)
+            {
+                throw new AppException(string.Format(StringResources.MobileInUse , newUser.PhoneNumber));
+            }
 
             if (_uow.UserRepository.Get(x => x.Email == newUser.Email) != null)
             {
@@ -110,7 +113,25 @@ namespace PortolWeb.Core.UserServices
             return newUser;
            
         }
+        public bool VerifyMobileUniqueness(UserDto phoneDetails)
+        {
+            if (_uow.UserRepository.Get(x => x.PhoneNumber == phoneDetails.PhoneNumber && x.PhoneCountryCode== phoneDetails.PhoneCountryCode) != null)
+            {
+                return false;
+            }
+            return true;
+        }
 
+        public bool VerifyEmailUniqueness(string email)
+        {
+            if (_uow.UserRepository.Get(x => x.Email.Equals(email.Trim())) != null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+       
         public void ResetPassword(UserDto user)
         {
             if(user==null)

@@ -27,6 +27,20 @@ namespace PortolMobile.Services.User
                 return user; 
         }
 
+        public async Task<Boolean> VerifyMobileUniqueness(decimal mobilePhoned, Int32 code)
+        {
+            UserDto details = new UserDto { PhoneNumber = mobilePhoned, PhoneCountryCode = code };
+            var result = await _restClient.MakeApiCallRaw<Boolean>($"{Constants.BaseUserApiUrl}/VerifyMobileUniqueness", HttpMethod.Post, details);
+            return result;
+        }
+
+        public async Task<Boolean> VerifyEmailUniqueness(string email)
+        {           
+            var result = await _restClient.MakeApiCallRaw<Boolean>($"{Constants.BaseUserApiUrl}/VerifyEmailUniqueness", HttpMethod.Post, email);
+            return result;
+        }
+
+        
         public async Task<bool> VerifyCode(decimal mobilePhoned, Int32 code)
         {
             UserDto user = new UserDto { PhoneNumber = mobilePhoned, PhoneCountryCode = code };

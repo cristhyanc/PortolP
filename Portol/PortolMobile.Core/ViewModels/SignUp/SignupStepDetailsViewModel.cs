@@ -120,7 +120,7 @@ namespace PortolMobile.Core.ViewModels.SignUp
                 _userDto.LastName = this.LastName;
                 _userDto.DOB = dateSelected;
                 await _navigationService.Navigate<SignupStepEmailViewModel, UserDto>(_userDto);
-
+            
             }
             catch (System.Exception ex)
             {

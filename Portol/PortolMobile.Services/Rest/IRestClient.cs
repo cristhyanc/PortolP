@@ -10,5 +10,8 @@ namespace PortolMobile.Services.Rest
 
         Task<TResult> MakeApiCall<TResult>(string url, HttpMethod method, object data = null)
                         where TResult : class;
+
+        Task<TResult> MakeApiCallRaw<TResult>(string url, HttpMethod method, object data = null)
+            where TResult : struct;
     }
 }

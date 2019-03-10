@@ -150,6 +150,50 @@ namespace PortolWeb.API.Controllers
             }
         }
 
+        
+
+        [AllowAnonymous]
+        [HttpPost("VerifyEmailUniqueness")]
+        public IActionResult VerifyEmailUniqueness([FromBody]string email)
+        {
+            try
+            {
+                return Ok(_userService.VerifyEmailUniqueness(email));
+
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.VerifyEmailUniqueness");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPost("VerifyMobileUniqueness")]
+        public IActionResult VerifyMobileUniqueness([FromBody]UserDto phoneDetails)
+        {
+            try
+            {                
+                return Ok(_userService.VerifyMobileUniqueness(phoneDetails));
+
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.VerifyMobileUniqueness");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
+
         [AllowAnonymous]
         [HttpPost("SendVerificationCode")]
         public IActionResult SendVerificationCode([FromBody]UserDto details)
@@ -219,14 +263,14 @@ namespace PortolWeb.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("register")]
-        public IActionResult Register([FromBody]UserDto userDto)
+        [HttpPost("RegisterNewuser")]
+        public IActionResult RegisterNewuser([FromBody]UserDto userDto)
         {
 
             try
             {
                 var result = _userService.Create(userDto, userDto.Password);
-                return Ok(result);
+                return Ok(true);
             }
             catch (AppException ex)
             {

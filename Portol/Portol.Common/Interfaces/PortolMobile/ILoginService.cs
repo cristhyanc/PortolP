@@ -12,5 +12,7 @@ namespace Portol.Common.Interfaces.PortolMobile
         Task<bool> SendVerificationCode(decimal mobilePhoned, Int32 code);
         Task<bool> VerifyCode(decimal mobilePhoned, Int32 code);
         Task<bool> ResetNewPassword(decimal mobilePhoned, string newPassword);
+        Task<Boolean> VerifyMobileUniqueness(decimal mobilePhoned, Int32 code);
+        Task<Boolean> VerifyEmailUniqueness(string email);
     }
 }

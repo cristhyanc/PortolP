@@ -19,7 +19,7 @@ namespace PortolMobile.Core
 
         protected override Task NavigateToFirstViewModel(object hint = null)
         {
-            return NavigationService.Navigate<SignupStepAddressViewModel>();
+            return NavigationService.Navigate<MainViewModel>();
         }
     }
 }

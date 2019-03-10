@@ -161,7 +161,7 @@ namespace PortolMobile.Core.ViewModels.SignUp
                 await _loginService.VerifyCode(long.Parse(this.MobileNumber), code);
 
                 await _navigationService.Navigate<SignupStepDetailsViewModel, UserDto>(_userDto);
-
+              
             }           
             catch (System.Exception ex)
             {

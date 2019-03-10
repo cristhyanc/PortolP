@@ -36,8 +36,9 @@ namespace PortolMobile.Core
                 Mvx.IoCProvider.RegisterType<IMvxJsonConverter, MvxJsonConverter>();
                 Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IRestClient, RestClient>();
                 Mvx.IoCProvider.LazyConstructAndRegisterSingleton<ILoginService, LoginService>();
+                Mvx.IoCProvider.LazyConstructAndRegisterSingleton<IUserMobileService, UserMobileService>();
+                
 
-               
                 //  var asd = Mvx.IoCProvider.Resolve<ILoginService>();
                 //Mvx.IoCProvider.RegisterType<LoginViewModel>();
                 // register the appstart object
