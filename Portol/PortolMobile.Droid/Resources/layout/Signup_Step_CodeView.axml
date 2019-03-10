@@ -3,6 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:local="http://schemas.android.com/apk/res-auto"
 	android:orientation="vertical"
+	android:id="@+id/mainLayout"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 	
@@ -44,6 +45,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content">
 		<EditText
+			android:gravity="center"
 			android:layout_marginRight="30dp"
 			android:background="#ffD8D8D8"
 			local:MvxBind="Text FirstNumber"
@@ -52,7 +54,9 @@
 			android:layout_width="40dp"
 			android:layout_height="40dp"
 			android:id="@+id/txtFirstNumber" />
+
 		<EditText
+			android:gravity="center"
 			android:layout_gravity="center"
 			android:layout_marginRight="30dp"
 			android:background="#ffD8D8D8"
@@ -62,6 +66,7 @@
 			android:layout_height="40dp"
 			android:id="@+id/txtSecondNumber" />
 		<EditText
+			android:gravity="center"
 			android:layout_gravity="center"
 			android:layout_marginRight="30dp"
 			android:background="#ffD8D8D8"
@@ -71,6 +76,7 @@
 			android:layout_height="40dp"
 			android:id="@+id/txtThirdNumber" />
 		<EditText
+			android:gravity="center"
 			android:layout_gravity="center"
 			android:layout_marginRight="30dp"
 			android:background="#ffD8D8D8"
@@ -112,8 +118,8 @@
 			local:MvxBind="Click GotoNamesPageCommand"
 			android:layout_marginTop="30dp"		
 			android:layout_gravity="center_horizontal"
-			android:layout_width="15dp"
-			android:layout_height="25dp"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
 			android:id="@+id/btnLogin"
 			android:background="@drawable/ic_play_gray" />
 		

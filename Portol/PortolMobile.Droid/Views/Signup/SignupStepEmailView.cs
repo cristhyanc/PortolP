@@ -1,4 +1,4 @@
-﻿using Acr.UserDialogs;
+﻿   using Acr.UserDialogs;
 using Android.App;
 using Android.Content.PM;
 using Android.Support.V4.Widget;
@@ -14,9 +14,9 @@ namespace PortolMobile.Droid.Views.Signup
     [Activity(Label = "Portol",
      Theme = "@style/AppTheme",
      LaunchMode = LaunchMode.SingleTop,
-     Name = "PortolMobile.Droid.Views.Signup.SignupStepDetailsView"
+     Name = "PortolMobile.Droid.Views.Signup.SignupStepEmailView"
      )]
-    public class SignupStepDetailsView : MvxAppCompatActivity<SignupStepDetailsViewModel>
+    public class SignupStepEmailView : MvxAppCompatActivity<SignupStepEmailViewModel>
     {
         public DrawerLayout DrawerLayout { get; set; }
 
@@ -26,7 +26,7 @@ namespace PortolMobile.Droid.Views.Signup
 
             UserDialogs.Init(this);
 
-            SetContentView(Resource.Layout.Signup_Step_DetailsView);
+            SetContentView(Resource.Layout.Signup_Step_EmailView);
 
             LinearLayout layo = this.FindViewById<LinearLayout>(Resource.Id.mainLayout);
             layo.Touch += Layo_Touch;
@@ -61,7 +61,7 @@ namespace PortolMobile.Droid.Views.Signup
             {
 
             }
-           
+
         }
     }
 }

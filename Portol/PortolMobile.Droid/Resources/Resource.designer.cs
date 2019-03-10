@@ -6729,8 +6729,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f09003a
 			public const int always = 2131296314;
 			
-			// aapt resource value: 0x7f0900da
-			public const int appbar = 2131296474;
+			// aapt resource value: 0x7f0900e4
+			public const int appbar = 2131296484;
 			
 			// aapt resource value: 0x7f090058
 			public const int async = 2131296344;
@@ -6930,14 +6930,17 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0900ca
 			public const int lblNewPassword = 2131296458;
 			
-			// aapt resource value: 0x7f0900ce
-			public const int lblNumber = 2131296462;
+			// aapt resource value: 0x7f0900d8
+			public const int lblNumber = 2131296472;
 			
-			// aapt resource value: 0x7f0900d3
-			public const int lblPhoneRequired = 2131296467;
+			// aapt resource value: 0x7f0900d7
+			public const int lblPhoneRequired = 2131296471;
 			
-			// aapt resource value: 0x7f0900d4
-			public const int lblResendcode = 2131296468;
+			// aapt resource value: 0x7f0900dd
+			public const int lblResendcode = 2131296477;
+			
+			// aapt resource value: 0x7f0900cf
+			public const int lblTitle = 2131296463;
 			
 			// aapt resource value: 0x7f09004b
 			public const int left = 2131296331;
@@ -6969,17 +6972,20 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0900a1
 			public const int loadingProgressWheel = 2131296417;
 			
+			// aapt resource value: 0x7f0900ce
+			public const int mainLayout = 2131296462;
+			
 			// aapt resource value: 0x7f0900aa
 			public const int main_frame = 2131296426;
 			
-			// aapt resource value: 0x7f0900de
-			public const int masked = 2131296478;
+			// aapt resource value: 0x7f0900e8
+			public const int masked = 2131296488;
 			
 			// aapt resource value: 0x7f0900b5
 			public const int media_actions = 2131296437;
 			
-			// aapt resource value: 0x7f0900dc
-			public const int message = 2131296476;
+			// aapt resource value: 0x7f0900e6
+			public const int message = 2131296486;
 			
 			// aapt resource value: 0x7f090033
 			public const int middle = 2131296307;
@@ -6990,20 +6996,17 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f09002a
 			public const int multiply = 2131296298;
 			
-			// aapt resource value: 0x7f0900d8
-			public const int mvxDatePicker1 = 2131296472;
+			// aapt resource value: 0x7f0900e9
+			public const int nav_items = 2131296489;
 			
-			// aapt resource value: 0x7f0900df
-			public const int nav_items = 2131296479;
+			// aapt resource value: 0x7f0900eb
+			public const int nav_people = 2131296491;
 			
-			// aapt resource value: 0x7f0900e1
-			public const int nav_people = 2131296481;
+			// aapt resource value: 0x7f0900ea
+			public const int nav_planets = 2131296490;
 			
-			// aapt resource value: 0x7f0900e0
-			public const int nav_planets = 2131296480;
-			
-			// aapt resource value: 0x7f0900e2
-			public const int nav_statistics = 2131296482;
+			// aapt resource value: 0x7f0900ec
+			public const int nav_statistics = 2131296492;
 			
 			// aapt resource value: 0x7f0900ac
 			public const int navigation_frame = 2131296428;
@@ -7221,8 +7224,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090071
 			public const int title_template = 2131296369;
 			
-			// aapt resource value: 0x7f0900db
-			public const int toolbar = 2131296475;
+			// aapt resource value: 0x7f0900e5
+			public const int toolbar = 2131296485;
 			
 			// aapt resource value: 0x7f090040
 			public const int top = 2131296320;
@@ -7251,26 +7254,32 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0900c7
 			public const int txtCode = 2131296455;
 			
-			// aapt resource value: 0x7f0900d7
-			public const int txtDOB = 2131296471;
+			// aapt resource value: 0x7f0900e1
+			public const int txtConfirmEmail = 2131296481;
+			
+			// aapt resource value: 0x7f0900e2
+			public const int txtConfirmPassword = 2131296482;
+			
+			// aapt resource value: 0x7f0900e0
+			public const int txtDOB = 2131296480;
 			
 			// aapt resource value: 0x7f0900a3
 			public const int txtEmail = 2131296419;
 			
-			// aapt resource value: 0x7f0900d5
-			public const int txtFirsname = 2131296469;
-			
-			// aapt resource value: 0x7f0900cf
-			public const int txtFirstNumber = 2131296463;
-			
-			// aapt resource value: 0x7f0900d2
-			public const int txtFourNumber = 2131296466;
-			
-			// aapt resource value: 0x7f0900d6
-			public const int txtLastName = 2131296470;
+			// aapt resource value: 0x7f0900de
+			public const int txtFirsname = 2131296478;
 			
 			// aapt resource value: 0x7f0900d9
-			public const int txtMobileNumber = 2131296473;
+			public const int txtFirstNumber = 2131296473;
+			
+			// aapt resource value: 0x7f0900dc
+			public const int txtFourNumber = 2131296476;
+			
+			// aapt resource value: 0x7f0900df
+			public const int txtLastName = 2131296479;
+			
+			// aapt resource value: 0x7f0900e3
+			public const int txtMobileNumber = 2131296483;
 			
 			// aapt resource value: 0x7f0900cb
 			public const int txtNewPass1 = 2131296459;
@@ -7284,11 +7293,32 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0900a4
 			public const int txtPassword = 2131296420;
 			
-			// aapt resource value: 0x7f0900d0
-			public const int txtSecondNumber = 2131296464;
+			// aapt resource value: 0x7f0900da
+			public const int txtSecondNumber = 2131296474;
 			
 			// aapt resource value: 0x7f0900d1
-			public const int txtThirdNumber = 2131296465;
+			public const int txtStreet = 2131296465;
+			
+			// aapt resource value: 0x7f0900d2
+			public const int txtSuburb = 2131296466;
+			
+			// aapt resource value: 0x7f0900db
+			public const int txtThirdNumber = 2131296475;
+			
+			// aapt resource value: 0x7f0900d0
+			public const int txtUnit = 2131296464;
+			
+			// aapt resource value: 0x7f0900d4
+			public const int txtcity = 2131296468;
+			
+			// aapt resource value: 0x7f0900d6
+			public const int txtcountry = 2131296470;
+			
+			// aapt resource value: 0x7f0900d3
+			public const int txtpostCode = 2131296467;
+			
+			// aapt resource value: 0x7f0900d5
+			public const int txtstate = 2131296469;
 			
 			// aapt resource value: 0x7f09002f
 			public const int uniform = 2131296303;
@@ -7305,8 +7335,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090016
 			public const int view_offset_helper = 2131296278;
 			
-			// aapt resource value: 0x7f0900dd
-			public const int visible = 2131296477;
+			// aapt resource value: 0x7f0900e7
+			public const int visible = 2131296487;
 			
 			// aapt resource value: 0x7f09003e
 			public const int withText = 2131296318;
@@ -7578,25 +7608,31 @@ namespace PortolMobile.Droid
 			public const int select_dialog_singlechoice_material = 2130968644;
 			
 			// aapt resource value: 0x7f040045
-			public const int Signup_Step_CodeView = 2130968645;
+			public const int Signup_Step_Address_View = 2130968645;
 			
 			// aapt resource value: 0x7f040046
-			public const int Signup_Step_DetailsView = 2130968646;
+			public const int Signup_Step_CodeView = 2130968646;
 			
 			// aapt resource value: 0x7f040047
-			public const int Signup_Step_MobileView = 2130968647;
+			public const int Signup_Step_DetailsView = 2130968647;
 			
 			// aapt resource value: 0x7f040048
-			public const int SplashScreen = 2130968648;
+			public const int Signup_Step_EmailView = 2130968648;
 			
 			// aapt resource value: 0x7f040049
-			public const int support_simple_spinner_dropdown_item = 2130968649;
+			public const int Signup_Step_MobileView = 2130968649;
 			
 			// aapt resource value: 0x7f04004a
-			public const int toolbar_actionbar = 2130968650;
+			public const int SplashScreen = 2130968650;
 			
 			// aapt resource value: 0x7f04004b
-			public const int tooltip = 2130968651;
+			public const int support_simple_spinner_dropdown_item = 2130968651;
+			
+			// aapt resource value: 0x7f04004c
+			public const int toolbar_actionbar = 2130968652;
+			
+			// aapt resource value: 0x7f04004d
+			public const int tooltip = 2130968653;
 			
 			static Layout()
 			{
@@ -7643,11 +7679,11 @@ namespace PortolMobile.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f0a002f
-			public const int DOB = 2131361839;
+			// aapt resource value: 0x7f0a0030
+			public const int DOB = 2131361840;
 			
-			// aapt resource value: 0x7f0a003a
-			public const int WaitForCode = 2131361850;
+			// aapt resource value: 0x7f0a003c
+			public const int WaitForCode = 2131361852;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int abc_action_bar_home_description = 2131361792;
@@ -7748,6 +7784,21 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0a0020
 			public const int character_counter_pattern = 2131361824;
 			
+			// aapt resource value: 0x7f0a0046
+			public const int city = 2131361862;
+			
+			// aapt resource value: 0x7f0a002f
+			public const int confirmEmail = 2131361839;
+			
+			// aapt resource value: 0x7f0a0034
+			public const int confirmPassword = 2131361844;
+			
+			// aapt resource value: 0x7f0a0048
+			public const int country = 2131361864;
+			
+			// aapt resource value: 0x7f0a0041
+			public const int deliveryAddress = 2131361857;
+			
 			// aapt resource value: 0x7f0a002d
 			public const int drawer_close = 2131361837;
 			
@@ -7757,44 +7808,44 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0a002e
 			public const int email = 2131361838;
 			
-			// aapt resource value: 0x7f0a0038
-			public const int enterMobileNumber = 2131361848;
+			// aapt resource value: 0x7f0a003a
+			public const int enterMobileNumber = 2131361850;
 			
 			// aapt resource value: 0x7f0a0027
 			public const int fab_scroll_shrink_grow_autohide_behavior = 2131361831;
 			
-			// aapt resource value: 0x7f0a0031
-			public const int firstName = 2131361841;
+			// aapt resource value: 0x7f0a0032
+			public const int firstName = 2131361842;
 			
-			// aapt resource value: 0x7f0a0034
-			public const int forgotPassword = 2131361844;
+			// aapt resource value: 0x7f0a0036
+			public const int forgotPassword = 2131361846;
 			
 			// aapt resource value: 0x7f0a002a
 			public const int hello = 2131361834;
 			
-			// aapt resource value: 0x7f0a003e
-			public const int insertCode = 2131361854;
+			// aapt resource value: 0x7f0a0040
+			public const int insertCode = 2131361856;
 			
-			// aapt resource value: 0x7f0a0030
-			public const int lastName = 2131361840;
+			// aapt resource value: 0x7f0a0031
+			public const int lastName = 2131361841;
 			
-			// aapt resource value: 0x7f0a003d
-			public const int letsCreateAPortol = 2131361853;
+			// aapt resource value: 0x7f0a003f
+			public const int letsCreateAPortol = 2131361855;
 			
 			// aapt resource value: 0x7f0a0029
 			public const int library_name = 2131361833;
 			
+			// aapt resource value: 0x7f0a0035
+			public const int login = 2131361845;
+			
+			// aapt resource value: 0x7f0a003d
+			public const int newPassword = 2131361853;
+			
+			// aapt resource value: 0x7f0a003e
+			public const int newPasswordConfirmation = 2131361854;
+			
 			// aapt resource value: 0x7f0a0033
-			public const int login = 2131361843;
-			
-			// aapt resource value: 0x7f0a003b
-			public const int newPassword = 2131361851;
-			
-			// aapt resource value: 0x7f0a003c
-			public const int newPasswordConfirmation = 2131361852;
-			
-			// aapt resource value: 0x7f0a0032
-			public const int password = 2131361842;
+			public const int password = 2131361843;
 			
 			// aapt resource value: 0x7f0a0021
 			public const int password_toggle_content_description = 2131361825;
@@ -7811,23 +7862,38 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0a0025
 			public const int path_password_strike_through = 2131361829;
 			
-			// aapt resource value: 0x7f0a0039
-			public const int reSendCode = 2131361849;
+			// aapt resource value: 0x7f0a0045
+			public const int postCode = 2131361861;
+			
+			// aapt resource value: 0x7f0a003b
+			public const int reSendCode = 2131361851;
 			
 			// aapt resource value: 0x7f0a0011
 			public const int search_menu_title = 2131361809;
 			
-			// aapt resource value: 0x7f0a0036
-			public const int sendCode = 2131361846;
+			// aapt resource value: 0x7f0a0038
+			public const int sendCode = 2131361848;
 			
-			// aapt resource value: 0x7f0a0035
-			public const int signUp = 2131361845;
+			// aapt resource value: 0x7f0a0037
+			public const int signUp = 2131361847;
+			
+			// aapt resource value: 0x7f0a0047
+			public const int state = 2131361863;
 			
 			// aapt resource value: 0x7f0a0026
 			public const int status_bar_notification_info_overflow = 2131361830;
 			
-			// aapt resource value: 0x7f0a0037
-			public const int verifyCode = 2131361847;
+			// aapt resource value: 0x7f0a0043
+			public const int street = 2131361859;
+			
+			// aapt resource value: 0x7f0a0044
+			public const int suburb = 2131361860;
+			
+			// aapt resource value: 0x7f0a0042
+			public const int unitNumber = 2131361858;
+			
+			// aapt resource value: 0x7f0a0039
+			public const int verifyCode = 2131361849;
 			
 			// aapt resource value: 0x7f0a0028
 			public const int view_scroll_translation_autohide_behavior = 2131361832;

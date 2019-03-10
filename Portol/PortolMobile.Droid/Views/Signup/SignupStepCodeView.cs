@@ -39,6 +39,16 @@ namespace PortolMobile.Droid.Views.Signup
             editText = this.FindViewById<EditText>(Resource.Id.txtFourNumber);
             editText.TextChanged += EditText_TextChanged;
 
+            LinearLayout layo = this.FindViewById<LinearLayout>(Resource.Id.mainLayout);
+            layo.Touch += Layo_Touch;
+
+            Button btn = this.FindViewById<Button>(Resource.Id.btnLogin);
+            btn.Click += Btn_Click;
+        }
+
+        private void Btn_Click(object sender, System.EventArgs e)
+        {
+            HideSoftKeyboard();
         }
 
         private void EditText_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
@@ -79,16 +89,30 @@ namespace PortolMobile.Droid.Views.Signup
 
         }
 
+        private void Layo_Touch(object sender, Android.Views.View.TouchEventArgs e)
+        {
+            HideSoftKeyboard();
+        }
+
         public void HideSoftKeyboard()
         {
-            if (CurrentFocus == null)
-                return;
+            try
+            {
+                if (CurrentFocus == null)
+                    return;
 
-            InputMethodManager inputMethodManager = (InputMethodManager)GetSystemService(InputMethodService);
-            inputMethodManager.HideSoftInputFromWindow(CurrentFocus.WindowToken, 0);
+                InputMethodManager inputMethodManager = (InputMethodManager)GetSystemService(InputMethodService);
+                inputMethodManager.HideSoftInputFromWindow(CurrentFocus.WindowToken, 0);
 
-            CurrentFocus.ClearFocus();
+                CurrentFocus.ClearFocus();
+            }
+            catch (System.Exception)
+            {
+
+            }
+
         }
+
     }
 
 }

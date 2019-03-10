@@ -14,9 +14,9 @@ namespace PortolMobile.Droid.Views.Signup
     [Activity(Label = "Portol",
      Theme = "@style/AppTheme",
      LaunchMode = LaunchMode.SingleTop,
-     Name = "PortolMobile.Droid.Views.Signup.SignupStepDetailsView"
+     Name = "PortolMobile.Droid.Views.Signup.SignupStepAddressView"
      )]
-    public class SignupStepDetailsView : MvxAppCompatActivity<SignupStepDetailsViewModel>
+    public class SignupStepAddressView : MvxAppCompatActivity<SignupStepAddressViewModel>
     {
         public DrawerLayout DrawerLayout { get; set; }
 
@@ -26,7 +26,7 @@ namespace PortolMobile.Droid.Views.Signup
 
             UserDialogs.Init(this);
 
-            SetContentView(Resource.Layout.Signup_Step_DetailsView);
+            SetContentView(Resource.Layout.Signup_Step_Address_View);
 
             LinearLayout layo = this.FindViewById<LinearLayout>(Resource.Id.mainLayout);
             layo.Touch += Layo_Touch;
@@ -61,7 +61,7 @@ namespace PortolMobile.Droid.Views.Signup
             {
 
             }
-           
+
         }
     }
 }

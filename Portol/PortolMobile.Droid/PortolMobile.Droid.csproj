@@ -75,8 +75,10 @@
     <Compile Include="Views\Login\RecoverPasswordView.cs" />
     <Compile Include="Views\MainView.cs" />
     <Compile Include="Views\MenuView.cs" />
+    <Compile Include="Views\Signup\SignupStepAddressView.cs" />
     <Compile Include="Views\Signup\SignupStepCodeView.cs" />
     <Compile Include="Views\Signup\SignupStepDetailsView.cs" />
+    <Compile Include="Views\Signup\SignupStepEmailView.cs" />
     <Compile Include="Views\Signup\SignupStepMobileView.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -289,6 +291,16 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Signup_Step_DetailsView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Signup_Step_EmailView.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Signup_Step_Address_View.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

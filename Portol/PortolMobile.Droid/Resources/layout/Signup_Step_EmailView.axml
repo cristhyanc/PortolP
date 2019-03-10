@@ -19,43 +19,59 @@
 			android:id="@+id/imageView" />
 
 		<EditText
-			local:MvxBind="Text FirstName"
+			android:inputType="textEmailAddress"
+			local:MvxBind="Text Email"
 			android:gravity="center"
 			android:layout_gravity="center"
-			android:hint="@string/firstName"
+			android:hint="@string/email"
 			android:layout_width="match_parent"
 			android:layout_height="40dp"
-			android:id="@+id/txtFirsname"
+			android:id="@+id/txtEmail"
 			android:layout_marginTop="30dp"
 			android:layout_marginRight="15dp"
 			android:layout_marginLeft="15dp"		
 			android:background="#fff8f8f8"/>
 	
 		<EditText
+			android:inputType="textEmailAddress"
 			android:gravity="center"
 			android:layout_gravity="center"
-			android:hint="@string/lastName"
+			android:hint="@string/confirmEmail"
 			android:layout_width="match_parent"
 			android:layout_height="40dp"
-			android:id="@+id/txtLastName"
+			android:id="@+id/txtConfirmEmail"
 			android:layout_marginTop="30dp"
 			android:layout_marginRight="15dp"
 			android:layout_marginLeft="15dp"	
-			local:MvxBind="Text LastName"
+			local:MvxBind="Text ConfirmEmail"
 			android:background="#fff8f8f8" />
 
 		<EditText
-			local:MvxBind="Text DateOBirthStr"
+			android:inputType="textPassword"
 			android:gravity="center"
 			android:layout_gravity="center"
-			android:hint="@string/DOB"
-			android:inputType="date"
+			android:hint="@string/password"
 			android:layout_width="match_parent"
 			android:layout_height="40dp"
-			android:id="@+id/txtDOB"
+			android:id="@+id/txtPassword"
 			android:layout_marginTop="30dp"
 			android:layout_marginRight="15dp"
-			android:layout_marginLeft="15dp"		
+			android:layout_marginLeft="15dp"	
+			local:MvxBind="Text Password"
+			android:background="#fff8f8f8" />
+
+		<EditText
+			android:inputType="textPassword"
+			android:gravity="center"
+			android:layout_gravity="center"
+			android:hint="@string/confirmPassword"
+			android:layout_width="match_parent"
+			android:layout_height="40dp"
+			android:id="@+id/txtConfirmPassword"
+			android:layout_marginTop="30dp"
+			android:layout_marginRight="15dp"
+			android:layout_marginLeft="15dp"	
+			local:MvxBind="Text ConfirmPassword"
 			android:background="#fff8f8f8" />
 	
 		
@@ -80,7 +96,7 @@
 				android:id="@+id/progressBar2" />
 
 		<Button		
-			local:MvxBind="Click GotoEmailPageCommand"
+			local:MvxBind="Click GotoAddressPageCommand"
 			android:layout_marginTop="30dp"		
 			android:layout_gravity="center_horizontal"
 			android:layout_width="50dp"

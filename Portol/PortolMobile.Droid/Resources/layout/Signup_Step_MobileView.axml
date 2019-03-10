@@ -3,6 +3,7 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:local="http://schemas.android.com/apk/res-auto"
 	android:orientation="vertical"
+	android:id="@+id/mainLayout"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent">
 	
@@ -69,8 +70,8 @@
 			local:MvxBind="Click GotoCodePageCommand"
 			android:layout_marginTop="30dp"		
 			android:layout_gravity="center_horizontal"
-			android:layout_width="15dp"
-			android:layout_height="25dp"
+			android:layout_width="50dp"
+			android:layout_height="50dp"
 			android:id="@+id/btnLogin"
 			android:background="@drawable/ic_play_gray" />
 		

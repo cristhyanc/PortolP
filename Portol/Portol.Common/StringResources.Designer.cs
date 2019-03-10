@@ -61,6 +61,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to All fields are required.
+        /// </summary>
+        public static string AllFieldsRequired {
+            get {
+                return ResourceManager.GetString("AllFieldsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Australia.
         /// </summary>
         public static string Australia {
@@ -160,6 +169,24 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Incorrect date format.
+        /// </summary>
+        public static string IncorrectdateFormat {
+            get {
+                return ResourceManager.GetString("IncorrectdateFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incorrect Email format.
+        /// </summary>
+        public static string IncorrectEmailformat {
+            get {
+                return ResourceManager.GetString("IncorrectEmailformat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last Name.
         /// </summary>
         public static string LastName {
@@ -219,6 +246,24 @@ namespace Portol.Common {
         public static string NewZealand {
             get {
                 return ResourceManager.GetString("NewZealand", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email and confirm email don&apos;t match.
+        /// </summary>
+        public static string NotMatchEmails {
+            get {
+                return ResourceManager.GetString("NotMatchEmails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Password and confirm Password don&apos;t match.
+        /// </summary>
+        public static string NotMatchPasswords {
+            get {
+                return ResourceManager.GetString("NotMatchPasswords", resourceCulture);
             }
         }
         
