@@ -143,7 +143,7 @@ namespace PortolMobile.Core.ViewModels.SignUp
                 if(result)
                 {
                     await _navigationService.Navigate<SignupStepCodeViewModel, UserDto>(user);
-                  
+                    await _navigationService.Close(this);
                 }               
             }          
             catch (System.Exception ex)

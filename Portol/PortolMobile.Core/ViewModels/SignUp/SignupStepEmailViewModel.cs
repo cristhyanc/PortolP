@@ -160,7 +160,7 @@ namespace PortolMobile.Core.ViewModels.SignUp
                 _userDto.Password = this.Password;
                 _userDto.Email = this.Email;
                  await _navigationService.Navigate<SignupStepAddressViewModel, UserDto>(_userDto);
-               
+                await _navigationService.Close(this);
             }
             catch (System.Exception ex)
             {

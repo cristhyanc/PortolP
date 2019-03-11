@@ -213,9 +213,9 @@ namespace PortolMobile.Core.ViewModels.SignUp
 
                 }
 
-               
-             // await  _navigationService.Close(this);
-               
+            
+              await  _navigationService.Close(this);
+
             }
             catch (System.Exception ex)
             {

@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 using Portol.Common;
 using MvvmCross.UI;
 using PortolMobile.Core.Helper;
+using Portol.Common.DTO;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace PortolMobile.Core.ViewModels.Login
 {
@@ -158,10 +161,40 @@ namespace PortolMobile.Core.ViewModels.Login
             }
         }
 
+        List<CountryDto> _countryItems;
+        public List<CountryDto> CountryItems
+        {
+            get
+            {
+                return _countryItems;
+            }
+            set
+            {
+                _countryItems = value;
+                RaisePropertyChanged(() => CountryItems);
+            }
+        }
+
+        CountryDto _countrySelected;
+        public CountryDto CountrySelected
+        {
+            get
+            {
+                return _countrySelected;
+            }
+            set
+            {
+                _countrySelected = value;
+                RaisePropertyChanged(() => CountrySelected);
+            }
+        }
+
         public RecoverPasswordViewModel(IMvxNavigationService navigationService, ILoginService loginService)
         {
             _navigationService = navigationService;
             _loginService = loginService;
+            CountryItems = new List<CountryDto>(Constants.CountryList);
+            CountrySelected = CountryItems.Where(x => x.Country == EnumCountries.Australia).FirstOrDefault();
             SendCodeButtonCommand = new MvxAsyncCommand(SendCodeVerification);
             ReSendCodeButtonCommand = new MvxCommand(ResendCode);
             VerifyCodeButtonCommand = new MvxAsyncCommand(VerifyCodeVerification);
@@ -169,6 +202,7 @@ namespace PortolMobile.Core.ViewModels.Login
             LoginCommand = new MvxAsyncCommand(async () =>
             {
               await  _navigationService.Navigate<LoginViewModel>();
+                await _navigationService.Close(this);
             });
             this.IsMobileSectionVisible = true;
         }
@@ -212,7 +246,8 @@ namespace PortolMobile.Core.ViewModels.Login
                     OkText = StringResources.Ok
                 });
 
-                 _navigationService.Navigate<LoginViewModel>();
+                await _navigationService.Navigate<LoginViewModel>();
+                await _navigationService.Close(this);
             }           
             catch (System.Exception ex)
             {
@@ -278,7 +313,7 @@ namespace PortolMobile.Core.ViewModels.Login
 
                     return;
                 }
-                var resutl = await _loginService.SendVerificationCode(decimal.Parse(this.MobileNumber), int.Parse(this.CodeNumber));
+                var resutl = await _loginService.SendVerificationCode(decimal.Parse(this.MobileNumber),(int)CountrySelected.Country);
                 if(resutl )
                 {                  
                     this.IsCodeSectionVisible = true ;
