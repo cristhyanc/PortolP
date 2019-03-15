@@ -4,11 +4,11 @@ using PortolMobile.Core.ViewModels.Login;
 
 namespace PortolMobile.Core.ViewModels
 {
-    public class LoginView : BaseViewModel
+    public class MainViewModel : BaseViewModel
     {
         private readonly IMvxNavigationService _navigationService;
 
-        public LoginView(IMvxNavigationService navigationService)
+        public MainViewModel(IMvxNavigationService navigationService)
         {
             _navigationService = navigationService;
 

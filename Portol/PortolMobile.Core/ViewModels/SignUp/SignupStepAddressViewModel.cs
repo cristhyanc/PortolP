@@ -5,6 +5,7 @@ using Portol.Common;
 using Portol.Common.Interfaces.PortolMobile;
 using Portol.DTO;
 using PortolMobile.Core.Helper;
+using PortolMobile.Core.ViewModels.Login;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -209,7 +210,7 @@ namespace PortolMobile.Core.ViewModels.SignUp
                 if (await _userMobileService.CreateNewuser(_userDto))
                 {
                     await UserDialogs.ConfirmAsync(StringResources.AccountCreated, StringResources.NewUser);
-                    await _navigationService.Navigate<LoginView>();
+                    await _navigationService.Navigate<LoginViewModel>();
 
                 }
 

@@ -8,6 +8,7 @@ using UIKit;
 namespace PortolMobile.iOS.Views.Login
 {
  
+    [MvxRootPresentation]
     public partial class LoginView : MvxViewController<LoginViewModel>
     {
         public LoginView() : base(nameof(LoginView), null)

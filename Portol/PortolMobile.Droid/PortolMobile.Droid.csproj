@@ -17,7 +17,6 @@
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
@@ -57,11 +56,9 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\CountryFlagConverter.cs" />
     <Compile Include="Controls\RecyclerViewOnScrollListener.cs" />
     <Compile Include="Extensions\MvxRecyclerViewExtensions.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
-    <Compile Include="MainActivity.cs" />
     <Compile Include="MainApplication.cs" />
     <Compile Include="MvxBindings\SwipeRefreshLayoutIsRefreshingTargetBinding.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -70,16 +67,9 @@
     <Compile Include="SplashScreen.cs" />
     <Compile Include="Views\BaseFragment.cs" />
     <Compile Include="Views\FirstPage.cs" />
-    <Compile Include="Views\Login\BaseLogin.cs" />
     <Compile Include="Views\Login\LoginView.cs" />
-    <Compile Include="Views\Login\RecoverPasswordView.cs" />
     <Compile Include="Views\MainView.cs" />
     <Compile Include="Views\MenuView.cs" />
-    <Compile Include="Views\Signup\SignupStepAddressView.cs" />
-    <Compile Include="Views\Signup\SignupStepCodeView.cs" />
-    <Compile Include="Views\Signup\SignupStepDetailsView.cs" />
-    <Compile Include="Views\Signup\SignupStepEmailView.cs" />
-    <Compile Include="Views\Signup\SignupStepMobileView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -87,9 +77,6 @@
     <None Include="Assets\AboutAssets.txt" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\login_background.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\navigation_header.axml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -108,43 +95,13 @@
     <PackageReference Include="MvvmCross">
       <Version>6.2.3</Version>
     </PackageReference>
-    <PackageReference Include="MvvmCross.Droid.Support.Core.UI">
-      <Version>6.2.3</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmCross.Droid.Support.Core.Utils">
-      <Version>6.2.3</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmCross.Droid.Support.Design">
-      <Version>6.2.3</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmCross.Droid.Support.Fragment">
-      <Version>6.2.3</Version>
-    </PackageReference>
     <PackageReference Include="MvvmCross.Droid.Support.V7.AppCompat">
       <Version>6.2.3</Version>
     </PackageReference>
     <PackageReference Include="MvvmCross.Droid.Support.V7.RecyclerView">
       <Version>6.2.3</Version>
     </PackageReference>
-    <PackageReference Include="MvvmCross.Plugin.Json">
-      <Version>6.2.3</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmCross.Plugin.JsonLocalization">
-      <Version>6.2.3</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmCross.Plugin.Visibility">
-      <Version>6.2.3</Version>
-    </PackageReference>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>12.0.1</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
-    <PackageReference Include="Xamarin.FFImageLoading">
-      <Version>2.4.4.859</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.FFImageLoading.Svg">
-      <Version>2.4.4.859</Version>
-    </PackageReference>
+    <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\SplashScreen.axml">
@@ -152,10 +109,6 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Portol.Common\Portol.Common.csproj">
-      <Project>{63CDB1B7-3466-4D32-96D0-A829435A4F30}</Project>
-      <Name>Portol.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\PortolMobile.Core\PortolMobile.Core.csproj">
       <Project>{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}</Project>
       <Name>PortolMobile.Core</Name>
@@ -234,76 +187,7 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\RecoverPasswordView.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\logo_long_white.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\edittext_bottom_line.xml">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\ic_play_gray.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\Signup_Step_MobileView.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\item_spinner_country.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\item_spinner_country_dropdown.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\ic_unitedKingdom.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\ic_australia.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable-hdpi\ic_newZealand.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\Signup_Step_CodeView.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\Signup_Step_DetailsView.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\Signup_Step_EmailView.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\Signup_Step_Address_View.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.

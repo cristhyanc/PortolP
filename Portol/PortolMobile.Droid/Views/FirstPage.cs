@@ -11,7 +11,7 @@ using PortolMobile.Core.ViewModels;
 
 namespace PortolMobile.Droid.Views
 {
-    [MvxFragmentPresentation(typeof(LoginView), Resource.Id.content_frame, false)]
+    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.content_frame, false)]
     [Register("PortolMobile.Droid.Views.FirstPage")]
     public class FirstPage : BaseFragment<FirstPageViewModel>
     {

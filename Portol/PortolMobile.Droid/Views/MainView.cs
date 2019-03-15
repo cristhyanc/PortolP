@@ -17,7 +17,7 @@ namespace PortolMobile.Droid.Views
         LaunchMode = LaunchMode.SingleTop,
         Name = "PortolMobile.Droid.Views.MainView"
         )]
-    public class MainView : MvxAppCompatActivity<LoginView>
+    public class MainView : MvxAppCompatActivity<MainViewModel>
     {
         public DrawerLayout DrawerLayout { get; set; }
 
