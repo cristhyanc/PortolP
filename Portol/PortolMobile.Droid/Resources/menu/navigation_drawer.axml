@@ -6,12 +6,12 @@
 		android:id="@+id/nav_items">
     <item
 			android:id="@+id/nav_planets"
-			android:title="Target: Planets" />
+			android:title="Account" />
     <item
 			android:id="@+id/nav_people"
-			android:title="Target: People" />
+			android:title="Sales" />
     <item
 			android:id="@+id/nav_statistics"
-			android:title="Statistics" />
+			android:title="History" />
   </group>
 </menu>

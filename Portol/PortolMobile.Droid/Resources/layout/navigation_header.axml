@@ -14,7 +14,7 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:textColor="@android:color/white"
-		android:text="Darth Vader"
+		android:text="User Name"
 		android:textAppearance="@style/TextAppearance.AppCompat.Title"
 		android:textStyle="bold" />
 </LinearLayout>
