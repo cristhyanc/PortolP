@@ -66,17 +66,12 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />
+    <Compile Include="Views\Login\LoginView.cs" />
+    <Compile Include="Views\Login\LoginView.designer.cs">
+      <DependentUpon>LoginView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DetailViewController.cs" />
-    <Compile Include="DetailViewController.designer.cs">
-      <DependentUpon>DetailViewController.cs</DependentUpon>
-    </Compile>
-    <Compile Include="MasterViewController.cs" />
-    <Compile Include="MasterViewController.designer.cs">
-      <DependentUpon>MasterViewController.cs</DependentUpon>
-    </Compile>
-    <InterfaceDefinition Include="Main.storyboard" />
     <InterfaceDefinition Include="Resources\LaunchScreen.xib" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
@@ -120,6 +115,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <InterfaceDefinition Include="Views\Login\LoginView.xib" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.UserDialogs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -172,6 +168,20 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Entitlements.plist" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Portol.Common\Portol.Common.csproj">
+      <Project>{63CDB1B7-3466-4D32-96D0-A829435A4F30}</Project>
+      <Name>Portol.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PortolMobile.Core\PortolMobile.Core.csproj">
+      <Project>{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}</Project>
+      <Name>PortolMobile.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\" />
+    <Folder Include="Views\Login\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
