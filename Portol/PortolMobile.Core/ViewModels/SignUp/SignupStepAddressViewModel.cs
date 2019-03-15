@@ -209,7 +209,7 @@ namespace PortolMobile.Core.ViewModels.SignUp
                 if (await _userMobileService.CreateNewuser(_userDto))
                 {
                     await UserDialogs.ConfirmAsync(StringResources.AccountCreated, StringResources.NewUser);
-                    await _navigationService.Navigate<MainViewModel>();
+                    await _navigationService.Navigate<LoginView>();
 
                 }
 

@@ -12,7 +12,7 @@ using PortolMobile.Core.ViewModels;
 
 namespace PortolMobile.Droid.Views
 {
-    [MvxFragmentPresentation(typeof(MainViewModel), Resource.Id.navigation_frame)]
+    [MvxFragmentPresentation(typeof(LoginView), Resource.Id.navigation_frame)]
     [Register("PortolMobile.Droid.Views.MenuView")]
     public class MenuFragment : MvxFragment<MenuViewModel>, NavigationView.IOnNavigationItemSelectedListener
     {

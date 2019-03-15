@@ -1,18 +1,23 @@
-﻿using System;
+﻿using MvvmCross.Platforms.Ios.Presenters.Attributes;
+using MvvmCross.Platforms.Ios.Views;
+using PortolMobile.Core.ViewModels.Login;
+using System;
 
 using UIKit;
 
 namespace PortolMobile.iOS.Views.Login
 {
-    public partial class LoginView : UIViewController
+ 
+    public partial class LoginView : MvxViewController<LoginViewModel>
     {
-        public LoginView() : base("LoginView", null)
+        public LoginView() : base(nameof(LoginView), null)
         {
         }
 
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
+            
             // Perform any additional setup after loading the view, typically from a nib.
         }
 

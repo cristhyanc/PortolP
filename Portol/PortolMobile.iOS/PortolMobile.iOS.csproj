@@ -61,11 +61,14 @@
     <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="LinkerPleaseInclude.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Info.plist" />
+    <Compile Include="MvxBindings\NetworkIndicatorTargetBinding.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="packages.config" />
+    <Compile Include="Setup.cs" />
     <Compile Include="Views\Login\LoginView.cs" />
     <Compile Include="Views\Login\LoginView.designer.cs">
       <DependentUpon>LoginView.cs</DependentUpon>
@@ -179,9 +182,6 @@
       <Name>PortolMobile.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Views\" />
-    <Folder Include="Views\Login\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
