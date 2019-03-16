@@ -56,6 +56,7 @@
     <Reference Include="Mono.Android" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\CountryFlagConverter.cs" />
     <Compile Include="Controls\RecyclerViewOnScrollListener.cs" />
     <Compile Include="Extensions\MvxRecyclerViewExtensions.cs" />
     <Compile Include="LinkerPleaseInclude.cs" />
@@ -68,8 +69,14 @@
     <Compile Include="Views\BaseFragment.cs" />
     <Compile Include="Views\FirstPage.cs" />
     <Compile Include="Views\Login\LoginView.cs" />
+    <Compile Include="Views\Login\RecoverPasswordView.cs" />
     <Compile Include="Views\MainView.cs" />
     <Compile Include="Views\MenuView.cs" />
+    <Compile Include="Views\Signup\SignupStepAddressView.cs" />
+    <Compile Include="Views\Signup\SignupStepCodeView.cs" />
+    <Compile Include="Views\Signup\SignupStepDetailsView.cs" />
+    <Compile Include="Views\Signup\SignupStepEmailView.cs" />
+    <Compile Include="Views\Signup\SignupStepMobileView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -109,6 +116,10 @@
     </AndroidResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Portol.Common\Portol.Common.csproj">
+      <Project>{63cdb1b7-3466-4d32-96d0-a829435a4f30}</Project>
+      <Name>Portol.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\PortolMobile.Core\PortolMobile.Core.csproj">
       <Project>{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}</Project>
       <Name>PortolMobile.Core</Name>
@@ -187,7 +198,51 @@
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_australia.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_newZealand.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_play_gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\ic_unitedKingdom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\login_background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable-hdpi\logo_long_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\edittext_bottom_line.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Signup_Step_MobileView.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\RecoverPasswordView.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Signup_Step_Address_View.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Signup_Step_CodeView.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Signup_Step_DetailsView.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\Signup_Step_EmailView.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\item_spinner_country_dropdown.axml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\item_spinner_country.axml" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
     Other similar extension points exist, see Microsoft.Common.targets.
