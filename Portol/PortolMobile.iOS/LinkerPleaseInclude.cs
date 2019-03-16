@@ -1,14 +1,14 @@
-﻿using System;
-using System.Collections.Specialized;
-using System.Windows.Input;
-using Foundation;
+﻿using Foundation;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Navigation;
 using MvvmCross.Platforms.Ios.Views;
 using MvvmCross.ViewModels;
+using System;
+using System.Collections.Specialized;
+using System.Windows.Input;
 using UIKit;
 
-namespace PortolMobile.iOS
+namespace PortolMobile
 {
     // This class is never actually executed, but when Xamarin linking is enabled it does ensure types and properties
     // are preserved in the deployed app
@@ -38,6 +38,7 @@ namespace PortolMobile.iOS
         {
             textField.Text = textField.Text + "";
             textField.EditingChanged += (sender, args) => { textField.Text = ""; };
+            textField.EditingDidEnd += (sender, args) => { textField.Text = ""; };
         }
 
         public void Include(UITextView textView)
@@ -134,11 +135,6 @@ namespace PortolMobile.iOS
             Console.ForegroundColor = ConsoleColor.White;
             Console.ForegroundColor = ConsoleColor.Gray;
             Console.ForegroundColor = ConsoleColor.DarkGray;
-        }
-
-        public void Include(MvvmCross.Plugin.Json.Plugin plugin)
-        {
-            plugin.Load();
         }
     }
 }
