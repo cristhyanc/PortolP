@@ -11,6 +11,7 @@ using PortolMobile.Core.Helper;
 using Portol.Common.DTO;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace PortolMobile.Core.ViewModels.Login
 {
@@ -53,26 +54,75 @@ namespace PortolMobile.Core.ViewModels.Login
             }
         }
 
-        private string _codeNumber;
-        public string CodeNumber
+        private Int16? _firstNumber;
+        public Int16? FirstNumber
         {
             get
             {
-                return _codeNumber;
+                return _firstNumber;
             }
             set
             {
-                int num = 0;
-                if (int.TryParse(value, out num))
+                if (value.HasValue && value.Value < 10 && value.Value >= 0)
                 {
-                    _codeNumber = value;
-                }
-                else
-                {
-                    _codeNumber = "";
+                    _firstNumber = value;
                 }
 
-                RaisePropertyChanged(() => MobileNumber);
+                RaisePropertyChanged(() => FirstNumber);
+            }
+        }
+
+        private Int16? _secondNumber;
+        public Int16? SecondNumber
+        {
+            get
+            {
+                return _secondNumber;
+            }
+            set
+            {
+                if (value.HasValue && value.Value < 10 && value.Value >= 0)
+                {
+                    _secondNumber = value;
+                }
+
+                RaisePropertyChanged(() => SecondNumber);
+            }
+        }
+
+        private Int16? _thirdNumber;
+        public Int16? ThirdNumber
+        {
+            get
+            {
+                return _thirdNumber;
+            }
+            set
+            {
+                if (value.HasValue && value.Value < 10 && value.Value >= 0)
+                {
+                    _thirdNumber = value;
+                }
+
+                RaisePropertyChanged(() => ThirdNumber);
+            }
+        }
+
+        private Int16? _fourNumber;
+        public Int16? FourNumber
+        {
+            get
+            {
+                return _fourNumber;
+            }
+            set
+            {
+                if (value.HasValue && value.Value < 10 && value.Value >= 0)
+                {
+                    _fourNumber = value;
+                }
+
+                RaisePropertyChanged(() => FourNumber);
             }
         }
 
@@ -264,7 +314,7 @@ namespace PortolMobile.Core.ViewModels.Login
             try
             {
                 this.IsBusy = true;
-                if (string.IsNullOrEmpty(this.CodeNumber) || int.Parse(this.CodeNumber) == 0)
+                if (this.FirstNumber == null || this.SecondNumber == null || this.ThirdNumber == null || this.FourNumber == null)
                 {
                     UserDialogs.Alert(new AlertConfig
                     {
@@ -275,7 +325,9 @@ namespace PortolMobile.Core.ViewModels.Login
 
                     return;
                 }
-                var resutl = await _loginService.VerifyCode(decimal.Parse(this.MobileNumber), int.Parse(this.CodeNumber) );
+                var code = Int16.Parse(this.FirstNumber.Value.ToString() + this.SecondNumber.Value.ToString() + this.ThirdNumber.Value.ToString() + this.FourNumber.Value.ToString());
+
+                var resutl = await _loginService.VerifyCode(decimal.Parse(this.MobileNumber), code);
                 if (resutl)
                 {
                     this.IsPasswordSectionVisible = true;
@@ -302,7 +354,7 @@ namespace PortolMobile.Core.ViewModels.Login
             try
             {
                 this.IsBusy = true;
-                if ((string.IsNullOrEmpty(this.MobileNumber) || decimal.Parse(this.MobileNumber)==0) && string.IsNullOrEmpty(this.CodeNumber))
+                if ((string.IsNullOrEmpty(this.MobileNumber) || decimal.Parse(this.MobileNumber)==0) )
                 {
                     UserDialogs.Alert(new AlertConfig
                     {

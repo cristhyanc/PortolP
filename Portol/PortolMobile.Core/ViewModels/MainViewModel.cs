@@ -13,7 +13,7 @@ namespace PortolMobile.Core.ViewModels
             _navigationService = navigationService;
 
             //ShowPeopleViewModelCommand = new MvxAsyncCommand(async () => await _navigationService.Navigate<PeopleViewModel>());
-            ShowLoginPageViewModelCommand = new MvxAsyncCommand(async () => await _navigationService.Navigate<LoginViewModel>());
+            ShowLoginPageViewModelCommand = new MvxAsyncCommand(async () => await _navigationService.Navigate<FirstPageViewModel>());
             ShowMenuViewModelCommand = new MvxAsyncCommand(async () => await _navigationService.Navigate<MenuViewModel>());
         }
 

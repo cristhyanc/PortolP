@@ -94,7 +94,7 @@ namespace PortolMobile.Core.ViewModels.Login
                 if(this.PasswordText?.Length>0 && this.EmailText?.Length>0)
                 {
                     var result = await _loginService.Authenticate(this.EmailText, this.PasswordText);
-                    await _navigationService.Navigate<FirstPageViewModel>();
+                    await _navigationService.Navigate<MainViewModel>();
                 }
                 else
                 {
