@@ -1,10 +1,10 @@
 {
   "images": [
     {
-      "filename": "portol_name.pdf",
       "idiom": "universal"
     },
     {
+      "filename": "splashportol.png",
       "scale": "1x",
       "idiom": "universal"
     },

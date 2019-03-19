@@ -1,4 +1,6 @@
-﻿using MvvmCross.Binding.BindingContext;
+﻿using CoreGraphics;
+using Foundation;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Platforms.Ios.Presenters.Attributes;
 using MvvmCross.Platforms.Ios.Views;
 using PortolMobile.Core.ViewModels.Login;
@@ -44,30 +46,56 @@ namespace PortolMobile.iOS.Views.Login
         {
             base.ViewDidLoad();
 
+            this.View.BackgroundColor = UIColor.FromPatternImage(UIImage.FromBundle("Login_background"));
+
             this.View.AddGestureRecognizer(new UITapGestureRecognizer(()=>
             {
                 txtEmail.ResignFirstResponder();
                 txtPassword.ResignFirstResponder();
+               
             }));
 
-            txtEmail.ShouldReturn = KeyBoardTextReturn;
 
+
+            txtEmail.ShouldReturn = KeyBoardTextReturn;
             txtPassword.ShouldReturn = KeyBoardTextReturn;
+
+            btnLogin.TouchUpInside += Button_Touched;
+            btnSignup.TouchUpInside += Button_Touched;
+            btnForgotPassword.TouchUpInside += Button_Touched;
 
 
             var set = this.CreateBindingSet<LoginView, LoginViewModel>();
             set.Bind(txtEmail).To(vm => vm.EmailText);
             set.Bind(txtPassword).To(vm => vm.PasswordText);
             set.Bind(btnLogin).To(vm => vm.LoginButtonCommand);
+            set.Bind(btnForgotPassword).To(vm => vm.RecoverButtonCommand);
             set.Bind(this).For("IsBusy").To(vm => vm.IsBusy);
             set.Apply();
 
+            txtEmail.AttributedPlaceholder = new NSAttributedString("Email", null, UIColor.LightGray);
+            txtPassword.AttributedPlaceholder = new NSAttributedString("Password", null, UIColor.LightGray);
+            txtEmail.Layer.BorderColor = UIColor.White.CGColor;
+            txtEmail.Layer.BorderWidth = 1f;
 
+            txtPassword.Layer.BorderColor = UIColor.White.CGColor;
+            txtPassword.Layer.BorderWidth = 1f;
+            //txtEmail.BorderStyle = UITextBorderStyle.
+            /*  var myBox = new UIView(new CGRect(0, 40,txtEmail.Frame.Width , 1))
+              {
+                  BackgroundColor = UIColor.LightGray
+              };
+              txtEmail.AddSubview(myBox);*/
             // Perform any additional setup after loading the view, typically from a nib.
         }
 
-        private bool KeyBoardTextReturn(UITextField fieldText)
+        private void Button_Touched(object sender, EventArgs e)
         {
+            View.EndEditing(true);
+        }
+
+        private bool KeyBoardTextReturn(UITextField fieldText)
+        {   
             fieldText.ResignFirstResponder();
             return true;
         }

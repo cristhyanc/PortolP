@@ -32,69 +32,87 @@
                         <constraint id="1949" firstAttribute="height" constant="128"/>
                     </constraints>
                 </imageView>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="1955" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Email" textAlignment="center">
-                    <rect key="frame" x="56" y="203" width="299" height="30"/>
-                    <nil key="textColor"/>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minimumFontSize="17" id="1955" translatesAutoresizingMaskIntoConstraints="NO" placeholder="Email" textAlignment="center" borderStyle="roundedRect">
+                    <rect key="frame" x="55" y="255" width="301" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <color key="backgroundColor" colorSpace="calibratedWhite" white="0" alpha="0"/>
+                    <color key="textColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
                 </textField>
                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="1959" translatesAutoresizingMaskIntoConstraints="NO" textAlignment="center" placeholder="Password">
-                    <rect key="frame" x="56" y="263" width="299" height="30"/>
-                    <nil key="textColor"/>
+                    <rect key="frame" x="55" y="303" width="299" height="30"/>
+                    <color key="textColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
+                    <color key="backgroundColor" colorSpace="calibratedWhite" white="0" alpha="0"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1974" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="156" y="313" width="100" height="60"/>
+                    <rect key="frame" x="176" y="346" width="60" height="45"/>
                     <fontDescription key="fontDescription" type="system" pointSize="40"/>
-                    <state key="normal" title="&gt;"/>
+                    <state key="normal" title="&gt;">
+                        <color key="titleColor" colorSpace="calibratedRGB" red="0.71764705882352942" green="0.72549019607843135" blue="0.72549019607843135" alpha="1"/>
+                    </state>
+                    <constraints>
+                        <constraint id="6853" firstAttribute="height" constant="45"/>
+                    </constraints>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2185" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="56" y="496" width="299" height="30"/>
+                    <rect key="frame" x="56" y="457" width="299" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                    <state key="normal" title="Forgot Password?"/>
+                    <state key="normal" title="Forgot Password?">
+                        <color key="titleColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                    </state>
                     <constraints>
                         <constraint id="2222" firstAttribute="width" secondItem="2185" secondAttribute="height" multiplier="10:1" constant="-1"/>
                     </constraints>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="2219" translatesAutoresizingMaskIntoConstraints="NO">
-                    <rect key="frame" x="89" y="592" width="233" height="36"/>
+                    <rect key="frame" x="89" y="620" width="233" height="36"/>
                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                    <state key="normal" title="Sign Up"/>
+                    <state key="normal" title="Sign Up">
+                        <color key="titleColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                    </state>
                     <constraints>
                         <constraint id="2247" firstAttribute="width" secondItem="2219" secondAttribute="height" multiplier="97:15"/>
                     </constraints>
                 </button>
-                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="2436">
-                    <rect key="frame" x="196" y="419" width="20" height="20"/>
+                <activityIndicatorView opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="2436">
+                    <rect key="frame" x="196" y="416" width="20" height="20"/>
+                    <color key="color" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
                 </activityIndicatorView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Let's get started with Portol" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="5705" translatesAutoresizingMaskIntoConstraints="NO">
+                    <rect key="frame" x="55" y="208" width="299" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" colorSpace="calibratedWhite" white="0.666666666666667" alpha="1"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <constraints>
-                <constraint id="1946" firstItem="874" firstAttribute="top" secondItem="2" secondAttribute="top" constant="39"/>
-                <constraint id="1947" firstAttribute="trailing" secondItem="874" secondAttribute="trailing" constant="87"/>
-                <constraint id="1948" firstItem="874" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="87"/>
-                <constraint id="2104" firstItem="1955" firstAttribute="top" secondItem="874" secondAttribute="bottom" constant="36"/>
-                <constraint id="2106" firstAttribute="trailing" secondItem="1955" secondAttribute="trailing" constant="59"/>
-                <constraint id="2107" firstItem="1955" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="56"/>
-                <constraint id="2108" firstItem="1959" firstAttribute="top" secondItem="1955" secondAttribute="bottom" constant="30"/>
-                <constraint id="2109" firstAttribute="trailing" secondItem="1959" secondAttribute="trailing" constant="59"/>
-                <constraint id="2110" firstItem="1959" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="56"/>
-                <constraint id="2126" firstItem="1974" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="156"/>
-                <constraint id="2127" firstAttribute="trailing" secondItem="1974" secondAttribute="trailing" constant="158"/>
-                <constraint id="2199" firstAttribute="trailing" secondItem="2185" secondAttribute="trailing" constant="59"/>
-                <constraint id="2200" firstItem="2185" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="56"/>
-                <constraint id="2243" firstItem="2219" firstAttribute="top" secondItem="2185" secondAttribute="bottom" constant="66"/>
-                <constraint id="2244" firstAttribute="trailing" secondItem="2219" secondAttribute="trailing" constant="92"/>
-                <constraint id="2245" firstItem="2219" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="89"/>
-                <constraint id="2794" firstItem="1974" firstAttribute="top" secondItem="1959" secondAttribute="bottom" constant="20"/>
-                <constraint id="2795" firstItem="2436" firstAttribute="top" secondItem="1974" secondAttribute="bottom" constant="46"/>
-                <constraint id="2796" firstAttribute="trailing" secondItem="2436" secondAttribute="trailing" constant="198"/>
-                <constraint id="2797" firstItem="2436" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="196"/>
-                <constraint id="2798" firstItem="2185" firstAttribute="top" secondItem="2436" secondAttribute="bottom" constant="57"/>
+                <constraint id="6628" firstItem="874" firstAttribute="top" secondItem="2" secondAttribute="top" constant="39"/>
+                <constraint id="6638" firstAttribute="trailing" secondItem="874" secondAttribute="trailing" constant="87"/>
+                <constraint id="6648" firstItem="874" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="87"/>
+                <constraint id="6658" firstItem="5705" firstAttribute="top" secondItem="874" secondAttribute="bottom" constant="41"/>
+                <constraint id="6668" firstItem="1955" firstAttribute="top" secondItem="5705" secondAttribute="bottom" constant="26"/>
+                <constraint id="6678" firstAttribute="trailing" secondItem="5705" secondAttribute="trailing" constant="60"/>
+                <constraint id="6688" firstItem="5705" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="55"/>
+                <constraint id="6698" firstItem="1955" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="55"/>
+                <constraint id="6708" firstAttribute="trailing" secondItem="1955" secondAttribute="trailing" constant="58"/>
+                <constraint id="6718" firstItem="1959" firstAttribute="top" secondItem="1955" secondAttribute="bottom" constant="18"/>
+                <constraint id="6728" firstItem="1974" firstAttribute="top" secondItem="1959" secondAttribute="bottom" constant="13"/>
+                <constraint id="6738" firstItem="1959" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="55"/>
+                <constraint id="6748" firstAttribute="trailing" secondItem="1959" secondAttribute="trailing" constant="60"/>
+                <constraint id="6833" firstAttribute="trailing" secondItem="1974" secondAttribute="trailing" constant="178"/>
+                <constraint id="6843" firstItem="1974" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="176"/>
+                <constraint id="6863" firstItem="2436" firstAttribute="top" secondItem="1974" secondAttribute="bottom" constant="25"/>
+                <constraint id="6873" firstAttribute="trailing" secondItem="2436" secondAttribute="trailing" constant="198"/>
+                <constraint id="6883" firstItem="2436" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="196"/>
+                <constraint id="6893" firstItem="2185" firstAttribute="top" secondItem="2436" secondAttribute="bottom" constant="21"/>
+                <constraint id="6903" firstAttribute="trailing" secondItem="2185" secondAttribute="trailing" constant="59"/>
+                <constraint id="6913" firstItem="2185" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="56"/>
+                <constraint id="6923" firstItem="2219" firstAttribute="top" secondItem="2185" secondAttribute="bottom" constant="133"/>
+                <constraint id="6933" firstItem="2219" firstAttribute="leading" secondItem="2" secondAttribute="leading" constant="89"/>
+                <constraint id="6943" firstAttribute="trailing" secondItem="2219" secondAttribute="trailing" constant="92"/>
             </constraints>
         </view>
     </objects>
-    <resources>
-        <image name="logo_long_white" width="328" height="116"/>
-    </resources>
 </document>
