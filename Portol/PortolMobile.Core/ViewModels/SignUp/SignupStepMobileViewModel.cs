@@ -21,6 +21,7 @@ namespace PortolMobile.Core.ViewModels.SignUp
         public IMvxCommand GotoCodePageCommand { get; private set; }
         private readonly IMvxNavigationService _navigationService;
         private readonly ILoginService _loginService;
+        public IMvxCommand SelectCountryCommand { get; private set; }
 
         List<CountryDto> _countryItems;
         public List<CountryDto> CountryItems
@@ -110,7 +111,33 @@ namespace PortolMobile.Core.ViewModels.SignUp
             CountryItems = new List<CountryDto>(Constants.CountryList);
             CountrySelected = CountryItems.Where(x => x.Country == EnumCountries.Australia).FirstOrDefault();
             GotoCodePageCommand = new MvxAsyncCommand(GotoCodePage);
-           
+            SelectCountryCommand = new MvxCommand(OpenCountryList);
+        }
+
+        private void OpenCountryList()
+        {
+            try
+            {
+                var cfg = new ActionSheetConfig()
+                   .SetTitle(StringResources.Countries);
+                foreach (var item in CountryItems)
+                {
+                    cfg.Add(
+                       item.CountryName,
+                        () => {
+                            this.CountrySelected = item;
+                        },
+                       item.CountryFlagFile
+                        );
+                }
+
+                cfg.SetCancel(null);
+                var disp = this.UserDialogs.ActionSheet(cfg);
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.RecoveringPassword, "SaveNewPassword");
+            }
         }
 
         private async Task GotoCodePage()

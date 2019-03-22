@@ -4,6 +4,7 @@ using Android.Content.PM;
 using Android.Support.V4.Widget;
 using Android.Views.InputMethods;
 using Android.Widget;
+using MvvmCross.Binding.BindingContext;
 using MvvmCross.Droid.Support.V7.AppCompat;
 using MvvmCross.Platforms.Android.Presenters.Attributes;
 using PortolMobile.Core.ViewModels.Login ;
@@ -47,6 +48,14 @@ namespace PortolMobile.Droid.Views.Login
             btn = FindViewById<Button>(Resource.Id.btnLogin);
             btn.Click += Btn_Click;
 
+
+            //var lblCountryCode = FindViewById<LinearLayout>(Resource.Id.llyCountryList);
+           
+            // var set = this.CreateBindingSet<RecoverPasswordView, RecoverPasswordViewModel>();
+            //set.Bind(lblCountryCode).For("Touch").To(vm => vm.SelectCountryCommand);
+            //set.Apply();
+
+
             EditText editText = this.FindViewById<EditText>(Resource.Id.txtFirstNumber);
             editText.TextChanged += EditText_TextChanged;
 
@@ -58,6 +67,8 @@ namespace PortolMobile.Droid.Views.Login
 
             editText = this.FindViewById<EditText>(Resource.Id.txtFourNumber);
             editText.TextChanged += EditText_TextChanged;
+
+
         }
 
         private void Btn_Click(object sender, System.EventArgs e)

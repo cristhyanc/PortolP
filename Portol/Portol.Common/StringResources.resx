@@ -249,4 +249,7 @@
   <data name="SuburbRequired" xml:space="preserve">
     <value>Suburb is required</value>
   </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Countries</value>
+  </data>
 </root>

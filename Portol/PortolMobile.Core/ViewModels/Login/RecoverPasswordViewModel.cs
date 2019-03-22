@@ -22,8 +22,9 @@ namespace PortolMobile.Core.ViewModels.Login
         public IMvxCommand SendCodeButtonCommand { get; private set; }
         public IMvxCommand SaveNewPasswordCommand { get; private set; }
         public IMvxCommand LoginCommand { get; private set; }
-
+        public IMvxCommand SelectCountryCommand { get; private set; }
         
+
         private readonly IMvxNavigationService _navigationService;
         private readonly ILoginService _loginService;
 
@@ -249,12 +250,40 @@ namespace PortolMobile.Core.ViewModels.Login
             ReSendCodeButtonCommand = new MvxCommand(ResendCode);
             VerifyCodeButtonCommand = new MvxAsyncCommand(VerifyCodeVerification);
             SaveNewPasswordCommand = new MvxAsyncCommand(SaveNewPassword);
+            SelectCountryCommand = new MvxCommand(OpenCountryList);
             LoginCommand = new MvxAsyncCommand(async () =>
             {
               await  _navigationService.Navigate<LoginViewModel>();
                 await _navigationService.Close(this);
             });
+           
             this.IsMobileSectionVisible = true;
+        }
+
+        private void OpenCountryList()
+        {
+            try
+            {
+                var cfg = new ActionSheetConfig()
+                   .SetTitle(StringResources.Countries);
+                foreach (var item in CountryItems)
+                {
+                    cfg.Add(
+                       item.CountryName,
+                        () => {
+                            this.CountrySelected = item; 
+                        },
+                       item.CountryFlagFile 
+                        );
+                }
+
+                cfg.SetCancel(null);
+                var disp = this.UserDialogs.ActionSheet(cfg);
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.RecoveringPassword, "SaveNewPassword");
+            }           
         }
 
         private async Task SaveNewPassword()

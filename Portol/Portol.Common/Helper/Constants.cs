@@ -65,13 +65,13 @@ namespace Portol.Common.Helper
             switch (enumCountries)
             {
                 case EnumCountries.Australia:
-                    return "asd";
+                    return "ic_australia.png";
                 case EnumCountries.NewZealand:
-                    return "123";
+                    return "ic_newzealand.png";
                 case EnumCountries.UnitedKingdom:
-                    return "345";
+                    return "ic_unitedkingdom.png";
                 default:
-                    return "";
+                    return "ic_australia.png";
             }
         }
     }
