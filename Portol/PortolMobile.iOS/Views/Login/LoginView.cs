@@ -11,7 +11,7 @@ using UIKit;
 namespace PortolMobile.iOS.Views.Login
 {
  
-    [MvxRootPresentation]
+    [MvxRootPresentation(WrapInNavigationController =true)]
     public partial class LoginView : MvxViewController<LoginViewModel>
     {
         public LoginView() : base(nameof(LoginView), null)
@@ -80,13 +80,7 @@ namespace PortolMobile.iOS.Views.Login
 
             txtPassword.Layer.BorderColor = UIColor.White.CGColor;
             txtPassword.Layer.BorderWidth = 1f;
-            //txtEmail.BorderStyle = UITextBorderStyle.
-            /*  var myBox = new UIView(new CGRect(0, 40,txtEmail.Frame.Width , 1))
-              {
-                  BackgroundColor = UIColor.LightGray
-              };
-              txtEmail.AddSubview(myBox);*/
-            // Perform any additional setup after loading the view, typically from a nib.
+          
         }
 
         private void Button_Touched(object sender, EventArgs e)

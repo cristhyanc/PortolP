@@ -272,8 +272,8 @@ namespace PortolMobile.Core.ViewModels.Login
                        item.CountryName,
                         () => {
                             this.CountrySelected = item; 
-                        },
-                       item.CountryFlagFile 
+                        }
+                      // item.CountryFlagFile 
                         );
                 }
 

@@ -74,11 +74,16 @@
       <DependentUpon>LoginView.cs</DependentUpon>
     </Compile>
     <Compile Include="Controls\UIBusyIndicator.cs" />
-    <Compile Include="Views\Login\RecoverPasswordView.cs" />
-    <Compile Include="Views\Login\RecoverPasswordView.designer.cs">
-      <DependentUpon>RecoverPasswordView.cs</DependentUpon>
-    </Compile>
     <Compile Include="Controls\PIckeCountryModel.cs" />
+    <Compile Include="Views\Login\RecoverPasswordsView.cs" />
+    <Compile Include="Views\Login\RecoverPasswordsView.designer.cs">
+      <DependentUpon>RecoverPasswordsView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CountryFlagConverter.cs" />
+    <Compile Include="Views\SignUp\SignupStepMobileView.cs" />
+    <Compile Include="Views\SignUp\SignupStepMobileView.designer.cs">
+      <DependentUpon>SignupStepMobileView.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\logo_long_white.imageset\Contents.json">
@@ -162,10 +167,17 @@
     <ImageAsset Include="Assets.xcassets\logo_long_white.imageset\portol_name.pdf">
       <Visible>false</Visible>
     </ImageAsset>
-    <InterfaceDefinition Include="Views\Login\RecoverPasswordView.xib" />
     <ImageAsset Include="Assets.xcassets\portol_name.imageset\logo_long_white.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <InterfaceDefinition Include="Views\Login\RecoverPasswordsView.xib" />
+    <ImageAsset Include="Assets.xcassets\ic_australia.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_australia.imageset\ic_australia.png" />
+    <ImageAsset Include="Assets.xcassets\ic_newzealand.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_newzealand.imageset\ic_newZealand.png" />
+    <ImageAsset Include="Assets.xcassets\ic_unitedKingdom.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_unitedKingdom.imageset\ic_unitedKingdom.png" />
+    <InterfaceDefinition Include="Views\SignUp\SignupStepMobileView.xib" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Acr.UserDialogs, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -235,6 +247,13 @@
     <Folder Include="Assets.xcassets\Launch.imageset\" />
     <Folder Include="Assets.xcassets\Login_background.imageset\" />
     <Folder Include="Assets.xcassets\portol_name.imageset\" />
+    <Folder Include="Assets.xcassets\ic_australia.png.imageset\" />
+    <Folder Include="Assets.xcassets\ic_newZealand.png.imageset\" />
+    <Folder Include="Assets.xcassets\ic_unitedKingdom.png.imageset\" />
+    <Folder Include="Assets.xcassets\ic_australia.imageset\" />
+    <Folder Include="Assets.xcassets\ic_newzealand.imageset\" />
+    <Folder Include="Assets.xcassets\ic_unitedKingdom.imageset\" />
+    <Folder Include="Views\SignUp\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

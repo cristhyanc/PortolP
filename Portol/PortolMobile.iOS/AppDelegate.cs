@@ -16,6 +16,11 @@ namespace PortolMobile.iOS
         {
             var result = base.FinishedLaunching(application, launchOptions);
 
+            UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
+            UINavigationBar.Appearance.ShadowImage = new UIImage();
+            UINavigationBar.Appearance.BackgroundColor = UIColor.Clear;
+            UINavigationBar.Appearance.Translucent = true;
+
             return result;
         }
 
