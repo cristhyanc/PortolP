@@ -1,6 +1,7 @@
 ﻿using MvvmCross;
 using MvvmCross.Base;
 using MvvmCross.Binding.Bindings.Target.Construction;
+using MvvmCross.Converters;
 using MvvmCross.IoC;
 using MvvmCross.Platforms.Ios.Core;
 using MvvmCross.Plugin.Json;
@@ -25,6 +26,12 @@ namespace PortolMobile.iOS
 
             var registry = Mvx.Resolve<IMvxTargetBindingFactoryRegistry>();
             registry.RegisterFactory(new MvxCustomBindingFactory<UIViewController>("NetworkIndicator", (viewController) => new NetworkIndicatorTargetBinding(viewController)));
+        }
+
+        protected override void FillValueConverters(IMvxValueConverterRegistry registry)
+        {
+            base.FillValueConverters(registry);
+            registry.AddOrOverwrite("CountryFlagConverter", new CountryFlagConverter());
         }
 
         protected override IMvxIocOptions CreateIocOptions()
