@@ -2,8 +2,6 @@
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using MvvmCross.Base;
-using MvvmCross.Logging;
 using Newtonsoft.Json;
 using Portol.Common;
 using Portol.Common.Helper;
@@ -12,13 +10,11 @@ namespace PortolMobile.Services.Rest
 {
     public class RestClient : IRestClient
     {
-        // private readonly IMvxJsonConverter _jsonConverter;
-        private readonly IMvxLog _mvxLog;
+       
 
-        public RestClient(IMvxLog mvxLog)
+        public RestClient( )
         {
-            //    _jsonConverter = jsonConverter;
-            _mvxLog = mvxLog;
+          
         }
 
         private async Task<HttpResponseMessage> Call(string url, HttpMethod method, object data = null)
@@ -40,8 +36,7 @@ namespace PortolMobile.Services.Rest
                         response = await httpClient.SendAsync(request).ConfigureAwait(false);
                     }
                     catch (Exception ex)
-                    {
-                        _mvxLog.ErrorException("MakeApiCall failed", ex);
+                    {                      
                         throw new AppException(StringResources.NetworkConnectionError);
                     }
 

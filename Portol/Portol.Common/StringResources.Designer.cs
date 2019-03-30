@@ -259,6 +259,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Let&apos;s get started with Portol.
+        /// </summary>
+        public static string LoginPortolLabel {
+            get {
+                return ResourceManager.GetString("LoginPortolLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The mobile number is already in use.
         /// </summary>
         public static string MobileInUse {

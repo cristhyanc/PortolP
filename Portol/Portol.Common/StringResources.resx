@@ -252,4 +252,7 @@
   <data name="Countries" xml:space="preserve">
     <value>Countries</value>
   </data>
+  <data name="LoginPortolLabel" xml:space="preserve">
+    <value>Let's get started with Portol</value>
+  </data>
 </root>

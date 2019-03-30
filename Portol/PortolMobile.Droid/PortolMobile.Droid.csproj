@@ -97,18 +97,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs">
-      <Version>7.0.3</Version>
+      <Version>7.0.4</Version>
     </PackageReference>
-    <PackageReference Include="MvvmCross">
-      <Version>6.2.3</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmCross.Droid.Support.V7.AppCompat">
-      <Version>6.2.3</Version>
-    </PackageReference>
-    <PackageReference Include="MvvmCross.Droid.Support.V7.RecyclerView">
-      <Version>6.2.3</Version>
-    </PackageReference>
-    <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0" />
+    <PackageReference Include="Xamarin.Android.Support.Design" Version="28.0.0.1" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\SplashScreen.axml">
@@ -119,10 +110,6 @@
     <ProjectReference Include="..\Portol.Common\Portol.Common.csproj">
       <Project>{63cdb1b7-3466-4d32-96d0-a829435a4f30}</Project>
       <Name>Portol.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PortolMobile.Core\PortolMobile.Core.csproj">
-      <Project>{1D9250B8-78F0-4ED2-A8DA-CFB95BBFF7B6}</Project>
-      <Name>PortolMobile.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
