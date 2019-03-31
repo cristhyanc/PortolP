@@ -2,6 +2,7 @@
 using Portol.Common;
 using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Helper;
+using PortolMobile.Forms.ViewModels.SignUp;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -63,7 +64,7 @@ namespace PortolMobile.Forms.ViewModels.Login
         {
             try
             {
-            //    await NavigationService.NavigateToAsync<SignupStepMobileViewModel>();
+                await NavigationService.NavigateToAsync<SignupStepMobileViewModel>();
             }
             catch (System.Exception ex)
             {

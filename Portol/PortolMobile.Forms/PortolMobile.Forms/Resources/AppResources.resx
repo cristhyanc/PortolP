@@ -276,4 +276,40 @@
   <data name="WaitForCode" xml:space="preserve">
     <value>You will recive a code number within 5 minutes</value>
   </data>
+  <data name="letsCreateAPortol" xml:space="preserve">
+    <value>Let's create a Portol</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="ConfirmEmail" xml:space="preserve">
+    <value>Confirm Email</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="InsertCode" xml:space="preserve">
+    <value>Insert the 4-digit code sent to you at</value>
+  </data>
+  <data name="PostCode" xml:space="preserve">
+    <value>Post Code</value>
+  </data>
+  <data name="ReSendCode" xml:space="preserve">
+    <value>Re-send code</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="Suburb" xml:space="preserve">
+    <value>Suburb</value>
+  </data>
+  <data name="UnitNo" xml:space="preserve">
+    <value>Unit No</value>
+  </data>
 </root>

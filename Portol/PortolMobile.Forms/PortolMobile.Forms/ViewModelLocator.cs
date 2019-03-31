@@ -4,6 +4,7 @@ using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels;
 using PortolMobile.Forms.ViewModels.Login;
+using PortolMobile.Forms.ViewModels.SignUp;
 using PortolMobile.Services.Rest;
 using PortolMobile.Services.User;
 using System;
@@ -45,7 +46,12 @@ namespace PortolMobile.Forms
                 builder.RegisterType<LoginViewModel>();              
                 builder.RegisterType<MainViewModel>();
                 builder.RegisterType<RecoverPasswordViewModel>();
-                
+                builder.RegisterType<SignupStepMobileViewModel>();
+                builder.RegisterType<SignupStepEmailViewModel>();
+                builder.RegisterType<SignupStepDetailsViewModel>();
+                builder.RegisterType<SignupStepCodeViewModel>();
+                builder.RegisterType<SignupStepAddressViewModel>();
+
 
                 builder.Register(c => UserDialogs.Instance).As<IUserDialogs>().SingleInstance();
                 builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();

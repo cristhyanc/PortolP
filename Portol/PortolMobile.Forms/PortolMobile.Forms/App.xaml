@@ -1,14 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
              x:Class="PortolMobile.Forms.App">
     <Application.Resources>
         <ResourceDictionary>
             <!--Global Styles-->
+
+            <ffimageloadingsvg:SvgImageSourceConverter x:Key="SvgImageSourceConverter" ></ffimageloadingsvg:SvgImageSourceConverter>
             
             <Color x:Key="NavigationPrimary">#2196F3</Color>
             <Color x:Key="EntryWhiteSmokeAppColor">#f7f7f7</Color>
-            
+
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="BarTextColor" Value="White" />
@@ -26,6 +29,12 @@
                 <Setter Property="FontFamily" Value="Century Gothic" />
             </Style>
 
+            <Style TargetType="Label" x:Key="LabelRequired"  BaseResourceKey="LabelBaseStyle"  >
+                <Setter Property="TextColor" Value="Red" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily" Value="Century Gothic" />
+            </Style>
+
             <Style TargetType="Label" x:Key="LabelBaseStyleWhite" >
                 <Setter Property="TextColor" Value="#ffffff" />
                 <Setter Property="FontSize" Value="Medium" />
@@ -34,6 +43,10 @@
 
             <Style BaseResourceKey="LabelBaseStyle" TargetType="Entry">
                 <Setter Property="PlaceholderColor" Value="Gray" />
+                <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
+            </Style>
+
+            <Style BaseResourceKey="LabelBaseStyle" TargetType="DatePicker">               
                 <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
             </Style>
 

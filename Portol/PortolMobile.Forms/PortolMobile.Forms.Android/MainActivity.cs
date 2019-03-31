@@ -27,7 +27,7 @@ namespace PortolMobile.Forms.Droid
                 global::Xamarin.Forms.Forms.Init(this, bundle);
                 //AnimationViewRenderer.Init();
                 //PlotViewRenderer.Init();
-                FFImageLoading.Forms.Platform.CachedImageRenderer.Init(false);
+                FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
             //   CachedImageRenderer.Init(false);
                 var config = new FFImageLoading.Config.Configuration()
                 {
@@ -63,7 +63,7 @@ namespace PortolMobile.Forms.Droid
     {
         public void Debug(string message)
         {
-            Console.WriteLine(message);
+          //  Console.WriteLine(message);
         }
 
         public void Error(string errorMessage)

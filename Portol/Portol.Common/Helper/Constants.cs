@@ -65,13 +65,13 @@ namespace Portol.Common.Helper
             switch (enumCountries)
             {
                 case EnumCountries.Australia:
-                    return "ic_australia.png";
+                    return "resource://PortolMobile.Forms.Resources.ic_australia.svg?assembly=PortolMobile.Forms";
                 case EnumCountries.NewZealand:
-                    return "ic_newzealand.png";
+                    return "resource://PortolMobile.Forms.Resources.ic_newzealand.svg?assembly=PortolMobile.Forms";
                 case EnumCountries.UnitedKingdom:
-                    return "ic_unitedkingdom.png";
+                    return "resource://PortolMobile.Forms.Resources.ic_unitedkingdom.svg?assembly=PortolMobile.Forms";
                 default:
-                    return "ic_australia.png";
+                    return "resource://PortolMobile.Forms.Resources.ic_australia.svg?assembly=PortolMobile.Forms";
             }
         }
     }

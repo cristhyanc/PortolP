@@ -19,7 +19,7 @@ namespace PortolMobile.Forms.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class AppResources {
@@ -70,6 +70,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        internal static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All fields are required.
         /// </summary>
         internal static string AllFieldsRequired {
@@ -84,6 +93,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string Australia {
             get {
                 return ResourceManager.GetString("Australia", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        internal static string City {
+            get {
+                return ResourceManager.GetString("City", resourceCulture);
             }
         }
         
@@ -106,11 +124,29 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm Email.
+        /// </summary>
+        internal static string ConfirmEmail {
+            get {
+                return ResourceManager.GetString("ConfirmEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Countries.
         /// </summary>
         internal static string Countries {
             get {
                 return ResourceManager.GetString("Countries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        internal static string Country {
+            get {
+                return ResourceManager.GetString("Country", resourceCulture);
             }
         }
         
@@ -259,6 +295,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Insert the 4-digit code sent to you at.
+        /// </summary>
+        internal static string InsertCode {
+            get {
+                return ResourceManager.GetString("InsertCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Last Name.
         /// </summary>
         internal static string LastName {
@@ -273,6 +318,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string LastNameRequired {
             get {
                 return ResourceManager.GetString("LastNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Let&apos;s create a Portol.
+        /// </summary>
+        internal static string letsCreateAPortol {
+            get {
+                return ResourceManager.GetString("letsCreateAPortol", resourceCulture);
             }
         }
         
@@ -457,11 +511,29 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Post Code.
+        /// </summary>
+        internal static string PostCode {
+            get {
+                return ResourceManager.GetString("PostCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recovering Password.
         /// </summary>
         internal static string RecoveringPassword {
             get {
                 return ResourceManager.GetString("RecoveringPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Re-send code.
+        /// </summary>
+        internal static string ReSendCode {
+            get {
+                return ResourceManager.GetString("ReSendCode", resourceCulture);
             }
         }
         
@@ -475,6 +547,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to State.
+        /// </summary>
+        internal static string State {
+            get {
+                return ResourceManager.GetString("State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to State is required.
         /// </summary>
         internal static string StateRequired {
@@ -484,11 +565,29 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Street.
+        /// </summary>
+        internal static string Street {
+            get {
+                return ResourceManager.GetString("Street", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Street is required.
         /// </summary>
         internal static string StreetRequired {
             get {
                 return ResourceManager.GetString("StreetRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Suburb.
+        /// </summary>
+        internal static string Suburb {
+            get {
+                return ResourceManager.GetString("Suburb", resourceCulture);
             }
         }
         
@@ -507,6 +606,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string UnitedKingdom {
             get {
                 return ResourceManager.GetString("UnitedKingdom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unit No.
+        /// </summary>
+        internal static string UnitNo {
+            get {
+                return ResourceManager.GetString("UnitNo", resourceCulture);
             }
         }
         

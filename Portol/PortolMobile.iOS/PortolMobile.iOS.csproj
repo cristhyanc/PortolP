@@ -172,12 +172,24 @@
       <Visible>false</Visible>
     </ImageAsset>
     <InterfaceDefinition Include="Views\Login\RecoverPasswordsView.xib" />
-    <ImageAsset Include="Assets.xcassets\ic_australia.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\ic_australia.imageset\ic_australia.png" />
-    <ImageAsset Include="Assets.xcassets\ic_newzealand.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\ic_newzealand.imageset\ic_newZealand.png" />
-    <ImageAsset Include="Assets.xcassets\ic_unitedKingdom.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\ic_unitedKingdom.imageset\ic_unitedKingdom.png" />
+    <ImageAsset Include="Assets.xcassets\ic_australia.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ic_australia.imageset\ic_australia.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ic_newzealand.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ic_newzealand.imageset\ic_newZealand.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ic_unitedKingdom.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ic_unitedKingdom.imageset\ic_unitedKingdom.png">
+      <Visible>false</Visible>
+    </ImageAsset>
     <InterfaceDefinition Include="Views\SignUp\SignupStepMobileView.xib" />
   </ItemGroup>
   <ItemGroup>
