@@ -205,6 +205,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email and Password.
+        /// </summary>
+        internal static string EmailPassword {
+            get {
+                return ResourceManager.GetString("EmailPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email or Password is incorrect.
         /// </summary>
         internal static string EmailPasswordIsIncorrect {
@@ -507,6 +516,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string PasswordWhiteSpace {
             get {
                 return ResourceManager.GetString("PasswordWhiteSpace", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Personal Details.
+        /// </summary>
+        internal static string PersonalDetails {
+            get {
+                return ResourceManager.GetString("PersonalDetails", resourceCulture);
             }
         }
         

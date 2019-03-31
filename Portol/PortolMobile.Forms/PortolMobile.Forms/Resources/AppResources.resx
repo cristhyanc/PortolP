@@ -312,4 +312,10 @@
   <data name="UnitNo" xml:space="preserve">
     <value>Unit No</value>
   </data>
+  <data name="EmailPassword" xml:space="preserve">
+    <value>Email and Password</value>
+  </data>
+  <data name="PersonalDetails" xml:space="preserve">
+    <value>Personal Details</value>
+  </data>
 </root>
