@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+﻿using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
+using Android.Graphics.Drawables;
+using PortolMobile.Forms.Droid.Effects;
 
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 
 [assembly: ExportEffect(typeof(BorderlessEffect), "BorderlessEffect")]
 namespace PortolMobile.Forms.Droid.Effects
@@ -22,7 +16,7 @@ namespace PortolMobile.Forms.Droid.Effects
                 return;
 
             oldBackground = Control.Background;
-            Control.SetBackgroundResource(Droid.Resource.Drawable.EntryBottomBorder);
+            Control.Background = null;
         }
 
         protected override void OnDetached()
