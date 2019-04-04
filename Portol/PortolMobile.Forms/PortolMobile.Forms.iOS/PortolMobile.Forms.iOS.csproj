@@ -127,12 +127,6 @@
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-    <ImageAsset Include="Assets.xcassets\Images.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Images1.imageset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\login_background.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
@@ -211,6 +205,10 @@
     <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\Icon-App-60x60%403x.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Map_image.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Map_image.imageset\Screen Shot 2019-04-04 at 2.41.13 pm.png" />
+    <ImageAsset Include="Assets.xcassets\Map_image.imageset\Screen Shot 2019-04-04 at 2.41.13 pm%402x.png" />
+    <ImageAsset Include="Assets.xcassets\Map_image.imageset\Screen Shot 2019-04-04 at 2.41.13 pm%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -260,5 +258,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\login_background.imageset\" />
+    <Folder Include="Assets.xcassets\Map_image.imageset\" />
   </ItemGroup>
 </Project>

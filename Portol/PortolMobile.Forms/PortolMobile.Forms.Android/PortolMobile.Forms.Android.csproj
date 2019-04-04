@@ -107,6 +107,7 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\Map_image.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-hdpi\login_background.png">
@@ -115,7 +116,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PortolMobile.Forms\PortolMobile.Forms.csproj">
-      <Project>{BC8335FC-9BF3-4D7C-AF08-B1E121260BDA}</Project>
+      <Project>{F99FC914-3341-47CF-B1A0-0FD7AF4863A7}</Project>
       <Name>PortolMobile.Forms</Name>
     </ProjectReference>
   </ItemGroup>
