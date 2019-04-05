@@ -9,9 +9,9 @@ namespace Portol.Common.Helper
 {
     public class Constants
     {
-       
 
-        public const string BaseUrl = "http://192.168.8.100/PortolWeb/api/";
+        public const string BaseUrl = "https://portolwebapitest.azurewebsites.net/api/";
+        //public const string BaseUrl = "http://192.168.8.100/PortolWeb/api/";
         // public const string BaseUrl = "http://desktop-mkvm17a/PortolWeb/api/";
         public const string BaseUserApiUrl = BaseUrl + "users";
 

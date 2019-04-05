@@ -318,4 +318,7 @@
   <data name="PersonalDetails" xml:space="preserve">
     <value>Personal Details</value>
   </data>
+  <data name="EnterNewPassword" xml:space="preserve">
+    <value>Enter new password</value>
+  </data>
 </root>
