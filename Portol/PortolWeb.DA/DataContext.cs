@@ -10,6 +10,7 @@ namespace PortolWeb.DA
     {
         public DbSet<User> Users { get; set; }
         public DbSet<Business> Businesses { get; set; }
+        public DbSet<CodeVerification> CodeVerifications { get; set; }
         public DbSet<Script> Scripts { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)

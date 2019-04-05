@@ -16,10 +16,12 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Portol.Common.Interfaces.PortolWeb;
 using PortolWeb.API.Helper;
+using PortolWeb.Core.SmsServices;
 using PortolWeb.Core.UserServices;
 using PortolWeb.DA;
 using PortolWeb.Entities;
 using Serilog;
+using Sinch.ServerSdk.Messaging;
 
 namespace PortolWeb.API
 {
@@ -81,6 +83,10 @@ namespace PortolWeb.API
                 };
             });
 
+            var smsApi = Sinch.ServerSdk.SinchFactory.CreateApiFactory (appSettings.SinchAppKey, appSettings.SinchAppSecret).CreateSmsApi();
+
+            services.AddSingleton<ISmsApi>(smsApi);
+            services.AddScoped<ISmsService, SmsService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IDatabaseManagement, DatabaseManagement>();
             services.AddScoped<IDataContext, DataContext>();

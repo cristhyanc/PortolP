@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PortolMobile.Forms.Effects;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,7 @@ namespace PortolMobile.Forms.Views.SignUp
         public SignupStepDetailsView()
         {
             InitializeComponent();
+            dtpBirth.Effects.Add(new BorderlessEffect());
         }
     }
 }

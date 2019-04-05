@@ -10,6 +10,7 @@ namespace PortolWeb.DA
     {
         private readonly DataContext _context;
         private IRepositoryBasey<User> _userRepository;
+        private IRepositoryBasey<CodeVerification> _codeVerificationRepository;
 
         public UnitOfWork(DataContext context)
         {
@@ -25,7 +26,15 @@ namespace PortolWeb.DA
         {
             get
             {
-                return _userRepository = _userRepository ?? new RepositoryBasey<User>(_context);
+                return _userRepository = _userRepository ?? new RepositoryBase<User>(_context);
+            }
+        }
+
+        public IRepositoryBasey<CodeVerification> CodeVerificationRepository
+        {
+            get
+            {
+                return _codeVerificationRepository = _codeVerificationRepository ?? new RepositoryBase<CodeVerification>(_context);
             }
         }
 

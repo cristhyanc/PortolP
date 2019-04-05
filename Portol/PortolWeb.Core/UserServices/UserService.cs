@@ -19,6 +19,21 @@ namespace PortolWeb.Core.UserServices
             _uow = uow;
         }
 
+        public bool ValidateVerificationCode(long phoneNumber, Int32 countryCode, Int32 code)
+        {
+            var savedCode = _uow.CodeVerificationRepository.Get(x => x.CodeNumber == code && x.PhoneNumber == phoneNumber.ToString() &&
+                                                                        x.CountryCode == countryCode.ToString());
+            if(savedCode==null)
+            {
+                return false;
+            }
+
+            _uow.CodeVerificationRepository.Delete(savedCode);
+            _uow.SaveChanges();
+            return true;
+            
+        }
+
         public UserDto Authenticate(string username, string password)
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))

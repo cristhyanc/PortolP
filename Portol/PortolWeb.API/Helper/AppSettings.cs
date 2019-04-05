@@ -11,6 +11,8 @@ namespace PortolWeb.API.Helper
         public string ConnectionString { get; set; }
         public string DBScriptPath { get; set; }
         public string LogPaht { get; set; }
+        public string SinchAppKey { get; set; }
+        public string SinchAppSecret { get; set; }
 
     }
 }

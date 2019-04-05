@@ -5,7 +5,7 @@ CREATE TABLE [dbo].[tblUser](
 	[LastName] [nvarchar](50) NULL,
 	[Email] [nvarchar](300) NOT NULL,
 	[DOB] [date] NOT NULL,
-	[PhoneNumber] numeric(18, 0) NOT NULL,
+	[PhoneNumber] BIGINT NOT NULL,
 	[PhoneCountryCode] [int] NOT NULL,
 	[PasswordHash] [varbinary](max) NULL,
 	[PasswordSalt] [varbinary](max) NULL,

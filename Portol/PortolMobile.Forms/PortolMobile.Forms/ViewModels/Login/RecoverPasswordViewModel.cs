@@ -347,7 +347,7 @@ namespace PortolMobile.Forms.ViewModels.Login
 
                 this.IsBusy = true;
 
-                await _loginService.ResetNewPassword(decimal.Parse(this.MobileNumber), this.NewPassword);
+                await _loginService.ResetNewPassword(Int32.Parse(this.MobileNumber), this.NewPassword);
 
                 UserDialogs.Alert(new AlertConfig
                 {
@@ -387,7 +387,8 @@ namespace PortolMobile.Forms.ViewModels.Login
                 }
                 var code = Int16.Parse(this.FirstNumber + this.SecondNumber + this.ThirdNumber + this.FourNumber);
 
-                var resutl = await _loginService.VerifyCode(decimal.Parse(this.MobileNumber), code);
+             
+                var resutl = await _loginService.VerifyCode(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country, code);
                 if (resutl)
                 {
                     this.IsPasswordSectionVisible = true;
@@ -425,7 +426,21 @@ namespace PortolMobile.Forms.ViewModels.Login
 
                     return;
                 }
-                var resutl = await _loginService.SendVerificationCode(decimal.Parse(this.MobileNumber), (int)CountrySelected.Country);
+
+                var isUniqui = await _loginService.VerifyMobileUniqueness(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country);
+
+                if (isUniqui)
+                {
+                    UserDialogs.Alert(new AlertConfig
+                    {
+                        Message = StringResources.PhoneNotExist,
+                        Title = StringResources.RecoveringPassword,
+                        OkText = StringResources.Ok
+                    });
+                    return;
+                }
+
+                var resutl = await _loginService.SendVerificationCode(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country);
                 if (resutl)
                 {
                     this.IsCodeSectionVisible = true;

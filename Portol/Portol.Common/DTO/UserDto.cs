@@ -16,7 +16,7 @@ namespace Portol.DTO
         public string Email { get; set; }
         public string Token { get; set; }
         public DateTime DOB { get; set; }
-        public decimal PhoneNumber { get; set; }
+        public long  PhoneNumber { get; set; }
         public int PhoneCountryCode { get; set; }
         public string Password { get; set; }
         public AddressDto UserAddress { get; set; }

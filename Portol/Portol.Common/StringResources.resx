@@ -117,11 +117,35 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="AccountCreated" xml:space="preserve">
+    <value>The account was created</value>
+  </data>
+  <data name="AllFieldsRequired" xml:space="preserve">
+    <value>All fields are required</value>
+  </data>
+  <data name="Australia" xml:space="preserve">
+    <value>Australia</value>
+  </data>
+  <data name="CityRequired" xml:space="preserve">
+    <value>City is required</value>
+  </data>
   <data name="CodeNumberRequired" xml:space="preserve">
     <value>Code Number Required</value>
   </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Countries</value>
+  </data>
+  <data name="CountryRequired" xml:space="preserve">
+    <value>Country is required</value>
+  </data>
+  <data name="DOB" xml:space="preserve">
+    <value>D.O.B</value>
+  </data>
   <data name="DOBRequired" xml:space="preserve">
     <value>DOB Required</value>
+  </data>
+  <data name="EmailInUse" xml:space="preserve">
+    <value>The Email is already in use</value>
   </data>
   <data name="EmailInUsedParameter" xml:space="preserve">
     <value>The Email {0} is already being used</value>
@@ -135,17 +159,35 @@
   <data name="Error" xml:space="preserve">
     <value>Error</value>
   </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First name</value>
+  </data>
   <data name="FirstNameRequired" xml:space="preserve">
     <value>FirstName Required</value>
   </data>
   <data name="GeneralError" xml:space="preserve">
     <value>Oops, there was an error, we are working on it, Thanks</value>
   </data>
+  <data name="IncorrectdateFormat" xml:space="preserve">
+    <value>Incorrect date format</value>
+  </data>
+  <data name="IncorrectEmailformat" xml:space="preserve">
+    <value>Incorrect Email format</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
   <data name="LastNameRequired" xml:space="preserve">
     <value>LastName Required</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Login</value>
+  </data>
+  <data name="LoginPortolLabel" xml:space="preserve">
+    <value>Let's get started with Portol</value>
+  </data>
+  <data name="MobileInUse" xml:space="preserve">
+    <value>The mobile number is already in use</value>
   </data>
   <data name="MobileNumberRequiered" xml:space="preserve">
     <value>The mobile number is required</value>
@@ -155,6 +197,18 @@
   </data>
   <data name="NewPasswordsRequired" xml:space="preserve">
     <value>Password and Confirm password are required</value>
+  </data>
+  <data name="NewUser" xml:space="preserve">
+    <value>New user</value>
+  </data>
+  <data name="NewZealand" xml:space="preserve">
+    <value>New Zealand</value>
+  </data>
+  <data name="NotMatchEmails" xml:space="preserve">
+    <value>Email and confirm email don't match</value>
+  </data>
+  <data name="NotMatchPasswords" xml:space="preserve">
+    <value>Password and confirm Password don't match</value>
   </data>
   <data name="Ok" xml:space="preserve">
     <value>Ok</value>
@@ -177,68 +231,14 @@
   <data name="PasswordWhiteSpace" xml:space="preserve">
     <value>Value cannot be empty or whitespace only string.</value>
   </data>
+  <data name="PhoneNotExist" xml:space="preserve">
+    <value>The mobile phone does not exist</value>
+  </data>
   <data name="RecoveringPassword" xml:space="preserve">
     <value>Recovering Password</value>
   </data>
-  <data name="UserDoesNotExist" xml:space="preserve">
-    <value>User Does not Exist</value>
-  </data>
-  <data name="WrongCode" xml:space="preserve">
-    <value>The Code you entered is incorrect</value>
-  </data>
-  <data name="Australia" xml:space="preserve">
-    <value>Australia</value>
-  </data>
-  <data name="NewZealand" xml:space="preserve">
-    <value>New Zealand</value>
-  </data>
-  <data name="UnitedKingdom" xml:space="preserve">
-    <value>United Kingdom</value>
-  </data>
-  <data name="DOB" xml:space="preserve">
-    <value>D.O.B</value>
-  </data>
-  <data name="FirstName" xml:space="preserve">
-    <value>First name</value>
-  </data>
-  <data name="LastName" xml:space="preserve">
-    <value>Last Name</value>
-  </data>
   <data name="SignUp" xml:space="preserve">
     <value>Sign Up</value>
-  </data>
-  <data name="AllFieldsRequired" xml:space="preserve">
-    <value>All fields are required</value>
-  </data>
-  <data name="IncorrectdateFormat" xml:space="preserve">
-    <value>Incorrect date format</value>
-  </data>
-  <data name="IncorrectEmailformat" xml:space="preserve">
-    <value>Incorrect Email format</value>
-  </data>
-  <data name="NotMatchEmails" xml:space="preserve">
-    <value>Email and confirm email don't match</value>
-  </data>
-  <data name="NotMatchPasswords" xml:space="preserve">
-    <value>Password and confirm Password don't match</value>
-  </data>
-  <data name="AccountCreated" xml:space="preserve">
-    <value>The account was created</value>
-  </data>
-  <data name="CityRequired" xml:space="preserve">
-    <value>City is required</value>
-  </data>
-  <data name="CountryRequired" xml:space="preserve">
-    <value>Country is required</value>
-  </data>
-  <data name="EmailInUse" xml:space="preserve">
-    <value>The Email is already in use</value>
-  </data>
-  <data name="MobileInUse" xml:space="preserve">
-    <value>The mobile number is already in use</value>
-  </data>
-  <data name="NewUser" xml:space="preserve">
-    <value>New user</value>
   </data>
   <data name="StateRequired" xml:space="preserve">
     <value>State is required</value>
@@ -249,10 +249,13 @@
   <data name="SuburbRequired" xml:space="preserve">
     <value>Suburb is required</value>
   </data>
-  <data name="Countries" xml:space="preserve">
-    <value>Countries</value>
+  <data name="UnitedKingdom" xml:space="preserve">
+    <value>United Kingdom</value>
   </data>
-  <data name="LoginPortolLabel" xml:space="preserve">
-    <value>Let's get started with Portol</value>
+  <data name="UserDoesNotExist" xml:space="preserve">
+    <value>User Does not Exist</value>
+  </data>
+  <data name="WrongCode" xml:space="preserve">
+    <value>The Code you entered is incorrect</value>
   </data>
 </root>

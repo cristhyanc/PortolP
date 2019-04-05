@@ -23,13 +23,14 @@ namespace PortolWeb.API.Controllers
     public class UsersController : ControllerBase
     {
         private IUserService _userService;
-     
+        ISmsService _smsService;
         private readonly AppSettings _appSettings;
 
-        public UsersController(IUserService userService, IOptions<AppSettings> appSettings)
+        public UsersController(IUserService userService, IOptions<AppSettings> appSettings, ISmsService smsService)
         {
             _userService = userService;          
             _appSettings = appSettings.Value;
+            _smsService = smsService;
         }
 
         [HttpDelete("{id}")]
@@ -106,7 +107,9 @@ namespace PortolWeb.API.Controllers
         {
             try
             {
-                if(details!=null && details.PhoneCountryCode==4321)
+                
+
+                if (_userService.ValidateVerificationCode(details.PhoneNumber, details.PhoneCountryCode, Int16.Parse(details.Token)))
                 {
                     return Ok();
                 }
@@ -200,7 +203,7 @@ namespace PortolWeb.API.Controllers
         {
             try
             {
-               // _userService.Delete(id);
+                _smsService.SendNewCode(details.PhoneNumber.ToString(), details.PhoneCountryCode.ToString());
                 return Ok();
             }
             catch (AppException ex)

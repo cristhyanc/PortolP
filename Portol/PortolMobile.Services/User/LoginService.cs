@@ -27,7 +27,7 @@ namespace PortolMobile.Services.User
                 return user; 
         }
 
-        public async Task<Boolean> VerifyMobileUniqueness(decimal mobilePhoned, Int32 code)
+        public async Task<Boolean> VerifyMobileUniqueness(long mobilePhoned, Int32 code)
         {
             UserDto details = new UserDto { PhoneNumber = mobilePhoned, PhoneCountryCode = code };
             var result = await _restClient.MakeApiCallRaw<Boolean>($"{Constants.BaseUserApiUrl}/VerifyMobileUniqueness", HttpMethod.Post, details);
@@ -41,19 +41,19 @@ namespace PortolMobile.Services.User
         }
 
         
-        public async Task<bool> VerifyCode(decimal mobilePhoned, Int32 code)
+        public async Task<bool> VerifyCode(long mobilePhoned, Int32 countryCode, Int32 code)
         {
-            UserDto user = new UserDto { PhoneNumber = mobilePhoned, PhoneCountryCode = code };
+            UserDto user = new UserDto { PhoneNumber = mobilePhoned, PhoneCountryCode = countryCode, Token= code.ToString() };
             return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/VerifyCode", HttpMethod.Post, user);
         }
 
-        public async Task<bool> ResetNewPassword(decimal mobilePhoned, string newPassword)
+        public async Task<bool> ResetNewPassword(long mobilePhoned, string newPassword)
         {
             UserDto user = new UserDto { PhoneNumber = mobilePhoned, Password= newPassword };
             return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/ResetPassword", HttpMethod.Post, user);
         }
 
-        public async Task<bool> SendVerificationCode(decimal mobilePhoned, Int32 code)
+        public async Task<bool> SendVerificationCode(long mobilePhoned, Int32 code)
         {
             UserDto user = new UserDto { PhoneNumber = mobilePhoned, PhoneCountryCode= code };
             return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/SendVerificationCode", HttpMethod.Post, user);

@@ -18,7 +18,7 @@ namespace PortolWeb.Entities
         public string LastName { get; set; }
         public string Email { get; set; }
         public DateTime DOB { get; set; }
-        public decimal PhoneNumber { get; set; }
+        public long PhoneNumber { get; set; }
         public int PhoneCountryCode { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }

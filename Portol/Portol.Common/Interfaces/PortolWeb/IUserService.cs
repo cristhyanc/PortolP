@@ -16,6 +16,7 @@ namespace Portol.Common.Interfaces.PortolWeb
         void ResetPassword(UserDto user);
         bool VerifyMobileUniqueness(UserDto phoneDetails);
         bool VerifyEmailUniqueness(string email);
+        bool ValidateVerificationCode(long phoneNumber, Int32 countryCode, Int32 code);
 
     }
 }

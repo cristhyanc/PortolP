@@ -23,23 +23,21 @@ namespace PortolMobile.Forms.iOS.Effects
         {
             if (Element is Entry view)
             {
-              SetBorder();
-            }
-        }
-       
-        private void SetBorder()
-        {
-
-            if (Element is Entry view)
-            { 
+                view.HeightRequest = 40;
                 var controlEntry = Control as UITextField;
                 controlEntry.Layer.BorderWidth = 0;
                 controlEntry.BorderStyle = UITextBorderStyle.None;
             }
 
-
+            if (Element is DatePicker view2)
+            {
+                view2.HeightRequest = 40;
+                var controlEntry = Control as UITextField;
+                controlEntry.Layer.BorderWidth = 0;
+                controlEntry.BorderStyle = UITextBorderStyle.None;
+            }
         }
-
+       
         protected override void OnDetached()
         {
 

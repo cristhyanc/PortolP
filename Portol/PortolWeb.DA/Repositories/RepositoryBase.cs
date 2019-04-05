@@ -7,13 +7,13 @@ using System.Text;
 
 namespace PortolWeb.DA.Repositories
 {
-   public class RepositoryBasey<T> : IDisposable, IRepositoryBasey<T> where T : class, new()
+   public class RepositoryBase<T> : IDisposable, IRepositoryBasey<T> where T : class, new()
     {
 
 
         DataContext _context;
 
-        public RepositoryBasey(DataContext context)
+        public RepositoryBase(DataContext context)
         {
             _context = context;
         }

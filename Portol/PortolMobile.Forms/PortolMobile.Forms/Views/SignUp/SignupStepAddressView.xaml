@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
               xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"             
-             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"            
+             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper" 
+              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
              x:Class="PortolMobile.Forms.Views.SignUp.SignupStepAddressView">
     <ContentPage.Content>
@@ -29,26 +30,26 @@
                     <ColumnDefinition ></ColumnDefinition>
                 </Grid.ColumnDefinitions>
 
-                <Entry Grid.Row="0" Grid.Column="0"  Placeholder="{i18n:Translate UnitNo}" HorizontalTextAlignment="Center" Text="{Binding UnitNumber, Mode=TwoWay }"
-                 HorizontalOptions="FillAndExpand"  ></Entry>
+                <controls:ExtendedEntry Grid.Row="0" Grid.Column="0"  Placeholder="{i18n:Translate UnitNo}" HorizontalTextAlignment="Center" Text="{Binding UnitNumber, Mode=TwoWay }"
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
 
-                <Entry Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Placeholder="{i18n:Translate Street}" HorizontalTextAlignment="Center" Text="{Binding Street, Mode=TwoWay }"
-                 HorizontalOptions="FillAndExpand"  ></Entry>
+                <controls:ExtendedEntry Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Placeholder="{i18n:Translate Street}" HorizontalTextAlignment="Center" Text="{Binding Street, Mode=TwoWay }"
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
 
-                <Entry  Grid.Row="1" Grid.Column="0" Placeholder="{i18n:Translate Suburb}" HorizontalTextAlignment="Center" Text="{Binding Suburb, Mode=TwoWay }" 
-                 HorizontalOptions="FillAndExpand"  ></Entry>
+                <controls:ExtendedEntry  Grid.Row="1" Grid.Column="0" Placeholder="{i18n:Translate Suburb}" HorizontalTextAlignment="Center" Text="{Binding Suburb, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
 
-                <Entry  Grid.Row="1" Grid.Column="1" Placeholder="{i18n:Translate PostCode}" HorizontalTextAlignment="Center" Text="{Binding PostCode, Mode=TwoWay }" 
-                 HorizontalOptions="FillAndExpand"  ></Entry>
+                <controls:ExtendedEntry  Grid.Row="1" Grid.Column="1" Placeholder="{i18n:Translate PostCode}" HorizontalTextAlignment="Center" Text="{Binding PostCode, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
 
-                <Entry  Grid.Row="1" Grid.Column="2" Placeholder="{i18n:Translate City}" HorizontalTextAlignment="Center" Text="{Binding City, Mode=TwoWay }" 
-                 HorizontalOptions="FillAndExpand"  ></Entry>
+                <controls:ExtendedEntry  Grid.Row="1" Grid.Column="2" Placeholder="{i18n:Translate City}" HorizontalTextAlignment="Center" Text="{Binding City, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
 
-                <Entry  Grid.Row="2" Grid.Column="0" Placeholder="{i18n:Translate State}" HorizontalTextAlignment="Center" Text="{Binding State, Mode=TwoWay }" 
-                 HorizontalOptions="FillAndExpand"  ></Entry>
+                <controls:ExtendedEntry  Grid.Row="2" Grid.Column="0" Placeholder="{i18n:Translate State}" HorizontalTextAlignment="Center" Text="{Binding State, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
 
-                <Entry  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Placeholder="{i18n:Translate Country}" HorizontalTextAlignment="Center" Text="{Binding Country, Mode=TwoWay }" 
-                 HorizontalOptions="FillAndExpand"  ></Entry>
+                <controls:ExtendedEntry  Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" Placeholder="{i18n:Translate Country}" HorizontalTextAlignment="Center" Text="{Binding Country, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
 
             </Grid>
             

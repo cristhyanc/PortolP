@@ -2,6 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"             
              xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"            
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
@@ -32,8 +33,8 @@
                     </Label.GestureRecognizers>
                 </Label>
 
-                <Entry Placeholder="{i18n:Translate MobileNumber}" HorizontalTextAlignment="Center" Text="{Binding MobileNumber, Mode=TwoWay }" 
-                   x:Name="txtMobileNumber"  Keyboard="Numeric"  HorizontalOptions="FillAndExpand"  ></Entry>
+                <controls:ExtendedEntry  Placeholder="{i18n:Translate MobileNumber}" HorizontalTextAlignment="Center" Text="{Binding MobileNumber, Mode=TwoWay }" 
+                   x:Name="txtMobileNumber"  Keyboard="Numeric"  HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
 
             </StackLayout>
 
