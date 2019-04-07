@@ -8,39 +8,42 @@
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
              x:Class="PortolMobile.Forms.Views.SignUp.SignupStepDetailsView">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="40,0,40,0">
+      
 
-            <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Center"  VerticalOptions="Start" Margin="0,20,0,0"
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="40,0,40,0">
+
+                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Center"  VerticalOptions="Start" Margin="0,20,0,0"
                                            Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms" >
 
-            </ffimageloadingsvg:SvgCachedImage>
+                </ffimageloadingsvg:SvgCachedImage>
 
-            <Label Text="{i18n:Translate PersonalDetails}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,30,0,0" ></Label>
+                <Label Text="{i18n:Translate PersonalDetails}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,30,0,0" ></Label>
 
-            <controls:ExtendedEntry Placeholder="{i18n:Translate FirstName}" HorizontalTextAlignment="Center" Text="{Binding FirstName, Mode=TwoWay }" Margin="0,10,0,0"
+                <controls:ExtendedEntry Placeholder="{i18n:Translate FirstName}" HorizontalTextAlignment="Center" Text="{Binding FirstName, Mode=TwoWay }" Margin="0,10,0,0"
                    HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
 
-            <controls:ExtendedEntry Placeholder="{i18n:Translate LastName}" HorizontalTextAlignment="Center" Text="{Binding LastName, Mode=TwoWay }" Margin="0,10,0,0"
+                <controls:ExtendedEntry Placeholder="{i18n:Translate LastName}" HorizontalTextAlignment="Center" Text="{Binding LastName, Mode=TwoWay }" Margin="0,10,0,0"
                   HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
 
-            <StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource EntryWhiteSmokeAppColor}"  Margin="0,10,0,0">
-                <DatePicker    Date="{Binding DateOBirth, Mode=TwoWay}"  HorizontalOptions="Center" x:Name="dtpBirth"   >
-                    <DatePicker.Format>yyyy/MM/dd</DatePicker.Format>
-                </DatePicker>
-            </StackLayout>
-           
-            <Label Text="{Binding ErrorMessage}" Style="{StaticResource LabelRequired}" IsVisible="{Binding IsValidationVisible}" HorizontalOptions="Center"
+                <StackLayout HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource EntryWhiteSmokeAppColor}"  Margin="0,10,0,0">
+                    <DatePicker    Date="{Binding DateOBirth, Mode=TwoWay}"  HorizontalOptions="Center" x:Name="dtpBirth"   >
+                        <DatePicker.Format>yyyy/MM/dd</DatePicker.Format>
+                    </DatePicker>
+                </StackLayout>
+
+                <Label Text="{Binding ErrorMessage}" Style="{StaticResource LabelRequired}" IsVisible="{Binding IsValidationVisible}" HorizontalOptions="Center"
                    HorizontalTextAlignment="Center" Margin="0,5,0,0" ></Label>
-            
-            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
 
-            <ffimageloadingsvg:SvgCachedImage WidthRequest="35" HeightRequest="35"  Margin="0,15,0,0" HorizontalOptions="Center" VerticalOptions="Center" 
+                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+
+                <ffimageloadingsvg:SvgCachedImage WidthRequest="35" HeightRequest="35"  Margin="0,15,0,0" HorizontalOptions="Center" VerticalOptions="Center" 
                   Source="resource://PortolMobile.Forms.Resources.btn_background.svg?assembly=PortolMobile.Forms" >
-                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >
-                    <TapGestureRecognizer Command="{Binding GotoEmailPageCommand}"  ></TapGestureRecognizer>
-                </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
-            </ffimageloadingsvg:SvgCachedImage>
+                    <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >
+                        <TapGestureRecognizer Command="{Binding GotoEmailPageCommand}"  ></TapGestureRecognizer>
+                    </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                </ffimageloadingsvg:SvgCachedImage>
 
-        </StackLayout>
+            </StackLayout>
+       
     </ContentPage.Content>
 </ContentPage>

@@ -9,7 +9,7 @@ using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
 using Portol.Common.Interfaces.PortolWeb;
 using PortolWeb.API.Helper;
-using Portol.DTO;
+using Portol.Common.DTO;
 using Portol.Common.Helper;
 using Serilog;
 using System.Net;

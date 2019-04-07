@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using Portol.DTO;
+using Portol.Common.DTO;
 using Portol.Common.Helper;
 using System.Net.Http;
 using Portol.Common.Interfaces.PortolMobile;

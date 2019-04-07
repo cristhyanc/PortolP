@@ -64,7 +64,11 @@ namespace PortolMobile.Forms.ViewModels.Login
         {
             try
             {
-                await NavigationService.NavigateToAsync<SignupStepMobileViewModel>();
+                   await NavigationService.NavigateToAsync<SignupStepMobileViewModel>();
+                //var user = new Portol.Common.DTO.UserDto();
+                //await NavigationService.NavigateToAsync<SignupStepAddressViewModel>(user);
+
+
             }
             catch (System.Exception ex)
             {

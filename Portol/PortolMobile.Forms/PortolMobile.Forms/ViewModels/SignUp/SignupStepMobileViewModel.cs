@@ -3,7 +3,6 @@ using Portol.Common;
 using Portol.Common.DTO;
 using Portol.Common.Helper;
 using Portol.Common.Interfaces.PortolMobile;
-using Portol.DTO;
 using PortolMobile.Forms.Helper;
 using System;
 using System.Collections.Generic;
@@ -163,11 +162,11 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                     return;
                 }
 
-                var result = await _loginService.SendVerificationCode(user.PhoneNumber, user.PhoneCountryCode);
-                if (result)
-                {
-                    await NavigationService.NavigateToAsync<SignupStepCodeViewModel>(user);                   
-                }
+                //var result = await _loginService.SendVerificationCode(user.PhoneNumber, user.PhoneCountryCode);
+                //if (result)
+                //{
+                    await NavigationService.NavigateToAsync<SignupStepCodeViewModel>(user);
+               // }
             }
             catch (System.Exception ex)
             {

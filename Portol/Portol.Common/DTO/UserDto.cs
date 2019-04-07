@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Portol.DTO
+namespace Portol.Common.DTO
 {
     public class UserDto
     {

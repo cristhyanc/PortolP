@@ -21,25 +21,25 @@
             <Style TargetType="Label"  >
                 <Setter Property="TextColor" Value="#000000" />
                 <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="FontFamily" Value="Century Gothic" />
+                <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
 
             <Style TargetType="Label" x:Key="LabelBaseStyle" >
                 <Setter Property="TextColor" Value="#000000" />
                 <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="FontFamily" Value="Century Gothic" />
+                <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
 
             <Style TargetType="Label" x:Key="LabelRequired"  BaseResourceKey="LabelBaseStyle"  >
                 <Setter Property="TextColor" Value="Red" />
                 <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="FontFamily" Value="Century Gothic" />
+                <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
 
             <Style TargetType="Label" x:Key="LabelBaseStyleWhite" >
                 <Setter Property="TextColor" Value="#ffffff" />
                 <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="FontFamily" Value="Century Gothic" />
+                <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
 
             <Style BaseResourceKey="LabelBaseStyle" TargetType="Entry">

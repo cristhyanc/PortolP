@@ -1,7 +1,7 @@
 ﻿using Portol.Common;
 using Portol.Common.Helper;
 using Portol.Common.Interfaces.PortolWeb;
-using Portol.DTO;
+using Portol.Common.DTO;
 using PortolWeb.Entities;
 using System;
 using System.Collections.Generic;

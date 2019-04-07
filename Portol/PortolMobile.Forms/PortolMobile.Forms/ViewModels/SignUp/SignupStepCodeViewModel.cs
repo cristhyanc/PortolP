@@ -1,6 +1,6 @@
 ﻿using Portol.Common;
 using Portol.Common.Interfaces.PortolMobile;
-using Portol.DTO;
+using Portol.Common.DTO;
 using PortolMobile.Forms.Helper;
 using System;
 using System.Collections.Generic;
@@ -189,7 +189,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
 
                 var code = Int16.Parse(this.FirstNumber + this.SecondNumber + this.ThirdNumber + this.FourNumber);
 
-                await _loginService.VerifyCode(_userDto.PhoneNumber, _userDto.PhoneCountryCode, code);
+            //    await _loginService.VerifyCode(_userDto.PhoneNumber, _userDto.PhoneCountryCode, code);
 
                 await NavigationService.NavigateToAsync<SignupStepDetailsViewModel>(_userDto);
              

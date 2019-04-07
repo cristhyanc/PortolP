@@ -1,7 +1,9 @@
-﻿using System;
+﻿using FFImageLoading;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -54,6 +56,25 @@ namespace PortolMobile.Forms.UWP
 
                 Xamarin.Forms.Forms.Init(e);
 
+                FFImageLoading.Forms.WinUWP.CachedImageRenderer.Init();
+
+                var config = new FFImageLoading.Config.Configuration()
+                {
+                    VerboseLogging = false,
+                    VerbosePerformanceLogging = false,
+                    VerboseMemoryCacheLogging = false,
+                    VerboseLoadingCancelledLogging = false,
+                    Logger = new CustomLogger(),
+                };
+                ImageService.Instance.Initialize(config);
+
+
+                List<Assembly> assembliesToInclude = new List<Assembly>();
+                assembliesToInclude.Add(typeof(FFImageLoading.Forms.WinUWP.CachedImageRenderer).GetTypeInfo().Assembly);             
+              
+                assembliesToInclude.Add(typeof(FFImageLoading.Forms.EmbeddedResourceImageSource).GetTypeInfo().Assembly);
+                Xamarin.Forms.Forms.Init(e, assembliesToInclude);
+
                 if (e.PreviousExecutionState == ApplicationExecutionState.Terminated)
                 {
                     //TODO: Load state from previously suspended application
@@ -96,6 +117,24 @@ namespace PortolMobile.Forms.UWP
             var deferral = e.SuspendingOperation.GetDeferral();
             //TODO: Save application state and stop any background activity
             deferral.Complete();
+        }
+    }
+
+    public class CustomLogger : FFImageLoading.Helpers.IMiniLogger
+    {
+        public void Debug(string message)
+        {
+            System.Diagnostics.Debug.WriteLine(message);
+        }
+
+        public void Error(string errorMessage)
+        {
+            System.Diagnostics.Debug.WriteLine(errorMessage);
+        }
+
+        public void Error(string errorMessage, Exception ex)
+        {
+            Error(errorMessage + System.Environment.NewLine + ex.ToString());
         }
     }
 }

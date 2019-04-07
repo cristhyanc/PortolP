@@ -1,4 +1,4 @@
-﻿using Portol.DTO;
+﻿using Portol.Common.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -25,12 +25,13 @@ namespace PortolWeb.Entities
         public string FlatNumber { get; set; }
         public string StreetName { get; set; }
         public string Suburb { get; set; }
-        public string City { get; set; }
+        public string PostCode { get; set; }
         public string State { get; set; }
         public string Country { get; set; }
         public bool Deleted { get; set; }
+        public bool AddressValidated { get; set; }
 
-
+        
         public static UserDto ORM(User user )
         {
             if(user==null)
@@ -46,13 +47,14 @@ namespace PortolWeb.Entities
             result.LastName = user.LastName;
             result.PhoneCountryCode = user.PhoneCountryCode;
             result.PhoneNumber = user.PhoneNumber;
-            result.UserID = user.UserID;           
-            result.UserAddress.City  = user.City;
+            result.UserID = user.UserID;          
+            result.UserAddress.PostCode = user.PostCode;
             result.UserAddress.Country = user.Country;
             result.UserAddress.FlatNumber = user.FlatNumber;
             result.UserAddress.State = user.State;
             result.UserAddress.StreetName = user.StreetName;
             result.UserAddress.Suburb = user.Suburb;
+            result.UserAddress.AddressValidated = user.AddressValidated;
             return result;
         }
 
@@ -73,12 +75,13 @@ namespace PortolWeb.Entities
 
             if (newUser.UserAddress != null)
             {
-                user.City = newUser.UserAddress.City;
+                user.PostCode = newUser.UserAddress.PostCode;
                 user.Country = newUser.UserAddress.Country;
                 user.FlatNumber = newUser.UserAddress.FlatNumber;
                 user.State = newUser.UserAddress.State;
                 user.StreetName = newUser.UserAddress.StreetName;
                 user.Suburb = newUser.UserAddress.Suburb;
+                user.AddressValidated = newUser.UserAddress.AddressValidated;
             }
             return user;
         }

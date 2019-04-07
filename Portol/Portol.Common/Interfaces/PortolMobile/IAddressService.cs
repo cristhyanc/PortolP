@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Portol.Common.Interfaces.PortolMobile
 {
-   public interface IUserMobileService
+    public interface IAddressService
     {
-        Task<Boolean> CreateNewuser(UserDto newUser);
+        Task<AddressFinderDto> GetPosibleAddresses(AddressDto tentativeAddress);
+        Task<AddressFinderDetail> GetAddressMetadata(string addressId);
     }
 }

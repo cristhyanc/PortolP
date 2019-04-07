@@ -8,42 +8,44 @@
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
              x:Class="PortolMobile.Forms.Views.SignUp.SignupStepEmailView">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="40,0,40,0">
+        <ScrollView >
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="40,0,40,0">
 
-            <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Center"  VerticalOptions="Start" Margin="0,20,0,0"
+                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Center"  VerticalOptions="Start" Margin="0,20,0,0"
                                            Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms" >
 
-            </ffimageloadingsvg:SvgCachedImage>
+                </ffimageloadingsvg:SvgCachedImage>
 
-            <Label Text="{i18n:Translate EmailPassword}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,30,0,0" ></Label>
+                <Label Text="{i18n:Translate EmailPassword}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,30,0,0" ></Label>
 
-            <controls:ExtendedEntry Placeholder="{i18n:Translate Email}" HorizontalTextAlignment="Center" Text="{Binding Email, Mode=TwoWay }" Margin="0,10,0,0"
+                <controls:ExtendedEntry Placeholder="{i18n:Translate Email}" HorizontalTextAlignment="Center" Text="{Binding Email, Mode=TwoWay }" Margin="0,10,0,0"
                   Keyboard="Email"  HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
 
 
-            <controls:ExtendedEntry Placeholder="{i18n:Translate ConfirmEmail}" HorizontalTextAlignment="Center" Text="{Binding ConfirmEmail, Mode=TwoWay }" Margin="0,10,0,0"
+                <controls:ExtendedEntry Placeholder="{i18n:Translate ConfirmEmail}" HorizontalTextAlignment="Center" Text="{Binding ConfirmEmail, Mode=TwoWay }" Margin="0,10,0,0"
                     Keyboard="Email"  HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
 
 
-            <controls:ExtendedEntry Placeholder="{i18n:Translate Password}" HorizontalTextAlignment="Center" Text="{Binding Password, Mode=TwoWay }" Margin="0,10,0,0"
+                <controls:ExtendedEntry Placeholder="{i18n:Translate Password}" HorizontalTextAlignment="Center" Text="{Binding Password, Mode=TwoWay }" Margin="0,10,0,0"
                    IsPassword="true"  HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
 
 
-            <controls:ExtendedEntry Placeholder="{i18n:Translate NewPasswordConfirmation}" HorizontalTextAlignment="Center" Text="{Binding ConfirmPassword, Mode=TwoWay }" Margin="0,10,0,0"
+                <controls:ExtendedEntry Placeholder="{i18n:Translate NewPasswordConfirmation}" HorizontalTextAlignment="Center" Text="{Binding ConfirmPassword, Mode=TwoWay }" Margin="0,10,0,0"
                   IsPassword="true"  HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
 
-            <Label Text="{Binding ErrorMessage}" Style="{StaticResource LabelRequired}" IsVisible="{Binding IsValidationVisible}" HorizontalOptions="Center"
+                <Label Text="{Binding ErrorMessage}" Style="{StaticResource LabelRequired}" IsVisible="{Binding IsValidationVisible}" HorizontalOptions="Center"
                    HorizontalTextAlignment="Center" Margin="0,5,0,0" ></Label>
 
-            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
 
-            <ffimageloadingsvg:SvgCachedImage WidthRequest="35" HeightRequest="35"  Margin="0,15,0,0" HorizontalOptions="Center" VerticalOptions="Center" 
+                <ffimageloadingsvg:SvgCachedImage WidthRequest="35" HeightRequest="35"  Margin="0,15,0,0" HorizontalOptions="Center" VerticalOptions="Center" 
                   Source="resource://PortolMobile.Forms.Resources.btn_background.svg?assembly=PortolMobile.Forms" >
-                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >
-                    <TapGestureRecognizer Command="{Binding GotoAddressPageCommand}"  ></TapGestureRecognizer>
-                </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
-            </ffimageloadingsvg:SvgCachedImage>
+                    <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >
+                        <TapGestureRecognizer Command="{Binding GotoAddressPageCommand}"  ></TapGestureRecognizer>
+                    </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                </ffimageloadingsvg:SvgCachedImage>
 
-        </StackLayout>
+            </StackLayout>
+        </ScrollView >
     </ContentPage.Content>
 </ContentPage>

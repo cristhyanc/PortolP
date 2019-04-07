@@ -56,12 +56,15 @@ namespace PortolMobile.Forms
                 builder.Register(c => UserDialogs.Instance).As<IUserDialogs>().SingleInstance();
                 builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
 
-
-                builder.RegisterType<RestClient>().As<IRestClient>();
+                
+                
                 builder.RegisterType<LoginService>().As<ILoginService>();
                 builder.RegisterType<UserMobileService>().As<IUserMobileService>();
 
-              
+                var restApi = new RestClient();
+                
+                builder.Register(c => restApi).As<IRestClient>().SingleInstance();
+                builder.Register(c =>new AddressService(restApi, "HW8AXP9FEKDCQ7L46JVM", "N3A6GXYLD978JTHC4RFU")).As<IAddressService>().SingleInstance();
 
                 if (_container != null)
                 {

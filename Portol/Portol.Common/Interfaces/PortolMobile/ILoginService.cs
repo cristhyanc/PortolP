@@ -1,4 +1,4 @@
-﻿using Portol.DTO;
+﻿using Portol.Common.DTO;
 using System;
 using System.Collections.Generic;
 using System.Text;

@@ -51,7 +51,7 @@
           <con:settings>
             <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
-          <con:endpoint>http://192.168.8.237/PortolWeb</con:endpoint>
+          <con:endpoint>https://portolwebapitest.azurewebsites.net/</con:endpoint>
           <con:request>{
 	Email: 'cristhyan@outlook.com',
 	Password: 'Systar*2015'

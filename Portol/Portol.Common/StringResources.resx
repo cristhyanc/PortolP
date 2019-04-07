@@ -258,4 +258,13 @@
   <data name="WrongCode" xml:space="preserve">
     <value>The Code you entered is incorrect</value>
   </data>
+  <data name="PostCodeRequired" xml:space="preserve">
+    <value>Postcode Required</value>
+  </data>
+  <data name="SelectAddress" xml:space="preserve">
+    <value>Select an Address</value>
+  </data>
+  <data name="UserSuggestedAddress" xml:space="preserve">
+    <value>Use my suggested address</value>
+  </data>
 </root>

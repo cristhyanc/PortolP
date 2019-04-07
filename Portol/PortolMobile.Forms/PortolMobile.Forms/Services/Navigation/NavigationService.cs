@@ -137,66 +137,24 @@ namespace PortolMobile.Forms.Services.Navigation
 
                 if(CurrentNavigator!=null)
                 {
-                    await CurrentNavigator.PushAsync(page);
-                    //if (Application.Current.MainPage == null)
-                    //{
-                    //    Application.Current.MainPage = page;
-                    //}
-                    //else
-                    //{
-                       
-                    //}
+                    if (typeof(MainView) == page.GetType())
+                    {
+                        Application.Current.MainPage = page;
+                        var mainPage = (MainView)page;                      
+                        CurrentNavigator = null;
+                        CurrentNavigator = mainPage.NavPage;
+                    }
+                    else
+                    {
+                        await CurrentNavigator.PushAsync(page);
+                    }                  
                 }
                 else
                 {
                     Application.Current.MainPage = page;
+                    var mainPage = (MainView)page;                    
+                    CurrentNavigator = mainPage.NavPage;                   
                 }
-              
-
-
-
-
-
-
-                //if (page is LoginView )
-                //{
-                //    CurrentNavigator = null;
-                //    Application.Current.MainPage = page;
-                //}
-                //else
-                //{
-                //    if (CurrentNavigator != null)
-                //    {
-                //        //if (_popupOn)
-                //        //{
-                //        //    await ClosePopup();
-                //        //}
-
-                //        await CurrentNavigator.PushAsync(page);
-                //    //    ((MainView)Application.Current.MainPage).IsPresented = false;
-
-
-                //    }
-                //    else
-                //    {
-
-                //        if (typeof(MainView) == page.GetType())
-                //        {
-                //            Application.Current.MainPage = page;
-                //            Application.Current.MainPage.BindingContext = new MainViewModel();
-                //            page = Application.Current.MainPage;
-                //        }
-                //        else
-                //        {
-                //            Application.Current.MainPage = null;
-                //            //TODO
-                //            //Application.Current.MainPage = new MainView(page)
-                //            //{
-                //            //    BindingContext = new MainViewModel()
-                //            //};
-                //        }
-                //    }
-                //}
 
                 if (viewModel != null)
                 {
@@ -207,8 +165,6 @@ namespace PortolMobile.Forms.Services.Navigation
                 {
                     await (page.BindingContext as BaseViewModel).InitializeAsync(parameter);
                 }
-
-
             }
             catch (Exception ex)
             {

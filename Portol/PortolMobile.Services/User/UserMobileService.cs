@@ -1,6 +1,6 @@
-﻿using Portol.Common.Helper;
+﻿using Portol.Common.DTO;
+using Portol.Common.Helper;
 using Portol.Common.Interfaces.PortolMobile;
-using Portol.DTO;
 using PortolMobile.Services.Rest;
 using System;
 using System.Collections.Generic;

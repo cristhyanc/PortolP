@@ -21,15 +21,28 @@ namespace PortolMobile.Services.Rest
         {
             using (var httpClient = new HttpClient())
             {
+
+                if (method == HttpMethod.Get)
+                {
+                    if (data != null)
+                    {
+                        var query = data.ToString();
+                        url += "?" + query;
+                    }
+                }               
+
                 using (var request = new HttpRequestMessage { RequestUri = new Uri(url), Method = method })
                 {
+                    
 
                     if (method != HttpMethod.Get)
                     {
-                        var json = JsonConvert.SerializeObject(data);
-                        request.Content = new StringContent(json, Encoding.UTF8, "application/json");
+                     var   jsonContent = JsonConvert.SerializeObject(data);
+                        request.Content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
                     }
+                  
 
+                   
                     HttpResponseMessage response = new HttpResponseMessage();
                     try
                     {
@@ -57,16 +70,18 @@ namespace PortolMobile.Services.Rest
                 }
                 else
                 {
-                    var error = JsonConvert.DeserializeObject<ApiError>(stringSerialized);
+                    var error = JsonConvert.DeserializeObject<ApiError>(stringSerialized);   
+                    if(string.IsNullOrEmpty(error.StatusDescription))
+                    {
+                        error.StatusDescription = error.message;
+                    }
                     throw new AppException(error.StatusDescription);
                 }
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
-
         }
 
         public async Task<TResult> MakeApiCallRaw<TResult>(string url, HttpMethod method, object data = null) where TResult : struct

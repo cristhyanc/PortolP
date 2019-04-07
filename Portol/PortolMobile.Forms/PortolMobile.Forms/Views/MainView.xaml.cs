@@ -10,21 +10,17 @@ using Xamarin.Forms.Xaml;
 namespace PortolMobile.Forms.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainView : ContentView
+    public partial class MainView : TabbedPage
     {
+
+        public NavigationPage NavPage { get { return this.nvgPage; } }
+
         public MainView()
         {
             InitializeComponent();
         
         }
-
-        public MainView(Page root)
-        {
-            InitializeComponent();
-      //TODO
-            //this.navigator.PushAsync(root);
-
-        }
+              
 
         //protected override void OnAppearing()
         //{

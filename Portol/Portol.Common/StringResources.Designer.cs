@@ -412,11 +412,29 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Postcode Required.
+        /// </summary>
+        public static string PostCodeRequired {
+            get {
+                return ResourceManager.GetString("PostCodeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Recovering Password.
         /// </summary>
         public static string RecoveringPassword {
             get {
                 return ResourceManager.GetString("RecoveringPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select an Address.
+        /// </summary>
+        public static string SelectAddress {
+            get {
+                return ResourceManager.GetString("SelectAddress", resourceCulture);
             }
         }
         
@@ -471,6 +489,15 @@ namespace Portol.Common {
         public static string UserDoesNotExist {
             get {
                 return ResourceManager.GetString("UserDoesNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use my suggested address.
+        /// </summary>
+        public static string UserSuggestedAddress {
+            get {
+                return ResourceManager.GetString("UserSuggestedAddress", resourceCulture);
             }
         }
         
