@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<con:soapui-project id="84a82ebf-52bf-458e-af45-05aac05d2985" created="2.6.0" activeEnvironment="Default environment" name="PortolWeb.Api Test" resourceRoot="" updated="2.6.0 2019-01-14T14:47:06Z" abortOnError="false" runType="SEQUENTIAL" soapui-version="5.5.0" encryptionMode="Not encrypted" xmlns:con="http://eviware.com/soapui/config">
+<con:soapui-project id="84a82ebf-52bf-458e-af45-05aac05d2985" created="2.6.0" activeEnvironment="Default" name="PortolWeb.Api Test" resourceRoot="" updated="2.6.0 2019-01-14T14:47:06Z" abortOnError="false" runType="SEQUENTIAL" soapui-version="5.5.0" encryptionMode="Not encrypted" xmlns:con="http://eviware.com/soapui/config">
   <con:settings/>
   <con:interface xsi:type="con:RestService" id="fca963cf-55b0-4dd3-a144-7dd22bbe2a24" wadlVersion="http://wadl.dev.java.net/2009/02" name="https://localhost:44346" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <con:settings/>
@@ -35,11 +35,23 @@
           <con:params/>
           <con:element xmlns:user="https://localhost/api/users">user:Fault</con:element>
         </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>text/html</con:mediaType>
+          <con:status>502</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
+        <con:representation type="FAULT">
+          <con:mediaType>text/html; charset=us-ascii</con:mediaType>
+          <con:status>503</con:status>
+          <con:params/>
+          <con:element>html</con:element>
+        </con:representation>
         <con:request name="Authenticate" id="98ca1aad-27e7-4d29-a1c2-452489c5c6aa" mediaType="application/json" postQueryString="false">
           <con:settings>
             <con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting>
           </con:settings>
-          <con:endpoint>https://localhost:44346</con:endpoint>
+          <con:endpoint>https://portolwebapitest.azurewebsites.net/</con:endpoint>
           <con:request>{
 	Email: 'cristhyan@outlook.com',
 	Password: 'Systar*2015'
@@ -131,6 +143,7 @@ UserAddress:{
 }</con:request>
           <con:originalUri>https://localhost/api/users/Register</con:originalUri>
           <con:credentials>
+            <con:selectedAuthProfile>No Authorization</con:selectedAuthProfile>
             <con:authType>No Authorization</con:authType>
           </con:credentials>
           <con:jmsConfig JMSDeliveryMode="PERSISTENT"/>

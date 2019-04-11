@@ -5364,44 +5364,44 @@ namespace PortolMobile.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0d0051
-			public const int abc_background_cache_hint_selector_material_dark = 2131558481;
-			
 			// aapt resource value: 0x7f0d0052
-			public const int abc_background_cache_hint_selector_material_light = 2131558482;
+			public const int abc_background_cache_hint_selector_material_dark = 2131558482;
 			
 			// aapt resource value: 0x7f0d0053
-			public const int abc_btn_colored_borderless_text_material = 2131558483;
+			public const int abc_background_cache_hint_selector_material_light = 2131558483;
 			
 			// aapt resource value: 0x7f0d0054
-			public const int abc_btn_colored_text_material = 2131558484;
+			public const int abc_btn_colored_borderless_text_material = 2131558484;
 			
 			// aapt resource value: 0x7f0d0055
-			public const int abc_color_highlight_material = 2131558485;
+			public const int abc_btn_colored_text_material = 2131558485;
 			
 			// aapt resource value: 0x7f0d0056
-			public const int abc_hint_foreground_material_dark = 2131558486;
+			public const int abc_color_highlight_material = 2131558486;
 			
 			// aapt resource value: 0x7f0d0057
-			public const int abc_hint_foreground_material_light = 2131558487;
+			public const int abc_hint_foreground_material_dark = 2131558487;
+			
+			// aapt resource value: 0x7f0d0058
+			public const int abc_hint_foreground_material_light = 2131558488;
 			
 			// aapt resource value: 0x7f0d0000
 			public const int abc_input_method_navigation_guard = 2131558400;
 			
-			// aapt resource value: 0x7f0d0058
-			public const int abc_primary_text_disable_only_material_dark = 2131558488;
-			
 			// aapt resource value: 0x7f0d0059
-			public const int abc_primary_text_disable_only_material_light = 2131558489;
+			public const int abc_primary_text_disable_only_material_dark = 2131558489;
 			
 			// aapt resource value: 0x7f0d005a
-			public const int abc_primary_text_material_dark = 2131558490;
+			public const int abc_primary_text_disable_only_material_light = 2131558490;
 			
 			// aapt resource value: 0x7f0d005b
-			public const int abc_primary_text_material_light = 2131558491;
+			public const int abc_primary_text_material_dark = 2131558491;
 			
 			// aapt resource value: 0x7f0d005c
-			public const int abc_search_url_text = 2131558492;
+			public const int abc_primary_text_material_light = 2131558492;
+			
+			// aapt resource value: 0x7f0d005d
+			public const int abc_search_url_text = 2131558493;
 			
 			// aapt resource value: 0x7f0d0001
 			public const int abc_search_url_text_normal = 2131558401;
@@ -5412,29 +5412,29 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0d0003
 			public const int abc_search_url_text_selected = 2131558403;
 			
-			// aapt resource value: 0x7f0d005d
-			public const int abc_secondary_text_material_dark = 2131558493;
-			
 			// aapt resource value: 0x7f0d005e
-			public const int abc_secondary_text_material_light = 2131558494;
+			public const int abc_secondary_text_material_dark = 2131558494;
 			
 			// aapt resource value: 0x7f0d005f
-			public const int abc_tint_btn_checkable = 2131558495;
+			public const int abc_secondary_text_material_light = 2131558495;
 			
 			// aapt resource value: 0x7f0d0060
-			public const int abc_tint_default = 2131558496;
+			public const int abc_tint_btn_checkable = 2131558496;
 			
 			// aapt resource value: 0x7f0d0061
-			public const int abc_tint_edittext = 2131558497;
+			public const int abc_tint_default = 2131558497;
 			
 			// aapt resource value: 0x7f0d0062
-			public const int abc_tint_seek_thumb = 2131558498;
+			public const int abc_tint_edittext = 2131558498;
 			
 			// aapt resource value: 0x7f0d0063
-			public const int abc_tint_spinner = 2131558499;
+			public const int abc_tint_seek_thumb = 2131558499;
 			
 			// aapt resource value: 0x7f0d0064
-			public const int abc_tint_switch_track = 2131558500;
+			public const int abc_tint_spinner = 2131558500;
+			
+			// aapt resource value: 0x7f0d0065
+			public const int abc_tint_switch_track = 2131558501;
 			
 			// aapt resource value: 0x7f0d0004
 			public const int accent_material_dark = 2131558404;
@@ -5454,8 +5454,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0d0009
 			public const int background_material_light = 2131558409;
 			
-			// aapt resource value: 0x7f0d004f
-			public const int black = 2131558479;
+			// aapt resource value: 0x7f0d004b
+			public const int black = 2131558475;
 			
 			// aapt resource value: 0x7f0d000a
 			public const int bright_foreground_disabled_material_dark = 2131558410;
@@ -5490,14 +5490,14 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0d0048
 			public const int colorPrimaryDark = 2131558472;
 			
-			// aapt resource value: 0x7f0d004e
-			public const int dark_gray = 2131558478;
+			// aapt resource value: 0x7f0d004f
+			public const int dark_gray = 2131558479;
 			
 			// aapt resource value: 0x7f0d003c
 			public const int design_bottom_navigation_shadow_color = 2131558460;
 			
-			// aapt resource value: 0x7f0d0065
-			public const int design_error = 2131558501;
+			// aapt resource value: 0x7f0d0066
+			public const int design_error = 2131558502;
 			
 			// aapt resource value: 0x7f0d003d
 			public const int design_fab_shadow_end_color = 2131558461;
@@ -5523,8 +5523,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0d0044
 			public const int design_snackbar_background_color = 2131558468;
 			
-			// aapt resource value: 0x7f0d0066
-			public const int design_tint_password_toggle = 2131558502;
+			// aapt resource value: 0x7f0d0067
+			public const int design_tint_password_toggle = 2131558503;
 			
 			// aapt resource value: 0x7f0d0012
 			public const int dim_foreground_disabled_material_dark = 2131558418;
@@ -5547,8 +5547,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0d0018
 			public const int foreground_material_light = 2131558424;
 			
-			// aapt resource value: 0x7f0d004d
-			public const int gray = 2131558477;
+			// aapt resource value: 0x7f0d004e
+			public const int gray = 2131558478;
 			
 			// aapt resource value: 0x7f0d0019
 			public const int highlighted_text_material_dark = 2131558425;
@@ -5556,8 +5556,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0d001a
 			public const int highlighted_text_material_light = 2131558426;
 			
-			// aapt resource value: 0x7f0d004b
-			public const int light_gray = 2131558475;
+			// aapt resource value: 0x7f0d004c
+			public const int light_gray = 2131558476;
 			
 			// aapt resource value: 0x7f0d001b
 			public const int material_blue_grey_800 = 2131558427;
@@ -5595,8 +5595,11 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0d0026
 			public const int material_grey_900 = 2131558438;
 			
-			// aapt resource value: 0x7f0d004c
-			public const int med_gray = 2131558476;
+			// aapt resource value: 0x7f0d004d
+			public const int med_gray = 2131558477;
+			
+			// aapt resource value: 0x7f0d0051
+			public const int menu_background_color = 2131558481;
 			
 			// aapt resource value: 0x7f0d0045
 			public const int notification_action_color_filter = 2131558469;
@@ -5655,11 +5658,11 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0d0036
 			public const int switch_thumb_disabled_material_light = 2131558454;
 			
-			// aapt resource value: 0x7f0d0067
-			public const int switch_thumb_material_dark = 2131558503;
-			
 			// aapt resource value: 0x7f0d0068
-			public const int switch_thumb_material_light = 2131558504;
+			public const int switch_thumb_material_dark = 2131558504;
+			
+			// aapt resource value: 0x7f0d0069
+			public const int switch_thumb_material_light = 2131558505;
 			
 			// aapt resource value: 0x7f0d0037
 			public const int switch_thumb_normal_material_dark = 2131558455;
@@ -6488,26 +6491,26 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f020054
 			public const int avd_hide_password = 2130837588;
 			
-			// aapt resource value: 0x7f020074
-			public const int avd_hide_password_1 = 2130837620;
+			// aapt resource value: 0x7f02007b
+			public const int avd_hide_password_1 = 2130837627;
 			
-			// aapt resource value: 0x7f020075
-			public const int avd_hide_password_2 = 2130837621;
+			// aapt resource value: 0x7f02007c
+			public const int avd_hide_password_2 = 2130837628;
 			
-			// aapt resource value: 0x7f020076
-			public const int avd_hide_password_3 = 2130837622;
+			// aapt resource value: 0x7f02007d
+			public const int avd_hide_password_3 = 2130837629;
 			
 			// aapt resource value: 0x7f020055
 			public const int avd_show_password = 2130837589;
 			
-			// aapt resource value: 0x7f020077
-			public const int avd_show_password_1 = 2130837623;
+			// aapt resource value: 0x7f02007e
+			public const int avd_show_password_1 = 2130837630;
 			
-			// aapt resource value: 0x7f020078
-			public const int avd_show_password_2 = 2130837624;
+			// aapt resource value: 0x7f02007f
+			public const int avd_show_password_2 = 2130837631;
 			
-			// aapt resource value: 0x7f020079
-			public const int avd_show_password_3 = 2130837625;
+			// aapt resource value: 0x7f020080
+			public const int avd_show_password_3 = 2130837632;
 			
 			// aapt resource value: 0x7f020056
 			public const int design_bottom_navigation_item_background = 2130837590;
@@ -6528,76 +6531,97 @@ namespace PortolMobile.Droid
 			public const int design_snackbar_background = 2130837595;
 			
 			// aapt resource value: 0x7f02005c
-			public const int ic_errorstatus = 2130837596;
+			public const int edittext_bottom_line = 2130837596;
 			
 			// aapt resource value: 0x7f02005d
-			public const int ic_successstatus = 2130837597;
+			public const int ic_australia = 2130837597;
 			
 			// aapt resource value: 0x7f02005e
-			public const int navigation_empty_icon = 2130837598;
+			public const int ic_errorstatus = 2130837598;
 			
 			// aapt resource value: 0x7f02005f
-			public const int notification_action_background = 2130837599;
+			public const int ic_newZealand = 2130837599;
 			
 			// aapt resource value: 0x7f020060
-			public const int notification_bg = 2130837600;
+			public const int ic_play_gray = 2130837600;
 			
 			// aapt resource value: 0x7f020061
-			public const int notification_bg_low = 2130837601;
+			public const int ic_successstatus = 2130837601;
 			
 			// aapt resource value: 0x7f020062
-			public const int notification_bg_low_normal = 2130837602;
+			public const int ic_unitedKingdom = 2130837602;
 			
 			// aapt resource value: 0x7f020063
-			public const int notification_bg_low_pressed = 2130837603;
+			public const int login_background = 2130837603;
 			
 			// aapt resource value: 0x7f020064
-			public const int notification_bg_normal = 2130837604;
+			public const int logo_long_white = 2130837604;
 			
 			// aapt resource value: 0x7f020065
-			public const int notification_bg_normal_pressed = 2130837605;
+			public const int navigation_empty_icon = 2130837605;
 			
 			// aapt resource value: 0x7f020066
-			public const int notification_icon_background = 2130837606;
-			
-			// aapt resource value: 0x7f020072
-			public const int notification_template_icon_bg = 2130837618;
-			
-			// aapt resource value: 0x7f020073
-			public const int notification_template_icon_low_bg = 2130837619;
+			public const int notification_action_background = 2130837606;
 			
 			// aapt resource value: 0x7f020067
-			public const int notification_tile_bg = 2130837607;
+			public const int notification_bg = 2130837607;
 			
 			// aapt resource value: 0x7f020068
-			public const int notify_panel_notification_icon_bg = 2130837608;
+			public const int notification_bg_low = 2130837608;
 			
 			// aapt resource value: 0x7f020069
-			public const int people = 2130837609;
+			public const int notification_bg_low_normal = 2130837609;
 			
 			// aapt resource value: 0x7f02006a
-			public const int planet = 2130837610;
+			public const int notification_bg_low_pressed = 2130837610;
 			
 			// aapt resource value: 0x7f02006b
-			public const int roundedbg = 2130837611;
+			public const int notification_bg_normal = 2130837611;
 			
 			// aapt resource value: 0x7f02006c
-			public const int roundedbgdark = 2130837612;
+			public const int notification_bg_normal_pressed = 2130837612;
 			
 			// aapt resource value: 0x7f02006d
-			public const int side_nav_bar = 2130837613;
+			public const int notification_icon_background = 2130837613;
+			
+			// aapt resource value: 0x7f020079
+			public const int notification_template_icon_bg = 2130837625;
+			
+			// aapt resource value: 0x7f02007a
+			public const int notification_template_icon_low_bg = 2130837626;
 			
 			// aapt resource value: 0x7f02006e
-			public const int splashScreen = 2130837614;
+			public const int notification_tile_bg = 2130837614;
 			
 			// aapt resource value: 0x7f02006f
-			public const int statistics = 2130837615;
+			public const int notify_panel_notification_icon_bg = 2130837615;
 			
 			// aapt resource value: 0x7f020070
-			public const int tooltip_frame_dark = 2130837616;
+			public const int people = 2130837616;
 			
 			// aapt resource value: 0x7f020071
-			public const int tooltip_frame_light = 2130837617;
+			public const int planet = 2130837617;
+			
+			// aapt resource value: 0x7f020072
+			public const int roundedbg = 2130837618;
+			
+			// aapt resource value: 0x7f020073
+			public const int roundedbgdark = 2130837619;
+			
+			// aapt resource value: 0x7f020074
+			public const int side_nav_bar = 2130837620;
+			
+			// aapt resource value: 0x7f020075
+			public const int splashScreen = 2130837621;
+			
+			// aapt resource value: 0x7f020076
+			public const int statistics = 2130837622;
+			
+			// aapt resource value: 0x7f020077
+			public const int tooltip_frame_dark = 2130837623;
+			
+			// aapt resource value: 0x7f020078
+			public const int tooltip_frame_light = 2130837624;
 			
 			static Drawable()
 			{
@@ -6636,8 +6660,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090039
 			public const int SYM = 2131296313;
 			
-			// aapt resource value: 0x7f0900ab
-			public const int action0 = 2131296427;
+			// aapt resource value: 0x7f0900b3
+			public const int action0 = 2131296435;
 			
 			// aapt resource value: 0x7f09007e
 			public const int action_bar = 2131296382;
@@ -6660,17 +6684,17 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f09005c
 			public const int action_bar_title = 2131296348;
 			
-			// aapt resource value: 0x7f0900a8
-			public const int action_container = 2131296424;
+			// aapt resource value: 0x7f0900b0
+			public const int action_container = 2131296432;
 			
 			// aapt resource value: 0x7f09007f
 			public const int action_context_bar = 2131296383;
 			
-			// aapt resource value: 0x7f0900af
-			public const int action_divider = 2131296431;
+			// aapt resource value: 0x7f0900b7
+			public const int action_divider = 2131296439;
 			
-			// aapt resource value: 0x7f0900a9
-			public const int action_image = 2131296425;
+			// aapt resource value: 0x7f0900b1
+			public const int action_image = 2131296433;
 			
 			// aapt resource value: 0x7f090003
 			public const int action_menu_divider = 2131296259;
@@ -6687,11 +6711,11 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f09005e
 			public const int action_mode_close_button = 2131296350;
 			
-			// aapt resource value: 0x7f0900aa
-			public const int action_text = 2131296426;
+			// aapt resource value: 0x7f0900b2
+			public const int action_text = 2131296434;
 			
-			// aapt resource value: 0x7f0900b8
-			public const int actions = 2131296440;
+			// aapt resource value: 0x7f0900c0
+			public const int actions = 2131296448;
 			
 			// aapt resource value: 0x7f09005f
 			public const int activity_chooser_view_content = 2131296351;
@@ -6708,8 +6732,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f09003a
 			public const int always = 2131296314;
 			
-			// aapt resource value: 0x7f0900bb
-			public const int appbar = 2131296443;
+			// aapt resource value: 0x7f0900e4
+			public const int appbar = 2131296484;
 			
 			// aapt resource value: 0x7f090058
 			public const int async = 2131296344;
@@ -6726,14 +6750,38 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f09003f
 			public const int bottom = 2131296319;
 			
+			// aapt resource value: 0x7f0900c6
+			public const int btnCountryCode = 2131296454;
+			
+			// aapt resource value: 0x7f0900a8
+			public const int btnForgotPassword = 2131296424;
+			
+			// aapt resource value: 0x7f0900a7
+			public const int btnLogin = 2131296423;
+			
+			// aapt resource value: 0x7f0900d3
+			public const int btnNewpassword = 2131296467;
+			
+			// aapt resource value: 0x7f0900cf
+			public const int btnResend = 2131296463;
+			
+			// aapt resource value: 0x7f0900c8
+			public const int btnSendCode = 2131296456;
+			
+			// aapt resource value: 0x7f0900a9
+			public const int btnSignUp = 2131296425;
+			
+			// aapt resource value: 0x7f0900ce
+			public const int btnVerifyCode = 2131296462;
+			
 			// aapt resource value: 0x7f09009c
 			public const int button1 = 2131296412;
 			
 			// aapt resource value: 0x7f090065
 			public const int buttonPanel = 2131296357;
 			
-			// aapt resource value: 0x7f0900ac
-			public const int cancel_action = 2131296428;
+			// aapt resource value: 0x7f0900b4
+			public const int cancel_action = 2131296436;
 			
 			// aapt resource value: 0x7f090047
 			public const int center = 2131296327;
@@ -6747,8 +6795,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090075
 			public const int checkbox = 2131296373;
 			
-			// aapt resource value: 0x7f0900b4
-			public const int chronometer = 2131296436;
+			// aapt resource value: 0x7f0900bc
+			public const int chronometer = 2131296444;
 			
 			// aapt resource value: 0x7f090050
 			public const int clip_horizontal = 2131296336;
@@ -6765,8 +6813,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090068
 			public const int contentPanel = 2131296360;
 			
-			// aapt resource value: 0x7f0900a4
-			public const int content_frame = 2131296420;
+			// aapt resource value: 0x7f0900ac
+			public const int content_frame = 2131296428;
 			
 			// aapt resource value: 0x7f090090
 			public const int coordinator = 2131296400;
@@ -6801,11 +6849,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090022
 			public const int disableHome = 2131296290;
 			
-			// aapt resource value: 0x7f0900a2
-			public const int drawer_layout = 2131296418;
-			
-			// aapt resource value: 0x7f0900a1
-			public const int editText1 = 2131296417;
+			// aapt resource value: 0x7f0900aa
+			public const int drawer_layout = 2131296426;
 			
 			// aapt resource value: 0x7f090080
 			public const int edit_query = 2131296384;
@@ -6813,8 +6858,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090032
 			public const int end = 2131296306;
 			
-			// aapt resource value: 0x7f0900ba
-			public const int end_padder = 2131296442;
+			// aapt resource value: 0x7f0900c2
+			public const int end_padder = 2131296450;
 			
 			// aapt resource value: 0x7f090041
 			public const int enterAlways = 2131296321;
@@ -6858,8 +6903,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090064
 			public const int icon = 2131296356;
 			
-			// aapt resource value: 0x7f0900b9
-			public const int icon_group = 2131296441;
+			// aapt resource value: 0x7f0900c1
+			public const int icon_group = 2131296449;
 			
 			// aapt resource value: 0x7f09003c
 			public const int ifRoom = 2131296316;
@@ -6867,8 +6912,11 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090061
 			public const int image = 2131296353;
 			
-			// aapt resource value: 0x7f0900b5
-			public const int info = 2131296437;
+			// aapt resource value: 0x7f0900a3
+			public const int imageView = 2131296419;
+			
+			// aapt resource value: 0x7f0900bd
+			public const int info = 2131296445;
 			
 			// aapt resource value: 0x7f09005b
 			public const int italic = 2131296347;
@@ -6878,6 +6926,27 @@ namespace PortolMobile.Droid
 			
 			// aapt resource value: 0x7f09008e
 			public const int largeLabel = 2131296398;
+			
+			// aapt resource value: 0x7f09009d
+			public const int lblCode = 2131296413;
+			
+			// aapt resource value: 0x7f0900c4
+			public const int lblDescription = 2131296452;
+			
+			// aapt resource value: 0x7f0900d0
+			public const int lblNewPassword = 2131296464;
+			
+			// aapt resource value: 0x7f0900dd
+			public const int lblNumber = 2131296477;
+			
+			// aapt resource value: 0x7f0900dc
+			public const int lblPhoneRequired = 2131296476;
+			
+			// aapt resource value: 0x7f0900de
+			public const int lblResendcode = 2131296478;
+			
+			// aapt resource value: 0x7f0900d4
+			public const int lblTitle = 2131296468;
 			
 			// aapt resource value: 0x7f09004b
 			public const int left = 2131296331;
@@ -6894,26 +6963,38 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090063
 			public const int list_item = 2131296355;
 			
-			// aapt resource value: 0x7f09009f
-			public const int loadingImage = 2131296415;
+			// aapt resource value: 0x7f0900c5
+			public const int llyCountryList = 2131296453;
 			
-			// aapt resource value: 0x7f09009d
-			public const int loadingProgressBar = 2131296413;
+			// aapt resource value: 0x7f0900c9
+			public const int lnyCode = 2131296457;
+			
+			// aapt resource value: 0x7f0900c3
+			public const int lnyPhoneNumber = 2131296451;
 			
 			// aapt resource value: 0x7f0900a0
-			public const int loadingProgressWheel = 2131296416;
+			public const int loadingImage = 2131296416;
 			
-			// aapt resource value: 0x7f0900a3
-			public const int main_frame = 2131296419;
+			// aapt resource value: 0x7f09009e
+			public const int loadingProgressBar = 2131296414;
 			
-			// aapt resource value: 0x7f0900bf
-			public const int masked = 2131296447;
+			// aapt resource value: 0x7f0900a1
+			public const int loadingProgressWheel = 2131296417;
 			
-			// aapt resource value: 0x7f0900ae
-			public const int media_actions = 2131296430;
+			// aapt resource value: 0x7f0900a2
+			public const int mainLayout = 2131296418;
 			
-			// aapt resource value: 0x7f0900bd
-			public const int message = 2131296445;
+			// aapt resource value: 0x7f0900ab
+			public const int main_frame = 2131296427;
+			
+			// aapt resource value: 0x7f0900e8
+			public const int masked = 2131296488;
+			
+			// aapt resource value: 0x7f0900b6
+			public const int media_actions = 2131296438;
+			
+			// aapt resource value: 0x7f0900e6
+			public const int message = 2131296486;
 			
 			// aapt resource value: 0x7f090033
 			public const int middle = 2131296307;
@@ -6924,26 +7005,26 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f09002a
 			public const int multiply = 2131296298;
 			
-			// aapt resource value: 0x7f0900c0
-			public const int nav_items = 2131296448;
+			// aapt resource value: 0x7f0900e9
+			public const int nav_items = 2131296489;
 			
-			// aapt resource value: 0x7f0900c2
-			public const int nav_people = 2131296450;
+			// aapt resource value: 0x7f0900eb
+			public const int nav_people = 2131296491;
 			
-			// aapt resource value: 0x7f0900c1
-			public const int nav_planets = 2131296449;
+			// aapt resource value: 0x7f0900ea
+			public const int nav_planets = 2131296490;
 			
-			// aapt resource value: 0x7f0900c3
-			public const int nav_statistics = 2131296451;
+			// aapt resource value: 0x7f0900ec
+			public const int nav_statistics = 2131296492;
 			
-			// aapt resource value: 0x7f0900a5
-			public const int navigation_frame = 2131296421;
+			// aapt resource value: 0x7f0900ad
+			public const int navigation_frame = 2131296429;
 			
 			// aapt resource value: 0x7f090095
 			public const int navigation_header_container = 2131296405;
 			
-			// aapt resource value: 0x7f0900a6
-			public const int navigation_view = 2131296422;
+			// aapt resource value: 0x7f0900ae
+			public const int navigation_view = 2131296430;
 			
 			// aapt resource value: 0x7f09003d
 			public const int never = 2131296317;
@@ -6954,14 +7035,14 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090020
 			public const int normal = 2131296288;
 			
-			// aapt resource value: 0x7f0900b7
-			public const int notification_background = 2131296439;
+			// aapt resource value: 0x7f0900bf
+			public const int notification_background = 2131296447;
 			
-			// aapt resource value: 0x7f0900b1
-			public const int notification_main_column = 2131296433;
+			// aapt resource value: 0x7f0900b9
+			public const int notification_main_column = 2131296441;
 			
-			// aapt resource value: 0x7f0900b0
-			public const int notification_main_column_container = 2131296432;
+			// aapt resource value: 0x7f0900b8
+			public const int notification_main_column_container = 2131296440;
 			
 			// aapt resource value: 0x7f09004e
 			public const int parallax = 2131296334;
@@ -6975,6 +7056,9 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f09004f
 			public const int pin = 2131296335;
 			
+			// aapt resource value: 0x7f0900a6
+			public const int progressBar2 = 2131296422;
+			
 			// aapt resource value: 0x7f090006
 			public const int progress_circular = 2131296262;
 			
@@ -6987,11 +7071,11 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f09004c
 			public const int right = 2131296332;
 			
-			// aapt resource value: 0x7f0900b6
-			public const int right_icon = 2131296438;
+			// aapt resource value: 0x7f0900be
+			public const int right_icon = 2131296446;
 			
-			// aapt resource value: 0x7f0900b2
-			public const int right_side = 2131296434;
+			// aapt resource value: 0x7f0900ba
+			public const int right_side = 2131296442;
 			
 			// aapt resource value: 0x7f09000c
 			public const int save_image_matrix = 2131296268;
@@ -7095,8 +7179,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f09004d
 			public const int start = 2131296333;
 			
-			// aapt resource value: 0x7f0900ad
-			public const int status_bar_latest_event_content = 2131296429;
+			// aapt resource value: 0x7f0900b5
+			public const int status_bar_latest_event_content = 2131296437;
 			
 			// aapt resource value: 0x7f090078
 			public const int submenuarrow = 2131296376;
@@ -7125,8 +7209,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f09009b
 			public const int textView1 = 2131296411;
 			
-			// aapt resource value: 0x7f09009e
-			public const int textViewStatus = 2131296414;
+			// aapt resource value: 0x7f09009f
+			public const int textViewStatus = 2131296415;
 			
 			// aapt resource value: 0x7f09009a
 			public const int text_input_password_toggle = 2131296410;
@@ -7137,8 +7221,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090015
 			public const int textinput_error = 2131296277;
 			
-			// aapt resource value: 0x7f0900b3
-			public const int time = 2131296435;
+			// aapt resource value: 0x7f0900bb
+			public const int time = 2131296443;
 			
 			// aapt resource value: 0x7f09001c
 			public const int title = 2131296284;
@@ -7149,8 +7233,8 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090071
 			public const int title_template = 2131296369;
 			
-			// aapt resource value: 0x7f0900bc
-			public const int toolbar = 2131296444;
+			// aapt resource value: 0x7f0900e5
+			public const int toolbar = 2131296485;
 			
 			// aapt resource value: 0x7f090040
 			public const int top = 2131296320;
@@ -7176,6 +7260,69 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090013
 			public const int transition_transform = 2131296275;
 			
+			// aapt resource value: 0x7f0900e2
+			public const int txtConfirmEmail = 2131296482;
+			
+			// aapt resource value: 0x7f0900e3
+			public const int txtConfirmPassword = 2131296483;
+			
+			// aapt resource value: 0x7f0900e1
+			public const int txtDOB = 2131296481;
+			
+			// aapt resource value: 0x7f0900a4
+			public const int txtEmail = 2131296420;
+			
+			// aapt resource value: 0x7f0900df
+			public const int txtFirsname = 2131296479;
+			
+			// aapt resource value: 0x7f0900ca
+			public const int txtFirstNumber = 2131296458;
+			
+			// aapt resource value: 0x7f0900cd
+			public const int txtFourNumber = 2131296461;
+			
+			// aapt resource value: 0x7f0900e0
+			public const int txtLastName = 2131296480;
+			
+			// aapt resource value: 0x7f0900c7
+			public const int txtMobileNumber = 2131296455;
+			
+			// aapt resource value: 0x7f0900d1
+			public const int txtNewPass1 = 2131296465;
+			
+			// aapt resource value: 0x7f0900d2
+			public const int txtNewPass2 = 2131296466;
+			
+			// aapt resource value: 0x7f0900a5
+			public const int txtPassword = 2131296421;
+			
+			// aapt resource value: 0x7f0900cb
+			public const int txtSecondNumber = 2131296459;
+			
+			// aapt resource value: 0x7f0900d6
+			public const int txtStreet = 2131296470;
+			
+			// aapt resource value: 0x7f0900d7
+			public const int txtSuburb = 2131296471;
+			
+			// aapt resource value: 0x7f0900cc
+			public const int txtThirdNumber = 2131296460;
+			
+			// aapt resource value: 0x7f0900d5
+			public const int txtUnit = 2131296469;
+			
+			// aapt resource value: 0x7f0900d9
+			public const int txtcity = 2131296473;
+			
+			// aapt resource value: 0x7f0900db
+			public const int txtcountry = 2131296475;
+			
+			// aapt resource value: 0x7f0900d8
+			public const int txtpostCode = 2131296472;
+			
+			// aapt resource value: 0x7f0900da
+			public const int txtstate = 2131296474;
+			
 			// aapt resource value: 0x7f09002f
 			public const int uniform = 2131296303;
 			
@@ -7185,14 +7332,14 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f090028
 			public const int useLogo = 2131296296;
 			
-			// aapt resource value: 0x7f0900a7
-			public const int username = 2131296423;
+			// aapt resource value: 0x7f0900af
+			public const int username = 2131296431;
 			
 			// aapt resource value: 0x7f090016
 			public const int view_offset_helper = 2131296278;
 			
-			// aapt resource value: 0x7f0900be
-			public const int visible = 2131296446;
+			// aapt resource value: 0x7f0900e7
+			public const int visible = 2131296487;
 			
 			// aapt resource value: 0x7f09003e
 			public const int withText = 2131296318;
@@ -7380,91 +7527,115 @@ namespace PortolMobile.Droid
 			public const int FirstPage = 2130968616;
 			
 			// aapt resource value: 0x7f040029
-			public const int loading = 2130968617;
+			public const int item_spinner_country = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int loadingimage = 2130968618;
+			public const int item_spinner_country_dropdown = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int loadingprogress = 2130968619;
+			public const int loading = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int LoginView = 2130968620;
+			public const int loadingimage = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int MainView = 2130968621;
+			public const int loadingprogress = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int MenuView = 2130968622;
+			public const int LoginView = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int navigation_header = 2130968623;
+			public const int MainView = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int notification_action = 2130968624;
+			public const int MenuView = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int notification_action_tombstone = 2130968625;
+			public const int navigation_header = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int notification_media_action = 2130968626;
+			public const int notification_action = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int notification_media_cancel_action = 2130968627;
+			public const int notification_action_tombstone = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int notification_template_big_media = 2130968628;
+			public const int notification_media_action = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int notification_template_big_media_custom = 2130968629;
+			public const int notification_media_cancel_action = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int notification_template_big_media_narrow = 2130968630;
+			public const int notification_template_big_media = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int notification_template_big_media_narrow_custom = 2130968631;
+			public const int notification_template_big_media_custom = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int notification_template_custom_big = 2130968632;
+			public const int notification_template_big_media_narrow = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int notification_template_icon_group = 2130968633;
+			public const int notification_template_big_media_narrow_custom = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int notification_template_lines_media = 2130968634;
+			public const int notification_template_custom_big = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int notification_template_media = 2130968635;
+			public const int notification_template_icon_group = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int notification_template_media_custom = 2130968636;
+			public const int notification_template_lines_media = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int notification_template_part_chronometer = 2130968637;
+			public const int notification_template_media = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int notification_template_part_time = 2130968638;
+			public const int notification_template_media_custom = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int select_dialog_item_material = 2130968639;
+			public const int notification_template_part_chronometer = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int select_dialog_multichoice_material = 2130968640;
+			public const int notification_template_part_time = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int select_dialog_singlechoice_material = 2130968641;
+			public const int RecoverPasswordView = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int SplashScreen = 2130968642;
+			public const int select_dialog_item_material = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int support_simple_spinner_dropdown_item = 2130968643;
+			public const int select_dialog_multichoice_material = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int toolbar_actionbar = 2130968644;
+			public const int select_dialog_singlechoice_material = 2130968644;
 			
 			// aapt resource value: 0x7f040045
-			public const int tooltip = 2130968645;
+			public const int Signup_Step_Address_View = 2130968645;
+			
+			// aapt resource value: 0x7f040046
+			public const int Signup_Step_CodeView = 2130968646;
+			
+			// aapt resource value: 0x7f040047
+			public const int Signup_Step_DetailsView = 2130968647;
+			
+			// aapt resource value: 0x7f040048
+			public const int Signup_Step_EmailView = 2130968648;
+			
+			// aapt resource value: 0x7f040049
+			public const int Signup_Step_MobileView = 2130968649;
+			
+			// aapt resource value: 0x7f04004a
+			public const int SplashScreen = 2130968650;
+			
+			// aapt resource value: 0x7f04004b
+			public const int support_simple_spinner_dropdown_item = 2130968651;
+			
+			// aapt resource value: 0x7f04004c
+			public const int toolbar_actionbar = 2130968652;
+			
+			// aapt resource value: 0x7f04004d
+			public const int tooltip = 2130968653;
 			
 			static Layout()
 			{
@@ -7510,6 +7681,12 @@ namespace PortolMobile.Droid
 		
 		public partial class String
 		{
+			
+			// aapt resource value: 0x7f0a0030
+			public const int DOB = 2131361840;
+			
+			// aapt resource value: 0x7f0a003c
+			public const int WaitForCode = 2131361852;
 			
 			// aapt resource value: 0x7f0a0000
 			public const int abc_action_bar_home_description = 2131361792;
@@ -7610,6 +7787,21 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0a0020
 			public const int character_counter_pattern = 2131361824;
 			
+			// aapt resource value: 0x7f0a0046
+			public const int city = 2131361862;
+			
+			// aapt resource value: 0x7f0a002f
+			public const int confirmEmail = 2131361839;
+			
+			// aapt resource value: 0x7f0a0034
+			public const int confirmPassword = 2131361844;
+			
+			// aapt resource value: 0x7f0a0048
+			public const int country = 2131361864;
+			
+			// aapt resource value: 0x7f0a0041
+			public const int deliveryAddress = 2131361857;
+			
 			// aapt resource value: 0x7f0a002d
 			public const int drawer_close = 2131361837;
 			
@@ -7619,14 +7811,44 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0a002e
 			public const int email = 2131361838;
 			
+			// aapt resource value: 0x7f0a003a
+			public const int enterMobileNumber = 2131361850;
+			
 			// aapt resource value: 0x7f0a0027
 			public const int fab_scroll_shrink_grow_autohide_behavior = 2131361831;
+			
+			// aapt resource value: 0x7f0a0032
+			public const int firstName = 2131361842;
+			
+			// aapt resource value: 0x7f0a0036
+			public const int forgotPassword = 2131361846;
 			
 			// aapt resource value: 0x7f0a002a
 			public const int hello = 2131361834;
 			
+			// aapt resource value: 0x7f0a0040
+			public const int insertCode = 2131361856;
+			
+			// aapt resource value: 0x7f0a0031
+			public const int lastName = 2131361841;
+			
+			// aapt resource value: 0x7f0a003f
+			public const int letsCreateAPortol = 2131361855;
+			
 			// aapt resource value: 0x7f0a0029
 			public const int library_name = 2131361833;
+			
+			// aapt resource value: 0x7f0a0035
+			public const int login = 2131361845;
+			
+			// aapt resource value: 0x7f0a003d
+			public const int newPassword = 2131361853;
+			
+			// aapt resource value: 0x7f0a003e
+			public const int newPasswordConfirmation = 2131361854;
+			
+			// aapt resource value: 0x7f0a0033
+			public const int password = 2131361843;
 			
 			// aapt resource value: 0x7f0a0021
 			public const int password_toggle_content_description = 2131361825;
@@ -7643,11 +7865,38 @@ namespace PortolMobile.Droid
 			// aapt resource value: 0x7f0a0025
 			public const int path_password_strike_through = 2131361829;
 			
+			// aapt resource value: 0x7f0a0045
+			public const int postCode = 2131361861;
+			
+			// aapt resource value: 0x7f0a003b
+			public const int reSendCode = 2131361851;
+			
 			// aapt resource value: 0x7f0a0011
 			public const int search_menu_title = 2131361809;
 			
+			// aapt resource value: 0x7f0a0038
+			public const int sendCode = 2131361848;
+			
+			// aapt resource value: 0x7f0a0037
+			public const int signUp = 2131361847;
+			
+			// aapt resource value: 0x7f0a0047
+			public const int state = 2131361863;
+			
 			// aapt resource value: 0x7f0a0026
 			public const int status_bar_notification_info_overflow = 2131361830;
+			
+			// aapt resource value: 0x7f0a0043
+			public const int street = 2131361859;
+			
+			// aapt resource value: 0x7f0a0044
+			public const int suburb = 2131361860;
+			
+			// aapt resource value: 0x7f0a0042
+			public const int unitNumber = 2131361858;
+			
+			// aapt resource value: 0x7f0a0039
+			public const int verifyCode = 2131361849;
 			
 			// aapt resource value: 0x7f0a0028
 			public const int view_scroll_translation_autohide_behavior = 2131361832;

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"             
+             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"            
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             x:Class="PortolMobile.Forms.Views.SignUp.SignupStepMobileView">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10,0,10,0">           
+
+            <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Center"  VerticalOptions="Start" Margin="0,20,0,0" DownsampleToViewSize="true"
+                                           Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms" >
+
+            </ffimageloadingsvg:SvgCachedImage>
+
+
+            <Label Text="{i18n:Translate letsCreateAPortol}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,30,0,0" ></Label>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="30,0,30,0" BackgroundColor="{StaticResource EntryWhiteSmokeAppColor}"  >
+
+                <ffimageloadingsvg:SvgCachedImage WidthRequest="30" HeightRequest="30" VerticalOptions="Center"  HorizontalOptions="Start" 
+                 Source ="{Binding CountrySelected.CountryFlagFile, Converter={StaticResource SvgImageSourceConverter}}" >
+                    <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >
+                        <TapGestureRecognizer Command="{Binding SelectCountryCommand}"  ></TapGestureRecognizer>
+                    </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                </ffimageloadingsvg:SvgCachedImage>
+
+                <Label Text="{Binding CountrySelected.CountryCode}" HorizontalTextAlignment="Center" HorizontalOptions="Start"  VerticalTextAlignment="Center" >
+                    <Label.GestureRecognizers >
+                        <TapGestureRecognizer Command="{Binding SelectCountryCommand}"  ></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+
+                <controls:ExtendedEntry  Placeholder="{i18n:Translate MobileNumber}" HorizontalTextAlignment="Center" Text="{Binding MobileNumber, Mode=TwoWay }" 
+                   x:Name="txtMobileNumber"  Keyboard="Numeric"  HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
+
+            </StackLayout>
+
+
+            <Label Text="{Binding ValidationMessage}" Style="{StaticResource LabelRequired}" IsVisible="{Binding IsMobileValidationVisible}" HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center" Margin="0,5,0,0" ></Label>
+
+            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+            
+            <ffimageloadingsvg:SvgCachedImage WidthRequest="35" HeightRequest="35"  Margin="0,15,0,0" HorizontalOptions="Center" VerticalOptions="Center" 
+                  Source="resource://PortolMobile.Forms.Resources.btn_background.svg?assembly=PortolMobile.Forms" >
+                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >
+                    <TapGestureRecognizer Command="{Binding GotoCodePageCommand}"  ></TapGestureRecognizer>
+                </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+            </ffimageloadingsvg:SvgCachedImage>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

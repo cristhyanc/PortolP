@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:ExtendedContentPage 
+            xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             BackgroundImage="login_background"
+             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
+             x:Class="PortolMobile.Forms.Views.Login.LoginView">
+    <controls:ExtendedContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10,0,10,0">
+
+            <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Center"  VerticalOptions="Start" Margin="0,20,0,0"
+                                           Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms" >
+               
+            </ffimageloadingsvg:SvgCachedImage>
+            <Label Text="{i18n:Translate LoginPortolLabel}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,30,0,0" 
+                    Style="{StaticResource LabelBaseStyleWhite}" ></Label>
+
+            <Entry Placeholder="{i18n:Translate Email}" HorizontalTextAlignment="Center" x:Name="txtEmail" WidthRequest="275" HorizontalOptions="Center"  Text="{Binding EmailText, Mode=TwoWay}"
+                   Style="{StaticResource EntryBaseStyleWhite}" ></Entry>
+
+            <Entry Placeholder="{i18n:Translate Password}" HorizontalTextAlignment="Center" Text="{Binding PasswordText, Mode=TwoWay }" WidthRequest="275"   x:Name="txtPassword" IsPassword="True"  HorizontalOptions="Center" 
+                   Style="{StaticResource EntryBaseStyleWhite}" ></Entry>
+
+
+            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+
+            
+            <ffimageloadingsvg:SvgCachedImage WidthRequest="35" HeightRequest="35"  Margin="0,15,0,0" HorizontalOptions="Center" VerticalOptions="Center" 
+                  Source="resource://PortolMobile.Forms.Resources.btn_background.svg?assembly=PortolMobile.Forms" >
+                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >
+                    <TapGestureRecognizer Command="{Binding LoginButtonCommand}"  ></TapGestureRecognizer>
+                </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+
+            </ffimageloadingsvg:SvgCachedImage>
+
+            <Label Text="{i18n:Translate ForgotPassword}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,30,0,0" 
+                    Style="{StaticResource LabelBaseStyleWhite}" >
+
+                <Label.GestureRecognizers >
+                    <TapGestureRecognizer Command="{Binding RecoverButtonCommand}"  ></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
+
+
+            <Label Text="{i18n:Translate SignUp}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,0,0,80"
+                   VerticalOptions="EndAndExpand"  Style="{StaticResource LabelBaseStyleWhite}" >
+                <Label.GestureRecognizers >
+                    <TapGestureRecognizer Command="{Binding SignupCommand}"  ></TapGestureRecognizer>
+                </Label.GestureRecognizers>
+            </Label>
+
+        </StackLayout>
+    </controls:ExtendedContentPage.Content>
+</controls:ExtendedContentPage>
+    

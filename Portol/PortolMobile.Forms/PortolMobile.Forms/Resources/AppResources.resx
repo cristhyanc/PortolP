@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="AccountCreated" xml:space="preserve">
+    <value>The account was created</value>
+  </data>
+  <data name="AllFieldsRequired" xml:space="preserve">
+    <value>All fields are required</value>
+  </data>
+  <data name="Australia" xml:space="preserve">
+    <value>Australia</value>
+  </data>
+  <data name="CityRequired" xml:space="preserve">
+    <value>City is required</value>
+  </data>
+  <data name="CodeNumberRequired" xml:space="preserve">
+    <value>Code Number Required</value>
+  </data>
+  <data name="Countries" xml:space="preserve">
+    <value>Countries</value>
+  </data>
+  <data name="CountryRequired" xml:space="preserve">
+    <value>Country is required</value>
+  </data>
+  <data name="DOB" xml:space="preserve">
+    <value>D.O.B</value>
+  </data>
+  <data name="DOBRequired" xml:space="preserve">
+    <value>DOB Required</value>
+  </data>
+  <data name="EmailInUse" xml:space="preserve">
+    <value>The Email is already in use</value>
+  </data>
+  <data name="EmailInUsedParameter" xml:space="preserve">
+    <value>The Email {0} is already being used</value>
+  </data>
+  <data name="EmailPasswordIsIncorrect" xml:space="preserve">
+    <value>Email or Password is incorrect</value>
+  </data>
+  <data name="EmailRequired" xml:space="preserve">
+    <value>Email Required</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>First name</value>
+  </data>
+  <data name="FirstNameRequired" xml:space="preserve">
+    <value>FirstName Required</value>
+  </data>
+  <data name="GeneralError" xml:space="preserve">
+    <value>Oops, there was an error, we are working on it, Thanks</value>
+  </data>
+  <data name="IncorrectdateFormat" xml:space="preserve">
+    <value>Incorrect date format</value>
+  </data>
+  <data name="IncorrectEmailformat" xml:space="preserve">
+    <value>Incorrect Email format</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>Last Name</value>
+  </data>
+  <data name="LastNameRequired" xml:space="preserve">
+    <value>LastName Required</value>
+  </data>
+  <data name="Login" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginPortolLabel" xml:space="preserve">
+    <value>Let's get started with Portol</value>
+  </data>
+  <data name="MobileInUse" xml:space="preserve">
+    <value>The mobile number is already in use</value>
+  </data>
+  <data name="MobileNumberRequiered" xml:space="preserve">
+    <value>The mobile number is required</value>
+  </data>
+  <data name="NetworkConnectionError" xml:space="preserve">
+    <value>Oops, looks like there is no internet connection</value>
+  </data>
+  <data name="NewPasswordsRequired" xml:space="preserve">
+    <value>Password and Confirm password are required</value>
+  </data>
+  <data name="NewUser" xml:space="preserve">
+    <value>New user</value>
+  </data>
+  <data name="NewZealand" xml:space="preserve">
+    <value>New Zealand</value>
+  </data>
+  <data name="NotMatchEmails" xml:space="preserve">
+    <value>Email and confirm email don't match</value>
+  </data>
+  <data name="NotMatchPasswords" xml:space="preserve">
+    <value>Password and confirm Password don't match</value>
+  </data>
+  <data name="Ok" xml:space="preserve">
+    <value>Ok</value>
+  </data>
+  <data name="Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="PasswordChanged" xml:space="preserve">
+    <value>Password successfully changed</value>
+  </data>
+  <data name="PasswordEmailRequired" xml:space="preserve">
+    <value>The Email and Password are required</value>
+  </data>
+  <data name="PasswordRequired" xml:space="preserve">
+    <value>Password Required</value>
+  </data>
+  <data name="PasswordsNotEquals" xml:space="preserve">
+    <value>The passwords are not the same</value>
+  </data>
+  <data name="PasswordWhiteSpace" xml:space="preserve">
+    <value>Value cannot be empty or whitespace only string.</value>
+  </data>
+  <data name="RecoveringPassword" xml:space="preserve">
+    <value>Recovering Password</value>
+  </data>
+  <data name="SignUp" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="StateRequired" xml:space="preserve">
+    <value>State is required</value>
+  </data>
+  <data name="StreetRequired" xml:space="preserve">
+    <value>Street is required</value>
+  </data>
+  <data name="SuburbRequired" xml:space="preserve">
+    <value>Suburb is required</value>
+  </data>
+  <data name="UnitedKingdom" xml:space="preserve">
+    <value>United Kingdom</value>
+  </data>
+  <data name="UserDoesNotExist" xml:space="preserve">
+    <value>User Does not Exist</value>
+  </data>
+  <data name="WrongCode" xml:space="preserve">
+    <value>The Code you entered is incorrect</value>
+  </data>
+  <data name="ForgotPassword" xml:space="preserve">
+    <value>Forgot Password?</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="EnterMobileNumber" xml:space="preserve">
+    <value>Enter your mobile number</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="NewPassword" xml:space="preserve">
+    <value>Enter new password</value>
+  </data>
+  <data name="NewPasswordConfirmation" xml:space="preserve">
+    <value>Confirm new password</value>
+  </data>
+  <data name="WaitForCode" xml:space="preserve">
+    <value>You will recive a code number within 5 minutes</value>
+  </data>
+  <data name="letsCreateAPortol" xml:space="preserve">
+    <value>Let's create a Portol</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="ConfirmEmail" xml:space="preserve">
+    <value>Confirm Email</value>
+  </data>
+  <data name="Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="InsertCode" xml:space="preserve">
+    <value>Insert the 4-digit code sent to you at</value>
+  </data>
+  <data name="PostCode" xml:space="preserve">
+    <value>Post Code</value>
+  </data>
+  <data name="ReSendCode" xml:space="preserve">
+    <value>Re-send code</value>
+  </data>
+  <data name="State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>Street</value>
+  </data>
+  <data name="Suburb" xml:space="preserve">
+    <value>Suburb</value>
+  </data>
+  <data name="UnitNo" xml:space="preserve">
+    <value>Unit No</value>
+  </data>
+  <data name="EmailPassword" xml:space="preserve">
+    <value>Email and Password</value>
+  </data>
+  <data name="PersonalDetails" xml:space="preserve">
+    <value>Personal Details</value>
+  </data>
+  <data name="EnterNewPassword" xml:space="preserve">
+    <value>Enter new password</value>
+  </data>
+</root>

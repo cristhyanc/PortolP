@@ -1,6 +1,7 @@
-﻿using Portol.Common.Helper;
+﻿using Portol.Common;
+using Portol.Common.Helper;
 using Portol.Common.Interfaces.PortolWeb;
-using Portol.DTO;
+using Portol.Common.DTO;
 using PortolWeb.Entities;
 using System;
 using System.Collections.Generic;
@@ -18,23 +19,38 @@ namespace PortolWeb.Core.UserServices
             _uow = uow;
         }
 
+        public bool ValidateVerificationCode(long phoneNumber, Int32 countryCode, Int32 code)
+        {
+            var savedCode = _uow.CodeVerificationRepository.Get(x => x.CodeNumber == code && x.PhoneNumber == phoneNumber.ToString() &&
+                                                                        x.CountryCode == countryCode.ToString());
+            if(savedCode==null)
+            {
+                return false;
+            }
+
+            _uow.CodeVerificationRepository.Delete(savedCode);
+            _uow.SaveChanges();
+            return true;
+            
+        }
+
         public UserDto Authenticate(string username, string password)
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                throw new AppException("Email or Password is incorrect");               
+                throw new AppException(StringResources.EmailPasswordIsIncorrect);               
             }
                 
 
             var user = _uow.UserRepository.Get(x => x.Email == username);                      
             if (user == null)
             {
-                throw new AppException("Email or Password is incorrect");
+                throw new AppException(StringResources.EmailPasswordIsIncorrect);
             }               
                       
             if (!VerifyPasswordHash(password, user.PasswordHash, user.PasswordSalt))
             {
-                throw new AppException("Email or Password is incorrect");
+                throw new AppException(StringResources.EmailPasswordIsIncorrect);
             }
 
 
@@ -59,38 +75,42 @@ namespace PortolWeb.Core.UserServices
         {
             if(newUser.DOB ==DateTime.MinValue )
             {
-                throw new AppException("DOB Required");
+                throw new AppException(StringResources.DOBRequired);
             }
 
             if(string.IsNullOrEmpty(newUser.Email ))
             {
-                throw new AppException("Email Required");
+                throw new AppException(StringResources.EmailRequired);
             }
 
             if (string.IsNullOrEmpty(newUser.FirstName))
             {
-                throw new AppException("FirstName Required");
+                throw new AppException(StringResources.FirstNameRequired);
             }
 
             if (string.IsNullOrEmpty(newUser.LastName))
             {
-                throw new AppException("LastName Required");
+                throw new AppException(StringResources.LastNameRequired);
             }
 
             if (newUser.PhoneNumber==0)
             {
-                throw new AppException("PhoneNumber Required");
+                throw new AppException(StringResources.MobileNumberRequiered);
             }
 
             if (string.IsNullOrEmpty(password))
             {
-                throw new AppException("Password Required");
+                throw new AppException(StringResources.PasswordRequired);
             }
 
+            if (_uow.UserRepository.Get(x => x.PhoneNumber  == newUser.PhoneNumber && x.PhoneCountryCode == newUser.PhoneCountryCode) != null)
+            {
+                throw new AppException(string.Format(StringResources.MobileInUse , newUser.PhoneNumber));
+            }
 
             if (_uow.UserRepository.Get(x => x.Email == newUser.Email) != null)
             {
-                throw new AppException("The Email \"" + newUser.Email + "\" is already being used");
+                throw new AppException(string.Format(StringResources.EmailInUsedParameter, newUser.Email));
             }
 
 
@@ -108,7 +128,50 @@ namespace PortolWeb.Core.UserServices
             return newUser;
            
         }
+        public bool VerifyMobileUniqueness(UserDto phoneDetails)
+        {
+            if (_uow.UserRepository.Get(x => x.PhoneNumber == phoneDetails.PhoneNumber && x.PhoneCountryCode== phoneDetails.PhoneCountryCode) != null)
+            {
+                return false;
+            }
+            return true;
+        }
 
+        public bool VerifyEmailUniqueness(string email)
+        {
+            if (_uow.UserRepository.Get(x => x.Email.Equals(email.Trim())) != null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+       
+        public void ResetPassword(UserDto user)
+        {
+            if(user==null)
+            {
+                throw new AppException(StringResources.PasswordRequired);
+            }
+
+            var currentUser = _uow.UserRepository.Get(x => x.PhoneNumber == user.PhoneNumber);
+            if(currentUser==null)
+            {
+                throw new AppException(StringResources.UserDoesNotExist);
+            }
+
+            if(string.IsNullOrEmpty(user.Password) )
+            {
+                throw new AppException(StringResources.PasswordRequired );
+            }
+
+            byte[] passwordHash, passwordSalt;
+            CreatePasswordHash(user.Password , out passwordHash, out passwordSalt);
+            currentUser.PasswordHash = passwordHash;
+            currentUser.PasswordSalt = passwordSalt;
+            _uow.UserRepository.Update(currentUser);
+            _uow.SaveChanges();
+        }
         public void Update(UserDto userParam, string password = null)
         {
             // var user = _context.Users.Find(userParam.Id);
@@ -147,7 +210,7 @@ namespace PortolWeb.Core.UserServices
             var user = _uow.UserRepository.Get(x => x.UserID == userId);
             if(user==null)
             {
-                throw new AppException("User Does not Exist");
+                throw new AppException(StringResources.UserDoesNotExist);
             }
 
             user.Deleted = true;
@@ -159,8 +222,8 @@ namespace PortolWeb.Core.UserServices
 
         private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
         {
-            if (password == null) throw new AppException("password");
-            if (string.IsNullOrWhiteSpace(password)) throw new AppException("Value cannot be empty or whitespace only string.", "password");
+            if (password == null) throw new AppException(StringResources.PasswordRequired );
+            if (string.IsNullOrWhiteSpace(password)) throw new AppException(StringResources.PasswordWhiteSpace, StringResources.Password);
 
             using (var hmac = new System.Security.Cryptography.HMACSHA512())
             {
@@ -171,8 +234,8 @@ namespace PortolWeb.Core.UserServices
 
         private static bool VerifyPasswordHash(string password, byte[] storedHash, byte[] storedSalt)
         {
-            if (password == null) throw new AppException("password");
-            if (string.IsNullOrWhiteSpace(password)) throw new AppException("Value cannot be empty or whitespace only string.", "password");
+            if (password == null) throw new AppException(StringResources.PasswordRequired);
+            if (string.IsNullOrWhiteSpace(password)) throw new AppException(StringResources.PasswordWhiteSpace, StringResources.Password);
             if (storedHash.Length != 64) throw new AppException("Invalid length of password hash (64 bytes expected).", "passwordHash");
             if (storedSalt.Length != 128) throw new AppException("Invalid length of password salt (128 bytes expected).", "passwordHash");
 

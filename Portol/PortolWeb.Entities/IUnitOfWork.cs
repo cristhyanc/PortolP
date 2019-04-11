@@ -7,6 +7,7 @@ namespace PortolWeb.Entities
     public interface IUnitOfWork
     {
         IRepositoryBasey<User> UserRepository { get; }
+        IRepositoryBasey<CodeVerification> CodeVerificationRepository { get; }
 
         void SaveChanges();
     }

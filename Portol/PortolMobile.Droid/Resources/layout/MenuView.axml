@@ -8,8 +8,8 @@
 	android:layout_gravity="start"
 	android:fitsSystemWindows="true"
 	android:theme="@style/ThemeToolbarNavigationView"
-	android:background="@color/colorPrimary"
-	local:itemTextColor="@color/light_gray"
-	local:itemIconTint="@color/light_gray"
+	android:background="@color/menu_background_color"
+	local:itemTextColor="@color/black"
+	local:itemIconTint="@color/black"
 	local:headerLayout="@layout/navigation_header"
 	local:menu="@menu/navigation_drawer" />

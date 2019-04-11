@@ -1,0 +1,9 @@
+BEGIN TRANSACTION
+GO
+ALTER TABLE dbo.tblUser ADD
+	Postcode nvarchar(10) NULL,
+	AddressValidated bit NULL
+GO
+ALTER TABLE dbo.tblUser SET (LOCK_ESCALATION = TABLE)
+GO
+COMMIT

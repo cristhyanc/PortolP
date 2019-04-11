@@ -3,29 +3,85 @@
 	xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:local="http://schemas.android.com/apk/res-auto"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	android:orientation="vertical">
-	<include
-		layout="@layout/toolbar_actionbar" />
-	<TextView
-		android:text="Email"
-		android:textAppearance="?android:attr/textAppearanceLarge"
-		android:layout_width="match_parent"
+	android:orientation="vertical"
+	android:id="@+id/mainLayout"
+	android:background="@drawable/login_background"
+	android:layout_height="match_parent">
+  
+	<ImageView
+		android:src="@drawable/logo_long_white"
+		android:layout_width="200dp"
+		android:layout_marginTop="50dp"
 		android:layout_height="wrap_content"
-		android:id="@+id/textView1" />
-	
-	<EditText 
+		android:layout_gravity="center_horizontal"
+		android:id="@+id/imageView" />
+	<EditText
 		local:MvxBind="Text EmailText"
 		android:inputType="textEmailAddress"
-		android:layout_width="match_parent"
+		android:layout_width="250dp"
+		android:hint="@string/email"
+		android:gravity="center_horizontal"
 		android:layout_height="wrap_content"
-		android:id="@+id/editText1" />
+		android:layout_gravity="center_horizontal"
+		android:background="@drawable/edittext_bottom_line"
+		android:id="@+id/txtEmail"
+		android:layout_marginTop="40dp"
+		android:textColor="#ffffffff"
+		android:textColorHint="#ffb3a3a3" />
+	<EditText
+		android:hint="@string/password"
+		android:gravity="center_horizontal"
+		android:layout_gravity="center_horizontal"
+		local:MvxBind="Text PasswordText"
+		android:background="@drawable/edittext_bottom_line"
+		android:inputType="textPassword"
+		android:layout_width="250dp"
+		android:layout_height="wrap_content"
+		android:id="@+id/txtPassword"
+		android:layout_marginTop="20dp"
+		android:textColor="#ffffffff"
+		android:textColorHint="#ffb3a3a3" />
+    
+    <ProgressBar
+        local:MvxBind="Visible IsBusy"
+        android:layout_marginTop="15dp"		
+        android:layout_width="match_parent"        
+        android:layout_height="wrap_content"
+        android:id="@+id/progressBar2" />
 
-	<Button 
+	<Button		
 		local:MvxBind="Click LoginButtonCommand"
-		android:text="login"
+		android:layout_marginTop="30dp"		
+		android:layout_gravity="center_horizontal"
+		android:layout_width="15dp"
+		android:layout_height="25dp"
+		android:id="@+id/btnLogin"
+		android:background="@drawable/ic_play_gray" />
+    
+	<Button
+		local:MvxBind="Click RecoverButtonCommand"
+		android:text="@string/forgotPassword"
+        android:layout_marginTop="20dp"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:id="@+id/button1" />
+		android:id="@+id/btnForgotPassword"
+		android:background="#00000000"
+		android:textColor="#ffffffff"/>
 	
+	<LinearLayout
+		android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="bottom|end">
+		<Button
+			local:MvxBind="Click SignupCommand"
+			android:text="@string/signUp"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:id="@+id/btnSignUp"
+			android:background="#00000000"
+			android:textColor="#ffffffff"
+			android:layout_marginBottom="80dp" />
+
+	</LinearLayout>
 </LinearLayout>

@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"             
+             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper" 
+              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             x:Class="PortolMobile.Forms.Views.SignUp.SignupStepAddressView">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="40,0,40,0">
+
+            <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Center"  VerticalOptions="Start" Margin="0,20,0,0"
+                                           Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms" >
+
+            </ffimageloadingsvg:SvgCachedImage>
+
+            <Label Text="{i18n:Translate Address}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,30,0,0" ></Label>
+
+            <Grid HorizontalOptions="FillAndExpand"  >
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <controls:ExtendedEntry Grid.Row="0" Grid.Column="0"  Placeholder="{i18n:Translate UnitNo}" HorizontalTextAlignment="Center" Text="{Binding UnitNumber, Mode=TwoWay }"
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
+
+                <controls:ExtendedEntry Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Placeholder="{i18n:Translate Street}" HorizontalTextAlignment="Center" Text="{Binding Street, Mode=TwoWay }"
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
+
+                <controls:ExtendedEntry  Grid.Row="1" Grid.Column="0" Placeholder="{i18n:Translate PostCode}" HorizontalTextAlignment="Center" Text="{Binding PostCode, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
+
+                <controls:ExtendedEntry  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Placeholder="{i18n:Translate Suburb}" HorizontalTextAlignment="Center" Text="{Binding Suburb, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
+               
+                <!--<controls:ExtendedEntry  Grid.Row="2" Grid.Column="0" Placeholder="{i18n:Translate City}" HorizontalTextAlignment="Center" Text="{Binding City, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>-->
+
+                <controls:ExtendedEntry  Grid.Row="2" Grid.Column="0" IsEnabled="False"   Placeholder="{i18n:Translate Country}" HorizontalTextAlignment="Center" Text="{Binding Country, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
+
+                <controls:ExtendedEntry  Grid.Row="2" Grid.Column="1"  Grid.ColumnSpan="2"  Placeholder="{i18n:Translate State}" HorizontalTextAlignment="Center" Text="{Binding State, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
+
+                
+            </Grid>
+            
+            <Label Text="{Binding ErrorMessage}" Style="{StaticResource LabelRequired}" IsVisible="{Binding IsValidationVisible}" HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center" Margin="0,5,0,0" ></Label>
+
+            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+
+            <ffimageloadingsvg:SvgCachedImage WidthRequest="35" HeightRequest="35"  Margin="0,15,0,0" HorizontalOptions="Center" VerticalOptions="Center" 
+                  Source="resource://PortolMobile.Forms.Resources.btn_background.svg?assembly=PortolMobile.Forms" >
+                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >
+                    <TapGestureRecognizer Command="{Binding SaveAccountCommand}"  ></TapGestureRecognizer>
+                </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+            </ffimageloadingsvg:SvgCachedImage>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
