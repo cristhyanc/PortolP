@@ -388,11 +388,11 @@ namespace PortolMobile.Forms.ViewModels.Login
                 var code = Int16.Parse(this.FirstNumber + this.SecondNumber + this.ThirdNumber + this.FourNumber);
 
              
-                var resutl = await _loginService.VerifyCode(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country, code);
-                if (resutl)
-                {
+                //var resutl = await _loginService.VerifyCode(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country, code);
+                //if (resutl)
+                //{
                     this.IsPasswordSectionVisible = true;
-                }
+                //}
             }
 
             catch (System.Exception ex)
@@ -440,11 +440,11 @@ namespace PortolMobile.Forms.ViewModels.Login
                     return;
                 }
 
-                var resutl = await _loginService.SendVerificationCode(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country);
-                if (resutl)
-                {
+                //var resutl = await _loginService.SendVerificationCode(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country);
+                //if (resutl)
+                //{
                     this.IsCodeSectionVisible = true;
-                }
+                //}
             }
             catch (System.Exception ex)
             {
