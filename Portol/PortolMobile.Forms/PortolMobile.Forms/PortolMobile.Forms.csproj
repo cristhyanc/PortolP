@@ -11,25 +11,30 @@
 
   <ItemGroup>
     <None Remove="Resources\btn_background.svg" />
+    <None Remove="Resources\Group_2.png" />
     <None Remove="Resources\ic_ActionButton.svg" />
     <None Remove="Resources\ic_australia.svg" />
     <None Remove="Resources\ic_newzealand.svg" />
     <None Remove="Resources\ic_unitedkingdom.svg" />
     <None Remove="Resources\portol_logo_long.svg" />
+    <None Remove="Resources\ShopPict_mockup.svg" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Group_2.png" />
     <EmbeddedResource Include="Resources\ic_ActionButton.svg" />
     <EmbeddedResource Include="Resources\btn_background.svg" />
     <EmbeddedResource Include="Resources\ic_australia.svg" />
     <EmbeddedResource Include="Resources\ic_newzealand.svg" />
     <EmbeddedResource Include="Resources\ic_unitedkingdom.svg" />
     <EmbeddedResource Include="Resources\portol_logo_long.svg" />
+    <EmbeddedResource Include="Resources\ShopPict_mockup.svg" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.0.4" />
     <PackageReference Include="Autofac" Version="4.9.2" />
+    <PackageReference Include="Naxam.TopTabbedPage.Forms" Version="0.0.3.5" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.5.870-pre" />

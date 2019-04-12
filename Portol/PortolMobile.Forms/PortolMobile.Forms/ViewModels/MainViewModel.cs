@@ -8,7 +8,6 @@ namespace PortolMobile.Forms.ViewModels
         public MainViewModel( )
         {
            
-
           
         }
 

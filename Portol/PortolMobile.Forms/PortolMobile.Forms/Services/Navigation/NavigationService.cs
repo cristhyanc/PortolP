@@ -13,44 +13,18 @@ namespace PortolMobile.Forms.Services.Navigation
 {
   public  class NavigationService : INavigationService
     {
-     //   AppSessionSettings _appSettings;
+    
         NavigationPage CurrentNavigator;
+        private Page _dropOffPage;
+        private Page _shopPage;
         public NavigationService()
         {
-          //  _appSettings = ViewModelLocator.Resolve<AppSessionSettings>();
+          
         }
 
         private bool _popupOn = false;
 
-        //public async Task OpenPopup(BaseViewModel viewModel, object parameter = null)
-        //{
-        //    _popupOn = true;
-        //    PopupPage page = (PopupPage)CreatePage(viewModel.GetType(), null);
-        //    page.BindingContext = viewModel;
-        //    await viewModel.InitializeAsync(parameter);
-        //    if (CurrentNavigator != null && CurrentNavigator.Navigation != null)
-        //    {
-        //        await CurrentNavigator.Navigation.PushPopupAsync(page);
-        //    }
-        //}
-
-        //public async Task OpenPopup(PopupPage page)
-        //{
-        //    _popupOn = true;
-        //    if (CurrentNavigator != null && CurrentNavigator.Navigation != null && page != null)
-        //    {
-        //        await CurrentNavigator.Navigation.PushPopupAsync(page);
-        //    }
-        //}
-
-        //public async Task ClosePopup()
-        //{
-        //    if (_popupOn)
-        //    {
-        //        await CurrentNavigator.Navigation.PopAllPopupAsync();
-        //    }
-        //    _popupOn = false;
-        //}
+       
 
         public void SetNavigationPage(NavigationPage navigation)
         {
@@ -135,26 +109,48 @@ namespace PortolMobile.Forms.Services.Navigation
             {
                 Page page = CreatePage(viewModelType, parameter);
 
-                if(CurrentNavigator!=null)
+                if(CurrentNavigator==null)
+                {                      
+                    CurrentNavigator = new NavigationPage();
+                }
+
+
+                if (typeof(DropView) == page.GetType() || typeof(ShopView) == page.GetType())
                 {
-                    if (typeof(MainView) == page.GetType())
+
+                    if (typeof(DropView) == page.GetType() )
                     {
-                        Application.Current.MainPage = page;
-                        var mainPage = (MainView)page;                      
-                        CurrentNavigator = null;
-                        CurrentNavigator = mainPage.NavPage;
+                        if(_dropOffPage == null)
+                        {
+                            _dropOffPage = page;
+                        }
+                        else
+                        {
+                            page = _dropOffPage;
+                            viewModel = null;
+                        }
                     }
-                    else
+
+                    if (typeof(ShopView) == page.GetType())
                     {
-                        await CurrentNavigator.PushAsync(page);
-                    }                  
+                        if (_shopPage == null)
+                        {
+                            _shopPage = page;
+                        }
+                        else
+                        {
+                            page = _shopPage;
+                            viewModel = null;
+                        }
+                    }
+                                       
+                    Application.Current.MainPage = page;
                 }
                 else
                 {
-                    Application.Current.MainPage = page;
-                    var mainPage = (MainView)page;                    
-                    CurrentNavigator = mainPage.NavPage;                   
+                    await CurrentNavigator.PushAsync(page);
                 }
+               
 
                 if (viewModel != null)
                 {
@@ -165,6 +161,7 @@ namespace PortolMobile.Forms.Services.Navigation
                 {
                     await (page.BindingContext as BaseViewModel).InitializeAsync(parameter);
                 }
+
             }
             catch (Exception ex)
             {

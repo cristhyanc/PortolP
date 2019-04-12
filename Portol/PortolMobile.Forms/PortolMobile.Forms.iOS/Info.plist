@@ -22,7 +22,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>PortolMobile.Forms</string>
+	<string>Portol</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.PortolMobile</string>
 	<key>CFBundleVersion</key>

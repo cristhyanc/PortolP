@@ -42,9 +42,12 @@ namespace PortolMobile.Forms
 
                 var builder = new ContainerBuilder();
 
+                builder.RegisterType<ShopViewModel>().SingleInstance();
+                builder.RegisterType<DropViewModel>().SingleInstance();
+
                 // View models
                 builder.RegisterType<LoginViewModel>();              
-                builder.RegisterType<MainViewModel>();
+                builder.RegisterType<MainViewModel>();                
                 builder.RegisterType<RecoverPasswordViewModel>();
                 builder.RegisterType<SignupStepMobileViewModel>();
                 builder.RegisterType<SignupStepEmailViewModel>();

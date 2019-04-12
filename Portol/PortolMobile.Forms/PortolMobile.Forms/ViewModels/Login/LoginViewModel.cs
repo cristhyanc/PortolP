@@ -57,6 +57,8 @@ namespace PortolMobile.Forms.ViewModels.Login
             LoginButtonCommand = new Command(LoginUser);
             RecoverButtonCommand = new Command(GoToRecoverPassword);
             SignupCommand = new Command(GoToSignup);
+            this.EmailText = "cristhyan@msn.com";
+            this.PasswordText = "asd";
         }
 
 
@@ -98,7 +100,7 @@ namespace PortolMobile.Forms.ViewModels.Login
                 if (this.PasswordText?.Length > 0 && this.EmailText?.Length > 0)
                 {
                     var result = await _loginService.Authenticate(this.EmailText, this.PasswordText);
-                    await NavigationService.NavigateToAsync<MainViewModel>();
+                    await NavigationService.NavigateToAsync<DropViewModel>();
                 }
                 else
                 {

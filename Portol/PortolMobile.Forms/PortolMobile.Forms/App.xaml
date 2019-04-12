@@ -12,6 +12,8 @@
             
             <Color x:Key="NavigationPrimary">#2196F3</Color>
             <Color x:Key="EntryWhiteSmokeAppColor">#f7f7f7</Color>
+            <Color x:Key="ButtonTabUnSelectedColor">#f7f7f7</Color>
+            <Color x:Key="ButtonTextTabUnSelectedColor">#8c919e</Color>
 
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
@@ -46,7 +48,21 @@
                 <Setter Property="PlaceholderColor" Value="Gray" />
                 <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
             </Style>
-           
+
+            <Style BaseResourceKey="LabelBaseStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="Black"  />                
+            </Style>
+
+            <Style x:Key="ButtonUnselectedTab"  BaseResourceKey="LabelBaseStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource ButtonTextTabUnSelectedColor}" />
+                <Setter Property="BackgroundColor"  Value="{StaticResource ButtonTabUnSelectedColor}" />
+            </Style>
+
+            <Style x:Key="ButtonSelectedTab"  BaseResourceKey="LabelBaseStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="Black"  />
+                <Setter Property="BackgroundColor"  Value="White"   />
+            </Style>
+
             <Style x:Key="EntryBaseStyleWhite"  BaseResourceKey="LabelBaseStyleWhite" TargetType="Entry">
                 <Setter Property="PlaceholderColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
                 <Setter Property="BackgroundColor" Value="Transparent" />
@@ -64,8 +80,11 @@
             <Style BaseResourceKey="LabelBaseStyle" TargetType="DatePicker">
                 <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
             </Style>
-            
 
+            <Style   TargetType="controls:ExtendedContentPage">
+                <Setter Property="BackgroundColor"  Value="White"  />
+            </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </Application>
