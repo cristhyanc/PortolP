@@ -14,7 +14,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
     {
         public ICommand GotoEmailPageCommand { get; private set; }
      
-        UserDto _userDto;
+        CustomerDto _userDto;
 
         bool _isValidationVisible;
         public bool IsValidationVisible
@@ -136,7 +136,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
         {
             try
             {
-                _userDto = (UserDto)navigationData; 
+                _userDto = (CustomerDto)navigationData; 
             }
             catch (Exception ex)
             {

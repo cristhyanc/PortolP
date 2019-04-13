@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Portol.Common.Interfaces.PortolMobile
 {
-   public interface IUserMobileService
+   public interface ICustomerMobileService
     {
-        Task<Boolean> CreateNewuser(UserDto newUser);
+        Task<Boolean> CreateNewCustomer(CustomerDto newCustomer);
     }
 }

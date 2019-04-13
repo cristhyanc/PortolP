@@ -10,11 +10,11 @@ using System.Text;
 
 namespace PortolWeb.Core.UserServices
 {
-    public class UserService : IUserService
+    public class CustomerService : ICustomerService
     {
         private IUnitOfWork _uow;
 
-        public UserService(IUnitOfWork uow)
+        public CustomerService(IUnitOfWork uow)
         {
             _uow = uow;
         }
@@ -34,7 +34,7 @@ namespace PortolWeb.Core.UserServices
             
         }
 
-        public UserDto Authenticate(string username, string password)
+        public CustomerDto Authenticate(string username, string password)
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
@@ -42,7 +42,7 @@ namespace PortolWeb.Core.UserServices
             }
                 
 
-            var user = _uow.UserRepository.Get(x => x.Email == username);                      
+            var user = _uow.CustomerRepository.Get(x => x.Email == username);                      
             if (user == null)
             {
                 throw new AppException(StringResources.EmailPasswordIsIncorrect);
@@ -53,84 +53,51 @@ namespace PortolWeb.Core.UserServices
                 throw new AppException(StringResources.EmailPasswordIsIncorrect);
             }
 
-
-            return User.ORM(user);
-            // return user;
+            user.CurrentAddress = _uow.AddressRepository.Get(x => x.CustomerID.Equals(user.CustomerID) && x.IsCurrentAddress);
+            return Customer.ORM(user);
+         
         }
 
-        public IEnumerable<UserDto> GetAll()
+        public IEnumerable<CustomerDto> GetAll()
         {
-            var result = _uow.UserRepository.GetAll(x => !x.Deleted).Select(x => User.ORM(x)).ToList();
+            var result = _uow.CustomerRepository.GetAll(x => !x.Deleted).Select(x => Customer.ORM(x)).ToList();
             return result;
         }
 
-        public UserDto GetById(Guid userId)
+        public CustomerDto GetById(Guid userId)
         {
-            var user = _uow.UserRepository.Get(x => x.UserID == userId);
-            return User.ORM(user);
+            var user = _uow.CustomerRepository.Get(x => x.CustomerID == userId);
+            return Customer.ORM(user);
 
         }
 
-        public UserDto Create(UserDto newUser, string password)
+        public CustomerDto Create(CustomerDto newUser, string password)
         {
-            if(newUser.DOB ==DateTime.MinValue )
-            {
-                throw new AppException(StringResources.DOBRequired);
-            }
-
-            if(string.IsNullOrEmpty(newUser.Email ))
-            {
-                throw new AppException(StringResources.EmailRequired);
-            }
-
-            if (string.IsNullOrEmpty(newUser.FirstName))
-            {
-                throw new AppException(StringResources.FirstNameRequired);
-            }
-
-            if (string.IsNullOrEmpty(newUser.LastName))
-            {
-                throw new AppException(StringResources.LastNameRequired);
-            }
-
-            if (newUser.PhoneNumber==0)
-            {
-                throw new AppException(StringResources.MobileNumberRequiered);
-            }
 
             if (string.IsNullOrEmpty(password))
             {
                 throw new AppException(StringResources.PasswordRequired);
             }
 
-            if (_uow.UserRepository.Get(x => x.PhoneNumber  == newUser.PhoneNumber && x.PhoneCountryCode == newUser.PhoneCountryCode) != null)
-            {
-                throw new AppException(string.Format(StringResources.MobileInUse , newUser.PhoneNumber));
-            }
-
-            if (_uow.UserRepository.Get(x => x.Email == newUser.Email) != null)
-            {
-                throw new AppException(string.Format(StringResources.EmailInUsedParameter, newUser.Email));
-            }
-
+            Customer user = Customer.ORM(newUser);
 
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
 
-            User user = User.ORM(newUser);
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
-
-            _uow.UserRepository.Insert(user);
+                                   
+            user.CreateCustomer(_uow);
+           
             _uow.SaveChanges();
 
-            newUser.UserID = user.UserID;
+            newUser.CustomerID = user.CustomerID;
             return newUser;
            
         }
-        public bool VerifyMobileUniqueness(UserDto phoneDetails)
+        public bool VerifyMobileUniqueness(CustomerDto phoneDetails)
         {
-            if (_uow.UserRepository.Get(x => x.PhoneNumber == phoneDetails.PhoneNumber && x.PhoneCountryCode== phoneDetails.PhoneCountryCode) != null)
+            if (_uow.CustomerRepository.Get(x => x.PhoneNumber == phoneDetails.PhoneNumber && x.PhoneCountryCode== phoneDetails.PhoneCountryCode) != null)
             {
                 return false;
             }
@@ -139,7 +106,7 @@ namespace PortolWeb.Core.UserServices
 
         public bool VerifyEmailUniqueness(string email)
         {
-            if (_uow.UserRepository.Get(x => x.Email.Equals(email.Trim())) != null)
+            if (_uow.CustomerRepository.Get(x => x.Email.Equals(email.Trim())) != null)
             {
                 return false;
             }
@@ -147,14 +114,14 @@ namespace PortolWeb.Core.UserServices
         }
 
        
-        public void ResetPassword(UserDto user)
+        public void ResetPassword(CustomerDto user)
         {
             if(user==null)
             {
                 throw new AppException(StringResources.PasswordRequired);
             }
 
-            var currentUser = _uow.UserRepository.Get(x => x.PhoneNumber == user.PhoneNumber);
+            var currentUser = _uow.CustomerRepository.Get(x => x.PhoneNumber == user.PhoneNumber);
             if(currentUser==null)
             {
                 throw new AppException(StringResources.UserDoesNotExist);
@@ -169,52 +136,24 @@ namespace PortolWeb.Core.UserServices
             CreatePasswordHash(user.Password , out passwordHash, out passwordSalt);
             currentUser.PasswordHash = passwordHash;
             currentUser.PasswordSalt = passwordSalt;
-            _uow.UserRepository.Update(currentUser);
+            _uow.CustomerRepository.Update(currentUser);
             _uow.SaveChanges();
         }
-        public void Update(UserDto userParam, string password = null)
+        public void Update(CustomerDto userParam, string password = null)
         {
-            // var user = _context.Users.Find(userParam.Id);
-
-            //if (user == null)
-            //    throw new AppException("User not found");
-
-            //if (userParam.Username != user.Username)
-            //{
-            //    // username has changed so check if the new username is already taken
-            //    if (_context.Users.Any(x => x.Username == userParam.Username))
-            //        throw new AppException("Username " + userParam.Username + " is already taken");
-            //}
-
-            //// update user properties
-            //user.FirstName = userParam.FirstName;
-            //user.LastName = userParam.LastName;
-            //user.Username = userParam.Username;
-
-            //// update password if it was entered
-            //if (!string.IsNullOrWhiteSpace(password))
-            //{
-            //    byte[] passwordHash, passwordSalt;
-            //    CreatePasswordHash(password, out passwordHash, out passwordSalt);
-
-            //    user.PasswordHash = passwordHash;
-            //    user.PasswordSalt = passwordSalt;
-            //}
-
-            //_context.Users.Update(user);
-            //_context.SaveChanges();
+           
         }
 
         public void Delete(Guid userId)
         {
-            var user = _uow.UserRepository.Get(x => x.UserID == userId);
+            var user = _uow.CustomerRepository.Get(x => x.CustomerID == userId);
             if(user==null)
             {
                 throw new AppException(StringResources.UserDoesNotExist);
             }
 
             user.Deleted = true;
-            _uow.UserRepository.Update(user);
+            _uow.CustomerRepository.Update(user);
             _uow.SaveChanges();
         }
 

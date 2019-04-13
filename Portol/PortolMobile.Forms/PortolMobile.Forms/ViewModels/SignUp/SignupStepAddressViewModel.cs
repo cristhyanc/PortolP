@@ -17,10 +17,10 @@ namespace PortolMobile.Forms.ViewModels.SignUp
 
         public ICommand SaveAccountCommand { get; private set; }
       
-        private readonly IUserMobileService _userMobileService;
+        private readonly ICustomerMobileService _userMobileService;
 
 
-        UserDto _userDto;
+        CustomerDto _userDto;
 
         bool _isValidationVisible;
         public bool IsValidationVisible
@@ -150,7 +150,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
 
         IAddressService _addressService;
 
-        public SignupStepAddressViewModel( IUserMobileService userMobileService, IAddressService addressService )
+        public SignupStepAddressViewModel( ICustomerMobileService userMobileService, IAddressService addressService )
         {
             _userMobileService = userMobileService;           
             SaveAccountCommand = new Command(GetPosibleAddresses);
@@ -208,25 +208,25 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                 //    return;
                 //}
 
-                _userDto.UserAddress = new AddressDto();            
-                _userDto.UserAddress.Country = this.Country;
-                _userDto.UserAddress.FlatNumber = this.UnitNumber;
-                _userDto.UserAddress.State = this.State;
-                _userDto.UserAddress.StreetName = this.Street;
-                _userDto.UserAddress.Suburb = this.Suburb;
-                _userDto.UserAddress.PostCode = this.PostCode;
+                _userDto.CustomerAddress = new AddressDto();            
+                _userDto.CustomerAddress.Country = this.Country;
+                _userDto.CustomerAddress.FlatNumber = this.UnitNumber;
+                _userDto.CustomerAddress.State = this.State;
+                _userDto.CustomerAddress.StreetName = this.Street;
+                _userDto.CustomerAddress.Suburb = this.Suburb;
+                _userDto.CustomerAddress.PostCode = this.PostCode;
 
-                var result = await _addressService.GetPosibleAddresses(_userDto.UserAddress);
+                var result = await _addressService.GetPosibleAddresses(_userDto.CustomerAddress);
                 if (result == null || result.completions == null || result.completions.Count == 0)
                 {
-                   // _userDto.UserAddress.City = "";
-                    _userDto.UserAddress.Country = "";
-                    _userDto.UserAddress.FlatNumber = this.UnitNumber;
-                    _userDto.UserAddress.State = "";
-                    _userDto.UserAddress.StreetName = this.Street;
-                    _userDto.UserAddress.Suburb = "";
-                    _userDto.UserAddress.PostCode = this.PostCode;
-                    result = await _addressService.GetPosibleAddresses(_userDto.UserAddress);
+                   // _userDto.CustomerAddress.City = "";
+                    _userDto.CustomerAddress.Country = "";
+                    _userDto.CustomerAddress.FlatNumber = this.UnitNumber;
+                    _userDto.CustomerAddress.State = "";
+                    _userDto.CustomerAddress.StreetName = this.Street;
+                    _userDto.CustomerAddress.Suburb = "";
+                    _userDto.CustomerAddress.PostCode = this.PostCode;
+                    result = await _addressService.GetPosibleAddresses(_userDto.CustomerAddress);
                 }
 
                 if (result != null && result.completions?.Count > 0)
@@ -256,12 +256,12 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                 }
                 else
                 {
-                    _userDto.UserAddress.Country = this.Country;
-                    _userDto.UserAddress.FlatNumber = this.UnitNumber;
-                    _userDto.UserAddress.State = this.State;
-                    _userDto.UserAddress.StreetName = this.Street;
-                    _userDto.UserAddress.Suburb = this.Suburb;
-                    _userDto.UserAddress.PostCode = this.PostCode;
+                    _userDto.CustomerAddress.Country = this.Country;
+                    _userDto.CustomerAddress.FlatNumber = this.UnitNumber;
+                    _userDto.CustomerAddress.State = this.State;
+                    _userDto.CustomerAddress.StreetName = this.Street;
+                    _userDto.CustomerAddress.Suburb = this.Suburb;
+                    _userDto.CustomerAddress.PostCode = this.PostCode;
 
                 }
 
@@ -289,28 +289,28 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                     {
                         if (!string.IsNullOrEmpty(result.address_line_2))
                         {
-                            _userDto.UserAddress.FlatNumber = result.address_line_1;
-                            _userDto.UserAddress.StreetName = result.address_line_2;
+                            _userDto.CustomerAddress.FlatNumber = result.address_line_1;
+                            _userDto.CustomerAddress.StreetName = result.address_line_2;
                         }
                         else
                         {
-                            _userDto.UserAddress.StreetName = result.address_line_1;
+                            _userDto.CustomerAddress.StreetName = result.address_line_1;
                         }
 
-                        _userDto.UserAddress.State = result.state_territory;
-                        _userDto.UserAddress.Suburb = result.locality_name;
-                        _userDto.UserAddress.PostCode = result.postcode;
-                        _userDto.UserAddress.AddressValidated = true;                        
+                        _userDto.CustomerAddress.State = result.state_territory;
+                        _userDto.CustomerAddress.Suburb = result.locality_name;
+                        _userDto.CustomerAddress.PostCode = result.postcode;
+                        _userDto.CustomerAddress.AddressValidated = true;                        
                     }
                 }
                 else
                 {
-                    _userDto.UserAddress.Country = this.Country;
-                    _userDto.UserAddress.FlatNumber = this.UnitNumber;
-                    _userDto.UserAddress.State = this.State;
-                    _userDto.UserAddress.StreetName = this.Street;
-                    _userDto.UserAddress.Suburb = this.Suburb;
-                    _userDto.UserAddress.PostCode = this.PostCode;
+                    _userDto.CustomerAddress.Country = this.Country;
+                    _userDto.CustomerAddress.FlatNumber = this.UnitNumber;
+                    _userDto.CustomerAddress.State = this.State;
+                    _userDto.CustomerAddress.StreetName = this.Street;
+                    _userDto.CustomerAddress.Suburb = this.Suburb;
+                    _userDto.CustomerAddress.PostCode = this.PostCode;
                 }
 
                 await SaveNewAccount();
@@ -331,7 +331,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             {
                 this.IsBusy = true;                 
 
-                if (await _userMobileService.CreateNewuser(_userDto))
+                if (await _userMobileService.CreateNewCustomer(_userDto))
                 {
                     await UserDialogs.ConfirmAsync(StringResources.AccountCreated, StringResources.NewUser);
                     await NavigationService.NavigateToAsync<DropViewModel>();
@@ -352,7 +352,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
         {
             try
             {
-                _userDto = (UserDto)navigationData;
+                _userDto = (CustomerDto)navigationData;
             }
             catch (Exception ex)
             {

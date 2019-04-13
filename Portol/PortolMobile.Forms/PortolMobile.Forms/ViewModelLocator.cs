@@ -62,7 +62,7 @@ namespace PortolMobile.Forms
                 
                 
                 builder.RegisterType<LoginService>().As<ILoginService>();
-                builder.RegisterType<UserMobileService>().As<IUserMobileService>();
+                builder.RegisterType<UserMobileService>().As<ICustomerMobileService>();
 
                 var restApi = new RestClient();
                 

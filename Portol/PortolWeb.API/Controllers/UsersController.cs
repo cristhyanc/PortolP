@@ -22,11 +22,11 @@ namespace PortolWeb.API.Controllers
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
-        private IUserService _userService;
+        private ICustomerService _userService;
         ISmsService _smsService;
         private readonly AppSettings _appSettings;
 
-        public UsersController(IUserService userService, IOptions<AppSettings> appSettings, ISmsService smsService)
+        public UsersController(ICustomerService userService, IOptions<AppSettings> appSettings, ISmsService smsService)
         {
             _userService = userService;          
             _appSettings = appSettings.Value;
@@ -77,12 +77,12 @@ namespace PortolWeb.API.Controllers
         //public IActionResult GetById(int id)
         //{
         //    var user = _userService.GetById(id);
-        //    var userDto = _mapper.Map<UserDto>(user);
+        //    var userDto = _mapper.Map<CustomerDto>(user);
         //    return Ok(userDto);
         //}
 
         //[HttpPut("{id}")]
-        //public IActionResult Update(int id, [FromBody]UserDto userDto)
+        //public IActionResult Update(int id, [FromBody]CustomerDto userDto)
         //{
         //    // map dto to entity and set id
         //    var user = _mapper.Map<User>(userDto);
@@ -103,7 +103,7 @@ namespace PortolWeb.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("VerifyCode")]
-        public IActionResult VerifyCode([FromBody]UserDto details)
+        public IActionResult VerifyCode([FromBody]CustomerDto details)
         {
             try
             {
@@ -133,7 +133,7 @@ namespace PortolWeb.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("ResetPassword")]
-        public IActionResult ResetPassword([FromBody]UserDto details)
+        public IActionResult ResetPassword([FromBody]CustomerDto details)
         {
             try
             {
@@ -178,7 +178,7 @@ namespace PortolWeb.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("VerifyMobileUniqueness")]
-        public IActionResult VerifyMobileUniqueness([FromBody]UserDto phoneDetails)
+        public IActionResult VerifyMobileUniqueness([FromBody]CustomerDto phoneDetails)
         {
             try
             {                
@@ -199,7 +199,7 @@ namespace PortolWeb.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("SendVerificationCode")]
-        public IActionResult SendVerificationCode([FromBody]UserDto details)
+        public IActionResult SendVerificationCode([FromBody]CustomerDto details)
         {
             try
             {
@@ -228,7 +228,7 @@ namespace PortolWeb.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody]UserDto userDto)
+        public IActionResult Authenticate([FromBody]CustomerDto userDto)
         {
 
             try
@@ -241,7 +241,7 @@ namespace PortolWeb.API.Controllers
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                     {
-                    new Claim(ClaimTypes.Name, user.UserID.ToString())
+                    new Claim(ClaimTypes.Name, user.CustomerID.ToString())
                     }),
                     Expires = DateTime.UtcNow.AddDays(7),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -267,7 +267,7 @@ namespace PortolWeb.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("RegisterNewuser")]
-        public IActionResult RegisterNewuser([FromBody]UserDto userDto)
+        public IActionResult RegisterNewuser([FromBody]CustomerDto userDto)
         {
 
             try

@@ -61,7 +61,7 @@ namespace PortolWeb.API
                 {
                     OnTokenValidated = context =>
                     {
-                        var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
+                        var userService = context.HttpContext.RequestServices.GetRequiredService<ICustomerService>();
                         var userId = Guid.Parse(context.Principal.Identity.Name);
                         var user = userService.GetById(userId);
                         if (user == null)
@@ -87,7 +87,7 @@ namespace PortolWeb.API
 
             services.AddSingleton<ISmsApi>(smsApi);
             services.AddScoped<ISmsService, SmsService>();
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IDatabaseManagement, DatabaseManagement>();
             services.AddScoped<IDataContext, DataContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();

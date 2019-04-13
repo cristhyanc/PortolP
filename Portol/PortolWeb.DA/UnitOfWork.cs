@@ -1,4 +1,5 @@
-﻿using PortolWeb.DA.Repositories;
+﻿using Microsoft.EntityFrameworkCore.Storage;
+using PortolWeb.DA.Repositories;
 using PortolWeb.Entities;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,9 @@ namespace PortolWeb.DA
    public  class UnitOfWork: IUnitOfWork
     {
         private readonly DataContext _context;
-        private IRepositoryBasey<User> _userRepository;
+        private IRepositoryBasey<Customer> _customerRepository;
         private IRepositoryBasey<CodeVerification> _codeVerificationRepository;
+        private IRepositoryBasey<Address> _addressRepository;
 
         public UnitOfWork(DataContext context)
         {
@@ -20,13 +22,38 @@ namespace PortolWeb.DA
         public void SaveChanges()
         {
             _context.SaveChanges();
+            
         }
 
-        public IRepositoryBasey<User> UserRepository
+
+        public IDbContextTransaction BeginTransaction()
+        {
+            return _context.Database.BeginTransaction();
+        }
+
+        public void CommitTransaction()
+        {
+             _context.Database.CommitTransaction();
+        }
+
+        public void RollbackTransaction()
+        {
+            _context.Database.RollbackTransaction();
+        }
+
+        public IRepositoryBasey<Address> AddressRepository
         {
             get
             {
-                return _userRepository = _userRepository ?? new RepositoryBase<User>(_context);
+                return _addressRepository = _addressRepository ?? new RepositoryBase<Address>(_context);
+            }
+        }
+
+        public IRepositoryBasey<Customer> CustomerRepository
+        {
+            get
+            {
+                return _customerRepository = _customerRepository ?? new RepositoryBase<Customer>(_context);
             }
         }
 

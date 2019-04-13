@@ -39,6 +39,7 @@ namespace PortolWeb.Core.SmsServices
             Random random = new Random();
             int code = random.Next(1000, 9999);
             string fullNumber = countryCode + mobileNumber;
+            //TODO: string resource
             _smsApi.Sms(fullNumber, "Your SMS Code from Portol is: " + code.ToString()).Send(); 
             codeVeri.CodeNumber = code;           
             codeVeri.PhoneNumber = mobileNumber;

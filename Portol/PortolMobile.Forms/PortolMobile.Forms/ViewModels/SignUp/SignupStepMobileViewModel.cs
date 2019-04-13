@@ -149,7 +149,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                 }
 
                 this.IsBusy = true;
-                UserDto user = new UserDto();
+                CustomerDto user = new CustomerDto();
                 user.PhoneCountryCode = int.Parse(this.CountrySelected.CountryCode);
                 user.PhoneNumber = long.Parse(MobileNumber);
 
@@ -162,11 +162,11 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                     return;
                 }
 
-                var result = await _loginService.SendVerificationCode(user.PhoneNumber, user.PhoneCountryCode);
-                if (result)
-                {
+                //var result = await _loginService.SendVerificationCode(user.PhoneNumber, user.PhoneCountryCode);
+                //if (result)
+                //{
                     await NavigationService.NavigateToAsync<SignupStepCodeViewModel>(user);
-                }
+                //}
             }
             catch (System.Exception ex)
             {

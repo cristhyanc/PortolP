@@ -6,12 +6,13 @@ using System.Text;
 
 namespace PortolWeb.Entities
 {
-  public  interface IDataContext
+    public interface IDataContext
     {
-         DbSet<User> Users { get; set; }
-         DbSet<CodeVerification> CodeVerifications { get; set; }
+        DbSet<Customer> Customers { get; set; }
+        DbSet<Address> Addresses { get; set; }
+        DbSet<CodeVerification> CodeVerifications { get; set; }
         DbSet<Business> Businesses { get; set; }
-         DbSet<Script> Scripts { get; set; }
+        DbSet<Script> Scripts { get; set; }
         int SaveChanges();
         DatabaseFacade Database { get; }
     }

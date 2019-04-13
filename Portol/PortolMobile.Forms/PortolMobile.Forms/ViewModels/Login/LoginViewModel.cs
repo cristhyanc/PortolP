@@ -67,7 +67,7 @@ namespace PortolMobile.Forms.ViewModels.Login
             try
             {
                    await NavigationService.NavigateToAsync<SignupStepMobileViewModel>();
-                //var user = new Portol.Common.DTO.UserDto();
+                //var user = new Portol.Common.DTO.CustomerDto();
                 //await NavigationService.NavigateToAsync<SignupStepAddressViewModel>(user);
 
 

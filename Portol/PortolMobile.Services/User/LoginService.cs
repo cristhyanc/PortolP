@@ -20,16 +20,16 @@ namespace PortolMobile.Services.User
             _restClient = restClient;
         }
 
-        public async Task<UserDto> Authenticate(string email, string password)
+        public async Task<CustomerDto> Authenticate(string email, string password)
         {            
-                var user = new UserDto { Email = email, Password = password };
-                user = await _restClient.MakeApiCall<UserDto>($"{Constants.BaseUserApiUrl}/authenticate", HttpMethod.Post, user);
+                var user = new CustomerDto { Email = email, Password = password };
+                user = await _restClient.MakeApiCall<CustomerDto>($"{Constants.BaseUserApiUrl}/authenticate", HttpMethod.Post, user);
                 return user; 
         }
 
         public async Task<Boolean> VerifyMobileUniqueness(long mobilePhoned, Int32 code)
         {
-            UserDto details = new UserDto { PhoneNumber = mobilePhoned, PhoneCountryCode = code };
+            CustomerDto details = new CustomerDto { PhoneNumber = mobilePhoned, PhoneCountryCode = code };
             var result = await _restClient.MakeApiCallRaw<Boolean>($"{Constants.BaseUserApiUrl}/VerifyMobileUniqueness", HttpMethod.Post, details);
             return result;
         }
@@ -43,19 +43,19 @@ namespace PortolMobile.Services.User
         
         public async Task<bool> VerifyCode(long mobilePhoned, Int32 countryCode, Int32 code)
         {
-            UserDto user = new UserDto { PhoneNumber = mobilePhoned, PhoneCountryCode = countryCode, Token= code.ToString() };
+            CustomerDto user = new CustomerDto { PhoneNumber = mobilePhoned, PhoneCountryCode = countryCode, Token= code.ToString() };
             return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/VerifyCode", HttpMethod.Post, user);
         }
 
         public async Task<bool> ResetNewPassword(long mobilePhoned, string newPassword)
         {
-            UserDto user = new UserDto { PhoneNumber = mobilePhoned, Password= newPassword };
+            CustomerDto user = new CustomerDto { PhoneNumber = mobilePhoned, Password= newPassword };
             return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/ResetPassword", HttpMethod.Post, user);
         }
 
         public async Task<bool> SendVerificationCode(long mobilePhoned, Int32 code)
         {
-            UserDto user = new UserDto { PhoneNumber = mobilePhoned, PhoneCountryCode= code };
+            CustomerDto user = new CustomerDto { PhoneNumber = mobilePhoned, PhoneCountryCode= code };
             return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/SendVerificationCode", HttpMethod.Post, user);
         }
 

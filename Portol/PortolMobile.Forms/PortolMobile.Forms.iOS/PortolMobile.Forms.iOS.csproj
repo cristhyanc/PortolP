@@ -205,10 +205,18 @@
     <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\Icon-App-60x60%403x.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\Map_image.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\Map_image.imageset\Screen Shot 2019-04-04 at 2.41.13 pm.png" />
-    <ImageAsset Include="Assets.xcassets\Map_image.imageset\Screen Shot 2019-04-04 at 2.41.13 pm%402x.png" />
-    <ImageAsset Include="Assets.xcassets\Map_image.imageset\Screen Shot 2019-04-04 at 2.41.13 pm%403x.png" />
+    <ImageAsset Include="Assets.xcassets\Map_image.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Map_image.imageset\Screen Shot 2019-04-04 at 2.41.13 pm.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Map_image.imageset\Screen Shot 2019-04-04 at 2.41.13 pm%402x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\Map_image.imageset\Screen Shot 2019-04-04 at 2.41.13 pm%403x.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

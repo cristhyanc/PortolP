@@ -163,7 +163,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             }
         }
 
-        UserDto _userDto;
+        CustomerDto _userDto;
 
         public SignupStepCodeViewModel(  ILoginService loginService)
         {          
@@ -189,7 +189,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
 
                 var code = Int16.Parse(this.FirstNumber + this.SecondNumber + this.ThirdNumber + this.FourNumber);
 
-                await _loginService.VerifyCode(_userDto.PhoneNumber, _userDto.PhoneCountryCode, code);
+               // await _loginService.VerifyCode(_userDto.PhoneNumber, _userDto.PhoneCountryCode, code);
 
                 await NavigationService.NavigateToAsync<SignupStepDetailsViewModel>(_userDto);
              
@@ -208,7 +208,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
         {
             try
             {
-                _userDto =(UserDto)navigationData;
+                _userDto =(CustomerDto)navigationData;
                 if (_userDto != null)
                 {
                     MobileNumber = "+" + _userDto.PhoneCountryCode.ToString() + _userDto.PhoneNumber.ToString();

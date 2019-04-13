@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PortolMobile.Services.User
 {
-   public class UserMobileService: IUserMobileService
+   public class UserMobileService: ICustomerMobileService
     {
         private readonly IRestClient _restClient;
 
@@ -18,7 +18,7 @@ namespace PortolMobile.Services.User
         {
             _restClient = restClient;
         }
-        public async Task<Boolean> CreateNewuser(UserDto newUser)
+        public async Task<Boolean> CreateNewCustomer(CustomerDto newUser)
         {
             return await _restClient.MakeApiCallRaw<Boolean>($"{Constants.BaseUserApiUrl}/RegisterNewuser", HttpMethod.Post, newUser);           
         }
