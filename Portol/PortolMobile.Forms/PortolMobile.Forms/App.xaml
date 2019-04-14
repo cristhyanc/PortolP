@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"         
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
              x:Class="PortolMobile.Forms.App">
-    <Application.Resources>
+    <Application.Resources>      
         <ResourceDictionary>
             <!--Global Styles-->
 
@@ -26,6 +26,7 @@
                 <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
 
+            
             <Style TargetType="Label" x:Key="LabelBaseStyle" >
                 <Setter Property="TextColor" Value="#000000" />
                 <Setter Property="FontSize" Value="Medium" />
@@ -35,7 +36,7 @@
             <Style TargetType="Label" x:Key="LabelRequired"  BaseResourceKey="LabelBaseStyle"  >
                 <Setter Property="TextColor" Value="Red" />
                 <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="FontFamily" Value="Lucida Grande" />
+               
             </Style>
 
             <Style TargetType="Label" x:Key="LabelBaseStyleWhite" >
@@ -43,12 +44,7 @@
                 <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
-
-            <Style BaseResourceKey="LabelBaseStyle" TargetType="Entry">
-                <Setter Property="PlaceholderColor" Value="Gray" />
-                <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
-            </Style>
-
+            
             <Style BaseResourceKey="LabelBaseStyle" TargetType="Button">
                 <Setter Property="TextColor" Value="Black"  />                
             </Style>
@@ -63,16 +59,7 @@
                 <Setter Property="BackgroundColor"  Value="White"   />
             </Style>
 
-            <Style x:Key="EntryBaseStyleWhite"  BaseResourceKey="LabelBaseStyleWhite" TargetType="Entry">
-                <Setter Property="PlaceholderColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
-                <Setter Property="BackgroundColor" Value="Transparent" />
-            </Style>
-
-            <Style BaseResourceKey="Entry" TargetType="controls:ExtendedEntry">
-                <Setter Property="PlaceholderColor" Value="Gray" />
-                <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
-            </Style>
-
+           
             <Style x:Key="ActivityIndicatorStyle"   TargetType="ActivityIndicator">
                 <Setter Property="Color" Value="Gray" />
             </Style>
@@ -84,7 +71,24 @@
             <Style   TargetType="controls:ExtendedContentPage">
                 <Setter Property="BackgroundColor"  Value="White"  />
             </Style>
+
+            <Style BaseResourceKey="LabelBaseStyle" TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="Gray" />
+                <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
+            </Style>
+
+            <Style x:Key="EntryBaseStyleWhite"  BaseResourceKey="LabelBaseStyleWhite" TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+
+            <Style BaseResourceKey="Entry" TargetType="controls:ExtendedEntry">
+                <Setter Property="PlaceholderColor" Value="Gray" />
+                <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
+            </Style>
+
             
         </ResourceDictionary>
+       
     </Application.Resources>
 </Application>

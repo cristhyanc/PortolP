@@ -2,19 +2,24 @@
 <controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
-             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
              BackgroundImage="Map_image"
+             xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles"
              x:Class="PortolMobile.Forms.Views.DropView">
+    <controls:ExtendedContentPage.Resources>
+        <DropoffStyle:DropoffStyles/>
+    </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
-        
+
         <Grid VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-              
+                <RowDefinition Height="*"></RowDefinition>              
             </Grid.RowDefinitions>
 
             <StackLayout BackgroundColor="White" >
@@ -36,17 +41,101 @@
                         Style="{StaticResource ButtonSelectedTab}"
                         Grid.Column="1" Text="Drop"></Button>
                 </Grid>
+              
             </StackLayout>
 
-            <Frame Grid.Row="1" CornerRadius="15" BackgroundColor="#383b3b" Margin="30,30,30,50" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"  >
-                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand">
-                    <Label Text="Hello Ash,"></Label>
-                    <Label Text="What are we sending today?"></Label>
+           
+            <RelativeLayout   Grid.Row="1" >  
+                
+                <Frame  CornerRadius="15" BackgroundColor="#383b3b" x:Name="frmDetailBox"
+                            RelativeLayout.XConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Width,
+                            Factor=0.15 }"
+                        
+                            RelativeLayout.YConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Height,
+                            Factor=0.08 }"
+                            
+                            RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Height,
+                            Factor=0.7 }"
+                        
+                            RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Width,
+                            Factor=0.7 }">
 
-                    <Entry></Entry>
-                    <Entry></Entry>
-                </StackLayout>
-            </Frame>
+                    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Margin="0,30,0,0" >
+                        <Label Text="Hello Ash,"  Style="{StaticResource GreetingStyle}"  ></Label>
+                        <Label Text="What are we sending today?"   Style="{StaticResource DropoffLabelStyle}" ></Label>
+
+                        <Grid ColumnSpacing="0" RowSpacing="0" VerticalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            
+                            <ffimageloading:CachedImage HorizontalOptions="Start"  WidthRequest="50" HeightRequest="70" VerticalOptions="FillAndExpand"  
+                                           Source="resource://PortolMobile.Forms.Resources.ic_parcel.png?assembly=PortolMobile.Forms" />
+
+                            <ffimageloadingsvg:SvgCachedImage Grid.Column="1" HorizontalOptions="End" WidthRequest="30" HeightRequest="50" VerticalOptions="FillAndExpand" 
+                                     Source="resource://PortolMobile.Forms.Resources.ic_door.svg?assembly=PortolMobile.Forms" />
+
+                            <BoxView  Grid.Column="0" Grid.Row="1" Style="{StaticResource BoxSeparatorLeft}" ></BoxView>
+                            <BoxView  Grid.Column="1" Grid.Row="1" Style="{StaticResource BoxSeparatorRight}" ></BoxView>
+
+                            <!--<ffimageloadingsvg:SvgCachedImage Grid.ColumnSpan="2" Grid.Row="1"  HorizontalOptions="FillAndExpand" VerticalOptions="Center" HeightRequest="3"  
+                                     Source="resource://PortolMobile.Forms.Resources.ic_line.svg?assembly=PortolMobile.Forms" />-->
+
+                        </Grid>
+                        
+                        <controls:ExtendedEntry Placeholder="Mobile Number" Margin="0,10,0,10"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                        <controls:ExtendedEntry Placeholder="Email"  Margin="0,0,0,20"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                    </StackLayout>
+                </Frame>
+
+                <Frame BackgroundColor="Transparent"  Padding="0,0,0,0"    
+                                    RelativeLayout.XConstraint="{ConstraintExpression
+                                        Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=0.5, Constant=-35 }"                   
+                                    
+                                    RelativeLayout.YConstraint="{ConstraintExpression
+                                    Type=RelativeToParent,
+                                    Property=Height,
+                                    Factor=0.08,Constant=-35 }"   >
+
+                    <circleIma:CircleImage  Source="https://www.morpht.com/sites/morpht/files/styles/landscape/public/dalibor-matura_1.jpg"
+                                     WidthRequest="70" HeightRequest="70"  Aspect="AspectFill"    x:Name="ProfileImage"  />
+
+
+                </Frame>
+
+                <Frame  Style="{StaticResource ButtonFrameStyle}"  
+                                        RelativeLayout.XConstraint="{ConstraintExpression
+                                        Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=0.5, Constant=-35 }"                   
+                                    
+                                        RelativeLayout.YConstraint="{ConstraintExpression
+                                        Type=RelativeToView,
+                                        ElementName=frmDetailBox,
+                                        Property=Height,
+                                        Factor=1.2}"  >
+                    
+                    <Label Style="{StaticResource ButtonLabelStyle}" ></Label>
+                </Frame>
+                
+            </RelativeLayout>
+
+           
 
         </Grid>
     </controls:ExtendedContentPage.Content>

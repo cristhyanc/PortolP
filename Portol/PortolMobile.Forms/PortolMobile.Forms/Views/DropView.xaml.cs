@@ -16,6 +16,7 @@ namespace PortolMobile.Forms.Views
         public DropView()
         {
             InitializeComponent();
+            ProfileImage.Focus();
         }
     }
 }

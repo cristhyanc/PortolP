@@ -6,6 +6,7 @@ using FFImageLoading.Forms.Droid;
 using FFImageLoading;
 using System;
 using Android.Util;
+using ImageCircle.Forms.Plugin.Droid;
 
 namespace PortolMobile.Forms.Droid
 {
@@ -24,6 +25,7 @@ namespace PortolMobile.Forms.Droid
                 ToolbarResource = Resource.Layout.Toolbar;
 
                 base.OnCreate(bundle);
+                ImageCircleRenderer.Init();
                 global::Xamarin.Forms.Forms.Init(this, bundle);
                 //AnimationViewRenderer.Init();
                 //PlotViewRenderer.Init();

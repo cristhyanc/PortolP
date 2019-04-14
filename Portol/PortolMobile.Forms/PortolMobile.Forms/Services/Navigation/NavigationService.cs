@@ -22,36 +22,14 @@ namespace PortolMobile.Forms.Services.Navigation
           
         }
 
-        private bool _popupOn = false;
-
-       
 
         public void SetNavigationPage(NavigationPage navigation)
         {
             CurrentNavigator = navigation;
-            CurrentNavigator.ChildRemoved += MainNavigator_ChildRemoved;
+          
         }
 
-        private async void MainNavigator_ChildRemoved(object sender, ElementEventArgs e)
-        {
-            //if (sender != null)
-            //{
-            //    Page page = (Page)sender;
-            //    try
-            //    {
-
-            //        if (page.BindingContext != null)
-            //        {
-            //            await (page.BindingContext as BaseViewModel).Destroy();
-            //            page.BindingContext = null;
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        throw ex;
-            //    }
-            //}
-        }
+      
 
         public async Task NavigateToAsync<TViewModel>() where TViewModel : BaseViewModel
         {
