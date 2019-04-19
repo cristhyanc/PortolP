@@ -83,6 +83,11 @@ namespace PortolWeb.Entities
             }
         }
 
+        public Customer GetCustomerByPhoneNumber(IUnitOfWork _uow, long phoneNumber, int countryCode)
+        {
+            var customer = _uow.CustomerRepository.Get(x => x.PhoneNumber == phoneNumber && x.PhoneCountryCode == countryCode);
+            return customer;
+        }
 
         public static CustomerDto ORM(Customer user )
         {

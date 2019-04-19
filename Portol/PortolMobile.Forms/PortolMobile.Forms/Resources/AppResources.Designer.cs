@@ -664,6 +664,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to What are we sending today?.
+        /// </summary>
+        internal static string WhatAreSending {
+            get {
+                return ResourceManager.GetString("WhatAreSending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Code you entered is incorrect.
         /// </summary>
         internal static string WrongCode {

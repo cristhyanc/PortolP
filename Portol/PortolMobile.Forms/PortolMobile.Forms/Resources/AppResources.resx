@@ -321,4 +321,7 @@
   <data name="EnterNewPassword" xml:space="preserve">
     <value>Enter new password</value>
   </data>
+  <data name="WhatAreSending" xml:space="preserve">
+    <value>What are we sending today?</value>
+  </data>
 </root>

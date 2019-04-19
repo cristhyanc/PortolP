@@ -1,6 +1,6 @@
 
 GO
-/****** Object:  Table [dbo].[tblAddress]    Script Date: 13/04/2019 12:03:57 PM ******/
+/****** Object:  Table [dbo].[tblAddress]    Script Date: 19/04/2019 5:53:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -22,7 +22,7 @@ CREATE TABLE [dbo].[tblAddress](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblBusiness]    Script Date: 13/04/2019 12:03:58 PM ******/
+/****** Object:  Table [dbo].[tblBusiness]    Script Date: 19/04/2019 5:53:59 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -36,7 +36,7 @@ CREATE TABLE [dbo].[tblBusiness](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblCodeVerification]    Script Date: 13/04/2019 12:03:58 PM ******/
+/****** Object:  Table [dbo].[tblCodeVerification]    Script Date: 19/04/2019 5:54:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -44,8 +44,8 @@ GO
 CREATE TABLE [dbo].[tblCodeVerification](
 	[CodeID] [uniqueidentifier] NOT NULL,
 	[CodeNumber] [int] NOT NULL,
-	[PhoneNumber] [nvarchar](20) NOT NULL,
-	[CountryCode] [nvarchar](5) NOT NULL,
+	[PhoneNumber] [bigint] NOT NULL,
+	[CountryCode] [int] NOT NULL,
 	[Created] [date] NOT NULL,
  CONSTRAINT [PK_tblCodeVerification] PRIMARY KEY CLUSTERED 
 (
@@ -53,7 +53,7 @@ CREATE TABLE [dbo].[tblCodeVerification](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblCustomer]    Script Date: 13/04/2019 12:03:58 PM ******/
+/****** Object:  Table [dbo].[tblCustomer]    Script Date: 19/04/2019 5:54:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -77,7 +77,7 @@ CREATE TABLE [dbo].[tblCustomer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblDelivery]    Script Date: 13/04/2019 12:03:58 PM ******/
+/****** Object:  Table [dbo].[tblDelivery]    Script Date: 19/04/2019 5:54:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -97,7 +97,7 @@ CREATE TABLE [dbo].[tblDelivery](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblDriver]    Script Date: 13/04/2019 12:03:58 PM ******/
+/****** Object:  Table [dbo].[tblDriver]    Script Date: 19/04/2019 5:54:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -111,7 +111,7 @@ CREATE TABLE [dbo].[tblDriver](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblGallery]    Script Date: 13/04/2019 12:03:58 PM ******/
+/****** Object:  Table [dbo].[tblGallery]    Script Date: 19/04/2019 5:54:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -127,7 +127,7 @@ CREATE TABLE [dbo].[tblGallery](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblGalleryItem]    Script Date: 13/04/2019 12:03:58 PM ******/
+/****** Object:  Table [dbo].[tblGalleryItem]    Script Date: 19/04/2019 5:54:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -143,7 +143,7 @@ CREATE TABLE [dbo].[tblGalleryItem](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblParcel]    Script Date: 13/04/2019 12:03:58 PM ******/
+/****** Object:  Table [dbo].[tblParcel]    Script Date: 19/04/2019 5:54:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -162,7 +162,7 @@ CREATE TABLE [dbo].[tblParcel](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblParcelItem]    Script Date: 13/04/2019 12:03:58 PM ******/
+/****** Object:  Table [dbo].[tblParcelItem]    Script Date: 19/04/2019 5:54:00 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -182,11 +182,15 @@ ALTER TABLE [dbo].[tblAddress] ADD  CONSTRAINT [DF_tblAddress_AddressID]  DEFAUL
 GO
 ALTER TABLE [dbo].[tblAddress] ADD  CONSTRAINT [DF_tblAddress_AddressValidated]  DEFAULT ((0)) FOR [AddressValidated]
 GO
+ALTER TABLE [dbo].[tblAddress] ADD  CONSTRAINT [DF_tblAddress_IsCurrentAddress]  DEFAULT ((0)) FOR [IsCurrentAddress]
+GO
 ALTER TABLE [dbo].[tblBusiness] ADD  CONSTRAINT [DF_tblBusiness_BusinessID]  DEFAULT (newid()) FOR [BusinessID]
 GO
 ALTER TABLE [dbo].[tblCodeVerification] ADD  CONSTRAINT [DF_tblCodeVerification_CodeID]  DEFAULT (newid()) FOR [CodeID]
 GO
 ALTER TABLE [dbo].[tblCodeVerification] ADD  CONSTRAINT [DF_tblCodeVerification_Created]  DEFAULT (getdate()) FOR [Created]
+GO
+ALTER TABLE [dbo].[tblCustomer] ADD  CONSTRAINT [DF_tblCustomer_CustomerID]  DEFAULT (newid()) FOR [CustomerID]
 GO
 ALTER TABLE [dbo].[tblCustomer] ADD  CONSTRAINT [DF_tblCustomer_Email]  DEFAULT (N'guess@email.com') FOR [Email]
 GO
@@ -212,36 +216,6 @@ ALTER TABLE [dbo].[tblParcel] ADD  CONSTRAINT [DF_tblParcel_ParcelID]  DEFAULT (
 GO
 ALTER TABLE [dbo].[tblParcelItem] ADD  CONSTRAINT [DF_tblParcelItem_ItemID]  DEFAULT (newid()) FOR [ItemID]
 GO
-ALTER TABLE [dbo].[tblCustomer]  WITH CHECK ADD  CONSTRAINT [FK_tblCustomer_tblAddress] FOREIGN KEY([CustomerID])
-REFERENCES [dbo].[tblCustomer] ([CustomerID])
-GO
-ALTER TABLE [dbo].[tblCustomer] CHECK CONSTRAINT [FK_tblCustomer_tblAddress]
-GO
-ALTER TABLE [dbo].[tblCustomer]  WITH CHECK ADD  CONSTRAINT [FK_tblCustomer_tblBusiness] FOREIGN KEY([BusinessID])
-REFERENCES [dbo].[tblBusiness] ([BusinessID])
-GO
-ALTER TABLE [dbo].[tblCustomer] CHECK CONSTRAINT [FK_tblCustomer_tblBusiness]
-GO
-ALTER TABLE [dbo].[tblDelivery]  WITH CHECK ADD  CONSTRAINT [FK_tblDelivery_tblAddress_drop] FOREIGN KEY([DropoffAddressID])
-REFERENCES [dbo].[tblAddress] ([AddressID])
-GO
-ALTER TABLE [dbo].[tblDelivery] CHECK CONSTRAINT [FK_tblDelivery_tblAddress_drop]
-GO
-ALTER TABLE [dbo].[tblDelivery]  WITH CHECK ADD  CONSTRAINT [FK_tblDelivery_tblAddress_pick] FOREIGN KEY([PickupAddressID])
-REFERENCES [dbo].[tblAddress] ([AddressID])
-GO
-ALTER TABLE [dbo].[tblDelivery] CHECK CONSTRAINT [FK_tblDelivery_tblAddress_pick]
-GO
-ALTER TABLE [dbo].[tblDelivery]  WITH CHECK ADD  CONSTRAINT [FK_tblDelivery_tblCustomer_receiver] FOREIGN KEY([ReceiverID])
-REFERENCES [dbo].[tblCustomer] ([CustomerID])
-GO
-ALTER TABLE [dbo].[tblDelivery] CHECK CONSTRAINT [FK_tblDelivery_tblCustomer_receiver]
-GO
-ALTER TABLE [dbo].[tblDelivery]  WITH CHECK ADD  CONSTRAINT [FK_tblDelivery_tblCustomer_sender] FOREIGN KEY([SenderID])
-REFERENCES [dbo].[tblCustomer] ([CustomerID])
-GO
-ALTER TABLE [dbo].[tblDelivery] CHECK CONSTRAINT [FK_tblDelivery_tblCustomer_sender]
-GO
 ALTER TABLE [dbo].[tblDelivery]  WITH CHECK ADD  CONSTRAINT [FK_tblDelivery_tblDriver] FOREIGN KEY([DriverID])
 REFERENCES [dbo].[tblDriver] ([CustomerID])
 GO
@@ -252,17 +226,12 @@ REFERENCES [dbo].[tblParcel] ([ParcelID])
 GO
 ALTER TABLE [dbo].[tblDelivery] CHECK CONSTRAINT [FK_tblDelivery_tblParcel]
 GO
-ALTER TABLE [dbo].[tblDriver]  WITH CHECK ADD  CONSTRAINT [FK_tblDriver_tblCustomer] FOREIGN KEY([CustomerID])
-REFERENCES [dbo].[tblCustomer] ([CustomerID])
-GO
-ALTER TABLE [dbo].[tblDriver] CHECK CONSTRAINT [FK_tblDriver_tblCustomer]
-GO
 ALTER TABLE [dbo].[tblGalleryItem]  WITH CHECK ADD  CONSTRAINT [FK_tblGalleryItem_tblGallery] FOREIGN KEY([GalleryID])
 REFERENCES [dbo].[tblGallery] ([GalleryID])
 GO
 ALTER TABLE [dbo].[tblGalleryItem] CHECK CONSTRAINT [FK_tblGalleryItem_tblGallery]
 GO
-ALTER TABLE [dbo].[tblParcel]  WITH CHECK ADD  CONSTRAINT [FK_tblParcel_tblGallery] FOREIGN KEY([GalleryID])
+ALTER TABLE [dbo].[tblParcel]  WITH NOCHECK ADD  CONSTRAINT [FK_tblParcel_tblGallery] FOREIGN KEY([GalleryID])
 REFERENCES [dbo].[tblGallery] ([GalleryID])
 GO
 ALTER TABLE [dbo].[tblParcel] CHECK CONSTRAINT [FK_tblParcel_tblGallery]

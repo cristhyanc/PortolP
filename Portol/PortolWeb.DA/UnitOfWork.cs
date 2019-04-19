@@ -41,6 +41,14 @@ namespace PortolWeb.DA
             _context.Database.RollbackTransaction();
         }
 
+        public IDataContext Context
+        {
+            get
+            {
+                return _context;
+            }
+        }
+
         public IRepositoryBasey<Address> AddressRepository
         {
             get

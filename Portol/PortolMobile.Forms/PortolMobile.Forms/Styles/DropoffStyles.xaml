@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ResourceDictionary xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"         
+             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+             xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="PortolMobile.Forms.Styles.DropoffStyles">
 
     <Style TargetType="Label" x:Key="GreetingStyle" BaseResourceKey="LabelBaseStyle">
@@ -23,6 +26,17 @@
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 
+    <Style x:Key="CircleImageProfile" TargetType="circleIma:CircleImage">
+        <Setter Property="WidthRequest" Value="70" />
+        <Setter Property="HeightRequest" Value="70" />
+        <Setter Property="Aspect" Value="AspectFill"/>      
+    </Style>
+
+    <Style x:Key="FrameImageProfile" TargetType="Frame">
+        <Setter Property="BackgroundColor" Value="Transparent" />
+        <Setter Property="Padding" Value="0,0,0,0" />        
+    </Style>
+
     <Style x:Key="ButtonFrameStyle"  TargetType="Frame">
         <Setter Property="BackgroundColor" Value="#383b3b" />
         <Setter Property="HeightRequest" Value="60" />
@@ -34,31 +48,64 @@
         <Setter Property="Margin"  Value="0,0,0,20"/>
     </Style>
 
-    <Style x:Key="ButtonLabelStyle"  TargetType="Label">
-        <Setter Property="TextColor" Value="#d8d8d8" />
-        <Setter Property="FontSize" Value="Large" />
-        <Setter Property="HorizontalOptions" Value="Center"/>
-        <Setter Property="VerticalOptions" Value="Center" />
-        <Setter Property="HorizontalTextAlignment" Value="Center"/>
-        <Setter Property="VerticalTextAlignment" Value="Center" />
-        <Setter Property="Text" Value=">"/>        
+
+    <Style x:Key="ButtonIconStyle"  TargetType="ffimageloadingsvg:SvgCachedImage">
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="Margin" Value="5,0,0,0" />
+        <Setter Property="WidthRequest" Value="27"/>
+        <Setter Property="HeightRequest" Value="27" />
+        <Setter Property="VerticalOptions" Value="Center"/>
+        <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_button.svg?assembly=PortolMobile.Forms" />   
     </Style>
 
-    <Style x:Key="BoxSeparatorLeft"   TargetType="BoxView">
-       
+    <Style x:Key="GpsIconStyle"  TargetType="ffimageloading:CachedImage">
+        <Setter Property="HorizontalOptions" Value="Start" />
+        <Setter Property="WidthRequest" Value="45" />
+        <Setter Property="HeightRequest" Value="60"/>
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_parcel.png?assembly=PortolMobile.Forms" />
+    </Style>
+
+    <Style x:Key="DoorIconStyle"  TargetType="ffimageloadingsvg:SvgCachedImage">
+        <Setter Property="HorizontalOptions" Value="End" />
+        <Setter Property="WidthRequest" Value="30" />
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_door.svg?assembly=PortolMobile.Forms" />
+    </Style>
+
+    <Style x:Key="BoxSeparatorLeft"   TargetType="BoxView">       
         <Setter Property="HeightRequest" Value="1" />
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         <Setter Property="BackgroundColor" Value="#1a1717"  />
-        <Setter Property="Color" Value="#1a1717" />
-       
+        <Setter Property="Color" Value="#1a1717" />       
     </Style>
 
-    <Style x:Key="BoxSeparatorRight"   TargetType="BoxView">
-      
+    <Style x:Key="BoxSeparatorRight"   TargetType="BoxView">      
         <Setter Property="HeightRequest" Value="1" />
         <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         <Setter Property="BackgroundColor" Value="#EE0B0B"  />
         <Setter Property="Color" Value="#EE0B0B" />
     </Style>
 
+    <Style x:Key="StackLayoutFrameBox"   TargetType="StackLayout">
+        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="Margin" Value="0,30,0,0"  />        
+    </Style>
+
+    <Style x:Key="FrameBox"   TargetType="Frame">
+        <Setter Property="CornerRadius" Value="15" />
+        <Setter Property="BackgroundColor" Value="#383b3b"  />
+    </Style>
+
+    <Style x:Key="LogoStyle"  TargetType="ffimageloadingsvg:SvgCachedImage">
+        <Setter Property="HorizontalOptions" Value="Center" />
+        <Setter Property="WidthRequest" Value="100" />
+        <Setter Property="HeightRequest" Value="50"/>
+        <Setter Property="VerticalOptions" Value="Start" />
+        <Setter Property="Margin" Value="0,30,0,0" />
+        <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms" />
+    </Style>
+    
 </ResourceDictionary>

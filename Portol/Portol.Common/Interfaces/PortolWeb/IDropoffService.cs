@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Portol.Common.DTO;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Portol.Common.Interfaces.PortolWeb
 {
-    public interface ISmsService
+   public interface IDropoffService
     {
-        void SendNewCode(long mobileNumber, Int32 countryCode);
+       
     }
 }

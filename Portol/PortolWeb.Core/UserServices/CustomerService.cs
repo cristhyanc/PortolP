@@ -21,8 +21,8 @@ namespace PortolWeb.Core.UserServices
 
         public bool ValidateVerificationCode(long phoneNumber, Int32 countryCode, Int32 code)
         {
-            var savedCode = _uow.CodeVerificationRepository.Get(x => x.CodeNumber == code && x.PhoneNumber == phoneNumber.ToString() &&
-                                                                        x.CountryCode == countryCode.ToString());
+            var savedCode = _uow.CodeVerificationRepository.Get(x => x.CodeNumber == code && x.PhoneNumber == phoneNumber &&
+                                                                        x.CountryCode == countryCode);
             if(savedCode==null)
             {
                 return false;
@@ -32,6 +32,18 @@ namespace PortolWeb.Core.UserServices
             _uow.SaveChanges();
             return true;
             
+        }
+
+        public CustomerDto GetCustomerByPhoneNumber(long phoneNumber, int countryCode)
+        {
+            var customer = new Customer();
+            var result = customer.GetCustomerByPhoneNumber(_uow, phoneNumber, countryCode);
+            if (result != null)
+            {
+                return Customer.ORM(result);
+            }
+
+            return null;
         }
 
         public CustomerDto Authenticate(string username, string password)

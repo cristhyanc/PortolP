@@ -10,7 +10,7 @@ namespace PortolWeb.Entities
         IRepositoryBasey<Customer> CustomerRepository { get; }
         IRepositoryBasey<Address> AddressRepository { get; }
         IRepositoryBasey<CodeVerification> CodeVerificationRepository { get; }
-
+        IDataContext Context { get; }
         IDbContextTransaction BeginTransaction();
         void CommitTransaction();
         void RollbackTransaction();

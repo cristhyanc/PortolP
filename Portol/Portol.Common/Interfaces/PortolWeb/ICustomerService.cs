@@ -17,6 +17,7 @@ namespace Portol.Common.Interfaces.PortolWeb
         bool VerifyMobileUniqueness(CustomerDto phoneDetails);
         bool VerifyEmailUniqueness(string email);
         bool ValidateVerificationCode(long phoneNumber, Int32 countryCode, Int32 code);
+        CustomerDto GetCustomerByPhoneNumber(long phoneNumber, int countryCode);
 
     }
 }

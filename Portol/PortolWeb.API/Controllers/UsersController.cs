@@ -28,7 +28,7 @@ namespace PortolWeb.API.Controllers
 
         public UsersController(ICustomerService userService, IOptions<AppSettings> appSettings, ISmsService smsService)
         {
-            _userService = userService;          
+            _userService = userService;
             _appSettings = appSettings.Value;
             _smsService = smsService;
         }
@@ -52,8 +52,8 @@ namespace PortolWeb.API.Controllers
 
             }
         }
-       
-        [HttpGet("getall")]       
+
+        [HttpGet("getall")]
         public IActionResult GetAll()
         {
             try
@@ -107,7 +107,7 @@ namespace PortolWeb.API.Controllers
         {
             try
             {
-                
+
 
                 if (_userService.ValidateVerificationCode(details.PhoneNumber, details.PhoneCountryCode, Int16.Parse(details.Token)))
                 {
@@ -115,9 +115,9 @@ namespace PortolWeb.API.Controllers
                 }
                 else
                 {
-                    return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed,StringResources.WrongCode));
-                }               
-                
+                    return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, StringResources.WrongCode));
+                }
+
             }
             catch (AppException ex)
             {
@@ -153,7 +153,7 @@ namespace PortolWeb.API.Controllers
             }
         }
 
-        
+
 
         [AllowAnonymous]
         [HttpPost("VerifyEmailUniqueness")]
@@ -181,7 +181,7 @@ namespace PortolWeb.API.Controllers
         public IActionResult VerifyMobileUniqueness([FromBody]CustomerDto phoneDetails)
         {
             try
-            {                
+            {
                 return Ok(_userService.VerifyMobileUniqueness(phoneDetails));
 
             }
@@ -203,7 +203,7 @@ namespace PortolWeb.API.Controllers
         {
             try
             {
-                _smsService.SendNewCode(details.PhoneNumber.ToString(), details.PhoneCountryCode.ToString());
+                _smsService.SendNewCode(details.PhoneNumber, details.PhoneCountryCode);
                 return Ok();
             }
             catch (AppException ex)
@@ -287,6 +287,26 @@ namespace PortolWeb.API.Controllers
             }
         }
 
+
+        [HttpPost("GetCustomerByPhoneNumber")]
+        public IActionResult GetCustomerByPhoneNumber([FromBody]CustomerDto details)
+        {
+            try
+            {
+                var result = _userService.GetCustomerByPhoneNumber(details.PhoneNumber, details.PhoneCountryCode);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.GetCustomerByPhoneNumber");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
 
     }
 }
