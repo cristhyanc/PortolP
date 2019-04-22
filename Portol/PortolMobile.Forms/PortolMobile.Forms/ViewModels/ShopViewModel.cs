@@ -1,5 +1,7 @@
-﻿using Portol.Common;
+﻿using Acr.UserDialogs;
+using Portol.Common;
 using PortolMobile.Forms.Helper;
+using PortolMobile.Forms.Services.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,7 +15,7 @@ namespace PortolMobile.Forms.ViewModels
     {
         public ICommand GotoDropOffCommand { get; private set; }
 
-        public ShopViewModel()
+        public ShopViewModel( INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
         {
             GotoDropOffCommand = new Command(GotoDropOff);
         }

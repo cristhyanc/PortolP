@@ -23,7 +23,7 @@ namespace PortolMobile.Services.User
         public async Task<CustomerDto> Authenticate(string email, string password)
         {            
                 var user = new CustomerDto { Email = email, Password = password };
-                user = await _restClient.MakeApiCall<CustomerDto>($"{Constants.BaseUserApiUrl}/authenticate", HttpMethod.Post, user);
+                user = await _restClient.MakeApiCall<CustomerDto>($"{Constants.BaseUserApiUrl}/authenticate", HttpMethod.Post, user);           
                 return user; 
         }
 

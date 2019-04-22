@@ -4,6 +4,7 @@ using Portol.Common.DTO;
 using Portol.Common.Helper;
 using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Helper;
+using PortolMobile.Forms.Services.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -101,7 +102,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             }
         }
 
-        public SignupStepMobileViewModel(ILoginService loginService)
+        public SignupStepMobileViewModel(ILoginService loginService, INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
         {
            
             _loginService = loginService;

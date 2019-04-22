@@ -18,7 +18,6 @@
 
   <ItemGroup>
     <Folder Include="Api\Repository\SQL\" />
-    <Folder Include="Mobile\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -27,6 +26,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Portol.Common\Portol.Common.csproj" />
+    <ProjectReference Include="..\PortolMobile.Forms\PortolMobile.Forms\PortolMobile.Forms.csproj" />
     <ProjectReference Include="..\PortolWeb.Core\PortolWeb.Core.csproj" />
     <ProjectReference Include="..\PortolWeb.DA\PortolWeb.DA.csproj" />
     <ProjectReference Include="..\PortolWeb.Entities\PortolWeb.Entities.csproj" />

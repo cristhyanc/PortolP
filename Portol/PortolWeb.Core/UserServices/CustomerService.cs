@@ -34,6 +34,18 @@ namespace PortolWeb.Core.UserServices
             
         }
 
+        public CustomerDto GetCustomerByEmail(string email)
+        {
+            var customer = new Customer();
+            var result = customer.GetCustomerByEmail(_uow,email);
+            if (result != null)
+            {
+                return Customer.ORM(result);
+            }
+
+            return null;
+        }
+
         public CustomerDto GetCustomerByPhoneNumber(long phoneNumber, int countryCode)
         {
             var customer = new Customer();

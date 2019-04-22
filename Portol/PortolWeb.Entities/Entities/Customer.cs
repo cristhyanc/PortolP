@@ -25,6 +25,7 @@ namespace PortolWeb.Entities
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }       
         public bool Deleted { get; set; }
+        public bool IsGuess { get; set; }
 
         [NotMapped]
         public Address CurrentAddress { get; set; }
@@ -89,6 +90,12 @@ namespace PortolWeb.Entities
             return customer;
         }
 
+        public Customer GetCustomerByEmail(IUnitOfWork _uow, string email)
+        {
+            var customer = _uow.CustomerRepository.Get(x => x.Email.Equals(email));
+            return customer;
+        }
+
         public static CustomerDto ORM(Customer user )
         {
             if(user==null)
@@ -105,8 +112,8 @@ namespace PortolWeb.Entities
             result.PhoneCountryCode = user.PhoneCountryCode;
             result.PhoneNumber = user.PhoneNumber;
             result.CustomerID = user.CustomerID;
-            
-            if(user.CurrentAddress !=null)
+            result.IsGuess = user.IsGuess;
+            if (user.CurrentAddress !=null)
             {
                 result.CustomerAddress.PostCode = user.CurrentAddress.PostCode;
                 result.CustomerAddress.Country = user.CurrentAddress.Country;
@@ -134,7 +141,7 @@ namespace PortolWeb.Entities
             user.LastName = newUser.LastName;
             user.PhoneCountryCode = newUser.PhoneCountryCode;
             user.PhoneNumber = newUser.PhoneNumber;
-
+            user.IsGuess = user.IsGuess;
             if (newUser.CustomerAddress != null)
             {
                 user.CurrentAddress = new Address();

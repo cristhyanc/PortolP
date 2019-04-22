@@ -152,8 +152,7 @@ namespace PortolWeb.API.Controllers
 
             }
         }
-
-
+        
 
         [AllowAnonymous]
         [HttpPost("VerifyEmailUniqueness")]
@@ -288,12 +287,18 @@ namespace PortolWeb.API.Controllers
         }
 
 
-        [HttpPost("GetCustomerByPhoneNumber")]
-        public IActionResult GetCustomerByPhoneNumber([FromBody]CustomerDto details)
+        [HttpGet("GetCustomerByPhoneNumber")]
+        public IActionResult GetCustomerByPhoneNumber([FromQuery]string phoneNumber, [FromQuery]string countryCode)
         {
             try
             {
-                var result = _userService.GetCustomerByPhoneNumber(details.PhoneNumber, details.PhoneCountryCode);
+                long phone;
+                int country;
+
+                long.TryParse(phoneNumber, out phone);
+                int.TryParse(countryCode, out country);
+
+                var result = _userService.GetCustomerByPhoneNumber(phone, country);
                 return Ok(result);
             }
             catch (AppException ex)
@@ -307,6 +312,27 @@ namespace PortolWeb.API.Controllers
 
             }
         }
+
+        [HttpGet("GetCustomerByEmail")]
+        public IActionResult GetCustomerByEmail([FromQuery]string email)
+        {
+            try
+            {
+                var result = _userService.GetCustomerByEmail(email);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.GetCustomerByEmail");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
+
 
     }
 }

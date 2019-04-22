@@ -21,5 +21,6 @@ namespace Portol.Common.DTO
         public string Password { get; set; }
         public AddressDto CustomerAddress { get; set; }
         public bool Deleted { get; set; }
+        public bool IsGuess { get; set; }
     }
 }

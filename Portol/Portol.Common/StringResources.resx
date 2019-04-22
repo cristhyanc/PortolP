@@ -270,4 +270,49 @@
   <data name="MainPage" xml:space="preserve">
     <value>Main page</value>
   </data>
+  <data name="Continue" xml:space="preserve">
+    <value>Continue</value>
+  </data>
+  <data name="ContinueGuess" xml:space="preserve">
+    <value>Continue as a guess</value>
+  </data>
+  <data name="Email" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="Guess" xml:space="preserve">
+    <value>Guess</value>
+  </data>
+  <data name="GuessEmail" xml:space="preserve">
+    <value>guess@email.com</value>
+  </data>
+  <data name="LoginAgain" xml:space="preserve">
+    <value>Login again</value>
+  </data>
+  <data name="MissingInformation" xml:space="preserve">
+    <value>Missing information</value>
+  </data>
+  <data name="MobileNumber" xml:space="preserve">
+    <value>Mobile Number</value>
+  </data>
+  <data name="No" xml:space="preserve">
+    <value>No</value>
+  </data>
+  <data name="NoMobileNumberEmail" xml:space="preserve">
+    <value>The mobile number is not registered in the App, do you want to try the Email?</value>
+  </data>
+  <data name="PersonNoRegistered" xml:space="preserve">
+    <value>The Person you are trying to send the parcel to is not registered in our App</value>
+  </data>
+  <data name="ReceiverInformation" xml:space="preserve">
+    <value>Receiver information</value>
+  </data>
+  <data name="ReceiverName" xml:space="preserve">
+    <value>Receiver Name</value>
+  </data>
+  <data name="ReceiverNameRequired" xml:space="preserve">
+    <value>The Receiver name is required</value>
+  </data>
+  <data name="Yes" xml:space="preserve">
+    <value>Yes</value>
+  </data>
 </root>

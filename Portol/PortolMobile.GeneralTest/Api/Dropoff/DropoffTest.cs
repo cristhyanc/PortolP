@@ -18,30 +18,6 @@ namespace PortolMobile.GeneralTest.Api.Dropoff
             uow = fixture.UnitOfWorkDB;
         }
 
-        [Theory]
-        [InlineData(22998887, 24)]
-        [InlineData(64732149, 23)]
-        [InlineData(96009533, 50)]
-        [InlineData(25014561, 32)]
-        public void GetCustomerByPhoneNumber_Passed(long phone, Int32 countryCode)
-        {
-
-            ICustomerService dropoff = new CustomerService(uow);
-            var customer = dropoff.GetCustomerByPhoneNumber(phone, countryCode);
-            Assert.NotNull(customer);
-        }
-
-        [Theory]
-        [InlineData(0405593358, 61)]
-        [InlineData(0405593355, 61)]
-        [InlineData(0405593354, 61)]
-        [InlineData(0405593353, 61)]
-        public void GetCustomerByPhoneNumber_DontExist(long phone, Int32 countryCode)
-        {
-
-            ICustomerService dropoff = new CustomerService(uow);
-            var customer = dropoff.GetCustomerByPhoneNumber(phone, countryCode);
-            Assert.Null(customer);
-        }
+      
     }
 }

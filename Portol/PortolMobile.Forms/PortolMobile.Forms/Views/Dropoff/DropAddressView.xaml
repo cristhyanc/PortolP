@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:ExtendedContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             x:Class="PortolMobile.Forms.Views.Dropoff.DropAddressView"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
@@ -9,8 +10,7 @@
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
              BackgroundImage="Map_image"
-             xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles"
-             x:Class="PortolMobile.Forms.Views.DropView">
+             xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Resources>
         <DropoffStyle:DropoffStyles/>
     </controls:ExtendedContentPage.Resources>
@@ -25,20 +25,10 @@
             <StackLayout BackgroundColor="White" >
 
                 <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
-
-                <Grid  HorizontalOptions="CenterAndExpand" ColumnSpacing="0" Margin="0,10,0,0" >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Button  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" HeightRequest="60"
-                            Style="{StaticResource ButtonUnselectedTab}"  Command="{Binding GotoShopCommand}"
-                            Grid.Column="0" Text="Shop"></Button>
-
-                    <Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
+                
+                <Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
                         Style="{StaticResource ButtonSelectedTab}"
                         Grid.Column="1" Text="Drop"></Button>
-                </Grid>
 
             </StackLayout>
 
@@ -89,9 +79,9 @@
 
 
 
-                        <controls:ExtendedEntry Text="{Binding MobileNumber, Mode=TwoWay }" Placeholder="{i18n:Translate MobileNumber}" Keyboard="Numeric" Margin="0,10,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
-                        <controls:ExtendedEntry Text="{Binding ReceiverName, Mode=TwoWay }" Placeholder="{i18n:Translate ReceiverName}"  Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
-                        <controls:ExtendedEntry Text="{Binding Email, Mode=TwoWay }" Placeholder="{i18n:Translate Email}"  Margin="0,0,0,10"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                        <controls:ExtendedEntry Text="{Binding MobileNumber, Mode=TwoWay }" Placeholder="{i18n:Translate PickupAddress}" Keyboard="Numeric" Margin="0,10,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                        <controls:ExtendedEntry Text="{Binding ReceiverName, Mode=TwoWay }" Placeholder="{i18n:Translate DropoffAddress}"  Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                       
                         <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
                     </StackLayout>
                 </Frame>

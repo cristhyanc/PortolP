@@ -19,7 +19,7 @@ namespace PortolMobile.Forms.Resources {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     internal class AppResources {
@@ -174,6 +174,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string DOBRequired {
             get {
                 return ResourceManager.GetString("DOBRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Drop off Address.
+        /// </summary>
+        internal static string DropoffAddress {
+            get {
+                return ResourceManager.GetString("DropoffAddress", resourceCulture);
             }
         }
         
@@ -538,11 +547,29 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Pickup Address.
+        /// </summary>
+        internal static string PickupAddress {
+            get {
+                return ResourceManager.GetString("PickupAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Post Code.
         /// </summary>
         internal static string PostCode {
             get {
                 return ResourceManager.GetString("PostCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receiver Name.
+        /// </summary>
+        internal static string ReceiverName {
+            get {
+                return ResourceManager.GetString("ReceiverName", resourceCulture);
             }
         }
         

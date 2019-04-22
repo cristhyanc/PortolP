@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using PortolMobile.Forms.Services.Navigation;
+using Acr.UserDialogs;
 
 namespace PortolMobile.Forms.ViewModels.SignUp
 {
@@ -165,7 +167,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
 
         CustomerDto _userDto;
 
-        public SignupStepCodeViewModel(  ILoginService loginService)
+        public SignupStepCodeViewModel(  ILoginService loginService, INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
         {          
             _loginService = loginService;
             GotoNamesPageCommand = new Command(GotoNamesPage);

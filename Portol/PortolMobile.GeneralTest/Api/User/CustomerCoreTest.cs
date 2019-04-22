@@ -41,5 +41,58 @@ namespace PortolMobile.GeneralTest.Api.User
 
         }
 
+        [Theory]
+        [InlineData(22998887, 24)]
+        [InlineData(64732149, 23)]
+        [InlineData(96009533, 50)]
+        [InlineData(25014561, 32)]
+        public void GetCustomerByPhoneNumber_Passed(long phone, Int32 countryCode)
+        {
+
+            ICustomerService dropoff = new CustomerService(uow);
+            var customer = dropoff.GetCustomerByPhoneNumber(phone, countryCode);
+            Assert.NotNull(customer);
+        }
+
+        [Theory]
+        [InlineData(0405593357, 61)]
+        [InlineData(0405593355, 61)]
+        [InlineData(0405593354, 61)]
+        [InlineData(0405593353, 61)]
+        public void GetCustomerByPhoneNumber_DontExist(long phone, Int32 countryCode)
+        {
+
+            ICustomerService dropoff = new CustomerService(uow);
+            var customer = dropoff.GetCustomerByPhoneNumber(phone, countryCode);
+            Assert.Null(customer);
+        }
+
+
+        [Theory]
+        [InlineData("cristhyan3@outlook.com")]
+        [InlineData("cristhyanc@gmail.com")]
+        [InlineData("cristhyan1@outlook.com")]
+        [InlineData("cristhyan2@outlook.com")]
+        public void GetCustomerByEmail_DontExist(string email)
+        {
+
+            ICustomerService dropoff = new CustomerService(uow);
+            var customer = dropoff.GetCustomerByEmail(email);
+            Assert.Null(customer);
+        }
+
+
+        [Theory]
+        [InlineData("pede.Praesent.eu@dui.org")]
+        [InlineData("sem.Pellentesque.ut@Sed.net")]
+        [InlineData("nec.diam@adipiscingelitCurabitur.edu")]
+        [InlineData("sed.tortor.Integer@nuncrisusvarius.org")]
+        public void GetCustomerByEmail_Exist(string email)
+        {
+
+            ICustomerService dropoff = new CustomerService(uow);
+            var customer = dropoff.GetCustomerByEmail(email);
+            Assert.NotNull(customer);
+        }
     }
 }

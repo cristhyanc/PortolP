@@ -2,6 +2,7 @@
 using Portol.Common;
 using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Helper;
+using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels.SignUp;
 using System;
 using System.Collections.Generic;
@@ -50,7 +51,7 @@ namespace PortolMobile.Forms.ViewModels.Login
         }
 
 
-        public LoginViewModel(ILoginService loginService)
+        public LoginViewModel(ILoginService loginService, INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
         {
           
             _loginService = loginService;
@@ -99,7 +100,7 @@ namespace PortolMobile.Forms.ViewModels.Login
                 this.IsBusy = true;
                 if (this.PasswordText?.Length > 0 && this.EmailText?.Length > 0)
                 {
-                    var result = await _loginService.Authenticate(this.EmailText, this.PasswordText);
+                    await SessionData.LoginUser(_loginService, this.EmailText, this.PasswordText);                    
                     await NavigationService.NavigateToAsync<DropViewModel>();
                 }
                 else

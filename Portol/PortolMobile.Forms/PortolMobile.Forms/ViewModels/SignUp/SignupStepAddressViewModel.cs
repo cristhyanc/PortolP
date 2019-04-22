@@ -3,6 +3,7 @@ using Portol.Common;
 using Portol.Common.DTO;
 using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Helper;
+using PortolMobile.Forms.Services.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -150,7 +151,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
 
         IAddressService _addressService;
 
-        public SignupStepAddressViewModel( ICustomerMobileService userMobileService, IAddressService addressService )
+        public SignupStepAddressViewModel( ICustomerMobileService userMobileService, IAddressService addressService, INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
         {
             _userMobileService = userMobileService;           
             SaveAccountCommand = new Command(GetPosibleAddresses);

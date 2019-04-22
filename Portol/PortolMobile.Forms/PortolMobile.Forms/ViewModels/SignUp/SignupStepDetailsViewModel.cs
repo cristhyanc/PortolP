@@ -1,6 +1,8 @@
-﻿using Portol.Common;
+﻿using Acr.UserDialogs;
+using Portol.Common;
 using Portol.Common.DTO;
 using PortolMobile.Forms.Helper;
+using PortolMobile.Forms.Services.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -87,7 +89,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             }
         }
 
-        public SignupStepDetailsViewModel()
+        public SignupStepDetailsViewModel(INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
         {           
             GotoEmailPageCommand = new Command(GotoEmailPage);
             this.DateOBirth = DateTime.Now.AddYears(-18);

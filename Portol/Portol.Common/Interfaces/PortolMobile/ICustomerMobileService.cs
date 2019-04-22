@@ -9,5 +9,7 @@ namespace Portol.Common.Interfaces.PortolMobile
    public interface ICustomerMobileService
     {
         Task<Boolean> CreateNewCustomer(CustomerDto newCustomer);
+        Task<CustomerDto> GetCustomerByPhoneNumber(long phoneNumber, int countryCode);
+        Task<CustomerDto> GetCustomerByEmail(string email);
     }
 }

@@ -1,8 +1,10 @@
 ﻿using Acr.UserDialogs;
 using Autofac;
+using Autofac.Core;
 using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels;
+using PortolMobile.Forms.ViewModels.Dropoff;
 using PortolMobile.Forms.ViewModels.Login;
 using PortolMobile.Forms.ViewModels.SignUp;
 using PortolMobile.Services.Rest;
@@ -44,9 +46,10 @@ namespace PortolMobile.Forms
 
                 builder.RegisterType<ShopViewModel>().SingleInstance();
                 builder.RegisterType<DropViewModel>().SingleInstance();
-
+                
                 // View models
-                builder.RegisterType<LoginViewModel>();              
+                builder.RegisterType<LoginViewModel>();
+                builder.RegisterType<DropAddressViewModel>();
                 builder.RegisterType<MainViewModel>();                
                 builder.RegisterType<RecoverPasswordViewModel>();
                 builder.RegisterType<SignupStepMobileViewModel>();
@@ -64,10 +67,12 @@ namespace PortolMobile.Forms
                 builder.RegisterType<LoginService>().As<ILoginService>();
                 builder.RegisterType<UserMobileService>().As<ICustomerMobileService>();
 
-                var restApi = new RestClient();
-                
-                builder.Register(c => restApi).As<IRestClient>().SingleInstance();
-                builder.Register(c =>new AddressService(restApi, "HW8AXP9FEKDCQ7L46JVM", "N3A6GXYLD978JTHC4RFU")).As<IAddressService>().SingleInstance();
+               
+                builder.RegisterType<RestClient>().As<IRestClient>().WithParameter(new ResolvedParameter(
+                                                                       (pi, ctx) => pi.ParameterType == typeof(string) && pi.Name == "toke",
+                                                                       (pi, ctx) => ViewModelLocator.GetCurrentToken()));
+
+                builder.Register(c =>new AddressService(_container.Resolve<IRestClient>(), "HW8AXP9FEKDCQ7L46JVM", "N3A6GXYLD978JTHC4RFU")).As<IAddressService>().SingleInstance();
 
                 if (_container != null)
                 {
@@ -81,6 +86,17 @@ namespace PortolMobile.Forms
             }
         }
 
+        public static string GetCurrentToken()
+        {            
+            if (SessionData.User != null && !string.IsNullOrEmpty(SessionData.User.Token))
+            {
+                return SessionData.User.Token;
+            }
+            else
+            {
+                return "";
+            }
+        }
         public static T Resolve<T>()
         {
             return _container.Resolve<T>();

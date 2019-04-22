@@ -121,8 +121,10 @@ namespace PortolMobile.Forms.Services.Navigation
                             viewModel = null;
                         }
                     }
-                                       
-                    Application.Current.MainPage = page;
+
+                    CurrentNavigator = new NavigationPage();
+                    Application.Current.MainPage = CurrentNavigator;
+                    await CurrentNavigator.PushAsync(page);
                 }
                 else
                 {

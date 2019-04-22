@@ -324,4 +324,13 @@
   <data name="WhatAreSending" xml:space="preserve">
     <value>What are we sending today?</value>
   </data>
+  <data name="DropoffAddress" xml:space="preserve">
+    <value>Drop off Address</value>
+  </data>
+  <data name="PickupAddress" xml:space="preserve">
+    <value>Pickup Address</value>
+  </data>
+  <data name="ReceiverName" xml:space="preserve">
+    <value>Receiver Name</value>
+  </data>
 </root>
