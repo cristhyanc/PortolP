@@ -189,8 +189,8 @@
   <data name="MobileInUse" xml:space="preserve">
     <value>The mobile number is already in use</value>
   </data>
-  <data name="MobileNumberRequiered" xml:space="preserve">
-    <value>The mobile number is required</value>
+  <data name="MobileNumberEmailRequiered" xml:space="preserve">
+    <value>The mobile number or email is required</value>
   </data>
   <data name="NetworkConnectionError" xml:space="preserve">
     <value>Oops, looks like there is no internet connection</value>
@@ -314,5 +314,8 @@
   </data>
   <data name="Yes" xml:space="preserve">
     <value>Yes</value>
+  </data>
+  <data name="MobileNumberRequiered" xml:space="preserve">
+    <value>The mobile number is required</value>
   </data>
 </root>

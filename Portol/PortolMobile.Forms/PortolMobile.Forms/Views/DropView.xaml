@@ -69,29 +69,27 @@
                         <Label Text="Hello Ash,"  Style="{StaticResource GreetingStyle}"  ></Label>
                         <Label Text="{i18n:Translate WhatAreSending}"   Style="{StaticResource DropoffLabelStyle}" ></Label>
 
-                        <Grid ColumnSpacing="0" RowSpacing="0" VerticalOptions="CenterAndExpand">
+                        <Grid ColumnSpacing="0" RowSpacing="0" VerticalOptions="Start">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
                                 <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
 
                             <ffimageloading:CachedImage Style="{StaticResource GpsIconStyle}" />
                             <ffimageloadingsvg:SvgCachedImage Grid.Column="1" Style="{StaticResource DoorIconStyle}" />
 
-                            <BoxView  Grid.Column="0" Grid.Row="1" Style="{StaticResource BoxSeparatorLeft}" ></BoxView>
-                            <BoxView  Grid.Column="1" Grid.Row="1" Style="{StaticResource BoxSeparatorRight}" ></BoxView>
+                            <BoxView  Grid.Column="0" Grid.Row="1" Style="{StaticResource BoxSeparatorLeft}" VerticalOptions="Start"></BoxView>
+                            <BoxView  Grid.Column="1" Grid.Row="1" Style="{StaticResource BoxSeparatorRight}" VerticalOptions="Start"></BoxView>
 
                         </Grid>
 
-
-
-                        <controls:ExtendedEntry Text="{Binding MobileNumber, Mode=TwoWay }" Placeholder="{i18n:Translate MobileNumber}" Keyboard="Numeric" Margin="0,10,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
-                        <controls:ExtendedEntry Text="{Binding ReceiverName, Mode=TwoWay }" Placeholder="{i18n:Translate ReceiverName}"  Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
-                        <controls:ExtendedEntry Text="{Binding Email, Mode=TwoWay }" Placeholder="{i18n:Translate Email}"  Margin="0,0,0,10"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                        <controls:ExtendedEntry Text="{Binding EmailMobileNumber, Mode=TwoWay }" Placeholder="{i18n:Translate EmailMobileNumber}" Margin="0,5,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                        <controls:ExtendedEntry Text="{Binding ReceiverName, Mode=TwoWay }" Placeholder="{i18n:Translate ReceiverName}"  Margin="0,0,0,10"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                        
                         <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
                     </StackLayout>
                 </Frame>

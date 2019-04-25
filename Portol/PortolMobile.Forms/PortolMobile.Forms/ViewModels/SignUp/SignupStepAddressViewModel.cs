@@ -217,7 +217,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                 _userDto.CustomerAddress.Suburb = this.Suburb;
                 _userDto.CustomerAddress.PostCode = this.PostCode;
 
-                var result = await _addressService.GetPosibleAddresses(_userDto.CustomerAddress);
+                var result = await _addressService.GetPosibleAddresses(_userDto.CustomerAddress.FullAddress );
                 if (result == null || result.completions == null || result.completions.Count == 0)
                 {
                    // _userDto.CustomerAddress.City = "";
@@ -227,7 +227,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                     _userDto.CustomerAddress.StreetName = this.Street;
                     _userDto.CustomerAddress.Suburb = "";
                     _userDto.CustomerAddress.PostCode = this.PostCode;
-                    result = await _addressService.GetPosibleAddresses(_userDto.CustomerAddress);
+                    result = await _addressService.GetPosibleAddresses(_userDto.CustomerAddress.FullAddress );
                 }
 
                 if (result != null && result.completions?.Count > 0)

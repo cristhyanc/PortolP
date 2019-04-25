@@ -9,6 +9,8 @@ namespace Portol.Common.Helper
 {
     public class Constants
     {
+        public const string RegexEmailPattern = @"@";
+
         public const string PortolDomain = "https://portolwebapitest.azurewebsites.net";
         public const string BaseAddressApiUrl = "https://api.addressfinder.io/api/au/address";
 

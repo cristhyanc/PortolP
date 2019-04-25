@@ -8,6 +8,7 @@ using PortolMobile.Forms.ViewModels.Dropoff;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
@@ -20,13 +21,13 @@ namespace PortolMobile.Forms.ViewModels
         public ICommand GotoShopCommand { get; private set; }
         private ICustomerMobileService _customerService;
 
-        string _email;
-        public string Email
+        string _emailMobileNumber;
+        public string EmailMobileNumber
         {
-            get { return _email; }
+            get { return _emailMobileNumber; }
             set
             {
-                _email = value;
+                _emailMobileNumber = value;
                 OnPropertyChanged();
             }
         }
@@ -42,34 +43,15 @@ namespace PortolMobile.Forms.ViewModels
             }
         }
 
-        private string _mobileNumber;
-        public string MobileNumber
-        {
-            get
-            {
-                return _mobileNumber;
-            }
-            set
-            {
-                long num = 0;
-                if (long.TryParse(value, out num))
-                {
-                    _mobileNumber = value;
-                }
-                else
-                {
-                    _mobileNumber = "";
-                }
-
-                OnPropertyChanged();
-            }
-        }
+      
 
         public DropViewModel(ICustomerMobileService customerService, INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
         {
             GetCustomerCommand = new Command((() => GetCustomer()));
             GotoShopCommand = new Command(GotoShop);
             _customerService = customerService;
+            this.EmailMobileNumber = "0405593358";
+            this.ReceiverName = "asd";
         }
 
         private async void GotoShop()
@@ -95,21 +77,20 @@ namespace PortolMobile.Forms.ViewModels
                 CustomerDto customer = null;
                 long number = 0;
 
-                long.TryParse(this.MobileNumber, out number);
-
-                customer = await _customerService.GetCustomerByPhoneNumber(number, SessionData.User.PhoneCountryCode);
+                if (long.TryParse(this.EmailMobileNumber, out number))
+                {
+                    customer = await _customerService.GetCustomerByPhoneNumber(number, SessionData.User.PhoneCountryCode);
+                    
+                }              
                                
 
                 if (customer == null)
                 {
-                    if (!string.IsNullOrEmpty(this.Email))
+                    if (Regex.IsMatch(EmailMobileNumber, Portol.Common.Helper.Constants.RegexEmailPattern))
                     {
-                        if (await this.DisplayMessageQuestion(StringResources.Guess, StringResources.NoMobileNumberEmail, StringResources.Yes, StringResources.No))
-                        {
-                            customer = await _customerService.GetCustomerByEmail(Email);
-                        }
+                        customer = await _customerService.GetCustomerByEmail(EmailMobileNumber);
                     }
-
+                    
                     if (customer == null)
                     {
                         if (!await this.DisplayMessageQuestion(StringResources.Guess, StringResources.PersonNoRegistered, StringResources.ContinueGuess))
@@ -118,27 +99,22 @@ namespace PortolMobile.Forms.ViewModels
                         }
 
                         customer = new CustomerDto();
-                        customer.Email = this.Email;
-                        if (string.IsNullOrEmpty(this.Email))
-                        {
-                            customer.Email = StringResources.GuessEmail;
-                        }
                         customer.PhoneNumber = number;
+
+                        customer.Email = StringResources.GuessEmail;
+                        if (Regex.IsMatch(EmailMobileNumber, Portol.Common.Helper.Constants.RegexEmailPattern))
+                        {
+                            customer.Email = this.EmailMobileNumber;
+                        }
+                                                    
                         customer.PhoneCountryCode = SessionData.User.PhoneCountryCode;
                         customer.IsGuess = true;
                         customer.FirstName = this.ReceiverName;
                     }
                 }
-
-                //this.ReceiverName = customer.FirstName;
-                //string message = StringResources.ReceiverName + ": " + this.ReceiverName + Environment.NewLine;
-                //message += StringResources.MobileNumber + ": " + customer.PhoneNumber.ToString() + Environment.NewLine;
-                //message += StringResources.Email + ": " + customer.Email;
-
-                //if (await this.DisplayMessageQuestion(StringResources.ReceiverInformation, message, StringResources.Continue))
-                //{
+                               
                 await NavigationService.NavigateToAsync<DropAddressViewModel>(customer);
-                //}
+              
 
             }
             catch (System.Exception ex)
@@ -153,16 +129,22 @@ namespace PortolMobile.Forms.ViewModels
 
         private bool FieldsValidation()
         {
-            if (string.IsNullOrEmpty(this.MobileNumber))
+            if (string.IsNullOrEmpty(this.EmailMobileNumber))
             {
-                this.DisplayMessage(StringResources.MissingInformation, StringResources.MobileNumberRequiered);
+                this.DisplayMessage(StringResources.MissingInformation, StringResources.MobileNumberEmailRequiered);
                 return false;
             }
+
             long number = 0;
-            if (!long.TryParse(this.MobileNumber, out number))
+            if (!long.TryParse(this.EmailMobileNumber, out number))
             {
-                this.DisplayMessage(StringResources.MissingInformation, StringResources.MobileNumberRequiered);
-                return false;
+               
+
+                if (!Regex.IsMatch(EmailMobileNumber, Portol.Common.Helper.Constants.RegexEmailPattern))
+                {
+                    this.DisplayMessage(StringResources.MissingInformation, StringResources.MobileNumberEmailRequiered);
+                    return false;
+                }
             }
 
             if (string.IsNullOrEmpty(this.ReceiverName))

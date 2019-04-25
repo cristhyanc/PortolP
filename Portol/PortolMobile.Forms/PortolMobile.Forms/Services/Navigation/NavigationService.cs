@@ -87,12 +87,7 @@ namespace PortolMobile.Forms.Services.Navigation
             {
                 Page page = CreatePage(viewModelType, parameter);
 
-                if(CurrentNavigator==null)
-                {                      
-                    CurrentNavigator = new NavigationPage();
-                }
-
-
+               
                 if (typeof(DropView) == page.GetType() || typeof(ShopView) == page.GetType())
                 {
 
@@ -122,13 +117,22 @@ namespace PortolMobile.Forms.Services.Navigation
                         }
                     }
 
-                    CurrentNavigator = new NavigationPage();
+                    CurrentNavigator = new NavigationPage(page);
                     Application.Current.MainPage = CurrentNavigator;
-                    await CurrentNavigator.PushAsync(page);
+                   
                 }
                 else
                 {
-                    await CurrentNavigator.PushAsync(page);
+                    if (CurrentNavigator == null)
+                    {
+                        CurrentNavigator = new NavigationPage(page);
+                    }
+                    else
+                    {
+                        await CurrentNavigator.PushAsync(page);
+                    }
+
+                    
                 }
                
 

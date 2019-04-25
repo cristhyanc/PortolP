@@ -3,8 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
              xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"            
              x:Class="PortolMobile.Forms.Styles.DropoffStyles">
 
     <Style TargetType="Label" x:Key="GreetingStyle" BaseResourceKey="LabelBaseStyle">
@@ -58,13 +57,7 @@
         <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_button.svg?assembly=PortolMobile.Forms" />   
     </Style>
 
-    <Style x:Key="GpsIconStyle"  TargetType="ffimageloading:CachedImage">
-        <Setter Property="HorizontalOptions" Value="Start" />
-        <Setter Property="WidthRequest" Value="45" />
-        <Setter Property="HeightRequest" Value="60"/>
-        <Setter Property="VerticalOptions" Value="FillAndExpand" />
-        <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_parcel.png?assembly=PortolMobile.Forms" />
-    </Style>
+   
 
     <Style x:Key="DoorIconStyle"  TargetType="ffimageloadingsvg:SvgCachedImage">
         <Setter Property="HorizontalOptions" Value="End" />
@@ -74,19 +67,8 @@
         <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_door.svg?assembly=PortolMobile.Forms" />
     </Style>
 
-    <Style x:Key="BoxSeparatorLeft"   TargetType="BoxView">       
-        <Setter Property="HeightRequest" Value="1" />
-        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-        <Setter Property="BackgroundColor" Value="#1a1717"  />
-        <Setter Property="Color" Value="#1a1717" />       
-    </Style>
+   
 
-    <Style x:Key="BoxSeparatorRight"   TargetType="BoxView">      
-        <Setter Property="HeightRequest" Value="1" />
-        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-        <Setter Property="BackgroundColor" Value="#EE0B0B"  />
-        <Setter Property="Color" Value="#EE0B0B" />
-    </Style>
 
     <Style x:Key="StackLayoutFrameBox"   TargetType="StackLayout">
         <Setter Property="VerticalOptions" Value="FillAndExpand" />

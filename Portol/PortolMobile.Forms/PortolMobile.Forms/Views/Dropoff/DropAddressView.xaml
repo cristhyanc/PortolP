@@ -79,8 +79,12 @@
 
 
 
-                        <controls:ExtendedEntry Text="{Binding MobileNumber, Mode=TwoWay }" Placeholder="{i18n:Translate PickupAddress}" Keyboard="Numeric" Margin="0,10,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
-                        <controls:ExtendedEntry Text="{Binding ReceiverName, Mode=TwoWay }" Placeholder="{i18n:Translate DropoffAddress}"  Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                        <controls:ExtendedEntry Text="{Binding MobileNumber, Mode=TwoWay }" Placeholder="{i18n:Translate PickupAddress}"  
+                                                OnFocusCommand="{Binding AddressEntryCommand}" OnFocusCommandParameter="pickup" VerticalOptions="Start" 
+                                                Keyboard="Numeric" Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                        <controls:ExtendedEntry Text="{Binding ReceiverName, Mode=TwoWay }" Placeholder="{i18n:Translate DropoffAddress}"  VerticalOptions="Start" 
+                                                OnFocusCommand="{Binding AddressEntryCommand}" OnFocusCommandParameter="dropoff"
+                                                Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
                        
                         <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
                     </StackLayout>

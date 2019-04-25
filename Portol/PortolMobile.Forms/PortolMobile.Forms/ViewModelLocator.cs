@@ -7,6 +7,7 @@ using PortolMobile.Forms.ViewModels;
 using PortolMobile.Forms.ViewModels.Dropoff;
 using PortolMobile.Forms.ViewModels.Login;
 using PortolMobile.Forms.ViewModels.SignUp;
+using PortolMobile.Forms.ViewModels.UserControls;
 using PortolMobile.Services.Rest;
 using PortolMobile.Services.User;
 using System;
@@ -57,8 +58,8 @@ namespace PortolMobile.Forms
                 builder.RegisterType<SignupStepDetailsViewModel>();
                 builder.RegisterType<SignupStepCodeViewModel>();
                 builder.RegisterType<SignupStepAddressViewModel>();
-
-
+                builder.RegisterType<AddressPickerViewModel>();
+                
                 builder.Register(c => UserDialogs.Instance).As<IUserDialogs>().SingleInstance();
                 builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
 

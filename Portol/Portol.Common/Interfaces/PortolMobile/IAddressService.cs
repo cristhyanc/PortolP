@@ -8,7 +8,7 @@ namespace Portol.Common.Interfaces.PortolMobile
 {
     public interface IAddressService
     {
-        Task<AddressFinderDto> GetPosibleAddresses(AddressDto tentativeAddress);
+        Task<AddressFinderDto> GetPosibleAddresses(string address);
         Task<AddressFinderDetail> GetAddressMetadata(string addressId);
     }
 }

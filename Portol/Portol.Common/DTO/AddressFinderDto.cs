@@ -16,6 +16,45 @@ namespace Portol.Common.DTO
         public string id { get; set; }
         public string full_address { get; set; }
         public string canonical_address_id { get; set; }
+
+        string _AddressFirstPart="";
+        string _AddressSecondPart = "";
+        public string AddressFirstPart {
+            get
+            {
+                DivideAddress();
+                return _AddressFirstPart;
+            }
+        }
+
+        public string AddressSecondPart
+        {
+            get
+            {
+                DivideAddress();
+                return _AddressSecondPart;
+            }
+        }
+
+        private void DivideAddress()
+        {
+            if (!string.IsNullOrEmpty(full_address) && string.IsNullOrEmpty(_AddressFirstPart))
+            {
+                var parts = full_address.Split(',');
+                if (parts.Length > 1)
+                {
+                    _AddressFirstPart = full_address.Replace(parts[parts.Length - 1], "");
+                    _AddressSecondPart = parts[parts.Length - 1];
+                }
+                else
+                {
+                    _AddressFirstPart = full_address;
+                    _AddressSecondPart = "";
+                }
+
+            }
+        }
+
     }
 
     public class AddressFinderDetail
