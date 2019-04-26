@@ -50,8 +50,8 @@ namespace PortolMobile.Forms.ViewModels
             GetCustomerCommand = new Command((() => GetCustomer()));
             GotoShopCommand = new Command(GotoShop);
             _customerService = customerService;
-            this.EmailMobileNumber = "0405593358";
-            this.ReceiverName = "asd";
+            //this.EmailMobileNumber = "0405593358";
+            //this.ReceiverName = "asd";
         }
 
         private async void GotoShop()
