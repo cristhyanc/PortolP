@@ -24,16 +24,16 @@
 	<key>CFBundleDisplayName</key>
 	<string>Portol</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.PortolMobile</string>
-	<key>CFBundleVersion</key>
-	<string>1.0</string>
+	<string>com.PortolMobile.App</string>
 	<key>CFBundleName</key>
 	<string>Portol</string>
-	<key>CFBundleShortVersionString</key>
-	<string>1.0</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIconPortol.appiconset</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
+	<key>CFBundleShortVersionString</key>
+	<string>0.52.1</string>
+	<key>CFBundleVersion</key>
+	<string>0.52.1</string>
 </dict>
 </plist>
