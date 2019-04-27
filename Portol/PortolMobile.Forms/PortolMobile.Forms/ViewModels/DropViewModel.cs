@@ -32,6 +32,17 @@ namespace PortolMobile.Forms.ViewModels
             }
         }
 
+        string _description;
+        public string Description
+        {
+            get { return _description; }
+            set
+            {
+                _description = value;
+                OnPropertyChanged();
+            }
+        }
+
         string _receiverName;
         public string ReceiverName
         {
@@ -50,8 +61,9 @@ namespace PortolMobile.Forms.ViewModels
             GetCustomerCommand = new Command((() => GetCustomer()));
             GotoShopCommand = new Command(GotoShop);
             _customerService = customerService;
-            //this.EmailMobileNumber = "0405593358";
-            //this.ReceiverName = "asd";
+            this.EmailMobileNumber = "0405593358";
+            this.ReceiverName = "Cris";
+            this.Description = "ddd";
         }
 
         private async void GotoShop()
@@ -112,8 +124,14 @@ namespace PortolMobile.Forms.ViewModels
                         customer.FirstName = this.ReceiverName;
                     }
                 }
-                               
-                await NavigationService.NavigateToAsync<DropAddressViewModel>(customer);
+
+                DropoffDto dropoffDto = new DropoffDto();
+                dropoffDto.Receiver = customer;
+                dropoffDto.Description = this.Description;
+                dropoffDto.Sender = SessionData.User;
+
+
+                await NavigationService.NavigateToAsync<DropAddressViewModel>(dropoffDto);
               
 
             }
@@ -150,6 +168,12 @@ namespace PortolMobile.Forms.ViewModels
             if (string.IsNullOrEmpty(this.ReceiverName))
             {
                 this.DisplayMessage(StringResources.MissingInformation, StringResources.ReceiverNameRequired);
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(this.Description))
+            {
+                this.DisplayMessage(StringResources.MissingInformation, StringResources.DescriptionRequired);
                 return false;
             }
 

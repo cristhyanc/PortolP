@@ -288,20 +288,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                     var result = await _addressService.GetAddressMetadata(addressId);
                     if (result != null)
                     {
-                        if (!string.IsNullOrEmpty(result.address_line_2))
-                        {
-                            _userDto.CustomerAddress.FlatNumber = result.address_line_1;
-                            _userDto.CustomerAddress.StreetName = result.address_line_2;
-                        }
-                        else
-                        {
-                            _userDto.CustomerAddress.StreetName = result.address_line_1;
-                        }
-
-                        _userDto.CustomerAddress.State = result.state_territory;
-                        _userDto.CustomerAddress.Suburb = result.locality_name;
-                        _userDto.CustomerAddress.PostCode = result.postcode;
-                        _userDto.CustomerAddress.AddressValidated = true;                        
+                        _userDto.CustomerAddress = result.GetAddressDto();
                     }
                 }
                 else

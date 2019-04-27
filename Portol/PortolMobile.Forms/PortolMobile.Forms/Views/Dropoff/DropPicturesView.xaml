@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<controls:ExtendedContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
-             x:Class="PortolMobile.Forms.Views.Dropoff.DropAddressView"
+<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PortolMobile.Forms.Views.Dropoff.DropPicturesView"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
@@ -12,7 +12,7 @@
              BackgroundImage="Map_image"
              xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Resources>
-        <DropoffStyle:DropoffStyles/>
+    <DropoffStyle:DropoffStyles/>
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
 
@@ -25,7 +25,7 @@
             <StackLayout BackgroundColor="White" >
 
                 <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
-                
+
                 <Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
                         Style="{StaticResource ButtonSelectedTab}"
                         Grid.Column="1" Text="Drop"></Button>
@@ -85,7 +85,7 @@
                         <controls:ExtendedEntry Text="{Binding DropoffAddressStr }" Placeholder="{i18n:Translate DropoffAddress}"  VerticalOptions="Start" 
                                                 OnFocusCommand="{Binding AddressEntryCommand}" OnFocusCommandParameter="dropoff"
                                                 Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
-                       
+
                         <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
                     </StackLayout>
                 </Frame>

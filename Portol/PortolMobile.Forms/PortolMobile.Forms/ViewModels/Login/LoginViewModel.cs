@@ -58,8 +58,8 @@ namespace PortolMobile.Forms.ViewModels.Login
             LoginButtonCommand = new Command(LoginUser);
             RecoverButtonCommand = new Command(GoToRecoverPassword);
             SignupCommand = new Command(GoToSignup);
-            //this.EmailText = "cristhyan@msn.com";
-            //this.PasswordText = "asd";
+            this.EmailText = "cristhyan@msn.com";
+            this.PasswordText = "asd";
         }
 
 

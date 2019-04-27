@@ -13,7 +13,6 @@ namespace Portol.Common.DTO
         public string State { get; set; }
         public string Country { get; set; }
         public string PostCode { get; set; }
-
         public string FullAddress
         {
             get {
@@ -52,5 +51,6 @@ namespace Portol.Common.DTO
                 return result;
             }
         }
+               
     }
 }

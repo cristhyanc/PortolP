@@ -7,6 +7,11 @@ using System.Text;
 
 namespace Portol.Common.Helper
 {
+    public class MessagingCenterCodes
+    {
+        public const string AddressPickerMessage = "AddressPickerMessage";       
+    }
+
     public class Constants
     {
         public const string RegexEmailPattern = @"@";
@@ -14,9 +19,9 @@ namespace Portol.Common.Helper
         public const string PortolDomain = "https://portolwebapitest.azurewebsites.net";
         public const string BaseAddressApiUrl = "https://api.addressfinder.io/api/au/address";
 
-          public const string BaseUrl = "https://portolwebapitest.azurewebsites.net";
-       // public const string BaseUrl = "http://192.168.8.100/PortolWeb";
-        // public const string BaseUrl = "http://desktop-mkvm17a/PortolWeb";
+       //   public const string BaseUrl = "https://portolwebapitest.azurewebsites.net";
+        public const string BaseUrl = "http://192.168.8.100/PortolWeb";
+       //  public const string BaseUrl = "http://desktop-mkvm17a/PortolWeb";
         public const string BaseUserApiUrl = BaseUrl + "/api/users";
 
         static ReadOnlyCollection<CountryDto> _countryList;

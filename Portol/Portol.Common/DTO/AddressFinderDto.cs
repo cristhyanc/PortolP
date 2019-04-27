@@ -64,5 +64,28 @@ namespace Portol.Common.DTO
         public string address_line_1 { get; set; }
         public string address_line_2 { get; set; }
         public string postcode { get; set; }
+
+
+        public AddressDto GetAddressDto()
+        {
+            AddressDto result = new AddressDto();
+
+            if (!string.IsNullOrEmpty(address_line_2))
+            {
+                result.FlatNumber = address_line_1;
+                result.StreetName = address_line_2;
+            }
+            else
+            {
+                result.StreetName = address_line_1;
+            }
+
+            result.State = state_territory;
+            result.Suburb = locality_name;
+            result.PostCode = postcode;
+            result.AddressValidated = true;
+            result.Country = "AU";
+            return result;
+        }
     }
 }

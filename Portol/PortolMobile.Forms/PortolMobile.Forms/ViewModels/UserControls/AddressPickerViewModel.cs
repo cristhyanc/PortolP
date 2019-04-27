@@ -1,5 +1,6 @@
 ﻿using Acr.UserDialogs;
 using Portol.Common.DTO;
+using Portol.Common.Helper;
 using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Helper;
 using PortolMobile.Forms.Services.Navigation;
@@ -13,13 +14,18 @@ using Xamarin.Forms;
 
 namespace PortolMobile.Forms.ViewModels.UserControls
 {
+    public class AddressPickerParameters
+    {
+       public  AddressDto Address { get; set; }
+       public bool IsPickupAddress { get; set; }
+    }
     public class AddressPickerViewModel: BaseViewModel
     {
         INavigationService navigationService;
         IUserDialogs userDialogs;
         IAddressService addressService;
 
-        AddressDto pickedAddress;
+        AddressPickerParameters parameter;
 
         string _searchText;
         public string SearchText
@@ -47,8 +53,12 @@ namespace PortolMobile.Forms.ViewModels.UserControls
             }
             set
             {
-                _selectedAddress = value;
+                _selectedAddress = value;               
                 OnPropertyChanged();
+                if(value!=null)
+                {
+                    GetAddressDetails(value.id);
+                }
             }
         }
 
@@ -81,11 +91,20 @@ namespace PortolMobile.Forms.ViewModels.UserControls
             try
             {
                 _searchText = "";
-                pickedAddress = new AddressDto();
+
                 if (navigationData != null)
                 {
-                    pickedAddress = (AddressDto)navigationData;
-                    this.SearchText = pickedAddress.FullAddress;
+                    parameter = (AddressPickerParameters)navigationData;
+                    if (parameter != null && parameter.Address != null && !string.IsNullOrEmpty(parameter.Address.FullAddress))
+                    {
+                        this.SearchText = parameter.Address.FullAddress;
+                        OnPropertyChanged("SearchText");
+                        PrepareSearchAddress(parameter.Address.FullAddress);
+                    }                    
+                }
+                else
+                {
+                    parameter = new AddressPickerParameters();
                 }
 
             }
@@ -101,7 +120,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
         {
             try
             {
-                if (text.Length > 5 && text.Length % 2 == 0)
+                if (text.Length > 5 )
                 {
                     globalSuggestionsCts?.Cancel();
                     this.IsBusy = true;
@@ -116,10 +135,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
             {
                 ExceptionHelper.ProcessException(ex, UserDialogs, "PickupAddressViewModel", "PrepareSearchAddress");
             }
-        }
-
-       
-
+        }  
         private async void SearchAddress(string text, CancellationTokenSource suggestionsCts)
         {
             try
@@ -148,6 +164,32 @@ namespace PortolMobile.Forms.ViewModels.UserControls
             }
         }
 
+        private async void GetAddressDetails(string addressFindeId)
+        {
+            try
+            {
+                this.IsBusy = true;
+                if (!string.IsNullOrEmpty(addressFindeId))
+                {
+                    var result = await addressService.GetAddressMetadata(addressFindeId);
+                    if (result != null)
+                    {
+                        parameter.Address = result.GetAddressDto();
+                        MessagingCenter.Send<AddressPickerViewModel, AddressPickerParameters>(this, MessagingCenterCodes.AddressPickerMessage, parameter);
+                    }
+                    await this.navigationService.GoToPreviousPageAsync();
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "PickupAddressViewModel", "GetAddressDetails");
+            }
+            finally
+            {
+
+            }
+            
+        }
 
     }
 }

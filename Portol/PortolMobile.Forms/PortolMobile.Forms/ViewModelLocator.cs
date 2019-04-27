@@ -59,6 +59,7 @@ namespace PortolMobile.Forms
                 builder.RegisterType<SignupStepCodeViewModel>();
                 builder.RegisterType<SignupStepAddressViewModel>();
                 builder.RegisterType<AddressPickerViewModel>();
+                builder.RegisterType<DropPicturesViewModel>();
                 
                 builder.Register(c => UserDialogs.Instance).As<IUserDialogs>().SingleInstance();
                 builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();

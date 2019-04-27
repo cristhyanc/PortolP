@@ -336,4 +336,7 @@
   <data name="EmailMobileNumber" xml:space="preserve">
     <value>Email or Mobile Number</value>
   </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
 </root>

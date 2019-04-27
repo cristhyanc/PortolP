@@ -318,4 +318,13 @@
   <data name="MobileNumberRequiered" xml:space="preserve">
     <value>The mobile number is required</value>
   </data>
+  <data name="DescriptionRequired" xml:space="preserve">
+    <value>A description is required</value>
+  </data>
+  <data name="DropoffAddressRequired" xml:space="preserve">
+    <value>The Dropoff address is required</value>
+  </data>
+  <data name="PickupAddressRequired" xml:space="preserve">
+    <value>The pickup address is required</value>
+  </data>
 </root>

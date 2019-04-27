@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using Portol.Common;
 using Portol.Common.DTO;
+using Portol.Common.Helper;
 using PortolMobile.Forms.Helper;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels.UserControls;
@@ -15,20 +16,10 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
 {
     public class DropAddressViewModel : BaseViewModel
     {
+        
+        public ICommand GotoPicturesCommand { get; private set; }
 
-        private CustomerDto _receiver;
-        public CustomerDto Receiver
-        {
-            get
-            {
-                return _receiver;
-            }
-            set
-            {
-                _receiver = value;
-                OnPropertyChanged();
-            }
-        }
+        DropoffDto DropoffDetails { get; set; }
 
         private string _pickupAddressStr;
         public string PickupAddressStr
@@ -70,7 +61,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 if (_pickUpAddress != value)
                 {
                     _pickUpAddress = value;
-                    if(_pickUpAddress==null)
+                    if (_pickUpAddress == null)
                     {
                         PickupAddressStr = "";
                     }
@@ -79,7 +70,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                         PickupAddressStr = _pickUpAddress.FullAddress;
                     }
                     OnPropertyChanged();
-                }     
+                }
             }
         }
 
@@ -112,32 +103,64 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         IUserDialogs userDialogs;
         public ICommand AddressEntryCommand { get; private set; }
 
+
+
         public DropAddressViewModel(INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
         {
             navigationService = _navigationService;
             userDialogs = _userDialogs;
-            AddressEntryCommand = new Command<string>(GotoAddressPage);
+            AddressEntryCommand = new Command<string>(((x) => GotoAddressPage(x)));
+            GotoPicturesCommand = new Command((() => GotoPicturesPage()));
         }
 
-        private async void GotoAddressPage(string typeofaddress)
+        public async Task GotoPicturesPage()
         {
             try
             {
-                AddressDto address;
-                if (typeofaddress.Equals("pickup"))
+                if (PickUpAddress == null || string.IsNullOrEmpty(PickUpAddress.FullAddress))
                 {
-                    address = this.PickUpAddress;
-                }
-                else
-                {
-                    address = this.DropoffAddress;
+                    this.DisplayMessage(StringResources.MissingInformation, StringResources.PickupAddressRequired);
+                    return;
                 }
 
-                await this.NavigationService.NavigateToAsync<AddressPickerViewModel>(address);
+                if (DropoffAddress == null || string.IsNullOrEmpty(DropoffAddress.FullAddress))
+                {
+                    this.DisplayMessage(StringResources.MissingInformation, StringResources.DropoffAddressRequired);
+                    return;
+                }
+
+
+                DropoffDetails.PickupAddress = this.PickUpAddress;
+                DropoffDetails.DropoffAddress = this.DropoffAddress;
+                await this.NavigationService.NavigateToAsync<DropPicturesViewModel>(DropoffDetails);
             }
             catch (Exception ex)
             {
-                ExceptionHelper.ProcessException(ex, UserDialogs, "DropAddressViewModel", "GotoAddressPage");                
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropAddressViewModel", "GotoPicturesPage");
+            }
+        }
+
+        public async Task GotoAddressPage(string typeofaddress)
+        {
+            try
+            {
+                AddressPickerParameters parameter = new AddressPickerParameters();
+                if (typeofaddress.Equals("pickup"))
+                {
+                    parameter.Address = this.PickUpAddress;
+                    parameter.IsPickupAddress = true;
+                }
+                else
+                {
+                    parameter.Address = this.DropoffAddress;
+
+                }
+                SubscribeMessagingService();
+                await this.NavigationService.NavigateToAsync<AddressPickerViewModel>(parameter);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropAddressViewModel", "GotoAddressPage");
             }
         }
 
@@ -145,10 +168,10 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             try
             {
-                Receiver = (CustomerDto)navigationData;
-                if(Receiver.CustomerAddress !=null)
-                {                   
-                    PickUpAddress = Receiver.CustomerAddress;
+                DropoffDetails = (DropoffDto)navigationData;
+                if (DropoffDetails.Receiver!=null && DropoffDetails.Receiver.CustomerAddress != null)
+                {
+                    PickUpAddress = DropoffDetails.Receiver.CustomerAddress;
                 }
             }
             catch (Exception ex)
@@ -157,6 +180,49 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 this.IsBusy = false;
             }
             return base.InitializeAsync(navigationData);
+        }
+
+        protected override void PageAppearing()
+        {
+            UnsubscribeMessagingService();            
+        }
+
+        private void UnsubscribeMessagingService()
+        {
+            try
+            {
+                MessagingCenter.Unsubscribe<AddressPickerViewModel, AddressPickerParameters>(this, MessagingCenterCodes.AddressPickerMessage);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropAddressViewModel", "UnsubscribeMessagingService");
+            }
+        }
+
+        private void SubscribeMessagingService()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<AddressPickerViewModel, AddressPickerParameters>(this, MessagingCenterCodes.AddressPickerMessage, (sender, arg) =>
+                {
+                    if (arg != null && arg.Address != null)
+                    {
+                        if (arg.IsPickupAddress)
+                        {
+                            this.PickUpAddress = arg.Address;
+                        }
+                        else
+                        {
+                            this.DropoffAddress = arg.Address;
+                        }
+                    }
+                });
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropAddressViewModel", "SubscribeMessagingService");
+            }
         }
     }
 }
