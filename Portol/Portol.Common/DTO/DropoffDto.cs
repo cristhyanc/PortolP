@@ -11,5 +11,6 @@ namespace Portol.Common.DTO
         public AddressDto  PickupAddress { get; set; }
         public AddressDto  DropoffAddress { get; set; }
         public string Description { get; set; }
+        public List<PicturesDto> Images { get; set; }
     }
 }

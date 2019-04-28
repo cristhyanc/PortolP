@@ -27,7 +27,7 @@
                 <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
                 
                 <Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
-                        Style="{StaticResource ButtonSelectedTab}"
+                        Style="{StaticResource ButtonUnselectedTab}"
                         Grid.Column="1" Text="Drop"></Button>
 
             </StackLayout>

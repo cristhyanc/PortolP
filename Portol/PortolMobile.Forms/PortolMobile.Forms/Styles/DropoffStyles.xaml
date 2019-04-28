@@ -18,18 +18,27 @@
         <Setter Property="HorizontalTextAlignment" Value="Center"  />
     </Style>
 
+    <Style TargetType="Label" x:Key="DropoffLabelSmallStyle" BaseResourceKey="LabelBaseStyle">
+        <Setter Property="TextColor" Value="#797878" />
+        <Setter Property="FontSize" Value="Small" />
+        <Setter Property="HorizontalTextAlignment" Value="Center"  />
+    </Style>
+
     <Style x:Key="DropoffEntryStyle"  BaseResourceKey="EntryBaseStyleWhite" TargetType="controls:ExtendedEntry">      
         <Setter Property="BackgroundColor" Value="#343232" />
         <Setter Property="FontSize" Value="Small" />
         <Setter Property="PlaceholderColor" Value="#797878"/>
         <Setter Property="HorizontalTextAlignment" Value="Center" />
+        <Setter Property="VerticalOptions" Value="Center" />
     </Style>
 
     <Style x:Key="CircleImageProfile" TargetType="circleIma:CircleImage">
         <Setter Property="WidthRequest" Value="70" />
         <Setter Property="HeightRequest" Value="70" />
-        <Setter Property="Aspect" Value="AspectFill"/>      
+        <Setter Property="Aspect" Value="AspectFill" />      
     </Style>
+
+  
 
     <Style x:Key="FrameImageProfile" TargetType="Frame">
         <Setter Property="BackgroundColor" Value="Transparent" />
@@ -71,7 +80,7 @@
 
 
     <Style x:Key="StackLayoutFrameBox"   TargetType="StackLayout">
-        <Setter Property="VerticalOptions" Value="FillAndExpand" />
+        <Setter Property="VerticalOptions" Value="CenterAndExpand" />
         <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
         <Setter Property="Margin" Value="0,30,0,0"  />        
     </Style>
@@ -85,8 +94,7 @@
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="WidthRequest" Value="100" />
         <Setter Property="HeightRequest" Value="50"/>
-        <Setter Property="VerticalOptions" Value="Start" />
-        <Setter Property="Margin" Value="0,30,0,0" />
+        <Setter Property="VerticalOptions" Value="Start" />       
         <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms" />
     </Style>
     

@@ -13,22 +13,20 @@
              x:Class="PortolMobile.Forms.Views.DropView">
     <controls:ExtendedContentPage.Resources>
         <DropoffStyle:DropoffStyles/>
-    </controls:ExtendedContentPage.Resources>
+    </controls:ExtendedContentPage.Resources>  
     <controls:ExtendedContentPage.Content>
 
-        <Grid VerticalOptions="FillAndExpand">
+        <Grid VerticalOptions="FillAndExpand" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
             <StackLayout BackgroundColor="White" >
-                
                 <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />               
                 
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
-
-                <Grid  HorizontalOptions="CenterAndExpand" ColumnSpacing="0" Margin="0,10,0,0" >
+                <Grid  HorizontalOptions="CenterAndExpand" ColumnSpacing="0"  >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
@@ -41,7 +39,8 @@
                         Style="{StaticResource ButtonSelectedTab}"
                         Grid.Column="1" Text="Drop"></Button>
                 </Grid>
-
+                
+                
             </StackLayout>
 
 
@@ -71,7 +70,7 @@
                         <Label Text="Hello Ash,"  Style="{StaticResource GreetingStyle}"  ></Label>
                         <Label Text="{i18n:Translate WhatAreSending}"   Style="{StaticResource DropoffLabelStyle}" ></Label>
 
-                        <Grid ColumnSpacing="0" RowSpacing="0" VerticalOptions="Start">
+                        <Grid ColumnSpacing="0" RowSpacing="0" VerticalOptions="Center">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
@@ -89,9 +88,9 @@
 
                         </Grid>
 
-                        <controls:ExtendedEntry Text="{Binding EmailMobileNumber, Mode=TwoWay }" VerticalOptions="Center"  Placeholder="{i18n:Translate EmailMobileNumber}" Margin="0,5,0,0"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
-                        <controls:ExtendedEntry Text="{Binding ReceiverName, Mode=TwoWay }" Placeholder="{i18n:Translate ReceiverName}"   Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
-                        <controls:ExtendedEntry Text="{Binding Description, Mode=TwoWay }" Placeholder="{i18n:Translate Description}"  Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                        <controls:ExtendedEntry Text="{Binding EmailMobileNumber, Mode=TwoWay }"   Placeholder="{i18n:Translate EmailMobileNumber}" Margin="0,5,0,0"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                        <controls:ExtendedEntry Text="{Binding ReceiverName, Mode=TwoWay }"        Placeholder="{i18n:Translate ReceiverName}"   Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                        <controls:ExtendedEntry Text="{Binding Description, Mode=TwoWay }"         Placeholder="{i18n:Translate Description}"  Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
                         
                         
                     </StackLayout>
@@ -125,7 +124,7 @@
                                         Type=RelativeToView,
                                         ElementName=frmDetailBox,
                                         Property=Height,
-                                        Factor=1,Constant=40}"  >
+                                        Factor=1,Constant=50}"  >
 
                     <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" >
                         <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >

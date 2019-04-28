@@ -38,7 +38,9 @@
                 <Setter Property="VerticalOptions" Value="FillAndExpand" />
                 <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_parcel.png?assembly=PortolMobile.Forms" />
             </Style>
-            
+
+          
+
             <Style x:Key="BoxSeparator"   TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="1" />
                 <Setter Property="HorizontalOptions" Value="FillAndExpand" />

@@ -173,6 +173,15 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 {
                     PickUpAddress = DropoffDetails.Receiver.CustomerAddress;
                 }
+
+                _pickUpAddress = new AddressDto();
+                _pickUpAddress.AddressValidated = true;
+                _pickUpAddress.Country = "SD";
+                _pickUpAddress.State = "SD";
+                _pickUpAddress.StreetName = "SD";
+                PickUpAddress = _pickUpAddress;
+
+                DropoffAddress = PickUpAddress;
             }
             catch (Exception ex)
             {

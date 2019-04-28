@@ -117,7 +117,10 @@ namespace PortolMobile.Forms.Services.Navigation
                         }
                     }
 
-                    CurrentNavigator = new NavigationPage(page);
+                    CurrentNavigator = new NavigationPage(page);                    
+                    CurrentNavigator.BarTextColor = Color.Black;
+                    CurrentNavigator.BarBackgroundColor= Color.White;
+                    CurrentNavigator.BackgroundImage = "logo_long_white.png";
                     Application.Current.MainPage = CurrentNavigator;
                    
                 }

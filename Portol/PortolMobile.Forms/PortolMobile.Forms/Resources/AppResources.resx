@@ -339,4 +339,13 @@
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="EnterPackageDetails" xml:space="preserve">
+    <value>Please enter the package details.</value>
+  </data>
+  <data name="Volumen" xml:space="preserve">
+    <value>Volumen</value>
+  </data>
+  <data name="Worth" xml:space="preserve">
+    <value>Worth$$</value>
+  </data>
 </root>

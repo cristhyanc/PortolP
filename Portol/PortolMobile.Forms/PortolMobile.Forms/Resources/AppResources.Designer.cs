@@ -277,6 +277,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please enter the package details..
+        /// </summary>
+        internal static string EnterPackageDetails {
+            get {
+                return ResourceManager.GetString("EnterPackageDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         internal static string Error {
@@ -700,6 +709,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Volumen.
+        /// </summary>
+        internal static string Volumen {
+            get {
+                return ResourceManager.GetString("Volumen", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You will recive a code number within 5 minutes.
         /// </summary>
         internal static string WaitForCode {
@@ -714,6 +732,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string WhatAreSending {
             get {
                 return ResourceManager.GetString("WhatAreSending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Worth$$.
+        /// </summary>
+        internal static string Worth {
+            get {
+                return ResourceManager.GetString("Worth", resourceCulture);
             }
         }
         
