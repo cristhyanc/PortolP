@@ -7,6 +7,7 @@ using FFImageLoading;
 using System;
 using Android.Util;
 using ImageCircle.Forms.Plugin.Droid;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
 
 namespace PortolMobile.Forms.Droid
 {
@@ -16,7 +17,7 @@ namespace PortolMobile.Forms.Droid
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
        App currentApp;
-        private string tag = "iSystain";
+        private string tag = "Portol";
         protected override void OnCreate(Bundle bundle)
         {
             try
@@ -25,12 +26,13 @@ namespace PortolMobile.Forms.Droid
                 ToolbarResource = Resource.Layout.Toolbar;
 
                 base.OnCreate(bundle);
+                Xamarin.Essentials.Platform.Init(this, bundle); 
+
                 ImageCircleRenderer.Init();
                 global::Xamarin.Forms.Forms.Init(this, bundle);
-                //AnimationViewRenderer.Init();
-                //PlotViewRenderer.Init();
+           
                 FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
-            //   CachedImageRenderer.Init(false);
+           
                 var config = new FFImageLoading.Config.Configuration()
                 {
                     VerboseLogging = true,
@@ -46,6 +48,7 @@ namespace PortolMobile.Forms.Droid
 
                 currentApp = new App();
                 LoadApplication(currentApp);
+                App.Current.On<Xamarin.Forms.PlatformConfiguration.Android>().UseWindowSoftInputModeAdjust(WindowSoftInputModeAdjust.Resize);
             }
             catch (Exception ex)
             {
@@ -59,6 +62,14 @@ namespace PortolMobile.Forms.Droid
         {
             base.OnDestroy();
         }
+
+        public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
+        {
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+            Plugin.Permissions.PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+
     }
 
     public class CustomLogger : FFImageLoading.Helpers.IMiniLogger

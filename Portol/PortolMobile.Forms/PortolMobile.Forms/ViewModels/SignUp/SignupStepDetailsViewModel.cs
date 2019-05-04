@@ -89,7 +89,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             }
         }
 
-        public SignupStepDetailsViewModel(INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
+        public SignupStepDetailsViewModel(INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {           
             GotoEmailPageCommand = new Command(GotoEmailPage);
             this.DateOBirth = DateTime.Now.AddYears(-18);

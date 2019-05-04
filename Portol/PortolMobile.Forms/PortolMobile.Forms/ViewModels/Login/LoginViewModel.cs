@@ -51,7 +51,7 @@ namespace PortolMobile.Forms.ViewModels.Login
         }
 
 
-        public LoginViewModel(ILoginService loginService, INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
+        public LoginViewModel(ILoginService loginService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
           
             _loginService = loginService;
@@ -68,10 +68,7 @@ namespace PortolMobile.Forms.ViewModels.Login
             try
             {
                    await NavigationService.NavigateToAsync<SignupStepMobileViewModel>();
-                //var user = new Portol.Common.DTO.CustomerDto();
-                //await NavigationService.NavigateToAsync<SignupStepAddressViewModel>(user);
-
-
+               
             }
             catch (System.Exception ex)
             {
@@ -100,7 +97,7 @@ namespace PortolMobile.Forms.ViewModels.Login
                 this.IsBusy = true;
                 if (this.PasswordText?.Length > 0 && this.EmailText?.Length > 0)
                 {
-                    await SessionData.LoginUser(_loginService, this.EmailText, this.PasswordText);                    
+                    await SessionData.LoginUser(_loginService, this.EmailText, this.PasswordText);                   
                     await NavigationService.NavigateToAsync<DropViewModel>();
                 }
                 else

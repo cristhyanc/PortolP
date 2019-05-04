@@ -439,11 +439,47 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There is no available camera.
+        /// </summary>
+        public static string NoAvailableCamera {
+            get {
+                return ResourceManager.GetString("NoAvailableCamera", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The mobile number is not registered in the App, do you want to try the Email?.
         /// </summary>
         public static string NoMobileNumberEmail {
             get {
                 return ResourceManager.GetString("NoMobileNumberEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pickup photos is not supported in this phone.
+        /// </summary>
+        public static string NoPickPhotoSupported {
+            get {
+                return ResourceManager.GetString("NoPickPhotoSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pickup Videos is not supported in this phone.
+        /// </summary>
+        public static string NoPickVideoSupported {
+            get {
+                return ResourceManager.GetString("NoPickVideoSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taking videos is not supported in this phone.
+        /// </summary>
+        public static string NoTakeVideoSupported {
+            get {
+                return ResourceManager.GetString("NoTakeVideoSupported", resourceCulture);
             }
         }
         

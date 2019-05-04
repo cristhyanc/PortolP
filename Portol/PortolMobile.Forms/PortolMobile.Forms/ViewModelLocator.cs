@@ -1,6 +1,10 @@
 ﻿using Acr.UserDialogs;
 using Autofac;
 using Autofac.Core;
+using Plugin.Media;
+using Plugin.Media.Abstractions;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels;
@@ -15,6 +19,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace PortolMobile.Forms
@@ -60,12 +65,16 @@ namespace PortolMobile.Forms
                 builder.RegisterType<SignupStepAddressViewModel>();
                 builder.RegisterType<AddressPickerViewModel>();
                 builder.RegisterType<DropPicturesViewModel>();
-                
+                builder.RegisterType<PicturePickerViewModel>();
+                builder.RegisterType<DropMeasurementsViewModel>();
+
+
                 builder.Register(c => UserDialogs.Instance).As<IUserDialogs>().SingleInstance();
                 builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
 
-                
-                
+
+                builder.Register(c => CrossMedia.Current).As<IMedia>();
+
                 builder.RegisterType<LoginService>().As<ILoginService>();
                 builder.RegisterType<UserMobileService>().As<ICustomerMobileService>();
 
@@ -147,6 +156,32 @@ namespace PortolMobile.Forms
         //    get { return ViewModelLocator.Resolve<ILogError>(); }
 
         //}
+
+        public static async Task CheckCameraStoragePermission()
+        {
+            try
+            {
+                await CrossMedia.Current.Initialize();
+                var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+                var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                if (cameraStatus != PermissionStatus.Granted)
+                {
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Camera });
+                    cameraStatus = results[Permission.Camera];
+                }
+
+                if (storageStatus != PermissionStatus.Granted)
+                {
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
+                    storageStatus = results[Permission.Storage];
+                }
+            }  
+             catch (Exception)
+            {
+
+                throw;
+            }
+        }
 
     }
 }

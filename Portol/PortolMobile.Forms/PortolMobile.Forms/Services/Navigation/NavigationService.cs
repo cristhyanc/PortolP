@@ -71,14 +71,7 @@ namespace PortolMobile.Forms.Services.Navigation
 
         public void Logout()
         {
-            //_appSettings.User.KeepLoggedIn = false;
-            //IUserBl _userBl = ViewModelLocator.Resolve<IUserBl>();
-            //_userBl.SaveUserDetails(_appSettings.User);
-            //var page = new LoadingMetaDataView();
-            //CurrentNavigator = null;
-            //Application.Current.MainPage = page;
-            //page.BindingContext = new LoadingMetaDataViewModel(true);
-            //GC.Collect();
+          
         }
 
         private async Task InternalNavigateToAsync(Type viewModelType, object parameter, BaseViewModel viewModel = null)
@@ -120,7 +113,8 @@ namespace PortolMobile.Forms.Services.Navigation
                     CurrentNavigator = new NavigationPage(page);                    
                     CurrentNavigator.BarTextColor = Color.Black;
                     CurrentNavigator.BarBackgroundColor= Color.White;
-                    CurrentNavigator.BackgroundImage = "logo_long_white.png";
+                    
+                   // CurrentNavigator.BackgroundImage = "logo_long_white.png";
                     Application.Current.MainPage = CurrentNavigator;
                    
                 }

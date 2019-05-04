@@ -99,16 +99,16 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             }
         }
 
-        INavigationService navigationService;
-        IUserDialogs userDialogs;
+        INavigationService _navigationService;
+        IUserDialogs _userDialogs;
         public ICommand AddressEntryCommand { get; private set; }
 
 
 
-        public DropAddressViewModel(INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
+        public DropAddressViewModel(INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
-            navigationService = _navigationService;
-            userDialogs = _userDialogs;
+            _navigationService = navigationService;
+            _userDialogs = userDialogs;
             AddressEntryCommand = new Command<string>(((x) => GotoAddressPage(x)));
             GotoPicturesCommand = new Command((() => GotoPicturesPage()));
         }
@@ -174,14 +174,15 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                     PickUpAddress = DropoffDetails.Receiver.CustomerAddress;
                 }
 
+                //sample
                 _pickUpAddress = new AddressDto();
                 _pickUpAddress.AddressValidated = true;
                 _pickUpAddress.Country = "SD";
                 _pickUpAddress.State = "SD";
                 _pickUpAddress.StreetName = "SD";
                 PickUpAddress = _pickUpAddress;
-
                 DropoffAddress = PickUpAddress;
+                //-Sample
             }
             catch (Exception ex)
             {

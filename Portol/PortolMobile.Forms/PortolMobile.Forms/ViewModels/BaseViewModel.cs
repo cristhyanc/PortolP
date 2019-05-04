@@ -42,11 +42,11 @@ namespace PortolMobile.Forms.ViewModels
        
 
 
-        protected BaseViewModel(INavigationService _navigationService, IUserDialogs _userDialogs)
+        protected BaseViewModel(INavigationService navigationService, IUserDialogs userDialogs)
         {
           
-            NavigationService = _navigationService;
-            UserDialogs = _userDialogs;
+            NavigationService = navigationService;
+            UserDialogs = userDialogs;
             PageAppearingCommand = new Command(PageAppearing);
             PageDisappearingCommand = new Command(PageDisappearing);
         }

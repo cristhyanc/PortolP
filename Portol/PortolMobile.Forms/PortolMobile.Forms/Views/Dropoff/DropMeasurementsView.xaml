@@ -1,11 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PortolMobile.Forms.Views.Dropoff.DropPicturesView"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             x:Class="PortolMobile.Forms.Views.Dropoff.DropMeasurementsView"
+               xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
-             xmlns:localResources="clr-namespace:PortolMobile.Forms.Resources"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
@@ -13,7 +12,7 @@
              BackgroundImage="Map_image"
              xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Resources>
-    <DropoffStyle:DropoffStyles/>
+        <DropoffStyle:DropoffStyles/>
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
 
@@ -24,7 +23,7 @@
             </Grid.RowDefinitions>
 
             <StackLayout BackgroundColor="White" >
-                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+
                 <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
 
                 <Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
@@ -56,35 +55,38 @@
                             Type=RelativeToParent,
                             Property=Width,
                             Factor=0.7 }">
-                    <StackLayout Style="{StaticResource StackLayoutFrameBox}"  >
+                    <StackLayout Style="{StaticResource StackLayoutFrameBox}" >
+                        <Label Text="Hello Ash,"  Style="{StaticResource GreetingStyle}"  ></Label>
+                        <Label Text="{i18n:Translate WhatAreSending}"   Style="{StaticResource DropoffLabelStyle}" ></Label>
 
-                        <Label Text="{i18n:Translate EnterPackageDetails}"   Style="{StaticResource DropoffLabelSmallStyle}" ></Label>
+                        <Grid ColumnSpacing="0" RowSpacing="0" VerticalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
 
-                        <controls:ExtendedEntry Text="{Binding Volumen }" Placeholder="{i18n:Translate Volumen}"  VerticalOptions="Start" 
-                                                OnFocusCommand="{Binding MeasurementCommand}"  Style="{StaticResource DropoffEntryStyle}"
-                                                Keyboard="Numeric" Margin="0,0,0,5"  ></controls:ExtendedEntry>
-                        
-                        <controls:ExtendedEntry Text="{Binding Worth }" Placeholder="{i18n:Translate Worth}"  VerticalOptions="Start"                                                
+                            <ffimageloading:CachedImage Style="{StaticResource GpsIconStyle}" />
+                            <ffimageloadingsvg:SvgCachedImage Grid.Column="1" Style="{StaticResource DoorIconStyle}" />
+
+                            <BoxView  Grid.Column="0" Grid.Row="1" Style="{StaticResource BoxSeparatorLeft}" ></BoxView>
+                            <BoxView  Grid.Column="1" Grid.Row="1" Style="{StaticResource BoxSeparatorRight}" ></BoxView>
+
+                        </Grid>
+
+
+
+                        <controls:ExtendedEntry Text="{Binding PickupAddressStr }" Placeholder="{i18n:Translate PickupAddress}"  
+                                                OnFocusCommand="{Binding AddressEntryCommand}" OnFocusCommandParameter="pickup" VerticalOptions="Start" 
+                                                Keyboard="Numeric" Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                        <controls:ExtendedEntry Text="{Binding DropoffAddressStr }" Placeholder="{i18n:Translate DropoffAddress}"  VerticalOptions="Start" 
+                                                OnFocusCommand="{Binding AddressEntryCommand}" OnFocusCommandParameter="dropoff"
                                                 Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
 
-                        <Frame  BackgroundColor="#343333" Padding="0">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding PickPicturesCommand}" ></TapGestureRecognizer>
-                            </Frame.GestureRecognizers>
-                            <ffimageloadingsvg:SvgCachedImage VerticalOptions="Center" HorizontalOptions="Center"  
-                                                              Source="resource://PortolMobile.Forms.Resources.ic_dropoffcamera.svg?assembly=PortolMobile.Forms" />
-                        </Frame>
-                        
-                        <!--<ScrollView Orientation="Horizontal"  HorizontalOptions="StartAndExpand" Padding="0"  VerticalOptions="StartAndExpand" BackgroundColor="#343232">
-                            <StackLayout Orientation="Horizontal" Margin="10" Padding="0"  HorizontalOptions="StartAndExpand"  VerticalOptions="StartAndExpand"  BindableLayout.ItemsSource="{Binding ImagesTaken}">
-                                <BindableLayout.ItemTemplate>
-                                    <DataTemplate>
-                                        <ffimageloading:CachedImage VerticalOptions="FillAndExpand"  Source="{Binding ImageUrl}" />
-                                    </DataTemplate>
-                                </BindableLayout.ItemTemplate>
-                            </StackLayout>
-                        </ScrollView>-->
-                       
+                        <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
                     </StackLayout>
                 </Frame>
 
@@ -101,7 +103,7 @@
                                     Factor=0.08,Constant=-35 }"   >
 
                     <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"  
-                       Source="{localResources:ImageResource PortolMobile.Forms.Resources.ic_parcelbox.png}"  
+                       Source="https://www.morpht.com/sites/morpht/files/styles/landscape/public/dalibor-matura_1.jpg"  
                                            x:Name="ProfileImage"  />
 
                 </Frame>
@@ -118,7 +120,6 @@
                                         Property=Height,
                                         Factor=1.2}"  >
 
-                    
                     <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" >
                         <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >
                             <TapGestureRecognizer Command="{Binding GotoPicturesCommand}"  ></TapGestureRecognizer>
@@ -130,4 +131,4 @@
 
         </Grid>
     </controls:ExtendedContentPage.Content>
-</controls:ExtendedContentPage>
+    </controls:ExtendedContentPage>

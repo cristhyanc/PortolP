@@ -18,7 +18,7 @@ namespace PortolMobile.GeneralTest.MockupServices
 
     public class UserDialogsMK : IUserDialogs, IDisposable
     {
-        //public event EventHandler<UserDialogsMKEventArgs> UserDialogCalled;
+        public event EventHandler UserDialogCalled;
 
         public UserDialogsMKArgs UserDialogsArgs { get; private set; }
         public bool QuestionAnswer { get; set; }
@@ -34,7 +34,15 @@ namespace PortolMobile.GeneralTest.MockupServices
 
         public IDisposable Alert(string message, string title = null, string okText = null)
         {
-            throw new NotImplementedException();
+            UserDialogsMKArgs mKEventArgs = new UserDialogsMKArgs();
+            mKEventArgs.message = message;
+            mKEventArgs.okText = okText;
+            mKEventArgs.title = title;
+
+            UserDialogsArgs = mKEventArgs;
+
+            UserDialogCalled?.Invoke(this, null);
+            return null;
         }
 
         public IDisposable Alert(AlertConfig config)
@@ -43,13 +51,22 @@ namespace PortolMobile.GeneralTest.MockupServices
             mKEventArgs.message = config.Message;
             mKEventArgs.okText = config.OkText;
             mKEventArgs.title = config.Title;
+
             UserDialogsArgs = mKEventArgs;
+
+            UserDialogCalled?.Invoke(this, null);
             return this;
         }
 
         public Task AlertAsync(string message, string title = null, string okText = null, CancellationToken? cancelToken = null)
         {
-            throw new NotImplementedException();
+            UserDialogsMKArgs mKEventArgs = new UserDialogsMKArgs();
+            mKEventArgs.message = message;
+            mKEventArgs.okText = okText;
+            mKEventArgs.title = title;
+            UserDialogsArgs = mKEventArgs;
+            UserDialogCalled?.Invoke(this, null);           
+            return Task.CompletedTask; 
         }
 
         public Task AlertAsync(AlertConfig config, CancellationToken? cancelToken = null)
@@ -74,9 +91,11 @@ namespace PortolMobile.GeneralTest.MockupServices
             mKEventArgs.okText = config.OkText;
             mKEventArgs.title = config.Title;
             mKEventArgs.cancelText = config.CancelText;
+
             UserDialogsArgs = mKEventArgs;
 
             Task<Boolean> task = Task.Run(() => { return QuestionAnswer; });
+            UserDialogCalled?.Invoke(this, null);
             return task;
         }
 

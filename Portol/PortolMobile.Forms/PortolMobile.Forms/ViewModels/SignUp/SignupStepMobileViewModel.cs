@@ -102,7 +102,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             }
         }
 
-        public SignupStepMobileViewModel(ILoginService loginService, INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
+        public SignupStepMobileViewModel(ILoginService loginService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
            
             _loginService = loginService;

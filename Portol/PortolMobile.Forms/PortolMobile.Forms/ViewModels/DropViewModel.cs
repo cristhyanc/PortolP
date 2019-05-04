@@ -56,7 +56,7 @@ namespace PortolMobile.Forms.ViewModels
 
       
 
-        public DropViewModel(ICustomerMobileService customerService, INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
+        public DropViewModel(ICustomerMobileService customerService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
             GetCustomerCommand = new Command((() => GetCustomer()));
             GotoShopCommand = new Command(GotoShop);
@@ -64,7 +64,23 @@ namespace PortolMobile.Forms.ViewModels
             this.EmailMobileNumber = "0405593358";
             this.ReceiverName = "Cris";
             this.Description = "ddd";
+
+           
         }
+
+        //public override async Task InitializeAsync(object navigationData)
+        //{
+        //    try
+        //    {
+                
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        ExceptionHelper.ProcessException(ex, UserDialogs, "DropViewModel", "InitializeAsync");
+              
+        //    }
+           
+        //}
 
         private async void GotoShop()
         {

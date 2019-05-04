@@ -21,8 +21,8 @@ namespace PortolMobile.Forms.ViewModels.UserControls
     }
     public class AddressPickerViewModel: BaseViewModel
     {
-        INavigationService navigationService;
-        IUserDialogs userDialogs;
+        INavigationService _navigationService;
+        IUserDialogs _userDialogs;
         IAddressService addressService;
 
         AddressPickerParameters parameter;
@@ -78,10 +78,10 @@ namespace PortolMobile.Forms.ViewModels.UserControls
         public ICommand TextChangedCommand { get; private set; }
         private static CancellationTokenSource globalSuggestionsCts;
 
-        public AddressPickerViewModel(INavigationService _navigationService, IUserDialogs _userDialogs, IAddressService _addressService) : base(_navigationService, _userDialogs)
+        public AddressPickerViewModel(INavigationService navigationService, IUserDialogs userDialogs, IAddressService _addressService) : base(navigationService, userDialogs)
         {
-            navigationService = _navigationService;
-            userDialogs = _userDialogs;
+            _navigationService = navigationService;
+            _userDialogs = userDialogs;
             addressService = _addressService;
             TextChangedCommand = new Command<string>(PrepareSearchAddress);
         }
@@ -177,7 +177,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                         parameter.Address = result.GetAddressDto();
                         MessagingCenter.Send<AddressPickerViewModel, AddressPickerParameters>(this, MessagingCenterCodes.AddressPickerMessage, parameter);
                     }
-                    await this.navigationService.GoToPreviousPageAsync();
+                    await _navigationService.GoToPreviousPageAsync();
                 }
             }
             catch (Exception ex)

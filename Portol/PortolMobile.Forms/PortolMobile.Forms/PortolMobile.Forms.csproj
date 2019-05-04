@@ -18,6 +18,7 @@
     <None Remove="Resources\ic_ActionButton.svg" />
     <None Remove="Resources\ic_australia.svg" />
     <None Remove="Resources\ic_button.svg" />
+    <None Remove="Resources\ic_camerabutton.svg" />
     <None Remove="Resources\ic_door.svg" />
     <None Remove="Resources\ic_dropoffcamera.svg" />
     <None Remove="Resources\ic_line.svg" />
@@ -35,6 +36,7 @@
     <EmbeddedResource Include="Resources\btn_background.svg" />
     <EmbeddedResource Include="Resources\ic_australia.svg" />
     <EmbeddedResource Include="Resources\ic_button.svg" />
+    <EmbeddedResource Include="Resources\ic_camerabutton.svg" />
     <EmbeddedResource Include="Resources\ic_door.svg" />
     <EmbeddedResource Include="Resources\ic_dropoffcamera.svg" />
     <EmbeddedResource Include="Resources\ic_line.svg" />
@@ -52,7 +54,9 @@
     <PackageReference Include="Naxam.TopTabbedPage.Forms" Version="0.0.3.5" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
     <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.5.870-pre" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.5.870-pre" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.5.870-pre" />
@@ -86,6 +90,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Dropoff\DropAddressView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Dropoff\DropMeasurementsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Dropoff\DropPicturesView.xaml">
@@ -122,6 +129,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\UserControls\AddressPickerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\UserControls\PicturePickerView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

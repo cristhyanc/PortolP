@@ -167,7 +167,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
 
         CustomerDto _userDto;
 
-        public SignupStepCodeViewModel(  ILoginService loginService, INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
+        public SignupStepCodeViewModel(  ILoginService loginService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {          
             _loginService = loginService;
             GotoNamesPageCommand = new Command(GotoNamesPage);

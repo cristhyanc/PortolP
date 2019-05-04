@@ -104,7 +104,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
         }
 
 
-        public SignupStepEmailViewModel(ILoginService loginService, INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
+        public SignupStepEmailViewModel(ILoginService loginService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {           
             _loginService = loginService;
             GotoAddressPageCommand = new Command(GotoAddressPage);

@@ -9,6 +9,7 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
@@ -19,6 +20,14 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>This allows us to take photos and attach them to any .</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This allows us to pick photos and attach them to any .</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>This allows us to record videos and attach them to any .</string>
+	<key>NSCalendarsUsageDescription</key>
+	<string>This app needs access to the calendar to be able to schedule new </string>
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>

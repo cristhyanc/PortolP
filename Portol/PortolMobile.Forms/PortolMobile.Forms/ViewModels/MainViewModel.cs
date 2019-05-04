@@ -8,7 +8,7 @@ namespace PortolMobile.Forms.ViewModels
     public class MainViewModel : BaseViewModel
     {
        
-        public MainViewModel( INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
+        public MainViewModel( INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
            
           

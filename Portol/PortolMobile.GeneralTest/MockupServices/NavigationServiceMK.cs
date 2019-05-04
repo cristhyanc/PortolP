@@ -1,8 +1,6 @@
 ﻿using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
@@ -10,7 +8,9 @@ namespace PortolMobile.GeneralTest.MockupServices
 {
     public class NavigationServiceMK : INavigationService
     {
-        public Type viewModel;
+        public event EventHandler NavigationCalled;
+        public Type viewModel { get; set; }
+
         public object Parameter;
         public ContentPage CreateContentPage(Type viewModelType, object parameter)
         {
@@ -41,6 +41,7 @@ namespace PortolMobile.GeneralTest.MockupServices
         public Task NavigateToAsync<TViewModel>() where TViewModel : BaseViewModel
         {
             viewModel = typeof(TViewModel);
+            NavigationCalled?.Invoke(this, null);
             return null;
         }
 
@@ -48,7 +49,7 @@ namespace PortolMobile.GeneralTest.MockupServices
         {
             viewModel = typeof(TViewModel);
             Parameter = parameter;
-            return Task.Run(()=> { });
+            return Task.Run(()=> { NavigationCalled?.Invoke(this, null); });
         }
 
         public Task RemoveCurrentPage()

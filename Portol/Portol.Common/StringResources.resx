@@ -327,4 +327,16 @@
   <data name="PickupAddressRequired" xml:space="preserve">
     <value>The pickup address is required</value>
   </data>
+  <data name="NoAvailableCamera" xml:space="preserve">
+    <value>There is no available camera</value>
+  </data>
+  <data name="NoPickPhotoSupported" xml:space="preserve">
+    <value>Pickup photos is not supported in this phone</value>
+  </data>
+  <data name="NoPickVideoSupported" xml:space="preserve">
+    <value>Pickup Videos is not supported in this phone</value>
+  </data>
+  <data name="NoTakeVideoSupported" xml:space="preserve">
+    <value>Taking videos is not supported in this phone</value>
+  </data>
 </root>

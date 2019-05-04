@@ -272,7 +272,7 @@ namespace PortolMobile.Forms.ViewModels.Login
             }
         }
 
-        public RecoverPasswordViewModel(ILoginService loginService, INavigationService _navigationService, IUserDialogs _userDialogs) : base(_navigationService, _userDialogs)
+        public RecoverPasswordViewModel(ILoginService loginService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
            
             _loginService = loginService;
