@@ -2,6 +2,7 @@
 using Plugin.Media.Abstractions;
 using Portol.Common;
 using Portol.Common.DTO;
+using Portol.Common.Helper;
 using PortolMobile.Forms.Helper;
 using PortolMobile.Forms.Services.Navigation;
 using System;
@@ -9,6 +10,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -23,7 +25,9 @@ namespace PortolMobile.Forms.ViewModels.UserControls
         public ICommand TakeVideoCommand { get; private set; }
         public ICommand PickupPhotoCommand { get; private set; }
         public ICommand SelectedPhotoCommand { get; private set; }
+        public ICommand DoneCommand { get; private set; }
 
+        
         PicturesDto _selectedPicture;     
         public PicturesDto SelectedPicture
         {
@@ -39,7 +43,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
 
         }
 
-        ObservableCollection<PicturesDto> _pictures;
+        ObservableCollection <PicturesDto> _pictures;
         public ObservableCollection<PicturesDto> Pictures {
             get
             {
@@ -60,7 +64,44 @@ namespace PortolMobile.Forms.ViewModels.UserControls
             TakePhotoCommand = new Command(TakePhoto);
             PickupPhotoCommand = new Command(PickupPhoto);
             SelectedPhotoCommand = new Command<Guid>(PhotoSelected);
+            DoneCommand = new Command(GoBack);
             Pictures = new ObservableCollection<PicturesDto>();
+        }
+
+        public override Task InitializeAsync(object navigationData)
+        {
+            try
+            {
+                this.IsBusy = true;
+                if(navigationData!=null)
+                {
+                    IEnumerable <PicturesDto> picturesDtos = (IEnumerable<PicturesDto>)navigationData;
+                    Pictures = new ObservableCollection<PicturesDto>(picturesDtos);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "PicturePickerViewModel", "InitializeAsync");
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
+            return base.InitializeAsync(navigationData);
+        }
+
+        private async void GoBack()
+        {
+            try
+            {
+                MessagingCenter.Send<PicturePickerViewModel, List<PicturesDto>>(this, MessagingCenterCodes.PicturePickerMessage, this.Pictures.ToList());
+                await this.NavigationService.GoToPreviousPageAsync();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "PicturePickerViewModel", "GoBack");
+            }
         }
 
         private  void PhotoSelected(Guid pictureId)
@@ -132,7 +173,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                 });
 
 
-                Pictures.Add(pictures);
+                Pictures.Add(pictures);              
 
 
             }
@@ -145,5 +186,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                 this.IsBusy = false;
             }
         }
+
+
     }
 }

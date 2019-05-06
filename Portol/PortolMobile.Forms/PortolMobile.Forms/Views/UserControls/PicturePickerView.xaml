@@ -11,7 +11,11 @@
              x:Name="page"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <ContentPage.ToolbarItems>
-        <ToolbarItem   Text="Done"   Command="{Binding RefineSearchCommand}"   >
+       
+        <ToolbarItem   Text="Done"  Command="{Binding DoneCommand}"   >
+
+        </ToolbarItem>
+        <ToolbarItem     Command="{Binding DoneCommand}"   >
 
         </ToolbarItem>
     </ContentPage.ToolbarItems>
@@ -19,7 +23,7 @@
         <StackLayout>
             <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
             <StackLayout BackgroundColor="#f2f2f2" VerticalOptions="FillAndExpand" >
-                <ffimageloading:CachedImage VerticalOptions="FillAndExpand"  Source="{Binding SelectedPicture.Image}" />
+                <ffimageloading:CachedImage VerticalOptions="FillAndExpand" DownsampleToViewSize="True" LoadingPlaceholder="Loading..."  Source="{Binding SelectedPicture.Image}" />
             </StackLayout>
 
             <ffimageloadingsvg:SvgCachedImage VerticalOptions="End" HorizontalOptions="Center"  WidthRequest="60" HeightRequest="60"
@@ -30,10 +34,11 @@
             </ffimageloadingsvg:SvgCachedImage>
 
             <ScrollView Orientation="Horizontal" HeightRequest="100" HorizontalOptions="StartAndExpand" Padding="0"  VerticalOptions="End">
-                <StackLayout Orientation="Horizontal" Margin="10" Padding="0"  HorizontalOptions="StartAndExpand"  VerticalOptions="StartAndExpand"  BindableLayout.ItemsSource="{Binding Pictures}">
+                <StackLayout Orientation="Horizontal" Margin="10" Padding="0"  HorizontalOptions="StartAndExpand"  VerticalOptions="StartAndExpand" 
+                             BindableLayout.ItemsSource="{Binding Pictures,Mode=TwoWay }">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <ffimageloading:CachedImage VerticalOptions="FillAndExpand"    Source="{Binding Image}" >
+                            <ffimageloading:CachedImage VerticalOptions="FillAndExpand"  Source="{Binding Image}" x:Name="image"  LoadingPlaceholder="Loading..." >
                                 <ffimageloading:CachedImage.GestureRecognizers >
                                     <TapGestureRecognizer  Command="{Binding Source={x:Reference page}, Path = BindingContext.SelectedPhotoCommand }"  CommandParameter="{Binding PictureID}" ></TapGestureRecognizer>
                                 </ffimageloading:CachedImage.GestureRecognizers>

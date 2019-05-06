@@ -9,7 +9,9 @@ namespace Portol.Common.Helper
 {
     public class MessagingCenterCodes
     {
-        public const string AddressPickerMessage = "AddressPickerMessage";       
+        public const string AddressPickerMessage = "AddressPickerMessage";
+        public const string PicturePickerMessage = "PicturePickerMessage";
+        public const string MeasurementMessage = "PicturePickerMessage";
     }
 
     public class Constants

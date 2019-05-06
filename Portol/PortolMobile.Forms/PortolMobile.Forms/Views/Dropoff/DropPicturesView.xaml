@@ -27,9 +27,9 @@
                 <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
                 <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
 
-                <Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
+                <!--<Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
                         Style="{StaticResource ButtonUnselectedTab}"
-                        Grid.Column="1" Text="Drop"></Button>
+                        Grid.Column="1" Text="Drop"></Button>-->
 
             </StackLayout>
 
@@ -60,30 +60,35 @@
 
                         <Label Text="{i18n:Translate EnterPackageDetails}"   Style="{StaticResource DropoffLabelSmallStyle}" ></Label>
 
-                        <controls:ExtendedEntry Text="{Binding Volumen }" Placeholder="{i18n:Translate Volumen}"  VerticalOptions="Start" 
+                        <controls:ExtendedEntry Text="{Binding ParcelVolume }" Placeholder="{i18n:Translate Volumen}" Focused="ExtendedEntry_Focused"  VerticalOptions="Start" 
                                                 OnFocusCommand="{Binding MeasurementCommand}"  Style="{StaticResource DropoffEntryStyle}"
                                                 Keyboard="Numeric" Margin="0,0,0,5"  ></controls:ExtendedEntry>
                         
-                        <controls:ExtendedEntry Text="{Binding Worth }" Placeholder="{i18n:Translate Worth}"  VerticalOptions="Start"                                                
+                        <controls:ExtendedEntry Text="{Binding Worth }" Placeholder="{i18n:Translate Worth}"  VerticalOptions="Start"  Keyboard="Numeric"                                               
                                                 Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
 
-                        <Frame  BackgroundColor="#343333" Padding="0">
+                        <Frame  BackgroundColor="#343333" Padding="0" IsVisible="{Binding IsPicturePickerButtonVisible}" >
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding PickPicturesCommand}" ></TapGestureRecognizer>
                             </Frame.GestureRecognizers>
                             <ffimageloadingsvg:SvgCachedImage VerticalOptions="Center" HorizontalOptions="Center"  
                                                               Source="resource://PortolMobile.Forms.Resources.ic_dropoffcamera.svg?assembly=PortolMobile.Forms" />
                         </Frame>
-                        
-                        <!--<ScrollView Orientation="Horizontal"  HorizontalOptions="StartAndExpand" Padding="0"  VerticalOptions="StartAndExpand" BackgroundColor="#343232">
+
+                        <ScrollView Orientation="Horizontal"  HorizontalOptions="StartAndExpand" Padding="0" IsVisible="{Binding IsGalleryVisible}"  VerticalOptions="StartAndExpand" BackgroundColor="#343232">
                             <StackLayout Orientation="Horizontal" Margin="10" Padding="0"  HorizontalOptions="StartAndExpand"  VerticalOptions="StartAndExpand"  BindableLayout.ItemsSource="{Binding ImagesTaken}">
+                                <StackLayout.GestureRecognizers >
+                                    <TapGestureRecognizer Command="{Binding PickPicturesCommand}"  ></TapGestureRecognizer>
+                                </StackLayout.GestureRecognizers>
+
+
                                 <BindableLayout.ItemTemplate>
                                     <DataTemplate>
-                                        <ffimageloading:CachedImage VerticalOptions="FillAndExpand"  Source="{Binding ImageUrl}" />
+                                        <ffimageloading:CachedImage VerticalOptions="FillAndExpand"  Source="{Binding Image}" />
                                     </DataTemplate>
                                 </BindableLayout.ItemTemplate>
                             </StackLayout>
-                        </ScrollView>-->
+                        </ScrollView>
                        
                     </StackLayout>
                 </Frame>
@@ -118,11 +123,10 @@
                                         Property=Height,
                                         Factor=1.2}"  >
 
-                    
-                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" >
-                        <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >
-                            <TapGestureRecognizer Command="{Binding GotoPicturesCommand}"  ></TapGestureRecognizer>
-                        </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                    <Frame.GestureRecognizers >
+                        <TapGestureRecognizer Command="{Binding GotoPicturesCommand}"  ></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" >                       
                     </ffimageloadingsvg:SvgCachedImage>
 
                 </Frame>

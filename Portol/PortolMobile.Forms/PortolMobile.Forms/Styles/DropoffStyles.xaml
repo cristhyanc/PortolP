@@ -6,6 +6,12 @@
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"            
              x:Class="PortolMobile.Forms.Styles.DropoffStyles">
 
+    <Style TargetType="Label" x:Key="GreetingStyleSmall" BaseResourceKey="LabelBaseStyle">
+        <Setter Property="TextColor" Value="#797878" />
+        <Setter Property="FontSize" Value="Small" />
+        <Setter Property="HorizontalTextAlignment" Value="Center"  />
+    </Style>
+
     <Style TargetType="Label" x:Key="GreetingStyle" BaseResourceKey="LabelBaseStyle">
         <Setter Property="TextColor" Value="#797878" />
         <Setter Property="FontSize" Value="Large" />

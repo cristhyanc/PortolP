@@ -21,6 +21,17 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
 
         DropoffDto DropoffDetails { get; set; }
 
+        string _description;
+        public string Description
+        {
+            get { return _description; }
+            set
+            {
+                _description = value;
+                OnPropertyChanged();
+            }
+        }
+
         private string _pickupAddressStr;
         public string PickupAddressStr
         {
@@ -111,6 +122,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             _userDialogs = userDialogs;
             AddressEntryCommand = new Command<string>(((x) => GotoAddressPage(x)));
             GotoPicturesCommand = new Command((() => GotoPicturesPage()));
+          //  this.Description = "ddd";
         }
 
         public async Task GotoPicturesPage()
@@ -129,7 +141,13 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                     return;
                 }
 
+                if (string.IsNullOrEmpty(this.Description))
+                {
+                    this.DisplayMessage(StringResources.MissingInformation, StringResources.DescriptionRequired);
+                    return;
+                }
 
+                DropoffDetails.Description = this.Description;
                 DropoffDetails.PickupAddress = this.PickUpAddress;
                 DropoffDetails.DropoffAddress = this.DropoffAddress;
                 await this.NavigationService.NavigateToAsync<DropPicturesViewModel>(DropoffDetails);

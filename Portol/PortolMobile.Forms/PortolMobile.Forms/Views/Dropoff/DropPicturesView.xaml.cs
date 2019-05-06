@@ -17,5 +17,11 @@ namespace PortolMobile.Forms.Views.Dropoff
         {
             InitializeComponent();
         }
+
+        private void ExtendedEntry_Focused(object sender, FocusEventArgs e)
+        {
+            var control = (ExtendedEntry)sender;
+            control.Unfocus();
+        }
     }
 }

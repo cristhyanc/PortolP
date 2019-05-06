@@ -16,6 +16,12 @@ namespace PortolMobile.Forms.Views.Dropoff
 		public DropMeasurementsView ()
 		{
 			InitializeComponent ();
+            this.Appearing += DropMeasurementsView_Appearing;
 		}
-	}
+
+        private void DropMeasurementsView_Appearing(object sender, EventArgs e)
+        {
+            this.Focus();
+        }
+    }
 }

@@ -331,6 +331,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Height (cm).
+        /// </summary>
+        internal static string HeightCm {
+            get {
+                return ResourceManager.GetString("HeightCm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect date format.
         /// </summary>
         internal static string IncorrectdateFormat {
@@ -372,6 +381,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string LastNameRequired {
             get {
                 return ResourceManager.GetString("LastNameRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Length (cm).
+        /// </summary>
+        internal static string LengthCm {
+            get {
+                return ResourceManager.GetString("LengthCm", resourceCulture);
             }
         }
         
@@ -727,11 +745,29 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Weight (kg).
+        /// </summary>
+        internal static string WeightKg {
+            get {
+                return ResourceManager.GetString("WeightKg", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to What are we sending today?.
         /// </summary>
         internal static string WhatAreSending {
             get {
                 return ResourceManager.GetString("WhatAreSending", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Width (cm).
+        /// </summary>
+        internal static string WidthCm {
+            get {
+                return ResourceManager.GetString("WidthCm", resourceCulture);
             }
         }
         

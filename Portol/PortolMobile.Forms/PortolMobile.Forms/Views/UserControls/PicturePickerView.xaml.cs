@@ -15,6 +15,8 @@ namespace PortolMobile.Forms.Views.UserControls
 		public PicturePickerView ()
 		{
 			InitializeComponent ();
+          
 		}
-	}
+              
+    }
 }

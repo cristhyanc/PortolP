@@ -13,40 +13,40 @@
              x:Class="PortolMobile.Forms.Views.DropView">
     <controls:ExtendedContentPage.Resources>
         <DropoffStyle:DropoffStyles/>
-    </controls:ExtendedContentPage.Resources>  
+    </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
+      
+            <Grid VerticalOptions="FillAndExpand" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
 
-        <Grid VerticalOptions="FillAndExpand" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
+                <StackLayout BackgroundColor="White" >
+                    <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
 
-            <StackLayout BackgroundColor="White" >
-                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />               
-                
-                <Grid  HorizontalOptions="CenterAndExpand" ColumnSpacing="0"  >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <Button  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" HeightRequest="60"
+                    <Grid  HorizontalOptions="CenterAndExpand" ColumnSpacing="0"  >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" HeightRequest="60"
                             Style="{StaticResource ButtonUnselectedTab}"  Command="{Binding GotoShopCommand}"
                             Grid.Column="0" Text="Shop"></Button>
 
-                    <Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
+                        <Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
                         Style="{StaticResource ButtonSelectedTab}"
                         Grid.Column="1" Text="Drop"></Button>
-                </Grid>
-                
-                
-            </StackLayout>
+                    </Grid>
 
 
-            <RelativeLayout   Grid.Row="1" >
+                </StackLayout>
 
-                <Frame  Style="{StaticResource FrameBox}" x:Name="frmDetailBox"
+
+                <RelativeLayout   Grid.Row="1" >
+
+                    <Frame  Style="{StaticResource FrameBox}" x:Name="frmDetailBox"
                             RelativeLayout.XConstraint="{ConstraintExpression
                             Type=RelativeToParent,
                             Property=Width,
@@ -60,43 +60,41 @@
                             RelativeLayout.HeightConstraint="{ConstraintExpression
                             Type=RelativeToParent,
                             Property=Height,
-                            Factor=0.75 }"
+                            Factor=0.7 }"
                         
                             RelativeLayout.WidthConstraint="{ConstraintExpression
                             Type=RelativeToParent,
                             Property=Width,
                             Factor=0.7 }">
-                    <StackLayout Style="{StaticResource StackLayoutFrameBox}" >
-                        <Label Text="Hello Ash,"  Style="{StaticResource GreetingStyle}"  ></Label>
-                        <Label Text="{i18n:Translate WhatAreSending}"   Style="{StaticResource DropoffLabelStyle}" ></Label>
+                        <StackLayout Style="{StaticResource StackLayoutFrameBox}" >
+                            <Label Text="Hello Ash,"  Style="{StaticResource GreetingStyle}"  ></Label>
+                            <Label Text="{i18n:Translate WhatAreSending}"   Style="{StaticResource DropoffLabelStyle}" ></Label>
 
-                        <Grid ColumnSpacing="0" RowSpacing="0" VerticalOptions="Center">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"></RowDefinition>
-                                <RowDefinition Height="Auto"></RowDefinition>
-                            </Grid.RowDefinitions>
+                            <Grid ColumnSpacing="0" RowSpacing="0" VerticalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
 
-                            <ffimageloading:CachedImage Style="{StaticResource GpsIconStyle}" />
-                            <ffimageloadingsvg:SvgCachedImage Grid.Column="1" Style="{StaticResource DoorIconStyle}" />
+                                <ffimageloading:CachedImage Style="{StaticResource GpsIconStyle}" />
+                                <ffimageloadingsvg:SvgCachedImage Grid.Column="1" Style="{StaticResource DoorIconStyle}" />
 
-                            <BoxView  Grid.Column="0" Grid.Row="1" Style="{StaticResource BoxSeparatorLeft}" VerticalOptions="Start"></BoxView>
-                            <BoxView  Grid.Column="1" Grid.Row="1" Style="{StaticResource BoxSeparatorRight}" VerticalOptions="Start"></BoxView>
+                                <BoxView  Grid.Column="0" Grid.Row="1" Style="{StaticResource BoxSeparatorLeft}" VerticalOptions="Start"></BoxView>
+                                <BoxView  Grid.Column="1" Grid.Row="1" Style="{StaticResource BoxSeparatorRight}" VerticalOptions="Start"></BoxView>
 
-                        </Grid>
+                            </Grid>
 
-                        <controls:ExtendedEntry Text="{Binding EmailMobileNumber, Mode=TwoWay }"   Placeholder="{i18n:Translate EmailMobileNumber}" Margin="0,5,0,0"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
-                        <controls:ExtendedEntry Text="{Binding ReceiverName, Mode=TwoWay }"        Placeholder="{i18n:Translate ReceiverName}"   Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
-                        <controls:ExtendedEntry Text="{Binding Description, Mode=TwoWay }"         Placeholder="{i18n:Translate Description}"  Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
-                        
-                        
-                    </StackLayout>
-                </Frame>
+                            <controls:ExtendedEntry Text="{Binding EmailMobileNumber, Mode=TwoWay }"   Placeholder="{i18n:Translate EmailMobileNumber}" Margin="0,5,0,0"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                            <controls:ExtendedEntry Text="{Binding ReceiverName, Mode=TwoWay }"        Placeholder="{i18n:Translate ReceiverName}"   Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                           
+                        </StackLayout>
+                    </Frame>
 
-                <Frame Style="{StaticResource FrameImageProfile}"
+                    <Frame Style="{StaticResource FrameImageProfile}"
                        
                                     RelativeLayout.XConstraint="{ConstraintExpression
                                       Type=RelativeToParent,
@@ -108,13 +106,13 @@
                                     Property=Height,
                                     Factor=0.08,Constant=-35 }"   >
 
-                    <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"  
+                        <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"  
                        Source="https://www.morpht.com/sites/morpht/files/styles/landscape/public/dalibor-matura_1.jpg"  
                                            x:Name="ProfileImage"  />
 
-                </Frame>
+                    </Frame>
 
-                <Frame  Style="{StaticResource ButtonFrameStyle}"  
+                    <Frame  Style="{StaticResource ButtonFrameStyle}"  
                                         RelativeLayout.XConstraint="{ConstraintExpression
                                         Type=RelativeToParent,
                                         Property=Width,
@@ -124,17 +122,18 @@
                                         Type=RelativeToView,
                                         ElementName=frmDetailBox,
                                         Property=Height,
-                                        Factor=1,Constant=50}"  >
+                                        Factor=1.15}"  >
 
-                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" >
-                        <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >
+                        <Frame.GestureRecognizers >
                             <TapGestureRecognizer Command="{Binding GetCustomerCommand}"  ></TapGestureRecognizer>
-                        </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
-                    </ffimageloadingsvg:SvgCachedImage>
+                        </Frame.GestureRecognizers>
+                        <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" >
+                        </ffimageloadingsvg:SvgCachedImage>
 
-                </Frame>
-            </RelativeLayout>
+                    </Frame>
+                </RelativeLayout>
 
-        </Grid>
+            </Grid>
+       
     </controls:ExtendedContentPage.Content>
 </controls:ExtendedContentPage>

@@ -25,10 +25,10 @@
             <StackLayout BackgroundColor="White" >
 
                 <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
-                
-                <Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
+                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+                <!--<Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
                         Style="{StaticResource ButtonUnselectedTab}"
-                        Grid.Column="1" Text="Drop"></Button>
+                        Grid.Column="1" Text="Drop"></Button>-->
 
             </StackLayout>
 
@@ -85,8 +85,12 @@
                         <controls:ExtendedEntry Text="{Binding DropoffAddressStr }" Placeholder="{i18n:Translate DropoffAddress}"  VerticalOptions="Start" 
                                                 OnFocusCommand="{Binding AddressEntryCommand}" OnFocusCommandParameter="dropoff"
                                                 Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
-                       
-                        <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+                        
+                        <controls:ExtendedEntry Text="{Binding Description, Mode=TwoWay }"         Placeholder="{i18n:Translate Description}"  Margin="0,0,0,5"  
+                                                Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+
+
+                        
                     </StackLayout>
                 </Frame>
 
@@ -120,10 +124,10 @@
                                         Property=Height,
                                         Factor=1.2}"  >
 
-                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" >
-                        <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >
-                            <TapGestureRecognizer Command="{Binding GotoPicturesCommand}"  ></TapGestureRecognizer>
-                        </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                    <Frame.GestureRecognizers >
+                        <TapGestureRecognizer Command="{Binding GotoPicturesCommand}"  ></TapGestureRecognizer>
+                    </Frame.GestureRecognizers>
+                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" >                        
                     </ffimageloadingsvg:SvgCachedImage>
 
                 </Frame>

@@ -60,10 +60,21 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 dropViewmodel.DropoffAddress  = addressDto;
                 await dropViewmodel.GotoPicturesPage();
 
+                Assert.NotNull(userDialogs.UserDialogsArgs);
+                Assert.Equal(StringResources.MissingInformation, userDialogs.UserDialogsArgs.title);
+                Assert.Equal(StringResources.DescriptionRequired, userDialogs.UserDialogsArgs.message);
+
+                dropViewmodel.Description = "cris";
+                await dropViewmodel.GotoPicturesPage();
+
                 Assert.NotNull(navigationService.viewModel);
                 Assert.Equal(typeof(DropPicturesViewModel), navigationService.viewModel);
                 Assert.NotNull(navigationService.Parameter);
                 Assert.Equal(typeof(DropoffDto), navigationService.Parameter.GetType());
+
+               
+
+               
             }
             catch (Exception ex)
             {

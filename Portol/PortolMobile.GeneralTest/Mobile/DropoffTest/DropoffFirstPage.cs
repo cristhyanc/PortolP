@@ -61,12 +61,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 Assert.Equal(StringResources.MissingInformation, userDialogs.UserDialogsArgs.title);
                 Assert.Equal(StringResources.ReceiverNameRequired, userDialogs.UserDialogsArgs.message);
 
-                dropViewmodel.ReceiverName = "cris";
-                await dropViewmodel.GetCustomer();
-
-                Assert.NotNull(userDialogs.UserDialogsArgs);
-                Assert.Equal(StringResources.MissingInformation, userDialogs.UserDialogsArgs.title);
-                Assert.Equal(StringResources.DescriptionRequired, userDialogs.UserDialogsArgs.message);
+             
             }
             catch (Exception ex)
             {
@@ -79,10 +74,10 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
 
 
         [Theory ]
-        [InlineData("Peter", "91579496","asd")]
-        [InlineData("Paulo", "10675693", "111")]
-        [InlineData("Mario", "91344725", "ttt")]
-        public async void GetCustomer_PhoneExist(string name, string phone, string description)
+        [InlineData("Peter", "91579496")]
+        [InlineData("Paulo", "10675693")]
+        [InlineData("Mario", "91344725")]
+        public async void GetCustomer_PhoneExist(string name, string phone )
         {
             try
             {
@@ -92,8 +87,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs);
 
                 dropViewmodel.EmailMobileNumber = phone;
-                dropViewmodel.ReceiverName = name;
-                dropViewmodel.Description  = description;
+                dropViewmodel.ReceiverName = name;               
                 await dropViewmodel.GetCustomer();
 
                 Assert.NotNull(navigationService.viewModel);
@@ -117,10 +111,10 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
 
 
         [Theory]
-        [InlineData("Peter",  "cristhyan@outlook.com", "asd")]
-        [InlineData("Paulo",  "sed.tortor.Integer@nuncrisusvarius.org", "bbb")]
-        [InlineData("Mario",  "nec.diam@adipiscingelitCurabitur.edu", "333")]
-        public async void GetCustomer_Email(string name,  string email, string description)
+        [InlineData("Peter",  "cristhyan@outlook.com")]
+        [InlineData("Paulo",  "sed.tortor.Integer@nuncrisusvarius.org")]
+        [InlineData("Mario",  "nec.diam@adipiscingelitCurabitur.edu")]
+        public async void GetCustomer_Email(string name,  string email)
         {
             try
             {
@@ -131,7 +125,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
 
                 dropViewmodel.EmailMobileNumber = email;
                 dropViewmodel.ReceiverName = name;
-                dropViewmodel.Description = description;
+             
 
                 await dropViewmodel.GetCustomer();               
 
@@ -152,10 +146,10 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
         }
 
         [Theory]
-        [InlineData("Peter", "11111111", "asd")]
-        [InlineData("Paulo", "22222222", "asd")]
-        [InlineData("Mario", "33333333", "asd")]
-        public async void GetCustomer_Phone_NoExist_Email_Empty_AsGuess(string name, string phone, string description)
+        [InlineData("Peter", "11111111")]
+        [InlineData("Paulo", "22222222")]
+        [InlineData("Mario", "33333333")]
+        public async void GetCustomer_Phone_NoExist_Email_Empty_AsGuess(string name, string phone )
         {
             try
             {
@@ -165,8 +159,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs);
 
                 dropViewmodel.EmailMobileNumber = phone;
-                dropViewmodel.ReceiverName = name;
-                dropViewmodel.Description = description;
+                dropViewmodel.ReceiverName = name;              
 
                 userDialogs.QuestionAnswer = true;
                 await dropViewmodel.GetCustomer();
@@ -197,10 +190,10 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
         }
 
         [Theory]
-        [InlineData("Peter",  "cristhyan@msn.com", "asd")]
-        [InlineData("Paulo",  "Inxteger@nuncrisusvarius.org", "asd")]
-        [InlineData("Mario",  "diam@xadipiscingelitCurabitur.edu", "asd")]
-        public async void GetCustomer_Email_NoExist_AsGuess(string name,  string email, string description)
+        [InlineData("Peter",  "cristhyan@msn.com")]
+        [InlineData("Paulo",  "Inxteger@nuncrisusvarius.org")]
+        [InlineData("Mario",  "diam@xadipiscingelitCurabitur.edu")]
+        public async void GetCustomer_Email_NoExist_AsGuess(string name,  string email )
         {
             try
             {
@@ -211,8 +204,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
 
                 dropViewmodel.EmailMobileNumber = email;
                 dropViewmodel.ReceiverName = name;
-                dropViewmodel.Description = description;
-
+              
                 userDialogs.QuestionAnswer = true;
                 await dropViewmodel.GetCustomer();
 
@@ -239,10 +231,10 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
         }
 
         [Theory]
-        [InlineData("Peter", "cristhyan@msn.com", "asd")]
-        [InlineData("Paulo", "Inxteger@nuncrisusvarius.org", "asd")]
-        [InlineData("Mario", "diam@xadipiscingelitCurabitur.edu", "asd")]
-        public async void GetCustomer_Phone_NoExist_Email_NoExist_NoGuess(string name, string email, string description)
+        [InlineData("Peter", "cristhyan@msn.com")]
+        [InlineData("Paulo", "Inxteger@nuncrisusvarius.org")]
+        [InlineData("Mario", "diam@xadipiscingelitCurabitur.edu")]
+        public async void GetCustomer_Phone_NoExist_Email_NoExist_NoGuess(string name, string email )
         {
             try
             {
@@ -252,8 +244,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs);
 
                 dropViewmodel.EmailMobileNumber = email;
-                dropViewmodel.ReceiverName = name;
-                dropViewmodel.Description = description;
+                dropViewmodel.ReceiverName = name;              
 
                 userDialogs.QuestionAnswer = false;
                 await dropViewmodel.GetCustomer();

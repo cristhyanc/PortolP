@@ -32,16 +32,7 @@ namespace PortolMobile.Forms.ViewModels
             }
         }
 
-        string _description;
-        public string Description
-        {
-            get { return _description; }
-            set
-            {
-                _description = value;
-                OnPropertyChanged();
-            }
-        }
+       
 
         string _receiverName;
         public string ReceiverName
@@ -63,24 +54,11 @@ namespace PortolMobile.Forms.ViewModels
             _customerService = customerService;
             this.EmailMobileNumber = "0405593358";
             this.ReceiverName = "Cris";
-            this.Description = "ddd";
 
-           
+
+
         }
 
-        //public override async Task InitializeAsync(object navigationData)
-        //{
-        //    try
-        //    {
-                
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        ExceptionHelper.ProcessException(ex, UserDialogs, "DropViewModel", "InitializeAsync");
-              
-        //    }
-           
-        //}
 
         private async void GotoShop()
         {
@@ -142,8 +120,7 @@ namespace PortolMobile.Forms.ViewModels
                 }
 
                 DropoffDto dropoffDto = new DropoffDto();
-                dropoffDto.Receiver = customer;
-                dropoffDto.Description = this.Description;
+                dropoffDto.Receiver = customer;              
                 dropoffDto.Sender = SessionData.User;
 
 
@@ -187,11 +164,7 @@ namespace PortolMobile.Forms.ViewModels
                 return false;
             }
 
-            if (string.IsNullOrEmpty(this.Description))
-            {
-                this.DisplayMessage(StringResources.MissingInformation, StringResources.DescriptionRequired);
-                return false;
-            }
+          
 
             return true;
         }

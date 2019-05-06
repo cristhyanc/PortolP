@@ -348,4 +348,16 @@
   <data name="Worth" xml:space="preserve">
     <value>Worth$$</value>
   </data>
+  <data name="HeightCm" xml:space="preserve">
+    <value>Height (cm)</value>
+  </data>
+  <data name="LengthCm" xml:space="preserve">
+    <value>Length (cm)</value>
+  </data>
+  <data name="WeightKg" xml:space="preserve">
+    <value>Weight (kg)</value>
+  </data>
+  <data name="WidthCm" xml:space="preserve">
+    <value>Width (cm)</value>
+  </data>
 </root>

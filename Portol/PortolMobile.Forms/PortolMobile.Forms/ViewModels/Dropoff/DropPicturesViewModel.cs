@@ -1,18 +1,18 @@
 ﻿using Acr.UserDialogs;
 using Portol.Common.DTO;
+using Portol.Common.Helper;
 using PortolMobile.Forms.Helper;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels.UserControls;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace PortolMobile.Forms.ViewModels.Dropoff
 {
-  public  class DropPicturesViewModel: BaseViewModel
+    public class DropPicturesViewModel : BaseViewModel
     {
         INavigationService _navigationService;
         IUserDialogs _userDialogs;
@@ -36,7 +36,8 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         }
 
         bool _isGalleryVisible;
-        public bool IsGalleryVisible {
+        public bool IsGalleryVisible
+        {
             get
             {
                 return _isGalleryVisible;
@@ -48,8 +49,22 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             }
         }
 
+        public int ParcelVolume
+        {
+            get
+            {
+                if (_dropoffParcel != null && _dropoffParcel.Measurements != null)
+                {
+                    return _dropoffParcel.Measurements.Volume;
+                }
+                return 0;
+            }
+
+        }
+
         bool _isPicturePickerButtonVisible;
-        public bool IsPicturePickerButtonVisible {
+        public bool IsPicturePickerButtonVisible
+        {
             get
             {
                 return _isPicturePickerButtonVisible;
@@ -75,7 +90,8 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             try
             {
-               await NavigationService.NavigateToAsync<DropMeasurementsViewModel>();
+                SubscribeMeasurementMessagingService();
+                await NavigationService.NavigateToAsync<DropMeasurementsViewModel>(this._dropoffParcel.Measurements);
             }
             catch (Exception ex)
             {
@@ -88,7 +104,8 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             try
             {
-                await NavigationService.NavigateToAsync<PicturePickerViewModel>();
+                SubscribePicturesMessagingService();
+                await NavigationService.NavigateToAsync<PicturePickerViewModel>(this.ImagesTaken);
             }
             catch (Exception ex)
             {
@@ -97,26 +114,25 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             }
         }
 
-        public override  Task InitializeAsync(object navigationData)
+        public override Task InitializeAsync(object navigationData)
         {
             try
             {
                 this.IsBusy = true;
                 this._dropoffParcel = (DropoffDto)navigationData;
-                 LoadGallery();
-                //var images = new List<PicturesDto>();
-                //images.Add(new PicturesDto { ImageUrl = "http://www.samoapost.ws/images/2017/05/14/parcel.jpg" });
-                //images.Add(new PicturesDto { ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cb/Parcelusarus2008.jpg/220px-Parcelusarus2008.jpg" });
-                //images.Add(new PicturesDto { ImageUrl = "https://s3-media3.fl.yelpcdn.com/bphoto/q3O8xKFjx1oDM_hZ1egJDQ/120s.jpg" });
-                //images.Add(new PicturesDto { ImageUrl = "https://previews.123rf.com/images/scanrail/scanrail1503/scanrail150300001/37439219-creative-abstract-shipping-logistics-and-retail-parcel-goods-delivery-commercial-business-concept-co.jpg" });
-                //ImagesTaken = images;
+                if (_dropoffParcel.Images?.Count > 0)
+                {
+                    this.ImagesTaken = _dropoffParcel.Images;
+                }
+
+                LoadGallery();
             }
             catch (Exception ex)
             {
                 ExceptionHelper.ProcessException(ex, UserDialogs, "DropPicturesViewModel", "InitializeAsync");
                 this.IsBusy = false;
             }
-           return base.InitializeAsync(navigationData);      
+            return base.InitializeAsync(navigationData);
         }
 
         private void LoadGallery()
@@ -125,7 +141,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             {
                 this.IsPicturePickerButtonVisible = false;
                 this.IsGalleryVisible = false;
-                if (_dropoffParcel.Images?.Count>0)
+                if (ImagesTaken?.Count > 0)
                 {
                     this.IsGalleryVisible = true;
                 }
@@ -136,11 +152,69 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             }
             catch (Exception ex)
             {
-                ExceptionHelper.ProcessException(ex, UserDialogs, "DropPicturesViewModel", "LoadGallery");               
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropPicturesViewModel", "LoadGallery");
             }
             finally
             {
                 this.IsBusy = false;
+            }
+        }
+
+        protected override void PageAppearing()
+        {
+            UnsubscribeMessagingService();
+        }
+
+        private void UnsubscribeMessagingService()
+        {
+            try
+            {
+                MessagingCenter.Unsubscribe<PicturePickerViewModel, List<PicturesDto>>(this, MessagingCenterCodes.PicturePickerMessage);
+                MessagingCenter.Unsubscribe<DropMeasurementsViewModel, MeasurementDto>(this, MessagingCenterCodes.MeasurementMessage);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropPicturesViewModel", "UnsubscribeMessagingService");
+            }
+        }
+
+        private void SubscribePicturesMessagingService()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<PicturePickerViewModel, List<PicturesDto>>(this, MessagingCenterCodes.PicturePickerMessage, (sender, arg) =>
+                {
+                    if (arg?.Count > 0)
+                    {
+                        this.ImagesTaken = arg;
+                        LoadGallery();
+                    }
+                });
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropPicturesViewModel", "SubscribePicturesMessagingService");
+            }
+        }
+
+        private void SubscribeMeasurementMessagingService()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<DropMeasurementsViewModel, MeasurementDto>(this, MessagingCenterCodes.MeasurementMessage, (sender, arg) =>
+                {
+                    if (arg != null)
+                    {
+                        this._dropoffParcel.Measurements = arg;
+                        OnPropertyChanged("ParcelVolume");
+                    }
+                });
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropPicturesViewModel", "SubscribeMeasurementMessagingService");
             }
         }
 
