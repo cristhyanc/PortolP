@@ -55,9 +55,9 @@ namespace PortolMobile.Forms.ViewModels.Login
         {
           
             _loginService = loginService;
-            LoginButtonCommand = new Command(LoginUser);
-            RecoverButtonCommand = new Command(GoToRecoverPassword);
-            SignupCommand = new Command(GoToSignup);
+            LoginButtonCommand = new Command(LoginUser, () => { return !IsBusy; });
+            RecoverButtonCommand = new Command(GoToRecoverPassword, () => { return !IsBusy; });
+            SignupCommand = new Command(GoToSignup, () => { return !IsBusy; });
             this.EmailText = "cristhyan@msn.com";
             this.PasswordText = "asd";
         }

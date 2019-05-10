@@ -52,6 +52,8 @@ namespace PortolWeb.Core.UserServices
             var result = customer.GetCustomerByPhoneNumber(_uow, phoneNumber, countryCode);
             if (result != null)
             {
+                var address = new Address();
+                result.CurrentAddress = _uow.AddressRepository.Get(x => x.CustomerID == result.CustomerID);
                 return Customer.ORM(result);
             }
 

@@ -72,34 +72,7 @@ namespace PortolWeb.API.Controllers
 
             }
         }
-
-        //[HttpGet("{id}")]
-        //public IActionResult GetById(int id)
-        //{
-        //    var user = _userService.GetById(id);
-        //    var userDto = _mapper.Map<CustomerDto>(user);
-        //    return Ok(userDto);
-        //}
-
-        //[HttpPut("{id}")]
-        //public IActionResult Update(int id, [FromBody]CustomerDto userDto)
-        //{
-        //    // map dto to entity and set id
-        //    var user = _mapper.Map<User>(userDto);
-        //    user.Id = id;
-
-        //    try
-        //    {
-        //        // save 
-        //        _userService.Update(user, userDto.Password);
-        //        return Ok();
-        //    }
-        //    catch (AppException ex)
-        //    {
-        //        // return error message if there was an exception
-        //        return BadRequest(new { message = ex.Message });
-        //    }
-        //}
+               
 
         [AllowAnonymous]
         [HttpPost("VerifyCode")]

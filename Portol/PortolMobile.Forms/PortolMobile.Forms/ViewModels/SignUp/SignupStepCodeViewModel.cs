@@ -170,7 +170,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
         public SignupStepCodeViewModel(  ILoginService loginService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {          
             _loginService = loginService;
-            GotoNamesPageCommand = new Command(GotoNamesPage);
+            GotoNamesPageCommand = new Command(GotoNamesPage, () => { return !IsBusy; });
         }
 
         private async void GotoNamesPage()

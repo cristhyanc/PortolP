@@ -34,19 +34,24 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         }
         public DropMeasurementsViewModel(INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
-            GoBackToPicturesCommand = new Command(GoToPicturePage);
+            GoBackToPicturesCommand = new Command(GoToPicturePage,()=> { return !IsBusy; } );
         }
 
         private async void GoToPicturePage()
         {
             try
             {
+                IsBusy = true;
                 MessagingCenter.Send<DropMeasurementsViewModel, MeasurementDto>(this, MessagingCenterCodes.MeasurementMessage, this.Measurements);
                 await this.NavigationService.GoToPreviousPageAsync();
             }
             catch (Exception ex)
             {
-                ExceptionHelper.ProcessException(ex, UserDialogs, "DropMeasurementsViewModel", "GoToPicturePage");                
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropMeasurementsViewModel", "GoToPicturePage");
+            }
+            finally
+            {
+                this.IsBusy = false;
             }
         }
 

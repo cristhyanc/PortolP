@@ -13,30 +13,30 @@
              BackgroundImage="Map_image"
              xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Resources>
-    <DropoffStyle:DropoffStyles/>
+        <DropoffStyle:DropoffStyles/>
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
+        <ScrollView>
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
 
-        <Grid VerticalOptions="FillAndExpand">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
-            </Grid.RowDefinitions>
+                <StackLayout BackgroundColor="White" >
+                    <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
 
-            <StackLayout BackgroundColor="White" >
-                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
-
-                <!--<Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
+                    <!--<Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
                         Style="{StaticResource ButtonUnselectedTab}"
                         Grid.Column="1" Text="Drop"></Button>-->
 
-            </StackLayout>
+                </StackLayout>
 
 
-            <RelativeLayout   Grid.Row="1" >
+                <RelativeLayout   Grid.Row="1" >
 
-                <Frame  Style="{StaticResource FrameBox}" x:Name="frmDetailBox"
+                    <Frame  Style="{StaticResource FrameBox}" x:Name="frmDetailBox"
                             RelativeLayout.XConstraint="{ConstraintExpression
                             Type=RelativeToParent,
                             Property=Width,
@@ -56,44 +56,45 @@
                             Type=RelativeToParent,
                             Property=Width,
                             Factor=0.7 }">
-                    <StackLayout Style="{StaticResource StackLayoutFrameBox}"  >
+                        <StackLayout Style="{StaticResource StackLayoutFrameBox}"  >
 
-                        <Label Text="{i18n:Translate EnterPackageDetails}"   Style="{StaticResource DropoffLabelSmallStyle}" ></Label>
+                            <Label Text="{i18n:Translate EnterPackageDetails}"   Style="{StaticResource DropoffLabelSmallStyle}" ></Label>
 
-                        <controls:ExtendedEntry Text="{Binding ParcelVolume }" Placeholder="{i18n:Translate Volumen}" Focused="ExtendedEntry_Focused"  VerticalOptions="Start" 
+
+                            <controls:ExtendedEntry Text="{Binding ParcelVolume }" Placeholder="{i18n:Translate Volumen}" Focused="ExtendedEntry_Focused"  VerticalOptions="Start" 
                                                 OnFocusCommand="{Binding MeasurementCommand}"  Style="{StaticResource DropoffEntryStyle}"
                                                 Keyboard="Numeric" Margin="0,0,0,5"  ></controls:ExtendedEntry>
-                        
-                        <controls:ExtendedEntry Text="{Binding Worth }" Placeholder="{i18n:Translate Worth}"  VerticalOptions="Start"  Keyboard="Numeric"                                               
+
+                            <controls:ExtendedEntry Text="{Binding Worth }" Placeholder="{i18n:Translate Worth}"  VerticalOptions="Start"  Keyboard="Numeric"                                               
                                                 Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
 
-                        <Frame  BackgroundColor="#343333" Padding="0" IsVisible="{Binding IsPicturePickerButtonVisible}" >
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding PickPicturesCommand}" ></TapGestureRecognizer>
-                            </Frame.GestureRecognizers>
-                            <ffimageloadingsvg:SvgCachedImage VerticalOptions="Center" HorizontalOptions="Center"  
+                            <Frame  BackgroundColor="#343333" Padding="0" IsVisible="{Binding IsPicturePickerButtonVisible}" >
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding PickPicturesCommand}" ></TapGestureRecognizer>
+                                </Frame.GestureRecognizers>
+                                <ffimageloadingsvg:SvgCachedImage VerticalOptions="Center" HorizontalOptions="Center"  
                                                               Source="resource://PortolMobile.Forms.Resources.ic_dropoffcamera.svg?assembly=PortolMobile.Forms" />
-                        </Frame>
+                            </Frame>
 
-                        <ScrollView Orientation="Horizontal"  HorizontalOptions="StartAndExpand" Padding="0" IsVisible="{Binding IsGalleryVisible}"  VerticalOptions="StartAndExpand" BackgroundColor="#343232">
-                            <StackLayout Orientation="Horizontal" Margin="10" Padding="0"  HorizontalOptions="StartAndExpand"  VerticalOptions="StartAndExpand"  BindableLayout.ItemsSource="{Binding ImagesTaken}">
-                                <StackLayout.GestureRecognizers >
-                                    <TapGestureRecognizer Command="{Binding PickPicturesCommand}"  ></TapGestureRecognizer>
-                                </StackLayout.GestureRecognizers>
+                            <ScrollView Orientation="Horizontal"  HorizontalOptions="StartAndExpand" Padding="0" IsVisible="{Binding IsGalleryVisible}"  VerticalOptions="StartAndExpand" BackgroundColor="#343232">
+                                <StackLayout Orientation="Horizontal" Margin="10" Padding="0"  HorizontalOptions="StartAndExpand"  VerticalOptions="StartAndExpand"  BindableLayout.ItemsSource="{Binding ImagesTaken}">
+                                    <StackLayout.GestureRecognizers >
+                                        <TapGestureRecognizer Command="{Binding PickPicturesCommand}"  ></TapGestureRecognizer>
+                                    </StackLayout.GestureRecognizers>
 
 
-                                <BindableLayout.ItemTemplate>
-                                    <DataTemplate>
-                                        <ffimageloading:CachedImage VerticalOptions="FillAndExpand"  Source="{Binding Image}" />
-                                    </DataTemplate>
-                                </BindableLayout.ItemTemplate>
-                            </StackLayout>
-                        </ScrollView>
-                       
-                    </StackLayout>
-                </Frame>
+                                    <BindableLayout.ItemTemplate>
+                                        <DataTemplate>
+                                            <ffimageloading:CachedImage VerticalOptions="FillAndExpand"  Source="{Binding Image}" />
+                                        </DataTemplate>
+                                    </BindableLayout.ItemTemplate>
+                                </StackLayout>
+                            </ScrollView>
 
-                <Frame Style="{StaticResource FrameImageProfile}"
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Style="{StaticResource FrameImageProfile}"
                        
                                     RelativeLayout.XConstraint="{ConstraintExpression
                                       Type=RelativeToParent,
@@ -105,13 +106,13 @@
                                     Property=Height,
                                     Factor=0.08,Constant=-35 }"   >
 
-                    <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"  
+                        <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"  
                        Source="{localResources:ImageResource PortolMobile.Forms.Resources.ic_parcelbox.png}"  
                                            x:Name="ProfileImage"  />
 
-                </Frame>
+                    </Frame>
 
-                <Frame  Style="{StaticResource ButtonFrameStyle}"  
+                    <Frame  Style="{StaticResource ButtonFrameStyle}"  
                                         RelativeLayout.XConstraint="{ConstraintExpression
                                         Type=RelativeToParent,
                                         Property=Width,
@@ -121,17 +122,18 @@
                                         Type=RelativeToView,
                                         ElementName=frmDetailBox,
                                         Property=Height,
-                                        Factor=1.2}"  >
+                                        Factor=1.15}"  >
 
-                    <Frame.GestureRecognizers >
-                        <TapGestureRecognizer Command="{Binding GotoPicturesCommand}"  ></TapGestureRecognizer>
-                    </Frame.GestureRecognizers>
-                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" >                       
-                    </ffimageloadingsvg:SvgCachedImage>
+                        <Frame.GestureRecognizers >
+                            <TapGestureRecognizer Command="{Binding GotoPicturesCommand}"  ></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                        <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" >
+                        </ffimageloadingsvg:SvgCachedImage>
 
-                </Frame>
-            </RelativeLayout>
+                    </Frame>
+                </RelativeLayout>
 
-        </Grid>
+            </Grid>
+        </ScrollView>
     </controls:ExtendedContentPage.Content>
 </controls:ExtendedContentPage>

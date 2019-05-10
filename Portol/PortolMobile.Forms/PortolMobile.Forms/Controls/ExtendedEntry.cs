@@ -19,6 +19,15 @@ namespace PortolMobile.Forms.Controls
             set { SetValue(OnFocusCommandProperty, value); }
         }
 
+        public static readonly BindableProperty OnUnfocusCommandProperty =
+       BindableProperty.Create(nameof(OnUnfocusCommand), typeof(ICommand), typeof(ExtendedEntry), null);
+
+        public ICommand OnUnfocusCommand
+        {
+            get { return (ICommand)GetValue(OnUnfocusCommandProperty); }
+            set { SetValue(OnUnfocusCommandProperty, value); }
+        }
+
         public static readonly BindableProperty TextChangedCommandProperty =
         BindableProperty.Create(nameof(TextChangedCommand), typeof(ICommand), typeof(ExtendedEntry), null);
 
@@ -42,6 +51,12 @@ namespace PortolMobile.Forms.Controls
             this.Effects.Add(new BorderlessEffect());
             this.Focused += ExtendedEntry_Focused;
             this.TextChanged += ExtendedEntry_TextChanged;
+            this.Unfocused += ExtendedEntry_Unfocused;
+        }
+
+        private void ExtendedEntry_Unfocused(object sender, FocusEventArgs e)
+        {
+            Execute(OnUnfocusCommand ,null);
         }
 
         private void ExtendedEntry_TextChanged(object sender, TextChangedEventArgs e)

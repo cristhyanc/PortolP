@@ -25,10 +25,7 @@
                 <StackLayout BackgroundColor="White" >
 
                     <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
-
-                    <!--<Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
-                        Style="{StaticResource ButtonUnselectedTab}"
-                        Grid.Column="1" Text="Drop"></Button>-->
+                    <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
 
                 </StackLayout>
 
@@ -114,7 +111,7 @@
                                 </StackLayout>
                             </Grid>
 
-                            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+                           
                         </StackLayout>
                     </Frame>
 

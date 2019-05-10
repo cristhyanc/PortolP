@@ -108,8 +108,8 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             _loginService = loginService;
             CountryItems = new List<CountryDto>(Constants.CountryList);
             CountrySelected = CountryItems.Where(x => x.Country == EnumCountries.Australia).FirstOrDefault();
-            GotoCodePageCommand = new Command(GotoCodePage);
-            SelectCountryCommand = new Command(OpenCountryList);
+            GotoCodePageCommand = new Command(GotoCodePage, () => { return !IsBusy; });
+            SelectCountryCommand = new Command(OpenCountryList, () => { return !IsBusy; });
         }
 
         private void OpenCountryList()

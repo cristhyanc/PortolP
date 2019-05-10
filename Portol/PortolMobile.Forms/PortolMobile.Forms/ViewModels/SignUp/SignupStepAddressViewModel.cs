@@ -154,7 +154,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
         public SignupStepAddressViewModel( ICustomerMobileService userMobileService, IAddressService addressService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
             _userMobileService = userMobileService;           
-            SaveAccountCommand = new Command(GetPosibleAddresses);
+            SaveAccountCommand = new Command(GetPosibleAddresses, () => { return !IsBusy; });
             _addressService = addressService;
             this.Country = "AU";
         }

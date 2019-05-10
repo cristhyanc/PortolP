@@ -120,9 +120,9 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
-            AddressEntryCommand = new Command<string>(((x) => GotoAddressPage(x)));
-            GotoPicturesCommand = new Command((() => GotoPicturesPage()));
-          //  this.Description = "ddd";
+            AddressEntryCommand = new Command<string>(((x) => GotoAddressPage(x)), (x) => { return !IsBusy; });
+            GotoPicturesCommand = new Command((() => GotoPicturesPage()), () => { return !IsBusy; });
+            //  this.Description = "ddd";
         }
 
         public async Task GotoPicturesPage()
@@ -193,13 +193,13 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 }
 
                 //sample
-                _pickUpAddress = new AddressDto();
-                _pickUpAddress.AddressValidated = true;
-                _pickUpAddress.Country = "SD";
-                _pickUpAddress.State = "SD";
-                _pickUpAddress.StreetName = "SD";
-                PickUpAddress = _pickUpAddress;
-                DropoffAddress = PickUpAddress;
+                //_pickUpAddress = new AddressDto();
+                //_pickUpAddress.AddressValidated = true;
+                //_pickUpAddress.Country = "SD";
+                //_pickUpAddress.State = "SD";
+                //_pickUpAddress.StreetName = "SD";
+                //PickUpAddress = _pickUpAddress;
+                //DropoffAddress = PickUpAddress;
                 //-Sample
             }
             catch (Exception ex)

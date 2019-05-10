@@ -33,14 +33,14 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 INavigationService navigationService = new NavigationServiceMK();
                 UserDialogsMK userDialogs = new UserDialogsMK();
                 DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs);
-                await dropViewmodel.GetCustomer();
+                await dropViewmodel.GotoAddressStep();
 
                 Assert.NotNull(userDialogs.UserDialogsArgs);
                 Assert.Equal(StringResources.MissingInformation, userDialogs.UserDialogsArgs.title);
                 Assert.Equal(StringResources.MobileNumberEmailRequiered, userDialogs.UserDialogsArgs.message );
 
                 dropViewmodel.EmailMobileNumber = "asd";
-                await dropViewmodel.GetCustomer();
+                await dropViewmodel.GotoAddressStep();
 
                 Assert.NotNull(userDialogs.UserDialogsArgs);
                 Assert.Equal(StringResources.MissingInformation, userDialogs.UserDialogsArgs.title);
@@ -48,14 +48,14 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
 
 
                 dropViewmodel.EmailMobileNumber = "040555555";
-                await dropViewmodel.GetCustomer();
+                await dropViewmodel.GotoAddressStep();
 
                 Assert.NotNull(userDialogs.UserDialogsArgs);
                 Assert.Equal(StringResources.MissingInformation, userDialogs.UserDialogsArgs.title);
                 Assert.Equal(StringResources.ReceiverNameRequired, userDialogs.UserDialogsArgs.message);
 
                 dropViewmodel.EmailMobileNumber = "asd@asd.com";
-                await dropViewmodel.GetCustomer();
+                await dropViewmodel.GotoAddressStep();
 
                 Assert.NotNull(userDialogs.UserDialogsArgs);
                 Assert.Equal(StringResources.MissingInformation, userDialogs.UserDialogsArgs.title);
@@ -88,7 +88,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
 
                 dropViewmodel.EmailMobileNumber = phone;
                 dropViewmodel.ReceiverName = name;               
-                await dropViewmodel.GetCustomer();
+                await dropViewmodel.GotoAddressStep();
 
                 Assert.NotNull(navigationService.viewModel);
                 Assert.Equal(typeof(DropAddressViewModel), navigationService.viewModel);
@@ -127,7 +127,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 dropViewmodel.ReceiverName = name;
              
 
-                await dropViewmodel.GetCustomer();               
+                await dropViewmodel.GotoAddressStep();               
 
                 Assert.NotNull(navigationService.viewModel);
                 Assert.Equal(typeof(DropAddressViewModel), navigationService.viewModel);
@@ -162,7 +162,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 dropViewmodel.ReceiverName = name;              
 
                 userDialogs.QuestionAnswer = true;
-                await dropViewmodel.GetCustomer();
+                await dropViewmodel.GotoAddressStep();
 
                 Assert.NotNull(userDialogs.UserDialogsArgs);
                 Assert.Equal(StringResources.Guess, userDialogs.UserDialogsArgs.title);
@@ -206,7 +206,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 dropViewmodel.ReceiverName = name;
               
                 userDialogs.QuestionAnswer = true;
-                await dropViewmodel.GetCustomer();
+                await dropViewmodel.GotoAddressStep();
 
                 Assert.NotNull(userDialogs.UserDialogsArgs);
                 Assert.Equal(StringResources.Guess, userDialogs.UserDialogsArgs.title);
@@ -247,7 +247,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 dropViewmodel.ReceiverName = name;              
 
                 userDialogs.QuestionAnswer = false;
-                await dropViewmodel.GetCustomer();
+                await dropViewmodel.GotoAddressStep();
 
                 Assert.NotNull(userDialogs.UserDialogsArgs);
                 Assert.Equal(StringResources.Guess, userDialogs.UserDialogsArgs.title);

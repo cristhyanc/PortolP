@@ -340,6 +340,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to m3.
+        /// </summary>
+        public static string M3 {
+            get {
+                return ResourceManager.GetString("M3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Main page.
         /// </summary>
         public static string MainPage {

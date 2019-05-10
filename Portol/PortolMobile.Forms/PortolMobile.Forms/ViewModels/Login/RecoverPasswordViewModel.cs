@@ -278,16 +278,16 @@ namespace PortolMobile.Forms.ViewModels.Login
             _loginService = loginService;
             CountryItems = new List<CountryDto>(Constants.CountryList);
             CountrySelected = CountryItems.Where(x => x.Country == EnumCountries.Australia).FirstOrDefault();
-            SendCodeButtonCommand = new Command(SendCodeVerification);
-            ReSendCodeButtonCommand = new Command(ResendCode);
-            VerifyCodeButtonCommand = new Command(VerifyCodeVerification);
-            SaveNewPasswordCommand = new Command(SaveNewPassword);
-            SelectCountryCommand = new Command(OpenCountryList);
+            SendCodeButtonCommand = new Command(SendCodeVerification, () => { return !IsBusy; });
+            ReSendCodeButtonCommand = new Command(ResendCode, () => { return !IsBusy; });
+            VerifyCodeButtonCommand = new Command(VerifyCodeVerification, () => { return !IsBusy; });
+            SaveNewPasswordCommand = new Command(SaveNewPassword, () => { return !IsBusy; });
+            SelectCountryCommand = new Command(OpenCountryList, () => { return !IsBusy; });
             LoginCommand = new Command(async () =>
             {
                 await NavigationService.NavigateToAsync<LoginViewModel>();
                
-            });
+            }, () => { return !IsBusy; });
 
             this.IsMobileSectionVisible = true;
         }

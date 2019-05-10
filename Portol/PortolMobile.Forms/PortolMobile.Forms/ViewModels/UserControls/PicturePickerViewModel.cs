@@ -61,10 +61,10 @@ namespace PortolMobile.Forms.ViewModels.UserControls
         public PicturePickerViewModel(IMedia media, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
             _media = media;
-            TakePhotoCommand = new Command(TakePhoto);
-            PickupPhotoCommand = new Command(PickupPhoto);
-            SelectedPhotoCommand = new Command<Guid>(PhotoSelected);
-            DoneCommand = new Command(GoBack);
+            TakePhotoCommand = new Command(TakePhoto, () => { return !IsBusy; });
+            PickupPhotoCommand = new Command(PickupPhoto, () => { return !IsBusy; });
+            SelectedPhotoCommand = new Command<Guid>(PhotoSelected, (x) => { return !IsBusy; });
+            DoneCommand = new Command(GoBack, () => { return !IsBusy; });
             Pictures = new ObservableCollection<PicturesDto>();
         }
 
@@ -159,7 +159,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                 {
                     Directory = "tempPhotos",
                     Name = Guid.NewGuid().ToString() + ".jpg",
-                    AllowCropping = true
+                    AllowCropping = false
                 });
                 if (CurrentImage == null)
                 {

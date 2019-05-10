@@ -17,7 +17,7 @@ namespace PortolMobile.Forms.ViewModels
 
         public ShopViewModel( INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
-            GotoDropOffCommand = new Command(GotoDropOff);
+            GotoDropOffCommand = new Command(GotoDropOff, () => { return !IsBusy; });
         }
 
         private async void GotoDropOff()

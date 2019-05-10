@@ -88,7 +88,8 @@
 
                             </Grid>
 
-                            <controls:ExtendedEntry Text="{Binding EmailMobileNumber, Mode=TwoWay }"   Placeholder="{i18n:Translate EmailMobileNumber}" Margin="0,5,0,0"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                        <controls:ExtendedEntry Text="{Binding EmailMobileNumber, Mode=TwoWay }" OnUnfocusCommand="{Binding FindCustomerCommand}" 
+                                                Placeholder="{i18n:Translate EmailMobileNumber}" Margin="0,5,0,0"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
                             <controls:ExtendedEntry Text="{Binding ReceiverName, Mode=TwoWay }"        Placeholder="{i18n:Translate ReceiverName}"   Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
                            
                         </StackLayout>

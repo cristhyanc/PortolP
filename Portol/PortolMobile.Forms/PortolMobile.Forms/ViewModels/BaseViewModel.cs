@@ -47,8 +47,8 @@ namespace PortolMobile.Forms.ViewModels
           
             NavigationService = navigationService;
             UserDialogs = userDialogs;
-            PageAppearingCommand = new Command(PageAppearing);
-            PageDisappearingCommand = new Command(PageDisappearing);
+            PageAppearingCommand = new Command(PageAppearing, () => { return !IsBusy; });
+            PageDisappearingCommand = new Command(PageDisappearing, () => { return !IsBusy; });
         }
 
         protected virtual void PageDisappearing()

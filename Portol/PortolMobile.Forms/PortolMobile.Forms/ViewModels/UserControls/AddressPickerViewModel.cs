@@ -83,7 +83,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
             _navigationService = navigationService;
             _userDialogs = userDialogs;
             addressService = _addressService;
-            TextChangedCommand = new Command<string>(PrepareSearchAddress);
+            TextChangedCommand = new Command<string>(PrepareSearchAddress, (x) => { return !IsBusy; });
         }
 
         public override Task InitializeAsync(object navigationData)

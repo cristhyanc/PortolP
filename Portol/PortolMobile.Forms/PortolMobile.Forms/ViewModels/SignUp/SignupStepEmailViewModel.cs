@@ -107,7 +107,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
         public SignupStepEmailViewModel(ILoginService loginService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {           
             _loginService = loginService;
-            GotoAddressPageCommand = new Command(GotoAddressPage);
+            GotoAddressPageCommand = new Command(GotoAddressPage, () => { return !IsBusy; });
         }
 
         private async void GotoAddressPage()

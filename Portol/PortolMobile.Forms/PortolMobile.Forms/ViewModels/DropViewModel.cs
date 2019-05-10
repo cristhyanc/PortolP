@@ -19,6 +19,9 @@ namespace PortolMobile.Forms.ViewModels
     {
         public ICommand GetCustomerCommand { get; private set; }
         public ICommand GotoShopCommand { get; private set; }
+
+        public ICommand FindCustomerCommand { get; private set; }
+        
         private ICustomerMobileService _customerService;
 
         string _emailMobileNumber;
@@ -45,15 +48,16 @@ namespace PortolMobile.Forms.ViewModels
             }
         }
 
-      
 
+        
         public DropViewModel(ICustomerMobileService customerService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
-            GetCustomerCommand = new Command((() => GetCustomer()));
-            GotoShopCommand = new Command(GotoShop);
+            GetCustomerCommand = new Command((() => GotoAddressStep()), () => { return !IsBusy; });
+            GotoShopCommand = new Command(GotoShop, () => { return !IsBusy; });
+            FindCustomerCommand = new Command((() => FindCustomer()), () => { return !IsBusy; });
             _customerService = customerService;
-            this.EmailMobileNumber = "0405593358";
-            this.ReceiverName = "Cris";
+            //this.EmailMobileNumber = "0405593358";
+            //this.ReceiverName = "Cris";
 
 
 
@@ -65,7 +69,55 @@ namespace PortolMobile.Forms.ViewModels
             await NavigationService.NavigateToAsync<ShopViewModel>();
         }
 
-        public async Task GetCustomer()
+        private async Task FindCustomer()
+        {
+            try
+            {
+                if (this.IsBusy)
+                {
+                    return;
+                }
+
+                if (string.IsNullOrEmpty(this.EmailMobileNumber))
+                {
+                    return;
+                }
+
+               this.UserDialogs.ShowLoading();
+
+                CustomerDto customer = null;
+                long number = 0;
+
+                if (long.TryParse(this.EmailMobileNumber, out number))
+                {
+                    customer = await _customerService.GetCustomerByPhoneNumber(number, SessionData.User.PhoneCountryCode);
+                }
+
+                if (customer == null)
+                {
+                    if (Regex.IsMatch(EmailMobileNumber, Portol.Common.Helper.Constants.RegexEmailPattern))
+                    {
+                        customer = await _customerService.GetCustomerByEmail(EmailMobileNumber);
+                    }
+                }
+
+                if (customer!=null)
+                {
+                    this.ReceiverName = customer.FirstName;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.MainPage, "FindCustomer");
+            }
+            finally
+            {
+                this.UserDialogs.HideLoading();
+            }
+        }
+
+       
+        public async Task GotoAddressStep()
         {
             try
             {
@@ -86,17 +138,16 @@ namespace PortolMobile.Forms.ViewModels
                 if (long.TryParse(this.EmailMobileNumber, out number))
                 {
                     customer = await _customerService.GetCustomerByPhoneNumber(number, SessionData.User.PhoneCountryCode);
-                    
-                }              
-                               
 
+                }
+                
                 if (customer == null)
                 {
                     if (Regex.IsMatch(EmailMobileNumber, Portol.Common.Helper.Constants.RegexEmailPattern))
                     {
                         customer = await _customerService.GetCustomerByEmail(EmailMobileNumber);
                     }
-                    
+
                     if (customer == null)
                     {
                         if (!await this.DisplayMessageQuestion(StringResources.Guess, StringResources.PersonNoRegistered, StringResources.ContinueGuess))
@@ -112,7 +163,7 @@ namespace PortolMobile.Forms.ViewModels
                         {
                             customer.Email = this.EmailMobileNumber;
                         }
-                                                    
+
                         customer.PhoneCountryCode = SessionData.User.PhoneCountryCode;
                         customer.IsGuess = true;
                         customer.FirstName = this.ReceiverName;
@@ -120,17 +171,17 @@ namespace PortolMobile.Forms.ViewModels
                 }
 
                 DropoffDto dropoffDto = new DropoffDto();
-                dropoffDto.Receiver = customer;              
+                dropoffDto.Receiver = customer;
                 dropoffDto.Sender = SessionData.User;
 
 
                 await NavigationService.NavigateToAsync<DropAddressViewModel>(dropoffDto);
-              
+
 
             }
             catch (System.Exception ex)
             {
-                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.MainPage, "GetCustomer");
+                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.MainPage, "GotoAddressStep");
             }
             finally
             {

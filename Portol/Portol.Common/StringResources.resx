@@ -339,4 +339,7 @@
   <data name="NoTakeVideoSupported" xml:space="preserve">
     <value>Taking videos is not supported in this phone</value>
   </data>
+  <data name="M3" xml:space="preserve">
+    <value>m3</value>
+  </data>
 </root>

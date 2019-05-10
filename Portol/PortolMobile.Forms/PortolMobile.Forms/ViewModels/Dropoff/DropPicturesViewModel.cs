@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using Portol.Common;
 using Portol.Common.DTO;
 using Portol.Common.Helper;
 using PortolMobile.Forms.Helper;
@@ -49,15 +50,15 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             }
         }
 
-        public int ParcelVolume
+        public string ParcelVolume
         {
             get
             {
                 if (_dropoffParcel != null && _dropoffParcel.Measurements != null)
                 {
-                    return _dropoffParcel.Measurements.Volume;
+                    return _dropoffParcel.Measurements.Volume.ToString() + " " + StringResources.M3;
                 }
-                return 0;
+                return null;
             }
 
         }
@@ -81,8 +82,8 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
-            MeasurementCommand = new Command((() => GotoMeasurementPage()));
-            PickPicturesCommand = new Command((() => GotoPicturesPickerPage()));
+            MeasurementCommand = new Command((() => GotoMeasurementPage()), () => { return !IsBusy; });
+            PickPicturesCommand = new Command((() => GotoPicturesPickerPage()), () => { return !IsBusy; });
 
         }
 
