@@ -41,7 +41,7 @@ namespace PortolMobile.GeneralTest.Api
             SetupData(UnitOfWorkDB);
 
             LoginServiceMK loginServiceMK = new LoginServiceMK(UnitOfWorkDB);
-            Forms.SessionData.LoginUser(loginServiceMK, "cristhyan@outlook.com", "").Wait();
+            //Forms.SessionData.LoginUser(loginServiceMK, "cristhyan@outlook.com", "").Wait();
            
         }
 

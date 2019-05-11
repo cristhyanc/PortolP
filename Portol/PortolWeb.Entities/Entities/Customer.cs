@@ -87,12 +87,30 @@ namespace PortolWeb.Entities
         public Customer GetCustomerByPhoneNumber(IUnitOfWork _uow, long phoneNumber, int countryCode)
         {
             var customer = _uow.CustomerRepository.Get(x => x.PhoneNumber == phoneNumber && x.PhoneCountryCode == countryCode);
+            if (customer != null)
+            {
+                customer = GetCustomerDetails(_uow, customer.CustomerID);
+            }
             return customer;
         }
 
         public Customer GetCustomerByEmail(IUnitOfWork _uow, string email)
         {
             var customer = _uow.CustomerRepository.Get(x => x.Email.Equals(email));
+            if(customer!=null)
+            {
+                customer = GetCustomerDetails(_uow,customer.CustomerID);
+            }            
+            return customer;
+        }
+
+        public Customer GetCustomerDetails(IUnitOfWork _uow, Guid customerId)
+        {
+            var customer = _uow.CustomerRepository.Get(x => x.CustomerID== customerId);
+            if (customer != null)
+            {
+                customer.CurrentAddress = _uow.AddressRepository.Get(x => x.CustomerID == customer.CustomerID);
+            }
             return customer;
         }
 

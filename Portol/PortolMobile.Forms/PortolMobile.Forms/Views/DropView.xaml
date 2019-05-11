@@ -15,7 +15,7 @@
         <DropoffStyle:DropoffStyles/>
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
-      
+        <ScrollView>
             <Grid VerticalOptions="FillAndExpand" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -60,14 +60,14 @@
                             RelativeLayout.HeightConstraint="{ConstraintExpression
                             Type=RelativeToParent,
                             Property=Height,
-                            Factor=0.7 }"
+                            Factor=0.65 }"
                         
                             RelativeLayout.WidthConstraint="{ConstraintExpression
                             Type=RelativeToParent,
                             Property=Width,
                             Factor=0.7 }">
                         <StackLayout Style="{StaticResource StackLayoutFrameBox}" >
-                            <Label Text="Hello Ash,"  Style="{StaticResource GreetingStyle}"  ></Label>
+                            <Label Text="{Binding SenderName}"  Style="{StaticResource GreetingStyle}"  ></Label>
                             <Label Text="{i18n:Translate WhatAreSending}"   Style="{StaticResource DropoffLabelStyle}" ></Label>
 
                             <Grid ColumnSpacing="0" RowSpacing="0" VerticalOptions="Center">
@@ -135,6 +135,6 @@
                 </RelativeLayout>
 
             </Grid>
-       
+            </ScrollView>
     </controls:ExtendedContentPage.Content>
 </controls:ExtendedContentPage>

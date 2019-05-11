@@ -110,16 +110,24 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             }
         }
 
+        public string SenderName
+        {
+            get { return string.Format(StringResources.HelloMessage, _sessionData.User.FirstName); }
+
+        }
+
         INavigationService _navigationService;
         IUserDialogs _userDialogs;
+        ISessionData _sessionData;
         public ICommand AddressEntryCommand { get; private set; }
 
 
 
-        public DropAddressViewModel(INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
+        public DropAddressViewModel(INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData) : base(navigationService, userDialogs)
         {
             _navigationService = navigationService;
             _userDialogs = userDialogs;
+            _sessionData = sessionData;
             AddressEntryCommand = new Command<string>(((x) => GotoAddressPage(x)), (x) => { return !IsBusy; });
             GotoPicturesCommand = new Command((() => GotoPicturesPage()), () => { return !IsBusy; });
             //  this.Description = "ddd";
@@ -129,6 +137,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             try
             {
+                this.IsBusy = true;
                 if (PickUpAddress == null || string.IsNullOrEmpty(PickUpAddress.FullAddress))
                 {
                     this.DisplayMessage(StringResources.MissingInformation, StringResources.PickupAddressRequired);
@@ -156,12 +165,17 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             {
                 ExceptionHelper.ProcessException(ex, UserDialogs, "DropAddressViewModel", "GotoPicturesPage");
             }
+            finally
+            {
+                this.IsBusy = false;
+            }
         }
 
         public async Task GotoAddressPage(string typeofaddress)
         {
             try
             {
+                this.IsBusy = true;
                 AddressPickerParameters parameter = new AddressPickerParameters();
                 if (typeofaddress.Equals("pickup"))
                 {
@@ -179,6 +193,10 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             catch (Exception ex)
             {
                 ExceptionHelper.ProcessException(ex, UserDialogs, "DropAddressViewModel", "GotoAddressPage");
+            }
+            finally
+            {
+                this.IsBusy = false;
             }
         }
 

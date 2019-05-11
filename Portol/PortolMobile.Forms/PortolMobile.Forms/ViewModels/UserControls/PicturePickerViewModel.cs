@@ -16,10 +16,10 @@ using Xamarin.Forms;
 
 namespace PortolMobile.Forms.ViewModels.UserControls
 {
-   public class PicturePickerViewModel: BaseViewModel
+    public class PicturePickerViewModel : BaseViewModel
     {
 
-        
+
         public ICommand TakePhotoCommand { get; private set; }
         public ICommand PickupVideoCommand { get; private set; }
         public ICommand TakeVideoCommand { get; private set; }
@@ -27,8 +27,8 @@ namespace PortolMobile.Forms.ViewModels.UserControls
         public ICommand SelectedPhotoCommand { get; private set; }
         public ICommand DoneCommand { get; private set; }
 
-        
-        PicturesDto _selectedPicture;     
+
+        PicturesDto _selectedPicture;
         public PicturesDto SelectedPicture
         {
             get
@@ -43,8 +43,9 @@ namespace PortolMobile.Forms.ViewModels.UserControls
 
         }
 
-        ObservableCollection <PicturesDto> _pictures;
-        public ObservableCollection<PicturesDto> Pictures {
+        ObservableCollection<PicturesDto> _pictures;
+        public ObservableCollection<PicturesDto> Pictures
+        {
             get
             {
                 return _pictures;
@@ -73,12 +74,12 @@ namespace PortolMobile.Forms.ViewModels.UserControls
             try
             {
                 this.IsBusy = true;
-                if(navigationData!=null)
+                if (navigationData != null)
                 {
-                    IEnumerable <PicturesDto> picturesDtos = (IEnumerable<PicturesDto>)navigationData;
+                    IEnumerable<PicturesDto> picturesDtos = (IEnumerable<PicturesDto>)navigationData;
                     Pictures = new ObservableCollection<PicturesDto>(picturesDtos);
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -95,22 +96,28 @@ namespace PortolMobile.Forms.ViewModels.UserControls
         {
             try
             {
+                if (this.IsBusy)
+                {
+                    return;
+                }
+                this.IsBusy = true;
                 MessagingCenter.Send<PicturePickerViewModel, List<PicturesDto>>(this, MessagingCenterCodes.PicturePickerMessage, this.Pictures.ToList());
                 await this.NavigationService.GoToPreviousPageAsync();
             }
             catch (Exception ex)
             {
                 ExceptionHelper.ProcessException(ex, UserDialogs, "PicturePickerViewModel", "GoBack");
+                this.IsBusy = false;
             }
+           
         }
 
-        private  void PhotoSelected(Guid pictureId)
+        private void PhotoSelected(Guid pictureId)
         {
             try
-            {
-                //var id = Guid.Parse(pictureId);
+            {               
                 SelectedPicture = this.Pictures.Where(x => x.PictureID == pictureId).FirstOrDefault();
-               
+
             }
             catch (Exception ex)
             {
@@ -122,7 +129,8 @@ namespace PortolMobile.Forms.ViewModels.UserControls
         {
             try
             {
-                if(!_media.IsPickPhotoSupported)
+                this.SelectedPicture = null;
+                if (!_media.IsPickPhotoSupported)
                 {
                     this.UserDialogs.Alert(StringResources.NoPickPhotoSupported);
                     return;
@@ -132,7 +140,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                 if (CurrentImage == null)
                 {
                     return;
-                }   
+                }
             }
             catch (Exception ex)
             {
@@ -144,8 +152,9 @@ namespace PortolMobile.Forms.ViewModels.UserControls
         {
             try
             {
-              await   ViewModelLocator.CheckCameraStoragePermission();
                 this.IsBusy = true;
+                this.SelectedPicture = null;
+                await ViewModelLocator.CheckCameraStoragePermission();                
                 MediaFile CurrentImage;
                 PicturesDto pictures = new PicturesDto();
 
@@ -154,7 +163,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                     this.UserDialogs.Alert(StringResources.NoAvailableCamera);
                     return;
                 }
-                                
+
                 CurrentImage = await _media.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
                 {
                     Directory = "tempPhotos",
@@ -173,7 +182,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                 });
 
 
-                Pictures.Add(pictures);              
+                Pictures.Add(pictures);
 
 
             }

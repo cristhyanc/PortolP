@@ -360,4 +360,7 @@
   <data name="WidthCm" xml:space="preserve">
     <value>Width (cm)</value>
   </data>
+  <data name="WhereSendingTo" xml:space="preserve">
+    <value>Where are we sending it to?</value>
+  </data>
 </root>

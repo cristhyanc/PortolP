@@ -32,7 +32,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 ICustomerMobileService mobileServiceMK = null;
                 INavigationService navigationService = new NavigationServiceMK();
                 UserDialogsMK userDialogs = new UserDialogsMK();
-                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs);
+                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs,null);
                 await dropViewmodel.GotoAddressStep();
 
                 Assert.NotNull(userDialogs.UserDialogsArgs);
@@ -84,7 +84,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 CustomerMobileServiceMK mobileServiceMK = new CustomerMobileServiceMK(uow);
                 NavigationServiceMK navigationService = new NavigationServiceMK();
                 UserDialogsMK userDialogs = new UserDialogsMK();
-                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs);
+                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs, null);
 
                 dropViewmodel.EmailMobileNumber = phone;
                 dropViewmodel.ReceiverName = name;               
@@ -121,7 +121,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 CustomerMobileServiceMK mobileServiceMK = new CustomerMobileServiceMK(uow);
                 NavigationServiceMK navigationService = new NavigationServiceMK();
                 UserDialogsMK userDialogs = new UserDialogsMK();
-                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs);
+                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs, null);
 
                 dropViewmodel.EmailMobileNumber = email;
                 dropViewmodel.ReceiverName = name;
@@ -156,7 +156,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 CustomerMobileServiceMK mobileServiceMK = new CustomerMobileServiceMK(uow);
                 NavigationServiceMK navigationService = new NavigationServiceMK();
                 UserDialogsMK userDialogs = new UserDialogsMK();
-                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs);
+                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs, null);
 
                 dropViewmodel.EmailMobileNumber = phone;
                 dropViewmodel.ReceiverName = name;              
@@ -200,7 +200,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 CustomerMobileServiceMK mobileServiceMK = new CustomerMobileServiceMK(uow);
                 NavigationServiceMK navigationService = new NavigationServiceMK();
                 UserDialogsMK userDialogs = new UserDialogsMK();
-                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs);
+                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs, null);
 
                 dropViewmodel.EmailMobileNumber = email;
                 dropViewmodel.ReceiverName = name;
@@ -241,7 +241,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 CustomerMobileServiceMK mobileServiceMK = new CustomerMobileServiceMK(uow);
                 NavigationServiceMK navigationService = new NavigationServiceMK();
                 UserDialogsMK userDialogs = new UserDialogsMK();
-                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs);
+                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs, null);
 
                 dropViewmodel.EmailMobileNumber = email;
                 dropViewmodel.ReceiverName = name;              

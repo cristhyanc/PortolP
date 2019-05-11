@@ -277,6 +277,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Hello {0}!.
+        /// </summary>
+        public static string HelloMessage {
+            get {
+                return ResourceManager.GetString("HelloMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect date format.
         /// </summary>
         public static string IncorrectdateFormat {
@@ -714,6 +723,15 @@ namespace Portol.Common {
         public static string UserSuggestedAddress {
             get {
                 return ResourceManager.GetString("UserSuggestedAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where are we sending it to?.
+        /// </summary>
+        public static string WhereSendingTo {
+            get {
+                return ResourceManager.GetString("WhereSendingTo", resourceCulture);
             }
         }
         

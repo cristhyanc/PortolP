@@ -5,6 +5,7 @@
                xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
              xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
+             xmlns:localResources="clr-namespace:PortolMobile.Forms.Resources"
              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
@@ -128,7 +129,7 @@
                                     Factor=0.08,Constant=-35 }"   >
 
                         <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"  
-                       Source="https://www.morpht.com/sites/morpht/files/styles/landscape/public/dalibor-matura_1.jpg"  
+                       Source="{localResources:ImageResource PortolMobile.Forms.Resources.ic_parcelbox.png}"  
                                            x:Name="ProfileImage"  />
 
                     </Frame>

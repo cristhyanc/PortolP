@@ -71,6 +71,7 @@ namespace PortolMobile.Forms
 
                 builder.Register(c => UserDialogs.Instance).As<IUserDialogs>().SingleInstance();
                 builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
+                builder.RegisterType<SessionData>().As<ISessionData>().SingleInstance();
 
 
                 builder.Register(c => CrossMedia.Current).As<IMedia>();
@@ -81,7 +82,7 @@ namespace PortolMobile.Forms
                
                 builder.RegisterType<RestClient>().As<IRestClient>().WithParameter(new ResolvedParameter(
                                                                        (pi, ctx) => pi.ParameterType == typeof(string) && pi.Name == "toke",
-                                                                       (pi, ctx) => ViewModelLocator.GetCurrentToken()));
+                                                                       (pi, ctx) => _container.Resolve<ISessionData>().GetCurrentToken()));
 
                 builder.Register(c =>new AddressService(_container.Resolve<IRestClient>(), "HW8AXP9FEKDCQ7L46JVM", "N3A6GXYLD978JTHC4RFU")).As<IAddressService>().SingleInstance();
 
@@ -97,17 +98,7 @@ namespace PortolMobile.Forms
             }
         }
 
-        public static string GetCurrentToken()
-        {            
-            if (SessionData.User != null && !string.IsNullOrEmpty(SessionData.User.Token))
-            {
-                return SessionData.User.Token;
-            }
-            else
-            {
-                return "";
-            }
-        }
+       
         public static T Resolve<T>()
         {
             return _container.Resolve<T>();

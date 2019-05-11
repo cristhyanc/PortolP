@@ -50,16 +50,20 @@ namespace PortolMobile.Forms.ViewModels.Login
             }
         }
 
+        ISessionData _sessionData;
 
-        public LoginViewModel(ILoginService loginService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
+        public LoginViewModel(ILoginService loginService, INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData ) : base(navigationService, userDialogs)
         {
           
             _loginService = loginService;
             LoginButtonCommand = new Command(LoginUser, () => { return !IsBusy; });
             RecoverButtonCommand = new Command(GoToRecoverPassword, () => { return !IsBusy; });
             SignupCommand = new Command(GoToSignup, () => { return !IsBusy; });
+            _sessionData = sessionData;
+
             this.EmailText = "cristhyan@msn.com";
             this.PasswordText = "asd";
+
         }
 
 
@@ -67,12 +71,17 @@ namespace PortolMobile.Forms.ViewModels.Login
         {
             try
             {
-                   await NavigationService.NavigateToAsync<SignupStepMobileViewModel>();
+                this.IsBusy = true;
+                await NavigationService.NavigateToAsync<SignupStepMobileViewModel>();
                
             }
             catch (System.Exception ex)
             {
                 ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.Login, "GoToSignup");
+            }
+            finally
+            {
+                IsBusy = false;
             }
         }
 
@@ -80,11 +89,16 @@ namespace PortolMobile.Forms.ViewModels.Login
         {
             try
             {
+                this.IsBusy = true;
                 await NavigationService.NavigateToAsync<RecoverPasswordViewModel>();
             }
             catch (System.Exception ex)
             {
                 ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.Login, "GoToRecoverPassword");
+            }
+            finally
+            {
+                IsBusy = false;
             }
 
         }
@@ -97,7 +111,7 @@ namespace PortolMobile.Forms.ViewModels.Login
                 this.IsBusy = true;
                 if (this.PasswordText?.Length > 0 && this.EmailText?.Length > 0)
                 {
-                    await SessionData.LoginUser(_loginService, this.EmailText, this.PasswordText);                   
+                    await _sessionData.LoginUser(_loginService, this.EmailText, this.PasswordText);                   
                     await NavigationService.NavigateToAsync<DropViewModel>();
                 }
                 else
@@ -122,7 +136,7 @@ namespace PortolMobile.Forms.ViewModels.Login
             {
                 this.IsBusy = false;
             }
-            //  
+           
         }
     }
 }

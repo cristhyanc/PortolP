@@ -763,6 +763,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Where are we sending it to?.
+        /// </summary>
+        internal static string WhereSendingTo {
+            get {
+                return ResourceManager.GetString("WhereSendingTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Width (cm).
         /// </summary>
         internal static string WidthCm {

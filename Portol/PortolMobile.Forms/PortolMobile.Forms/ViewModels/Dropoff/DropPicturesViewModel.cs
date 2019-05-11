@@ -91,12 +91,16 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             try
             {
+                this.IsBusy = true;
                 SubscribeMeasurementMessagingService();
                 await NavigationService.NavigateToAsync<DropMeasurementsViewModel>(this._dropoffParcel.Measurements);
             }
             catch (Exception ex)
             {
                 ExceptionHelper.ProcessException(ex, UserDialogs, "DropPicturesViewModel", "GotoMeasurementPage");
+            }
+            finally
+            {
                 this.IsBusy = false;
             }
         }
@@ -105,12 +109,16 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             try
             {
+                this.IsBusy = true;
                 SubscribePicturesMessagingService();
                 await NavigationService.NavigateToAsync<PicturePickerViewModel>(this.ImagesTaken);
             }
             catch (Exception ex)
             {
                 ExceptionHelper.ProcessException(ex, UserDialogs, "DropPicturesViewModel", "GotoPicturesPickerPage");
+            }
+            finally
+            {
                 this.IsBusy = false;
             }
         }

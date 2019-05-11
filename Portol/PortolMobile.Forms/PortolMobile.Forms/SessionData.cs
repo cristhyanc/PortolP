@@ -7,14 +7,27 @@ using System.Threading.Tasks;
 
 namespace PortolMobile.Forms
 {
-   public class SessionData
+    public class SessionData : ISessionData
     {
-        static public CustomerDto User { get; private set; }
+        public CustomerDto User { get; private set; }
 
-        static public async Task LoginUser(ILoginService _loginService, string email, string password)
+        public async Task LoginUser(ILoginService _loginService, string email, string password)
         {
             var result = await _loginService.Authenticate(email, password);
             User = result;
         }
+
+        public string GetCurrentToken()
+        {
+            if (User != null && !string.IsNullOrEmpty(User.Token))
+            {
+                return User.Token;
+            }
+            else
+            {
+                return "";
+            }
+        }
+
     }
 }
