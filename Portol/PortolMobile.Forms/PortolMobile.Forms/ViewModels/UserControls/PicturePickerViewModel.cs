@@ -192,6 +192,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
             }
             finally
             {
+               
                 this.IsBusy = false;
             }
         }

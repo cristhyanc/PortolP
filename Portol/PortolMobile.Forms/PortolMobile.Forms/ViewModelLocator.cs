@@ -169,8 +169,7 @@ namespace PortolMobile.Forms
             }  
              catch (Exception)
             {
-
-                throw;
+                //TODO: Log
             }
         }
 

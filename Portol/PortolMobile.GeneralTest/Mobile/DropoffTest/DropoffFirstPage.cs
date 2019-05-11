@@ -2,6 +2,7 @@
 using Portol.Common;
 using Portol.Common.DTO;
 using Portol.Common.Interfaces.PortolMobile;
+using PortolMobile.Forms;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels;
 using PortolMobile.Forms.ViewModels.Dropoff;
@@ -24,42 +25,59 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
             uow = fixture.UnitOfWorkDB;
         }
 
+
+        LoginServiceMK _loginServiceMK = null;
+        SessionDataMK _sessionData = null;
+        CustomerMobileServiceMK _mobileServiceMK = null;
+        NavigationServiceMK _navigationService = null;
+        UserDialogsMK _userDialogs = null;
+
+        private void InitServices()
+        {
+            _loginServiceMK = new LoginServiceMK(uow);
+            _sessionData = new SessionDataMK();
+            _sessionData.LoginUser(_loginServiceMK, "", "").Wait();
+            _mobileServiceMK = new CustomerMobileServiceMK(uow);
+            _navigationService = new NavigationServiceMK();
+            _userDialogs = new UserDialogsMK();
+        }
+
         [Fact]        
         public async void GetCustomer_Validations( )
         {
             try
             {
-                ICustomerMobileService mobileServiceMK = null;
-                INavigationService navigationService = new NavigationServiceMK();
-                UserDialogsMK userDialogs = new UserDialogsMK();
-                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs,null);
+                InitServices();
+
+
+                DropViewModel dropViewmodel = new DropViewModel(_mobileServiceMK, _navigationService, _userDialogs, _sessionData);
                 await dropViewmodel.GotoAddressStep();
 
-                Assert.NotNull(userDialogs.UserDialogsArgs);
-                Assert.Equal(StringResources.MissingInformation, userDialogs.UserDialogsArgs.title);
-                Assert.Equal(StringResources.MobileNumberEmailRequiered, userDialogs.UserDialogsArgs.message );
+                Assert.NotNull(_userDialogs.UserDialogsArgs);
+                Assert.Equal(StringResources.MissingInformation, _userDialogs.UserDialogsArgs.title);
+                Assert.Equal(StringResources.MobileNumberEmailRequiered, _userDialogs.UserDialogsArgs.message );
 
                 dropViewmodel.EmailMobileNumber = "asd";
                 await dropViewmodel.GotoAddressStep();
 
-                Assert.NotNull(userDialogs.UserDialogsArgs);
-                Assert.Equal(StringResources.MissingInformation, userDialogs.UserDialogsArgs.title);
-                Assert.Equal(StringResources.MobileNumberEmailRequiered, userDialogs.UserDialogsArgs.message);
+                Assert.NotNull(_userDialogs.UserDialogsArgs);
+                Assert.Equal(StringResources.MissingInformation, _userDialogs.UserDialogsArgs.title);
+                Assert.Equal(StringResources.MobileNumberEmailRequiered, _userDialogs.UserDialogsArgs.message);
 
 
                 dropViewmodel.EmailMobileNumber = "040555555";
                 await dropViewmodel.GotoAddressStep();
 
-                Assert.NotNull(userDialogs.UserDialogsArgs);
-                Assert.Equal(StringResources.MissingInformation, userDialogs.UserDialogsArgs.title);
-                Assert.Equal(StringResources.ReceiverNameRequired, userDialogs.UserDialogsArgs.message);
+                Assert.NotNull(_userDialogs.UserDialogsArgs);
+                Assert.Equal(StringResources.MissingInformation, _userDialogs.UserDialogsArgs.title);
+                Assert.Equal(StringResources.ReceiverNameRequired, _userDialogs.UserDialogsArgs.message);
 
                 dropViewmodel.EmailMobileNumber = "asd@asd.com";
                 await dropViewmodel.GotoAddressStep();
 
-                Assert.NotNull(userDialogs.UserDialogsArgs);
-                Assert.Equal(StringResources.MissingInformation, userDialogs.UserDialogsArgs.title);
-                Assert.Equal(StringResources.ReceiverNameRequired, userDialogs.UserDialogsArgs.message);
+                Assert.NotNull(_userDialogs.UserDialogsArgs);
+                Assert.Equal(StringResources.MissingInformation, _userDialogs.UserDialogsArgs.title);
+                Assert.Equal(StringResources.ReceiverNameRequired, _userDialogs.UserDialogsArgs.message);
 
              
             }
@@ -81,21 +99,20 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
         {
             try
             {
-                CustomerMobileServiceMK mobileServiceMK = new CustomerMobileServiceMK(uow);
-                NavigationServiceMK navigationService = new NavigationServiceMK();
-                UserDialogsMK userDialogs = new UserDialogsMK();
-                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs, null);
+                InitServices();
+
+                DropViewModel dropViewmodel = new DropViewModel(_mobileServiceMK, _navigationService, _userDialogs, _sessionData);
 
                 dropViewmodel.EmailMobileNumber = phone;
                 dropViewmodel.ReceiverName = name;               
                 await dropViewmodel.GotoAddressStep();
 
-                Assert.NotNull(navigationService.viewModel);
-                Assert.Equal(typeof(DropAddressViewModel), navigationService.viewModel);
-                Assert.NotNull(navigationService.Parameter);
-                Assert.Equal(typeof(DropoffDto), navigationService.Parameter.GetType());
+                Assert.NotNull(_navigationService.viewModel);
+                Assert.Equal(typeof(DropAddressViewModel), _navigationService.viewModel);
+                Assert.NotNull(_navigationService.Parameter);
+                Assert.Equal(typeof(DropoffDto), _navigationService.Parameter.GetType());
 
-                DropoffDto customer = (DropoffDto)navigationService.Parameter;
+                DropoffDto customer = (DropoffDto)_navigationService.Parameter;
                 long phoneN = 0;
                 long.TryParse(phone, out phoneN);
                 Assert.Equal(phoneN, customer.Receiver.PhoneNumber);
@@ -118,10 +135,9 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
         {
             try
             {
-                CustomerMobileServiceMK mobileServiceMK = new CustomerMobileServiceMK(uow);
-                NavigationServiceMK navigationService = new NavigationServiceMK();
-                UserDialogsMK userDialogs = new UserDialogsMK();
-                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs, null);
+                InitServices();
+
+                DropViewModel dropViewmodel = new DropViewModel(_mobileServiceMK, _navigationService, _userDialogs, _sessionData);
 
                 dropViewmodel.EmailMobileNumber = email;
                 dropViewmodel.ReceiverName = name;
@@ -129,12 +145,12 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
 
                 await dropViewmodel.GotoAddressStep();               
 
-                Assert.NotNull(navigationService.viewModel);
-                Assert.Equal(typeof(DropAddressViewModel), navigationService.viewModel);
-                Assert.NotNull(navigationService.Parameter);
-                Assert.Equal(typeof(DropoffDto), navigationService.Parameter.GetType());
+                Assert.NotNull(_navigationService.viewModel);
+                Assert.Equal(typeof(DropAddressViewModel), _navigationService.viewModel);
+                Assert.NotNull(_navigationService.Parameter);
+                Assert.Equal(typeof(DropoffDto), _navigationService.Parameter.GetType());
 
-                DropoffDto customer = (DropoffDto)navigationService.Parameter;           
+                DropoffDto customer = (DropoffDto)_navigationService.Parameter;           
                 Assert.Equal(email, customer.Receiver.Email);
             }
             catch (Exception ex)
@@ -153,29 +169,29 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
         {
             try
             {
-                CustomerMobileServiceMK mobileServiceMK = new CustomerMobileServiceMK(uow);
-                NavigationServiceMK navigationService = new NavigationServiceMK();
-                UserDialogsMK userDialogs = new UserDialogsMK();
-                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs, null);
+
+                InitServices();
+
+                DropViewModel dropViewmodel = new DropViewModel(_mobileServiceMK, _navigationService, _userDialogs, _sessionData);
 
                 dropViewmodel.EmailMobileNumber = phone;
                 dropViewmodel.ReceiverName = name;              
 
-                userDialogs.QuestionAnswer = true;
+                _userDialogs.QuestionAnswer = true;
                 await dropViewmodel.GotoAddressStep();
 
-                Assert.NotNull(userDialogs.UserDialogsArgs);
-                Assert.Equal(StringResources.Guess, userDialogs.UserDialogsArgs.title);
-                Assert.Equal(StringResources.PersonNoRegistered, userDialogs.UserDialogsArgs.message);
-                Assert.Equal(StringResources.ContinueGuess, userDialogs.UserDialogsArgs.okText);
+                Assert.NotNull(_userDialogs.UserDialogsArgs);
+                Assert.Equal(StringResources.Guess, _userDialogs.UserDialogsArgs.title);
+                Assert.Equal(StringResources.PersonNoRegistered, _userDialogs.UserDialogsArgs.message);
+                Assert.Equal(StringResources.ContinueGuess, _userDialogs.UserDialogsArgs.okText);
 
 
-                Assert.NotNull(navigationService.viewModel);
-                Assert.Equal(typeof(DropAddressViewModel), navigationService.viewModel);
-                Assert.NotNull(navigationService.Parameter);
-                Assert.Equal(typeof(DropoffDto), navigationService.Parameter.GetType());
+                Assert.NotNull(_navigationService.viewModel);
+                Assert.Equal(typeof(DropAddressViewModel), _navigationService.viewModel);
+                Assert.NotNull(_navigationService.Parameter);
+                Assert.Equal(typeof(DropoffDto), _navigationService.Parameter.GetType());
 
-                DropoffDto customer = (DropoffDto)navigationService.Parameter;
+                DropoffDto customer = (DropoffDto)_navigationService.Parameter;
                 long phoneN = 0;
                 long.TryParse(phone, out phoneN);
                 Assert.Equal(phoneN, customer.Receiver.PhoneNumber);
@@ -197,29 +213,28 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
         {
             try
             {
-                CustomerMobileServiceMK mobileServiceMK = new CustomerMobileServiceMK(uow);
-                NavigationServiceMK navigationService = new NavigationServiceMK();
-                UserDialogsMK userDialogs = new UserDialogsMK();
-                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs, null);
+                InitServices();
+
+                DropViewModel dropViewmodel = new DropViewModel(_mobileServiceMK, _navigationService, _userDialogs, _sessionData);
 
                 dropViewmodel.EmailMobileNumber = email;
                 dropViewmodel.ReceiverName = name;
               
-                userDialogs.QuestionAnswer = true;
+                _userDialogs.QuestionAnswer = true;
                 await dropViewmodel.GotoAddressStep();
 
-                Assert.NotNull(userDialogs.UserDialogsArgs);
-                Assert.Equal(StringResources.Guess, userDialogs.UserDialogsArgs.title);
-                Assert.Equal(StringResources.PersonNoRegistered, userDialogs.UserDialogsArgs.message);
-                Assert.Equal(StringResources.ContinueGuess, userDialogs.UserDialogsArgs.okText);
+                Assert.NotNull(_userDialogs.UserDialogsArgs);
+                Assert.Equal(StringResources.Guess, _userDialogs.UserDialogsArgs.title);
+                Assert.Equal(StringResources.PersonNoRegistered, _userDialogs.UserDialogsArgs.message);
+                Assert.Equal(StringResources.ContinueGuess, _userDialogs.UserDialogsArgs.okText);
                
 
-                Assert.NotNull(navigationService.viewModel);
-                Assert.Equal(typeof(DropAddressViewModel), navigationService.viewModel);
-                Assert.NotNull(navigationService.Parameter);
-                Assert.Equal(typeof(DropoffDto), navigationService.Parameter.GetType());
+                Assert.NotNull(_navigationService.viewModel);
+                Assert.Equal(typeof(DropAddressViewModel), _navigationService.viewModel);
+                Assert.NotNull(_navigationService.Parameter);
+                Assert.Equal(typeof(DropoffDto), _navigationService.Parameter.GetType());
 
-                DropoffDto customer = (DropoffDto)navigationService.Parameter;
+                DropoffDto customer = (DropoffDto)_navigationService.Parameter;
                 Assert.Equal(email, customer.Receiver.Email);
             }
             catch (Exception ex)
@@ -238,23 +253,22 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
         {
             try
             {
-                CustomerMobileServiceMK mobileServiceMK = new CustomerMobileServiceMK(uow);
-                NavigationServiceMK navigationService = new NavigationServiceMK();
-                UserDialogsMK userDialogs = new UserDialogsMK();
-                DropViewModel dropViewmodel = new DropViewModel(mobileServiceMK, navigationService, userDialogs, null);
+                InitServices();
+
+                DropViewModel dropViewmodel = new DropViewModel(_mobileServiceMK, _navigationService, _userDialogs, _sessionData);
 
                 dropViewmodel.EmailMobileNumber = email;
                 dropViewmodel.ReceiverName = name;              
 
-                userDialogs.QuestionAnswer = false;
+                _userDialogs.QuestionAnswer = false;
                 await dropViewmodel.GotoAddressStep();
 
-                Assert.NotNull(userDialogs.UserDialogsArgs);
-                Assert.Equal(StringResources.Guess, userDialogs.UserDialogsArgs.title);
-                Assert.Equal(StringResources.PersonNoRegistered, userDialogs.UserDialogsArgs.message);
-                Assert.Equal(StringResources.ContinueGuess, userDialogs.UserDialogsArgs.okText);
+                Assert.NotNull(_userDialogs.UserDialogsArgs);
+                Assert.Equal(StringResources.Guess, _userDialogs.UserDialogsArgs.title);
+                Assert.Equal(StringResources.PersonNoRegistered, _userDialogs.UserDialogsArgs.message);
+                Assert.Equal(StringResources.ContinueGuess, _userDialogs.UserDialogsArgs.okText);
 
-                Assert.Null(navigationService.viewModel);
+                Assert.Null(_navigationService.viewModel);
 
             }
             catch (Exception ex)

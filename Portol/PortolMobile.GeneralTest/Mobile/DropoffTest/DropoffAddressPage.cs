@@ -40,7 +40,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
 
                  NavigationServiceMK navigationService = new NavigationServiceMK();
                 UserDialogsMK userDialogs = new UserDialogsMK();
-                DropAddressViewModel dropViewmodel = new DropAddressViewModel(navigationService, userDialogs);
+                DropAddressViewModel dropViewmodel = new DropAddressViewModel(navigationService, userDialogs,null);
 
                 await dropViewmodel.InitializeAsync(dropoffDto);
 
@@ -92,7 +92,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
 
                 NavigationServiceMK navigationService = new NavigationServiceMK();
                 UserDialogsMK userDialogs = new UserDialogsMK();
-                DropAddressViewModel dropViewmodel = new DropAddressViewModel(navigationService, userDialogs);
+                DropAddressViewModel dropViewmodel = new DropAddressViewModel(navigationService, userDialogs, null);
                 await dropViewmodel.GotoAddressPage("pickup");
                 
                 Assert.NotNull(navigationService.viewModel);
@@ -123,7 +123,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
 
                 NavigationServiceMK navigationService = new NavigationServiceMK();
                 UserDialogsMK userDialogs = new UserDialogsMK();
-                DropAddressViewModel dropViewmodel = new DropAddressViewModel(navigationService, userDialogs);
+                DropAddressViewModel dropViewmodel = new DropAddressViewModel(navigationService, userDialogs, null);
 
                 AddressDto addressDto = new AddressDto();                               
                 addressDto.AddressValidated = true;
@@ -164,7 +164,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
 
                 NavigationServiceMK navigationService = new NavigationServiceMK();
                 UserDialogsMK userDialogs = new UserDialogsMK();
-                DropAddressViewModel dropViewmodel = new DropAddressViewModel(navigationService, userDialogs);
+                DropAddressViewModel dropViewmodel = new DropAddressViewModel(navigationService, userDialogs, null);
                 await dropViewmodel.GotoAddressPage("dropoff");
 
                 Assert.NotNull(navigationService.viewModel);
@@ -194,7 +194,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
             {
                 NavigationServiceMK navigationService = new NavigationServiceMK();
                 UserDialogsMK userDialogs = new UserDialogsMK();
-                DropAddressViewModel dropViewmodel = new DropAddressViewModel(navigationService, userDialogs);
+                DropAddressViewModel dropViewmodel = new DropAddressViewModel(navigationService, userDialogs, null);
 
                 AddressDto addressDto = new AddressDto();
                 addressDto.AddressValidated = true;
@@ -237,7 +237,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
             {
                 NavigationServiceMK navigationService = new NavigationServiceMK();
                 UserDialogsMK userDialogs = new UserDialogsMK();
-                DropAddressViewModel dropViewmodel = new DropAddressViewModel(navigationService, userDialogs);
+                DropAddressViewModel dropViewmodel = new DropAddressViewModel(navigationService, userDialogs, null);
                 AddressPickerViewModel addressPickerView = new AddressPickerViewModel(navigationService, userDialogs, null);
                 bool gotAddress = false;
 
@@ -290,7 +290,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
             {
                 NavigationServiceMK navigationService = new NavigationServiceMK();
                 UserDialogsMK userDialogs = new UserDialogsMK();
-                DropAddressViewModel dropViewmodel = new DropAddressViewModel(navigationService, userDialogs);
+                DropAddressViewModel dropViewmodel = new DropAddressViewModel(navigationService, userDialogs, null);
                 AddressPickerViewModel addressPickerView = new AddressPickerViewModel(navigationService, userDialogs, null);
                 bool gotAddress = false;
 
