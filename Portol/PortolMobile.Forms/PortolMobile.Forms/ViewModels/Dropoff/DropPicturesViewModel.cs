@@ -147,16 +147,17 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         private void LoadGallery()
         {
             try
-            {
-                this.IsPicturePickerButtonVisible = false;
-                this.IsGalleryVisible = false;
+            {              
+               
                 if (ImagesTaken?.Count > 0)
                 {
                     this.IsGalleryVisible = true;
+                    this.IsPicturePickerButtonVisible = false;
                 }
                 else
                 {
                     this.IsPicturePickerButtonVisible = true;
+                    this.IsGalleryVisible = false;
                 }
             }
             catch (Exception ex)
