@@ -218,6 +218,12 @@
     <ImageAsset Include="Assets.xcassets\Map_image.imageset\Screen Shot 2019-04-04 at 2.41.13 pm%403x.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\ic_visa.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_visa.imageset\ic_visa.png" />
+    <ImageAsset Include="Assets.xcassets\ic_mastercard.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_mastercard.imageset\ic_mastercard.png" />
+    <ImageAsset Include="Assets.xcassets\ic_paypal.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\ic_paypal.imageset\ic_paypal.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -277,14 +283,8 @@
   <ItemGroup>
     <Folder Include="Assets.xcassets\login_background.imageset\" />
     <Folder Include="Assets.xcassets\Map_image.imageset\" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_mastercard.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_paypal.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_visa.png" />
+    <Folder Include="Assets.xcassets\ic_visa.imageset\" />
+    <Folder Include="Assets.xcassets\ic_mastercard.imageset\" />
+    <Folder Include="Assets.xcassets\ic_paypal.imageset\" />
   </ItemGroup>
 </Project>
