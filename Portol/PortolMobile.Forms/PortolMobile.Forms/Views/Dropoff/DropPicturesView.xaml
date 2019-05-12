@@ -25,12 +25,7 @@
 
                 <StackLayout BackgroundColor="White" >
                     <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
-                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
-
-                    <!--<Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
-                        Style="{StaticResource ButtonUnselectedTab}"
-                        Grid.Column="1" Text="Drop"></Button>-->
-
+                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />                
                 </StackLayout>
 
 
@@ -77,7 +72,8 @@
                             </Frame>
 
                             <ScrollView Orientation="Horizontal"  HorizontalOptions="StartAndExpand" Padding="0" IsVisible="{Binding IsGalleryVisible}"  VerticalOptions="StartAndExpand" BackgroundColor="#343232">
-                                <StackLayout Orientation="Horizontal" Margin="10" Padding="0"  HorizontalOptions="StartAndExpand"  VerticalOptions="StartAndExpand"  BindableLayout.ItemsSource="{Binding ImagesTaken}">
+                                <StackLayout Orientation="Horizontal" Margin="10" Padding="0"  HorizontalOptions="StartAndExpand"  
+                                             VerticalOptions="StartAndExpand"  BindableLayout.ItemsSource="{Binding PicturesTaken}">
                                     <StackLayout.GestureRecognizers >
                                         <TapGestureRecognizer Command="{Binding PickPicturesCommand}"  ></TapGestureRecognizer>
                                     </StackLayout.GestureRecognizers>
@@ -125,7 +121,7 @@
                                         Factor=1.15}"  >
 
                         <Frame.GestureRecognizers >
-                            <TapGestureRecognizer Command="{Binding GotoPicturesCommand}"  ></TapGestureRecognizer>
+                            <TapGestureRecognizer Command="{Binding GotoPaymentCommand}"  ></TapGestureRecognizer>
                         </Frame.GestureRecognizers>
                         <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" >
                         </ffimageloadingsvg:SvgCachedImage>

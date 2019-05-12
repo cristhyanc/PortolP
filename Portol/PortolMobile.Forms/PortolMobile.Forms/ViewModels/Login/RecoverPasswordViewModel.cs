@@ -24,7 +24,7 @@ namespace PortolMobile.Forms.ViewModels.Login
         public ICommand SelectCountryCommand { get; private set; }
         
        
-        private readonly ILoginService _loginService;
+        private readonly IUserCore _userCore;
 
         private string _newPassword;
         public string NewPassword
@@ -272,10 +272,10 @@ namespace PortolMobile.Forms.ViewModels.Login
             }
         }
 
-        public RecoverPasswordViewModel(ILoginService loginService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
+        public RecoverPasswordViewModel(IUserCore userCore, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
            
-            _loginService = loginService;
+            _userCore = userCore;
             CountryItems = new List<CountryDto>(Constants.CountryList);
             CountrySelected = CountryItems.Where(x => x.Country == EnumCountries.Australia).FirstOrDefault();
             SendCodeButtonCommand = new Command(SendCodeVerification, () => { return !IsBusy; });
@@ -348,7 +348,7 @@ namespace PortolMobile.Forms.ViewModels.Login
 
                 this.IsBusy = true;
 
-                await _loginService.ResetNewPassword(Int32.Parse(this.MobileNumber), this.NewPassword);
+                await _userCore.ResetNewPassword(Int32.Parse(this.MobileNumber), this.NewPassword);
 
                 UserDialogs.Alert(new AlertConfig
                 {
@@ -428,7 +428,7 @@ namespace PortolMobile.Forms.ViewModels.Login
                     return;
                 }
 
-                var isUniqui = await _loginService.VerifyMobileUniqueness(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country);
+                var isUniqui = await _userCore.VerifyMobileUniqueness(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country);
 
                 if (isUniqui)
                 {

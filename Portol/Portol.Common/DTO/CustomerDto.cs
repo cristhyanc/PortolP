@@ -23,6 +23,12 @@ namespace Portol.Common.DTO
         public bool Deleted { get; set; }
         public bool IsGuess { get; set; }
 
-
+        public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
     }
 }

@@ -83,7 +83,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
             
             DropoffDto parameter = new DropoffDto();
 
-            parameter.Images = urls.Select(x => new PicturesDto { ImageUrl = x }).ToList(); 
+            parameter.Pictures = urls.Select(x => new PicturesDto { ImageUrl = x }).ToList(); 
             await dropPicturesViewModel.InitializeAsync(parameter);
 
             Assert.True(dropPicturesViewModel.IsGalleryVisible);
@@ -125,7 +125,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 if (e.PropertyName.Equals("ImagesTaken"))
                 {
                     DropPicturesViewModel viewModel = (DropPicturesViewModel)sender;
-                    Assert.Equal(dropPicturesViewModel.ImagesTaken, pictures);                  
+                    Assert.Equal(dropPicturesViewModel.PicturesTaken, pictures);                  
                 }
                 if (e.PropertyName.Equals("IsGalleryVisible"))
                 {

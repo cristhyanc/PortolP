@@ -6,6 +6,7 @@ using Plugin.Media.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Portol.Common.Interfaces.PortolMobile;
+using PortolMobile.Core.User;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels;
 using PortolMobile.Forms.ViewModels.Dropoff;
@@ -67,8 +68,9 @@ namespace PortolMobile.Forms
                 builder.RegisterType<DropPicturesViewModel>();
                 builder.RegisterType<PicturePickerViewModel>();
                 builder.RegisterType<DropMeasurementsViewModel>();
+                builder.RegisterType<DropPaymentViewModel>();
 
-
+                
                 builder.Register(c => UserDialogs.Instance).As<IUserDialogs>().SingleInstance();
                 builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
                 builder.RegisterType<SessionData>().As<ISessionData>().SingleInstance();
@@ -77,9 +79,12 @@ namespace PortolMobile.Forms
                 builder.Register(c => CrossMedia.Current).As<IMedia>();
 
                 builder.RegisterType<LoginService>().As<ILoginService>();
-                builder.RegisterType<UserMobileService>().As<ICustomerMobileService>();
+                builder.RegisterType<UserMobileService>().As<IUserMobileService>();
 
-               
+                builder.RegisterType<UserCore>().As<IUserCore>();
+                builder.RegisterType<LoginCore>().As<ILoginCore>();
+
+
                 builder.RegisterType<RestClient>().As<IRestClient>().WithParameter(new ResolvedParameter(
                                                                        (pi, ctx) => pi.ParameterType == typeof(string) && pi.Name == "toke",
                                                                        (pi, ctx) => _container.Resolve<ISessionData>().GetCurrentToken()));

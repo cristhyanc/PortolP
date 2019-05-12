@@ -36,8 +36,8 @@ namespace PortolWeb.Core.UserServices
 
         public CustomerDto GetCustomerByEmail(string email)
         {
-            var customer = new Customer();
-            var result = customer.GetCustomerByEmail(_uow,email);
+            var result = Customer.GetCustomerByEmail(_uow, email);
+          
             if (result != null)
             {
                 return Customer.ORM(result);
@@ -48,8 +48,7 @@ namespace PortolWeb.Core.UserServices
 
         public CustomerDto GetCustomerByPhoneNumber(long phoneNumber, int countryCode)
         {
-            var customer = new Customer();
-            var result = customer.GetCustomerByPhoneNumber(_uow, phoneNumber, countryCode);
+            var result = Customer.GetCustomerByPhoneNumber(_uow, phoneNumber, countryCode);          
             if (result != null)
             {               
                 return Customer.ORM(result);
@@ -66,7 +65,7 @@ namespace PortolWeb.Core.UserServices
             }
                 
 
-            var user = _uow.CustomerRepository.Get(x => x.Email == username);                      
+            var user = Customer.GetCustomerByEmail(_uow, username);
             if (user == null)
             {
                 throw new AppException(StringResources.EmailPasswordIsIncorrect);
@@ -76,10 +75,8 @@ namespace PortolWeb.Core.UserServices
             {
                 throw new AppException(StringResources.EmailPasswordIsIncorrect);
             }
-
-            user.CurrentAddress = _uow.AddressRepository.Get(x => x.CustomerID.Equals(user.CustomerID) && x.IsCurrentAddress);
+                      
             return Customer.ORM(user);
-         
         }
 
         public IEnumerable<CustomerDto> GetAll()

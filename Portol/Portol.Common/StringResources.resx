@@ -348,4 +348,13 @@
   <data name="WhereSendingTo" xml:space="preserve">
     <value>Where are we sending it to?</value>
   </data>
+  <data name="Measurements" xml:space="preserve">
+    <value>Measurements</value>
+  </data>
+  <data name="MeasurementsRequired" xml:space="preserve">
+    <value>The measurements of the parcel are required</value>
+  </data>
+  <data name="PictureParcelRequired" xml:space="preserve">
+    <value>Enter at least one picture of the parcel</value>
+  </data>
 </root>

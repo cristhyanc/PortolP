@@ -278,4 +278,13 @@
     <Folder Include="Assets.xcassets\login_background.imageset\" />
     <Folder Include="Assets.xcassets\Map_image.imageset\" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_mastercard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_paypal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_visa.png" />
+  </ItemGroup>
 </Project>

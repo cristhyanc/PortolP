@@ -16,7 +16,7 @@ namespace PortolMobile.Forms.ViewModels.Login
     {
 
       
-        private readonly ILoginService _loginService;
+        private readonly ILoginCore _userCore;
 
         public ICommand LoginButtonCommand { get; private set; }
         public ICommand RecoverButtonCommand { get; private set; }
@@ -52,10 +52,10 @@ namespace PortolMobile.Forms.ViewModels.Login
 
         ISessionData _sessionData;
 
-        public LoginViewModel(ILoginService loginService, INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData ) : base(navigationService, userDialogs)
+        public LoginViewModel(ILoginCore userCore, INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData ) : base(navigationService, userDialogs)
         {
           
-            _loginService = loginService;
+            _userCore = userCore;
             LoginButtonCommand = new Command(LoginUser, () => { return !IsBusy; });
             RecoverButtonCommand = new Command(GoToRecoverPassword, () => { return !IsBusy; });
             SignupCommand = new Command(GoToSignup, () => { return !IsBusy; });
@@ -111,7 +111,7 @@ namespace PortolMobile.Forms.ViewModels.Login
                 this.IsBusy = true;
                 if (this.PasswordText?.Length > 0 && this.EmailText?.Length > 0)
                 {
-                    await _sessionData.LoginUser(_loginService, this.EmailText, this.PasswordText);                   
+                    await _sessionData.LoginUser(_userCore, this.EmailText, this.PasswordText);                   
                     await NavigationService.NavigateToAsync<DropViewModel>();
                 }
                 else

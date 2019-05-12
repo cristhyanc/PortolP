@@ -363,4 +363,7 @@
   <data name="WhereSendingTo" xml:space="preserve">
     <value>Where are we sending it to?</value>
   </data>
+  <data name="EstimatedCost" xml:space="preserve">
+    <value>Estimated Cost:</value>
+  </data>
 </root>

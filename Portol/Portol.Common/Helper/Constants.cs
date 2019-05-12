@@ -85,6 +85,44 @@ namespace Portol.Common.Helper
                     return "resource://PortolMobile.Forms.Resources.ic_australia.svg?assembly=PortolMobile.Forms";
             }
         }
+
+
+        public static string GetCreditCardResourceFile(PaymentMethodType creditCardType)
+        {
+            switch (creditCardType)
+            {
+                case PaymentMethodType.MasterCard:
+                    return "resource://PortolMobile.Forms.Resources.ic_mastercard.svg?assembly=PortolMobile.Forms";
+                case PaymentMethodType.Visa:
+                    return "resource://PortolMobile.Forms.Resources.ic_visa.svg?assembly=PortolMobile.Forms";
+                case PaymentMethodType.PayPal:
+                    return "resource://PortolMobile.Forms.Resources.ic_paypal.svg?assembly=PortolMobile.Forms";
+                default:
+                    return "resource://PortolMobile.Forms.Resources.ic_creditcard.svg?assembly=PortolMobile.Forms";
+            }
+        }
+
+        public static string GetCreditCardRFileName(PaymentMethodType creditCardType)
+        {
+            switch (creditCardType)
+            {
+                case PaymentMethodType.MasterCard:
+                    return "ic_mastercard.png";
+                case PaymentMethodType.Visa:
+                    return "ic_visa.png";
+                case PaymentMethodType.PayPal:
+                    return "ic_paypal.png";
+                default:
+                    return "ic_creditcard.png";
+            }
+        }
+    }
+
+    public enum PaymentMethodType
+    {
+        MasterCard = 1,
+        Visa = 2,
+        PayPal = 3,
     }
 
     public enum EnumCountries

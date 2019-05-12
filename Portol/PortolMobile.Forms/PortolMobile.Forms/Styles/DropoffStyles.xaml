@@ -24,6 +24,12 @@
         <Setter Property="HorizontalTextAlignment" Value="Center"  />
     </Style>
 
+    <Style TargetType="Label" x:Key="DropoffLabelDefaultStyle" BaseResourceKey="LabelBaseStyle">
+        <Setter Property="TextColor" Value="#797878" />
+        <Setter Property="FontSize" Value="Default" />
+        <Setter Property="HorizontalTextAlignment" Value="Center"  />
+    </Style>
+
     <Style TargetType="Label" x:Key="DropoffLabelSmallStyle" BaseResourceKey="LabelBaseStyle">
         <Setter Property="TextColor" Value="#797878" />
         <Setter Property="FontSize" Value="Small" />

@@ -17,7 +17,7 @@ namespace PortolMobile.GeneralTest.MockupServices
             throw new NotImplementedException();
         }
 
-        public async Task LoginUser(ILoginService _loginService, string email, string password)
+        public async Task LoginUser(ILoginCore  _loginService, string email, string password)
         {
             User= await _loginService.Authenticate("cristhyan@outlook.com", "");
         }

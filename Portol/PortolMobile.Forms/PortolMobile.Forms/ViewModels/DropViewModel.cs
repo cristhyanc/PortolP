@@ -22,7 +22,7 @@ namespace PortolMobile.Forms.ViewModels
 
         public ICommand FindCustomerCommand { get; private set; }
         
-        private ICustomerMobileService _customerService;
+        private IUserMobileService _customerService;
 
         string _emailMobileNumber;
         public string EmailMobileNumber
@@ -57,17 +57,15 @@ namespace PortolMobile.Forms.ViewModels
         ISessionData _sessionData;
 
 
-        public DropViewModel(ICustomerMobileService customerService, INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData) : base(navigationService, userDialogs)
+        public DropViewModel(IUserMobileService customerService, INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData) : base(navigationService, userDialogs)
         {
             GetCustomerCommand = new Command((() => GotoAddressStep()), () => { return !IsBusy; });
             GotoShopCommand = new Command(GotoShop, () => { return !IsBusy; });
             FindCustomerCommand = new Command((() => FindCustomer()), () => { return !IsBusy; });
             _customerService = customerService;
             _sessionData = sessionData;
-            //this.EmailMobileNumber = "0405593358";
-            //this.ReceiverName = "Cris";
-
-
+            this.EmailMobileNumber = "0405593358";
+            this.ReceiverName = "Cris";
 
         }
 
@@ -111,7 +109,7 @@ namespace PortolMobile.Forms.ViewModels
 
                 if (customer!=null)
                 {
-                    this.ReceiverName = customer.FirstName;
+                    this.ReceiverName = customer.FullName;
                 }
             }
             catch (System.Exception ex)

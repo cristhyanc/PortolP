@@ -295,6 +295,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Estimated Cost:.
+        /// </summary>
+        internal static string EstimatedCost {
+            get {
+                return ResourceManager.GetString("EstimatedCost", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         internal static string FirstName {

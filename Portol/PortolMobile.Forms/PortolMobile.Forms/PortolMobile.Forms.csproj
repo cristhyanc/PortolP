@@ -19,13 +19,19 @@
     <None Remove="Resources\ic_australia.svg" />
     <None Remove="Resources\ic_button.svg" />
     <None Remove="Resources\ic_camerabutton.svg" />
+    <None Remove="Resources\ic_delete.png" />
+    <None Remove="Resources\ic_delete.svg" />
+    <None Remove="Resources\ic_dollar.png" />
     <None Remove="Resources\ic_door.svg" />
     <None Remove="Resources\ic_dropoffcamera.svg" />
     <None Remove="Resources\ic_line.svg" />
+    <None Remove="Resources\ic_mastercard.svg" />
     <None Remove="Resources\ic_newzealand.svg" />
     <None Remove="Resources\ic_parcel.png" />
     <None Remove="Resources\ic_parcelbox.png" />
+    <None Remove="Resources\ic_paypal.svg" />
     <None Remove="Resources\ic_unitedkingdom.svg" />
+    <None Remove="Resources\ic_visa.svg" />
     <None Remove="Resources\portol_logo_long.svg" />
     <None Remove="Resources\ShopPict_mockup.svg" />
   </ItemGroup>
@@ -37,13 +43,18 @@
     <EmbeddedResource Include="Resources\ic_australia.svg" />
     <EmbeddedResource Include="Resources\ic_button.svg" />
     <EmbeddedResource Include="Resources\ic_camerabutton.svg" />
+    <EmbeddedResource Include="Resources\ic_delete.png" />
+    <EmbeddedResource Include="Resources\ic_dollar.png" />
     <EmbeddedResource Include="Resources\ic_door.svg" />
     <EmbeddedResource Include="Resources\ic_dropoffcamera.svg" />
     <EmbeddedResource Include="Resources\ic_line.svg" />
+    <EmbeddedResource Include="Resources\ic_mastercard.svg" />
     <EmbeddedResource Include="Resources\ic_newzealand.svg" />
     <EmbeddedResource Include="Resources\ic_parcel.png" />
     <EmbeddedResource Include="Resources\ic_parcelbox.png" />
+    <EmbeddedResource Include="Resources\ic_paypal.svg" />
     <EmbeddedResource Include="Resources\ic_unitedkingdom.svg" />
+    <EmbeddedResource Include="Resources\ic_visa.svg" />
     <EmbeddedResource Include="Resources\portol_logo_long.svg" />
     <EmbeddedResource Include="Resources\ShopPict_mockup.svg" />
   </ItemGroup>
@@ -67,6 +78,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Portol.Common\Portol.Common.csproj" />
+    <ProjectReference Include="..\..\PortolMobile.Core\PortolMobile.Core.csproj" />
     <ProjectReference Include="..\..\PortolMobile.Services\PortolMobile.Services.csproj" />
   </ItemGroup>
 
@@ -93,6 +105,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Dropoff\DropMeasurementsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Dropoff\DropPaymentView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Dropoff\DropPicturesView.xaml">
@@ -129,6 +144,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\UserControls\AddressPickerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\UserControls\PaymentMethodsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\UserControls\PicturePickerView.xaml">

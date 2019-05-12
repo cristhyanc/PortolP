@@ -15,15 +15,16 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
 {
     public class DropPicturesViewModel : BaseViewModel
     {
-        INavigationService _navigationService;
-        IUserDialogs _userDialogs;
+        
         public ICommand PickPicturesCommand { get; private set; }
         public ICommand MeasurementCommand { get; private set; }
+        public ICommand GotoPaymentCommand { get; private set; }
+        
 
         DropoffDto _dropoffParcel;
 
         private List<PicturesDto> _imagesTaken;
-        public List<PicturesDto> ImagesTaken
+        public List<PicturesDto> PicturesTaken
         {
             get
             {
@@ -80,11 +81,41 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
 
         public DropPicturesViewModel(INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
-            _navigationService = navigationService;
-            _userDialogs = userDialogs;
+           
             MeasurementCommand = new Command((() => GotoMeasurementPage()), () => { return !IsBusy; });
             PickPicturesCommand = new Command((() => GotoPicturesPickerPage()), () => { return !IsBusy; });
+            GotoPaymentCommand = new Command((() => GotoPaymentPage()), () => { return !IsBusy; });
+        }
 
+        private async void GotoPaymentPage()
+        {
+            try
+            {
+                this.IsBusy = true;
+                this._dropoffParcel.Pictures = this.PicturesTaken;
+                if(_dropoffParcel.Measurements==null || _dropoffParcel.Measurements.Volume==0)
+                {
+                    UserDialogs.Alert(StringResources.MeasurementsRequired, StringResources.MissingInformation);
+                    return;
+                }
+
+                if(_dropoffParcel.Pictures==null || _dropoffParcel.Pictures.Count==0)
+                {
+                    UserDialogs.Alert(StringResources.PictureParcelRequired, StringResources.MissingInformation);
+                    return;
+                }
+
+
+                await NavigationService.NavigateToAsync<DropPaymentViewModel>(this._dropoffParcel);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropPicturesViewModel", "GotoPaymentPage");
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
         }
 
         private async void GotoMeasurementPage()
@@ -111,7 +142,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             {
                 this.IsBusy = true;
                 SubscribePicturesMessagingService();
-                await NavigationService.NavigateToAsync<PicturePickerViewModel>(this.ImagesTaken);
+                await NavigationService.NavigateToAsync<PicturePickerViewModel>(this.PicturesTaken);
             }
             catch (Exception ex)
             {
@@ -129,12 +160,21 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             {
                 this.IsBusy = true;
                 this._dropoffParcel = (DropoffDto)navigationData;
-                if (_dropoffParcel.Images?.Count > 0)
+                if (_dropoffParcel.Pictures?.Count > 0)
                 {
-                    this.ImagesTaken = _dropoffParcel.Images;
+                    this.PicturesTaken = _dropoffParcel.Pictures;
                 }
 
                 LoadGallery();
+
+                _dropoffParcel.Measurements = new MeasurementDto();
+                _dropoffParcel.Measurements.Height = 2;
+                _dropoffParcel.Measurements.Weight = 2;
+                _dropoffParcel.Measurements.Length = 2;
+                _dropoffParcel.Measurements.Width = 2;
+                this.PicturesTaken = new List<PicturesDto>();
+                this.PicturesTaken.Add(new PicturesDto());
+
             }
             catch (Exception ex)
             {
@@ -149,7 +189,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             try
             {              
                
-                if (ImagesTaken?.Count > 0)
+                if (PicturesTaken?.Count > 0)
                 {
                     this.IsGalleryVisible = true;
                     this.IsPicturePickerButtonVisible = false;
@@ -196,7 +236,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 {
                     if (arg?.Count > 0)
                     {
-                        this.ImagesTaken = arg;
+                        this.PicturesTaken = arg;
                         LoadGallery();
                     }
                 });

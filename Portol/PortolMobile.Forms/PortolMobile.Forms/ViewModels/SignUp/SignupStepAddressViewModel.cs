@@ -18,7 +18,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
 
         public ICommand SaveAccountCommand { get; private set; }
       
-        private readonly ICustomerMobileService _userMobileService;
+        private readonly IUserCore _userCore;
 
 
         CustomerDto _userDto;
@@ -151,9 +151,9 @@ namespace PortolMobile.Forms.ViewModels.SignUp
 
         IAddressService _addressService;
 
-        public SignupStepAddressViewModel( ICustomerMobileService userMobileService, IAddressService addressService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
+        public SignupStepAddressViewModel(IUserCore userCore, IAddressService addressService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
-            _userMobileService = userMobileService;           
+            _userCore = userCore;           
             SaveAccountCommand = new Command(GetPosibleAddresses, () => { return !IsBusy; });
             _addressService = addressService;
             this.Country = "AU";
@@ -319,7 +319,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             {
                 this.IsBusy = true;                 
 
-                if (await _userMobileService.CreateNewCustomer(_userDto))
+                if (await _userCore.CreateNewCustomer(_userDto))
                 {
                     await UserDialogs.ConfirmAsync(StringResources.AccountCreated, StringResources.NewUser);
                     await NavigationService.NavigateToAsync<DropViewModel>();

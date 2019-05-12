@@ -367,6 +367,24 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Measurements.
+        /// </summary>
+        public static string Measurements {
+            get {
+                return ResourceManager.GetString("Measurements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The measurements of the parcel are required.
+        /// </summary>
+        public static string MeasurementsRequired {
+            get {
+                return ResourceManager.GetString("MeasurementsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Missing information.
         /// </summary>
         public static string MissingInformation {
@@ -606,6 +624,15 @@ namespace Portol.Common {
         public static string PickupAddressRequired {
             get {
                 return ResourceManager.GetString("PickupAddressRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter at least one picture of the parcel.
+        /// </summary>
+        public static string PictureParcelRequired {
+            get {
+                return ResourceManager.GetString("PictureParcelRequired", resourceCulture);
             }
         }
         

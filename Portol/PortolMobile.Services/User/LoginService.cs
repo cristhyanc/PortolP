@@ -27,37 +27,8 @@ namespace PortolMobile.Services.User
                 return user; 
         }
 
-        public async Task<Boolean> VerifyMobileUniqueness(long mobilePhoned, Int32 code)
-        {
-            CustomerDto details = new CustomerDto { PhoneNumber = mobilePhoned, PhoneCountryCode = code };
-            var result = await _restClient.MakeApiCallRaw<Boolean>($"{Constants.BaseUserApiUrl}/VerifyMobileUniqueness", HttpMethod.Post, details);
-            return result;
-        }
-
-        public async Task<Boolean> VerifyEmailUniqueness(string email)
-        {           
-            var result = await _restClient.MakeApiCallRaw<Boolean>($"{Constants.BaseUserApiUrl}/VerifyEmailUniqueness", HttpMethod.Post, email);
-            return result;
-        }
-
-        
-        public async Task<bool> VerifyCode(long mobilePhoned, Int32 countryCode, Int32 code)
-        {
-            CustomerDto user = new CustomerDto { PhoneNumber = mobilePhoned, PhoneCountryCode = countryCode, Token= code.ToString() };
-            return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/VerifyCode", HttpMethod.Post, user);
-        }
-
-        public async Task<bool> ResetNewPassword(long mobilePhoned, string newPassword)
-        {
-            CustomerDto user = new CustomerDto { PhoneNumber = mobilePhoned, Password= newPassword };
-            return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/ResetPassword", HttpMethod.Post, user);
-        }
-
-        public async Task<bool> SendVerificationCode(long mobilePhoned, Int32 code)
-        {
-            CustomerDto user = new CustomerDto { PhoneNumber = mobilePhoned, PhoneCountryCode= code };
-            return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/SendVerificationCode", HttpMethod.Post, user);
-        }
+               
+      
 
     }
 }

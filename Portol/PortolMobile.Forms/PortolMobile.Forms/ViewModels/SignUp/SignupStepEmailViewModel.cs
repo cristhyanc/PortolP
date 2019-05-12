@@ -16,7 +16,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
     public class SignupStepEmailViewModel : BaseViewModel
     {
         public ICommand GotoAddressPageCommand { get; private set; }     
-        private readonly ILoginService _loginService;
+        private readonly IUserCore _userCore;
         CustomerDto _userDto;
 
         bool _isValidationVisible;
@@ -104,9 +104,9 @@ namespace PortolMobile.Forms.ViewModels.SignUp
         }
 
 
-        public SignupStepEmailViewModel(ILoginService loginService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
+        public SignupStepEmailViewModel(IUserCore userCore, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {           
-            _loginService = loginService;
+            _userCore = userCore;
             GotoAddressPageCommand = new Command(GotoAddressPage, () => { return !IsBusy; });
         }
 
@@ -149,7 +149,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                     return;
                 }
 
-                var result = await _loginService.VerifyEmailUniqueness(this.Email);
+                var result = await _userCore.VerifyEmailUniqueness(this.Email);
                 if (!result)
                 {
                     IsValidationVisible = true;

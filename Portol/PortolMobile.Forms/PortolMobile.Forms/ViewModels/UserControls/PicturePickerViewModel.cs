@@ -26,6 +26,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
         public ICommand PickupPhotoCommand { get; private set; }
         public ICommand SelectedPhotoCommand { get; private set; }
         public ICommand DoneCommand { get; private set; }
+        public ICommand DeletePhotoCommand { get; private set; }
 
 
         PicturesDto _selectedPicture;
@@ -64,9 +65,33 @@ namespace PortolMobile.Forms.ViewModels.UserControls
             _media = media;
             TakePhotoCommand = new Command(TakePhoto, () => { return !IsBusy; });
             PickupPhotoCommand = new Command(PickupPhoto, () => { return !IsBusy; });
-            SelectedPhotoCommand = new Command<Guid>(PhotoSelected, (x) => { return !IsBusy; });
+            SelectedPhotoCommand = new Command<Guid>(DisplayPhotoSelected, (x) => { return !IsBusy; });
             DoneCommand = new Command(GoBack, () => { return !IsBusy; });
+            DeletePhotoCommand = new Command(DeletePhoto, () => { return !IsBusy; });
             Pictures = new ObservableCollection<PicturesDto>();
+        }
+
+
+        private void DeletePhoto()
+        {
+            try
+            {
+                this.IsBusy = true;
+                if(SelectedPicture != null)
+                {
+                    this.Pictures.Remove(SelectedPicture);
+                    SelectedPicture = null;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "PicturePickerViewModel", "InitializeAsync");
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
         }
 
         public override Task InitializeAsync(object navigationData)
@@ -112,7 +137,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
            
         }
 
-        private void PhotoSelected(Guid pictureId)
+        private void DisplayPhotoSelected(Guid pictureId)
         {
             try
             {               
