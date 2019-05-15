@@ -73,7 +73,7 @@ namespace PortolMobile.Forms
                 
                 builder.Register(c => UserDialogs.Instance).As<IUserDialogs>().SingleInstance();
                 builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
-                builder.RegisterType<SessionData>().As<ISessionData>().SingleInstance();
+                
 
 
                 builder.Register(c => CrossMedia.Current).As<IMedia>();
@@ -84,7 +84,7 @@ namespace PortolMobile.Forms
                 builder.RegisterType<UserCore>().As<IUserCore>();
                 builder.RegisterType<LoginCore>().As<ILoginCore>();
 
-
+                builder.RegisterType<SessionData>().As<ISessionData>().SingleInstance();
                 builder.RegisterType<RestClient>().As<IRestClient>().WithParameter(new ResolvedParameter(
                                                                        (pi, ctx) => pi.ParameterType == typeof(string) && pi.Name == "toke",
                                                                        (pi, ctx) => _container.Resolve<ISessionData>().GetCurrentToken()));

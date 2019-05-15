@@ -1,9 +1,11 @@
 ﻿using Acr.UserDialogs;
 using Portol.Common;
 using Portol.Common.DTO;
+using Portol.Common.Helper;
 using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Helper;
 using PortolMobile.Forms.Services.Navigation;
+using PortolMobile.Forms.ViewModels.UserControls;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -51,225 +53,77 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             }
         }
 
-        private string _unitNumber;
-        public string UnitNumber
+        AddressDto _homeAddress;
+        public AddressDto HomeAddress
         {
             get
             {
-                return _unitNumber;
+                return _homeAddress;
             }
             set
             {
-                _unitNumber = value;
-                OnPropertyChanged();
+                if (_homeAddress != value)
+                {
+                    _homeAddress = value;
+                    if (_homeAddress == null)
+                    {
+                        HomeAddressStr = "";
+                    }
+                    else
+                    {
+                        HomeAddressStr = _homeAddress.FullAddress;
+                    }
+                    OnPropertyChanged();
+                }
             }
         }
 
-        private string _street;
-        public string Street
+        private string _homeAddressStr;
+        public string HomeAddressStr
         {
             get
             {
-                return _street;
+                return _homeAddressStr;
             }
             set
             {
-                _street = value;
+                _homeAddressStr = value;
                 OnPropertyChanged();
             }
         }
-
-        private string _suburb;
-        public string Suburb
-        {
-            get
-            {
-                return _suburb;
-            }
-            set
-            {
-                _suburb = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private string _postCode;
-        public string PostCode
-        {
-            get
-            {
-                return _postCode;
-            }
-            set
-            {
-                _postCode = value;
-                OnPropertyChanged();
-            }
-        }
-
-        //private string _city;
-        //public string City
-        //{
-        //    get
-        //    {
-        //        return _city;
-        //    }
-        //    set
-        //    {
-        //        _city = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-
-        private string _state;
-        public string State
-        {
-            get
-            {
-                return _state;
-            }
-            set
-            {
-                _state = value;
-                OnPropertyChanged();
-            }
-        }
-
-        private string _country;
-        public string Country
-        {
-            get
-            {
-                return _country;
-            }
-            set
-            {
-                _country = value;
-                OnPropertyChanged();
-            }
-        }
+        public ICommand AddressEntryCommand { get; private set; }
 
         IAddressService _addressService;
-
-        public SignupStepAddressViewModel(IUserCore userCore, IAddressService addressService, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
+        ISessionData _sessionData;
+        ILoginCore _loginCore;
+        public SignupStepAddressViewModel(IUserCore userCore, IAddressService addressService, INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData, ILoginCore loginCore ) : base(navigationService, userDialogs)
         {
             _userCore = userCore;           
-            SaveAccountCommand = new Command(GetPosibleAddresses, () => { return !IsBusy; });
+            SaveAccountCommand = new Command((() => SaveNewAccount()), () => { return !IsBusy; });
             _addressService = addressService;
-            this.Country = "AU";
+            AddressEntryCommand = new Command((() => GotoAddressPage()), () => { return !IsBusy; });
+            _sessionData = sessionData;
+            _loginCore = loginCore;
         }
 
-        private async void GetPosibleAddresses()
+        protected override void PageAppearing()
+        {
+            UnsubscribeMessagingService();
+        }
+
+        public async Task GotoAddressPage()
         {
             try
             {
                 this.IsBusy = true;
-                IsValidationVisible = false;
-                ErrorMessage = "";
-
-                if (string.IsNullOrWhiteSpace(this.Street))
-                {
-                    IsValidationVisible = true;
-                    ErrorMessage = StringResources.StreetRequired;
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(this.Suburb))
-                {
-                    IsValidationVisible = true;
-                    ErrorMessage = StringResources.SuburbRequired;
-                    return;
-                }
-
-                if (string.IsNullOrWhiteSpace(this.PostCode))
-                {
-                    IsValidationVisible = true;
-                    ErrorMessage = StringResources.PostCodeRequired;
-                    return;
-                }
-
-                //if (string.IsNullOrWhiteSpace(this.City))
-                //{
-                //    IsValidationVisible = true;
-                //    ErrorMessage = StringResources.CityRequired;
-                //    return;
-                //}
-
-                //if (string.IsNullOrWhiteSpace(this.State))
-                //{
-                //    IsValidationVisible = true;
-                //    ErrorMessage = StringResources.StateRequired;
-                //    return;
-                //}
-
-                //if (string.IsNullOrWhiteSpace(this.Country))
-                //{
-                //    IsValidationVisible = true;
-                //    ErrorMessage = StringResources.CountryRequired;
-                //    return;
-                //}
-
-                _userDto.CustomerAddress = new AddressDto();            
-                _userDto.CustomerAddress.Country = this.Country;
-                _userDto.CustomerAddress.FlatNumber = this.UnitNumber;
-                _userDto.CustomerAddress.State = this.State;
-                _userDto.CustomerAddress.StreetName = this.Street;
-                _userDto.CustomerAddress.Suburb = this.Suburb;
-                _userDto.CustomerAddress.PostCode = this.PostCode;
-
-                var result = await _addressService.GetPosibleAddresses(_userDto.CustomerAddress.FullAddress );
-                if (result == null || result.completions == null || result.completions.Count == 0)
-                {
-                   // _userDto.CustomerAddress.City = "";
-                    _userDto.CustomerAddress.Country = "";
-                    _userDto.CustomerAddress.FlatNumber = this.UnitNumber;
-                    _userDto.CustomerAddress.State = "";
-                    _userDto.CustomerAddress.StreetName = this.Street;
-                    _userDto.CustomerAddress.Suburb = "";
-                    _userDto.CustomerAddress.PostCode = this.PostCode;
-                    result = await _addressService.GetPosibleAddresses(_userDto.CustomerAddress.FullAddress );
-                }
-
-                if (result != null && result.completions?.Count > 0)
-                {
-                    var cfg = new ActionSheetConfig()
-                    .SetTitle(StringResources.SelectAddress);
-
-                    var noAddress = new AddressFinderResultDto();
-                    noAddress.full_address = StringResources.UserSuggestedAddress;
-                    noAddress.id = "";
-                    result.completions.Insert(0, noAddress);
-
-                    foreach (var item in result.completions)
-                    {
-                        cfg.Add(
-                           item.full_address,
-                            () =>
-                            {
-                                GetAddressMetadata(item.id);
-                            });
-                    }
-                                      
-
-                    cfg.SetCancel(null);
-                    var disp = this.UserDialogs.ActionSheet(cfg);
-
-                }
-                else
-                {
-                    _userDto.CustomerAddress.Country = this.Country;
-                    _userDto.CustomerAddress.FlatNumber = this.UnitNumber;
-                    _userDto.CustomerAddress.State = this.State;
-                    _userDto.CustomerAddress.StreetName = this.Street;
-                    _userDto.CustomerAddress.Suburb = this.Suburb;
-                    _userDto.CustomerAddress.PostCode = this.PostCode;
-
-                }
-
+                AddressPickerParameters parameter = new AddressPickerParameters();
+                parameter.Address = HomeAddress;
+                SubscribeMessagingService();
+                await this.NavigationService.NavigateToAsync<AddressPickerViewModel>(parameter);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.SignUp, "GetPosibleAddresses");
+                ExceptionHelper.ProcessException(ex, UserDialogs, "SignupStepAddressViewModel", "GotoAddressPage");
             }
             finally
             {
@@ -277,51 +131,55 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             }
         }
 
-
-        private async Task GetAddressMetadata(string addressId)
+        private void UnsubscribeMessagingService()
         {
             try
             {
-                this.IsBusy = true;
-                if(!string.IsNullOrEmpty(addressId))
-                {
-                    var result = await _addressService.GetAddressMetadata(addressId);
-                    if (result != null)
-                    {
-                        _userDto.CustomerAddress = result.GetAddressDto();
-                    }
-                }
-                else
-                {
-                    _userDto.CustomerAddress.Country = this.Country;
-                    _userDto.CustomerAddress.FlatNumber = this.UnitNumber;
-                    _userDto.CustomerAddress.State = this.State;
-                    _userDto.CustomerAddress.StreetName = this.Street;
-                    _userDto.CustomerAddress.Suburb = this.Suburb;
-                    _userDto.CustomerAddress.PostCode = this.PostCode;
-                }
-
-                await SaveNewAccount();
+                MessagingCenter.Unsubscribe<AddressPickerViewModel, AddressPickerParameters>(this, MessagingCenterCodes.AddressPickerMessage);
             }
-            catch (System.Exception ex)
+            catch (Exception ex)
             {
-                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.SignUp, "GetAddressMetadata");
-            }
-            finally
-            {
-                this.IsBusy = false;
+                ExceptionHelper.ProcessException(ex, UserDialogs, "SignupStepAddressViewModel", "UnsubscribeMessagingService");
             }
         }
 
+        private void SubscribeMessagingService()
+        {
+            try
+            {
+                MessagingCenter.Subscribe<AddressPickerViewModel, AddressPickerParameters>(this, MessagingCenterCodes.AddressPickerMessage, (sender, arg) =>
+                {
+                    if (arg != null && arg.Address != null)
+                    {                       
+                            this.HomeAddress = arg.Address;                       
+                    }
+                });
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "SignupStepAddressViewModel", "SubscribeMessagingService");
+            }
+        }
+
+      
         private async Task SaveNewAccount()
         {
             try
             {
-                this.IsBusy = true;                 
+                this.IsBusy = true;
+
+                if (HomeAddress == null || string.IsNullOrEmpty(HomeAddress.FullAddress))
+                {
+                    this.DisplayMessage(StringResources.MissingInformation, StringResources.AddressRequired);
+                    return;
+                }
 
                 if (await _userCore.CreateNewCustomer(_userDto))
                 {
                     await UserDialogs.ConfirmAsync(StringResources.AccountCreated, StringResources.NewUser);
+                    await _sessionData.LoginUser(_loginCore,_userDto.Email , _userDto.Password );
+
                     await NavigationService.NavigateToAsync<DropViewModel>();
 
                 }
@@ -344,7 +202,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             }
             catch (Exception ex)
             {
-                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.SignUp, "SaveNewAccount");
+                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.SignUp, "InitializeAsync");
                 this.IsBusy = false;
             }
             return base.InitializeAsync(navigationData);

@@ -167,13 +167,13 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
 
                 LoadGallery();
 
-                _dropoffParcel.Measurements = new MeasurementDto();
-                _dropoffParcel.Measurements.Height = 2;
-                _dropoffParcel.Measurements.Weight = 2;
-                _dropoffParcel.Measurements.Length = 2;
-                _dropoffParcel.Measurements.Width = 2;
-                this.PicturesTaken = new List<PicturesDto>();
-                this.PicturesTaken.Add(new PicturesDto());
+                //_dropoffParcel.Measurements = new MeasurementDto();
+                //_dropoffParcel.Measurements.Height = 2;
+                //_dropoffParcel.Measurements.Weight = 2;
+                //_dropoffParcel.Measurements.Length = 2;
+                //_dropoffParcel.Measurements.Width = 2;
+                //this.PicturesTaken = new List<PicturesDto>();
+                //this.PicturesTaken.Add(new PicturesDto());
 
             }
             catch (Exception ex)

@@ -70,6 +70,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Address is required.
+        /// </summary>
+        public static string AddressRequired {
+            get {
+                return ResourceManager.GetString("AddressRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All fields are required.
         /// </summary>
         public static string AllFieldsRequired {

@@ -357,4 +357,7 @@
   <data name="PictureParcelRequired" xml:space="preserve">
     <value>Enter at least one picture of the parcel</value>
   </data>
+  <data name="AddressRequired" xml:space="preserve">
+    <value>The Address is required</value>
+  </data>
 </root>

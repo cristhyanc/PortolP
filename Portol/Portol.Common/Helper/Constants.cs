@@ -22,8 +22,8 @@ namespace Portol.Common.Helper
         public const string BaseAddressApiUrl = "https://api.addressfinder.io/api/au/address";
 
        //   public const string BaseUrl = "https://portolwebapitest.azurewebsites.net";
-        public const string BaseUrl = "http://192.168.8.100/PortolWeb";
-       //  public const string BaseUrl = "http://desktop-mkvm17a/PortolWeb";
+       public const string BaseUrl = "http://192.168.8.100/PortolWeb";
+      //    public const string BaseUrl = "http://192.168.43.31/portolweb";
         public const string BaseUserApiUrl = BaseUrl + "/api/users";
 
         static ReadOnlyCollection<CountryDto> _countryList;

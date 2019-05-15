@@ -78,7 +78,7 @@ namespace PortolMobile.Forms.Services.Navigation
         {
             try
             {
-                Page page = CreatePage(viewModelType, parameter);
+                Page page = CreatePage(viewModelType);
 
                
                 if (typeof(DropView) == page.GetType() || typeof(ShopView) == page.GetType())
@@ -160,7 +160,7 @@ namespace PortolMobile.Forms.Services.Navigation
             return viewType;
         }
 
-        public Page CreatePage(Type viewModelType, object parameter)
+        public Page CreatePage(Type viewModelType)
         {
             Type pageType = GetPageTypeForViewModel(viewModelType);
             if (pageType == null)
@@ -172,7 +172,7 @@ namespace PortolMobile.Forms.Services.Navigation
             return page;
         }
 
-        public ContentPage CreateContentPage(Type viewModelType, object parameter)
+        public ContentPage CreateContentPage(Type viewModelType)
         {
             Type pageType = GetPageTypeForViewModel(viewModelType);
             if (pageType == null)

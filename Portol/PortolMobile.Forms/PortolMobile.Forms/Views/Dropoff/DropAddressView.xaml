@@ -81,7 +81,7 @@
 
                             <controls:ExtendedEntry Text="{Binding PickupAddressStr }" Placeholder="{i18n:Translate PickupAddress}"  
                                                 OnFocusCommand="{Binding AddressEntryCommand}" OnFocusCommandParameter="pickup" VerticalOptions="Start" 
-                                                Keyboard="Numeric" Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                                                Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
                             <controls:ExtendedEntry Text="{Binding DropoffAddressStr }" Placeholder="{i18n:Translate DropoffAddress}"  VerticalOptions="Start" 
                                                 OnFocusCommand="{Binding AddressEntryCommand}" OnFocusCommandParameter="dropoff"
                                                 Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>

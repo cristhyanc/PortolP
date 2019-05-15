@@ -11,9 +11,12 @@ namespace PortolMobile.Forms
     {
         public CustomerDto User { get; private set; }
 
-        public async Task LoginUser(ILoginCore userCore, string email, string password)
+        
+        
+
+        public async Task LoginUser(ILoginCore loginCore, string email, string password)
         {
-            var result = await userCore.Authenticate(email, password);
+            var result = await loginCore.Authenticate(email, password);
             User = result;
         }
 

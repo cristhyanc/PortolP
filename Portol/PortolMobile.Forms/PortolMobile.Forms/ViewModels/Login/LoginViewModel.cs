@@ -4,9 +4,6 @@ using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Helper;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels.SignUp;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -16,7 +13,7 @@ namespace PortolMobile.Forms.ViewModels.Login
     {
 
       
-        private readonly ILoginCore _userCore;
+        private readonly ILoginCore _loginCore;
 
         public ICommand LoginButtonCommand { get; private set; }
         public ICommand RecoverButtonCommand { get; private set; }
@@ -55,14 +52,14 @@ namespace PortolMobile.Forms.ViewModels.Login
         public LoginViewModel(ILoginCore userCore, INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData ) : base(navigationService, userDialogs)
         {
           
-            _userCore = userCore;
+            _loginCore = userCore;
             LoginButtonCommand = new Command(LoginUser, () => { return !IsBusy; });
             RecoverButtonCommand = new Command(GoToRecoverPassword, () => { return !IsBusy; });
             SignupCommand = new Command(GoToSignup, () => { return !IsBusy; });
             _sessionData = sessionData;
 
-            this.EmailText = "cristhyan@msn.com";
-            this.PasswordText = "asd";
+           // this.EmailText = "cristhyan@msn.com";
+            //this.PasswordText = "asd";
 
         }
 
@@ -111,7 +108,7 @@ namespace PortolMobile.Forms.ViewModels.Login
                 this.IsBusy = true;
                 if (this.PasswordText?.Length > 0 && this.EmailText?.Length > 0)
                 {
-                    await _sessionData.LoginUser(_userCore, this.EmailText, this.PasswordText);                   
+                    await _sessionData.LoginUser(_loginCore, this.EmailText, this.PasswordText);                   
                     await NavigationService.NavigateToAsync<DropViewModel>();
                 }
                 else

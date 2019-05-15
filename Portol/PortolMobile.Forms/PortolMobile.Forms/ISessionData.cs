@@ -11,7 +11,7 @@ namespace PortolMobile.Forms
     {
          CustomerDto User { get; }
 
-        Task LoginUser(ILoginCore userCore, string email, string password);
+        Task LoginUser(ILoginCore loginCore, string email, string password);
         string GetCurrentToken();
     }
 }

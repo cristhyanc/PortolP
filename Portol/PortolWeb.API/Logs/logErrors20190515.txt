@@ -1,0 +1,16 @@
+2019-05-15 18:07:32.645 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-05-15 18:07:32.689 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-05-15 18:07:32.712 +10:00 [WRN] No XML encryptor configured. Key "4b357be5-148d-43dd-82b2-5c0b9f3843e6" may be persisted to storage in unencrypted form.
+2019-05-15 18:07:33.158 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-05-15 19:11:20.486 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-05-15 19:11:20.512 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-05-15 19:11:20.528 +10:00 [WRN] No XML encryptor configured. Key "19771613-a6f4-4eb3-9dfa-a998a1701ca1" may be persisted to storage in unencrypted form.
+2019-05-15 19:11:21.052 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-05-15 21:15:17.735 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-05-15 21:15:17.773 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-05-15 21:15:17.795 +10:00 [WRN] No XML encryptor configured. Key "71525402-76c6-43af-be70-0a69b8a3954c" may be persisted to storage in unencrypted form.
+2019-05-15 21:15:18.279 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-05-15 21:59:34.806 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-05-15 21:59:34.845 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-05-15 21:59:34.867 +10:00 [WRN] No XML encryptor configured. Key "0ff0d3b9-efac-41db-beb2-c9a95268d3ff" may be persisted to storage in unencrypted form.
+2019-05-15 21:59:35.405 +10:00 [WRN] Failed to determine the https port for redirect.

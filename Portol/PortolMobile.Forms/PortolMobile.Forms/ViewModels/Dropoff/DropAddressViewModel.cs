@@ -211,14 +211,14 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 }
 
                 //sample
-                _pickUpAddress = new AddressDto();
-                _pickUpAddress.AddressValidated = true;
-                _pickUpAddress.Country = "SD";
-                _pickUpAddress.State = "SD";
-                _pickUpAddress.StreetName = "SD";
-                PickUpAddress = _pickUpAddress;
-                DropoffAddress = PickUpAddress;
-                Description = "asd";
+                //_pickUpAddress = new AddressDto();
+                //_pickUpAddress.AddressValidated = true;
+                //_pickUpAddress.Country = "SD";
+                //_pickUpAddress.State = "SD";
+                //_pickUpAddress.StreetName = "SD";
+                //PickUpAddress = _pickUpAddress;
+                //DropoffAddress = PickUpAddress;
+                //Description = "asd";
                 //-Sample
             }
             catch (Exception ex)

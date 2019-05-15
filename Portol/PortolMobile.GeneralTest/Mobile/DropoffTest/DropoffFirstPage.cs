@@ -36,7 +36,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
         {
             _loginServiceMK = new LoginServiceMK(uow);
             _sessionData = new SessionDataMK();
-            _sessionData.LoginUser(_loginServiceMK, "", "").Wait();
+           // _sessionData.LoginUser(_loginServiceMK, "", "").Wait();
             _mobileServiceMK = new CustomerMobileServiceMK(uow);
             _navigationService = new NavigationServiceMK();
             _userDialogs = new UserDialogsMK();
