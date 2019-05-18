@@ -13,6 +13,8 @@ namespace PortolWeb.DA
         public DbSet<CodeVerification> CodeVerifications { get; set; }
         public DbSet<Script> Scripts { get; set; }
         public DbSet<Address> Addresses { get; set; }
+        public DbSet<VehiculeType> VehiculeType { get; set; }
+        public DbSet<VehiculeTypeRange> VehiculeTypeRange { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {

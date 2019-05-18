@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage;
+using PortolWeb.Entities.Repository;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,9 +8,13 @@ namespace PortolWeb.Entities
 {
     public interface IUnitOfWork
     {
-        IRepositoryBasey<Customer> CustomerRepository { get; }
-        IRepositoryBasey<Address> AddressRepository { get; }
-        IRepositoryBasey<CodeVerification> CodeVerificationRepository { get; }
+        IDropoffRepository DropoffRangeRepository { get; }
+        IRepositoryBase<VehiculeTypeRange> VehiculeTypeRangeRepository { get; }
+        IRepositoryBase<Picture> PictureRepository { get; }
+        IVehiculeTypeRepository VehiculeTypeRepository { get; }
+        IRepositoryBase<Customer> CustomerRepository { get; }
+        IRepositoryBase<Address> AddressRepository { get; }
+        IRepositoryBase<CodeVerification> CodeVerificationRepository { get; }
         IDataContext Context { get; }
         IDbContextTransaction BeginTransaction();
         void CommitTransaction();

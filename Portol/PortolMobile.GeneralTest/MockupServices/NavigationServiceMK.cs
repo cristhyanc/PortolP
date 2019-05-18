@@ -12,12 +12,12 @@ namespace PortolMobile.GeneralTest.MockupServices
         public Type viewModel { get; set; }
 
         public object Parameter;
-        public ContentPage CreateContentPage(Type viewModelType, object parameter)
+        public ContentPage CreateContentPage(Type viewModelType)
         {
             throw new NotImplementedException();
         }
 
-        public Page CreatePage(Type viewModelType, object parameter)
+        public Page CreatePage(Type viewModelType )
         {
             throw new NotImplementedException();
         }

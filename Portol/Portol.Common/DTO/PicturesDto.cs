@@ -6,13 +6,14 @@ using Xamarin.Forms;
 
 namespace Portol.Common.DTO
 {
-   public class PicturesDto
+   public class PictureDto
     {
         public Guid PictureID { get; set; }
         public string ImageUrl { get; set; }
+        public Guid ParentID { get; set; }
         public ImageSource Image { get; set; }
 
-        public PicturesDto()
+        public PictureDto()
         {
             PictureID = Guid.NewGuid();
         }

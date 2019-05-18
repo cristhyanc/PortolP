@@ -7,6 +7,7 @@ namespace Portol.Common.Interfaces.PortolWeb
 {
    public interface IDropoffService
     {
-       
+        IEnumerable<VehiculeTypeDto> GetVehiculeTypesAvailables();
+        Guid CreateDropoffRequest(DropoffDto dropoff);
     }
 }

@@ -54,6 +54,7 @@ namespace PortolMobile.GeneralTest.Api
         {
             SetupCustomerInfo(uow);
             SetupCodeVerificationInfo(uow);
+            SetupVehiculeTypeInfo(uow);
         }
 
         private  void SetupCustomerInfo(IUnitOfWork uow)
@@ -86,6 +87,24 @@ namespace PortolMobile.GeneralTest.Api
             "insert into tblCodeVerification (CodeNumber, PhoneNumber, CountryCode, Created) values (9876, '2742042813', 25, '4/19/2019');" +
             "insert into tblCodeVerification (CodeNumber, PhoneNumber, CountryCode, Created) values (6704, '5324595220', 1, '4/19/2019');" +
             "insert into tblCodeVerification (CodeNumber, PhoneNumber, CountryCode, Created) values (8413, '5534455863', 41, '4/21/2019');"
+            );
+
+        }
+
+        private void SetupVehiculeTypeInfo(IUnitOfWork uow)
+        {
+            uow.Context.Database.ExecuteSqlCommand("truncate table tblVehiculeTypeRange");
+            uow.Context.Database.ExecuteSqlCommand("truncate table tblVehiculeType");
+            uow.Context.Database.ExecuteSqlCommand(
+            "INSERT [tblVehiculeType] ([VehiculeTypeID], [Name], [Description], [StartingFee], [CostPerkilometre], [MaximumDistance], [MaximumWeight], [MaximumWidth], [MaximumHeight], [MaximumLength]) VALUES (N'f2257897-520f-4653-8a4e-0bf09bd8c7c2', N'bicycle', N'bicycle', 5.0000, 0.7000, 4, 10, 40, 40, 40);" +
+            "INSERT [tblVehiculeType] ([VehiculeTypeID], [Name], [Description], [StartingFee], [CostPerkilometre], [MaximumDistance], [MaximumWeight], [MaximumWidth], [MaximumHeight], [MaximumLength]) VALUES (N'5f503f6e-b2f5-40b6-b723-50823655de8e', N'Van', N'Van car', 7.0000, 1.0000, 300, 100, 300, 300, 300);" +
+            "INSERT [tblVehiculeType] ([VehiculeTypeID], [Name], [Description], [StartingFee], [CostPerkilometre], [MaximumDistance], [MaximumWeight], [MaximumWidth], [MaximumHeight], [MaximumLength]) VALUES (N'8bab89c9-0e24-4d05-a371-5b994328de8b', N'Car', N'Car', 3.5000, 0.5000, 300, 50, 100, 100, 100);" +
+            "INSERT [tblVehiculeTypeRange] ([VehiculeTypeRangeID], [VehiculeTypeID], [RangeType], [MinimumValue], [MaximumValue], [CostPerExtraUnit], [Unit]) VALUES (N'de4edcb5-9ae0-46b2-8309-1d93e2d06490', N'8bab89c9-0e24-4d05-a371-5b994328de8b', 2, CAST(0 AS Decimal(18, 0)), CAST(20 AS Decimal(18, 0)), 0.0000, CAST(1.00 AS Decimal(18, 2)));" +
+            "INSERT [tblVehiculeTypeRange] ([VehiculeTypeRangeID], [VehiculeTypeID], [RangeType], [MinimumValue], [MaximumValue], [CostPerExtraUnit], [Unit]) VALUES (N'4324666c-bdc2-4a4a-9843-308c4af166d4', N'8bab89c9-0e24-4d05-a371-5b994328de8b', 2, CAST(21 AS Decimal(18, 0)), CAST(40 AS Decimal(18, 0)), 0.0500, CAST(1.00 AS Decimal(18, 2)));" +
+            "INSERT [tblVehiculeTypeRange] ([VehiculeTypeRangeID], [VehiculeTypeID], [RangeType], [MinimumValue], [MaximumValue], [CostPerExtraUnit], [Unit]) VALUES (N'fac77ba6-61d6-415a-bc5b-356296f6c7a1', N'8bab89c9-0e24-4d05-a371-5b994328de8b', 1, CAST(0 AS Decimal(18, 0)), CAST(300000 AS Decimal(18, 0)), 0.0000, CAST(50000.00 AS Decimal(18, 2)));" +
+            "INSERT [tblVehiculeTypeRange] ([VehiculeTypeRangeID], [VehiculeTypeID], [RangeType], [MinimumValue], [MaximumValue], [CostPerExtraUnit], [Unit]) VALUES (N'd449c11a-ab9c-47d0-8948-651fea76c8dc', N'f2257897-520f-4653-8a4e-0bf09bd8c7c2', 1, CAST(0 AS Decimal(18, 0)), CAST(64000 AS Decimal(18, 0)), 0.0000, CAST(1.00 AS Decimal(18, 2)));" +
+            "INSERT [tblVehiculeTypeRange] ([VehiculeTypeRangeID], [VehiculeTypeID], [RangeType], [MinimumValue], [MaximumValue], [CostPerExtraUnit], [Unit]) VALUES (N'7b8bae93-5cbe-4a8e-a8ee-9d5a40c9cbf4', N'8bab89c9-0e24-4d05-a371-5b994328de8b', 2, CAST(41 AS Decimal(18, 0)), CAST(50 AS Decimal(18, 0)), 0.0900, CAST(0.50 AS Decimal(18, 2)));" +
+            "INSERT [tblVehiculeTypeRange] ([VehiculeTypeRangeID], [VehiculeTypeID], [RangeType], [MinimumValue], [MaximumValue], [CostPerExtraUnit], [Unit]) VALUES (N'b84393db-dd89-4004-a3b7-d54493b76830', N'8bab89c9-0e24-4d05-a371-5b994328de8b', 1, CAST(500001 AS Decimal(18, 0)), CAST(1000000 AS Decimal(18, 0)), 0.2000, CAST(70000.00 AS Decimal(18, 2)));"
             );
 
         }

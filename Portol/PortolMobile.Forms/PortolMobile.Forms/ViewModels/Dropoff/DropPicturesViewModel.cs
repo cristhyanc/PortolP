@@ -23,8 +23,8 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
 
         DropoffDto _dropoffParcel;
 
-        private List<PicturesDto> _imagesTaken;
-        public List<PicturesDto> PicturesTaken
+        private List<PictureDto> _imagesTaken;
+        public List<PictureDto> PicturesTaken
         {
             get
             {
@@ -172,8 +172,8 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 //_dropoffParcel.Measurements.Weight = 2;
                 //_dropoffParcel.Measurements.Length = 2;
                 //_dropoffParcel.Measurements.Width = 2;
-                //this.PicturesTaken = new List<PicturesDto>();
-                //this.PicturesTaken.Add(new PicturesDto());
+                //this.PicturesTaken = new List<PictureDto>();
+                //this.PicturesTaken.Add(new PictureDto());
 
             }
             catch (Exception ex)
@@ -219,7 +219,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             try
             {
-                MessagingCenter.Unsubscribe<PicturePickerViewModel, List<PicturesDto>>(this, MessagingCenterCodes.PicturePickerMessage);
+                MessagingCenter.Unsubscribe<PicturePickerViewModel, List<PictureDto>>(this, MessagingCenterCodes.PicturePickerMessage);
                 MessagingCenter.Unsubscribe<DropMeasurementsViewModel, MeasurementDto>(this, MessagingCenterCodes.MeasurementMessage);
             }
             catch (Exception ex)
@@ -232,7 +232,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             try
             {
-                MessagingCenter.Subscribe<PicturePickerViewModel, List<PicturesDto>>(this, MessagingCenterCodes.PicturePickerMessage, (sender, arg) =>
+                MessagingCenter.Subscribe<PicturePickerViewModel, List<PictureDto>>(this, MessagingCenterCodes.PicturePickerMessage, (sender, arg) =>
                 {
                     if (arg?.Count > 0)
                     {

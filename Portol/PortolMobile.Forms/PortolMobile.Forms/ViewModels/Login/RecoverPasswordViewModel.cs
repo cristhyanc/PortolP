@@ -277,7 +277,7 @@ namespace PortolMobile.Forms.ViewModels.Login
            
             _userCore = userCore;
             CountryItems = new List<CountryDto>(Constants.CountryList);
-            CountrySelected = CountryItems.Where(x => x.Country == EnumCountries.Australia).FirstOrDefault();
+            CountrySelected = CountryItems.Where(x => x.Country == AvailableCountries.Australia).FirstOrDefault();
             SendCodeButtonCommand = new Command(SendCodeVerification, () => { return !IsBusy; });
             ReSendCodeButtonCommand = new Command(ResendCode, () => { return !IsBusy; });
             VerifyCodeButtonCommand = new Command(VerifyCodeVerification, () => { return !IsBusy; });

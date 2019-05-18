@@ -130,7 +130,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             _sessionData = sessionData;
             AddressEntryCommand = new Command<string>(((x) => GotoAddressPage(x)), (x) => { return !IsBusy; });
             GotoPicturesCommand = new Command((() => GotoPicturesPage()), () => { return !IsBusy; });
-            //  this.Description = "ddd";
+            
         }
 
         public async Task GotoPicturesPage()
@@ -218,7 +218,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 //_pickUpAddress.StreetName = "SD";
                 //PickUpAddress = _pickUpAddress;
                 //DropoffAddress = PickUpAddress;
-                //Description = "asd";
+               // Description = "asd";
                 //-Sample
             }
             catch (Exception ex)

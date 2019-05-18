@@ -29,8 +29,8 @@ namespace PortolMobile.Forms.ViewModels.UserControls
         public ICommand DeletePhotoCommand { get; private set; }
 
 
-        PicturesDto _selectedPicture;
-        public PicturesDto SelectedPicture
+        PictureDto _selectedPicture;
+        public PictureDto SelectedPicture
         {
             get
             {
@@ -44,8 +44,8 @@ namespace PortolMobile.Forms.ViewModels.UserControls
 
         }
 
-        ObservableCollection<PicturesDto> _pictures;
-        public ObservableCollection<PicturesDto> Pictures
+        ObservableCollection<PictureDto> _pictures;
+        public ObservableCollection<PictureDto> Pictures
         {
             get
             {
@@ -68,7 +68,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
             SelectedPhotoCommand = new Command<Guid>(DisplayPhotoSelected, (x) => { return !IsBusy; });
             DoneCommand = new Command(GoBack, () => { return !IsBusy; });
             DeletePhotoCommand = new Command(DeletePhoto, () => { return !IsBusy; });
-            Pictures = new ObservableCollection<PicturesDto>();
+            Pictures = new ObservableCollection<PictureDto>();
         }
 
 
@@ -101,8 +101,8 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                 this.IsBusy = true;
                 if (navigationData != null)
                 {
-                    IEnumerable<PicturesDto> picturesDtos = (IEnumerable<PicturesDto>)navigationData;
-                    Pictures = new ObservableCollection<PicturesDto>(picturesDtos);
+                    IEnumerable<PictureDto> picturesDtos = (IEnumerable<PictureDto>)navigationData;
+                    Pictures = new ObservableCollection<PictureDto>(picturesDtos);
                 }
 
             }
@@ -126,7 +126,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                     return;
                 }
                 this.IsBusy = true;
-                MessagingCenter.Send<PicturePickerViewModel, List<PicturesDto>>(this, MessagingCenterCodes.PicturePickerMessage, this.Pictures.ToList());
+                MessagingCenter.Send<PicturePickerViewModel, List<PictureDto>>(this, MessagingCenterCodes.PicturePickerMessage, this.Pictures.ToList());
                 await this.NavigationService.GoToPreviousPageAsync();
             }
             catch (Exception ex)
@@ -181,7 +181,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                 this.SelectedPicture = null;
                 await ViewModelLocator.CheckCameraStoragePermission();                
                 MediaFile CurrentImage;
-                PicturesDto pictures = new PicturesDto();
+                PictureDto pictures = new PictureDto();
 
                 if (!_media.IsCameraAvailable || !_media.IsTakePhotoSupported)
                 {

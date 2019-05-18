@@ -14,8 +14,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Portol.Calculator.Dropoff;
+using Portol.Common.Interfaces;
 using Portol.Common.Interfaces.PortolWeb;
 using PortolWeb.API.Helper;
+using PortolWeb.Core.DropoffServices;
 using PortolWeb.Core.SmsServices;
 using PortolWeb.Core.UserServices;
 using PortolWeb.DA;
@@ -88,10 +91,12 @@ namespace PortolWeb.API
             services.AddSingleton<ISmsApi>(smsApi);
             services.AddScoped<ISmsService, SmsService>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IDropoffService, DropoffService>();
             services.AddScoped<IDatabaseManagement, DatabaseManagement>();
             services.AddScoped<IDataContext, DataContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-          
+            services.AddScoped<IDropoffCalculator, DropoffCalculator>();
+            
             // loggerFactory.AddSerilog();
         }
 

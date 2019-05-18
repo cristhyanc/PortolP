@@ -174,7 +174,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                     this.DisplayMessage(StringResources.MissingInformation, StringResources.AddressRequired);
                     return;
                 }
-
+                _userDto.CustomerAddress = this.HomeAddress;
                 if (await _userCore.CreateNewCustomer(_userDto))
                 {
                     await UserDialogs.ConfirmAsync(StringResources.AccountCreated, StringResources.NewUser);

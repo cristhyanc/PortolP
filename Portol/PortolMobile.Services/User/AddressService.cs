@@ -41,6 +41,7 @@ namespace PortolMobile.Services.User
             NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
             queryString["format"] = "json";
             queryString["key"] = _addressKey;
+            queryString["gps"] = "1";
             queryString["secret"] = _addressSecret;
             queryString["domain"] = Constants.PortolDomain;
             queryString["id"] = addressId;

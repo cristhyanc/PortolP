@@ -13,6 +13,8 @@ namespace PortolWeb.Entities
         DbSet<CodeVerification> CodeVerifications { get; set; }
         DbSet<Business> Businesses { get; set; }
         DbSet<Script> Scripts { get; set; }
+        DbSet<VehiculeType> VehiculeType { get; set; }
+        DbSet<VehiculeTypeRange> VehiculeTypeRange { get; set; }
         int SaveChanges();
         DatabaseFacade Database { get; }
     }

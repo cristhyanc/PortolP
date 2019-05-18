@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Portol.Calculator\Portol.Calculator.csproj" />
     <ProjectReference Include="..\Portol.Common\Portol.Common.csproj" />
     <ProjectReference Include="..\PortolWeb.Entities\PortolWeb.Entities.csproj" />
   </ItemGroup>

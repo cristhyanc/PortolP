@@ -23,7 +23,9 @@ namespace Portol.Common.Helper
 
        //   public const string BaseUrl = "https://portolwebapitest.azurewebsites.net";
        public const string BaseUrl = "http://192.168.8.100/PortolWeb";
-      //    public const string BaseUrl = "http://192.168.43.31/portolweb";
+        //    public const string BaseUrl = "http://192.168.43.31/portolweb";
+
+        public const string BaseDropoffApiUrl = BaseUrl + "/api/dropoff";
         public const string BaseUserApiUrl = BaseUrl + "/api/users";
 
         static ReadOnlyCollection<CountryDto> _countryList;
@@ -36,13 +38,13 @@ namespace Portol.Common.Helper
                 {
                     var countries = new List<CountryDto>();
 
-                    var country = new CountryDto(EnumCountries.Australia );
+                    var country = new CountryDto(AvailableCountries.Australia );
                     countries.Add(country);
 
-                    country = new CountryDto(EnumCountries.NewZealand);
+                    country = new CountryDto(AvailableCountries.NewZealand);
                     countries.Add(country);
 
-                    country = new CountryDto(EnumCountries.UnitedKingdom );
+                    country = new CountryDto(AvailableCountries.UnitedKingdom );
                     countries.Add(country);
                     _countryList = countries.AsReadOnly();
                 }
@@ -56,30 +58,30 @@ namespace Portol.Common.Helper
 
     public class HelperClass
     {
-        public static string GetCountryName(EnumCountries enumCountries)
+        public static string GetCountryName(AvailableCountries enumCountries)
         {
             switch (enumCountries)
             {
-                case EnumCountries.Australia:
+                case AvailableCountries.Australia:
                     return StringResources.Australia;                   
-                case EnumCountries.NewZealand:
+                case AvailableCountries.NewZealand:
                     return StringResources.NewZealand;
-                case EnumCountries.UnitedKingdom:
+                case AvailableCountries.UnitedKingdom:
                     return StringResources.UnitedKingdom;
                 default:
                     return "";
             }
         }
 
-        public static string GetCountryFlagFile(EnumCountries enumCountries)
+        public static string GetCountryFlagFile(AvailableCountries enumCountries)
         {
             switch (enumCountries)
             {
-                case EnumCountries.Australia:
+                case AvailableCountries.Australia:
                     return "resource://PortolMobile.Forms.Resources.ic_australia.svg?assembly=PortolMobile.Forms";
-                case EnumCountries.NewZealand:
+                case AvailableCountries.NewZealand:
                     return "resource://PortolMobile.Forms.Resources.ic_newzealand.svg?assembly=PortolMobile.Forms";
-                case EnumCountries.UnitedKingdom:
+                case AvailableCountries.UnitedKingdom:
                     return "resource://PortolMobile.Forms.Resources.ic_unitedkingdom.svg?assembly=PortolMobile.Forms";
                 default:
                     return "resource://PortolMobile.Forms.Resources.ic_australia.svg?assembly=PortolMobile.Forms";
@@ -118,6 +120,13 @@ namespace Portol.Common.Helper
         }
     }
 
+    public enum VehiculeRangeType
+    {
+        Volumen=1,
+        Weight=2
+
+    }
+
     public enum PaymentMethodType
     {
         MasterCard = 1,
@@ -125,11 +134,27 @@ namespace Portol.Common.Helper
         PayPal = 3,
     }
 
-    public enum EnumCountries
+    public enum AvailableCountries
     {
         Australia = 61,
         NewZealand = 64,
         UnitedKingdom = 44,
     }
 
+    public enum ParentType
+    {
+        Customer=1,
+        Dropoff=2
+    }
+    public enum DeliveryStatus
+    {
+        NoStarted=1,
+        InProgress=2,
+        Rejected=3,
+        Delivered=4,
+        Cancelled=5,
+        SearchingDriver=6
+    }
+
+    
 }

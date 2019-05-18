@@ -17,8 +17,7 @@ namespace PortolMobile.GeneralTest.MockupServices
         }
         public Task<CustomerDto> Authenticate(string email, string password)
         {
-            Customer customer = new Customer();
-            customer = customer.GetCustomerByEmail(uow, email);
+            Customer customer  = Customer.GetCustomerByEmail(uow, email);
             Task<CustomerDto> task = Task.Run(() => {
                 return Customer.ORM(customer);
 

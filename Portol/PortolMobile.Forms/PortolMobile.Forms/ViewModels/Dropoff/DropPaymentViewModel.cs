@@ -1,6 +1,7 @@
 ﻿using Acr.UserDialogs;
 using Portol.Common;
 using Portol.Common.DTO;
+using Portol.Common.Interfaces;
 using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Helper;
 using PortolMobile.Forms.Services.Navigation;
@@ -18,6 +19,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
     {
         IUserCore _userCore;
         public ICommand PaymentMethodListCommand { get; private set; }
+        public ICommand ConfirmCommand { get; private set; }
 
         DropoffDto DropoffDetails { get; set; }
 
@@ -49,13 +51,66 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             }
         }
 
+        decimal _estimatedCost;
+        public decimal EstimatedCost
+        {
+            get
+            {
+                return _estimatedCost;
+            }
+            set
+            {
+                _estimatedCost = value;
+                OnPropertyChanged();
+            }
+        }
 
-        public DropPaymentViewModel(IUserCore userCore, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
+        IDropoffCalculator _dropoffCalculatorService;
+        IDropoffCore _dropoffCore;
+
+        public DropPaymentViewModel(IUserCore userCore, INavigationService navigationService, IUserDialogs userDialogs, IDropoffCalculator dropoffCalculator, IDropoffCore dropoffCore ) : base(navigationService, userDialogs)
         {
             _userCore = userCore;
             PaymentMethodListCommand = new Command((() => OpenPaymentList()), () => { return !IsBusy; });
+            ConfirmCommand = new Command((() => ConfirmService()), () => { return !IsBusy; });
+            _dropoffCalculatorService = dropoffCalculator;
+            _dropoffCore = dropoffCore;
+           
         }
 
+
+        private async void ConfirmService()
+        {
+            try
+            {
+                this.IsBusy = true;
+
+                if (this.PaymentMethodSelected == null)
+                {
+                    //Go to payment page
+                }
+
+                if (this.EstimatedCost == 0)
+                {
+                    UserDialogs.Alert(StringResources.CostNotEstimatedTryAgain);
+                    return;
+                }
+
+                this.DropoffDetails.EstimatedCost = this.EstimatedCost;
+                this.DropoffDetails.PaymentMethod = this.PaymentMethodSelected;
+
+                var result = await _dropoffCore.CreateDropoffRequest(this.DropoffDetails);
+                this.DropoffDetails.DropoffID = result;
+            }
+            catch (Exception ex)
+            {               
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropPaymentViewModel", "InitializeAsync");
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
+        }
 
         private void OpenPaymentList()
         {
@@ -92,7 +147,9 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             try
             {
-                this.IsBusy = true;
+                UserDialogs.ShowLoading("Calculating...");
+               
+
                 DropoffDetails = (DropoffDto)navigationData;
                 PaymentMethods = _userCore.GetUserPaymentMethods();
                 if(PaymentMethods?.Count>0)
@@ -103,16 +160,34 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                         PaymentMethodSelected = PaymentMethods.FirstOrDefault();
                     }
                 }
+                EstimatePrice();
             }
             catch (Exception ex)
             {
+                this.IsBusy = false;
+                this.UserDialogs.HideLoading();
                 ExceptionHelper.ProcessException(ex, UserDialogs, "DropPaymentViewModel", "InitializeAsync");               
+            }           
+            return base.InitializeAsync(navigationData);
+        }
+
+        private async Task EstimatePrice()
+        {
+            try
+            {
+               
+                List<VehiculeTypeDto> vehiculeTypesAvailable = await _dropoffCore.GetVehiculeTypesAvailables();
+                EstimatedCost = await _dropoffCalculatorService.EstimatePrice(DropoffDetails.Measurements, DropoffDetails.PickupAddress, DropoffDetails.DropoffAddress, vehiculeTypesAvailable);
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropPaymentViewModel", "EstimatePrice");
             }
             finally
             {
                 this.IsBusy = false;
+                this.UserDialogs.HideLoading();
             }
-            return base.InitializeAsync(navigationData);
         }
     }
 }

@@ -79,7 +79,8 @@ namespace PortolWeb.Entities
             if (this.CurrentAddress != null)
             {
                 this.CurrentAddress.IsCurrentAddress = true;
-                this.CurrentAddress.CustomerID = this.CustomerID;
+                this.CurrentAddress.ParentID = this.CustomerID;
+                this.CurrentAddress.ParentAddressType = ParentType.Customer;
                 _uow.AddressRepository.Insert(this.CurrentAddress);
             }
         }
@@ -109,7 +110,7 @@ namespace PortolWeb.Entities
             var customer = _uow.CustomerRepository.Get(x => x.CustomerID== customerId);
             if (customer != null)
             {
-                customer.CurrentAddress = _uow.AddressRepository.Get(x => x.CustomerID == customer.CustomerID);
+                customer.CurrentAddress = _uow.AddressRepository.Get(x => x.ParentID == customer.CustomerID && x.ParentAddressType==ParentType.Customer );
 
             }
             return customer;
@@ -134,13 +135,12 @@ namespace PortolWeb.Entities
             result.IsGuess = user.IsGuess;
             if (user.CurrentAddress !=null)
             {
-                result.CustomerAddress.PostCode = user.CurrentAddress.PostCode;
-                result.CustomerAddress.Country = user.CurrentAddress.Country;
-                result.CustomerAddress.FlatNumber = user.CurrentAddress.FlatNumber;
-                result.CustomerAddress.State = user.CurrentAddress.State;
-                result.CustomerAddress.StreetName = user.CurrentAddress.StreetName;
-                result.CustomerAddress.Suburb = user.CurrentAddress.Suburb;
+                result.CustomerAddress.AddressID = user.CurrentAddress.AddressID;
+                result.CustomerAddress.ParentID = user.CurrentAddress.ParentID;
                 result.CustomerAddress.AddressValidated = user.CurrentAddress.AddressValidated;
+                result.CustomerAddress.FullAddress = user.CurrentAddress.FullAddress;
+                result.CustomerAddress.Latitude = user.CurrentAddress.Latitude;
+                result.CustomerAddress.Longitude = user.CurrentAddress.Longitude;                
             }
            
             return result;
@@ -164,13 +164,12 @@ namespace PortolWeb.Entities
             if (newUser.CustomerAddress != null)
             {
                 user.CurrentAddress = new Address();
-                user.CurrentAddress.CustomerID = newUser.CustomerID;
-                user.CurrentAddress.PostCode = newUser.CustomerAddress.PostCode;
-                user.CurrentAddress.Country = newUser.CustomerAddress.Country;
-                user.CurrentAddress.FlatNumber = newUser.CustomerAddress.FlatNumber;
-                user.CurrentAddress.State = newUser.CustomerAddress.State;
-                user.CurrentAddress.StreetName = newUser.CustomerAddress.StreetName;
-                user.CurrentAddress.Suburb = newUser.CustomerAddress.Suburb;
+                user.CurrentAddress.ParentID = newUser.CustomerID;
+                user.CurrentAddress.FullAddress = newUser.CustomerAddress.FullAddress;
+                user.CurrentAddress.Latitude = newUser.CustomerAddress.Latitude;
+                user.CurrentAddress.Longitude = newUser.CustomerAddress.Longitude;
+                user.CurrentAddress.IsCurrentAddress = true;
+                user.CurrentAddress.ParentAddressType = ParentType.Customer;
                 user.CurrentAddress.AddressValidated = newUser.CustomerAddress.AddressValidated;
             }
             return user;

@@ -23,6 +23,7 @@
 
   <ItemGroup>
     <None Include="..\PortolWeb.API\Helper\Scripts\S000001FirstTables.sql" Link="Api\Repository\SQL\S000001FirstTables.sql" />
+    <None Include="..\PortolWeb.API\Helper\Scripts\S000002VehiculeTypeTables.sql" Link="Api\Repository\SQL\S000002VehiculeTypeTables.sql" />
   </ItemGroup>
 
   <ItemGroup>

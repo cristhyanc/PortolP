@@ -5,14 +5,20 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
+using Portol.Calculator.Dropoff;
+using Portol.Calculator.Map;
+using Portol.Common.Interfaces;
 using Portol.Common.Interfaces.PortolMobile;
+using PortolMobile.Core.DropOff;
 using PortolMobile.Core.User;
+using PortolMobile.Forms.Services;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels;
 using PortolMobile.Forms.ViewModels.Dropoff;
 using PortolMobile.Forms.ViewModels.Login;
 using PortolMobile.Forms.ViewModels.SignUp;
 using PortolMobile.Forms.ViewModels.UserControls;
+using PortolMobile.Services.Dropoff;
 using PortolMobile.Services.Rest;
 using PortolMobile.Services.User;
 using System;
@@ -73,9 +79,14 @@ namespace PortolMobile.Forms
                 
                 builder.Register(c => UserDialogs.Instance).As<IUserDialogs>().SingleInstance();
                 builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
-                
 
+                builder.RegisterType<DropoffMobileService>().As<IDropoffMobileService>();
+                builder.RegisterType<LoginService>().As<ILoginService>();
 
+                builder.RegisterType<DropoffCalculator>().As<IDropoffCalculator>();
+                builder.Register(c => new MapService("AjPaETRxkyP3rSDJ7vu2nce9mlY66bgZu0DvY_eIVpeSM5PES53q_9IGzOrxahcL")).As<IMapService>();
+
+                builder.RegisterType<DropoffCore>().As<IDropoffCore>();
                 builder.Register(c => CrossMedia.Current).As<IMedia>();
 
                 builder.RegisterType<LoginService>().As<ILoginService>();

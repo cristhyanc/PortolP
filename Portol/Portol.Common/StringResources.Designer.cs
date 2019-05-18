@@ -133,6 +133,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Cost couldn&apos;t be estimated, pls try again.
+        /// </summary>
+        public static string CostNotEstimatedTryAgain {
+            get {
+                return ResourceManager.GetString("CostNotEstimatedTryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Countries.
         /// </summary>
         public static string Countries {
@@ -475,6 +484,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Looks like you next to the destination.
+        /// </summary>
+        public static string NexToDestination {
+            get {
+                return ResourceManager.GetString("NexToDestination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No.
         /// </summary>
         public static string No {
@@ -543,6 +561,15 @@ namespace Portol.Common {
         public static string NotMatchPasswords {
             get {
                 return ResourceManager.GetString("NotMatchPasswords", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Looks like we don&apos;t have an available vehicule for this type of parcel .
+        /// </summary>
+        public static string NoVehiculeTypeForParcel {
+            get {
+                return ResourceManager.GetString("NoVehiculeTypeForParcel", resourceCulture);
             }
         }
         
@@ -759,6 +786,15 @@ namespace Portol.Common {
         public static string UserSuggestedAddress {
             get {
                 return ResourceManager.GetString("UserSuggestedAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no type of vehicules available.
+        /// </summary>
+        public static string VehiculeTypeNoAvailable {
+            get {
+                return ResourceManager.GetString("VehiculeTypeNoAvailable", resourceCulture);
             }
         }
         

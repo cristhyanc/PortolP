@@ -83,7 +83,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
             
             DropoffDto parameter = new DropoffDto();
 
-            parameter.Pictures = urls.Select(x => new PicturesDto { ImageUrl = x }).ToList(); 
+            parameter.Pictures = urls.Select(x => new PictureDto { ImageUrl = x }).ToList(); 
             await dropPicturesViewModel.InitializeAsync(parameter);
 
             Assert.True(dropPicturesViewModel.IsGalleryVisible);
@@ -113,12 +113,12 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
             await dropPicturesViewModel.InitializeAsync(parameter);
             dropPicturesViewModel.PickPicturesCommand.Execute(null);
 
-            List<PicturesDto> pictures = new List<PicturesDto>();
-            pictures.Add(new PicturesDto());
-            pictures.Add(new PicturesDto());
-            pictures.Add(new PicturesDto());
+            List<PictureDto> pictures = new List<PictureDto>();
+            pictures.Add(new PictureDto());
+            pictures.Add(new PictureDto());
+            pictures.Add(new PictureDto());
 
-            picturePickerViewModel.Pictures = new System.Collections.ObjectModel.ObservableCollection<PicturesDto>(pictures);
+            picturePickerViewModel.Pictures = new System.Collections.ObjectModel.ObservableCollection<PictureDto>(pictures);
 
             System.ComponentModel.PropertyChangedEventHandler handler = (sender, e) => {
 

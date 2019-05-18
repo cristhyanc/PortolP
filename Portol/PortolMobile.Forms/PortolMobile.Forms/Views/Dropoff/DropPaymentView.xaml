@@ -15,7 +15,7 @@
         <DropoffStyle:DropoffStyles/>
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
-        <ScrollView>
+       
             <Grid VerticalOptions="FillAndExpand" x:Name="MainGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -56,7 +56,7 @@
 
                             <StackLayout Orientation="Horizontal" >
                                 <Label Text="{i18n:Translate EstimatedCost}"  Margin="0,0,5,0" Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
-                                <Label Text="$15"   Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
+                                <Label Text="{Binding EstimatedCost}"   Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
                             </StackLayout>
                             
                             <StackLayout Orientation="Horizontal" >
@@ -70,7 +70,7 @@
                                 <Label Text="{Binding PaymentMethodSelected.LastNumbers}"   Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
                             </StackLayout>
 
-                            <Button Margin="0,7,0,7" Text="Confirm" TextColor="White"  BackgroundColor="#4c4c4c"   ></Button>
+                        <Button Margin="0,7,0,7" Text="Confirm" TextColor="White" Command="{Binding ConfirmCommand}" BackgroundColor="#4c4c4c"   ></Button>
                            
                         </StackLayout>
                     </Frame>
@@ -96,7 +96,6 @@
                   
                 </RelativeLayout>
 
-            </Grid>
-        </ScrollView>
+            </Grid>       
     </controls:ExtendedContentPage.Content>
 </controls:ExtendedContentPage>

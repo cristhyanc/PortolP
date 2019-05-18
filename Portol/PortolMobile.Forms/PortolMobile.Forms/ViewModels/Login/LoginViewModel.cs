@@ -58,8 +58,8 @@ namespace PortolMobile.Forms.ViewModels.Login
             SignupCommand = new Command(GoToSignup, () => { return !IsBusy; });
             _sessionData = sessionData;
 
-           // this.EmailText = "cristhyan@msn.com";
-            //this.PasswordText = "asd";
+            this.EmailText = "cristhyan@msn.com";
+            this.PasswordText = "asd";
 
         }
 

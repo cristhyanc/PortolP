@@ -7,6 +7,8 @@ namespace Portol.Common.DTO
 {
     public class PaymentMethodDto
     {
+        public Guid PaymentMethodID { get; set; }
+        public Guid CustomerID { get; set; }
         public string CardNumber { get; set; }
         public string CardName { get; set; }
         public string ExpiryDate { get; set; }

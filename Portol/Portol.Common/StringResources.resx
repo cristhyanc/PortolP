@@ -360,4 +360,16 @@
   <data name="AddressRequired" xml:space="preserve">
     <value>The Address is required</value>
   </data>
+  <data name="NexToDestination" xml:space="preserve">
+    <value>Looks like you next to the destination</value>
+  </data>
+  <data name="NoVehiculeTypeForParcel" xml:space="preserve">
+    <value>Looks like we don't have an available vehicule for this type of parcel </value>
+  </data>
+  <data name="VehiculeTypeNoAvailable" xml:space="preserve">
+    <value>There is no type of vehicules available</value>
+  </data>
+  <data name="CostNotEstimatedTryAgain" xml:space="preserve">
+    <value>The Cost couldn't be estimated, pls try again</value>
+  </data>
 </root>

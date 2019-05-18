@@ -18,6 +18,12 @@ namespace PortolMobile.GeneralTest.Api.Dropoff
             uow = fixture.UnitOfWorkDB;
         }
 
-      
+        [Fact]
+        public void GetVehiculeTypesAvailables()
+        {
+            IDropoffService dropoffService  = new DropoffService(uow);
+            var result = dropoffService.GetVehiculeTypesAvailables();
+            Assert.NotEmpty(result);
+        }
     }
 }
