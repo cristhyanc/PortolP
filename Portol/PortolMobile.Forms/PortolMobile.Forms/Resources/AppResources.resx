@@ -321,4 +321,58 @@
   <data name="EnterNewPassword" xml:space="preserve">
     <value>Enter new password</value>
   </data>
+  <data name="WhatAreSending" xml:space="preserve">
+    <value>What are we sending today?</value>
+  </data>
+  <data name="DropoffAddress" xml:space="preserve">
+    <value>Drop off Address</value>
+  </data>
+  <data name="PickupAddress" xml:space="preserve">
+    <value>Pickup Address</value>
+  </data>
+  <data name="ReceiverName" xml:space="preserve">
+    <value>Receiver Name</value>
+  </data>
+  <data name="EmailMobileNumber" xml:space="preserve">
+    <value>Email or Mobile Number</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="EnterPackageDetails" xml:space="preserve">
+    <value>Please enter the package details.</value>
+  </data>
+  <data name="Volumen" xml:space="preserve">
+    <value>Volumen</value>
+  </data>
+  <data name="Worth" xml:space="preserve">
+    <value>Worth$$</value>
+  </data>
+  <data name="HeightCm" xml:space="preserve">
+    <value>Height (cm)</value>
+  </data>
+  <data name="LengthCm" xml:space="preserve">
+    <value>Length (cm)</value>
+  </data>
+  <data name="WeightKg" xml:space="preserve">
+    <value>Weight (kg)</value>
+  </data>
+  <data name="WidthCm" xml:space="preserve">
+    <value>Width (cm)</value>
+  </data>
+  <data name="WhereSendingTo" xml:space="preserve">
+    <value>Where are we sending it to?</value>
+  </data>
+  <data name="EstimatedCost" xml:space="preserve">
+    <value>Estimated Cost:</value>
+  </data>
+  <data name="AddNewPaymentMethod" xml:space="preserve">
+    <value>Add New Payment Method</value>
+  </data>
+  <data name="PaymentMethods" xml:space="preserve">
+    <value>Payment Methods</value>
+  </data>
+  <data name="SearchingDriver" xml:space="preserve">
+    <value>Searching for a driver</value>
+  </data>
 </root>

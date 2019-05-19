@@ -5,7 +5,7 @@ using System.Text;
 
 namespace PortolWeb.Entities
 {
-    public interface IRepositoryBasey<T> where T : class, new()
+    public interface IRepositoryBase<T> where T : class, new()
     {
 
         T Get(Guid id);

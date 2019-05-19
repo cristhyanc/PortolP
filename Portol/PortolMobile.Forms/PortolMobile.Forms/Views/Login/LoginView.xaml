@@ -2,8 +2,7 @@
 <controls:ExtendedContentPage 
             xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"             
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              BackgroundImage="login_background"
              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"

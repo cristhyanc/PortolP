@@ -17,11 +17,11 @@ namespace PortolMobile.Forms.Services.Navigation
 
         Task RemoveCurrentPage();
 
-        Page CreatePage(Type viewModelType, object parameter);
+        Page CreatePage(Type viewModelType);
 
         Task GoToPreviousPageAsync();
 
-        ContentPage CreateContentPage(Type viewModelType, object parameter);
+        ContentPage CreateContentPage(Type viewModelType );
 
        // Task OpenPopup(BaseViewModel viewModel, object parameter = null);
 

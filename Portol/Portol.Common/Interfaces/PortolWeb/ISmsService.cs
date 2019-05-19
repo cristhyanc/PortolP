@@ -6,6 +6,6 @@ namespace Portol.Common.Interfaces.PortolWeb
 {
     public interface ISmsService
     {
-        void SendNewCode(string mobileNumber, string countryCode);
+        void SendNewCode(long mobileNumber, Int32 countryCode);
     }
 }

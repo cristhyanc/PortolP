@@ -16,9 +16,18 @@ namespace PortolMobile.Forms.Views.Login
     {
         public LoginView()
         {
-            InitializeComponent();
-            txtEmail.Effects.Add(new BorderEffect());
-            txtPassword.Effects.Add(new BorderEffect());
+            try
+            {
+                InitializeComponent();
+                txtEmail.Effects.Add(new BorderEffect());
+                txtPassword.Effects.Add(new BorderEffect());
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+           
         }
     }
 }

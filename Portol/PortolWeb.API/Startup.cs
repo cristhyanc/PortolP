@@ -14,8 +14,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Portol.Calculator.Delivery;
+using Portol.Common.Interfaces;
 using Portol.Common.Interfaces.PortolWeb;
 using PortolWeb.API.Helper;
+using PortolWeb.Core.DeliveryServices;
 using PortolWeb.Core.SmsServices;
 using PortolWeb.Core.UserServices;
 using PortolWeb.DA;
@@ -61,7 +64,7 @@ namespace PortolWeb.API
                 {
                     OnTokenValidated = context =>
                     {
-                        var userService = context.HttpContext.RequestServices.GetRequiredService<IUserService>();
+                        var userService = context.HttpContext.RequestServices.GetRequiredService<ICustomerService>();
                         var userId = Guid.Parse(context.Principal.Identity.Name);
                         var user = userService.GetById(userId);
                         if (user == null)
@@ -87,11 +90,14 @@ namespace PortolWeb.API
 
             services.AddSingleton<ISmsApi>(smsApi);
             services.AddScoped<ISmsService, SmsService>();
-            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IDeliveryService, DeliveryService>();
             services.AddScoped<IDatabaseManagement, DatabaseManagement>();
             services.AddScoped<IDataContext, DataContext>();
             services.AddScoped<IUnitOfWork, UnitOfWork>();
-          
+            services.AddScoped<IImageManager, ImageManager>();
+            services.AddScoped<IDeliveryCalculator, DeliveryCalculator>();
+            
             // loggerFactory.AddSerilog();
         }
 

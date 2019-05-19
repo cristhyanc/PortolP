@@ -7,7 +7,7 @@ using System.Text;
 
 namespace PortolWeb.DA.Repositories
 {
-   public class RepositoryBase<T> : IDisposable, IRepositoryBasey<T> where T : class, new()
+   public class RepositoryBase<T> : IDisposable, IRepositoryBase<T> where T : class, new()
     {
 
 

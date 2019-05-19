@@ -13,11 +13,8 @@ namespace PortolMobile.Forms.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-
-            base.OnCreate(savedInstanceState);
-            //  System.Threading.Thread.Sleep(3000);
-            this.StartActivity(typeof(MainActivity));
-            // Create your application here
+            base.OnCreate(savedInstanceState);          
+            this.StartActivity(typeof(MainActivity));          
         }
     }
 }
