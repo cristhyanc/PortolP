@@ -1,0 +1,60 @@
+2019-03-10 11:31:03.764 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-03-10 11:31:04.093 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-03-10 11:31:04.093 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-03-10 11:31:04.115 +10:00 [WRN] No XML encryptor configured. Key "4031adaa-5702-47a0-ab22-2e789cf0dd8d" may be persisted to storage in unencrypted form.
+2019-03-10 11:31:04.576 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-03-10 13:06:50.937 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-03-10 13:06:51.287 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-03-10 13:06:51.287 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-03-10 13:06:51.308 +10:00 [WRN] No XML encryptor configured. Key "07dd5d28-c581-4d86-8d09-ee5f09aa2264" may be persisted to storage in unencrypted form.
+2019-03-10 13:06:51.731 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-03-10 14:57:55.452 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-03-10 14:57:55.744 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-03-10 14:57:55.745 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-03-10 14:57:55.772 +10:00 [WRN] No XML encryptor configured. Key "ed5f4aaf-a540-44cf-bd39-4bd10839d23b" may be persisted to storage in unencrypted form.
+2019-03-10 14:57:56.264 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-03-10 15:29:13.230 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-03-10 15:29:13.557 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-03-10 15:29:13.557 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-03-10 15:29:13.576 +10:00 [WRN] No XML encryptor configured. Key "a6d78d7a-372d-4aa8-b7b0-e3a70a08fbb5" may be persisted to storage in unencrypted form.
+2019-03-10 15:29:13.994 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-03-10 19:24:25.922 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-03-10 19:24:26.225 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-03-10 19:24:26.225 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-03-10 19:24:26.248 +10:00 [WRN] No XML encryptor configured. Key "0dafaa97-90b2-4f62-998f-4d93a530510d" may be persisted to storage in unencrypted form.
+2019-03-10 19:24:26.612 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-03-10 19:28:12.594 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-03-10 19:28:13.162 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-03-10 19:28:13.162 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-03-10 19:28:13.186 +10:00 [WRN] No XML encryptor configured. Key "002d9175-1bd8-4633-af6f-96170cc46592" may be persisted to storage in unencrypted form.
+2019-03-10 19:28:13.911 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-03-10 19:31:37.659 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-03-10 19:31:37.955 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-03-10 19:31:37.956 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-03-10 19:31:37.976 +10:00 [WRN] No XML encryptor configured. Key "5d0b6031-bb80-41bd-82d9-a9908ef9bd61" may be persisted to storage in unencrypted form.
+2019-03-10 19:31:38.263 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-03-10 19:42:27.293 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-03-10 19:42:27.629 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-03-10 19:42:27.629 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-03-10 19:42:27.649 +10:00 [WRN] No XML encryptor configured. Key "03627be8-112c-4df6-aadd-cc42a59bbbe5" may be persisted to storage in unencrypted form.
+2019-03-10 19:42:28.015 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-03-10 20:05:37.422 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-03-10 20:05:37.682 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-03-10 20:05:37.682 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-03-10 20:05:37.697 +10:00 [WRN] No XML encryptor configured. Key "7d169209-7d98-492a-8509-99c73fb57dd1" may be persisted to storage in unencrypted form.
+2019-03-10 20:05:38.003 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-03-10 20:53:39.050 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-03-10 20:53:39.384 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-03-10 20:53:39.384 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-03-10 20:53:39.402 +10:00 [WRN] No XML encryptor configured. Key "454696fa-34a8-4ffd-9264-4c45576ba732" may be persisted to storage in unencrypted form.
+2019-03-10 20:53:39.804 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-03-10 21:02:05.021 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-03-10 21:02:05.624 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-03-10 21:02:05.624 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-03-10 21:02:05.659 +10:00 [WRN] No XML encryptor configured. Key "8f4b710f-c0e8-481e-ab64-e8aab8e63039" may be persisted to storage in unencrypted form.
+2019-03-10 21:02:06.390 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-03-10 21:07:38.400 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-03-10 21:07:38.707 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-03-10 21:07:38.707 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-03-10 21:07:38.728 +10:00 [WRN] No XML encryptor configured. Key "af8c0d6c-3836-485b-a1e6-a10fa405d055" may be persisted to storage in unencrypted form.
+2019-03-10 21:07:39.000 +10:00 [WRN] Failed to determine the https port for redirect.

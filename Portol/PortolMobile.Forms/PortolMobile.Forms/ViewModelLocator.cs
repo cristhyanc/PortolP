@@ -1,25 +1,10 @@
 ﻿using Acr.UserDialogs;
 using Autofac;
-using Autofac.Core;
-using Plugin.Media;
-using Plugin.Media.Abstractions;
-using Plugin.Permissions;
-using Plugin.Permissions.Abstractions;
-using Portol.Calculator.Delivery;
-using Portol.Calculator.Map;
-using Portol.Common.Interfaces;
 using Portol.Common.Interfaces.PortolMobile;
-using PortolMobile.Core.DropOff;
-using PortolMobile.Core.User;
-using PortolMobile.Forms.Services;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels;
-using PortolMobile.Forms.ViewModels.Customer;
-using PortolMobile.Forms.ViewModels.Dropoff;
 using PortolMobile.Forms.ViewModels.Login;
 using PortolMobile.Forms.ViewModels.SignUp;
-using PortolMobile.Forms.ViewModels.UserControls;
-using PortolMobile.Services.Dropoff;
 using PortolMobile.Services.Rest;
 using PortolMobile.Services.User;
 using System;
@@ -27,7 +12,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Reflection;
 using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace PortolMobile.Forms
@@ -58,57 +42,29 @@ namespace PortolMobile.Forms
 
                 var builder = new ContainerBuilder();
 
-                builder.RegisterType<ShopViewModel>().SingleInstance();
-                builder.RegisterType<DropViewModel>().SingleInstance();
-                
                 // View models
-                builder.RegisterType<LoginViewModel>();
-                builder.RegisterType<DropAddressViewModel>();
-                builder.RegisterType<MainViewModel>();                
+                builder.RegisterType<LoginViewModel>();              
+                builder.RegisterType<MainViewModel>();
                 builder.RegisterType<RecoverPasswordViewModel>();
                 builder.RegisterType<SignupStepMobileViewModel>();
                 builder.RegisterType<SignupStepEmailViewModel>();
                 builder.RegisterType<SignupStepDetailsViewModel>();
                 builder.RegisterType<SignupStepCodeViewModel>();
                 builder.RegisterType<SignupStepAddressViewModel>();
-                builder.RegisterType<AddressPickerViewModel>();
-                builder.RegisterType<DropPicturesViewModel>();
-                builder.RegisterType<PicturePickerViewModel>();
-                builder.RegisterType<DropMeasurementsViewModel>();
-                builder.RegisterType<DropPaymentViewModel>();
-                builder.RegisterType<DropDriverInfoViewModel>();
-                builder.RegisterType<CustomerPaymentMethodsViewModel>();
-                builder.RegisterType<CustomerPaymentMethodViewModel>();
-                
+
 
                 builder.Register(c => UserDialogs.Instance).As<IUserDialogs>().SingleInstance();
                 builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
 
-                builder.RegisterType<DropoffMobileService>().As<IDeliveryMobileService>();
-                builder.RegisterType<LoginService>().As<ILoginService>();
-
-                builder.RegisterType<DeliveryCalculator>().As<IDeliveryCalculator>();
-                builder.Register(c => new MapService("AjPaETRxkyP3rSDJ7vu2nce9mlY66bgZu0DvY_eIVpeSM5PES53q_9IGzOrxahcL")).As<IMapService>();
-
-                builder.RegisterType<DropoffCore>().As<IDeliveryCore>();
-                builder.Register(c => CrossMedia.Current).As<IMedia>();
-
+                
+                
                 builder.RegisterType<LoginService>().As<ILoginService>();
                 builder.RegisterType<UserMobileService>().As<IUserMobileService>();
 
-                builder.RegisterType<UserCore>().As<IUserCore>();
-                builder.RegisterType<LoginCore>().As<ILoginCore>();
-
-             
-
-
+                var restApi = new RestClient();
                 
-                builder.RegisterType<SessionData>().As<ISessionData>().SingleInstance();
-                builder.RegisterType<RestClient>().As<IRestClient>().WithParameter(new ResolvedParameter(
-                                                                       (pi, ctx) => pi.ParameterType == typeof(string) && pi.Name == "toke",
-                                                                       (pi, ctx) => _container.Resolve<ISessionData>().GetCurrentToken()));
-
-                builder.Register(c =>new AddressService(_container.Resolve<IRestClient>(), "HW8AXP9FEKDCQ7L46JVM", "N3A6GXYLD978JTHC4RFU")).As<IAddressService>().SingleInstance();
+                builder.Register(c => restApi).As<IRestClient>().SingleInstance();
+                builder.Register(c =>new AddressService(restApi, "HW8AXP9FEKDCQ7L46JVM", "N3A6GXYLD978JTHC4RFU")).As<IAddressService>().SingleInstance();
 
                 if (_container != null)
                 {
@@ -122,7 +78,6 @@ namespace PortolMobile.Forms
             }
         }
 
-       
         public static T Resolve<T>()
         {
             return _container.Resolve<T>();
@@ -171,31 +126,6 @@ namespace PortolMobile.Forms
         //    get { return ViewModelLocator.Resolve<ILogError>(); }
 
         //}
-
-        public static async Task CheckCameraStoragePermission()
-        {
-            try
-            {
-                await CrossMedia.Current.Initialize();
-                var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
-                var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-                if (cameraStatus != PermissionStatus.Granted)
-                {
-                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Camera });
-                    cameraStatus = results[Permission.Camera];
-                }
-
-                if (storageStatus != PermissionStatus.Granted)
-                {
-                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
-                    storageStatus = results[Permission.Storage];
-                }
-            }  
-             catch (Exception)
-            {
-                //TODO: Log
-            }
-        }
 
     }
 }

@@ -9,7 +9,6 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
@@ -20,29 +19,21 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>NSCameraUsageDescription</key>
-	<string>This allows us to take photos and attach them to any .</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>This allows us to pick photos and attach them to any .</string>
-	<key>NSMicrophoneUsageDescription</key>
-	<string>This allows us to record videos and attach them to any .</string>
-	<key>NSCalendarsUsageDescription</key>
-	<string>This app needs access to the calendar to be able to schedule new </string>
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>Portol</string>
+	<string>PortolMobile.Forms</string>
 	<key>CFBundleIdentifier</key>
-	<string>com.PortolMobile.App</string>
+	<string>com.PortolMobile</string>
+	<key>CFBundleVersion</key>
+	<string>1.0</string>
 	<key>CFBundleName</key>
 	<string>Portol</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIconPortol.appiconset</string>
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
-	<key>CFBundleShortVersionString</key>
-	<string>0.52.1</string>
-	<key>CFBundleVersion</key>
-	<string>0.52.1</string>
 </dict>
 </plist>
