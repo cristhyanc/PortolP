@@ -22,29 +22,25 @@ namespace PortolWeb.Core.SmsServices
             _uow = uow;
         }
 
-        public void SendNewCode(long mobileNumber, Int32 countryCode)
+        public  void SendNewCode(string mobileNumber, string countryCode)
         {
-            if (mobileNumber == 0 || countryCode == 0)
+            if (string.IsNullOrEmpty(mobileNumber) || string.IsNullOrEmpty(countryCode))
             {
                 throw new AppException(StringResources.MobileNumberRequiered);
             }
 
-            var codeNumber = "";
             CodeVerification codeVeri = new CodeVerification();
             codeVeri.CountryCode = countryCode;
-
-            //if (!countryCode.Contains("+"))
-            //{
-            codeNumber = "+" + countryCode.ToString() + mobileNumber.ToString();
-            //}
-
+            if (!countryCode.Contains("+"))
+            {
+                countryCode = "+" + countryCode;
+            }
 
             Random random = new Random();
             int code = random.Next(1000, 9999);
-            string fullNumber = codeNumber;
-            //TODO: string resource
-            _smsApi.Sms(fullNumber, "Your SMS Code from Portol is: " + code.ToString()).Send();
-            codeVeri.CodeNumber = code;
+            string fullNumber = countryCode + mobileNumber;
+            _smsApi.Sms(fullNumber, "Your SMS Code from Portol is: " + code.ToString()).Send(); 
+            codeVeri.CodeNumber = code;           
             codeVeri.PhoneNumber = mobileNumber;
             _uow.CodeVerificationRepository.Insert(codeVeri);
             _uow.SaveChanges();

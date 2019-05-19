@@ -1,0 +1,8 @@
+2019-03-05 19:31:01.974 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-03-05 19:31:02.060 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-03-05 19:31:02.090 +10:00 [WRN] No XML encryptor configured. Key "7d7506de-9a5d-4b24-8fe9-3ee6eadbcdad" may be persisted to storage in unencrypted form.
+2019-03-05 19:31:02.544 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-03-05 20:23:49.764 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-03-05 20:23:49.791 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-03-05 20:23:49.808 +10:00 [WRN] No XML encryptor configured. Key "b614a4f5-0588-4fe2-a170-4d916b5879fe" may be persisted to storage in unencrypted form.
+2019-03-05 20:23:49.945 +10:00 [WRN] Failed to determine the https port for redirect.

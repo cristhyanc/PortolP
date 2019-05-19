@@ -22,13 +22,13 @@ namespace PortolWeb.API.Controllers
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
-        private ICustomerService _userService;
+        private IUserService _userService;
         ISmsService _smsService;
         private readonly AppSettings _appSettings;
 
-        public UsersController(ICustomerService userService, IOptions<AppSettings> appSettings, ISmsService smsService)
+        public UsersController(IUserService userService, IOptions<AppSettings> appSettings, ISmsService smsService)
         {
-            _userService = userService;
+            _userService = userService;          
             _appSettings = appSettings.Value;
             _smsService = smsService;
         }
@@ -52,8 +52,8 @@ namespace PortolWeb.API.Controllers
 
             }
         }
-
-        [HttpGet("getall")]
+       
+        [HttpGet("getall")]       
         public IActionResult GetAll()
         {
             try
@@ -72,15 +72,42 @@ namespace PortolWeb.API.Controllers
 
             }
         }
-               
+
+        //[HttpGet("{id}")]
+        //public IActionResult GetById(int id)
+        //{
+        //    var user = _userService.GetById(id);
+        //    var userDto = _mapper.Map<UserDto>(user);
+        //    return Ok(userDto);
+        //}
+
+        //[HttpPut("{id}")]
+        //public IActionResult Update(int id, [FromBody]UserDto userDto)
+        //{
+        //    // map dto to entity and set id
+        //    var user = _mapper.Map<User>(userDto);
+        //    user.Id = id;
+
+        //    try
+        //    {
+        //        // save 
+        //        _userService.Update(user, userDto.Password);
+        //        return Ok();
+        //    }
+        //    catch (AppException ex)
+        //    {
+        //        // return error message if there was an exception
+        //        return BadRequest(new { message = ex.Message });
+        //    }
+        //}
 
         [AllowAnonymous]
         [HttpPost("VerifyCode")]
-        public IActionResult VerifyCode([FromBody]CustomerDto details)
+        public IActionResult VerifyCode([FromBody]UserDto details)
         {
             try
             {
-
+                
 
                 if (_userService.ValidateVerificationCode(details.PhoneNumber, details.PhoneCountryCode, Int16.Parse(details.Token)))
                 {
@@ -88,9 +115,9 @@ namespace PortolWeb.API.Controllers
                 }
                 else
                 {
-                    return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, StringResources.WrongCode));
-                }
-
+                    return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed,StringResources.WrongCode));
+                }               
+                
             }
             catch (AppException ex)
             {
@@ -106,7 +133,7 @@ namespace PortolWeb.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("ResetPassword")]
-        public IActionResult ResetPassword([FromBody]CustomerDto details)
+        public IActionResult ResetPassword([FromBody]UserDto details)
         {
             try
             {
@@ -125,6 +152,7 @@ namespace PortolWeb.API.Controllers
 
             }
         }
+
         
 
         [AllowAnonymous]
@@ -150,10 +178,10 @@ namespace PortolWeb.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("VerifyMobileUniqueness")]
-        public IActionResult VerifyMobileUniqueness([FromBody]CustomerDto phoneDetails)
+        public IActionResult VerifyMobileUniqueness([FromBody]UserDto phoneDetails)
         {
             try
-            {
+            {                
                 return Ok(_userService.VerifyMobileUniqueness(phoneDetails));
 
             }
@@ -171,11 +199,11 @@ namespace PortolWeb.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("SendVerificationCode")]
-        public IActionResult SendVerificationCode([FromBody]CustomerDto details)
+        public IActionResult SendVerificationCode([FromBody]UserDto details)
         {
             try
             {
-                _smsService.SendNewCode(details.PhoneNumber, details.PhoneCountryCode);
+                _smsService.SendNewCode(details.PhoneNumber.ToString(), details.PhoneCountryCode.ToString());
                 return Ok();
             }
             catch (AppException ex)
@@ -200,7 +228,7 @@ namespace PortolWeb.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody]CustomerDto userDto)
+        public IActionResult Authenticate([FromBody]UserDto userDto)
         {
 
             try
@@ -213,7 +241,7 @@ namespace PortolWeb.API.Controllers
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                     {
-                    new Claim(ClaimTypes.Name, user.CustomerID.ToString())
+                    new Claim(ClaimTypes.Name, user.UserID.ToString())
                     }),
                     Expires = DateTime.UtcNow.AddDays(7),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -239,7 +267,7 @@ namespace PortolWeb.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("RegisterNewuser")]
-        public IActionResult RegisterNewuser([FromBody]CustomerDto userDto)
+        public IActionResult RegisterNewuser([FromBody]UserDto userDto)
         {
 
             try
@@ -254,53 +282,6 @@ namespace PortolWeb.API.Controllers
             catch (Exception ex)
             {
                 Log.Error(ex, "User.Register");
-                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
-
-            }
-        }
-
-
-        [HttpGet("GetCustomerByPhoneNumber")]
-        public IActionResult GetCustomerByPhoneNumber([FromQuery]string phoneNumber, [FromQuery]string countryCode)
-        {
-            try
-            {
-                long phone;
-                int country;
-
-                long.TryParse(phoneNumber, out phone);
-                int.TryParse(countryCode, out country);
-
-                var result = _userService.GetCustomerByPhoneNumber(phone, country);
-                return Ok(result);
-            }
-            catch (AppException ex)
-            {
-                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex, "User.GetCustomerByPhoneNumber");
-                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
-
-            }
-        }
-
-        [HttpGet("GetCustomerByEmail")]
-        public IActionResult GetCustomerByEmail([FromQuery]string email)
-        {
-            try
-            {
-                var result = _userService.GetCustomerByEmail(email);
-                return Ok(result);
-            }
-            catch (AppException ex)
-            {
-                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
-            }
-            catch (Exception ex)
-            {
-                Log.Error(ex, "User.GetCustomerByEmail");
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }

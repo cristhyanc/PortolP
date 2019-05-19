@@ -8,13 +8,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.2.3" />
     <PackageReference Include="Serilog" Version="2.8.0" />
     <PackageReference Include="Sinch.ServerSdk" Version="1.2.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Portol.Calculator\Portol.Calculator.csproj" />
     <ProjectReference Include="..\Portol.Common\Portol.Common.csproj" />
     <ProjectReference Include="..\PortolWeb.Entities\PortolWeb.Entities.csproj" />
   </ItemGroup>
