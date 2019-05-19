@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Portol.Common.Interfaces
 {
-  public  interface IDropoffCalculator
+  public  interface IDeliveryCalculator
     {
-        Task<decimal> EstimatePrice(MeasurementDto measurement , AddressDto pickup, AddressDto dropoff, List<VehiculeTypeDto> vehiculeTypes);
+        Task<decimal> EstimatePrice(ParcelDto measurement , AddressDto pickup, AddressDto dropoff, List<VehiculeTypeDto> vehiculeTypes);
     }
 }

@@ -5,9 +5,9 @@ using System.Text;
 
 namespace Portol.Common.Interfaces.PortolWeb
 {
-   public interface IDropoffService
+   public interface IDeliveryService
     {
         IEnumerable<VehiculeTypeDto> GetVehiculeTypesAvailables();
-        Guid CreateDropoffRequest(DropoffDto dropoff);
+        Guid CreateDeliveryRequest(DeliveryDto dropoff);
     }
 }

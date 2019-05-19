@@ -70,6 +70,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Payment Method.
+        /// </summary>
+        internal static string AddNewPaymentMethod {
+            get {
+                return ResourceManager.GetString("AddNewPaymentMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Address.
         /// </summary>
         internal static string Address {
@@ -592,6 +601,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Payment Methods.
+        /// </summary>
+        internal static string PaymentMethods {
+            get {
+                return ResourceManager.GetString("PaymentMethods", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Personal Details.
         /// </summary>
         internal static string PersonalDetails {
@@ -642,6 +660,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string ReSendCode {
             get {
                 return ResourceManager.GetString("ReSendCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Searching for a driver.
+        /// </summary>
+        internal static string SearchingDriver {
+            get {
+                return ResourceManager.GetString("SearchingDriver", resourceCulture);
             }
         }
         

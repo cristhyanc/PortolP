@@ -24,7 +24,7 @@
             <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
 
             <Grid BackgroundColor="#f2f2f2" VerticalOptions="FillAndExpand">
-                <ffimageloading:CachedImage VerticalOptions="FillAndExpand" DownsampleToViewSize="True" LoadingPlaceholder="Loading..."  Source="{Binding SelectedPicture.Image}" />
+                <ffimageloading:CachedImage VerticalOptions="FillAndExpand" DownsampleToViewSize="True" LoadingPlaceholder="Loading..."  Source="{Binding SelectedPicture.ImageUrl}" />
 
                 <ffimageloading:CachedImage VerticalOptions="End" HorizontalOptions="Center"  WidthRequest="60" HeightRequest="60"
                                               Source="resource://PortolMobile.Forms.Resources.ic_delete.png?assembly=PortolMobile.Forms" >
@@ -48,7 +48,7 @@
                              BindableLayout.ItemsSource="{Binding Pictures,Mode=TwoWay }">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <ffimageloading:CachedImage VerticalOptions="FillAndExpand"  Source="{Binding Image}" x:Name="image"  LoadingPlaceholder="Loading..." >
+                            <ffimageloading:CachedImage VerticalOptions="FillAndExpand"  Source="{Binding ImageUrl}" x:Name="image"  LoadingPlaceholder="Loading..." >
                                 <ffimageloading:CachedImage.GestureRecognizers >
                                     <TapGestureRecognizer  Command="{Binding Source={x:Reference page}, Path = BindingContext.SelectedPhotoCommand }"  CommandParameter="{Binding PictureID}" ></TapGestureRecognizer>
                                 </ffimageloading:CachedImage.GestureRecognizers>

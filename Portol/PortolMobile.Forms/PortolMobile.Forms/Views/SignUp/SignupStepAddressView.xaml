@@ -15,9 +15,8 @@
 
             </ffimageloadingsvg:SvgCachedImage>
 
-            <Label Text="{i18n:Translate Address}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,30,0,0" ></Label>
-
-            <controls:ExtendedEntry Text="{Binding HomeAddressStr }" Placeholder="{i18n:Translate Address}"  HorizontalTextAlignment="Center" 
+           
+            <controls:ExtendedEntry Text="{Binding HomeAddressStr }" Placeholder="{i18n:Translate Address}" Margin="0,15,0,0" HorizontalTextAlignment="Center" 
                                                 OnFocusCommand="{Binding AddressEntryCommand}"  VerticalOptions="Start" ></controls:ExtendedEntry>
             
             <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />

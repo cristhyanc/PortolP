@@ -8,7 +8,9 @@ namespace PortolWeb.Entities
 {
     public interface IUnitOfWork
     {
-        IDropoffRepository DropoffRangeRepository { get; }
+        IDeliveryRepository DeliveryRepository { get; }
+        IParcelRepository ParcelRepository { get; }
+        
         IRepositoryBase<VehiculeTypeRange> VehiculeTypeRangeRepository { get; }
         IRepositoryBase<Picture> PictureRepository { get; }
         IVehiculeTypeRepository VehiculeTypeRepository { get; }

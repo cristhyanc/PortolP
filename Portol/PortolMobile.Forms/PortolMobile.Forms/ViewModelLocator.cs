@@ -5,7 +5,7 @@ using Plugin.Media;
 using Plugin.Media.Abstractions;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
-using Portol.Calculator.Dropoff;
+using Portol.Calculator.Delivery;
 using Portol.Calculator.Map;
 using Portol.Common.Interfaces;
 using Portol.Common.Interfaces.PortolMobile;
@@ -14,6 +14,7 @@ using PortolMobile.Core.User;
 using PortolMobile.Forms.Services;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels;
+using PortolMobile.Forms.ViewModels.Customer;
 using PortolMobile.Forms.ViewModels.Dropoff;
 using PortolMobile.Forms.ViewModels.Login;
 using PortolMobile.Forms.ViewModels.SignUp;
@@ -75,18 +76,21 @@ namespace PortolMobile.Forms
                 builder.RegisterType<PicturePickerViewModel>();
                 builder.RegisterType<DropMeasurementsViewModel>();
                 builder.RegisterType<DropPaymentViewModel>();
-
+                builder.RegisterType<DropDriverInfoViewModel>();
+                builder.RegisterType<CustomerPaymentMethodsViewModel>();
+                builder.RegisterType<CustomerPaymentMethodViewModel>();
                 
+
                 builder.Register(c => UserDialogs.Instance).As<IUserDialogs>().SingleInstance();
                 builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
 
-                builder.RegisterType<DropoffMobileService>().As<IDropoffMobileService>();
+                builder.RegisterType<DropoffMobileService>().As<IDeliveryMobileService>();
                 builder.RegisterType<LoginService>().As<ILoginService>();
 
-                builder.RegisterType<DropoffCalculator>().As<IDropoffCalculator>();
+                builder.RegisterType<DeliveryCalculator>().As<IDeliveryCalculator>();
                 builder.Register(c => new MapService("AjPaETRxkyP3rSDJ7vu2nce9mlY66bgZu0DvY_eIVpeSM5PES53q_9IGzOrxahcL")).As<IMapService>();
 
-                builder.RegisterType<DropoffCore>().As<IDropoffCore>();
+                builder.RegisterType<DropoffCore>().As<IDeliveryCore>();
                 builder.Register(c => CrossMedia.Current).As<IMedia>();
 
                 builder.RegisterType<LoginService>().As<ILoginService>();
@@ -95,6 +99,10 @@ namespace PortolMobile.Forms
                 builder.RegisterType<UserCore>().As<IUserCore>();
                 builder.RegisterType<LoginCore>().As<ILoginCore>();
 
+             
+
+
+                
                 builder.RegisterType<SessionData>().As<ISessionData>().SingleInstance();
                 builder.RegisterType<RestClient>().As<IRestClient>().WithParameter(new ResolvedParameter(
                                                                        (pi, ctx) => pi.ParameterType == typeof(string) && pi.Name == "toke",

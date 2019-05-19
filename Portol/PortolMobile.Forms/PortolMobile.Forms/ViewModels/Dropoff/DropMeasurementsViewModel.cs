@@ -19,8 +19,8 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
 
         
 
-        MeasurementDto _measurements;
-        public MeasurementDto Measurements {
+        ParcelDto _measurements;
+        public ParcelDto Measurements {
             get
             {
                 return _measurements;
@@ -42,7 +42,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             try
             {
                 IsBusy = true;
-                MessagingCenter.Send<DropMeasurementsViewModel, MeasurementDto>(this, MessagingCenterCodes.MeasurementMessage, this.Measurements);
+                MessagingCenter.Send<DropMeasurementsViewModel, ParcelDto>(this, MessagingCenterCodes.MeasurementMessage, this.Measurements);
                 await this.NavigationService.GoToPreviousPageAsync();
             }
             catch (Exception ex)
@@ -63,11 +63,11 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
              
                 if (navigationData!=null)
                 {
-                    this.Measurements = (MeasurementDto)navigationData;
+                    this.Measurements = (ParcelDto)navigationData;
                 }
                 else
                 {
-                    this.Measurements = new MeasurementDto();
+                    this.Measurements = new ParcelDto();
                 }
 
             }

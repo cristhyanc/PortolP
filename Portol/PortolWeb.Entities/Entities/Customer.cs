@@ -33,58 +33,7 @@ namespace PortolWeb.Entities
      
         [NotMapped]
         public ICollection<Address> CustomerAddresses { get; set; }
-
-
-        public void CreateCustomer(IUnitOfWork _uow)
-        {
-            if (this.DOB == DateTime.MinValue)
-            {
-                throw new AppException(StringResources.DOBRequired);
-            }
-
-            if (string.IsNullOrEmpty(this.Email))
-            {
-                throw new AppException(StringResources.EmailRequired);
-            }
-
-            if (string.IsNullOrEmpty(this.FirstName))
-            {
-                throw new AppException(StringResources.FirstNameRequired);
-            }
-
-            if (string.IsNullOrEmpty(this.LastName))
-            {
-                throw new AppException(StringResources.LastNameRequired);
-            }
-
-            if (this.PhoneNumber == 0)
-            {
-                throw new AppException(StringResources.MobileNumberRequiered);
-            }
-                      
-
-            if (_uow.CustomerRepository.Get(x => x.PhoneNumber == this.PhoneNumber && x.PhoneCountryCode == this.PhoneCountryCode) != null)
-            {
-                throw new AppException(string.Format(StringResources.MobileInUse, this.PhoneNumber));
-            }
-
-            if (_uow.CustomerRepository.Get(x => x.Email == this.Email) != null)
-            {
-                throw new AppException(string.Format(StringResources.EmailInUsedParameter, this.Email));
-            }
-                     
-
-            _uow.CustomerRepository.Insert(this);
-
-            if (this.CurrentAddress != null)
-            {
-                this.CurrentAddress.IsCurrentAddress = true;
-                this.CurrentAddress.ParentID = this.CustomerID;
-                this.CurrentAddress.ParentAddressType = ParentType.Customer;
-                _uow.AddressRepository.Insert(this.CurrentAddress);
-            }
-        }
-
+        
         public static  Customer GetCustomerByPhoneNumber(IUnitOfWork _uow, long phoneNumber, int countryCode)
         {
             var customer = _uow.CustomerRepository.Get(x => x.PhoneNumber == phoneNumber && x.PhoneCountryCode == countryCode);
@@ -146,13 +95,16 @@ namespace PortolWeb.Entities
             return result;
         }
 
-        public static Customer ORM(CustomerDto newUser)
+        public static Customer Create(CustomerDto newUser, IUnitOfWork uow, byte[] passwordHash, byte[] passwordSalt)
         {
             if (newUser == null)
             {
                 return null;
             }
-            Customer user = new Customer();          
+
+            Customer user = new Customer();
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
             user.DOB = newUser.DOB;
             user.Email = newUser.Email;
             user.Deleted = newUser.Deleted;
@@ -171,6 +123,52 @@ namespace PortolWeb.Entities
                 user.CurrentAddress.IsCurrentAddress = true;
                 user.CurrentAddress.ParentAddressType = ParentType.Customer;
                 user.CurrentAddress.AddressValidated = newUser.CustomerAddress.AddressValidated;
+            }
+
+            if (user.DOB == DateTime.MinValue)
+            {
+                throw new AppException(StringResources.DOBRequired);
+            }
+
+            if (string.IsNullOrEmpty(user.Email))
+            {
+                throw new AppException(StringResources.EmailRequired);
+            }
+
+            if (string.IsNullOrEmpty(user.FirstName))
+            {
+                throw new AppException(StringResources.FirstNameRequired);
+            }
+
+            if (string.IsNullOrEmpty(user.LastName))
+            {
+                throw new AppException(StringResources.LastNameRequired);
+            }
+
+            if (user.PhoneNumber == 0)
+            {
+                throw new AppException(StringResources.MobileNumberRequiered);
+            }
+
+
+            if (uow.CustomerRepository.Get(x => x.PhoneNumber == user.PhoneNumber && x.PhoneCountryCode == user.PhoneCountryCode) != null)
+            {
+                throw new AppException(string.Format(StringResources.MobileInUse, user.PhoneNumber));
+            }
+
+            if (uow.CustomerRepository.Get(x => x.Email == user.Email) != null)
+            {
+                throw new AppException(string.Format(StringResources.EmailInUsedParameter, user.Email));
+            }
+
+
+            uow.CustomerRepository.Insert(user);
+
+            if (user.CurrentAddress != null)
+            {
+                newUser.CustomerAddress.IsCurrentAddress = true;
+                newUser.CustomerAddress.ParentID = user.CustomerID;
+                user.CurrentAddress = Address.Create(newUser.CustomerAddress, ParentType.Customer, uow);               
             }
             return user;
         }

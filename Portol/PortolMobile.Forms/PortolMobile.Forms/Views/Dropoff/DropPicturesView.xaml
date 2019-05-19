@@ -81,7 +81,7 @@
 
                                     <BindableLayout.ItemTemplate>
                                         <DataTemplate>
-                                            <ffimageloading:CachedImage VerticalOptions="FillAndExpand"  Source="{Binding Image}" />
+                                            <ffimageloading:CachedImage VerticalOptions="FillAndExpand"  Source="{Binding ImageUrl}" />
                                         </DataTemplate>
                                     </BindableLayout.ItemTemplate>
                                 </StackLayout>

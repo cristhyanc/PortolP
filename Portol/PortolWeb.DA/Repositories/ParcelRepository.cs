@@ -6,9 +6,9 @@ using System.Text;
 
 namespace PortolWeb.DA.Repositories
 {
-  public  class DropoffRepository: RepositoryBase<Dropoff>, IDropoffRepository
+   public class ParcelRepository : RepositoryBase<Parcel>,  IParcelRepository
     {
-        public DropoffRepository(DataContext context) : base(context)
+        public ParcelRepository(DataContext context) : base(context)
         {
         }
     }

@@ -8,6 +8,12 @@ namespace PortolWeb.Entities
 {
     public interface IDataContext
     {
+
+
+        DbSet<Delivery> Deliveries { get; set; }
+        DbSet<Parcel> Parcels { get; set; }
+        DbSet<Picture> Pictures { get; set; }
+
         DbSet<Customer> Customers { get; set; }
         DbSet<Address> Addresses { get; set; }
         DbSet<CodeVerification> CodeVerifications { get; set; }

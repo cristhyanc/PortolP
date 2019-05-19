@@ -8,17 +8,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Portol.Calculator.Dropoff
+namespace Portol.Calculator.Delivery
 {
-    public class DropoffCalculator : IDropoffCalculator
+    public class DeliveryCalculator : IDeliveryCalculator
     {
         IMapService _mapService;
-        public DropoffCalculator(IMapService mapService)
+        public DeliveryCalculator(IMapService mapService)
         {
             _mapService = mapService;
         }
 
-        public async Task<decimal> EstimatePrice(MeasurementDto measurement, AddressDto pickup, AddressDto dropoff, List<VehiculeTypeDto> vehiculeTypes)
+        public async Task<decimal> EstimatePrice(ParcelDto measurement, AddressDto pickup, AddressDto dropoff, List<VehiculeTypeDto> vehiculeTypes)
         {
             if (vehiculeTypes == null || vehiculeTypes.Count == 0)
             {

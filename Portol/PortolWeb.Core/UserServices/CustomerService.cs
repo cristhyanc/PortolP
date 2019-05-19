@@ -100,19 +100,14 @@ namespace PortolWeb.Core.UserServices
                 throw new AppException(StringResources.PasswordRequired);
             }
 
-            Customer user = Customer.ORM(newUser);
-
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
 
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
-                                   
-            user.CreateCustomer(_uow);
-           
+            Customer user = Customer.Create(newUser, _uow, passwordHash, passwordSalt);                                   
+                     
             _uow.SaveChanges();
 
-            newUser.CustomerID = user.CustomerID;
+            newUser = Customer.ORM(user);
             return newUser;
            
         }

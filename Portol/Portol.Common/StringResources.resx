@@ -372,4 +372,7 @@
   <data name="CostNotEstimatedTryAgain" xml:space="preserve">
     <value>The Cost couldn't be estimated, pls try again</value>
   </data>
+  <data name="ProblemTryAgain" xml:space="preserve">
+    <value>There was a problem, pls try again</value>
+  </data>
 </root>

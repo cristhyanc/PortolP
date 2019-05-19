@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Portol.Common.Interfaces.PortolMobile
 {
-    public interface IDropoffCore
+   public interface IDeliveryMobileService
     {
         Task<List<VehiculeTypeDto>> GetVehiculeTypesAvailables();
-        Task<Guid> CreateDropoffRequest(DropoffDto dropoffParcel);
+        Task<Guid> CreateDeliveryRequest(DeliveryDto delivery);
     }
 }

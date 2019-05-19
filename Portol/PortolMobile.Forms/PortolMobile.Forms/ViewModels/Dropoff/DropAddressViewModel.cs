@@ -19,7 +19,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         
         public ICommand GotoPicturesCommand { get; private set; }
 
-        DropoffDto DropoffDetails { get; set; }
+        DeliveryDto DropoffDetails { get; set; }
 
         string _description;
         public string Description
@@ -204,21 +204,18 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             try
             {
-                DropoffDetails = (DropoffDto)navigationData;
+                DropoffDetails = (DeliveryDto)navigationData;
                 if (DropoffDetails.Receiver!=null && DropoffDetails.Receiver.CustomerAddress != null)
                 {
                     PickUpAddress = DropoffDetails.Receiver.CustomerAddress;
                 }
 
                 //sample
-                //_pickUpAddress = new AddressDto();
-                //_pickUpAddress.AddressValidated = true;
-                //_pickUpAddress.Country = "SD";
-                //_pickUpAddress.State = "SD";
-                //_pickUpAddress.StreetName = "SD";
-                //PickUpAddress = _pickUpAddress;
-                //DropoffAddress = PickUpAddress;
-               // Description = "asd";
+                _dropoffAddress = new AddressDto();
+                _dropoffAddress.AddressValidated = true;
+                _dropoffAddress.FullAddress = "82 sydney st, new farm 4005";               
+                DropoffAddress = _dropoffAddress;
+                Description = "asd";
                 //-Sample
             }
             catch (Exception ex)

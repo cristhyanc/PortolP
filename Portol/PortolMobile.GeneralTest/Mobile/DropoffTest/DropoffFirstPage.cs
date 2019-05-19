@@ -110,9 +110,9 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 Assert.NotNull(_navigationService.viewModel);
                 Assert.Equal(typeof(DropAddressViewModel), _navigationService.viewModel);
                 Assert.NotNull(_navigationService.Parameter);
-                Assert.Equal(typeof(DropoffDto), _navigationService.Parameter.GetType());
+                Assert.Equal(typeof(DeliveryDto), _navigationService.Parameter.GetType());
 
-                DropoffDto customer = (DropoffDto)_navigationService.Parameter;
+                DeliveryDto customer = (DeliveryDto)_navigationService.Parameter;
                 long phoneN = 0;
                 long.TryParse(phone, out phoneN);
                 Assert.Equal(phoneN, customer.Receiver.PhoneNumber);
@@ -148,9 +148,9 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 Assert.NotNull(_navigationService.viewModel);
                 Assert.Equal(typeof(DropAddressViewModel), _navigationService.viewModel);
                 Assert.NotNull(_navigationService.Parameter);
-                Assert.Equal(typeof(DropoffDto), _navigationService.Parameter.GetType());
+                Assert.Equal(typeof(DeliveryDto), _navigationService.Parameter.GetType());
 
-                DropoffDto customer = (DropoffDto)_navigationService.Parameter;           
+                DeliveryDto customer = (DeliveryDto)_navigationService.Parameter;           
                 Assert.Equal(email, customer.Receiver.Email);
             }
             catch (Exception ex)
@@ -189,9 +189,9 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 Assert.NotNull(_navigationService.viewModel);
                 Assert.Equal(typeof(DropAddressViewModel), _navigationService.viewModel);
                 Assert.NotNull(_navigationService.Parameter);
-                Assert.Equal(typeof(DropoffDto), _navigationService.Parameter.GetType());
+                Assert.Equal(typeof(DeliveryDto), _navigationService.Parameter.GetType());
 
-                DropoffDto customer = (DropoffDto)_navigationService.Parameter;
+                DeliveryDto customer = (DeliveryDto)_navigationService.Parameter;
                 long phoneN = 0;
                 long.TryParse(phone, out phoneN);
                 Assert.Equal(phoneN, customer.Receiver.PhoneNumber);
@@ -232,9 +232,9 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
                 Assert.NotNull(_navigationService.viewModel);
                 Assert.Equal(typeof(DropAddressViewModel), _navigationService.viewModel);
                 Assert.NotNull(_navigationService.Parameter);
-                Assert.Equal(typeof(DropoffDto), _navigationService.Parameter.GetType());
+                Assert.Equal(typeof(DeliveryDto), _navigationService.Parameter.GetType());
 
-                DropoffDto customer = (DropoffDto)_navigationService.Parameter;
+                DeliveryDto customer = (DeliveryDto)_navigationService.Parameter;
                 Assert.Equal(email, customer.Receiver.Email);
             }
             catch (Exception ex)

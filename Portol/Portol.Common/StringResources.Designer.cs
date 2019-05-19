@@ -682,6 +682,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was a problem, pls try again.
+        /// </summary>
+        public static string ProblemTryAgain {
+            get {
+                return ResourceManager.GetString("ProblemTryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Receiver information.
         /// </summary>
         public static string ReceiverInformation {

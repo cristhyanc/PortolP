@@ -366,4 +366,13 @@
   <data name="EstimatedCost" xml:space="preserve">
     <value>Estimated Cost:</value>
   </data>
+  <data name="AddNewPaymentMethod" xml:space="preserve">
+    <value>Add New Payment Method</value>
+  </data>
+  <data name="PaymentMethods" xml:space="preserve">
+    <value>Payment Methods</value>
+  </data>
+  <data name="SearchingDriver" xml:space="preserve">
+    <value>Searching for a driver</value>
+  </data>
 </root>

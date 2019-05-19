@@ -17,7 +17,8 @@ namespace PortolWeb.DA
         private IRepositoryBase<VehiculeTypeRange> _vehiculeTypeRangeRepository;
         private IVehiculeTypeRepository _vehiculeTypeRepository;
         private IRepositoryBase<Picture> _pictureRepository;
-        private IDropoffRepository _dropoffRangeRepository;
+        private IDeliveryRepository _deliveryRepository;
+        private IParcelRepository _parcelRepository;
 
         public UnitOfWork(DataContext context)
         {
@@ -54,11 +55,19 @@ namespace PortolWeb.DA
             }
         }
 
-        public IDropoffRepository DropoffRangeRepository
+        public IParcelRepository ParcelRepository
         {
             get
             {
-                return _dropoffRangeRepository = _dropoffRangeRepository ?? new DropoffRepository(_context);
+                return _parcelRepository = _parcelRepository ?? new ParcelRepository(_context);
+            }
+        }
+
+        public IDeliveryRepository DeliveryRepository
+        {
+            get
+            {
+                return _deliveryRepository = _deliveryRepository ?? new DeliveryRepository(_context);
             }
         }
 

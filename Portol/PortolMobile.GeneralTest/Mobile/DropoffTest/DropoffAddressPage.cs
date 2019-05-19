@@ -36,7 +36,7 @@
 //                addressDto.PostCode = postcode;
 //                addressDto.Suburb = suburb;
 //                addressDto.StreetName = street;
-//                DropoffDto dropoffDto = new DropoffDto();
+//                DeliveryDto dropoffDto = new DeliveryDto();
 
 //                 NavigationServiceMK navigationService = new NavigationServiceMK();
 //                UserDialogsMK userDialogs = new UserDialogsMK();
@@ -70,7 +70,7 @@
 //                Assert.NotNull(navigationService.viewModel);
 //                Assert.Equal(typeof(DropPicturesViewModel), navigationService.viewModel);
 //                Assert.NotNull(navigationService.Parameter);
-//                Assert.Equal(typeof(DropoffDto), navigationService.Parameter.GetType());
+//                Assert.Equal(typeof(DeliveryDto), navigationService.Parameter.GetType());
 
                
 

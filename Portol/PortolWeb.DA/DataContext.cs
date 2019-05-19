@@ -8,6 +8,9 @@ namespace PortolWeb.DA
 {
    public class DataContext : DbContext, IDataContext
     {
+        public DbSet<Delivery> Deliveries { get; set; }
+        public DbSet<Parcel> Parcels { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
         public DbSet<Customer> Customers { get; set; }
         public DbSet<Business> Businesses { get; set; }
         public DbSet<CodeVerification> CodeVerifications { get; set; }

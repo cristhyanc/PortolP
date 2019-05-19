@@ -4,6 +4,7 @@ using Portol.Common;
 using Portol.Common.DTO;
 using Portol.Common.Helper;
 using PortolMobile.Forms.Helper;
+using PortolMobile.Forms.Services.Images;
 using PortolMobile.Forms.Services.Navigation;
 using System;
 using System.Collections.Generic;
@@ -181,7 +182,7 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                 this.SelectedPicture = null;
                 await ViewModelLocator.CheckCameraStoragePermission();                
                 MediaFile CurrentImage;
-                PictureDto pictures = new PictureDto();
+                PictureDto picture = new PictureDto();
 
                 if (!_media.IsCameraAvailable || !_media.IsTakePhotoSupported)
                 {
@@ -191,23 +192,20 @@ namespace PortolMobile.Forms.ViewModels.UserControls
 
                 CurrentImage = await _media.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
                 {
-                    Directory = "tempPhotos",
+                    Directory = Services.Images.ImageManager.TEMP_IMAGE_FOLDER,
                     Name = Guid.NewGuid().ToString() + ".jpg",
                     AllowCropping = false
                 });
+
                 if (CurrentImage == null)
                 {
                     return;
 
                 }
 
-                pictures.Image = ImageSource.FromStream(() =>
-                {
-                    return CurrentImage.GetStream();
-                });
+                picture.ImageUrl = await ImageManager.SavePictureToDisk(CurrentImage.GetStream());
 
-
-                Pictures.Add(pictures);
+                Pictures.Add(picture);
 
 
             }

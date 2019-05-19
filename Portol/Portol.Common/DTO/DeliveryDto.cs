@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Portol.Common.DTO
 {
-   public class DropoffDto
+   public class DeliveryDto
     {
         public Guid DropoffID { get; set; }
         public  CustomerDto Receiver { get; set; }
@@ -14,7 +14,7 @@ namespace Portol.Common.DTO
         public AddressDto  DropoffAddress { get; set; }
         public string Description { get; set; }
         public List<PictureDto> Pictures { get; set; }
-        public MeasurementDto Measurements { get; set; }
+        public ParcelDto Parcel { get; set; }
         public PaymentMethodDto PaymentMethod { get; set; }
         public double TravelDistance { get; set; }
         public decimal EstimatedCost { get; set; }

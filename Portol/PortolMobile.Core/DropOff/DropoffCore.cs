@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace PortolMobile.Core.DropOff
 {
-    public class DropoffCore : IDropoffCore
+    public class DropoffCore : IDeliveryCore
     {
-        IDropoffMobileService _dropoffService;
-        public DropoffCore(IDropoffMobileService dropoffService)
+        IDeliveryMobileService _dropoffService;
+        public DropoffCore(IDeliveryMobileService dropoffService)
         {
             _dropoffService = dropoffService;
         }
@@ -20,9 +20,9 @@ namespace PortolMobile.Core.DropOff
             return await  _dropoffService.GetVehiculeTypesAvailables();
         }
 
-        public async Task<Guid> CreateDropoffRequest(DropoffDto dropoffParcel)
+        public async Task<Guid> CreateDropoffRequest(DeliveryDto dropoffParcel)
         {
-            return await _dropoffService.CreateDropoffRequest(dropoffParcel);
+            return await _dropoffService.CreateDeliveryRequest(dropoffParcel);
         }
     }
 }

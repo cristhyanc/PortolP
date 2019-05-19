@@ -21,7 +21,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         public ICommand GotoPaymentCommand { get; private set; }
         
 
-        DropoffDto _dropoffParcel;
+        DeliveryDto _dropoffParcel;
 
         private List<PictureDto> _imagesTaken;
         public List<PictureDto> PicturesTaken
@@ -36,6 +36,22 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 OnPropertyChanged();
             }
         }
+
+       
+        decimal _worth;
+        public decimal Worth
+        {
+            get
+            {
+                return _worth;
+            }
+            set
+            {
+                _worth = value;
+                OnPropertyChanged();
+            }
+        }
+
 
         bool _isGalleryVisible;
         public bool IsGalleryVisible
@@ -55,9 +71,9 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             get
             {
-                if (_dropoffParcel != null && _dropoffParcel.Measurements != null)
+                if (_dropoffParcel != null && _dropoffParcel.Parcel != null)
                 {
-                    return _dropoffParcel.Measurements.Volume.ToString() + " " + StringResources.M3;
+                    return _dropoffParcel.Parcel.Volume.ToString() + " " + StringResources.M3;
                 }
                 return null;
             }
@@ -93,7 +109,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             {
                 this.IsBusy = true;
                 this._dropoffParcel.Pictures = this.PicturesTaken;
-                if(_dropoffParcel.Measurements==null || _dropoffParcel.Measurements.Volume==0)
+                if(_dropoffParcel.Parcel==null || _dropoffParcel.Parcel.Volume==0)
                 {
                     UserDialogs.Alert(StringResources.MeasurementsRequired, StringResources.MissingInformation);
                     return;
@@ -105,6 +121,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                     return;
                 }
 
+                this._dropoffParcel.Parcel.Worth = Worth;
 
                 await NavigationService.NavigateToAsync<DropPaymentViewModel>(this._dropoffParcel);
             }
@@ -124,7 +141,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             {
                 this.IsBusy = true;
                 SubscribeMeasurementMessagingService();
-                await NavigationService.NavigateToAsync<DropMeasurementsViewModel>(this._dropoffParcel.Measurements);
+                await NavigationService.NavigateToAsync<DropMeasurementsViewModel>(this._dropoffParcel.Parcel);
             }
             catch (Exception ex)
             {
@@ -159,7 +176,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             try
             {
                 this.IsBusy = true;
-                this._dropoffParcel = (DropoffDto)navigationData;
+                this._dropoffParcel = (DeliveryDto)navigationData;
                 if (_dropoffParcel.Pictures?.Count > 0)
                 {
                     this.PicturesTaken = _dropoffParcel.Pictures;
@@ -167,13 +184,13 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
 
                 LoadGallery();
 
-                //_dropoffParcel.Measurements = new MeasurementDto();
-                //_dropoffParcel.Measurements.Height = 2;
-                //_dropoffParcel.Measurements.Weight = 2;
-                //_dropoffParcel.Measurements.Length = 2;
-                //_dropoffParcel.Measurements.Width = 2;
-                //this.PicturesTaken = new List<PictureDto>();
-                //this.PicturesTaken.Add(new PictureDto());
+                _dropoffParcel.Parcel = new ParcelDto();
+                _dropoffParcel.Parcel.Height = 2;
+                _dropoffParcel.Parcel.Weight = 2;
+                _dropoffParcel.Parcel.Length = 2;
+                _dropoffParcel.Parcel.Width = 2;
+                this.PicturesTaken = new List<PictureDto>();
+                this.PicturesTaken.Add(new PictureDto());
 
             }
             catch (Exception ex)
@@ -220,7 +237,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             try
             {
                 MessagingCenter.Unsubscribe<PicturePickerViewModel, List<PictureDto>>(this, MessagingCenterCodes.PicturePickerMessage);
-                MessagingCenter.Unsubscribe<DropMeasurementsViewModel, MeasurementDto>(this, MessagingCenterCodes.MeasurementMessage);
+                MessagingCenter.Unsubscribe<DropMeasurementsViewModel, ParcelDto>(this, MessagingCenterCodes.MeasurementMessage);
             }
             catch (Exception ex)
             {
@@ -252,11 +269,11 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             try
             {
-                MessagingCenter.Subscribe<DropMeasurementsViewModel, MeasurementDto>(this, MessagingCenterCodes.MeasurementMessage, (sender, arg) =>
+                MessagingCenter.Subscribe<DropMeasurementsViewModel, ParcelDto>(this, MessagingCenterCodes.MeasurementMessage, (sender, arg) =>
                 {
                     if (arg != null)
                     {
-                        this._dropoffParcel.Measurements = arg;
+                        this._dropoffParcel.Parcel = arg;
                         OnPropertyChanged("ParcelVolume");
                     }
                 });

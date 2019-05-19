@@ -64,8 +64,8 @@ namespace PortolMobile.Forms.ViewModels
             FindCustomerCommand = new Command((() => FindCustomer()), () => { return !IsBusy; });
             _customerService = customerService;
             _sessionData = sessionData;
-            //this.EmailMobileNumber = "0405593358";
-            //this.ReceiverName = "Cris";
+            this.EmailMobileNumber = "0405593358";
+            this.ReceiverName = "Cris";
 
         }
 
@@ -173,7 +173,7 @@ namespace PortolMobile.Forms.ViewModels
                     }
                 }
 
-                DropoffDto dropoffDto = new DropoffDto();
+                DeliveryDto dropoffDto = new DeliveryDto();
                 dropoffDto.Receiver = customer;
                 dropoffDto.Sender = _sessionData.User;
 

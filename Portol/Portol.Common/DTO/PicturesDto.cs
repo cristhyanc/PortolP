@@ -9,9 +9,11 @@ namespace Portol.Common.DTO
    public class PictureDto
     {
         public Guid PictureID { get; set; }
-        public string ImageUrl { get; set; }
+        public string ImageUrl { get; set; }        
         public Guid ParentID { get; set; }
-        public ImageSource Image { get; set; }
+        public Byte[] ImageArray { get; set; }
+
+        public string ImageName { get { return PictureID.ToString() + ".jpg"; } }
 
         public PictureDto()
         {

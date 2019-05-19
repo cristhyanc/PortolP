@@ -18,11 +18,11 @@ namespace PortolWeb.API.Controllers
     [ApiController]
     public class DropoffController : ControllerBase
     {
-        IDropoffService _dropoffService;
+        IDeliveryService _deliveryService;
 
-        public DropoffController(IDropoffService dropoffService)
+        public DropoffController(IDeliveryService deliveryService)
         {
-            _dropoffService = dropoffService;
+            _deliveryService = deliveryService;
         }
 
         [HttpGet("GetVehiculeTypesAvailables")]        
@@ -30,7 +30,7 @@ namespace PortolWeb.API.Controllers
         {
             try
             {
-                var result = _dropoffService.GetVehiculeTypesAvailables();
+                var result = _deliveryService.GetVehiculeTypesAvailables();
                 return Ok(result);
             }
             catch (AppException ex)
@@ -46,11 +46,12 @@ namespace PortolWeb.API.Controllers
         }
 
         [HttpPost("CreateDropoffRequest")]
-        public IActionResult CreateDropoffRequest([FromBody] DropoffDto dropoff)
+        public IActionResult CreateDropoffRequest([FromBody] DeliveryDto delivery)
         {
             try
             {
-                var result = _dropoffService.CreateDropoffRequest(dropoff);
+
+                var result = _deliveryService.CreateDeliveryRequest(delivery);
                 return Ok(result);
             }
             catch (AppException ex)

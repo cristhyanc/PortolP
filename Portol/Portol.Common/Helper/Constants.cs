@@ -144,7 +144,7 @@ namespace Portol.Common.Helper
     public enum ParentType
     {
         Customer=1,
-        Dropoff=2
+        Delivery=2
     }
     public enum DeliveryStatus
     {

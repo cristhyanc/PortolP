@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace PortolMobile.Services.Dropoff
 {
-    public class DropoffMobileService : IDropoffMobileService
+    public class DropoffMobileService : IDeliveryMobileService
     {
         private readonly IRestClient _restClient;
         public DropoffMobileService(IRestClient restClient)
@@ -23,7 +23,7 @@ namespace PortolMobile.Services.Dropoff
             return await _restClient.MakeApiCall<List<VehiculeTypeDto>>($"{Constants.BaseDropoffApiUrl}/GetVehiculeTypesAvailables", HttpMethod.Get, null);
         }
 
-        public async Task<Guid> CreateDropoffRequest(DropoffDto dropoffParcel)
+        public async Task<Guid> CreateDeliveryRequest(DeliveryDto dropoffParcel)
         {
             return await _restClient.MakeApiCallRaw<Guid>($"{Constants.BaseDropoffApiUrl}/CreateDropoffRequest", HttpMethod.Post , dropoffParcel);
         }

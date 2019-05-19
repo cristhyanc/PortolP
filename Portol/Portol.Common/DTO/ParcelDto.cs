@@ -4,8 +4,15 @@ using System.Text;
 
 namespace Portol.Common.DTO
 {
-   public class MeasurementDto
+   public class ParcelDto
     {
+        public ParcelDto()
+        {
+            ParcelID = Guid.NewGuid();
+        }
+        public Guid ParcelID { get; set; }
+        public Guid ParentID { get; set; }
+       // public int ParentType { get; set; }
         //Centimetre
         public int Width { get; set; }
         //Centimetre
@@ -14,6 +21,8 @@ namespace Portol.Common.DTO
         public int Weight { get; set; }
         //Centimetre
         public int Length { get; set; }
+
+        public decimal Worth { get; set; }
 
         public int Volume
         {

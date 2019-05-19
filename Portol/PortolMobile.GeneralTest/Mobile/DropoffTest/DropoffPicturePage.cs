@@ -29,7 +29,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
         {
             InitServices();
             DropPicturesViewModel dropPicturesViewModel = new DropPicturesViewModel(_navigationService, _userDialogs);
-            DropoffDto parameter = new DropoffDto();
+            DeliveryDto parameter = new DeliveryDto();
             await dropPicturesViewModel.InitializeAsync(parameter);
 
             EventHandler handler = (sender, e) =>
@@ -54,7 +54,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
         {
             InitServices();
             DropPicturesViewModel dropPicturesViewModel = new DropPicturesViewModel(_navigationService, _userDialogs);
-            DropoffDto parameter = new DropoffDto();
+            DeliveryDto parameter = new DeliveryDto();
             await dropPicturesViewModel.InitializeAsync(parameter);
 
             EventHandler handler = (sender, e) =>
@@ -81,7 +81,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
             InitServices();
             DropPicturesViewModel dropPicturesViewModel = new DropPicturesViewModel(_navigationService, _userDialogs);
             
-            DropoffDto parameter = new DropoffDto();
+            DeliveryDto parameter = new DeliveryDto();
 
             parameter.Pictures = urls.Select(x => new PictureDto { ImageUrl = x }).ToList(); 
             await dropPicturesViewModel.InitializeAsync(parameter);
@@ -96,7 +96,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
             InitServices();
             DropPicturesViewModel dropPicturesViewModel = new DropPicturesViewModel(_navigationService, _userDialogs);
 
-            DropoffDto parameter = new DropoffDto(); 
+            DeliveryDto parameter = new DeliveryDto(); 
             await dropPicturesViewModel.InitializeAsync(parameter);
 
             Assert.False(dropPicturesViewModel.IsGalleryVisible);
@@ -109,7 +109,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
             InitServices();
             DropPicturesViewModel dropPicturesViewModel = new DropPicturesViewModel(_navigationService, _userDialogs);
             PicturePickerViewModel picturePickerViewModel = new PicturePickerViewModel(null, _navigationService, _userDialogs);
-            DropoffDto parameter = new DropoffDto();
+            DeliveryDto parameter = new DeliveryDto();
             await dropPicturesViewModel.InitializeAsync(parameter);
             dropPicturesViewModel.PickPicturesCommand.Execute(null);
 
@@ -151,11 +151,11 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
             InitServices();
             DropPicturesViewModel dropPicturesViewModel = new DropPicturesViewModel(_navigationService, _userDialogs);
             DropMeasurementsViewModel dropMeasurementsViewModel =new DropMeasurementsViewModel(_navigationService, _userDialogs);
-            DropoffDto parameter = new DropoffDto();
+            DeliveryDto parameter = new DeliveryDto();
             await dropPicturesViewModel.InitializeAsync(parameter);
             dropPicturesViewModel.MeasurementCommand.Execute(null);
 
-            MeasurementDto measurement = new MeasurementDto();
+            ParcelDto measurement = new ParcelDto();
             measurement.Height = height;
             measurement.Length = length;
             measurement.Weight = weight;
@@ -175,7 +175,7 @@ namespace PortolMobile.GeneralTest.Mobile.DropoffTest
            
             dropPicturesViewModel.PropertyChanged += handler;
             dropMeasurementsViewModel.GoBackToPicturesCommand.Execute(null);
-            // MessagingCenter.Send<DropMeasurementsViewModel, MeasurementDto>(dropMeasurementsViewModel, MessagingCenterCodes.MeasurementMessage, measurement);
+            // MessagingCenter.Send<DropMeasurementsViewModel, ParcelDto>(dropMeasurementsViewModel, MessagingCenterCodes.MeasurementMessage, measurement);
             dropPicturesViewModel.PropertyChanged -= handler;
 
         }
