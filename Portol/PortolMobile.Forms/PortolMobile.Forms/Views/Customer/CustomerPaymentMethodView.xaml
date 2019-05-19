@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PortolMobile.Forms.Views.Customer.CustomerPaymentMethodView"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"           
+             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"            
+             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
+             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles">
+    <controls:ExtendedContentPage.Resources>
+        <CustomerStyles:CustomerStyles/>
+    </controls:ExtendedContentPage.Resources>
+    <controls:ExtendedContentPage.Content>
+        <StackLayout Margin="10,20">
+            <Label Text="{i18n:Translate PaymentMethods}" Margin="0,15,0,0"  Style="{StaticResource TitleLabel}"  ></Label>
+
+
+            <controls:ExtendedEntry Placeholder="Credit Card Number" HorizontalOptions="FillAndExpand" x:Name="txtCreditNumber" ></controls:ExtendedEntry>
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
+                <controls:ExtendedEntry Placeholder="MM/YY" HorizontalOptions="FillAndExpand" x:Name="txtDate" ></controls:ExtendedEntry>
+                <controls:ExtendedEntry Placeholder="CVV" HorizontalOptions="FillAndExpand" x:Name="txtCvv" ></controls:ExtendedEntry>
+            </StackLayout>
+            <Button  Text="{i18n:Translate AddNewPaymentMethod}" Command="{Binding AddNewPaymentCommand}"  TextColor="White"  BackgroundColor="#4c4c4c"   ></Button>
+
+
+        </StackLayout>
+    </controls:ExtendedContentPage.Content>
+</controls:ExtendedContentPage>
