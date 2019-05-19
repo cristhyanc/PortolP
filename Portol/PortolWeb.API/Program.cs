@@ -33,13 +33,7 @@ namespace PortolWeb.API
         {
             var host = CreateWebHostBuilder(args).Build();
 
-            //Log.Logger = new LoggerConfiguration()
-            //   .ReadFrom.Configuration(Configuration)
-            //   .Enrich.WithProperty("App Name", "Serilog Web App Sample")
-            //   .CreateLogger();
-
-
-
+          
             using (var serviceScope = host.Services.CreateScope())
             {
                 var services = serviceScope.ServiceProvider;

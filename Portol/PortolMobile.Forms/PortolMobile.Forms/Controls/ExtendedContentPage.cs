@@ -33,6 +33,9 @@ namespace PortolMobile.Forms.Controls
         {
             this.Appearing += ExtendedContentPage_Appearing;
             this.Disappearing += ExtendedContentPage_Disappearing;
+
+            this.SetBinding(ExtendedContentPage.PageAppearingCommandProperty, "PageAppearingCommand");
+            this.SetBinding(ExtendedContentPage.PageDisappearingCommandProperty, "PageDisappearingCommand");
         }
 
         private void ExtendedContentPage_Disappearing(object sender, EventArgs e)

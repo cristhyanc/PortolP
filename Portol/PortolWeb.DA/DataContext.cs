@@ -8,10 +8,16 @@ namespace PortolWeb.DA
 {
    public class DataContext : DbContext, IDataContext
     {
-        public DbSet<User> Users { get; set; }
+        public DbSet<Delivery> Deliveries { get; set; }
+        public DbSet<Parcel> Parcels { get; set; }
+        public DbSet<Picture> Pictures { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public DbSet<Business> Businesses { get; set; }
         public DbSet<CodeVerification> CodeVerifications { get; set; }
         public DbSet<Script> Scripts { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<VehiculeType> VehiculeType { get; set; }
+        public DbSet<VehiculeTypeRange> VehiculeTypeRange { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {

@@ -7,7 +7,7 @@ namespace Portol.Common.DTO
 {
     public class CountryDto
     {
-        public EnumCountries Country { get; private set; }
+        public AvailableCountries Country { get; private set; }
         public string CountryName { get; private set; }
         public string CountryFlagFile { get; private set; }
         public string CountryCode
@@ -19,7 +19,7 @@ namespace Portol.Common.DTO
             }
         }
 
-        public CountryDto(EnumCountries country)
+        public CountryDto(AvailableCountries country)
         {
             this.Country = country;
             this.CountryName = Helper.HelperClass.GetCountryName(country);

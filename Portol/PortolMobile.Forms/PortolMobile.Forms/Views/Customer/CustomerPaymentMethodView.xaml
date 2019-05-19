@@ -13,7 +13,7 @@
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
         <StackLayout Margin="10,20">
-            <Label Text="{i18n:Translate PaymentMethods}" Margin="0,15,0,0"  Style="{StaticResource TitleLabel}"  ></Label>
+            <Label Text="{i18n:Translate PaymentMethods}" Margin="0,15,0,0"  Style="{StaticResource TitleLabel}" ></Label>
 
 
             <controls:ExtendedEntry Placeholder="Credit Card Number" HorizontalOptions="FillAndExpand" x:Name="txtCreditNumber" ></controls:ExtendedEntry>

@@ -13,8 +13,8 @@ namespace PortolWeb.Entities
         [Key]
         public Guid CodeID { get; set; }
         public Int32 CodeNumber { get; set; }
-        public string PhoneNumber { get; set; }
-        public string CountryCode { get; set; }        
+        public long PhoneNumber { get; set; }
+        public Int32 CountryCode { get; set; }        
         public DateTime Created { get; set; }
 
 
