@@ -10,11 +10,11 @@ namespace PortolMobile.Services.Rest
 {
     public class RestClient : IRestClient
     {
+       
 
-        string Toke;
-        public RestClient(string toke)
+        public RestClient( )
         {
-            this.Toke = toke;
+          
         }
 
         private async Task<HttpResponseMessage> Call(string url, HttpMethod method, object data = null)
@@ -33,12 +33,8 @@ namespace PortolMobile.Services.Rest
 
                 using (var request = new HttpRequestMessage { RequestUri = new Uri(url), Method = method })
                 {
+                    
 
-                    if(!string.IsNullOrEmpty(Toke))
-                    {
-                        httpClient.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("bearer", this.Toke);                        
-                    }
-                   
                     if (method != HttpMethod.Get)
                     {
                      var   jsonContent = JsonConvert.SerializeObject(data);
@@ -74,25 +70,12 @@ namespace PortolMobile.Services.Rest
                 }
                 else
                 {
-                    if(response.StatusCode == System.Net.HttpStatusCode.NoContent )
+                    var error = JsonConvert.DeserializeObject<ApiError>(stringSerialized);   
+                    if(string.IsNullOrEmpty(error.StatusDescription))
                     {
-                        return null;
+                        error.StatusDescription = error.message;
                     }
-
-                    if(response.StatusCode == System.Net.HttpStatusCode.Unauthorized )
-                    {
-                        throw new AppException(StringResources.LoginAgain);
-                    }
-                    else
-                    {
-                        var error = JsonConvert.DeserializeObject<ApiError>(stringSerialized);
-                        if (string.IsNullOrEmpty(error.StatusDescription))
-                        {
-                            error.StatusDescription = error.message;
-                        }
-                        throw new AppException(error.StatusDescription);
-                    }
-                    
+                    throw new AppException(error.StatusDescription);
                 }
             }
             catch (Exception ex)
@@ -113,20 +96,8 @@ namespace PortolMobile.Services.Rest
                 }
                 else
                 {
-                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
-                    {
-                        return new TResult();
-                    }
-
-                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                    {
-                        throw new AppException(StringResources.LoginAgain);
-                    }
-                    else
-                    {
-                        var error = JsonConvert.DeserializeObject<ApiError>(stringSerialized);
-                        throw new AppException(error.StatusDescription);
-                    }
+                    var error = JsonConvert.DeserializeObject<ApiError>(stringSerialized);
+                    throw new AppException(error.StatusDescription);
                 }
             }           
             catch (Exception ex)
@@ -147,21 +118,9 @@ namespace PortolMobile.Services.Rest
                 }
                 else
                 {
-                    if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
-                    {
-                        return false;
-                    }
-
-                    if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
-                    {
-                        throw new AppException(StringResources.LoginAgain);
-                    }
-                    else
-                    {
-                        var stringSerialized = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                        var error = JsonConvert.DeserializeObject<ApiError>(stringSerialized);
-                        throw new AppException(error.StatusDescription);
-                    }
+                    var stringSerialized = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    var error = JsonConvert.DeserializeObject<ApiError>(stringSerialized);
+                    throw new AppException(error.StatusDescription);
                 }
             }           
             catch (Exception ex)

@@ -8,16 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
-using PortolMobile.Forms.Services.Navigation;
-using Acr.UserDialogs;
 
 namespace PortolMobile.Forms.ViewModels.SignUp
 {
     public class SignupStepEmailViewModel : BaseViewModel
     {
         public ICommand GotoAddressPageCommand { get; private set; }     
-        private readonly IUserCore _userCore;
-        CustomerDto _userDto;
+        private readonly ILoginService _loginService;
+        UserDto _userDto;
 
         bool _isValidationVisible;
         public bool IsValidationVisible
@@ -104,10 +102,10 @@ namespace PortolMobile.Forms.ViewModels.SignUp
         }
 
 
-        public SignupStepEmailViewModel(IUserCore userCore, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
+        public SignupStepEmailViewModel(ILoginService loginService)
         {           
-            _userCore = userCore;
-            GotoAddressPageCommand = new Command(GotoAddressPage, () => { return !IsBusy; });
+            _loginService = loginService;
+            GotoAddressPageCommand = new Command(GotoAddressPage);
         }
 
         private async void GotoAddressPage()
@@ -149,7 +147,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                     return;
                 }
 
-                var result = await _userCore.VerifyEmailUniqueness(this.Email);
+                var result = await _loginService.VerifyEmailUniqueness(this.Email);
                 if (!result)
                 {
                     IsValidationVisible = true;
@@ -176,7 +174,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
         {
             try
             {
-                _userDto = (CustomerDto)navigationData;
+                _userDto = (UserDto)navigationData;
             }
             catch (Exception ex)
             {

@@ -1,0 +1,344 @@
+2019-04-05 09:35:02.205 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-04-05 09:35:03.218 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 09:35:03.218 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 09:35:03.244 +10:00 [WRN] No XML encryptor configured. Key "ccb20642-e3f4-41ea-ac50-c41dcab69f6b" may be persisted to storage in unencrypted form.
+2019-04-05 09:35:03.833 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 09:38:04.156 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-04-05 09:38:04.771 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 09:38:04.771 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 09:38:04.790 +10:00 [WRN] No XML encryptor configured. Key "42845f46-d12e-4eb1-8337-4aafb5b1d5cb" may be persisted to storage in unencrypted form.
+2019-04-05 09:38:05.277 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 09:40:06.044 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-04-05 09:40:06.730 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 09:40:06.730 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 09:40:06.760 +10:00 [WRN] No XML encryptor configured. Key "70c10aaa-7753-40a3-b7ac-555328fb9085" may be persisted to storage in unencrypted form.
+2019-04-05 09:40:07.259 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 09:45:03.808 +10:00 [WRN] No type was specified for the decimal column 'PhoneNumber' on entity type 'User'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-04-05 09:45:04.616 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 09:45:04.616 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 09:45:04.653 +10:00 [WRN] No XML encryptor configured. Key "74bf2322-13bc-4792-886e-b7510add28bc" may be persisted to storage in unencrypted form.
+2019-04-05 09:45:05.164 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 09:56:12.208 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 09:56:12.247 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 09:56:12.273 +10:00 [WRN] No XML encryptor configured. Key "918fe988-6d99-48a2-9512-6ed63cd8fea6" may be persisted to storage in unencrypted form.
+2019-04-05 09:56:12.756 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 09:56:54.139 +10:00 [ERR] Failed executing DbCommand (41ms) [Parameters=[@__phoneDetails_PhoneNumber_0='?' (DbType = Int64), @__phoneDetails_PhoneCountryCode_1='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [x].[UserID], [x].[BusinessID], [x].[City], [x].[Country], [x].[DOB], [x].[Deleted], [x].[Email], [x].[FirstName], [x].[FlatNumber], [x].[LastName], [x].[PasswordHash], [x].[PasswordSalt], [x].[PhoneCountryCode], [x].[PhoneNumber], [x].[State], [x].[StreetName], [x].[Suburb]
+FROM [tblUser] AS [x]
+WHERE ([x].[PhoneNumber] = @__phoneDetails_PhoneNumber_0) AND ([x].[PhoneCountryCode] = @__phoneDetails_PhoneCountryCode_1)
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'tblUser'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:548d89c3-d1b6-4a41-bfc8-2964c353861c
+Error Number:208,State:1,Class:16
+2019-04-05 09:56:54.225 +10:00 [ERR] An exception occurred while iterating over the results of a query for context type 'PortolWeb.DA.DataContext'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'tblUser'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at lambda_method(Closure )
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+ClientConnectionId:548d89c3-d1b6-4a41-bfc8-2964c353861c
+Error Number:208,State:1,Class:16
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'tblUser'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at lambda_method(Closure )
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+ClientConnectionId:548d89c3-d1b6-4a41-bfc8-2964c353861c
+Error Number:208,State:1,Class:16
+2019-04-05 09:56:54.229 +10:00 [ERR] An exception occurred while iterating over the results of a query for context type 'PortolWeb.DA.DataContext'.
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'tblUser'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at lambda_method(Closure )
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass15_1`1.<CompileQueryCore>b__0(QueryContext qc)
+ClientConnectionId:548d89c3-d1b6-4a41-bfc8-2964c353861c
+Error Number:208,State:1,Class:16
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'tblUser'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at lambda_method(Closure )
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass15_1`1.<CompileQueryCore>b__0(QueryContext qc)
+ClientConnectionId:548d89c3-d1b6-4a41-bfc8-2964c353861c
+Error Number:208,State:1,Class:16
+2019-04-05 09:56:54.354 +10:00 [ERR] User.VerifyMobileUniqueness
+System.Data.SqlClient.SqlException (0x80131904): Invalid object name 'tblUser'.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   at System.Data.SqlClient.SqlDataReader.get_MetaData()
+   at System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   at System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite, String method)
+   at System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   at System.Data.SqlClient.SqlCommand.ExecuteDbDataReader(CommandBehavior behavior)
+   at System.Data.Common.DbCommand.ExecuteReader()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteReader(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.BufferlessMoveNext(DbContext _, Boolean buffer)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerExecutionStrategy.Execute[TState,TResult](TState state, Func`3 operation, Func`3 verifySucceeded)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryingEnumerable`1.Enumerator.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at lambda_method(Closure )
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ResultEnumerable`1.GetEnumerator()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider._TrackEntities[TOut,TIn](IEnumerable`1 results, QueryContext queryContext, IList`1 entityTrackingInfos, IList`1 entityAccessors)+MoveNext()
+   at Microsoft.EntityFrameworkCore.Query.Internal.LinqOperatorProvider.ExceptionInterceptor`1.EnumeratorExceptionInterceptor.MoveNext()
+   at System.Linq.Enumerable.TryGetFirst[TSource](IEnumerable`1 source, Boolean& found)
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.<>c__DisplayClass15_1`1.<CompileQueryCore>b__0(QueryContext qc)
+   at System.Linq.Queryable.FirstOrDefault[TSource](IQueryable`1 source)
+   at PortolWeb.DA.Repositories.RepositoryBase`1.Get(Expression`1 expression) in D:\GitHub\PortolP\Portol\PortolWeb.DA\Repositories\RepositoryBase.cs:line 40
+   at PortolWeb.Core.UserServices.UserService.VerifyMobileUniqueness(UserDto phoneDetails) in D:\GitHub\PortolP\Portol\PortolWeb.Core\UserServices\UserService.cs:line 118
+   at PortolWeb.API.Controllers.UsersController.VerifyMobileUniqueness(UserDto phoneDetails) in D:\GitHub\PortolP\Portol\PortolWeb.API\Controllers\UsersController.cs:line 183
+ClientConnectionId:548d89c3-d1b6-4a41-bfc8-2964c353861c
+Error Number:208,State:1,Class:16
+2019-04-05 09:58:57.623 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 09:58:57.655 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 09:58:57.677 +10:00 [WRN] No XML encryptor configured. Key "71a06743-0cf2-4f13-b9ab-91a90a4e14d9" may be persisted to storage in unencrypted form.
+2019-04-05 09:58:58.220 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 10:00:23.796 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 10:00:23.832 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 10:00:23.853 +10:00 [WRN] No XML encryptor configured. Key "34e19c1c-b9a5-4d87-8536-b27074b71562" may be persisted to storage in unencrypted form.
+2019-04-05 10:00:24.401 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 10:02:30.434 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 10:02:30.464 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 10:02:30.483 +10:00 [WRN] No XML encryptor configured. Key "522a84ad-bfce-497e-bc3e-0d0fb03f86b9" may be persisted to storage in unencrypted form.
+2019-04-05 10:02:30.804 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 10:03:49.761 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 10:03:49.804 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 10:03:49.825 +10:00 [WRN] No XML encryptor configured. Key "ca95109e-6fe9-4fdf-98fe-2ecf8022dfc4" may be persisted to storage in unencrypted form.
+2019-04-05 10:03:50.408 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 10:04:49.298 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 10:04:49.334 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 10:04:49.355 +10:00 [WRN] No XML encryptor configured. Key "df50e3f8-d982-4abd-8f63-194abcb7d66a" may be persisted to storage in unencrypted form.
+2019-04-05 10:04:49.886 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 10:06:13.883 +10:00 [ERR] User.SendVerificationCode
+System.InvalidOperationException: The entity type 'CodeVerification' was not found. Ensure that the entity type has been added to the model.
+   at Microsoft.EntityFrameworkCore.ChangeTracking.Internal.StateManager.GetOrCreateEntry(Object entity)
+   at Microsoft.EntityFrameworkCore.DbContext.EntryWithoutDetectChanges[TEntity](TEntity entity)
+   at Microsoft.EntityFrameworkCore.DbContext.SetEntityState[TEntity](TEntity entity, EntityState entityState)
+   at PortolWeb.DA.Repositories.RepositoryBase`1.Insert(T entity) in D:\GitHub\PortolP\Portol\PortolWeb.DA\Repositories\RepositoryBase.cs:line 45
+   at PortolWeb.Core.SmsServices.SmsService.SendNewCode(String mobileNumber, String countryCode) in D:\GitHub\PortolP\Portol\PortolWeb.Core\SmsServices\SmsService.cs:line 44
+   at PortolWeb.API.Controllers.UsersController.SendVerificationCode(UserDto details) in D:\GitHub\PortolP\Portol\PortolWeb.API\Controllers\UsersController.cs:line 204
+2019-04-05 10:08:31.612 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 10:08:31.655 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 10:08:31.676 +10:00 [WRN] No XML encryptor configured. Key "50927b46-530c-4db3-818b-504ddb6166be" may be persisted to storage in unencrypted form.
+2019-04-05 10:08:32.233 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 10:18:12.879 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 10:18:12.912 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 10:18:12.935 +10:00 [WRN] No XML encryptor configured. Key "613b1e70-ee84-4c7c-9e5a-52e952e3f549" may be persisted to storage in unencrypted form.
+2019-04-05 10:18:13.606 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 10:32:14.879 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 10:32:14.911 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 10:32:14.934 +10:00 [WRN] No XML encryptor configured. Key "a0cf7c87-de4e-4da8-8c38-1f1c644c0cb6" may be persisted to storage in unencrypted form.
+2019-04-05 10:32:15.481 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 10:34:55.678 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 10:34:55.717 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 10:34:55.737 +10:00 [WRN] No XML encryptor configured. Key "795f5f44-9d43-4dcc-a78b-1920499e1303" may be persisted to storage in unencrypted form.
+2019-04-05 10:34:56.278 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 10:52:29.289 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 10:52:29.326 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 10:52:29.350 +10:00 [WRN] No XML encryptor configured. Key "af854dbf-3228-4c4b-825c-498d6a2eba7b" may be persisted to storage in unencrypted form.
+2019-04-05 10:52:29.897 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 10:56:18.292 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 10:56:18.335 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 10:56:18.360 +10:00 [WRN] No XML encryptor configured. Key "ad34d9ed-3152-4bbe-a790-9e1ae65d3dcb" may be persisted to storage in unencrypted form.
+2019-04-05 10:56:19.034 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 10:59:00.298 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 10:59:00.330 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 10:59:00.352 +10:00 [WRN] No XML encryptor configured. Key "4b39c0ce-679d-4e2c-a481-3fd7bac79753" may be persisted to storage in unencrypted form.
+2019-04-05 10:59:00.814 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 11:02:31.702 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 11:02:31.738 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 11:02:31.759 +10:00 [WRN] No XML encryptor configured. Key "ec4f11eb-289b-4873-adf4-f5f13feab58d" may be persisted to storage in unencrypted form.
+2019-04-05 11:02:32.289 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 11:14:34.107 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 11:14:34.144 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 11:14:34.163 +10:00 [WRN] No XML encryptor configured. Key "c11738ca-f138-447c-9ba4-c2f5fefa853f" may be persisted to storage in unencrypted form.
+2019-04-05 11:14:34.454 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 15:19:27.380 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 15:19:27.446 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 15:19:27.470 +10:00 [WRN] No XML encryptor configured. Key "91fdd458-4be5-47b8-871a-77b127f21fde" may be persisted to storage in unencrypted form.
+2019-04-05 15:19:27.891 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 16:25:50.781 +10:00 [ERR] An error occurred using the connection to database 'dbPortol' on server 'portol.database.windows.net'.
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'adminportol'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+ClientConnectionId:8ec91b53-8502-4926-a192-d6874d118ae4
+Error Number:18456,State:1,Class:14
+2019-04-05 16:25:51.016 +10:00 [ERR] UpgradeDB
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'adminportol'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.ExecuteSqlCommand(DatabaseFacade databaseFacade, RawSqlString sql, IEnumerable`1 parameters)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.ExecuteSqlCommand(DatabaseFacade databaseFacade, RawSqlString sql, Object[] parameters)
+   at PortolWeb.Entities.DatabaseManagement.CreateScriptTable() in D:\GitHub\PortolP\Portol\PortolWeb.Entities\DatabaseManagement.cs:line 113
+   at PortolWeb.Entities.DatabaseManagement.UpgradeDB(String scriptsPath) in D:\GitHub\PortolP\Portol\PortolWeb.Entities\DatabaseManagement.cs:line 39
+ClientConnectionId:8ec91b53-8502-4926-a192-d6874d118ae4
+Error Number:18456,State:1,Class:14
+2019-04-05 16:25:51.146 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 16:25:51.146 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 16:25:51.168 +10:00 [WRN] No XML encryptor configured. Key "e1d7c312-22dd-465c-ac4a-125cb30d101d" may be persisted to storage in unencrypted form.
+2019-04-05 16:25:51.725 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 16:26:45.394 +10:00 [ERR] An error occurred using the connection to database 'dbPortol' on server 'portol.database.windows.net'.
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'adminportol'.
+   at System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, Boolean applyTransientFaultHandling, String accessToken)
+   at System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+ClientConnectionId:04410b02-494d-4a89-b215-3e0a49eaa889
+Error Number:18456,State:1,Class:14
+2019-04-05 16:26:59.872 +10:00 [ERR] An error occurred using the connection to database 'dbPortol' on server 'portol.database.windows.net'.
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'adminportol'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+ClientConnectionId:74b30506-8cd1-436a-8eaf-6ef8ead236df
+Error Number:18456,State:1,Class:14
+2019-04-05 16:26:59.937 +10:00 [ERR] UpgradeDB
+System.Data.SqlClient.SqlException (0x80131904): Login failed for user 'adminportol'.
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   at System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   at System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   at System.Data.SqlClient.SqlConnection.Open()
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.OpenDbConnection(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.RelationalConnection.Open(Boolean errorsExpected)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.ExecuteNonQuery(IRelationalConnection connection, IReadOnlyDictionary`2 parameterValues)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.ExecuteSqlCommand(DatabaseFacade databaseFacade, RawSqlString sql, IEnumerable`1 parameters)
+   at Microsoft.EntityFrameworkCore.RelationalDatabaseFacadeExtensions.ExecuteSqlCommand(DatabaseFacade databaseFacade, RawSqlString sql, Object[] parameters)
+   at PortolWeb.Entities.DatabaseManagement.CreateScriptTable() in D:\GitHub\PortolP\Portol\PortolWeb.Entities\DatabaseManagement.cs:line 113
+   at PortolWeb.Entities.DatabaseManagement.UpgradeDB(String scriptsPath) in D:\GitHub\PortolP\Portol\PortolWeb.Entities\DatabaseManagement.cs:line 39
+ClientConnectionId:74b30506-8cd1-436a-8eaf-6ef8ead236df
+Error Number:18456,State:1,Class:14
+2019-04-05 16:26:59.971 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 16:26:59.971 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 16:26:59.987 +10:00 [WRN] No XML encryptor configured. Key "92d2bb0f-862a-497f-8eba-9990d873658f" may be persisted to storage in unencrypted form.
+2019-04-05 16:27:00.379 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-04-05 16:28:37.431 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-04-05 16:28:37.464 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-04-05 16:28:37.489 +10:00 [WRN] No XML encryptor configured. Key "29a93e89-e1f9-4cda-9d96-1651501470d6" may be persisted to storage in unencrypted form.
+2019-04-05 16:28:38.131 +10:00 [WRN] Failed to determine the https port for redirect.

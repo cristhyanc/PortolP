@@ -2,8 +2,10 @@
 using Portol.Common;
 using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Helper;
-using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels.SignUp;
+using System;
+using System.Collections.Generic;
+using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -13,7 +15,7 @@ namespace PortolMobile.Forms.ViewModels.Login
     {
 
       
-        private readonly ILoginCore _loginCore;
+        private readonly ILoginService _loginService;
 
         public ICommand LoginButtonCommand { get; private set; }
         public ICommand RecoverButtonCommand { get; private set; }
@@ -47,20 +49,14 @@ namespace PortolMobile.Forms.ViewModels.Login
             }
         }
 
-        ISessionData _sessionData;
 
-        public LoginViewModel(ILoginCore userCore, INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData ) : base(navigationService, userDialogs)
+        public LoginViewModel(ILoginService loginService)
         {
           
-            _loginCore = userCore;
-            LoginButtonCommand = new Command(LoginUser, () => { return !IsBusy; });
-            RecoverButtonCommand = new Command(GoToRecoverPassword, () => { return !IsBusy; });
-            SignupCommand = new Command(GoToSignup, () => { return !IsBusy; });
-            _sessionData = sessionData;
-
-            this.EmailText = "cristhyan@msn.com";
-            this.PasswordText = "asd";
-
+            _loginService = loginService;
+            LoginButtonCommand = new Command(LoginUser);
+            RecoverButtonCommand = new Command(GoToRecoverPassword);
+            SignupCommand = new Command(GoToSignup);
         }
 
 
@@ -68,17 +64,15 @@ namespace PortolMobile.Forms.ViewModels.Login
         {
             try
             {
-                this.IsBusy = true;
-                await NavigationService.NavigateToAsync<SignupStepMobileViewModel>();
-               
+                   await NavigationService.NavigateToAsync<SignupStepMobileViewModel>();
+                //var user = new Portol.Common.DTO.UserDto();
+                //await NavigationService.NavigateToAsync<SignupStepAddressViewModel>(user);
+
+
             }
             catch (System.Exception ex)
             {
                 ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.Login, "GoToSignup");
-            }
-            finally
-            {
-                IsBusy = false;
             }
         }
 
@@ -86,16 +80,11 @@ namespace PortolMobile.Forms.ViewModels.Login
         {
             try
             {
-                this.IsBusy = true;
                 await NavigationService.NavigateToAsync<RecoverPasswordViewModel>();
             }
             catch (System.Exception ex)
             {
                 ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.Login, "GoToRecoverPassword");
-            }
-            finally
-            {
-                IsBusy = false;
             }
 
         }
@@ -108,8 +97,8 @@ namespace PortolMobile.Forms.ViewModels.Login
                 this.IsBusy = true;
                 if (this.PasswordText?.Length > 0 && this.EmailText?.Length > 0)
                 {
-                    await _sessionData.LoginUser(_loginCore, this.EmailText, this.PasswordText);                   
-                    await NavigationService.NavigateToAsync<DropViewModel>();
+                    var result = await _loginService.Authenticate(this.EmailText, this.PasswordText);
+                    await NavigationService.NavigateToAsync<MainViewModel>();
                 }
                 else
                 {
@@ -133,7 +122,7 @@ namespace PortolMobile.Forms.ViewModels.Login
             {
                 this.IsBusy = false;
             }
-           
+            //  
         }
     }
 }

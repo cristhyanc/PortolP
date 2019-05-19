@@ -1,52 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"         
+              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
-              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="PortolMobile.Forms.App">
-    <Application.Resources>      
+    <Application.Resources>
         <ResourceDictionary>
             <!--Global Styles-->
 
             <ffimageloadingsvg:SvgImageSourceConverter x:Key="SvgImageSourceConverter" ></ffimageloadingsvg:SvgImageSourceConverter>
             
             <Color x:Key="NavigationPrimary">#2196F3</Color>
-            <Color x:Key="EntryWhiteSmokeAppColor">#f2f2f2</Color>
-            <Color x:Key="ButtonTabUnSelectedColor">#f7f7f7</Color>
-            <Color x:Key="ButtonTextTabUnSelectedColor">#8c919e</Color>
-            
-
-            <Style x:Key="BoxSeparatorRight"   TargetType="BoxView">
-                <Setter Property="HeightRequest" Value="1" />
-                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-                <Setter Property="BackgroundColor" Value="#EE0B0B"  />
-                <Setter Property="Color" Value="#EE0B0B" />
-            </Style>
-
-            <Style x:Key="BoxSeparatorLeft"   TargetType="BoxView">
-                <Setter Property="HeightRequest" Value="1" />
-                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-                <Setter Property="BackgroundColor" Value="#1a1717"  />
-                <Setter Property="Color" Value="#1a1717" />
-            </Style>
-
-            <Style x:Key="GpsIconStyle"  TargetType="ffimageloading:CachedImage">
-                <Setter Property="HorizontalOptions" Value="Start" />
-                <Setter Property="WidthRequest" Value="45" />
-                <Setter Property="HeightRequest" Value="60"/>
-                <Setter Property="VerticalOptions" Value="FillAndExpand" />
-                <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_parcel.png?assembly=PortolMobile.Forms" />
-            </Style>
-
-          
-
-            <Style x:Key="BoxSeparator"   TargetType="BoxView">
-                <Setter Property="HeightRequest" Value="1" />
-                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-                <Setter Property="BackgroundColor" Value="LightGray"   />
-                <Setter Property="Color" Value="LightGray" />
-            </Style>
+            <Color x:Key="EntryWhiteSmokeAppColor">#f7f7f7</Color>
 
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
@@ -59,7 +24,6 @@
                 <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
 
-            
             <Style TargetType="Label" x:Key="LabelBaseStyle" >
                 <Setter Property="TextColor" Value="#000000" />
                 <Setter Property="FontSize" Value="Medium" />
@@ -69,7 +33,7 @@
             <Style TargetType="Label" x:Key="LabelRequired"  BaseResourceKey="LabelBaseStyle"  >
                 <Setter Property="TextColor" Value="Red" />
                 <Setter Property="FontSize" Value="Medium" />
-               
+                <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
 
             <Style TargetType="Label" x:Key="LabelBaseStyleWhite" >
@@ -78,43 +42,11 @@
                 <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
 
-            <Style TargetType="Label" x:Key="labelListSecondLine" >
-                <Setter Property="TextColor" Value="Gray"  />
-                <Setter Property="FontSize" Value="Small" />                
-            </Style>
-
-            <Style BaseResourceKey="LabelBaseStyle" TargetType="Button">
-                <Setter Property="TextColor" Value="Black"  />                
-            </Style>
-
-            <Style x:Key="ButtonUnselectedTab"  BaseResourceKey="LabelBaseStyle" TargetType="Button">
-                <Setter Property="TextColor" Value="{StaticResource ButtonTextTabUnSelectedColor}" />
-                <Setter Property="BackgroundColor"  Value="{StaticResource ButtonTabUnSelectedColor}" />
-            </Style>
-
-            <Style x:Key="ButtonSelectedTab"  BaseResourceKey="LabelBaseStyle" TargetType="Button">
-                <Setter Property="TextColor" Value="Black"  />
-                <Setter Property="BackgroundColor"  Value="White"   />
-            </Style>
-
-           
-            <Style x:Key="ActivityIndicatorStyle"   TargetType="ActivityIndicator">
-                <Setter Property="Color" Value="Gray" />
-            </Style>
-
-            <Style BaseResourceKey="LabelBaseStyle" TargetType="DatePicker">
-                <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
-            </Style>
-
-            <Style   TargetType="controls:ExtendedContentPage">
-                <Setter Property="BackgroundColor"  Value="White"  />
-            </Style>
-
             <Style BaseResourceKey="LabelBaseStyle" TargetType="Entry">
                 <Setter Property="PlaceholderColor" Value="Gray" />
                 <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
             </Style>
-
+           
             <Style x:Key="EntryBaseStyleWhite"  BaseResourceKey="LabelBaseStyleWhite" TargetType="Entry">
                 <Setter Property="PlaceholderColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
                 <Setter Property="BackgroundColor" Value="Transparent" />
@@ -125,8 +57,15 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
             </Style>
 
+            <Style x:Key="ActivityIndicatorStyle"   TargetType="ActivityIndicator">
+                <Setter Property="Color" Value="Gray" />
+            </Style>
+
+            <Style BaseResourceKey="LabelBaseStyle" TargetType="DatePicker">
+                <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
+            </Style>
             
+
         </ResourceDictionary>
-       
     </Application.Resources>
 </Application>

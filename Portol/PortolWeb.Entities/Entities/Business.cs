@@ -10,9 +10,9 @@ namespace PortolWeb.Entities
     {
         [Key]
         public Guid BusinessID { get; set; }
-        public string Name { get; set; }
+        public string BusinessName { get; set; }
 
-      //  [ForeignKey("BusinessID")]
-        public ICollection<Customer> Customers { get; set; }
+        [ForeignKey("BusinessID")]
+        public ICollection<User> Users { get; set; }
     }
 }

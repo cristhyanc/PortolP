@@ -1,8 +1,6 @@
-﻿using Acr.UserDialogs;
-using Portol.Common;
+﻿using Portol.Common;
 using Portol.Common.DTO;
 using PortolMobile.Forms.Helper;
-using PortolMobile.Forms.Services.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,7 +14,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
     {
         public ICommand GotoEmailPageCommand { get; private set; }
      
-        CustomerDto _userDto;
+        UserDto _userDto;
 
         bool _isValidationVisible;
         public bool IsValidationVisible
@@ -89,9 +87,9 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             }
         }
 
-        public SignupStepDetailsViewModel(INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
+        public SignupStepDetailsViewModel()
         {           
-            GotoEmailPageCommand = new Command(GotoEmailPage, () => { return !IsBusy; });
+            GotoEmailPageCommand = new Command(GotoEmailPage);
             this.DateOBirth = DateTime.Now.AddYears(-18);
         }
 
@@ -138,7 +136,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
         {
             try
             {
-                _userDto = (CustomerDto)navigationData; 
+                _userDto = (UserDto)navigationData; 
             }
             catch (Exception ex)
             {

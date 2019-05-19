@@ -15,10 +15,48 @@
 
             </ffimageloadingsvg:SvgCachedImage>
 
-           
-            <controls:ExtendedEntry Text="{Binding HomeAddressStr }" Placeholder="{i18n:Translate Address}" Margin="0,15,0,0" HorizontalTextAlignment="Center" 
-                                                OnFocusCommand="{Binding AddressEntryCommand}"  VerticalOptions="Start" ></controls:ExtendedEntry>
+            <Label Text="{i18n:Translate Address}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,30,0,0" ></Label>
+
+            <Grid HorizontalOptions="FillAndExpand"  >
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                    <ColumnDefinition ></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <controls:ExtendedEntry Grid.Row="0" Grid.Column="0"  Placeholder="{i18n:Translate UnitNo}" HorizontalTextAlignment="Center" Text="{Binding UnitNumber, Mode=TwoWay }"
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
+
+                <controls:ExtendedEntry Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Placeholder="{i18n:Translate Street}" HorizontalTextAlignment="Center" Text="{Binding Street, Mode=TwoWay }"
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
+
+                <controls:ExtendedEntry  Grid.Row="1" Grid.Column="0" Placeholder="{i18n:Translate PostCode}" HorizontalTextAlignment="Center" Text="{Binding PostCode, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
+
+                <controls:ExtendedEntry  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Placeholder="{i18n:Translate Suburb}" HorizontalTextAlignment="Center" Text="{Binding Suburb, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
+               
+                <!--<controls:ExtendedEntry  Grid.Row="2" Grid.Column="0" Placeholder="{i18n:Translate City}" HorizontalTextAlignment="Center" Text="{Binding City, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>-->
+
+                <controls:ExtendedEntry  Grid.Row="2" Grid.Column="0" IsEnabled="False"   Placeholder="{i18n:Translate Country}" HorizontalTextAlignment="Center" Text="{Binding Country, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
+
+                <controls:ExtendedEntry  Grid.Row="2" Grid.Column="1"  Grid.ColumnSpan="2"  Placeholder="{i18n:Translate State}" HorizontalTextAlignment="Center" Text="{Binding State, Mode=TwoWay }" 
+                 HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>
+
+                
+            </Grid>
             
+            <Label Text="{Binding ErrorMessage}" Style="{StaticResource LabelRequired}" IsVisible="{Binding IsValidationVisible}" HorizontalOptions="Center"
+                   HorizontalTextAlignment="Center" Margin="0,5,0,0" ></Label>
+
             <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
 
             <ffimageloadingsvg:SvgCachedImage WidthRequest="35" HeightRequest="35"  Margin="0,15,0,0" HorizontalOptions="Center" VerticalOptions="Center" 
