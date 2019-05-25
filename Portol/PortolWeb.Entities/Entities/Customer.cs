@@ -14,7 +14,7 @@ namespace PortolWeb.Entities
     {
         [Key]
         public Guid CustomerID { get; set; }
-      //  [ForeignKey("BusinessID")]
+        //  [ForeignKey("BusinessID")]
         public Guid? BusinessID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -23,18 +23,19 @@ namespace PortolWeb.Entities
         public long PhoneNumber { get; set; }
         public int PhoneCountryCode { get; set; }
         public byte[] PasswordHash { get; set; }
-        public byte[] PasswordSalt { get; set; }       
+        public byte[] PasswordSalt { get; set; }
         public bool Deleted { get; set; }
         public bool IsGuess { get; set; }
-
+        public string CustomerPaymentID { get; set; }
+                      
         [NotMapped]
         public Address CurrentAddress { get; set; }
-      //  [ForeignKey("AddressID")]
-     
+        //  [ForeignKey("AddressID")]
+
         [NotMapped]
         public ICollection<Address> CustomerAddresses { get; set; }
-        
-        public static  Customer GetCustomerByPhoneNumber(IUnitOfWork _uow, long phoneNumber, int countryCode)
+
+        public static Customer GetCustomerByPhoneNumber(IUnitOfWork _uow, long phoneNumber, int countryCode)
         {
             var customer = _uow.CustomerRepository.Get(x => x.PhoneNumber == phoneNumber && x.PhoneCountryCode == countryCode);
             if (customer != null)
@@ -47,70 +48,80 @@ namespace PortolWeb.Entities
         public static Customer GetCustomerByEmail(IUnitOfWork _uow, string email)
         {
             var customer = _uow.CustomerRepository.Get(x => x.Email.Equals(email));
-            if(customer!=null)
+            if (customer != null)
             {
-                customer = GetCustomerDetails(_uow,customer.CustomerID);
-            }            
+                customer = GetCustomerDetails(_uow, customer.CustomerID);
+            }
             return customer;
         }
 
         public static Customer GetCustomerDetails(IUnitOfWork _uow, Guid customerId)
         {
-            var customer = _uow.CustomerRepository.Get(x => x.CustomerID== customerId);
+            var customer = _uow.CustomerRepository.Get(x => x.CustomerID == customerId);
             if (customer != null)
             {
-                customer.CurrentAddress = _uow.AddressRepository.Get(x => x.ParentID == customer.CustomerID && x.ParentAddressType==ParentType.Customer );
+                customer.CurrentAddress = _uow.AddressRepository.Get(x => x.ParentID == customer.CustomerID && x.ParentAddressType == ParentType.Customer);
 
             }
             return customer;
         }
 
-        public static CustomerDto ORM(Customer user )
+        public  CustomerDto ToDto( )
         {
-            if(user==null)
+           
+
+            CustomerDto result = new CustomerDto();
+            result.DOB = this.DOB;
+            result.Deleted = this.Deleted;
+            result.Email = this.Email;
+            result.FirstName = this.FirstName;
+            result.LastName = this.LastName;
+            result.PhoneCountryCode = this.PhoneCountryCode;
+            result.PhoneNumber = this.PhoneNumber;
+            result.CustomerID = this.CustomerID;
+            result.CustomerPaymentID = this.CustomerPaymentID;
+            result.IsGuess = this.IsGuess;
+            if (this.CurrentAddress != null)
             {
-                return null;
+                result.CustomerAddress.AddressID = this.CurrentAddress.AddressID;
+                result.CustomerAddress.ParentID = this.CurrentAddress.ParentID;
+                result.CustomerAddress.AddressValidated = this.CurrentAddress.AddressValidated;
+                result.CustomerAddress.FullAddress = this.CurrentAddress.FullAddress;
+                result.CustomerAddress.Latitude = this.CurrentAddress.Latitude;
+                result.CustomerAddress.Longitude = this.CurrentAddress.Longitude;
             }
 
-            CustomerDto result = new CustomerDto();            
-            result.DOB = user.DOB;
-            result.Deleted = user.Deleted;
-            result.Email = user.Email;
-            result.FirstName = user.FirstName;
-            result.LastName = user.LastName;
-            result.PhoneCountryCode = user.PhoneCountryCode;
-            result.PhoneNumber = user.PhoneNumber;
-            result.CustomerID = user.CustomerID;
-            result.IsGuess = user.IsGuess;
-            if (user.CurrentAddress !=null)
-            {
-                result.CustomerAddress.AddressID = user.CurrentAddress.AddressID;
-                result.CustomerAddress.ParentID = user.CurrentAddress.ParentID;
-                result.CustomerAddress.AddressValidated = user.CurrentAddress.AddressValidated;
-                result.CustomerAddress.FullAddress = user.CurrentAddress.FullAddress;
-                result.CustomerAddress.Latitude = user.CurrentAddress.Latitude;
-                result.CustomerAddress.Longitude = user.CurrentAddress.Longitude;                
-            }
-           
             return result;
         }
 
-        public static Customer Create(CustomerDto newUser, IUnitOfWork uow, byte[] passwordHash, byte[] passwordSalt)
+        public  bool  Save(CustomerDto newUser, IUnitOfWork uow)
         {
             if (newUser == null)
             {
-                return null;
+                return false;
             }
 
+            var dbuser = uow.CustomerRepository.Get(newUser.CustomerID);
+            var user = PreValidations(newUser);
+            user.PasswordHash = dbuser.PasswordHash;
+            user.PasswordSalt = dbuser.PasswordSalt;
+            uow.CustomerRepository.Update(user);
+            return true;
+        }
+
+        public  Customer PreValidations(CustomerDto newUser)
+        {
+
             Customer user = new Customer();
-            user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
+
+            user.CustomerID = newUser.CustomerID;
             user.DOB = newUser.DOB;
             user.Email = newUser.Email;
             user.Deleted = newUser.Deleted;
             user.FirstName = newUser.FirstName;
             user.LastName = newUser.LastName;
             user.PhoneCountryCode = newUser.PhoneCountryCode;
+            user.CustomerPaymentID = newUser.CustomerPaymentID;
             user.PhoneNumber = newUser.PhoneNumber;
             user.IsGuess = user.IsGuess;
             if (newUser.CustomerAddress != null)
@@ -150,6 +161,18 @@ namespace PortolWeb.Entities
                 throw new AppException(StringResources.MobileNumberRequiered);
             }
 
+            return user;
+
+        }
+
+        public  Customer Create(CustomerDto newUser, IUnitOfWork uow, byte[] passwordHash, byte[] passwordSalt)
+        {
+            if (newUser == null)
+            {
+                return null;
+            }
+
+            var user = PreValidations(newUser);
 
             if (uow.CustomerRepository.Get(x => x.PhoneNumber == user.PhoneNumber && x.PhoneCountryCode == user.PhoneCountryCode) != null)
             {
@@ -161,18 +184,20 @@ namespace PortolWeb.Entities
                 throw new AppException(string.Format(StringResources.EmailInUsedParameter, user.Email));
             }
 
-
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
             uow.CustomerRepository.Insert(user);
 
             if (user.CurrentAddress != null)
             {
                 newUser.CustomerAddress.IsCurrentAddress = true;
                 newUser.CustomerAddress.ParentID = user.CustomerID;
-                user.CurrentAddress = Address.Create(newUser.CustomerAddress, ParentType.Customer, uow);               
+                user.CurrentAddress = Address.Create(newUser.CustomerAddress, ParentType.Customer, uow);
             }
             return user;
         }
 
+       
     }
 
 

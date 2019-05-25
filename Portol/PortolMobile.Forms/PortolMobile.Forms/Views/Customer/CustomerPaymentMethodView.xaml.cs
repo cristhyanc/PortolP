@@ -18,7 +18,8 @@ namespace PortolMobile.Forms.Views.Customer
 		{
 			InitializeComponent ();
             txtCreditNumber.Effects.Add(new BorderEffect());
-            txtDate.Effects.Add(new BorderEffect());
+            txtYear.Effects.Add(new BorderEffect());
+            txtMonth.Effects.Add(new BorderEffect());
             txtCvv.Effects.Add(new BorderEffect());
         }
 	}

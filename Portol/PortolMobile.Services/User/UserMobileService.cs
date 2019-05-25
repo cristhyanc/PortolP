@@ -19,11 +19,20 @@ namespace PortolMobile.Services.User
         {
             _restClient = restClient;
         }
-        public async Task<Boolean> CreateNewCustomer(CustomerDto newUser)
+        public async Task<Boolean> SaveCustomer(CustomerDto user)
         {
-            return await _restClient.MakeApiCallRaw<Boolean>($"{Constants.BaseUserApiUrl}/RegisterNewuser", HttpMethod.Post, newUser);           
+            return await _restClient.MakeApiCallRaw<Boolean>($"{Constants.BaseUserApiUrl}/SaveUser", HttpMethod.Post, user);           
         }
 
+        public async Task<Boolean> SavePaymentMethod(PaymentMethodDto paymentMethod)
+        {
+            return await _restClient.MakeApiCallRaw<Boolean>($"{Constants.BaseUserApiUrl}/SavePaymentMethod", HttpMethod.Post, paymentMethod);
+        }
+
+        public async Task<Boolean> CreateNewCustomer(CustomerDto newUser)
+        {
+            return await _restClient.MakeApiCallRaw<Boolean>($"{Constants.BaseUserApiUrl}/RegisterNewuser", HttpMethod.Post, newUser);
+        }
         public async Task<CustomerDto> GetCustomerByEmail(string email)
         {
             NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);

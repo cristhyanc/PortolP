@@ -27,7 +27,7 @@ namespace PortolMobile.GeneralTest.MockupServices
             Customer customer = new Customer();
             customer = Customer.GetCustomerByEmail(uow, email);
             Task<CustomerDto> task = Task.Run(() => {
-                return Customer.ORM(customer);
+                return customer.ToDto();
 
             });
 
@@ -40,7 +40,7 @@ namespace PortolMobile.GeneralTest.MockupServices
             Customer customer = new Customer();
             customer= Customer.GetCustomerByPhoneNumber(uow, phoneNumber, countryCode);
             Task<CustomerDto> task = Task.Run(() => {
-             return   Customer.ORM(customer);
+             return customer.ToDto();
 
             });
 
@@ -48,6 +48,16 @@ namespace PortolMobile.GeneralTest.MockupServices
         }
 
         public Task<bool> ResetNewPassword(long mobilePhoned, string newPassword)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> SaveCustomer(CustomerDto user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<bool> SavePaymentMethod(PaymentMethodDto paymentMethod)
         {
             throw new NotImplementedException();
         }

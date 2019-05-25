@@ -51,6 +51,11 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
         [HttpGet("getall")]
@@ -71,8 +76,13 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
-               
+
 
         [AllowAnonymous]
         [HttpPost("VerifyCode")]
@@ -102,6 +112,11 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
         [AllowAnonymous]
@@ -124,8 +139,13 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
-        
+
 
         [AllowAnonymous]
         [HttpPost("VerifyEmailUniqueness")]
@@ -146,6 +166,11 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
         [AllowAnonymous]
@@ -167,6 +192,11 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
         [AllowAnonymous]
@@ -188,6 +218,11 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
         // GET api/values
@@ -205,8 +240,7 @@ namespace PortolWeb.API.Controllers
 
             try
             {
-                var user = _userService.Authenticate(userDto.Email, userDto.Password);
-
+                var user = _userService.Authenticate(userDto.Email, userDto.Password);               
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
                 var tokenDescriptor = new SecurityTokenDescriptor
@@ -234,6 +268,10 @@ namespace PortolWeb.API.Controllers
                 Log.Error(ex, "User.Authenticate");
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
             }
+            finally
+            {
+                _userService.Dispose();
+            }
 
         }
 
@@ -257,8 +295,39 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
+
+        [HttpPost("SaveUser")]
+        public IActionResult SaveUser([FromBody]CustomerDto userDto)
+        {
+
+            try
+            {
+                var result = _userService.SaveCustomer(userDto);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.SaveUser");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+            finally
+            {
+                _userService.Dispose();
+            }
+
+        }
 
         [HttpGet("GetCustomerByPhoneNumber")]
         public IActionResult GetCustomerByPhoneNumber([FromQuery]string phoneNumber, [FromQuery]string countryCode)
@@ -284,6 +353,11 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
         [HttpGet("GetCustomerByEmail")]
@@ -304,6 +378,38 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
+        }
+
+
+        [HttpPost("SavePaymentMethod")]
+        public IActionResult SavePaymentMethod([FromBody]PaymentMethodDto paymentMethod)
+        {
+
+            try
+            {
+                var result = _userService.SavePaymentMethod(paymentMethod);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.SavePaymentMethod");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
 

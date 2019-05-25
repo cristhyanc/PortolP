@@ -169,6 +169,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Credit Card Number.
+        /// </summary>
+        internal static string CreditCardNumber {
+            get {
+                return ResourceManager.GetString("CreditCardNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         internal static string Description {
@@ -435,6 +444,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string LoginPortolLabel {
             get {
                 return ResourceManager.GetString("LoginPortolLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to MM.
+        /// </summary>
+        internal static string MM {
+            get {
+                return ResourceManager.GetString("MM", resourceCulture);
             }
         }
         
@@ -831,6 +849,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string WrongCode {
             get {
                 return ResourceManager.GetString("WrongCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to YY.
+        /// </summary>
+        internal static string YY {
+            get {
+                return ResourceManager.GetString("YY", resourceCulture);
             }
         }
     }

@@ -10,13 +10,32 @@ using System.Text;
 
 namespace PortolWeb.Core.UserServices
 {
-    public class CustomerService : ICustomerService
+    public class CustomerService : ICustomerService, IDisposable
     {
         private IUnitOfWork _uow;
 
         public CustomerService(IUnitOfWork uow)
         {
             _uow = uow;
+        }
+
+        private bool disposed = false;
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    _uow.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
 
         public bool ValidateVerificationCode(long phoneNumber, Int32 countryCode, Int32 code)
@@ -40,7 +59,7 @@ namespace PortolWeb.Core.UserServices
           
             if (result != null)
             {
-                return Customer.ORM(result);
+                return result.ToDto();
             }
 
             return null;
@@ -51,7 +70,7 @@ namespace PortolWeb.Core.UserServices
             var result = Customer.GetCustomerByPhoneNumber(_uow, phoneNumber, countryCode);          
             if (result != null)
             {               
-                return Customer.ORM(result);
+                return result.ToDto();
             }
 
             return null;
@@ -76,19 +95,41 @@ namespace PortolWeb.Core.UserServices
                 throw new AppException(StringResources.EmailPasswordIsIncorrect);
             }
                       
-            return Customer.ORM(user);
+            return user.ToDto();
         }
 
         public IEnumerable<CustomerDto> GetAll()
         {
-            var result = _uow.CustomerRepository.GetAll(x => !x.Deleted).Select(x => Customer.ORM(x)).ToList();
+            var result = _uow.CustomerRepository.GetAll(x => !x.Deleted).Select(x => x.ToDto()).ToList();
             return result;
         }
 
         public CustomerDto GetById(Guid userId)
         {
             var user = _uow.CustomerRepository.Get(x => x.CustomerID == userId);
-            return Customer.ORM(user);
+            return user.ToDto();
+
+        }
+
+        public bool SaveCustomer(CustomerDto user)
+        {
+            if (new Customer().Save(user, _uow))
+            {
+                _uow.SaveChanges();
+                return true;
+            }
+            return false;
+
+        }
+
+        public bool SavePaymentMethod(PaymentMethodDto paymentMethod)
+        {
+            if (new PaymentMethod().Save(paymentMethod, _uow))
+            {
+                _uow.SaveChanges();
+                return true;
+            }
+            return false;
 
         }
 
@@ -103,13 +144,13 @@ namespace PortolWeb.Core.UserServices
             byte[] passwordHash, passwordSalt;
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
 
-            Customer user = Customer.Create(newUser, _uow, passwordHash, passwordSalt);                                   
-                     
+            Customer user = new Customer().Create(newUser, _uow, passwordHash, passwordSalt);
+
             _uow.SaveChanges();
 
-            newUser = Customer.ORM(user);
+            newUser = user.ToDto();
             return newUser;
-           
+
         }
         public bool VerifyMobileUniqueness(CustomerDto phoneDetails)
         {

@@ -10,8 +10,11 @@ namespace PortolWeb.Entities
     {
         IDeliveryRepository DeliveryRepository { get; }
         IParcelRepository ParcelRepository { get; }
-        
-        IRepositoryBase<VehiculeTypeRange> VehiculeTypeRangeRepository { get; }
+        void Dispose();        
+        IRepositoryBase<Vehicule> VehiculeRepository { get; }
+        IRepositoryBase<PaymentMethod> PaymentMethodRepository { get; }
+        IDriverRepository DriverRepository { get; }
+        IRepositoryBase<PortolWeb.Entities.VehiculeTypeRange> VehiculeTypeRangeRepository { get; }
         IRepositoryBase<Picture> PictureRepository { get; }
         IVehiculeTypeRepository VehiculeTypeRepository { get; }
         IRepositoryBase<Customer> CustomerRepository { get; }

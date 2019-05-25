@@ -21,7 +21,9 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         IUserCore _userCore;
         public ICommand PaymentMethodListCommand { get; private set; }
         public ICommand ConfirmCommand { get; private set; }
+        public ICommand AddPaymentMethodCommand { get; private set; }
 
+        
         DeliveryDto DropoffDetails { get; set; }
 
         private PaymentMethodDto _paymentMethodSelected;
@@ -68,15 +70,38 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
 
         IDeliveryCalculator _dropoffCalculatorService;
         IDeliveryCore _dropoffCore;
+        ISessionData _sessionData;
+        IPaymentService _paymentService;
 
-        public DropPaymentViewModel(IUserCore userCore, INavigationService navigationService, IUserDialogs userDialogs, IDeliveryCalculator dropoffCalculator, IDeliveryCore dropoffCore ) : base(navigationService, userDialogs)
+        public DropPaymentViewModel(IUserCore userCore, INavigationService navigationService, IUserDialogs userDialogs, IDeliveryCalculator dropoffCalculator, IDeliveryCore dropoffCore, ISessionData sessionData, IPaymentService paymentService) : base(navigationService, userDialogs)
         {
             _userCore = userCore;
             PaymentMethodListCommand = new Command((() => OpenPaymentList()), () => { return !IsBusy; });
             ConfirmCommand = new Command((() => ConfirmService()), () => { return !IsBusy; });
+            AddPaymentMethodCommand = new Command((() => GoToPaymentMethods()), () => { return !IsBusy; });
             _dropoffCalculatorService = dropoffCalculator;
             _dropoffCore = dropoffCore;
+            _sessionData = sessionData;
+            _paymentService = paymentService;
            
+        }
+
+        private async void GoToPaymentMethods()
+        {
+            try
+            {               
+                this.IsBusy = true;                
+                await this.NavigationService.NavigateToAsync<CustomerPaymentMethodsViewModel>();                    
+
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropPaymentViewModel", "GoToPaymentMethods");
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
         }
 
 
@@ -112,7 +137,8 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 var result = await _dropoffCore.CreateDropoffRequest(this.DropoffDetails);
                 if (result != Guid.Empty )
                 {
-                    this.DropoffDetails.DropoffID = result;
+                    this.DropoffDetails.DeliveryID = result;
+                    await this.NavigationService.GoToMainPage();
                     await this.NavigationService.NavigateToAsync<DropDriverInfoViewModel>(this.DropoffDetails);
                 }
                 else
@@ -162,39 +188,82 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             }
         }
 
-        public override Task InitializeAsync(object navigationData)
+
+        protected override  async void PageAppearing()
         {
             try
             {
-                UserDialogs.ShowLoading("Calculating...");
-               
-
-                DropoffDetails = (DeliveryDto)navigationData;
-                //PaymentMethods = _userCore.GetUserPaymentMethods();
-                //if(PaymentMethods?.Count>0)
-                //{
-                //    PaymentMethodSelected = PaymentMethods.Where(x => x.CurrentCard).FirstOrDefault();
-                //    if(PaymentMethodSelected==null)
-                //    {
-                //        PaymentMethodSelected = PaymentMethods.FirstOrDefault();
-                //    }
-                //}
-                EstimatePrice();
+               await  LoadInformation();
             }
             catch (Exception ex)
             {
                 this.IsBusy = false;
                 this.UserDialogs.HideLoading();
-                ExceptionHelper.ProcessException(ex, UserDialogs, "DropPaymentViewModel", "InitializeAsync");               
-            }           
-            return base.InitializeAsync(navigationData);
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropPaymentViewModel", "PageAppearing");
+            }
+        }
+
+        public async Task LoadInformation()
+        {
+            try
+            {
+
+                if(DropoffDetails==null)
+                {
+                    return;
+                }
+
+
+                UserDialogs.ShowLoading("Calculating...");
+                var task2 = _paymentService.GetCustomerPaymentMethods(_sessionData.User.CustomerPaymentID);
+                var tasks = new List<Task> { EstimatePrice(), task2 };
+                await Task.WhenAll(tasks);
+
+                PaymentMethods = task2.Result;
+                if (PaymentMethods?.Count > 0)
+                {
+                    PaymentMethodSelected = PaymentMethods.Where(x => x.CurrentCard).FirstOrDefault();
+                    if (PaymentMethodSelected == null)
+                    {
+                        PaymentMethodSelected = PaymentMethods.FirstOrDefault();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {              
+                this.UserDialogs.HideLoading();
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropPaymentViewModel", "LoadInformation");
+            }
+            finally
+            {
+                this.IsBusy = false;
+                this.UserDialogs.HideLoading();
+            }
+
+        }
+
+
+        public override async Task InitializeAsync(object navigationData)
+        {
+            try
+            {
+                DropoffDetails = (DeliveryDto)navigationData;
+                await LoadInformation();
+            }
+            catch (Exception ex)
+            {
+                this.IsBusy = false;
+                this.UserDialogs.HideLoading();
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropPaymentViewModel", "InitializeAsync");
+            }
+            await base.InitializeAsync(navigationData);
         }
 
         private async Task EstimatePrice()
         {
             try
-            {
-               
+            {               
                 List<VehiculeTypeDto> vehiculeTypesAvailable = await _dropoffCore.GetVehiculeTypesAvailables();
                 EstimatedCost = await _dropoffCalculatorService.EstimatePrice(DropoffDetails.Parcel, DropoffDetails.PickupAddress, DropoffDetails.DropoffAddress, vehiculeTypesAvailable);
             }
@@ -202,11 +271,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             {
                 ExceptionHelper.ProcessException(ex, UserDialogs, "DropPaymentViewModel", "EstimatePrice");
             }
-            finally
-            {
-                this.IsBusy = false;
-                this.UserDialogs.HideLoading();
-            }
+           
         }
     }
 }

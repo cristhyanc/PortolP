@@ -7,6 +7,7 @@ using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Portol.Calculator.Delivery;
 using Portol.Calculator.Map;
+using Portol.Calculator.Payment;
 using Portol.Common.Interfaces;
 using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Core.DropOff;
@@ -90,7 +91,7 @@ namespace PortolMobile.Forms
                 builder.RegisterType<DeliveryCalculator>().As<IDeliveryCalculator>();
                 builder.Register(c => new MapService("AjPaETRxkyP3rSDJ7vu2nce9mlY66bgZu0DvY_eIVpeSM5PES53q_9IGzOrxahcL")).As<IMapService>();
 
-                builder.RegisterType<DropoffCore>().As<IDeliveryCore>();
+                builder.RegisterType<DeliveryCore>().As<IDeliveryCore>();
                 builder.Register(c => CrossMedia.Current).As<IMedia>();
 
                 builder.RegisterType<LoginService>().As<ILoginService>();
@@ -99,10 +100,10 @@ namespace PortolMobile.Forms
                 builder.RegisterType<UserCore>().As<IUserCore>();
                 builder.RegisterType<LoginCore>().As<ILoginCore>();
 
-             
+
+                builder.Register(c => new PaymentService("sk_test_RCIYxJRaaXpKMgOIJnAvCrle00HTrJc29p", "pk_test_anYBo8LB4sisfeaXq8VvJOOJ00z6gDKo7R")).As<IPaymentService>();
 
 
-                
                 builder.RegisterType<SessionData>().As<ISessionData>().SingleInstance();
                 builder.RegisterType<RestClient>().As<IRestClient>().WithParameter(new ResolvedParameter(
                                                                        (pi, ctx) => pi.ParameterType == typeof(string) && pi.Name == "toke",

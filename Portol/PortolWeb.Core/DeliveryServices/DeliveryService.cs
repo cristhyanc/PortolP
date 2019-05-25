@@ -11,7 +11,7 @@ namespace PortolWeb.Core.DeliveryServices
 {
     public class DeliveryService: IDeliveryService
     {
-         IUnitOfWork _uow;
+        IUnitOfWork _uow;
         IImageManager _imageManager;
         public DeliveryService(IUnitOfWork uow, IImageManager imageManager )
         {
@@ -22,22 +22,7 @@ namespace PortolWeb.Core.DeliveryServices
 
         public Guid CreateDeliveryRequest(DeliveryDto delivery)
         {
-
-            if (delivery.Sender == null || delivery.Receiver == null)
-            {
-                throw new AppException(StringResources.UserDoesNotExist);
-            }
-
-            if (delivery.DropoffAddress == null || delivery.PickupAddress == null)
-            {
-                throw new AppException(StringResources.AddressRequired);
-            }
-
-            if (!(delivery.Pictures?.Count>0))
-            {
-                throw new AppException(StringResources.PictureParcelRequired);
-            }
-
+                
             Delivery result = Delivery.Create(delivery, _uow);
 
             delivery.Pictures.ForEach((x) =>
@@ -57,6 +42,16 @@ namespace PortolWeb.Core.DeliveryServices
         {
             var types = VehiculeType.GetAll(_uow);
             return types.Select(x => x.ToDto());
+        }
+
+        public DriverDto GetDeliveryDriverInfo(Guid deliveryID)
+        {
+            var driver = Delivery.GetDriverInfo(deliveryID, _uow);
+            if(driver!=null)
+            {
+                return driver.ToDto();
+            }
+            return null;
         }
     }
 }

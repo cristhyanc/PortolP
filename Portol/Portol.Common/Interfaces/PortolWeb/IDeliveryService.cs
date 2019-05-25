@@ -9,5 +9,6 @@ namespace Portol.Common.Interfaces.PortolWeb
     {
         IEnumerable<VehiculeTypeDto> GetVehiculeTypesAvailables();
         Guid CreateDeliveryRequest(DeliveryDto dropoff);
+        DriverDto GetDeliveryDriverInfo(Guid deliveryID);
     }
 }

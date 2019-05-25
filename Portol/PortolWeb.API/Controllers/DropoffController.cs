@@ -65,5 +65,27 @@ namespace PortolWeb.API.Controllers
 
             }
         }
+
+
+        [HttpGet("GetDeliveryDriverInfo")]
+        public IActionResult GetDeliveryDriverInfo([FromQuery] Guid deliveryID)
+        {
+            try
+            {
+
+                var result = _deliveryService.GetDeliveryDriverInfo(deliveryID);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "DropoffController.GetDeliveryDriverInfo");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
     }
 }

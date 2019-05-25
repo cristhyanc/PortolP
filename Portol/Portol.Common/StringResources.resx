@@ -375,4 +375,19 @@
   <data name="ProblemTryAgain" xml:space="preserve">
     <value>There was a problem, pls try again</value>
   </data>
+  <data name="CreditCardNumberRequired" xml:space="preserve">
+    <value>Credit Card Number Required</value>
+  </data>
+  <data name="ExpiryMonthRequired" xml:space="preserve">
+    <value>Expiry Month Required</value>
+  </data>
+  <data name="ExpiryYearRequired" xml:space="preserve">
+    <value>Expiry Year Required</value>
+  </data>
+  <data name="CustomerDetailsRequired" xml:space="preserve">
+    <value>The Customer Details are required</value>
+  </data>
+  <data name="NoDeliveryInfo" xml:space="preserve">
+    <value>We couldn't find the Delivery information</value>
+  </data>
 </root>

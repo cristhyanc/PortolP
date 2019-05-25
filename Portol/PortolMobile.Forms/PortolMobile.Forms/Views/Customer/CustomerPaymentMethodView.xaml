@@ -7,6 +7,7 @@
              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             xmlns:behavior="clr-namespace:PortolMobile.Forms.Behaviors"
              xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Resources>
         <CustomerStyles:CustomerStyles/>
@@ -16,12 +17,28 @@
             <Label Text="{i18n:Translate PaymentMethods}" Margin="0,15,0,0"  Style="{StaticResource TitleLabel}" ></Label>
 
 
-            <controls:ExtendedEntry Placeholder="Credit Card Number" HorizontalOptions="FillAndExpand" x:Name="txtCreditNumber" ></controls:ExtendedEntry>
+            <controls:ExtendedEntry Placeholder="{i18n:Translate CreditCardNumber}" HorizontalOptions="FillAndExpand" x:Name="txtCreditNumber" Keyboard="Numeric"  HorizontalTextAlignment="Center"  Text="{Binding PaymentMethod.CardNumber}" >
+                <controls:ExtendedEntry.Behaviors>
+                    <behavior:MaskedBehavior Mask="XXXX   XXXX   XXXX   XXXX   XXXXX" ></behavior:MaskedBehavior>
+                </controls:ExtendedEntry.Behaviors>
+            </controls:ExtendedEntry>
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" >
-                <controls:ExtendedEntry Placeholder="MM/YY" HorizontalOptions="FillAndExpand" x:Name="txtDate" ></controls:ExtendedEntry>
-                <controls:ExtendedEntry Placeholder="CVV" HorizontalOptions="FillAndExpand" x:Name="txtCvv" ></controls:ExtendedEntry>
+
+                <controls:ExtendedEntry Placeholder="{i18n:Translate MM}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" x:Name="txtMonth" Text="{Binding Month}" >
+                    
+                </controls:ExtendedEntry>
+                
+                <Label Text="/" VerticalTextAlignment="Center" FontSize="Medium"  ></Label>
+
+                <controls:ExtendedEntry Placeholder="{i18n:Translate YY}" Keyboard="Numeric" HorizontalOptions="FillAndExpand" x:Name="txtYear" Text="{Binding Year}" ></controls:ExtendedEntry>
+
+                <controls:ExtendedEntry Placeholder="CVV" HorizontalOptions="FillAndExpand" x:Name="txtCvv" Text="{Binding PaymentMethod.CVV}" ></controls:ExtendedEntry>
             </StackLayout>
+
+            <Label Text="{Binding RequiredLabel}"  Style="{StaticResource LabelRequired}" ></Label>
+
+            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
             <Button  Text="{i18n:Translate AddNewPaymentMethod}" Command="{Binding AddNewPaymentCommand}"  TextColor="White"  BackgroundColor="#4c4c4c"   ></Button>
 
 

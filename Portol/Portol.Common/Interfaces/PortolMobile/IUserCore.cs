@@ -8,7 +8,8 @@ namespace Portol.Common.Interfaces.PortolMobile
 {
    public interface IUserCore
     {
-        List<PaymentMethodDto> GetUserPaymentMethods();
+        Task<Boolean> SavePaymentMethod(PaymentMethodDto paymentMethod);
+        Task<Boolean> SaveCustomer(CustomerDto user);
         Task<Boolean> CreateNewCustomer(CustomerDto newUser);
         Task<CustomerDto> GetCustomerByEmail(string email);
         Task<CustomerDto> GetCustomerByPhoneNumber(long phoneNumber, int countryCode);

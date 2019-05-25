@@ -160,6 +160,24 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Credit Card Number Required.
+        /// </summary>
+        public static string CreditCardNumberRequired {
+            get {
+                return ResourceManager.GetString("CreditCardNumberRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Customer Details are required.
+        /// </summary>
+        public static string CustomerDetailsRequired {
+            get {
+                return ResourceManager.GetString("CustomerDetailsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to A description is required.
         /// </summary>
         public static string DescriptionRequired {
@@ -246,6 +264,24 @@ namespace Portol.Common {
         public static string Error {
             get {
                 return ResourceManager.GetString("Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expiry Month Required.
+        /// </summary>
+        public static string ExpiryMonthRequired {
+            get {
+                return ResourceManager.GetString("ExpiryMonthRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expiry Year Required.
+        /// </summary>
+        public static string ExpiryYearRequired {
+            get {
+                return ResourceManager.GetString("ExpiryYearRequired", resourceCulture);
             }
         }
         
@@ -507,6 +543,15 @@ namespace Portol.Common {
         public static string NoAvailableCamera {
             get {
                 return ResourceManager.GetString("NoAvailableCamera", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We couldn&apos;t find the Delivery information.
+        /// </summary>
+        public static string NoDeliveryInfo {
+            get {
+                return ResourceManager.GetString("NoDeliveryInfo", resourceCulture);
             }
         }
         

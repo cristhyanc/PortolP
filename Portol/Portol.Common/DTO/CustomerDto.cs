@@ -11,6 +11,7 @@ namespace Portol.Common.DTO
             CustomerAddress = new AddressDto();
         }
         public Guid CustomerID { get; set; }
+        public string CustomerPaymentID { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }

@@ -15,13 +15,9 @@ namespace PortolMobile.Core.User
             _userMobileService = userMobileService;
         }
 
-        public List<PaymentMethodDto> GetUserPaymentMethods()
+        public async Task<Boolean> SavePaymentMethod(PaymentMethodDto paymentMethod)
         {
-            List<PaymentMethodDto> payments = new List<PaymentMethodDto>();
-            payments.Add(new PaymentMethodDto { CardName = "Test 1", CardNumber = "456123789456", Country = "AU", CVV = "123", ExpiryDate = "10/20", CreditCardType=Portol.Common.Helper.PaymentMethodType.MasterCard, CurrentCard = true });
-            payments.Add(new PaymentMethodDto { CardName = "Test 2", CardNumber = "987456321", Country = "AU", CVV = "654", ExpiryDate = "07/22", CreditCardType = Portol.Common.Helper.PaymentMethodType.Visa});
-            payments.Add(new PaymentMethodDto { CardName = "Test 3", CardNumber = "258741369", Country = "AU", CVV = "987", ExpiryDate = "10/17", CreditCardType = Portol.Common.Helper.PaymentMethodType.PayPal });
-            return payments;
+            return await _userMobileService.SavePaymentMethod(paymentMethod);
         }
 
         public async Task<bool> ResetNewPassword(long mobilePhoned, string newPassword)
@@ -57,6 +53,11 @@ namespace PortolMobile.Core.User
         public async Task<Boolean> VerifyMobileUniqueness(long mobilePhoned, Int32 code)
         {
             return await _userMobileService.VerifyMobileUniqueness(mobilePhoned, code);
+        }
+
+        public async Task<Boolean> SaveCustomer(CustomerDto user)
+        {
+            return await _userMobileService.SaveCustomer(user);
         }
     }
 }

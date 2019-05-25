@@ -36,6 +36,17 @@ namespace PortolWeb.Entities
         public IEnumerable<VehiculeTypeRange> Ranges { get; set; }
 
 
+        public static VehiculeType Get(Guid vehiculeTypeID, IUnitOfWork uow)
+        {
+            var result = uow.VehiculeTypeRepository.Get(vehiculeTypeID);
+           if(result!=null)
+            {
+                result.Ranges = uow.VehiculeTypeRangeRepository.GetAll(x => x.VehiculeTypeID == result.VehiculeTypeID);
+            }
+
+            return result;
+        }
+
         public static IEnumerable<VehiculeType> GetAll(IUnitOfWork uow )
         {
            var allTypes = uow.VehiculeTypeRepository.GetAll();
@@ -58,7 +69,12 @@ namespace PortolWeb.Entities
             result.MaximumWeight  = this.MaximumWeight;
             result.MaximumWidth  = this.MaximumWidth;
             result.Name  = this.Name;
-            result.Ranges  = this.Ranges.Select(x=> x.ToDto()).ToList();
+            result.Ranges = new List<VehiculeTypeRangeDto>();
+            if (this.Ranges?.Count()>0)
+            {
+                result.Ranges = this.Ranges.Select(x => x.ToDto()).ToList();
+            }
+            
             result.StartingFee = this.StartingFee;
             result.VehiculeTypeID = this.VehiculeTypeID;
             return result;

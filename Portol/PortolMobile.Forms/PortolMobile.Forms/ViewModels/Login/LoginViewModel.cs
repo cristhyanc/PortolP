@@ -86,8 +86,10 @@ namespace PortolMobile.Forms.ViewModels.Login
         {
             try
             {
-                this.IsBusy = true;
-                await NavigationService.NavigateToAsync<RecoverPasswordViewModel>();
+                Portol.Common.Interfaces.IPaymentService paymentService = ViewModelLocator.Resolve<Portol.Common.Interfaces.IPaymentService>();
+                paymentService.GetCustomers();
+                //this.IsBusy = true;
+                //await NavigationService.NavigateToAsync<RecoverPasswordViewModel>();
             }
             catch (System.Exception ex)
             {

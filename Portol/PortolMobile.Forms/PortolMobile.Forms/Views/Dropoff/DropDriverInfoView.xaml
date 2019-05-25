@@ -74,7 +74,7 @@
                                     Factor=0.55,Constant=-35 }"   >
 
                     <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"  
-                       Source="{localResources:ImageResource PortolMobile.Forms.Resources.ic_dollar.png}"  
+                       Source="{localResources:ImageResource PortolMobile.Forms.Resources.ic_genericdriver.png}"  
                                            x:Name="ProfileImage"  />
 
                 </Frame>

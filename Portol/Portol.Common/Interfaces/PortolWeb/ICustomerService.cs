@@ -7,6 +7,8 @@ namespace Portol.Common.Interfaces.PortolWeb
 {
     public interface ICustomerService
     {
+        bool SaveCustomer(CustomerDto user);
+        void Dispose();
         CustomerDto Authenticate(string username, string password);
         IEnumerable<CustomerDto> GetAll();
         CustomerDto GetById(Guid userId);
@@ -19,6 +21,7 @@ namespace Portol.Common.Interfaces.PortolWeb
         bool ValidateVerificationCode(long phoneNumber, Int32 countryCode, Int32 code);
         CustomerDto GetCustomerByPhoneNumber(long phoneNumber, int countryCode);
         CustomerDto GetCustomerByEmail(string email);
+        bool SavePaymentMethod(PaymentMethodDto paymentMethod);
 
     }
 }

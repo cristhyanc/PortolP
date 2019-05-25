@@ -19,7 +19,7 @@ namespace PortolMobile.GeneralTest.MockupServices
         {
             Customer customer  = Customer.GetCustomerByEmail(uow, email);
             Task<CustomerDto> task = Task.Run(() => {
-                return Customer.ORM(customer);
+                return customer.ToDto();
 
             });
 

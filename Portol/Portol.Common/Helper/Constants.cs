@@ -132,6 +132,7 @@ namespace Portol.Common.Helper
         MasterCard = 1,
         Visa = 2,
         PayPal = 3,
+        None=4
     }
 
     public enum AvailableCountries

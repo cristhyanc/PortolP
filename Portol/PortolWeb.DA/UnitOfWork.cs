@@ -8,7 +8,7 @@ using System.Text;
 
 namespace PortolWeb.DA
 {
-   public  class UnitOfWork: IUnitOfWork
+   public  class UnitOfWork: IUnitOfWork, IDisposable
     {
         private readonly DataContext _context;
         private IRepositoryBase<Customer> _customerRepository;
@@ -17,8 +17,8 @@ namespace PortolWeb.DA
         private IRepositoryBase<VehiculeTypeRange> _vehiculeTypeRangeRepository;
         private IVehiculeTypeRepository _vehiculeTypeRepository;
         private IRepositoryBase<Picture> _pictureRepository;
-        private IDeliveryRepository _deliveryRepository;
-        private IParcelRepository _parcelRepository;
+        
+       
 
         public UnitOfWork(DataContext context)
         {
@@ -47,6 +47,25 @@ namespace PortolWeb.DA
             _context.Database.RollbackTransaction();
         }
 
+        private bool disposed = false;
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!this.disposed)
+            {
+                if (disposing)
+                {
+                    _context.Dispose();
+                }
+            }
+            this.disposed = true;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
         public IDataContext Context
         {
             get
@@ -54,7 +73,28 @@ namespace PortolWeb.DA
                 return _context;
             }
         }
+            
 
+        private IRepositoryBase<Vehicule> _vehiculeRepository;
+        public IRepositoryBase<Vehicule> VehiculeRepository
+        {
+            get
+            {
+                return _vehiculeRepository = _vehiculeRepository ?? new RepositoryBase<Vehicule>(_context);
+            }
+        }
+
+
+        private IRepositoryBase<PaymentMethod> _paymentMethodRepository;
+        public IRepositoryBase<PaymentMethod> PaymentMethodRepository
+        {
+            get
+            {
+                return _paymentMethodRepository = _paymentMethodRepository ?? new RepositoryBase<PaymentMethod>(_context);
+            }
+        }
+
+        private IParcelRepository _parcelRepository;
         public IParcelRepository ParcelRepository
         {
             get
@@ -63,6 +103,21 @@ namespace PortolWeb.DA
             }
         }
 
+        
+
+        private IDriverRepository _driverRepository;
+
+        public IDriverRepository DriverRepository
+        {
+            get
+            {
+                return _driverRepository = _driverRepository ?? new DriverRepository(_context);
+            }
+        }
+
+
+        private IDeliveryRepository _deliveryRepository;
+       
         public IDeliveryRepository DeliveryRepository
         {
             get

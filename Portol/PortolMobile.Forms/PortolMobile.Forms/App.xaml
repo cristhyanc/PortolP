@@ -125,6 +125,13 @@
                 <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
             </Style>
 
+            <Style x:Key="ListViewStyle" TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="Margin" Value="0,4,0,0" />
+                <Setter Property="SeparatorVisibility" Value="None" />
+                <Setter Property="HasUnevenRows" Value="true" />
+                <Setter Property="IsPullToRefreshEnabled" Value="true" />
+            </Style>
             
         </ResourceDictionary>
        

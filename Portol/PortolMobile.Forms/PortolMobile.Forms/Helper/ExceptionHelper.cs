@@ -17,7 +17,7 @@ namespace PortolMobile.Forms.Helper
                 userDialogs.Alert(new AlertConfig
                 {
                     Message = ex.Message,
-                    Title = pageTitle,
+                    Title = "",
                     OkText = StringResources.Ok
                 });
             }

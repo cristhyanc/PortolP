@@ -7,7 +7,7 @@ namespace Portol.Common.DTO
 {
    public class DeliveryDto
     {
-        public Guid DropoffID { get; set; }
+        public Guid DeliveryID { get; set; }
         public  CustomerDto Receiver { get; set; }
         public CustomerDto Sender { get; set; }
         public AddressDto  PickupAddress { get; set; }

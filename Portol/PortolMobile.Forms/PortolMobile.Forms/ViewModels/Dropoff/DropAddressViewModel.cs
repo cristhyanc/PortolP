@@ -211,11 +211,11 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 }
 
                 //sample
-                _dropoffAddress = new AddressDto();
-                _dropoffAddress.AddressValidated = true;
-                _dropoffAddress.FullAddress = "82 sydney st, new farm 4005";               
-                DropoffAddress = _dropoffAddress;
-                Description = "asd";
+                //_dropoffAddress = new AddressDto();
+                //_dropoffAddress.AddressValidated = true;
+                //_dropoffAddress.FullAddress = "82 sydney st, new farm 4005";               
+                //DropoffAddress = _dropoffAddress;
+                //Description = "asd";
                 //-Sample
             }
             catch (Exception ex)

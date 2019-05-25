@@ -35,7 +35,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Platforms", "Platforms", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PortolMobile.Core", "PortolMobile.Core\PortolMobile.Core.csproj", "{FA4822BD-FA19-4A3F-9E32-6E5B51D9D16D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portol.Calculator", "Portol.Calculator\Portol.Calculator.csproj", "{367ED61B-7FBF-4987-9A14-1E68A89ED4BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Portol.Calculator", "Portol.Calculator\Portol.Calculator.csproj", "{367ED61B-7FBF-4987-9A14-1E68A89ED4BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
