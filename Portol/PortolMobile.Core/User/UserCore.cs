@@ -24,6 +24,11 @@ namespace PortolMobile.Core.User
         {
             return await _userMobileService.ResetNewPassword(mobilePhoned, newPassword);
         }
+       
+        public async Task<bool> SendVerificationCode(long mobilePhoned, Int32 code)
+        {
+            return await _userMobileService.SendVerificationCode(mobilePhoned, code);
+        }
 
         public async Task<bool> VerifyCode(long mobilePhoned, Int32 countryCode, Int32 code)
         {

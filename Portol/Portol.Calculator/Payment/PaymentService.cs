@@ -83,6 +83,11 @@ namespace Portol.Calculator.Payment
         {
             try
             {
+                if(string.IsNullOrEmpty(customerServiceID))
+                {
+                    return null;
+                }
+
                 List<PaymentMethodDto> result = new List<PaymentMethodDto>();
 
                 var service = new PaymentMethodService();
@@ -94,7 +99,7 @@ namespace Portol.Calculator.Payment
 
                 var payments = await service.ListAsync(options);
 
-                if(payments.Data?.Count>0 )
+                if(payments!=null && payments.Data?.Count>0 )
                 {
                     payments.Data.ForEach((x) =>
                     {

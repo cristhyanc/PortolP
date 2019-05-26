@@ -166,10 +166,11 @@ namespace PortolMobile.Forms.ViewModels.SignUp
         }
 
         CustomerDto _userDto;
-
-        public SignupStepCodeViewModel(  ILoginCore loginCore, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
+        IUserCore _userCore;
+        public SignupStepCodeViewModel(  ILoginCore loginCore, INavigationService navigationService, IUserDialogs userDialogs, IUserCore userCore ) : base(navigationService, userDialogs)
         {          
             _loginCore = loginCore;
+            _userCore = userCore;
             GotoNamesPageCommand = new Command(GotoNamesPage, () => { return !IsBusy; });
         }
 
@@ -191,7 +192,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
 
                 var code = Int16.Parse(this.FirstNumber + this.SecondNumber + this.ThirdNumber + this.FourNumber);
 
-               // await _loginCore.VerifyCode(_userDto.PhoneNumber, _userDto.PhoneCountryCode, code);
+               await _userCore.VerifyCode(_userDto.PhoneNumber, _userDto.PhoneCountryCode, code);
 
                 await NavigationService.NavigateToAsync<SignupStepDetailsViewModel>(_userDto);
              

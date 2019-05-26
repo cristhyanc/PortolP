@@ -213,7 +213,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 {
                     return;
                 }
-
+                List<PaymentMethodDto> PaymentMethods = null;
 
                 UserDialogs.ShowLoading("Calculating...");
                 var task2 = _paymentService.GetCustomerPaymentMethods(_sessionData.User.CustomerPaymentID);

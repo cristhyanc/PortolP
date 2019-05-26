@@ -207,7 +207,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 DropoffDetails = (DeliveryDto)navigationData;
                 if (DropoffDetails.Receiver!=null && DropoffDetails.Receiver.CustomerAddress != null)
                 {
-                    PickUpAddress = DropoffDetails.Receiver.CustomerAddress;
+                   // PickUpAddress = DropoffDetails.Receiver.CustomerAddress;
                 }
 
                 //sample

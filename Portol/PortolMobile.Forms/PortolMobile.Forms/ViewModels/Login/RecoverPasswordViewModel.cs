@@ -441,11 +441,11 @@ namespace PortolMobile.Forms.ViewModels.Login
                     return;
                 }
 
-                //var resutl = await _loginService.SendVerificationCode(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country);
-                //if (resutl)
-                //{
+                var resutl = await _userCore.SendVerificationCode(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country);
+                if (resutl)
+                {
                     this.IsCodeSectionVisible = true;
-                //}
+                }
             }
             catch (System.Exception ex)
             {
