@@ -164,7 +164,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             {
                 this.IsBusy = true;
                 var cfg = new ActionSheetConfig()
-                   .SetTitle(StringResources.Countries);
+                   .SetTitle(StringResources.PaymentMethod);
                 foreach (var item in PaymentMethods)
                 {
                     cfg.Add(
