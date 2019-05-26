@@ -64,8 +64,8 @@ namespace PortolMobile.Forms.ViewModels
             FindCustomerCommand = new Command((() => FindCustomer()), () => { return !IsBusy; });
             _customerService = customerService;
             _sessionData = sessionData;
-            //this.EmailMobileNumber = "0405593358";
-            //this.ReceiverName = "Cris";
+            //this.EmailMobileNumber = "0405593357";
+            //this.ReceiverName = "Sophie";
 
         }
 
@@ -149,35 +149,25 @@ namespace PortolMobile.Forms.ViewModels
                     if (Regex.IsMatch(EmailMobileNumber, Portol.Common.Helper.Constants.RegexEmailPattern))
                     {
                         customer = await _customerService.GetCustomerByEmail(EmailMobileNumber);
-                    }
+                    }                   
+                }
 
-                    if (customer == null)
-                    {
-                        if (!await this.DisplayMessageQuestion(StringResources.Guess, StringResources.PersonNoRegistered, StringResources.ContinueGuess))
-                        {
-                            return;
-                        }
+                if (customer == null)
+                {
+                    this.UserDialogs.Alert(StringResources.PersonNoRegistered, StringResources.Validation);
+                    return;
+                }
 
-                        customer = new CustomerDto();
-                        customer.PhoneNumber = number;
-
-                        customer.Email = StringResources.GuessEmail;
-                        if (Regex.IsMatch(EmailMobileNumber, Portol.Common.Helper.Constants.RegexEmailPattern))
-                        {
-                            customer.Email = this.EmailMobileNumber;
-                        }
-
-                        customer.PhoneCountryCode = _sessionData.User.PhoneCountryCode;
-                        customer.IsGuess = true;
-                        customer.FirstName = this.ReceiverName;
-                    }
+                if (customer.CustomerID == _sessionData.User.CustomerID)
+                {
+                    this.EmailMobileNumber = "";
+                    this.ReceiverName = "";
+                    return;
                 }
 
                 DeliveryDto dropoffDto = new DeliveryDto();
                 dropoffDto.Receiver = customer;
                 dropoffDto.Sender = _sessionData.User;
-
-
                 await NavigationService.NavigateToAsync<DropAddressViewModel>(dropoffDto);
 
 

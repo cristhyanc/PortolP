@@ -119,7 +119,8 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
 
                 if (this.EstimatedCost == 0)
                 {
-                    UserDialogs.Alert(StringResources.CostNotEstimatedTryAgain);
+                    LoadInformation();
+                   // UserDialogs.Alert(StringResources.CostNotEstimatedTryAgain);
                     return;
                 }
 

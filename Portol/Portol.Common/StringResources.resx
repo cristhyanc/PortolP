@@ -390,4 +390,7 @@
   <data name="NoDeliveryInfo" xml:space="preserve">
     <value>We couldn't find the Delivery information</value>
   </data>
+  <data name="Validation" xml:space="preserve">
+    <value>Validation</value>
+  </data>
 </root>

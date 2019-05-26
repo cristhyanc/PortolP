@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PortolMobile.Forms.Views.Dropoff.DropDriverInfoView"
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
              xmlns:localResources="clr-namespace:PortolMobile.Forms.Resources"
@@ -10,6 +11,7 @@
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
              BackgroundImage="Map_image"
+             xmlns:Helpers="clr-namespace:PortolMobile.Forms.Helper"
              xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Resources>
         <DropoffStyle:DropoffStyles/>
@@ -52,12 +54,63 @@
                             Type=RelativeToParent,
                             Property=Width,
                             Factor=0.7 }">
-                    <StackLayout Style="{StaticResource StackLayoutFrameBox}" >
-                        
-                        <Label Text="{i18n:Translate SearchingDriver}"  Margin="0,0,5,0" Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
-                        <ActivityIndicator   IsRunning="{Binding IsSearchingDriver}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsSearchingDriver}"  />
+                    <StackLayout Spacing="0" VerticalOptions="StartAndExpand" >
 
-                        <Button Margin="0,7,0,7" Text="Cancel" TextColor="White" Command="{Binding ConfirmCommand}" BackgroundColor="#4c4c4c"   ></Button>
+                        <Grid VerticalOptions="StartAndExpand"  IsVisible="{Binding IsSearchingDriver, Converter={Helpers:InverseBoolConverter}}" >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>                                
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>                               
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            
+                            <Frame HasShadow="False" Padding="0" BorderColor="Gray" CornerRadius="0" BackgroundColor="Transparent"  HorizontalOptions="StartAndExpand"  VerticalOptions="Start"  >
+                                <Label Text="{Binding DriverInfo.CurrentVehicule.Plate}" Style="{StaticResource labelListSecondLine}"  HorizontalOptions="Center"  Margin="5,0"
+                                       VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"   ></Label>
+                            </Frame>
+
+                            <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="Start" Orientation="Horizontal" >
+                                
+                                <Frame HasShadow="False" Padding="0" BorderColor="Gray" CornerRadius="0" BackgroundColor="Transparent">
+                                    <StackLayout Orientation="Horizontal" Margin="5,0">
+
+                                        <ffimageloadingsvg:SvgCachedImage Style="{StaticResource StarStyle}" />
+
+                                        <Label Text="{Binding DriverInfo.Rating}" Style="{StaticResource labelListSecondLine}"  HorizontalOptions="Center"  Margin="1,0,0,0"
+                                        VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"   ></Label>
+                                        
+                                    </StackLayout>
+                                </Frame>
+                                
+                                <Label Text="X" Margin="5,0,0,0"  Style="{StaticResource DropoffLabelDefaultStyle}" 
+                                       HorizontalTextAlignment="End" VerticalTextAlignment="Center" ></Label>
+                                
+                            </StackLayout>
+
+                            <StackLayout Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0" >
+                                <Label  Text="{Binding DriverInfo.Details.FullName}"  Style="{StaticResource DropoffLabelDefaultStyle}"  ></Label>
+                                <ffimageloading:CachedImage Style="{StaticResource PhoneStyle}" />
+
+                                <Label Text="{i18n:Translate DriverOnWay}" Style="{StaticResource labelListSecondLine}"   HorizontalTextAlignment="Center" 
+                                       VerticalTextAlignment="Center"   ></Label>                              
+                            </StackLayout>
+
+
+                            <ffimageloading:CachedImage Grid.Column="0" Margin="0,10,0,0" Grid.Row="2" Style="{StaticResource CarDeliveryStyle}" />                           
+
+                            <BoxView  Grid.Column="0" Grid.Row="3" Style="{StaticResource BoxSeparatorLeft}" VerticalOptions="Start"></BoxView>
+                            <BoxView  Grid.Column="1" Grid.Row="3" Style="{StaticResource BoxSeparatorRight}" VerticalOptions="Start"></BoxView>
+                            
+                        </Grid>
+
+                        <Label Text="{i18n:Translate SearchingDriver}"  Margin="0,30,0,0" Style="{StaticResource DropoffLabelDefaultStyle}"  IsVisible="{Binding IsSearchingDriver}"></Label>
+                        <ActivityIndicator   IsRunning="{Binding IsSearchingDriver}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsSearchingDriver}"  />                       
+                     
                     </StackLayout>
                 </Frame>
 
@@ -84,4 +137,4 @@
 
         </Grid>
     </controls:ExtendedContentPage.Content>
-    </controls:ExtendedContentPage>
+</controls:ExtendedContentPage>

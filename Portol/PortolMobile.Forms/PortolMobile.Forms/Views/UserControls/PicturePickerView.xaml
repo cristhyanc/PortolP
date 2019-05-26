@@ -26,7 +26,7 @@
             <Grid BackgroundColor="#f2f2f2" VerticalOptions="FillAndExpand">
                 <ffimageloading:CachedImage VerticalOptions="FillAndExpand" DownsampleToViewSize="True" LoadingPlaceholder="Loading..."  Source="{Binding SelectedPicture.ImageUrl}" />
 
-                <ffimageloading:CachedImage VerticalOptions="End" HorizontalOptions="Center"  WidthRequest="60" HeightRequest="60"
+                <ffimageloading:CachedImage VerticalOptions="End" HorizontalOptions="Center"  WidthRequest="60" HeightRequest="60" IsVisible="{Binding IsDeleteButtonVisible}"
                                               Source="resource://PortolMobile.Forms.Resources.ic_delete.png?assembly=PortolMobile.Forms" >
                     <ffimageloading:CachedImage.GestureRecognizers >
                         <TapGestureRecognizer Command="{Binding DeletePhotoCommand}"  ></TapGestureRecognizer>

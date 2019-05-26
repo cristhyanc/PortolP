@@ -19,9 +19,11 @@
     <None Remove="Resources\ic_australia.svg" />
     <None Remove="Resources\ic_button.svg" />
     <None Remove="Resources\ic_camerabutton.svg" />
+    <None Remove="Resources\ic_car.png" />
     <None Remove="Resources\ic_creditcard.svg" />
     <None Remove="Resources\ic_delete.png" />
     <None Remove="Resources\ic_delete.svg" />
+    <None Remove="Resources\ic_deliveryline.svg" />
     <None Remove="Resources\ic_dollar.png" />
     <None Remove="Resources\ic_door.svg" />
     <None Remove="Resources\ic_dropoffcamera.svg" />
@@ -32,6 +34,8 @@
     <None Remove="Resources\ic_parcel.png" />
     <None Remove="Resources\ic_parcelbox.png" />
     <None Remove="Resources\ic_paypal.svg" />
+    <None Remove="Resources\ic_phone.png" />
+    <None Remove="Resources\ic_star.svg" />
     <None Remove="Resources\ic_triangle.svg" />
     <None Remove="Resources\ic_unitedkingdom.svg" />
     <None Remove="Resources\ic_visa.svg" />
@@ -46,8 +50,10 @@
     <EmbeddedResource Include="Resources\ic_australia.svg" />
     <EmbeddedResource Include="Resources\ic_button.svg" />
     <EmbeddedResource Include="Resources\ic_camerabutton.svg" />
+    <EmbeddedResource Include="Resources\ic_car.png" />
     <EmbeddedResource Include="Resources\ic_creditcard.svg" />
     <EmbeddedResource Include="Resources\ic_delete.png" />
+    <EmbeddedResource Include="Resources\ic_deliveryline.svg" />
     <EmbeddedResource Include="Resources\ic_dollar.png" />
     <EmbeddedResource Include="Resources\ic_door.svg" />
     <EmbeddedResource Include="Resources\ic_dropoffcamera.svg" />
@@ -58,6 +64,8 @@
     <EmbeddedResource Include="Resources\ic_parcel.png" />
     <EmbeddedResource Include="Resources\ic_parcelbox.png" />
     <EmbeddedResource Include="Resources\ic_paypal.svg" />
+    <EmbeddedResource Include="Resources\ic_phone.png" />
+    <EmbeddedResource Include="Resources\ic_star.svg" />
     <EmbeddedResource Include="Resources\ic_triangle.svg" />
     <EmbeddedResource Include="Resources\ic_unitedkingdom.svg" />
     <EmbeddedResource Include="Resources\ic_visa.svg" />

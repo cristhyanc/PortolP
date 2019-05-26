@@ -40,6 +40,30 @@ namespace PortolMobile.Forms.ViewModels.UserControls
             set
             {
                 _selectedPicture = value;
+                if (value == null)
+                {
+                    IsDeleteButtonVisible = false;
+                }
+                else
+                {
+                    IsDeleteButtonVisible = true;
+                }
+                OnPropertyChanged();
+            }
+        }
+
+        
+
+        bool  _isDeleteButtonVisible;
+        public bool IsDeleteButtonVisible
+        {
+            get
+            {
+                return _isDeleteButtonVisible;
+            }
+            set
+            {
+                _isDeleteButtonVisible = value;
                 OnPropertyChanged();
             }
 

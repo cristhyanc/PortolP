@@ -213,7 +213,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 //sample
                 //_dropoffAddress = new AddressDto();
                 //_dropoffAddress.AddressValidated = true;
-                //_dropoffAddress.FullAddress = "82 sydney st, new farm 4005";               
+                //_dropoffAddress.FullAddress = "79 berwick st, fortitude valley 4006";
                 //DropoffAddress = _dropoffAddress;
                 //Description = "asd";
                 //-Sample

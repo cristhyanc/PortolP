@@ -205,6 +205,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The driver is on the way.
+        /// </summary>
+        internal static string DriverOnWay {
+            get {
+                return ResourceManager.GetString("DriverOnWay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Drop off Address.
         /// </summary>
         internal static string DropoffAddress {

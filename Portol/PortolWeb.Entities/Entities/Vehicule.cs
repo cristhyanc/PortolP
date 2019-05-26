@@ -15,6 +15,7 @@ namespace PortolWeb.Entities
         public Guid VehiculeTypeID { get; set; }
         public Guid DriverID { get; set; }
         public bool IsInUsed { get; set; }
+        public string Plate { get; set; }
 
         [NotMapped]
         public VehiculeType VehiculeType { get; set; }
@@ -32,6 +33,7 @@ namespace PortolWeb.Entities
         public VehiculeDto ToDto()
         {
             VehiculeDto result = new VehiculeDto();
+            result.Plate = this.Plate;
             result.VehiculeID = this.VehiculeID;
             if(VehiculeType!=null)
             {

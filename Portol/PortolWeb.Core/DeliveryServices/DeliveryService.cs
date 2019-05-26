@@ -3,9 +3,11 @@ using Portol.Common.DTO;
 using Portol.Common.Helper;
 using Portol.Common.Interfaces.PortolWeb;
 using PortolWeb.Entities;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace PortolWeb.Core.DeliveryServices
 {
@@ -19,6 +21,29 @@ namespace PortolWeb.Core.DeliveryServices
             _imageManager = imageManager;
         }
 
+        public void AssignDriver()
+        {
+            try
+            {
+                var deliveries = Delivery.GetDeliveriesWaitingForDriver(_uow).ToList();
+                var availableDriver = Driver.GetAvailableDrivers(_uow).ToList();
+
+                if (deliveries?.Count() > 0 && availableDriver?.Count() > 0)
+                {
+                    foreach (var item in deliveries)
+                    {
+                        item.DriverID = availableDriver.First().CustomerID;
+                        item.DeliveryStatus = DeliveryStatus.InProgress;
+                    }
+                    _uow.DeliveryRepository.Update(deliveries);
+                  
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "DeliveryService.AssignDriver");
+            }
+        }
 
         public Guid CreateDeliveryRequest(DeliveryDto delivery)
         {
@@ -33,7 +58,8 @@ namespace PortolWeb.Core.DeliveryServices
 
             });
 
-            _uow.SaveChanges();
+           
+            _uow.SaveChanges();          
             return result.DeliveryID;
         }
 
@@ -46,6 +72,7 @@ namespace PortolWeb.Core.DeliveryServices
 
         public DriverDto GetDeliveryDriverInfo(Guid deliveryID)
         {
+            AssignDriver();
             var driver = Delivery.GetDriverInfo(deliveryID, _uow);
             if(driver!=null)
             {

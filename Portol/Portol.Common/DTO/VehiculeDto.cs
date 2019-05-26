@@ -8,5 +8,6 @@ namespace Portol.Common.DTO
     {
         public VehiculeTypeDto VehiculeType  { get; set; }
         public Guid VehiculeID { get; set; }
+        public string Plate { get; set; }
     }
 }

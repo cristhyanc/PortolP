@@ -74,8 +74,7 @@ namespace PortolWeb.Entities
             return delivery;
 
         }
-
-
+        
         public static Driver GetDriverInfo(Guid deliveryID, IUnitOfWork uow)
         {
             var delivery = uow.DeliveryRepository.Get(deliveryID);
@@ -89,6 +88,12 @@ namespace PortolWeb.Entities
             {
                 result = Driver.GetDriverInformation(delivery.DriverID, uow);
             }
+            return result;
+        }
+
+        public static IEnumerable <Delivery> GetDeliveriesWaitingForDriver(IUnitOfWork uow)
+        {
+            var result = uow.DeliveryRepository.GetAll(x => x.DeliveryStatus == DeliveryStatus.SearchingDriver);
             return result;
         }
 

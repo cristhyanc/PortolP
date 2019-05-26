@@ -384,4 +384,7 @@
   <data name="YY" xml:space="preserve">
     <value>YY</value>
   </data>
+  <data name="DriverOnWay" xml:space="preserve">
+    <value>The driver is on the way</value>
+  </data>
 </root>
