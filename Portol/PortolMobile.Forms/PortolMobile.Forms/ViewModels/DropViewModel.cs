@@ -5,9 +5,7 @@ using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Helper;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels.Dropoff;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -21,7 +19,7 @@ namespace PortolMobile.Forms.ViewModels
         public ICommand GotoShopCommand { get; private set; }
 
         public ICommand FindCustomerCommand { get; private set; }
-        
+
         private IUserMobileService _customerService;
 
         string _emailMobileNumber;
@@ -35,7 +33,18 @@ namespace PortolMobile.Forms.ViewModels
             }
         }
 
-       
+
+
+        bool _isDeliveryOnItsWay;
+        public bool IsDeliveryOnItsWay
+        {
+            get { return _isDeliveryOnItsWay; }
+            set
+            {
+                _isDeliveryOnItsWay = value;
+                OnPropertyChanged();
+            }
+        }
 
         string _receiverName;
         public string ReceiverName
@@ -48,27 +57,66 @@ namespace PortolMobile.Forms.ViewModels
             }
         }
 
+        List<DeliveryDto> _pendingDeliveries;
+        public List<DeliveryDto> PendingDeliveries
+        {
+            get { return _pendingDeliveries; }
+            set
+            {
+                _pendingDeliveries = value;
+                OnPropertyChanged();
+            }
+        }
+
+        
+
         public string SenderName
         {
-            get { return string.Format(StringResources.HelloMessage, _sessionData.User.FirstName) ; }
-          
+            get { return string.Format(StringResources.HelloMessage, _sessionData.User.FirstName); }
+
         }
 
         ISessionData _sessionData;
+        IDeliveryCore _deliveryCore;
 
-
-        public DropViewModel(IUserMobileService customerService, INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData) : base(navigationService, userDialogs)
+        public DropViewModel(IUserMobileService customerService, INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData, IDeliveryCore deliveryCore) : base(navigationService, userDialogs)
         {
             GetCustomerCommand = new Command((() => GotoAddressStep()), () => { return !IsBusy; });
             GotoShopCommand = new Command(GotoShop, () => { return !IsBusy; });
             FindCustomerCommand = new Command((() => FindCustomer()), () => { return !IsBusy; });
             _customerService = customerService;
             _sessionData = sessionData;
+            _deliveryCore = deliveryCore;
+            AskForDeliveries();
             //this.EmailMobileNumber = "0405593357";
             //this.ReceiverName = "Sophie";
 
         }
 
+        private async Task AskForDeliveries()
+        {
+            try
+            {
+                this.IsBusy = true;
+                PendingDeliveries= await _deliveryCore.GetPendingReceiverDeliveries(_sessionData.User.CustomerID);
+                if(PendingDeliveries?.Count>0)
+                {
+                    this.IsDeliveryOnItsWay = true;
+                }
+                else
+                {
+                    this.IsDeliveryOnItsWay = false;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.MainPage, "AskForDeliveries");
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
+        }
 
         private async void GotoShop()
         {
@@ -89,7 +137,7 @@ namespace PortolMobile.Forms.ViewModels
                     return;
                 }
 
-               this.UserDialogs.ShowLoading();
+                this.UserDialogs.ShowLoading();
 
                 CustomerDto customer = null;
                 long number = 0;
@@ -107,7 +155,7 @@ namespace PortolMobile.Forms.ViewModels
                     }
                 }
 
-                if (customer!=null)
+                if (customer != null)
                 {
                     this.ReceiverName = customer.FullName;
                 }
@@ -122,7 +170,7 @@ namespace PortolMobile.Forms.ViewModels
             }
         }
 
-       
+
         public async Task GotoAddressStep()
         {
             try
@@ -134,7 +182,7 @@ namespace PortolMobile.Forms.ViewModels
                     return;
                 }
 
-              
+
                 CustomerDto customer = null;
                 long number = 0;
 
@@ -143,13 +191,13 @@ namespace PortolMobile.Forms.ViewModels
                     customer = await _customerService.GetCustomerByPhoneNumber(number, _sessionData.User.PhoneCountryCode);
 
                 }
-                
+
                 if (customer == null)
                 {
                     if (Regex.IsMatch(EmailMobileNumber, Portol.Common.Helper.Constants.RegexEmailPattern))
                     {
                         customer = await _customerService.GetCustomerByEmail(EmailMobileNumber);
-                    }                   
+                    }
                 }
 
                 if (customer == null)
@@ -193,7 +241,7 @@ namespace PortolMobile.Forms.ViewModels
             long number = 0;
             if (!long.TryParse(this.EmailMobileNumber, out number))
             {
-               
+
 
                 if (!Regex.IsMatch(EmailMobileNumber, Portol.Common.Helper.Constants.RegexEmailPattern))
                 {
@@ -208,7 +256,7 @@ namespace PortolMobile.Forms.ViewModels
                 return false;
             }
 
-          
+
 
             return true;
         }

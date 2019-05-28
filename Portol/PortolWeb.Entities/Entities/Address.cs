@@ -37,5 +37,34 @@ namespace PortolWeb.Entities
             return address;
         }
 
+        public static Address GetAddress(Guid addressID, ParentType parentAddressType, IUnitOfWork uow)
+        {
+            return uow.AddressRepository.Get(x => x.AddressID == addressID && x.ParentAddressType == parentAddressType);
+        }
+
+        public static Address GetDropoffAddress(Guid parentID, ParentType parentAddressType, IUnitOfWork uow)
+        {
+            return uow.AddressRepository.Get(x => x.ParentID == parentID && x.ParentAddressType == parentAddressType && !x.IsStarterPoint );
+        }
+
+        public static Address GetPickUpAddress(Guid parentID, ParentType parentAddressType, IUnitOfWork uow)
+        {
+            return uow.AddressRepository.Get(x => x.ParentID == parentID && x.ParentAddressType == parentAddressType && x.IsStarterPoint);
+        }
+
+        public AddressDto ToDto()
+        {
+            AddressDto addressDto = new AddressDto();
+            addressDto.AddressID = this.AddressID;
+            addressDto.AddressValidated = this.AddressValidated;
+            addressDto.FullAddress = this.FullAddress;
+            addressDto.IsCurrentAddress = this.IsCurrentAddress;
+            addressDto.IsStarterPoint = this.IsStarterPoint;
+            addressDto.Latitude = this.Latitude;
+            addressDto.Longitude = this.Longitude;
+            addressDto.ParentID  = this.ParentID;
+            return addressDto;
+        }
+
     }
 }

@@ -41,5 +41,14 @@ namespace PortolWeb.Entities
             uow.PaymentMethodRepository.Update(this);
             return true;
         }
+
+        public PaymentMethodDto ToDto()
+        {
+            PaymentMethodDto methodDto = new PaymentMethodDto();
+            methodDto.CustomerID = this.CustomerID;
+            methodDto.PaymentMethodID = this.PaymentMethodID;
+            methodDto.CardServiceID = this.CardServiceID;
+            return methodDto;
+        }
     }
 }

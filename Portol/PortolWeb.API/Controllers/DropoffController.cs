@@ -87,5 +87,26 @@ namespace PortolWeb.API.Controllers
 
             }
         }
+
+        [HttpGet("GetPendingReceiverDeliveries")]
+        public IActionResult GetPendingReceiverDeliveries([FromQuery] Guid receiverID)
+        {
+            try
+            {
+
+                var result = _deliveryService.GetPendingReceiverDeliveries(receiverID);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "DropoffController.GetPendingReceiverDeliveries");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
     }
 }

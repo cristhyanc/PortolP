@@ -37,5 +37,14 @@ namespace PortolWeb.Entities
 
 
         }
+
+        public PictureDto ToDto()
+        {
+            PictureDto pictureDto = new PictureDto();
+            pictureDto.PictureID = this.PictureID;
+            pictureDto.ParentID = this.ParentID;
+            pictureDto.ImageUrl = this.ImageUrl;
+            return pictureDto;
+        }
     }
 }

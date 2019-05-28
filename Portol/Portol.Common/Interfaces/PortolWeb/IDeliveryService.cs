@@ -8,8 +8,12 @@ namespace Portol.Common.Interfaces.PortolWeb
    public interface IDeliveryService
     {
         IEnumerable<VehiculeTypeDto> GetVehiculeTypesAvailables();
+
         Guid CreateDeliveryRequest(DeliveryDto dropoff);
+
         DriverDto GetDeliveryDriverInfo(Guid deliveryID);
-        void AssignDriver();
+
+        List<DeliveryDto> GetPendingReceiverDeliveries(Guid receiverID);
+       
     }
 }

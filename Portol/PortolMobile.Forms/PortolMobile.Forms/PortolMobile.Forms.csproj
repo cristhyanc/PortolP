@@ -17,6 +17,8 @@
     <None Remove="Resources\Group_2.png" />
     <None Remove="Resources\ic_ActionButton.svg" />
     <None Remove="Resources\ic_australia.svg" />
+    <None Remove="Resources\ic_bell.svg" />
+    <None Remove="Resources\ic_bellRed.svg" />
     <None Remove="Resources\ic_button.svg" />
     <None Remove="Resources\ic_camerabutton.svg" />
     <None Remove="Resources\ic_car.png" />
@@ -28,6 +30,7 @@
     <None Remove="Resources\ic_door.svg" />
     <None Remove="Resources\ic_dropoffcamera.svg" />
     <None Remove="Resources\ic_genericdriver.png" />
+    <None Remove="Resources\ic_home.svg" />
     <None Remove="Resources\ic_line.svg" />
     <None Remove="Resources\ic_mastercard.svg" />
     <None Remove="Resources\ic_newzealand.svg" />
@@ -35,6 +38,8 @@
     <None Remove="Resources\ic_parcelbox.png" />
     <None Remove="Resources\ic_paypal.svg" />
     <None Remove="Resources\ic_phone.png" />
+    <None Remove="Resources\ic_profile.svg" />
+    <None Remove="Resources\ic_search.svg" />
     <None Remove="Resources\ic_star.svg" />
     <None Remove="Resources\ic_triangle.svg" />
     <None Remove="Resources\ic_unitedkingdom.svg" />
@@ -48,6 +53,8 @@
     <EmbeddedResource Include="Resources\ic_ActionButton.svg" />
     <EmbeddedResource Include="Resources\btn_background.svg" />
     <EmbeddedResource Include="Resources\ic_australia.svg" />
+    <EmbeddedResource Include="Resources\ic_bell.svg" />
+    <EmbeddedResource Include="Resources\ic_bellRed.svg" />
     <EmbeddedResource Include="Resources\ic_button.svg" />
     <EmbeddedResource Include="Resources\ic_camerabutton.svg" />
     <EmbeddedResource Include="Resources\ic_car.png" />
@@ -58,6 +65,7 @@
     <EmbeddedResource Include="Resources\ic_door.svg" />
     <EmbeddedResource Include="Resources\ic_dropoffcamera.svg" />
     <EmbeddedResource Include="Resources\ic_genericdriver.png" />
+    <EmbeddedResource Include="Resources\ic_home.svg" />
     <EmbeddedResource Include="Resources\ic_line.svg" />
     <EmbeddedResource Include="Resources\ic_mastercard.svg" />
     <EmbeddedResource Include="Resources\ic_newzealand.svg" />
@@ -65,6 +73,8 @@
     <EmbeddedResource Include="Resources\ic_parcelbox.png" />
     <EmbeddedResource Include="Resources\ic_paypal.svg" />
     <EmbeddedResource Include="Resources\ic_phone.png" />
+    <EmbeddedResource Include="Resources\ic_profile.svg" />
+    <EmbeddedResource Include="Resources\ic_search.svg" />
     <EmbeddedResource Include="Resources\ic_star.svg" />
     <EmbeddedResource Include="Resources\ic_triangle.svg" />
     <EmbeddedResource Include="Resources\ic_unitedkingdom.svg" />
@@ -76,6 +86,9 @@
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.0.4" />
     <PackageReference Include="Autofac" Version="4.9.2" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AppCenter.Push" Version="2.0.0" />
     <PackageReference Include="Naxam.TopTabbedPage.Forms" Version="0.0.3.5" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />

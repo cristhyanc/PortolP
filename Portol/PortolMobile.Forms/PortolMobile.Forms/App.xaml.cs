@@ -5,6 +5,10 @@ using PortolMobile.Forms.Views;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels.Login;
 using System.Threading.Tasks;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Push;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace PortolMobile.Forms
@@ -15,6 +19,10 @@ namespace PortolMobile.Forms
         public App()
         {
             InitializeComponent();
+            AppCenter.Start("android=952146a6-94b4-4717-9d75-546346e67f3a;" +
+                  "uwp={Your UWP App secret here};" +
+                  "ios={Your iOS App secret here}", typeof(Push), typeof(Analytics), typeof(Crashes));
+
             ViewModelLocator.RegisterDependencies(false);
             InitNavigation();
         }

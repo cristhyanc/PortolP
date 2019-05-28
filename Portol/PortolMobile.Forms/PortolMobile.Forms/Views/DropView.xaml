@@ -9,42 +9,43 @@
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
              BackgroundImage="Map_image"
+              xmlns:Helpers="clr-namespace:PortolMobile.Forms.Helper"
              xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles"
              x:Class="PortolMobile.Forms.Views.DropView">
     <controls:ExtendedContentPage.Resources>
         <DropoffStyle:DropoffStyles/>
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
-        <ScrollView>
-            <Grid VerticalOptions="FillAndExpand" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
 
-                <StackLayout BackgroundColor="White" >
-                    <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
-                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
+        <Grid VerticalOptions="FillAndExpand" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
 
-                    <Grid  HorizontalOptions="CenterAndExpand" ColumnSpacing="0"  >
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Button  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" HeightRequest="60"
+            </Grid.RowDefinitions>
+
+            <StackLayout BackgroundColor="White" >
+                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
+
+                <Grid  HorizontalOptions="CenterAndExpand" ColumnSpacing="0"  >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" HeightRequest="60"
                             Style="{StaticResource ButtonUnselectedTab}"  Command="{Binding GotoShopCommand}"
                             Grid.Column="0" Text="Shop"></Button>
 
-                        <Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
+                    <Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
                         Style="{StaticResource ButtonSelectedTab}"
                         Grid.Column="1" Text="Drop"></Button>
-                    </Grid>
+                </Grid>
 
 
-                </StackLayout>
-
-
-                <RelativeLayout   Grid.Row="1" >
+            </StackLayout>
+            <ScrollView Grid.Row="1"  >
+                <RelativeLayout    >
 
                     <Frame  Style="{StaticResource FrameBox}" x:Name="frmDetailBox"
                             RelativeLayout.XConstraint="{ConstraintExpression
@@ -60,7 +61,7 @@
                             RelativeLayout.HeightConstraint="{ConstraintExpression
                             Type=RelativeToParent,
                             Property=Height,
-                            Factor=0.65 }"
+                            Factor=0.68 }"
                         
                             RelativeLayout.WidthConstraint="{ConstraintExpression
                             Type=RelativeToParent,
@@ -88,10 +89,10 @@
 
                             </Grid>
 
-                        <controls:ExtendedEntry Text="{Binding EmailMobileNumber, Mode=TwoWay }" OnUnfocusCommand="{Binding FindCustomerCommand}" 
+                            <controls:ExtendedEntry Text="{Binding EmailMobileNumber, Mode=TwoWay }" OnUnfocusCommand="{Binding FindCustomerCommand}" 
                                                 Placeholder="{i18n:Translate EmailMobileNumber}" Margin="0,5,0,0"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
                             <controls:ExtendedEntry Text="{Binding ReceiverName, Mode=TwoWay }"        Placeholder="{i18n:Translate ReceiverName}"   Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
-                           
+
                         </StackLayout>
                     </Frame>
 
@@ -133,8 +134,15 @@
 
                     </Frame>
                 </RelativeLayout>
-
-            </Grid>
             </ScrollView>
+            
+            <StackLayout Orientation="Horizontal" BackgroundColor="White" VerticalOptions="End" Grid.Row="1" Spacing="0"  >
+                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="StartAndExpand"  Margin="15,5,0,5"   WidthRequest="37" HeightRequest="35" Source="resource://PortolMobile.Forms.Resources.ic_home.svg?assembly=PortolMobile.Forms" />
+                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="CenterAndExpand" Margin="0,5,0,5"    WidthRequest="32" HeightRequest="32" Source="resource://PortolMobile.Forms.Resources.ic_search.svg?assembly=PortolMobile.Forms" />
+                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="CenterAndExpand" Margin="0,5,0,5"    WidthRequest="90" HeightRequest="35" Source="resource://PortolMobile.Forms.Resources.ic_bell.svg?assembly=PortolMobile.Forms" />
+                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="EndAndExpand"    Margin="0,5,15,5"    WidthRequest="25" HeightRequest="35" Source="resource://PortolMobile.Forms.Resources.ic_profile.svg?assembly=PortolMobile.Forms" />
+            </StackLayout>
+        </Grid>
+
     </controls:ExtendedContentPage.Content>
 </controls:ExtendedContentPage>

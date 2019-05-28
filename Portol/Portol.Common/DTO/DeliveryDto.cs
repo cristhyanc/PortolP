@@ -16,7 +16,7 @@ namespace Portol.Common.DTO
         public List<PictureDto> Pictures { get; set; }
         public ParcelDto Parcel { get; set; }
         public PaymentMethodDto PaymentMethod { get; set; }
-        public double TravelDistance { get; set; }
+        public decimal TravelDistance { get; set; }
         public decimal EstimatedCost { get; set; }
         public DeliveryStatus DeliveryStatus { get; set; }
         

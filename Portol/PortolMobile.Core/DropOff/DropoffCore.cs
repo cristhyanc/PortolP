@@ -17,9 +17,12 @@ namespace PortolMobile.Core.DropOff
         }
         public async Task<List<VehiculeTypeDto>> GetVehiculeTypesAvailables()
         {
-            return await  _deliveryService.GetVehiculeTypesAvailables();
+            return await _deliveryService.GetVehiculeTypesAvailables();
         }
-
+        public async Task<List<DeliveryDto>> GetPendingReceiverDeliveries(Guid receiverID)
+        {
+            return await _deliveryService.GetPendingReceiverDeliveries(receiverID);
+        }
         public async Task<Guid> CreateDropoffRequest(DeliveryDto dropoffParcel)
         {
             return await _deliveryService.CreateDeliveryRequest(dropoffParcel);

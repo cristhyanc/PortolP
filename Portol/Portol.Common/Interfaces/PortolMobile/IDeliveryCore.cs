@@ -11,5 +11,6 @@ namespace Portol.Common.Interfaces.PortolMobile
         Task<List<VehiculeTypeDto>> GetVehiculeTypesAvailables();
         Task<Guid> CreateDropoffRequest(DeliveryDto dropoffParcel);
         Task<DriverDto> GetDeliveryDriverInfo(Guid deliveryID);
+        Task<List<DeliveryDto>> GetPendingReceiverDeliveries(Guid receiverID);
     }
 }

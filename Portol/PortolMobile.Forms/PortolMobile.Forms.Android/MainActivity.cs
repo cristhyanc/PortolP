@@ -8,6 +8,10 @@ using System;
 using Android.Util;
 using ImageCircle.Forms.Plugin.Droid;
 using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Push;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace PortolMobile.Forms.Droid
 {
@@ -32,7 +36,9 @@ namespace PortolMobile.Forms.Droid
                 global::Xamarin.Forms.Forms.Init(this, bundle);
            
                 FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
-           
+                AppCenter.Start("952146a6-94b4-4717-9d75-546346e67f3a", typeof(Push),typeof(Analytics), typeof(Crashes));
+
+
                 var config = new FFImageLoading.Config.Configuration()
                 {
                     VerboseLogging = true,

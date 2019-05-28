@@ -44,5 +44,17 @@ namespace PortolWeb.Entities
             return parcel;
         }
 
+        public ParcelDto ToDto()
+        {
+            ParcelDto parcelDto = new ParcelDto();
+            parcelDto.Height = this.Height;
+            parcelDto.Length  = this.Length;
+            parcelDto.ParcelID = this.ParcelID;
+            parcelDto.ParentID = this.ParentID;        
+            parcelDto.Weight = this.Weight;
+            parcelDto.Width = this.Width;
+            parcelDto.Worth  = this.Worth;
+            return parcelDto;
+        }
     }
 }

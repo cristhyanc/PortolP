@@ -31,6 +31,13 @@ namespace PortolMobile.Services.Dropoff
             return await _restClient.MakeApiCall<List<VehiculeTypeDto>>($"{Constants.BaseDropoffApiUrl}/GetVehiculeTypesAvailables", HttpMethod.Get, null);
         }
 
+        public async Task<List<DeliveryDto>> GetPendingReceiverDeliveries(Guid receiverID)
+        {
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["receiverID"] = receiverID.ToString();
+            return await _restClient.MakeApiCall<List<DeliveryDto>>($"{Constants.BaseDropoffApiUrl}/GetPendingReceiverDeliveries", HttpMethod.Get, queryString.ToString());
+        }
+
         public async Task<Guid> CreateDeliveryRequest(DeliveryDto dropoffParcel)
         {
             return await _restClient.MakeApiCallRaw<Guid>($"{Constants.BaseDropoffApiUrl}/CreateDropoffRequest", HttpMethod.Post , dropoffParcel);

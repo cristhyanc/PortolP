@@ -7,6 +7,10 @@ using Foundation;
 using ImageCircle.Forms.Plugin.iOS;
 using Naxam.Controls.Platform.iOS;
 using UIKit;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Push;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace PortolMobile.Forms.iOS
 {
@@ -38,6 +42,7 @@ namespace PortolMobile.Forms.iOS
                 Logger = new CustomLogger(),
             };
             ImageService.Instance.Initialize(config);
+            AppCenter.Start("952146a6-94b4-4717-9d75-546346e67f3a", typeof(Push), typeof(Analytics), typeof(Crashes));
 
             LoadApplication(new App());
 
