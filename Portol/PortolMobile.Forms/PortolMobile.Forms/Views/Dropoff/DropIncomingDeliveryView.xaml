@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PortolMobile.Forms.Views.Dropoff.DropIncomingDeliveryView"
+              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
+             xmlns:localResources="clr-namespace:PortolMobile.Forms.Resources"
+             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
+             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true">
+    <controls:ExtendedContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="40,0,40,0">
+
+            <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Center"  VerticalOptions="Start" Margin="0,20,0,0"
+                                           Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms" >
+
+            </ffimageloadingsvg:SvgCachedImage>
+
+            <Label Text="{i18n:Translate IncomingDeliveries}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,30,0,0" ></Label>
+
+
+            <ListView                
+                    SelectedItem="{Binding SelectedSafetyC, Mode=TwoWay }" 
+                    CachingStrategy="RecycleElement" HasUnevenRows="true"
+                    RefreshCommand="{Binding RefreshListCommand}"
+                    IsRefreshing="{Binding IsBusy, Mode=TwoWay}" 
+                    ItemsSource="{Binding Deliveries}">
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <ViewCell >
+                         
+                            <Frame CornerRadius="4" BackgroundColor="LightGray"  Padding="0" >
+                                <StackLayout VerticalOptions="Fill" Padding="5" >
+                                    <Label Text="{Binding Description}"></Label>
+                                    <Label Text="{Binding Sender.FullName}"></Label>
+                                    <Label Text="{Binding DropoffAddress.FullAddress}"></Label>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <StackLayout>
+
+                    </StackLayout>
+                </ListView.Footer>
+            </ListView>
+
+        </StackLayout>
+    </controls:ExtendedContentPage.Content>
+</controls:ExtendedContentPage>

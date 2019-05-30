@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PortolMobile.Forms.Views.Customer.CustomerAccountView"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"           
+             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"         
+              xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
+             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             BackgroundColor="#F0F0F0"
+             xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles">
+    <controls:ExtendedContentPage.Content>
+        <StackLayout >
+            <Grid>
+                <Image Source="ic_redbacground.png" Aspect="Fill"  VerticalOptions="StartAndExpand"/>
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"   VerticalOptions="Center" HorizontalOptions="Center"  HeightRequest="120" WidthRequest="120"
+                       Source="https://www.morpht.com/sites/morpht/files/styles/landscape/public/dalibor-matura_1.jpg"  
+                                           x:Name="ProfileImage"  />
+                    <Label Text="Cristhyan" HorizontalOptions="Center" HorizontalTextAlignment="Center" ></Label>
+                </StackLayout>
+
+            </Grid>
+            <Grid RowSpacing="0" ColumnSpacing="0"  Margin="0,-30,0,0" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+
+
+                <ffimageloadingsvg:SvgCachedImage  WidthRequest="25" HeightRequest="15"	
+                           Source="resource://PortolMobile.Forms.Resources.ic_squad.svg?assembly=PortolMobile.Forms" >
+                </ffimageloadingsvg:SvgCachedImage>
+
+                <ffimageloadingsvg:SvgCachedImage  WidthRequest="25" HeightRequest="25"	Grid.Column="1"
+                           Source="resource://PortolMobile.Forms.Resources.ic_schedule.svg?assembly=PortolMobile.Forms" >
+                </ffimageloadingsvg:SvgCachedImage>
+
+                <Button CornerRadius="5" Grid.Column="0" Grid.Row="1" FontSize="Micro" Margin="5" Padding="0" Text="Drop Squad" TextColor="White"  BackgroundColor="#1d1e1f" WidthRequest="35"  HeightRequest="25">
+
+                </Button>
+
+                <Button CornerRadius="5" Grid.Column="1" Grid.Row="1" FontSize="Micro" Margin="5" Padding="0" Text="Schedules" TextColor="White"  BackgroundColor="#1d1e1f" WidthRequest="35"  HeightRequest="25">
+
+                </Button>
+
+                <Button CornerRadius="5" Grid.Column="4" Grid.Row="1" FontSize="Micro" Margin="5" Padding="0" Text="Edit" TextColor="White"  BackgroundColor="#1d1e1f" WidthRequest="35"  HeightRequest="25">
+
+                </Button>
+
+
+            </Grid>
+
+            <Label Text="{i18n:Translate Address}"  Style="{StaticResource LabelBaseBold}" Margin="5,0,0,0" FontAttributes="Bold"   ></Label>
+
+            <StackLayout BackgroundColor="White" Orientation="Horizontal" >
+
+                <ffimageloadingsvg:SvgCachedImage  WidthRequest="15" HeightRequest="15"	 Margin="5,0,0,0"
+                           Source="resource://PortolMobile.Forms.Resources.ic_homeAddress.svg?assembly=PortolMobile.Forms" >
+                </ffimageloadingsvg:SvgCachedImage>
+                <Label Text="{Binding UserAddress}"  Margin="5"  Style="{StaticResource labelListSecondLine}"  ></Label>
+            </StackLayout>
+
+            
+            <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="5,0,0,15" VerticalOptions="EndAndExpand" >
+                <Label Text="{i18n:Translate History}" Margin="5" Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
+            </StackLayout>
+
+            <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="5,0" >
+                <Label Text="{i18n:Translate SwitchBusinessAccount}" Margin="5" Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
+            </StackLayout>
+
+            <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="5,30,5,30"  >
+                <Label Text="{i18n:Translate Logout}" Margin="5" Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
+            </StackLayout>
+        </StackLayout>
+    </controls:ExtendedContentPage.Content>
+</controls:ExtendedContentPage>

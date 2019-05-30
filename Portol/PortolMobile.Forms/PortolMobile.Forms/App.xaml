@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
               xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"         
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
               xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
@@ -53,29 +54,42 @@
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
 
+            <!--Main style label-->
             <Style TargetType="Label"  >
-                <Setter Property="TextColor" Value="#000000" />
-                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontSize" Value="Default"  />
                 <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
 
             
             <Style TargetType="Label" x:Key="LabelBaseStyle" >
-                <Setter Property="TextColor" Value="#000000" />
-                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontSize" Value="Default" />
                 <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
-
+            <!--Main style label-->
+            
             <Style TargetType="Label" x:Key="LabelRequired"  BaseResourceKey="LabelBaseStyle"  >
                 <Setter Property="TextColor" Value="Red" />
-                <Setter Property="FontSize" Value="Medium" />
-               
+                <Setter Property="FontSize" Value="Medium" />               
             </Style>
 
-            <Style TargetType="Label" x:Key="LabelBaseStyleWhite" >
-                <Setter Property="TextColor" Value="#ffffff" />
-                <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="FontFamily" Value="Lucida Grande" />
+            <Style TargetType="Label" x:Key="LabelBaseBlack" >
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelBaseBlackSmall" >
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Small" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelBaseBlackBold" >
+                <Setter Property="FontAttributes" Value="Bold"  />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelBaseBold" >              
+                <Setter Property="FontAttributes" Value="Bold"  />
             </Style>
 
             <Style TargetType="Label" x:Key="labelListSecondLine" >
@@ -83,6 +97,13 @@
                 <Setter Property="FontSize" Value="Small" />                
             </Style>
 
+            <Style TargetType="Label" x:Key="LabelBaseStyleWhite" >
+                <Setter Property="TextColor" Value="#ffffff" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily" Value="Lucida Grande" />
+            </Style>
+            
+            
             <Style BaseResourceKey="LabelBaseStyle" TargetType="Button">
                 <Setter Property="TextColor" Value="Black"  />                
             </Style>
@@ -167,6 +188,11 @@
                 <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_car.png?assembly=PortolMobile.Forms" />
             </Style>
 
+            <Style x:Key="CircleImageProfile" TargetType="circleIma:CircleImage">
+                <Setter Property="WidthRequest" Value="70" />
+                <Setter Property="HeightRequest" Value="70" />
+                <Setter Property="Aspect" Value="AspectFill" />
+            </Style>
         </ResourceDictionary>
        
     </Application.Resources>

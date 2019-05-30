@@ -137,10 +137,25 @@
             </ScrollView>
             
             <StackLayout Orientation="Horizontal" BackgroundColor="White" VerticalOptions="End" Grid.Row="1" Spacing="0"  >
-                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="StartAndExpand"  Margin="15,5,0,5"   WidthRequest="37" HeightRequest="35" Source="resource://PortolMobile.Forms.Resources.ic_home.svg?assembly=PortolMobile.Forms" />
+                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="StartAndExpand"  Margin="30,5,0,5"   WidthRequest="37" HeightRequest="35" Source="resource://PortolMobile.Forms.Resources.ic_home.svg?assembly=PortolMobile.Forms" />
+                
                 <ffimageloadingsvg:SvgCachedImage HorizontalOptions="CenterAndExpand" Margin="0,5,0,5"    WidthRequest="32" HeightRequest="32" Source="resource://PortolMobile.Forms.Resources.ic_search.svg?assembly=PortolMobile.Forms" />
-                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="CenterAndExpand" Margin="0,5,0,5"    WidthRequest="90" HeightRequest="35" Source="resource://PortolMobile.Forms.Resources.ic_bell.svg?assembly=PortolMobile.Forms" />
-                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="EndAndExpand"    Margin="0,5,15,5"    WidthRequest="25" HeightRequest="35" Source="resource://PortolMobile.Forms.Resources.ic_profile.svg?assembly=PortolMobile.Forms" />
+               
+                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="CenterAndExpand" Margin="0,5,0,5"    WidthRequest="90" HeightRequest="35" Source="resource://PortolMobile.Forms.Resources.ic_bell.svg?assembly=PortolMobile.Forms" >
+                    <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToDeliveriesCommand }">
+                            
+                        </TapGestureRecognizer>
+                    </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                </ffimageloadingsvg:SvgCachedImage>
+                
+                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="EndAndExpand"    Margin="0,5,30,5"    WidthRequest="25" HeightRequest="35" Source="resource://PortolMobile.Forms.Resources.ic_profile.svg?assembly=PortolMobile.Forms" >
+                    <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GoToAccountCommand }">
+
+                        </TapGestureRecognizer>
+                    </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                </ffimageloadingsvg:SvgCachedImage>
             </StackLayout>
         </Grid>
 

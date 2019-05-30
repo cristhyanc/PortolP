@@ -6,7 +6,8 @@
              xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"            
              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
-             viewModelBase:ViewModelLocator.AutoWireViewModel="true"           
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+            
              xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Resources>
         <CustomerStyles:CustomerStyles/>
@@ -22,6 +23,7 @@
                     Style="{StaticResource ListViewStyle}"
                     CachingStrategy="RecycleElement"
                     IsPullToRefreshEnabled="false"
+                    HasUnevenRows="true"
                     ItemsSource="{Binding PaymentMethods}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

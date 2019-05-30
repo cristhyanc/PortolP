@@ -80,7 +80,10 @@ namespace PortolMobile.Forms
                 builder.RegisterType<DropDriverInfoViewModel>();
                 builder.RegisterType<CustomerPaymentMethodsViewModel>();
                 builder.RegisterType<CustomerPaymentMethodViewModel>();
+                builder.RegisterType<DropIncomingDeliveryViewModel>();
+                builder.RegisterType<CustomerAccountViewModel>();
                 
+
 
                 builder.Register(c => UserDialogs.Instance).As<IUserDialogs>().SingleInstance();
                 builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();

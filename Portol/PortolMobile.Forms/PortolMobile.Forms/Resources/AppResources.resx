@@ -387,4 +387,16 @@
   <data name="DriverOnWay" xml:space="preserve">
     <value>The driver is on the way</value>
   </data>
+  <data name="IncomingDeliveries" xml:space="preserve">
+    <value>Incoming Deliveries</value>
+  </data>
+  <data name="History" xml:space="preserve">
+    <value>History</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Logout</value>
+  </data>
+  <data name="SwitchBusinessAccount" xml:space="preserve">
+    <value>Switch Business Account</value>
+  </data>
 </root>

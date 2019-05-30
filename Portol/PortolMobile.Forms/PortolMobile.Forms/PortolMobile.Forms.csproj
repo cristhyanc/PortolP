@@ -31,6 +31,7 @@
     <None Remove="Resources\ic_dropoffcamera.svg" />
     <None Remove="Resources\ic_genericdriver.png" />
     <None Remove="Resources\ic_home.svg" />
+    <None Remove="Resources\ic_homeAddress.svg" />
     <None Remove="Resources\ic_line.svg" />
     <None Remove="Resources\ic_mastercard.svg" />
     <None Remove="Resources\ic_newzealand.svg" />
@@ -39,7 +40,11 @@
     <None Remove="Resources\ic_paypal.svg" />
     <None Remove="Resources\ic_phone.png" />
     <None Remove="Resources\ic_profile.svg" />
+    <None Remove="Resources\ic_redbacground.png" />
+    <None Remove="Resources\ic_redbackground.svg" />
+    <None Remove="Resources\ic_schedule.svg" />
     <None Remove="Resources\ic_search.svg" />
+    <None Remove="Resources\ic_squad.svg" />
     <None Remove="Resources\ic_star.svg" />
     <None Remove="Resources\ic_triangle.svg" />
     <None Remove="Resources\ic_unitedkingdom.svg" />
@@ -66,6 +71,7 @@
     <EmbeddedResource Include="Resources\ic_dropoffcamera.svg" />
     <EmbeddedResource Include="Resources\ic_genericdriver.png" />
     <EmbeddedResource Include="Resources\ic_home.svg" />
+    <EmbeddedResource Include="Resources\ic_homeAddress.svg" />
     <EmbeddedResource Include="Resources\ic_line.svg" />
     <EmbeddedResource Include="Resources\ic_mastercard.svg" />
     <EmbeddedResource Include="Resources\ic_newzealand.svg" />
@@ -74,7 +80,11 @@
     <EmbeddedResource Include="Resources\ic_paypal.svg" />
     <EmbeddedResource Include="Resources\ic_phone.png" />
     <EmbeddedResource Include="Resources\ic_profile.svg" />
+    <EmbeddedResource Include="Resources\ic_redbacground.png" />
+    <EmbeddedResource Include="Resources\ic_redbackground.svg" />
+    <EmbeddedResource Include="Resources\ic_schedule.svg" />
     <EmbeddedResource Include="Resources\ic_search.svg" />
+    <EmbeddedResource Include="Resources\ic_squad.svg" />
     <EmbeddedResource Include="Resources\ic_star.svg" />
     <EmbeddedResource Include="Resources\ic_triangle.svg" />
     <EmbeddedResource Include="Resources\ic_unitedkingdom.svg" />
@@ -135,6 +145,9 @@
     <EmbeddedResource Update="Styles\DropoffStyles.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Customer\CustomerAccountView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Customer\CustomerPaymentMethodsView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -145,6 +158,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Dropoff\DropDriverInfoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Dropoff\DropIncomingDeliveryView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Dropoff\DropMeasurementsView.xaml">

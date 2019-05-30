@@ -376,6 +376,24 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to History.
+        /// </summary>
+        internal static string History {
+            get {
+                return ResourceManager.GetString("History", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Incoming Deliveries.
+        /// </summary>
+        internal static string IncomingDeliveries {
+            get {
+                return ResourceManager.GetString("IncomingDeliveries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Incorrect date format.
         /// </summary>
         internal static string IncorrectdateFormat {
@@ -453,6 +471,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string LoginPortolLabel {
             get {
                 return ResourceManager.GetString("LoginPortolLabel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Logout.
+        /// </summary>
+        internal static string Logout {
+            get {
+                return ResourceManager.GetString("Logout", resourceCulture);
             }
         }
         
@@ -759,6 +786,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string SuburbRequired {
             get {
                 return ResourceManager.GetString("SuburbRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Switch Business Account.
+        /// </summary>
+        internal static string SwitchBusinessAccount {
+            get {
+                return ResourceManager.GetString("SwitchBusinessAccount", resourceCulture);
             }
         }
         

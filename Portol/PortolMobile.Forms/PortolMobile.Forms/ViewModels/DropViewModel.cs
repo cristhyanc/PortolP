@@ -4,8 +4,8 @@ using Portol.Common.DTO;
 using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Helper;
 using PortolMobile.Forms.Services.Navigation;
+using PortolMobile.Forms.ViewModels.Customer;
 using PortolMobile.Forms.ViewModels.Dropoff;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -19,6 +19,8 @@ namespace PortolMobile.Forms.ViewModels
         public ICommand GotoShopCommand { get; private set; }
 
         public ICommand FindCustomerCommand { get; private set; }
+        public ICommand GoToDeliveriesCommand { get; private set; }
+        public ICommand GoToAccountCommand { get; private set; }
 
         private IUserMobileService _customerService;
 
@@ -57,19 +59,6 @@ namespace PortolMobile.Forms.ViewModels
             }
         }
 
-        List<DeliveryDto> _pendingDeliveries;
-        public List<DeliveryDto> PendingDeliveries
-        {
-            get { return _pendingDeliveries; }
-            set
-            {
-                _pendingDeliveries = value;
-                OnPropertyChanged();
-            }
-        }
-
-        
-
         public string SenderName
         {
             get { return string.Format(StringResources.HelloMessage, _sessionData.User.FirstName); }
@@ -77,50 +66,68 @@ namespace PortolMobile.Forms.ViewModels
         }
 
         ISessionData _sessionData;
-        IDeliveryCore _deliveryCore;
+       
 
-        public DropViewModel(IUserMobileService customerService, INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData, IDeliveryCore deliveryCore) : base(navigationService, userDialogs)
+        public DropViewModel(IUserMobileService customerService, INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData) : base(navigationService, userDialogs)
         {
-            GetCustomerCommand = new Command((() => GotoAddressStep()), () => { return !IsBusy; });
-            GotoShopCommand = new Command(GotoShop, () => { return !IsBusy; });
-            FindCustomerCommand = new Command((() => FindCustomer()), () => { return !IsBusy; });
-            _customerService = customerService;
-            _sessionData = sessionData;
-            _deliveryCore = deliveryCore;
-            AskForDeliveries();
+            try
+            {
+                GetCustomerCommand = new Command((() => GotoAddressStep()), () => { return !IsBusy; });
+                GotoShopCommand = new Command(GotoShop, () => { return !IsBusy; });
+                FindCustomerCommand = new Command((() => FindCustomer()), () => { return !IsBusy; });
+                GoToAccountCommand = new Command((() => GoToAccount()), () => { return !IsBusy; });
+                GoToDeliveriesCommand = new Command((() => GoToIncomingDeliveries()), () => { return !IsBusy; });
+                _customerService = customerService;
+                _sessionData = sessionData;
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropViewModel", "DropViewModel");
+            }           
+        
             //this.EmailMobileNumber = "0405593357";
             //this.ReceiverName = "Sophie";
 
         }
 
-        private async Task AskForDeliveries()
+        private async void GoToAccount()
         {
             try
             {
-                this.IsBusy = true;
-                PendingDeliveries= await _deliveryCore.GetPendingReceiverDeliveries(_sessionData.User.CustomerID);
-                if(PendingDeliveries?.Count>0)
-                {
-                    this.IsDeliveryOnItsWay = true;
-                }
-                else
-                {
-                    this.IsDeliveryOnItsWay = false;
-                }
+                await NavigationService.NavigateToAsync<CustomerAccountViewModel>();
+
             }
             catch (System.Exception ex)
             {
-                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.MainPage, "AskForDeliveries");
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropViewModel", "GoToAccount");
             }
-            finally
+        }
+
+        private async void GoToIncomingDeliveries()
+        {
+            try
             {
-                this.IsBusy = false;
+                await NavigationService.NavigateToAsync<DropIncomingDeliveryViewModel>();
+
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropViewModel", "GoToIncomingDeliveries");
             }
         }
 
         private async void GotoShop()
         {
-            await NavigationService.NavigateToAsync<ShopViewModel>();
+          
+            try
+            {
+                await NavigationService.NavigateToAsync<ShopViewModel>();
+
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropViewModel", "GoToIncomingDeliveries");
+            }
         }
 
         private async Task FindCustomer()
