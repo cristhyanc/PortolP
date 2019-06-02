@@ -42,6 +42,9 @@ namespace PortolWeb.API
                 {
 
                     IDatabaseManagement dbManagement = services.GetRequiredService<IDatabaseManagement>();
+
+                 //   var hosting = services.GetRequiredService<IHostingEnvironment>(); 
+
                     var appSettings = services.GetRequiredService<IOptions<AppSettings>>();
 
                     Log.Logger = new LoggerConfiguration()

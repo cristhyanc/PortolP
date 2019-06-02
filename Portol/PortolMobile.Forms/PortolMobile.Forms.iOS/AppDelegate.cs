@@ -5,7 +5,6 @@ using FFImageLoading;
 using FFImageLoading.Forms.Platform;
 using Foundation;
 using ImageCircle.Forms.Plugin.iOS;
-using Naxam.Controls.Platform.iOS;
 using UIKit;
 using Microsoft.AppCenter;
 using Microsoft.AppCenter.Push;
@@ -31,7 +30,7 @@ namespace PortolMobile.Forms.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             CachedImageRenderer.Init();
-            TopTabbedRenderer.Init();
+        
             ImageCircleRenderer.Init();
             var config = new FFImageLoading.Config.Configuration()
             {

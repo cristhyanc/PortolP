@@ -1,4 +1,5 @@
-﻿using PortolMobile.Forms.ViewModels;
+﻿using PortolMobile.Forms.Controls;
+using PortolMobile.Forms.ViewModels;
 using PortolMobile.Forms.Views;
 using PortolMobile.Forms.Views.Login;
 using System;
@@ -13,8 +14,8 @@ namespace PortolMobile.Forms.Services.Navigation
 {
   public  class NavigationService : INavigationService
     {
-    
-        NavigationPage CurrentNavigator;
+
+        CustomNavigationPage CurrentNavigator;
         private Page _dropOffPage;
         private Page _shopPage;
         public NavigationService()
@@ -23,7 +24,7 @@ namespace PortolMobile.Forms.Services.Navigation
         }
 
 
-        public void SetNavigationPage(NavigationPage navigation)
+        public void SetNavigationPage(CustomNavigationPage navigation)
         {
             CurrentNavigator = navigation;
           
@@ -110,9 +111,9 @@ namespace PortolMobile.Forms.Services.Navigation
                         }
                     }
 
-                    CurrentNavigator = new NavigationPage(page);                    
+                    CurrentNavigator = new CustomNavigationPage(page);                    
                     CurrentNavigator.BarTextColor = Color.Black;
-                    CurrentNavigator.BarBackgroundColor= Color.White;
+                    //CurrentNavigator.BarBackgroundColor= Color.White;
                     
                    // CurrentNavigator.BackgroundImage = "logo_long_white.png";
                     Application.Current.MainPage = CurrentNavigator;
@@ -122,7 +123,7 @@ namespace PortolMobile.Forms.Services.Navigation
                 {
                     if (CurrentNavigator == null)
                     {
-                        CurrentNavigator = new NavigationPage(page);
+                        CurrentNavigator = new CustomNavigationPage(page);
                     }
                     else
                     {

@@ -9,6 +9,7 @@ using Microsoft.AppCenter;
 using Microsoft.AppCenter.Push;
 using Microsoft.AppCenter.Analytics;
 using Microsoft.AppCenter.Crashes;
+using PortolMobile.Forms.Controls;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace PortolMobile.Forms
@@ -31,9 +32,9 @@ namespace PortolMobile.Forms
         {
             try
             {
-                
-                NavigationPage navigationPage = new NavigationPage();               
-                navigationPage.BarBackgroundColor = Color.FromHex("#121010");              
+
+                CustomNavigationPage navigationPage = new CustomNavigationPage();               
+              //  navigationPage.BarBackgroundColor = Color.FromHex("#121010");              
                 MainPage = navigationPage;
                 var navigationService = ViewModelLocator.Resolve<INavigationService>();
                 navigationService.SetNavigationPage(navigationPage);

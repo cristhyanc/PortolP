@@ -1,4 +1,5 @@
-﻿using PortolMobile.Forms.Services.Navigation;
+﻿using PortolMobile.Forms.Controls;
+using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels;
 using System;
 using System.Threading.Tasks;
@@ -58,6 +59,11 @@ namespace PortolMobile.GeneralTest.MockupServices
         }
 
         public void SetNavigationPage(NavigationPage navigation)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void SetNavigationPage(CustomNavigationPage navigation)
         {
             throw new NotImplementedException();
         }

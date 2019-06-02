@@ -5,6 +5,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.IO;
+using Microsoft.AspNetCore.Hosting;
+
 namespace PortolWeb.API.Helper
 {
     public class ImageManager: IImageManager
@@ -12,8 +14,23 @@ namespace PortolWeb.API.Helper
         const string DELIVERY_IMAGES_FOLDER = "deliveryImages";
         const string PROFILE_IMAGES_FOLDER = "profileImages";
         const string IMAGES_FOLDER = "Images";
+        AppSettings _appSettings;
+        IHostingEnvironment _hosting;
+        public string ServerUrl
+        {
+            get
+            {
+                return _appSettings.ServerUrl;
+            }
+        }
 
-        public  string SaveFile(byte[] imageArray, string parentID, string imageName, ParentType parentType )
+        public ImageManager(AppSettings appSettings, IHostingEnvironment hosting)
+        {
+            _appSettings = appSettings;
+            _hosting = hosting;
+        }
+
+        public string SaveFile(byte[] imageArray, string parentID, string imageName, ParentType parentType)
         {
             InitializeFolders();
             string path = IMAGES_FOLDER;
@@ -43,7 +60,7 @@ namespace PortolWeb.API.Helper
             finalFile.Close();
             finalFile.Dispose();
 
-            return path;
+            return ServerUrl + "/" + path;
         }
 
         private void InitializeFolders()

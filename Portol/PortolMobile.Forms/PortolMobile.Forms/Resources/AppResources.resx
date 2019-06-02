@@ -399,4 +399,19 @@
   <data name="SwitchBusinessAccount" xml:space="preserve">
     <value>Switch Business Account</value>
   </data>
+  <data name="Confirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="ConfirmPickup" xml:space="preserve">
+    <value>Did the driver pick the parcel up?</value>
+  </data>
+  <data name="Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="PickedUp" xml:space="preserve">
+    <value>Picked Up</value>
+  </data>
+  <data name="RateService" xml:space="preserve">
+    <value>Please Rate the Service</value>
+  </data>
 </root>

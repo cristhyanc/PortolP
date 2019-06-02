@@ -22,6 +22,11 @@ namespace PortolMobile.GeneralTest.MockupServices
             throw new NotImplementedException();
         }
 
+        public Task<CustomerDto> GetCustomer(Guid customerID)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<CustomerDto> GetCustomerByEmail(string email)
         {
             Customer customer = new Customer();

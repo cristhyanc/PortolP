@@ -11,8 +11,13 @@ namespace PortolMobile.Forms
     {
         public CustomerDto User { get; private set; }
 
-        
-        
+
+        public async Task RefreshUserDetails(IUserCore userCore)
+        {
+            var result = await userCore.GetCustomer(User.CustomerID);
+            result.Token = this.User.Token;
+            User = result;
+        }
 
         public async Task LoginUser(ILoginCore loginCore, string email, string password)
         {

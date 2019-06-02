@@ -151,12 +151,14 @@ namespace Portol.Common.Helper
     }
     public enum DeliveryStatus
     {
-        NoStarted=1,
-        InProgress=2,
-        Rejected=3,
-        Delivered=4,
-        Cancelled=5,
-        SearchingDriver=6
+        NoStarted = 1,
+        SearchingDriver = 2,
+        PickingUp = 3,
+        InProgress=4,
+        Delivered = 5,
+        Ranked = 6,
+        Rejected = 7,
+        Cancelled = 8,
     }
 
     

@@ -10,7 +10,7 @@
              xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
              x:Class="PortolMobile.Forms.Views.Login.LoginView">
     <controls:ExtendedContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10,0,10,0">
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="10,40,10,0">
 
             <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Center"  VerticalOptions="Start" Margin="0,20,0,0"
                                            Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms" >

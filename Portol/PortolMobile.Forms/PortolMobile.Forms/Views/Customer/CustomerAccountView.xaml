@@ -11,14 +11,14 @@
              BackgroundColor="#F0F0F0"
              xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Content>
-        <StackLayout >
+        <StackLayout  >
             <Grid>
                 <Image Source="ic_redbacground.png" Aspect="Fill"  VerticalOptions="StartAndExpand"/>
                 <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
                     <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"   VerticalOptions="Center" HorizontalOptions="Center"  HeightRequest="120" WidthRequest="120"
-                       Source="https://www.morpht.com/sites/morpht/files/styles/landscape/public/dalibor-matura_1.jpg"  
+                       Source="{Binding User.ProfilePhoto.ImageUrl}"  
                                            x:Name="ProfileImage"  />
-                    <Label Text="Cristhyan" HorizontalOptions="Center" HorizontalTextAlignment="Center" ></Label>
+                    <Label Text="{Binding User.FullName}" HorizontalOptions="Center" Style="{StaticResource LabelBaseStyleWhite}" HorizontalTextAlignment="Center" ></Label>
                 </StackLayout>
 
             </Grid>
@@ -54,7 +54,7 @@
 
                 </Button>
 
-                <Button CornerRadius="5" Grid.Column="4" Grid.Row="1" FontSize="Micro" Margin="5" Padding="0" Text="Edit" TextColor="White"  BackgroundColor="#1d1e1f" WidthRequest="35"  HeightRequest="25">
+                <Button CornerRadius="5" Grid.Column="4" Grid.Row="1" FontSize="Micro" Margin="5" Padding="0" Text="Edit" Command="{Binding EditCommand}" TextColor="White"  BackgroundColor="#1d1e1f" WidthRequest="35"  HeightRequest="25">
 
                 </Button>
 

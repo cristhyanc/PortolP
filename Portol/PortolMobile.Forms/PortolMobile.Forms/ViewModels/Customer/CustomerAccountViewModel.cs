@@ -1,23 +1,44 @@
 ﻿using Acr.UserDialogs;
+using Portol.Common.DTO;
 using PortolMobile.Forms.Helper;
 using PortolMobile.Forms.Services.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace PortolMobile.Forms.ViewModels.Customer
 {
     public class CustomerAccountViewModel: BaseViewModel
     {
+
+        
+        public ICommand EditCommand { get; private set; }
+
         string _userAddress;
         public string UserAddress
         {
-            get { return _userAddress; }
+            get {
+                if (User?.CustomerAddress != null)
+                {
+                return     User.CustomerAddress.FullAddress;
+                }
+                return "";
+            }
+           
+        }
+
+        CustomerDto _user;
+        public CustomerDto User
+        {
+            get { return _user; }
             set
             {
-                _userAddress = value;
+                _user = value;
                 OnPropertyChanged();
+                OnPropertyChanged("UserAddress");
             }
         }
 
@@ -25,25 +46,35 @@ namespace PortolMobile.Forms.ViewModels.Customer
         ISessionData _sessionData;
         public CustomerAccountViewModel(INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData) : base(navigationService, userDialogs)
         {          
-            _sessionData = sessionData;           
+            _sessionData = sessionData;
+            EditCommand = new Command((() => GoToEditPage()), () => { return !IsBusy; });
         }
 
-        public override Task InitializeAsync(object navigationData)
+        protected override void PageAppearing()
         {
             try
             {
-                if(_sessionData?.User?.CustomerAddress!=null)
-                {
-                    UserAddress = _sessionData.User.CustomerAddress.FullAddress;
-                }
-                
+                User = _sessionData.User;
             }
             catch (Exception ex)
             {
                 this.IsBusy = false;
-                ExceptionHelper.ProcessException(ex, UserDialogs, "CustomerAccountViewModel", "InitializeAsync");
+                ExceptionHelper.ProcessException(ex, UserDialogs, "CustomerAccountViewModel", "PageAppearing");
             }
-            return base.InitializeAsync(navigationData);
         }
+
+        private async void GoToEditPage()
+        {
+            try
+            {
+                await this.NavigationService.NavigateToAsync<CustomerAccountDetailViewModel>();
+            }
+            catch (Exception ex)
+            {
+                this.IsBusy = false;
+                ExceptionHelper.ProcessException(ex, UserDialogs, "CustomerAccountViewModel", "GoToEditPage");
+            }
+        }
+       
     }
 }

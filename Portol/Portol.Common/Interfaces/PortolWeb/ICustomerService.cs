@@ -21,6 +21,7 @@ namespace Portol.Common.Interfaces.PortolWeb
         bool ValidateVerificationCode(long phoneNumber, Int32 countryCode, Int32 code);
         CustomerDto GetCustomerByPhoneNumber(long phoneNumber, int countryCode);
         CustomerDto GetCustomerByEmail(string email);
+        CustomerDto GetCustomer(Guid customerID);
         bool SavePaymentMethod(PaymentMethodDto paymentMethod);
 
     }

@@ -12,6 +12,7 @@ namespace Portol.Common.Interfaces.PortolMobile
         Task<Boolean> SaveCustomer(CustomerDto user);
         Task<Boolean> CreateNewCustomer(CustomerDto newUser);
         Task<CustomerDto> GetCustomerByEmail(string email);
+        Task<CustomerDto> GetCustomer(Guid customerID);
         Task<CustomerDto> GetCustomerByPhoneNumber(long phoneNumber, int countryCode);
         Task<Boolean> VerifyMobileUniqueness(long mobilePhoned, Int32 code);
         Task<Boolean> VerifyEmailUniqueness(string email);

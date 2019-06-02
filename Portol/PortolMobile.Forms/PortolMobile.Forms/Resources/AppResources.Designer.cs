@@ -133,11 +133,29 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Confirm.
+        /// </summary>
+        internal static string Confirm {
+            get {
+                return ResourceManager.GetString("Confirm", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm Email.
         /// </summary>
         internal static string ConfirmEmail {
             get {
                 return ResourceManager.GetString("ConfirmEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Did the driver pick the parcel up?.
+        /// </summary>
+        internal static string ConfirmPickup {
+            get {
+                return ResourceManager.GetString("ConfirmPickup", resourceCulture);
             }
         }
         
@@ -174,6 +192,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string CreditCardNumber {
             get {
                 return ResourceManager.GetString("CreditCardNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delivery.
+        /// </summary>
+        internal static string Delivery {
+            get {
+                return ResourceManager.GetString("Delivery", resourceCulture);
             }
         }
         
@@ -673,6 +700,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Picked Up.
+        /// </summary>
+        internal static string PickedUp {
+            get {
+                return ResourceManager.GetString("PickedUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Pickup Address.
         /// </summary>
         internal static string PickupAddress {
@@ -687,6 +723,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string PostCode {
             get {
                 return ResourceManager.GetString("PostCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Rate the Service.
+        /// </summary>
+        internal static string RateService {
+            get {
+                return ResourceManager.GetString("RateService", resourceCulture);
             }
         }
         

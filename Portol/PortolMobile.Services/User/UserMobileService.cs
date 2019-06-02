@@ -40,6 +40,13 @@ namespace PortolMobile.Services.User
             return await _restClient.MakeApiCall<CustomerDto>($"{Constants.BaseUserApiUrl}/GetCustomerByEmail", HttpMethod.Get, queryString);
         }
 
+        public async Task<CustomerDto> GetCustomer(Guid  customerID)
+        {
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["customerID"] = customerID.ToString();
+            return await _restClient.MakeApiCall<CustomerDto>($"{Constants.BaseUserApiUrl}/GetCustomer", HttpMethod.Get, queryString);
+        }
+
         public async Task<CustomerDto> GetCustomerByPhoneNumber(long phoneNumber, int countryCode)
         {
             NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);

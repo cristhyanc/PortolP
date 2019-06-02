@@ -15,16 +15,16 @@
         <DropoffStyle:DropoffStyles/>
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
-        <ScrollView>
-            <Grid VerticalOptions="FillAndExpand">
+        <ScrollView  >
+            <Grid VerticalOptions="FillAndExpand" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
 
-                <StackLayout BackgroundColor="White" >
+                <StackLayout BackgroundColor="White"   >
 
-                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
+                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" Margin="0,20,0,0"/>
                     <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
                     <!--<Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
                         Style="{StaticResource ButtonUnselectedTab}"
@@ -107,7 +107,7 @@
                                     Factor=0.08,Constant=-35 }"   >
 
                         <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"  
-                       Source="https://www.morpht.com/sites/morpht/files/styles/landscape/public/dalibor-matura_1.jpg"  
+                      Source="{Binding ProfilePicture}"  
                                            x:Name="ProfileImage"  />
 
                     </Frame>

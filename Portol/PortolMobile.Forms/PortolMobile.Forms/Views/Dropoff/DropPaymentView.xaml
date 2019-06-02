@@ -16,7 +16,7 @@
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
 
-        <Grid VerticalOptions="FillAndExpand" x:Name="MainGrid">
+        <Grid VerticalOptions="FillAndExpand" x:Name="MainGrid" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
@@ -24,7 +24,7 @@
 
             <StackLayout BackgroundColor="White" >
 
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
+                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" Margin="0,20,0,0"  />
                 <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
 
             </StackLayout>
@@ -79,8 +79,8 @@
                                 </TapGestureRecognizer>
                             </Label.GestureRecognizers>
                         </Label>
-                        
-                        <Button Margin="0,7,0,7" Text="Confirm" TextColor="White" Command="{Binding ConfirmCommand}" BackgroundColor="#4c4c4c"   ></Button>
+
+                        <Button Margin="0,7,0,7" Text="{i18n:Translate Confirm}" TextColor="White" Command="{Binding ConfirmCommand}" BackgroundColor="#4c4c4c"   ></Button>
 
                     </StackLayout>
                 </Frame>

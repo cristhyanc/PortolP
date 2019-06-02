@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="36px" viewBox="0 0 45 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.6 (67491) - http://www.bohemiancoding.com/sketch -->
+    <title>cameraicon</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="cameraicon" transform="translate(1.000000, 1.000000)">
+            <ellipse id="Oval" stroke="#050505" stroke-width="1.5" cx="22" cy="18.5" rx="11" ry="10.5"></ellipse>
+            <circle id="Oval" fill="#000000" cx="38.5" cy="9.5" r="1.5"></circle>
+            <path d="M40,34 L3,34 C1.34314575,34 2.02906125e-16,32.6568542 0,31 L-4.4408921e-16,6.60877164 C-6.46995335e-16,4.95191739 1.34314575,3.60877164 3,3.60877164 L11.2722105,3.60877164 L12.9222537,1.27036701 C13.4843554,0.473768917 14.3985016,2.82138144e-15 15.3734513,1.77635684e-15 L28.3953337,-1.77635684e-15 C29.5684023,-1.99184605e-15 30.633856,0.683729739 31.122578,1.75014465 L31.974359,3.60877164 L40,3.60877164 C41.6568542,3.60877164 43,4.95191739 43,6.60877164 L43,31 C43,32.6568542 41.6568542,34 40,34 Z" id="Path-19" stroke="#040404" stroke-width="1.5"></path>
+        </g>
+    </g>
+</svg>

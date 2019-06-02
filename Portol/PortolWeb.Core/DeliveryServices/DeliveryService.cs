@@ -33,7 +33,7 @@ namespace PortolWeb.Core.DeliveryServices
                     foreach (var item in deliveries)
                     {
                         item.DriverID = availableDriver.First().CustomerID;
-                        item.DeliveryStatus = DeliveryStatus.InProgress;
+                        item.DeliveryStatus = DeliveryStatus.PickingUp;
                     }
                     _uow.DeliveryRepository.Update(deliveries);
                     _uow.SaveChanges();
@@ -94,6 +94,30 @@ namespace PortolWeb.Core.DeliveryServices
             }
 
             return result;
+        }
+
+        public DeliveryDto GetSendertDeliveryInProgress(Guid customerID)
+        {
+          
+            var delivery = Delivery.GetSendertDeliveryInProgress(customerID, _uow);
+            if (delivery!=null)
+            {
+                return delivery.ToDto();
+            }
+
+            return null;
+        }
+
+        public void ConfirmDeliveryPickUp(Guid deliveryID)
+        {
+            Delivery.ConfirmDeliveryPickUp(deliveryID, _uow);
+            _uow.SaveChanges();
+        }
+
+        public DeliveryStatus GetDeliveryStatus(Guid deliveryID)
+        {
+            return Delivery.GetDeliveryStatus(deliveryID, _uow);
+
         }
     }
 }

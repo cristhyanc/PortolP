@@ -27,7 +27,10 @@ namespace PortolWeb.Entities
         public bool Deleted { get; set; }
         public bool IsGuess { get; set; }
         public string CustomerPaymentID { get; set; }
-                      
+        public string ProfilePhoto { get; set; }
+
+        
+
         [NotMapped]
         public Address CurrentAddress { get; set; }
         //  [ForeignKey("AddressID")]
@@ -48,6 +51,16 @@ namespace PortolWeb.Entities
         public static Customer GetCustomerByEmail(IUnitOfWork _uow, string email)
         {
             var customer = _uow.CustomerRepository.Get(x => x.Email.Equals(email));
+            if (customer != null)
+            {
+                customer = GetCustomerDetails(_uow, customer.CustomerID);
+            }
+            return customer;
+        }
+
+        public static Customer GetCustomer(IUnitOfWork _uow, Guid customerID)
+        {
+            var customer = _uow.CustomerRepository.Get(x => x.CustomerID== customerID);
             if (customer != null)
             {
                 customer = GetCustomerDetails(_uow, customer.CustomerID);
@@ -76,6 +89,7 @@ namespace PortolWeb.Entities
             result.Email = this.Email;
             result.FirstName = this.FirstName;
             result.LastName = this.LastName;
+            result.ProfilePhoto = new PictureDto { ImageUrl = this.ProfilePhoto };
             result.PhoneCountryCode = this.PhoneCountryCode;
             result.PhoneNumber = this.PhoneNumber;
             result.CustomerID = this.CustomerID;
@@ -103,6 +117,18 @@ namespace PortolWeb.Entities
 
             var dbuser = uow.CustomerRepository.Get(newUser.CustomerID);
             var user = PreValidations(newUser);
+
+            if (uow.CustomerRepository.Get(x => x.CustomerID!= newUser.CustomerID && x.PhoneNumber == newUser.PhoneNumber && x.PhoneCountryCode == newUser.PhoneCountryCode) != null)
+            {
+                throw new AppException(string.Format(StringResources.MobileInUse, newUser.PhoneNumber));
+            }
+
+            if (uow.CustomerRepository.Get(x => x.CustomerID != newUser.CustomerID && x.Email == newUser.Email) != null)
+            {
+                throw new AppException(string.Format(StringResources.EmailInUsedParameter, newUser.Email));
+            }
+
+
             user.PasswordHash = dbuser.PasswordHash;
             user.PasswordSalt = dbuser.PasswordSalt;
             uow.CustomerRepository.Update(user);
@@ -120,6 +146,7 @@ namespace PortolWeb.Entities
             user.Deleted = newUser.Deleted;
             user.FirstName = newUser.FirstName;
             user.LastName = newUser.LastName;
+            user.ProfilePhoto = newUser.ProfilePhoto?.ImageUrl;
             user.PhoneCountryCode = newUser.PhoneCountryCode;
             user.CustomerPaymentID = newUser.CustomerPaymentID;
             user.PhoneNumber = newUser.PhoneNumber;

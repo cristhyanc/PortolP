@@ -360,6 +360,31 @@ namespace PortolWeb.API.Controllers
 
         }
 
+        [HttpGet("GetCustomer")]
+        public IActionResult GetCustomer([FromQuery]Guid customerID)
+        {
+            try
+            {
+                var result = _userService.GetCustomer(customerID);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.GetCustomer");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+            finally
+            {
+                _userService.Dispose();
+            }
+
+        }
+
         [HttpGet("GetCustomerByEmail")]
         public IActionResult GetCustomerByEmail([FromQuery]string email)
         {

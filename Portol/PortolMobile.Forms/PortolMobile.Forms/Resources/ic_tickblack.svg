@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="19px" viewBox="0 0 21 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>Combined Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M33.9191526,369.740883 L43.2747372,363.751684 C43.623433,363.528458 44.0867891,363.626939 44.3145577,363.972684 C44.5385127,364.312641 44.4444746,364.769782 44.1045178,364.993737 C44.1018334,364.995505 44.0991375,364.997256 44.0964303,364.998989 L34.1155691,371.388473 C33.7910514,371.596221 33.367223,371.525329 33.1264094,371.235803 C33.0567632,371.181112 32.9955665,371.113266 32.9467994,371.033258 L30.8951855,367.66735 C30.6818803,367.317398 30.7926541,366.860788 31.1426058,366.647483 C31.1452765,366.645855 31.1479575,366.644244 31.1506486,366.64265 C31.5090715,366.43035 31.9715728,366.545654 32.1883877,366.901364 L33.9191526,369.740883 Z" id="path-1"></path>
+        <filter x="-51.3%" y="-63.5%" width="202.6%" height="277.8%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.999604725">
+        <g id="15.1.0-customerprofileedit" transform="translate(-27.000000, -360.000000)">
+            <g id="Combined-Shape" transform="translate(37.611427, 367.570079) rotate(-15.000000) translate(-37.611427, -367.570079) ">
+                <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                <use fill="#000000" fill-rule="evenodd" xlink:href="#path-1"></use>
+            </g>
+        </g>
+    </g>
+</svg>

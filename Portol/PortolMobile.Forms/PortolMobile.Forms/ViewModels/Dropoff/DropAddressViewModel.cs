@@ -116,9 +116,16 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
 
         }
 
+        public string ProfilePicture
+        {
+            get { return _sessionData?.User?.ProfilePhoto?.ImageUrl;  }
+
+        }
+        ISessionData _sessionData;
+
         INavigationService _navigationService;
         IUserDialogs _userDialogs;
-        ISessionData _sessionData;
+        
         public ICommand AddressEntryCommand { get; private set; }
 
 
@@ -211,11 +218,16 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 }
 
                 //sample
-                //_dropoffAddress = new AddressDto();
-                //_dropoffAddress.AddressValidated = true;
-                //_dropoffAddress.FullAddress = "79 berwick st, fortitude valley 4006";
-                //DropoffAddress = _dropoffAddress;
-                //Description = "asd";
+                _dropoffAddress = new AddressDto();
+                _dropoffAddress.AddressValidated = true;
+                _dropoffAddress.FullAddress = "79 berwick st, fortitude valley 4006";
+                DropoffAddress = _dropoffAddress;
+
+                _pickUpAddress = new AddressDto();
+                _pickUpAddress.AddressValidated = true;
+                _pickUpAddress.FullAddress = "82 Sydney st, new farm 4005";
+                PickUpAddress = _pickUpAddress;
+                Description = "asd";
                 //-Sample
             }
             catch (Exception ex)

@@ -159,7 +159,10 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             {
                 this.IsBusy = true;
                 SubscribePicturesMessagingService();
-                await NavigationService.NavigateToAsync<PicturePickerViewModel>(this.PicturesTaken);
+                PicturePickerParameters picturePicker = new PicturePickerParameters();
+                picturePicker.Pictures = this.PicturesTaken;
+                picturePicker.MaximunPicturesAllowed = null;
+                await NavigationService.NavigateToAsync<PicturePickerViewModel>(picturePicker);
             }
             catch (Exception ex)
             {
@@ -185,13 +188,12 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 LoadGallery();
 
                 //test
-                //_dropoffParcel.Parcel = new ParcelDto();
-                //_dropoffParcel.Parcel.Height = 2;
-                //_dropoffParcel.Parcel.Weight = 2;
-                //_dropoffParcel.Parcel.Length = 2;
-                //_dropoffParcel.Parcel.Width = 2;
-                //this.PicturesTaken = new List<PictureDto>();
-                //this.PicturesTaken.Add(new PictureDto());
+                _dropoffParcel.Parcel = new ParcelDto();
+                _dropoffParcel.Parcel.Height = 2;
+                _dropoffParcel.Parcel.Weight = 2;
+                _dropoffParcel.Parcel.Length = 2;
+                _dropoffParcel.Parcel.Width = 2;
+              
                 //test
             }
             catch (Exception ex)

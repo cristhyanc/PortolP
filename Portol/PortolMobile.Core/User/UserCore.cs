@@ -45,6 +45,10 @@ namespace PortolMobile.Core.User
             return await _userMobileService.GetCustomerByEmail(email);
         }
 
+        public async Task<CustomerDto> GetCustomer(Guid customerID)
+        {
+            return await _userMobileService.GetCustomer(customerID);
+        }
         public async Task<CustomerDto> GetCustomerByPhoneNumber(long phoneNumber, int countryCode)
         {
             return await _userMobileService.GetCustomerByPhoneNumber(phoneNumber, countryCode);

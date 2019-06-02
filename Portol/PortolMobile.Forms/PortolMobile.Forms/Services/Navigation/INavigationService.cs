@@ -1,4 +1,5 @@
-﻿using PortolMobile.Forms.ViewModels;
+﻿using PortolMobile.Forms.Controls;
+using PortolMobile.Forms.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -29,7 +30,7 @@ namespace PortolMobile.Forms.Services.Navigation
 
       //  Task ClosePopup();
 
-        void SetNavigationPage(NavigationPage navigation);
+        void SetNavigationPage(CustomNavigationPage navigation);
 
         void Logout();
     }

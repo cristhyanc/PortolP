@@ -17,6 +17,11 @@ using Xamarin.Forms;
 
 namespace PortolMobile.Forms.ViewModels.UserControls
 {
+    public class PicturePickerParameters
+    {
+        public List<PictureDto> Pictures { get; set; }
+        public int? MaximunPicturesAllowed { get; set; }
+    }
     public class PicturePickerViewModel : BaseViewModel
     {
 
@@ -84,6 +89,8 @@ namespace PortolMobile.Forms.ViewModels.UserControls
 
         }
 
+        private int? MaximunPicturesAllowed;
+
         IMedia _media;
         public PicturePickerViewModel(IMedia media, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
@@ -126,8 +133,18 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                 this.IsBusy = true;
                 if (navigationData != null)
                 {
-                    IEnumerable<PictureDto> picturesDtos = (IEnumerable<PictureDto>)navigationData;
-                    Pictures = new ObservableCollection<PictureDto>(picturesDtos);
+                    PicturePickerParameters picturePicker = (PicturePickerParameters)navigationData;
+                    List<PictureDto> picturesDtos = picturePicker.Pictures;
+                    if (picturesDtos != null)
+                    {
+                        Pictures = new ObservableCollection<PictureDto>(picturesDtos);
+                    }
+                    else
+                    {
+                        Pictures = new ObservableCollection<PictureDto>();
+                    }
+
+                    this.MaximunPicturesAllowed = picturePicker.MaximunPicturesAllowed;
                 }
 
             }
@@ -202,6 +219,10 @@ namespace PortolMobile.Forms.ViewModels.UserControls
         {
             try
             {
+                if(this.MaximunPicturesAllowed.HasValue &&  this.Pictures?.Count()>this.MaximunPicturesAllowed.Value )
+                {
+                    return;
+                }
                 this.IsBusy = true;
                 this.SelectedPicture = null;
                 await ViewModelLocator.CheckCameraStoragePermission();                
@@ -228,9 +249,9 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                 }
 
                 picture.ImageUrl = await ImageManager.SavePictureToDisk(CurrentImage.GetStream());
-
+              //  picture.ImageArray= await ImageManager.GetPictureFromDisk(picture.ImageUrl);
                 Pictures.Add(picture);
-
+                this.SelectedPicture = picture;
 
             }
             catch (Exception ex)

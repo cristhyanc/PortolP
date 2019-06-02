@@ -13,7 +13,7 @@
         <CustomerStyles:CustomerStyles/>
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
-        <StackLayout Margin="10,0,0,0" VerticalOptions="FillAndExpand">
+        <StackLayout Margin="10,20,0,0" VerticalOptions="FillAndExpand">
             <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
 
             <Label Text="{i18n:Translate PaymentMethods}" Margin="0,15,0,10"  Style="{StaticResource SubTitleLabel}" ></Label>

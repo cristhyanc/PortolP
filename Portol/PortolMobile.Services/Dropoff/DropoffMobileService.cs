@@ -19,6 +19,27 @@ namespace PortolMobile.Services.Dropoff
             _restClient = restClient;
         }
 
+        public async Task<DeliveryDto> GetSendertDeliveryInProgress(Guid customerID)
+        {
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["customerID"] = customerID.ToString();
+            return await _restClient.MakeApiCall<DeliveryDto>($"{Constants.BaseDropoffApiUrl}/GetSendertDeliveryInProgress", HttpMethod.Get, queryString.ToString());
+        }
+        
+        public async Task<DeliveryStatus> GetDeliveryStatus(Guid deliveryID)
+        {
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["deliveryID"] = deliveryID.ToString();
+            return await _restClient.MakeApiCallRaw<DeliveryStatus>($"{Constants.BaseDropoffApiUrl}/GetDeliveryStatus", HttpMethod.Get, queryString.ToString());
+        }
+
+        public async Task<bool> ConfirmDeliveryPickUp(Guid deliveryID)
+        {
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["deliveryID"] = deliveryID.ToString();
+            return await _restClient.MakeApiCallRaw<bool>($"{Constants.BaseDropoffApiUrl}/ConfirmDeliveryPickUp", HttpMethod.Get, queryString.ToString());
+        }
+
         public async Task<DriverDto> GetDeliveryDriverInfo(Guid deliveryID)
         {
             NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);

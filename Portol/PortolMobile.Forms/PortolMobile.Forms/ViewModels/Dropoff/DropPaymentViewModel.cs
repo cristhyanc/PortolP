@@ -134,7 +134,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                         item.ImageArray = await Services.Images.ImageManager.GetPictureFromDisk(item.ImageUrl);
                     }
                 }
-
+                this.DropoffDetails.CreatedDate = DateTime.Now;
                 var result = await _dropoffCore.CreateDropoffRequest(this.DropoffDetails);
                 if (result != Guid.Empty )
                 {

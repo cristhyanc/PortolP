@@ -396,4 +396,22 @@
   <data name="Validation" xml:space="preserve">
     <value>Validation</value>
   </data>
+  <data name="ConfirmPickup" xml:space="preserve">
+    <value>Did the driver pick the parcel up?</value>
+  </data>
+  <data name="Delivery" xml:space="preserve">
+    <value>Delivery</value>
+  </data>
+  <data name="DeliveryNotFound" xml:space="preserve">
+    <value>Delivery not found</value>
+  </data>
+  <data name="DriverOnWay" xml:space="preserve">
+    <value>The driver is on the way</value>
+  </data>
+  <data name="ParcelDelivered" xml:space="preserve">
+    <value>Parcel has been delivered</value>
+  </data>
+  <data name="ParcelOnBoard" xml:space="preserve">
+    <value>Parcel on Board</value>
+  </data>
 </root>

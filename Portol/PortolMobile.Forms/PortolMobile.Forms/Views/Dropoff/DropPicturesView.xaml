@@ -16,7 +16,7 @@
         <DropoffStyle:DropoffStyles/>
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
-        <ScrollView>
+        <ScrollView >
             <Grid VerticalOptions="FillAndExpand">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
@@ -24,7 +24,7 @@
                 </Grid.RowDefinitions>
 
                 <StackLayout BackgroundColor="White" >
-                    <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+                    <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  Margin="0,40,0,0" />
                     <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />                
                 </StackLayout>
 

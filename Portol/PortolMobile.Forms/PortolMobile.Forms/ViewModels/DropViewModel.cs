@@ -65,10 +65,15 @@ namespace PortolMobile.Forms.ViewModels
 
         }
 
-        ISessionData _sessionData;
-       
+        public string ProfilePicture
+        {
+            get { return _sessionData?.User?.ProfilePhoto?.ImageUrl; }
 
-        public DropViewModel(IUserMobileService customerService, INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData) : base(navigationService, userDialogs)
+        }
+        ISessionData _sessionData;
+        IDeliveryCore _deliveryCore;
+
+        public DropViewModel(IUserMobileService customerService, INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData, IDeliveryCore deliveryCore) : base(navigationService, userDialogs)
         {
             try
             {
@@ -79,15 +84,36 @@ namespace PortolMobile.Forms.ViewModels
                 GoToDeliveriesCommand = new Command((() => GoToIncomingDeliveries()), () => { return !IsBusy; });
                 _customerService = customerService;
                 _sessionData = sessionData;
+                _deliveryCore = deliveryCore;
             }
             catch (System.Exception ex)
             {
                 ExceptionHelper.ProcessException(ex, UserDialogs, "DropViewModel", "DropViewModel");
-            }           
-        
-            //this.EmailMobileNumber = "0405593357";
-            //this.ReceiverName = "Sophie";
+            }
 
+            this.EmailMobileNumber = "0405593357";
+            this.ReceiverName = "Sophie";
+
+        }
+
+        protected override async void PageAppearing()
+        {
+            try
+            {
+                this.IsBusy = true;
+                var delivery = await _deliveryCore.GetSendertDeliveryInProgress(_sessionData.User.CustomerID);
+                if(delivery!=null)
+                {
+                    await NavigationService.NavigateToAsync<DropDriverInfoViewModel>(delivery);
+                }     
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropViewModel", "PageAppearing");
+            }finally
+            {
+                this.IsBusy = false;
+            }
         }
 
         private async void GoToAccount()
@@ -176,7 +202,6 @@ namespace PortolMobile.Forms.ViewModels
                 this.UserDialogs.HideLoading();
             }
         }
-
 
         public async Task GotoAddressStep()
         {

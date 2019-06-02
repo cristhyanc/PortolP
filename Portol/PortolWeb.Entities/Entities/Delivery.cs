@@ -23,7 +23,9 @@ namespace PortolWeb.Entities
         public decimal TravelDistance { get; set; }
         public decimal EstimatedCost { get; set; }
         public decimal TotalCost { get; set; }
+        public DateTime CreatedDate { get; set; }
 
+        
         public DeliveryStatus DeliveryStatus { get; set; }
 
         [NotMapped]
@@ -73,6 +75,7 @@ namespace PortolWeb.Entities
             delivery.CustomerSenderID = deliveryDto.Sender.CustomerID;
             delivery.DeliveryStatus = DeliveryStatus.SearchingDriver;
             delivery.Description = deliveryDto.Description;
+            delivery.CreatedDate = deliveryDto.CreatedDate;
             delivery.EstimatedCost = deliveryDto.EstimatedCost;
             deliveryDto.PickupAddress.IsStarterPoint = true;
             delivery.PaymentMethodID = deliveryDto.PaymentMethod.PaymentMethodID;
@@ -137,10 +140,48 @@ namespace PortolWeb.Entities
             return result;
         }
 
+        public static Delivery GetSendertDeliveryInProgress(Guid CustomerID, IUnitOfWork uow)
+        {          
+            Delivery result = uow.DeliveryRepository.Get(x => x.CustomerSenderID.Equals(CustomerID) && (x.DeliveryStatus == DeliveryStatus.Delivered || x.DeliveryStatus == DeliveryStatus.SearchingDriver  || x.DeliveryStatus == DeliveryStatus.PickingUp || x.DeliveryStatus == DeliveryStatus.InProgress));
+            if (result!=null)
+            {
+                result = Delivery.GetDeliveryDetails(result.DeliveryID, uow); 
+            }
+            return result;
+        }
+
+        public static void ConfirmDeliveryPickUp(Guid deliveryID, IUnitOfWork uow)
+        {
+            Delivery result = uow.DeliveryRepository.Get(x => x.DeliveryID==deliveryID );
+            if (result != null)
+            {
+                result.DeliveryStatus = DeliveryStatus.InProgress;
+                uow.DeliveryRepository.Update(result);
+            }
+            else
+            {
+                throw new AppException(StringResources.DeliveryNotFound);
+            }
+           
+        }
+
+        public static DeliveryStatus GetDeliveryStatus(Guid deliveryID, IUnitOfWork uow)
+        {
+            Delivery result = uow.DeliveryRepository.Get(x => x.DeliveryID == deliveryID);
+            if (result != null)
+            {
+                return result.DeliveryStatus;
+            }
+            else
+            {
+                throw new AppException(StringResources.DeliveryNotFound);
+            }
+        }
+
         public static List<Delivery> GetPendingReceiverDeliveries(Guid receiverID, IUnitOfWork uow)
         {
             List<Delivery> result = new List<Delivery>();
-            List<Delivery> deliveries = uow.DeliveryRepository.GetAll(x => x.CustomerReceiverID.Equals(receiverID) && x.DeliveryStatus == DeliveryStatus.InProgress).ToList();
+            List<Delivery> deliveries = uow.DeliveryRepository.GetAll(x => x.CustomerReceiverID.Equals(receiverID) && x.DeliveryStatus == DeliveryStatus.InProgress ).ToList();
             if (deliveries?.Count > 0)
             {
                 foreach (var item in deliveries)
@@ -162,8 +203,8 @@ namespace PortolWeb.Entities
             delivery.DeliveryID = this.DeliveryID;
             delivery.DeliveryStatus = this.DeliveryStatus;
             delivery.Description = this.Description;
-
-            if(this.DropoffAddress!=null)
+            delivery.CreatedDate = this.CreatedDate;
+            if (this.DropoffAddress!=null)
             {
                 delivery.DropoffAddress = this.DropoffAddress.ToDto();
             }

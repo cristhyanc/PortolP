@@ -20,6 +20,15 @@ namespace Portol.Common.DTO
         public long  PhoneNumber { get; set; }
         public int PhoneCountryCode { get; set; }
         public string Password { get; set; }
+
+
+        PictureDto  _profilePhoto = new PictureDto { ImageUrl= "https://cdn.onlinewebfonts.com/svg/img_568657.png" };
+        public PictureDto ProfilePhoto
+        {
+            get { return _profilePhoto; }
+            set { _profilePhoto = value; }
+        }     
+
         public AddressDto CustomerAddress { get; set; }
         public bool Deleted { get; set; }
         public bool IsGuess { get; set; }

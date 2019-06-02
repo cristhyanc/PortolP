@@ -1,4 +1,5 @@
 ﻿using Portol.Common.DTO;
+using Portol.Common.Helper;
 using Portol.Common.Interfaces.PortolMobile;
 using Portol.Common.Interfaces.PortolWeb;
 using System;
@@ -27,9 +28,26 @@ namespace PortolMobile.Core.DropOff
         {
             return await _deliveryService.CreateDeliveryRequest(dropoffParcel);
         }
+
+        public async Task<bool > ConfirmDeliveryPickUp(Guid deliveryID)
+        {
+            return await _deliveryService.ConfirmDeliveryPickUp(deliveryID);
+        }
         public async Task<DriverDto> GetDeliveryDriverInfo(Guid deliveryID)
         {
             return await _deliveryService.GetDeliveryDriverInfo(deliveryID);
         }
+
+        public async Task<DeliveryStatus> GetDeliveryStatus(Guid deliveryID)
+        {
+            return await _deliveryService.GetDeliveryStatus(deliveryID);
+        }
+        public async Task<DeliveryDto> GetSendertDeliveryInProgress(Guid customerID)
+        {
+            return await _deliveryService.GetSendertDeliveryInProgress(customerID);
+        }
+
+
+        
     }
 }

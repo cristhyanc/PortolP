@@ -141,9 +141,21 @@
                 <Setter Property="BackgroundColor" Value="Transparent" />
             </Style>
 
-            <Style BaseResourceKey="Entry" TargetType="controls:ExtendedEntry">
+            <Style BaseResourceKey="LabelBaseStyle" TargetType="controls:ExtendedSearchBar">
                 <Setter Property="PlaceholderColor" Value="Gray" />
                 <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
+            </Style>
+
+            <Style BaseResourceKey="LabelBaseStyle" TargetType="controls:ExtendedEntry">
+                <Setter Property="PlaceholderColor" Value="Gray" />
+                <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
+            </Style>
+
+            <Style x:Key="AccountEntrySmallStyle" BaseResourceKey="LabelBaseStyle" TargetType="controls:ExtendedEntry">
+                <Setter Property="PlaceholderColor" Value="#939393" />
+                <Setter Property="TextColor" Value="#686868" ></Setter>
+                <Setter Property="FontSize" Value="Small" > </Setter>
+                <Setter Property="BackgroundColor" Value="Transparent" />
             </Style>
 
             <Style x:Key="ListViewStyle" TargetType="ListView">

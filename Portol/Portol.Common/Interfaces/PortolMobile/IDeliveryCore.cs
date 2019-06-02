@@ -1,4 +1,5 @@
 ﻿using Portol.Common.DTO;
+using Portol.Common.Helper;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +12,9 @@ namespace Portol.Common.Interfaces.PortolMobile
         Task<List<VehiculeTypeDto>> GetVehiculeTypesAvailables();
         Task<Guid> CreateDropoffRequest(DeliveryDto dropoffParcel);
         Task<DriverDto> GetDeliveryDriverInfo(Guid deliveryID);
+        Task<DeliveryStatus> GetDeliveryStatus(Guid deliveryID);
+        Task<DeliveryDto> GetSendertDeliveryInProgress(Guid customerID);
+        Task<bool> ConfirmDeliveryPickUp(Guid deliveryID);
         Task<List<DeliveryDto>> GetPendingReceiverDeliveries(Guid receiverID);
     }
 }

@@ -12,11 +12,12 @@ namespace PortolWeb.Core.UserServices
 {
     public class CustomerService : ICustomerService, IDisposable
     {
-        private IUnitOfWork _uow;
-
-        public CustomerService(IUnitOfWork uow)
+        private IUnitOfWork _uow;       
+        IImageManager _imageManager;
+        public CustomerService(IUnitOfWork uow, IImageManager imageManager)
         {
             _uow = uow;
+            _imageManager = imageManager;          
         }
 
         private bool disposed = false;
@@ -57,6 +58,19 @@ namespace PortolWeb.Core.UserServices
         {
             var result = Customer.GetCustomerByEmail(_uow, email);
           
+            if (result != null)
+            {
+
+                return result.ToDto();
+            }
+
+            return null;
+        }
+
+        public CustomerDto GetCustomer(Guid customerID)
+        {
+            var result = Customer.GetCustomer(_uow, customerID);
+
             if (result != null)
             {
                 return result.ToDto();
@@ -113,8 +127,13 @@ namespace PortolWeb.Core.UserServices
 
         public bool SaveCustomer(CustomerDto user)
         {
-            if (new Customer().Save(user, _uow))
+            if (user.ProfilePhoto?.ImageArray?.Length > 0)
             {
+                user.ProfilePhoto.ImageUrl = _imageManager.SaveFile(user.ProfilePhoto.ImageArray, user.CustomerID.ToString(), DateTime.Now.ToString("ddMMyyyyhhmmss") + ".jpg", ParentType.Customer);
+            }
+
+            if (new Customer().Save(user, _uow))
+            { 
                 _uow.SaveChanges();
                 return true;
             }

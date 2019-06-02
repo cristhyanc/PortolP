@@ -21,6 +21,8 @@
     <None Remove="Resources\ic_bellRed.svg" />
     <None Remove="Resources\ic_button.svg" />
     <None Remove="Resources\ic_camerabutton.svg" />
+    <None Remove="Resources\ic_cameraicon.svg" />
+    <None Remove="Resources\ic_cameraiconwhite.svg" />
     <None Remove="Resources\ic_car.png" />
     <None Remove="Resources\ic_creditcard.svg" />
     <None Remove="Resources\ic_delete.png" />
@@ -46,6 +48,7 @@
     <None Remove="Resources\ic_search.svg" />
     <None Remove="Resources\ic_squad.svg" />
     <None Remove="Resources\ic_star.svg" />
+    <None Remove="Resources\ic_tickblack.svg" />
     <None Remove="Resources\ic_triangle.svg" />
     <None Remove="Resources\ic_unitedkingdom.svg" />
     <None Remove="Resources\ic_visa.svg" />
@@ -62,6 +65,8 @@
     <EmbeddedResource Include="Resources\ic_bellRed.svg" />
     <EmbeddedResource Include="Resources\ic_button.svg" />
     <EmbeddedResource Include="Resources\ic_camerabutton.svg" />
+    <EmbeddedResource Include="Resources\ic_cameraicon.svg" />
+    <EmbeddedResource Include="Resources\ic_cameraiconwhite.svg" />
     <EmbeddedResource Include="Resources\ic_car.png" />
     <EmbeddedResource Include="Resources\ic_creditcard.svg" />
     <EmbeddedResource Include="Resources\ic_delete.png" />
@@ -86,6 +91,7 @@
     <EmbeddedResource Include="Resources\ic_search.svg" />
     <EmbeddedResource Include="Resources\ic_squad.svg" />
     <EmbeddedResource Include="Resources\ic_star.svg" />
+    <EmbeddedResource Include="Resources\ic_tickblack.svg" />
     <EmbeddedResource Include="Resources\ic_triangle.svg" />
     <EmbeddedResource Include="Resources\ic_unitedkingdom.svg" />
     <EmbeddedResource Include="Resources\ic_visa.svg" />
@@ -99,7 +105,6 @@
     <PackageReference Include="Microsoft.AppCenter.Analytics" Version="2.0.0" />
     <PackageReference Include="Microsoft.AppCenter.Crashes" Version="2.0.0" />
     <PackageReference Include="Microsoft.AppCenter.Push" Version="2.0.0" />
-    <PackageReference Include="Naxam.TopTabbedPage.Forms" Version="0.0.3.5" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />
     <PackageReference Include="SkiaSharp" Version="1.68.0" />
@@ -135,6 +140,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Controls\CustomNavigationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\AppResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
@@ -143,6 +151,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Styles\DropoffStyles.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Customer\CustomerAccountDetailView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Customer\CustomerAccountView.xaml">
@@ -179,9 +190,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Login\RecoverPasswordView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\MainView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ShopView.xaml">

@@ -108,5 +108,67 @@ namespace PortolWeb.API.Controllers
 
             }
         }
+
+        [HttpGet("GetSendertDeliveryInProgress")]
+        public IActionResult GetSendertDeliveryInProgress([FromQuery] Guid customerID)
+        {
+            try
+            {
+
+                var result = _deliveryService.GetSendertDeliveryInProgress(customerID);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "DropoffController.GetSendertDeliveryInProgress");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
+
+        [HttpGet("ConfirmDeliveryPickUp")]
+        public IActionResult ConfirmDeliveryPickUp([FromQuery] Guid deliveryId)
+        {
+            try
+            {
+
+                 _deliveryService.ConfirmDeliveryPickUp(deliveryId);
+                return Ok(true);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "DropoffController.ConfirmDeliveryPickUp");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
+
+        [HttpGet("GetDeliveryStatus")]
+        public IActionResult GetDeliveryStatus([FromQuery] Guid deliveryId)
+        {
+            try
+            {
+                var result=_deliveryService.GetDeliveryStatus(deliveryId);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "DropoffController.GetDeliveryStatus");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
     }
 }

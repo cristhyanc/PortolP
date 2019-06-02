@@ -13,6 +13,7 @@ namespace Portol.Common.DTO
         public AddressDto  PickupAddress { get; set; }
         public AddressDto  DropoffAddress { get; set; }
         public string Description { get; set; }
+        public DateTime CreatedDate { get; set; }
         public List<PictureDto> Pictures { get; set; }
         public ParcelDto Parcel { get; set; }
         public PaymentMethodDto PaymentMethod { get; set; }

@@ -18,15 +18,15 @@
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
 
-        <Grid VerticalOptions="FillAndExpand" x:Name="MainGrid">
+        <Grid VerticalOptions="FillAndExpand" x:Name="MainGrid" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
-            <StackLayout BackgroundColor="White" >
+            <StackLayout BackgroundColor="White"   >
 
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
+                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" Margin="0,20,0,0"/>
                 <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
 
             </StackLayout>
@@ -67,6 +67,7 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition Height="Auto"></RowDefinition>
                                 <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
                             </Grid.RowDefinitions>
                             
                             <Frame HasShadow="False" Padding="0" BorderColor="Gray" CornerRadius="0" BackgroundColor="Transparent"  HorizontalOptions="StartAndExpand"  VerticalOptions="Start"  >
@@ -96,16 +97,27 @@
                                 <Label  Text="{Binding DriverInfo.Details.FullName}"  Style="{StaticResource DropoffLabelDefaultStyle}"  ></Label>
                                 <ffimageloading:CachedImage Style="{StaticResource PhoneStyle}" />
 
-                                <Label Text="{i18n:Translate DriverOnWay}" Style="{StaticResource labelListSecondLine}"   HorizontalTextAlignment="Center" 
-                                       VerticalTextAlignment="Center"   ></Label>                              
+                                <Label Text="{Binding DeliveryStatusMessage}" Style="{StaticResource labelListSecondLine}"   HorizontalTextAlignment="Center" 
+                                       VerticalTextAlignment="Center"   ></Label>                               
+                                
                             </StackLayout>
 
 
-                            <ffimageloading:CachedImage Grid.Column="0" Margin="0,10,0,0" Grid.Row="2" Style="{StaticResource CarDeliveryStyle}" />                           
+                            <ffimageloading:CachedImage Grid.Column="0" Margin="0,10,0,0" Grid.Row="2" Style="{StaticResource CarDeliveryStyle}"  IsVisible="{Binding IsRatingVisible, Converter={Helpers:InverseBoolConverter}}"/>
 
-                            <BoxView  Grid.Column="0" Grid.Row="3" Style="{StaticResource BoxSeparatorLeft}" VerticalOptions="Start"></BoxView>
-                            <BoxView  Grid.Column="1" Grid.Row="3" Style="{StaticResource BoxSeparatorRight}" VerticalOptions="Start"></BoxView>
-                            
+                            <BoxView  Grid.Column="0" Grid.Row="3" Style="{StaticResource BoxSeparatorLeft}" VerticalOptions="Start"  IsVisible="{Binding IsRatingVisible, Converter={Helpers:InverseBoolConverter}}"></BoxView>
+                            <BoxView  Grid.Column="1" Grid.Row="3" Style="{StaticResource BoxSeparatorRight}" VerticalOptions="Start" IsVisible="{Binding IsRatingVisible, Converter={Helpers:InverseBoolConverter}}"></BoxView>
+
+                            <StackLayout  Grid.Row="4" Grid.ColumnSpan="2" HorizontalOptions="Center" >
+                                <Button Margin="0,7,0,7"  Text="{i18n:Translate PickedUp}" IsVisible="{Binding IsPickedupButtonVisible}" 
+                                    TextColor="White" Command="{Binding ConfirmPickupCommand}" BackgroundColor="#4c4c4c"   ></Button>
+
+                                <Label Text="{i18n:Translate RateService}" Style="{StaticResource labelListSecondLine}"  IsVisible="{Binding IsRatingVisible}"  HorizontalTextAlignment="Center" 
+                                       VerticalTextAlignment="Center"   ></Label>
+
+                                <controls:RatingStars TotalStars="5"  CurrentReview="{Binding DriverRating, Mode=TwoWay}" IsVisible="{Binding IsRatingVisible}" ></controls:RatingStars>
+                            </StackLayout>
+                           
                         </Grid>
 
                         <Label Text="{i18n:Translate SearchingDriver}"  Margin="0,30,0,0" Style="{StaticResource DropoffLabelDefaultStyle}"  IsVisible="{Binding IsSearchingDriver}"></Label>

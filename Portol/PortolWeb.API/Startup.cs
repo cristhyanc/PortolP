@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -49,6 +51,7 @@ namespace PortolWeb.API
             services.Configure<AppSettings>(appSettingsSection);
 
             var appSettings = appSettingsSection.Get<AppSettings>();
+           
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 
             services.AddDbContext<DataContext>(x => x.UseSqlServer(appSettings.ConnectionString));
@@ -88,6 +91,7 @@ namespace PortolWeb.API
 
             var smsApi = Sinch.ServerSdk.SinchFactory.CreateApiFactory (appSettings.SinchAppKey, appSettings.SinchAppSecret).CreateSmsApi();
 
+            services.AddSingleton<AppSettings>(appSettings);
             services.AddSingleton<ISmsApi>(smsApi);
             services.AddScoped<ISmsService, SmsService>();
             services.AddScoped<ICustomerService, CustomerService>();
@@ -120,6 +124,15 @@ namespace PortolWeb.API
             app.UseAuthentication();
             app.UseHttpsRedirection();
             app.UseMvc();
+
+            app.UseStaticFiles(); // For the wwwroot folder
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "Images")),
+                RequestPath = "/Images"
+            });
         }
     }
 }
