@@ -48,6 +48,13 @@ namespace PortolMobile.Services.Dropoff
             return await _restClient.MakeApiCallRaw<bool>($"{Constants.BaseDropoffApiUrl}/RateDelivery", HttpMethod.Get, queryString.ToString());
         }
 
+        public async Task<bool> MarkAsDelivered(Guid deliveryID)
+        {
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["deliveryID"] = deliveryID.ToString();           
+            return await _restClient.MakeApiCallRaw<bool>($"{Constants.BaseDropoffApiUrl}/MarkAsDelivered", HttpMethod.Get, queryString.ToString());
+        }
+
         public async Task<DriverDto> GetDeliveryDriverInfo(Guid deliveryID)
         {
             NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);

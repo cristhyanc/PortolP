@@ -125,5 +125,11 @@ namespace PortolWeb.Core.DeliveryServices
             Delivery.RateDelivery(deliveryID, rate, _uow);
             _uow.SaveChanges();
         }
+
+        public void MarkAsDelivered(Guid deliveryID)
+        {
+            Delivery.MarkAsDelivered(deliveryID, _uow);
+            _uow.SaveChanges();
+        }
     }
 }

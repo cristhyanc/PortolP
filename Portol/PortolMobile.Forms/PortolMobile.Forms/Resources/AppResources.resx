@@ -414,4 +414,7 @@
   <data name="RateService" xml:space="preserve">
     <value>Please Rate the Service</value>
   </data>
+  <data name="Delivered" xml:space="preserve">
+    <value>Delivered</value>
+  </data>
 </root>

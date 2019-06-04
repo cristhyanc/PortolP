@@ -115,6 +115,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Was it delivered?.
+        /// </summary>
+        public static string ConfirmDelivered {
+            get {
+                return ResourceManager.GetString("ConfirmDelivered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Did the driver pick the parcel up?.
         /// </summary>
         public static string ConfirmPickup {

@@ -22,7 +22,7 @@ namespace Portol.Common.DTO
         public string Password { get; set; }
 
 
-        PictureDto  _profilePhoto = new PictureDto { ImageUrl= "https://cdn.onlinewebfonts.com/svg/img_568657.png" };
+        PictureDto  _profilePhoto = new PictureDto {};
         public PictureDto ProfilePhoto
         {
             get { return _profilePhoto; }

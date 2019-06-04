@@ -46,11 +46,14 @@ namespace PortolMobile.Core.DropOff
         {
             return await _deliveryService.GetSendertDeliveryInProgress(customerID);
         }
-
-
+        
         public async Task<bool> RateDelivery(Guid deliveryID, int rate)
         {
             return await _deliveryService.RateDelivery(deliveryID, rate);
+        }
+        public async Task<bool> MarkAsDelivered(Guid deliveryID)
+        {
+            return await _deliveryService.MarkAsDelivered(deliveryID);
         }
     }
 }

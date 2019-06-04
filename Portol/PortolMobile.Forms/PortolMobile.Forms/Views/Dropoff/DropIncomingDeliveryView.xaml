@@ -10,6 +10,7 @@
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
              BackgroundImage="Map_image"
+              x:Name="page"
              xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Resources>
         <DropoffStyle:DropoffStyles/>
@@ -36,13 +37,19 @@
                     ItemsSource="{Binding Deliveries}">
                 <ListView.ItemTemplate>
                     <DataTemplate >
-                        <ViewCell >
-                         
+                        <ViewCell >                         
                             <Frame CornerRadius="4" BackgroundColor="LightGray"  Padding="0" >
-                                <StackLayout VerticalOptions="Fill" Padding="5" >
-                                    <Label Text="{Binding Description}"></Label>
-                                    <Label Text="{Binding Sender.FullName}"></Label>
-                                    <Label Text="{Binding DropoffAddress.FullAddress}"></Label>
+                                <StackLayout VerticalOptions="Fill" Padding="5" Orientation="Horizontal"  >
+                                    <StackLayout>
+                                        <Label Text="{Binding Description}"></Label>
+                                        <Label Text="{Binding Sender.FullName}"></Label>
+                                        <Label Text="{Binding DropoffAddress.FullAddress}"></Label>
+                                    </StackLayout>
+                                    <Button Margin="0,7,0,7"  Text="{i18n:Translate Delivered}"   
+                                            Command="{Binding Source={x:Reference page}, Path = BindingContext.DeliveredCommand }" 
+                                            CommandParameter="{Binding DeliveryID}" 
+                                    TextColor="White"  BackgroundColor="#4c4c4c"   ></Button>
+
                                 </StackLayout>
                             </Frame>
                         </ViewCell>

@@ -196,6 +196,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delivered.
+        /// </summary>
+        internal static string Delivered {
+            get {
+                return ResourceManager.GetString("Delivered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delivery.
         /// </summary>
         internal static string Delivery {

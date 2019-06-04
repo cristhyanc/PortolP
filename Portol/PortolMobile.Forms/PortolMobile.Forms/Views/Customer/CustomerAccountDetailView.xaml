@@ -12,6 +12,7 @@
              xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Content>
         <StackLayout  Spacing="0" Padding="0" >
+            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
             <Grid>
                 <Image Source="ic_redbacground.png" Aspect="Fill"  VerticalOptions="StartAndExpand"/>
                 <StackLayout VerticalOptions="Center" HorizontalOptions="Center">

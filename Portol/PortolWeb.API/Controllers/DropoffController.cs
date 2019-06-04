@@ -190,5 +190,25 @@ namespace PortolWeb.API.Controllers
 
             }
         }
+
+        [HttpGet("MarkAsDelivered")]
+        public IActionResult MarkAsDelivered([FromQuery] Guid deliveryId)
+        {
+            try
+            {
+                _deliveryService.MarkAsDelivered(deliveryId);
+                return Ok(true);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "DropoffController.MarkAsDelivered");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
     }
 }

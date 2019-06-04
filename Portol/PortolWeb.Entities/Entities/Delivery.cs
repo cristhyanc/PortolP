@@ -191,6 +191,21 @@ namespace PortolWeb.Entities
             }
         }
 
+
+        public static void MarkAsDelivered(Guid deliveryID, IUnitOfWork uow)
+        {
+            Delivery result = uow.DeliveryRepository.Get(x => x.DeliveryID == deliveryID);
+            if (result != null)
+            {
+                result.DeliveryStatus = DeliveryStatus.Delivered ;
+                uow.DeliveryRepository.Update(result);
+            }
+            else
+            {
+                throw new AppException(StringResources.DeliveryNotFound);
+            }
+        }
+
         public static DeliveryStatus GetDeliveryStatus(Guid deliveryID, IUnitOfWork uow)
         {
             Delivery result = uow.DeliveryRepository.Get(x => x.DeliveryID == deliveryID);
