@@ -91,15 +91,15 @@ namespace PortolWeb.API.Controllers
             try
             {
 
-                 
-                //if (_userService.ValidateVerificationCode(details.PhoneNumber, details.PhoneCountryCode, Int16.Parse(details.Token)))
-                //{
+
+                if (_userService.ValidateVerificationCode(details.PhoneNumber, details.PhoneCountryCode, Int16.Parse(details.Token)))
+                {
                     return Ok();
-                //}
-                //else
-                //{
-                //    return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, StringResources.WrongCode));
-                //}
+                }
+                else
+                {
+                    return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, StringResources.WrongCode));
+                }
 
             }
             catch (AppException ex)

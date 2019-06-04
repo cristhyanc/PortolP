@@ -2,6 +2,7 @@
 using Portol.Common.DTO;
 using PortolMobile.Forms.Helper;
 using PortolMobile.Forms.Services.Navigation;
+using PortolMobile.Forms.ViewModels.Login;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,7 +17,8 @@ namespace PortolMobile.Forms.ViewModels.Customer
 
         
         public ICommand EditCommand { get; private set; }
-
+        public ICommand LogoutCommand { get; private set; }
+        
         string _userAddress;
         public string UserAddress
         {
@@ -48,6 +50,21 @@ namespace PortolMobile.Forms.ViewModels.Customer
         {          
             _sessionData = sessionData;
             EditCommand = new Command((() => GoToEditPage()), () => { return !IsBusy; });
+            LogoutCommand = new Command((() => Logout()), () => { return !IsBusy; });
+        }
+
+        private async Task Logout()
+        {
+            try
+            {
+                _sessionData.LogoutUser();
+                await this.NavigationService.NavigateToAsync<LoginViewModel>();
+            }
+            catch (Exception ex)
+            {
+                this.IsBusy = false;
+                ExceptionHelper.ProcessException(ex, UserDialogs, "CustomerAccountViewModel", "PageAppearing");
+            }
         }
 
         protected override void PageAppearing()

@@ -91,8 +91,8 @@ namespace PortolMobile.Forms.ViewModels
                 ExceptionHelper.ProcessException(ex, UserDialogs, "DropViewModel", "DropViewModel");
             }
 
-            this.EmailMobileNumber = "0405593357";
-            this.ReceiverName = "Sophie";
+            //this.EmailMobileNumber = "0405593357";
+            //this.ReceiverName = "Sophie";
 
         }
 
@@ -105,7 +105,8 @@ namespace PortolMobile.Forms.ViewModels
                 if(delivery!=null)
                 {
                     await NavigationService.NavigateToAsync<DropDriverInfoViewModel>(delivery);
-                }     
+                }
+                OnPropertyChanged("ProfilePicture");
             }
             catch (System.Exception ex)
             {

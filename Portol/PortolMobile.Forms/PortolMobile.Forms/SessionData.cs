@@ -20,6 +20,20 @@ namespace PortolMobile.Forms
             User = result;
         }
 
+        public void LogoutUser( )
+        {
+            if (Application.Current.Properties.ContainsKey("email") )
+            {
+                Application.Current.Properties.Remove("email");
+            }
+
+            if ( Application.Current.Properties.ContainsKey("password"))
+            {
+                Application.Current.Properties.Remove("password");
+            }
+            User = null;
+        }
+
         public async Task LoginUser(ILoginCore loginCore, string email, string password)
         {
             var result = await loginCore.Authenticate(email, password);

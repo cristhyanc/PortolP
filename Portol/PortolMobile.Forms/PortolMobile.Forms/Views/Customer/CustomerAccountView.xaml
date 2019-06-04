@@ -81,6 +81,9 @@
             </StackLayout>
 
             <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="5,30,5,30"  >
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding LogoutCommand}"></TapGestureRecognizer>
+                </StackLayout.GestureRecognizers>
                 <Label Text="{i18n:Translate Logout}" Margin="5" Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
             </StackLayout>
         </StackLayout>
