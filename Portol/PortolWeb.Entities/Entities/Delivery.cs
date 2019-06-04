@@ -24,8 +24,9 @@ namespace PortolWeb.Entities
         public decimal EstimatedCost { get; set; }
         public decimal TotalCost { get; set; }
         public DateTime CreatedDate { get; set; }
-
+        public int Rating { get; set; }
         
+
         public DeliveryStatus DeliveryStatus { get; set; }
 
         [NotMapped]
@@ -79,6 +80,7 @@ namespace PortolWeb.Entities
             delivery.EstimatedCost = deliveryDto.EstimatedCost;
             deliveryDto.PickupAddress.IsStarterPoint = true;
             delivery.PaymentMethodID = deliveryDto.PaymentMethod.PaymentMethodID;
+            delivery.Rating = deliveryDto.Rating;
 
             var payment = uow.PaymentMethodRepository.Get(x => x.CardServiceID.Equals(deliveryDto.PaymentMethod.CardServiceID));
 
@@ -165,6 +167,30 @@ namespace PortolWeb.Entities
            
         }
 
+        public static void RateDelivery(Guid deliveryID, int rate,  IUnitOfWork uow)
+        {
+            Delivery result = uow.DeliveryRepository.Get(x => x.DeliveryID == deliveryID);
+            if (result != null)
+            {
+               
+                var driver = uow.DriverRepository.Get(result.DriverID);
+                if (driver != null)
+                {
+                    driver.TotalTrips += 1;
+                    driver.Rating = (uow.DeliveryRepository.GetAll(x => x.DriverID == result.DriverID && x.DeliveryStatus == DeliveryStatus.Ranked).Sum(x => x.Rating)) + rate;
+                    driver.Rating = Math.Round((driver.Rating / driver.TotalTrips), 1);
+                    uow.DriverRepository.Update(driver);
+                }
+                result.Rating = rate;
+                result.DeliveryStatus = DeliveryStatus.Ranked;
+                uow.DeliveryRepository.Update(result);
+            }
+            else
+            {
+                throw new AppException(StringResources.DeliveryNotFound);
+            }
+        }
+
         public static DeliveryStatus GetDeliveryStatus(Guid deliveryID, IUnitOfWork uow)
         {
             Delivery result = uow.DeliveryRepository.Get(x => x.DeliveryID == deliveryID);
@@ -204,6 +230,7 @@ namespace PortolWeb.Entities
             delivery.DeliveryStatus = this.DeliveryStatus;
             delivery.Description = this.Description;
             delivery.CreatedDate = this.CreatedDate;
+            delivery.Rating = this.Rating;
             if (this.DropoffAddress!=null)
             {
                 delivery.DropoffAddress = this.DropoffAddress.ToDto();

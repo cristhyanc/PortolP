@@ -4,6 +4,7 @@ using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Helper;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels.SignUp;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
 
@@ -58,11 +59,31 @@ namespace PortolMobile.Forms.ViewModels.Login
             SignupCommand = new Command(GoToSignup, () => { return !IsBusy; });
             _sessionData = sessionData;
 
-            this.EmailText = "cristhyan@msn.com";
-            this.PasswordText = "asd";
+            //this.EmailText = "cristhyan@msn.com";
+            //this.PasswordText = "asd";
 
         }
 
+        public override async Task InitializeAsync(object navigationData)
+        {
+            try
+            {
+                this.IsBusy = true;
+                if (await _sessionData.AutoLoginLastUser(_loginCore))
+                {
+                    await NavigationService.NavigateToAsync<DropViewModel>();
+                }
+
+            }
+            catch (System.Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, StringResources.Login, "InitializeAsync");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+        }
 
         private async void GoToSignup()
         {

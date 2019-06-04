@@ -14,5 +14,6 @@ namespace PortolMobile.Forms
         Task LoginUser(ILoginCore loginCore, string email, string password);
         Task RefreshUserDetails(IUserCore userCore);
         string GetCurrentToken();
+        Task<bool> AutoLoginLastUser(ILoginCore loginCore);
     }
 }

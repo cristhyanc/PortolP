@@ -170,5 +170,25 @@ namespace PortolWeb.API.Controllers
 
             }
         }
+
+        [HttpGet("RateDelivery")]
+        public IActionResult RateDelivery([FromQuery] Guid deliveryId, [FromQuery] int rate)
+        {
+            try
+            {
+                _deliveryService.RateDelivery(deliveryId, rate);
+                return Ok(true);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "DropoffController.RateDelivery");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
     }
 }

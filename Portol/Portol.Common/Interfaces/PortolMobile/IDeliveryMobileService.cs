@@ -16,5 +16,6 @@ namespace Portol.Common.Interfaces.PortolMobile
         Task<DeliveryStatus> GetDeliveryStatus(Guid deliveryID);
         Task<List<DeliveryDto>> GetPendingReceiverDeliveries(Guid receiverID);
         Task<bool> ConfirmDeliveryPickUp(Guid deliveryID);
+        Task<bool> RateDelivery(Guid deliveryID, int rate);
     }
 }

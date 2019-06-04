@@ -18,7 +18,7 @@ namespace Portol.Calculator.Delivery
             _mapService = mapService;
         }
 
-        public async Task<decimal> EstimatePrice(ParcelDto measurement, AddressDto pickup, AddressDto dropoff, List<VehiculeTypeDto> vehiculeTypes)
+        public async Task<List<decimal>> EstimatePrice(ParcelDto measurement, AddressDto pickup, AddressDto dropoff, List<VehiculeTypeDto> vehiculeTypes)
         {
             if (vehiculeTypes == null || vehiculeTypes.Count == 0)
             {
@@ -34,6 +34,9 @@ namespace Portol.Calculator.Delivery
 
             var availableVehiculeTypes = vehiculeTypes.Where(x => x.MaximumDistance >= distance && x.MaximumHeight >= measurement.Height && x.MaximumLength >= measurement.Length &
                                                              x.MaximumWeight >= measurement.Weight & x.MaximumWidth >= measurement.Weight).ToList();
+
+            decimal minimum = 9999999;
+            decimal maximum = 0;
 
             if (availableVehiculeTypes?.Count > 0)
             {
@@ -60,10 +63,22 @@ namespace Portol.Calculator.Delivery
                     }
 
                     totalCharge = item.StartingFee + (item.CostPerkilometre * (decimal)distance) + extraCharge;
+
+                    if (totalCharge > maximum)
+                    {
+                        maximum = totalCharge;
+                    }
+
+                    if (totalCharge < minimum)
+                    {
+                        minimum = totalCharge;
+                    }
+
                     result += totalCharge;
                 }
-
-                return Math.Round((result / availableVehiculeTypes.Count), 2);
+                minimum = Math.Round(minimum, 2);
+                maximum = Math.Round(maximum, 2);
+                return new List<decimal>() { minimum, maximum };
             }
             else
             {

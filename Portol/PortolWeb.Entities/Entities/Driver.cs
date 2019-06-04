@@ -15,6 +15,7 @@ namespace PortolWeb.Entities
 
         public string DirverLicenceNumber { get; set; }
         public decimal Rating { get; set; }
+        public long TotalTrips { get; set; }
 
         
 

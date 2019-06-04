@@ -119,5 +119,11 @@ namespace PortolWeb.Core.DeliveryServices
             return Delivery.GetDeliveryStatus(deliveryID, _uow);
 
         }
+
+        public void RateDelivery(Guid deliveryID, int rate)
+        {
+            Delivery.RateDelivery(deliveryID, rate, _uow);
+            _uow.SaveChanges();
+        }
     }
 }

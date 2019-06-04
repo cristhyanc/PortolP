@@ -48,6 +48,9 @@ namespace PortolMobile.Core.DropOff
         }
 
 
-        
+        public async Task<bool> RateDelivery(Guid deliveryID, int rate)
+        {
+            return await _deliveryService.RateDelivery(deliveryID, rate);
+        }
     }
 }

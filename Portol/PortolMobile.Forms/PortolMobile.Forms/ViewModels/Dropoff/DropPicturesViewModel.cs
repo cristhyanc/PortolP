@@ -193,7 +193,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 _dropoffParcel.Parcel.Weight = 2;
                 _dropoffParcel.Parcel.Length = 2;
                 _dropoffParcel.Parcel.Width = 2;
-              
+
                 //test
             }
             catch (Exception ex)

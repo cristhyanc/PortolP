@@ -133,18 +133,21 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                 this.IsBusy = true;
                 if (navigationData != null)
                 {
+                    
                     PicturePickerParameters picturePicker = (PicturePickerParameters)navigationData;
                     List<PictureDto> picturesDtos = picturePicker.Pictures;
                     if (picturesDtos != null)
                     {
                         Pictures = new ObservableCollection<PictureDto>(picturesDtos);
+                        SelectedPicture = Pictures.FirstOrDefault();
                     }
                     else
                     {
                         Pictures = new ObservableCollection<PictureDto>();
+                        TakePhoto();
                     }
-
                     this.MaximunPicturesAllowed = picturePicker.MaximunPicturesAllowed;
+
                 }
 
             }

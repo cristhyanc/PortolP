@@ -88,6 +88,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             {
                 _driverRating = value;
                 OnPropertyChanged();
+                SendRateService();
             }
 
         }
@@ -116,6 +117,23 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             ConfirmPickupCommand = new Command((() => ConfirmPickup()), () => { return !IsBusy; });
         }
 
+        private async Task SendRateService()
+        {
+            try
+            {
+                this.IsBusy = true;
+                await _deliveryCore.RateDelivery(delivery.DeliveryID, this.DriverRating);
+                await this.NavigationService.GoToPreviousPageAsync();
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropDriverInfoViewModel", "SendRateService");
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
+        }
 
         private async Task ConfirmPickup()
         {
@@ -125,8 +143,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 if(await this.UserDialogs.ConfirmAsync(StringResources.ConfirmPickup,StringResources.Delivery))
                 {
                     await _deliveryCore.ConfirmDeliveryPickUp(delivery.DeliveryID);
-                    delivery.DeliveryStatus = Portol.Common.Helper.DeliveryStatus.InProgress;
-                    GetDeliveryStatus();
+                    delivery.DeliveryStatus = Portol.Common.Helper.DeliveryStatus.InProgress;                  
                     ProcessDelivery();
                 }
             }
@@ -160,11 +177,11 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             try
             {
-                DriverRating = 0;
+              //  DriverRating = 0;
                 IsPickedupButtonVisible = false;
                 IsSearchingDriver = false;
                 IsRatingVisible = false;
-                _stopDeliveryStatusLoop = true;
+                _stopDeliveryStatusLoop = false;
                 switch (delivery.DeliveryStatus)
                 {
                     case Portol.Common.Helper.DeliveryStatus.SearchingDriver:
@@ -175,9 +192,10 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                         break;
                     case Portol.Common.Helper.DeliveryStatus.InProgress:
                         this.DeliveryStatusMessage = StringResources.ParcelOnBoard;
-                        _stopDeliveryStatusLoop = false;
+                        //_stopDeliveryStatusLoop = false;
                         break;
-                    case Portol.Common.Helper.DeliveryStatus.Delivered:                       
+                    case Portol.Common.Helper.DeliveryStatus.Delivered:
+                        _stopDeliveryStatusLoop = true;
                         this.DeliveryStatusMessage = StringResources.ParcelDelivered;
                         IsRatingVisible = true;
                         break;
@@ -208,7 +226,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
 
                     delivery.DeliveryStatus = await _deliveryCore.GetDeliveryStatus(delivery.DeliveryID);
                     ProcessDelivery();
-                    await Task.Delay(100000);
+                    await Task.Delay(40000);
 
                 } while (!_stopDeliveryStatusLoop);              
             }
@@ -228,7 +246,8 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 {                   
                     DriverInfo = await _deliveryCore.GetDeliveryDriverInfo(deliveryID);
                 }
-                this.IsSearchingDriver = false;
+                ProcessDelivery();
+                //this.IsSearchingDriver = false;
             }
             catch (Exception ex)
             {

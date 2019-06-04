@@ -8,6 +8,6 @@ namespace Portol.Common.Interfaces
 {
   public  interface IDeliveryCalculator
     {
-        Task<decimal> EstimatePrice(ParcelDto measurement , AddressDto pickup, AddressDto dropoff, List<VehiculeTypeDto> vehiculeTypes);
+        Task<List<decimal>> EstimatePrice(ParcelDto measurement , AddressDto pickup, AddressDto dropoff, List<VehiculeTypeDto> vehiculeTypes);
     }
 }

@@ -20,7 +20,8 @@ namespace Portol.Common.DTO
         public decimal TravelDistance { get; set; }
         public decimal EstimatedCost { get; set; }
         public DeliveryStatus DeliveryStatus { get; set; }
-        
+        public int Rating { get; set; }
+
 
     }
 }

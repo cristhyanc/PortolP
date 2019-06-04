@@ -18,6 +18,7 @@ namespace Portol.Common.Interfaces.PortolWeb
         DeliveryDto GetSendertDeliveryInProgress(Guid customerID);
         void ConfirmDeliveryPickUp(Guid deliveryID);
         DeliveryStatus GetDeliveryStatus(Guid deliveryID);
+        void RateDelivery(Guid deliveryID, int rate);
 
     }
 }

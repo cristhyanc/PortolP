@@ -12,6 +12,11 @@ namespace PortolMobile.GeneralTest.MockupServices
     {
         public CustomerDto User { get; private set; }
 
+        public Task<bool> AutoLoginLastUser(ILoginCore loginCore)
+        {
+            throw new NotImplementedException();
+        }
+
         public string GetCurrentToken()
         {
             throw new NotImplementedException();

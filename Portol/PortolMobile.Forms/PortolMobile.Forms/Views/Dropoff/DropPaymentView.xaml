@@ -56,7 +56,9 @@
 
                         <StackLayout Orientation="Horizontal" >
                             <Label Text="{i18n:Translate EstimatedCost}"  Margin="0,0,5,0" Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
-                            <Label Text="{Binding EstimatedCost}"   Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
+                            <Label Text="{Binding EstimatedMinCost}"   Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
+                            <Label Text="-"   Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
+                            <Label Text="{Binding EstimatedMaxCost}"   Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
                         </StackLayout>
 
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
@@ -65,14 +67,14 @@
 
                                 </TapGestureRecognizer>
                             </StackLayout.GestureRecognizers>
-                            
+
                             <ffimageloadingsvg:SvgCachedImage Margin="0,0,5,0" DownsampleToViewSize="True" WidthRequest="30" HeightRequest="25"  HorizontalOptions="Start" 
                                                                   Source ="{Binding PaymentMethodSelected.IconResourcePath, Converter={StaticResource SvgImageSourceConverter}}" />
-                            
+
                             <Label Text="{Binding PaymentMethodSelected.CardNumber}"   Style="{StaticResource DropoffLabelDefaultStyle}" HorizontalOptions="Start" ></Label>
-                           
+
                         </StackLayout>
-                        
+
                         <Label Text="Add Payment Method"   Style="{StaticResource DropoffLabelDefaultStyle}" TextColor="White"  HorizontalOptions="EndAndExpand" >
                             <Label.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding AddPaymentMethodCommand}">
