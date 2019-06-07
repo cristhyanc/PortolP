@@ -39,8 +39,8 @@ namespace PortolMobile.Forms.ViewModels
 
         protected readonly INavigationService NavigationService;
         protected readonly IUserDialogs UserDialogs;
-       
 
+       
 
         protected BaseViewModel(INavigationService navigationService, IUserDialogs userDialogs)
         {

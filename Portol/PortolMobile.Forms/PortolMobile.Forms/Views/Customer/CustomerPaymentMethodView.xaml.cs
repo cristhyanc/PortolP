@@ -21,6 +21,7 @@ namespace PortolMobile.Forms.Views.Customer
             txtYear.Effects.Add(new BorderEffect());
             txtMonth.Effects.Add(new BorderEffect());
             txtCvv.Effects.Add(new BorderEffect());
+
         }
 	}
 }

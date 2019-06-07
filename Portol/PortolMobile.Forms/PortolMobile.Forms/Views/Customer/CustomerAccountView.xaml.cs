@@ -20,6 +20,7 @@ namespace PortolMobile.Forms.Views.Customer
 		public CustomerAccountView ()
 		{
 			InitializeComponent ();
-		}
+            this.IsTextBarWhite = true;
+        }
 	}
 }

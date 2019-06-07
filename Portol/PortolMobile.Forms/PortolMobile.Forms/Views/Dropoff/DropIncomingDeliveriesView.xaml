@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PortolMobile.Forms.Views.Dropoff.DropIncomingDeliveriesView"
@@ -19,11 +19,11 @@
     <controls:ExtendedContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
 
-            <StackLayout BackgroundColor="White" >
+          
                 <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
-            </StackLayout>
+          
 
-            <Grid Margin="0,40,0,0" >               
+            <Grid Margin="0,30,0,0" >               
                 <BoxView   WidthRequest="3" Style="{StaticResource BoxSeparator}" VerticalOptions="Center"></BoxView>
                 <ffimageloading:CachedImage WidthRequest="80" HeightRequest="80" HorizontalOptions="Center" 
                                         Source="resource://PortolMobile.Forms.Resources.ic_parcelbox.png?assembly=PortolMobile.Forms" />

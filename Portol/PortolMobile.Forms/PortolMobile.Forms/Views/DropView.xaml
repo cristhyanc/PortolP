@@ -19,14 +19,15 @@
 
         <Grid VerticalOptions="FillAndExpand" >
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
+                 <RowDefinition Height="Auto"></RowDefinition>
                 <RowDefinition Height="*"></RowDefinition>
-
             </Grid.RowDefinitions>
-
-            <StackLayout BackgroundColor="White" >
-                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}" Margin="0,40,0,0"  IsVisible="{Binding IsBusy}"  />
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" />
+            
+          
+            
+            <StackLayout BackgroundColor="White"   >
+                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"   IsVisible="{Binding IsBusy}"  />
+                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" Margin="0,30,0,0" />
 
                 <Grid  HorizontalOptions="CenterAndExpand" ColumnSpacing="0"  >
                     <Grid.ColumnDefinitions>

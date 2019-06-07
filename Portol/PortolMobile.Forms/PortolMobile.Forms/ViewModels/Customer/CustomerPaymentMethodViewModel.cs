@@ -98,6 +98,7 @@ namespace PortolMobile.Forms.ViewModels.Customer
             _paymentService = paymentService;
             PaymentMethod = new PaymentMethodDto();
             _userCore = userCore;
+           
         }
 
         private async void CreateCreditCard()

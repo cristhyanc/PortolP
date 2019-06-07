@@ -9,25 +9,27 @@ using Xamarin.Forms.Xaml;
 
 namespace PortolMobile.Forms.Controls
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]   
-        public partial class CustomNavigationPage : NavigationPage
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class CustomNavigationPage : NavigationPage
+    {
+        public CustomNavigationPage() : base()
         {
-            public CustomNavigationPage() : base()
-            {
-                InitializeComponent();
-            }
+            InitializeComponent();
+        }
 
-            public CustomNavigationPage(Page root) : base(root)
-            {
-                InitializeComponent();
-            }
+        public CustomNavigationPage(Page root) : base(root)
+        {
+            InitializeComponent();
+        }
 
-            public bool IgnoreLayoutChange { get; set; } = false;
+        public bool IgnoreLayoutChange { get; set; } = false;
 
-            protected override void OnSizeAllocated(double width, double height)
-            {
-                if (!IgnoreLayoutChange)
-                    base.OnSizeAllocated(width, height);
-            }
-        }   
+        public bool IsBackgroundTransparent { get; set; } = true;
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            if (!IgnoreLayoutChange)
+                base.OnSizeAllocated(width, height);
+        }
+    }
 }

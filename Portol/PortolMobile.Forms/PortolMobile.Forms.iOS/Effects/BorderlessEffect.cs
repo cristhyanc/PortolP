@@ -25,7 +25,10 @@ namespace PortolMobile.Forms.iOS.Effects
             {
                 view.HeightRequest = 40;
                 var controlEntry = Control as UITextField;
-                controlEntry.Layer.BorderWidth = 0;
+                if(controlEntry.Layer !=null)
+                {
+                    controlEntry.Layer.BorderWidth = 0;
+                }               
                 controlEntry.BorderStyle = UITextBorderStyle.None;
             }
 
@@ -33,7 +36,11 @@ namespace PortolMobile.Forms.iOS.Effects
             {
                 view2.HeightRequest = 40;
                 var controlEntry = Control as UITextField;
-                controlEntry.Layer.BorderWidth = 0;
+                if (controlEntry.Layer != null)
+                {
+                    controlEntry.Layer.BorderWidth = 0;
+                }
+               
                 controlEntry.BorderStyle = UITextBorderStyle.None;
             }
         }

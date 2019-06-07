@@ -81,13 +81,13 @@ namespace PortolMobile.Forms.Services.Navigation
             {
                 Page page = CreatePage(viewModelType);
 
-               
+
                 if (typeof(DropView) == page.GetType() || typeof(ShopView) == page.GetType())
                 {
 
-                    if (typeof(DropView) == page.GetType() )
+                    if (typeof(DropView) == page.GetType())
                     {
-                        if(_dropOffPage == null)
+                        if (_dropOffPage == null)
                         {
                             _dropOffPage = page;
                         }
@@ -111,13 +111,13 @@ namespace PortolMobile.Forms.Services.Navigation
                         }
                     }
 
-                    CurrentNavigator = new CustomNavigationPage(page);                    
-                    CurrentNavigator.BarTextColor = Color.Black;
-                    //CurrentNavigator.BarBackgroundColor= Color.White;
-                    
-                   // CurrentNavigator.BackgroundImage = "logo_long_white.png";
+                    CurrentNavigator = new CustomNavigationPage(page);
+
+                    // CurrentNavigator.BackgroundColor= Color.White;
+
+                    // CurrentNavigator.BackgroundImage = "logo_long_white.png";
                     Application.Current.MainPage = CurrentNavigator;
-                   
+
                 }
                 else
                 {
@@ -130,13 +130,28 @@ namespace PortolMobile.Forms.Services.Navigation
                         await CurrentNavigator.PushAsync(page);
                     }
 
-                    
+
                 }
-               
+
+                if (page is ExtendedContentPage basePage)
+                {
+
+                    if (basePage.IsTextBarWhite)
+                    {
+                        CurrentNavigator.BarTextColor = Color.White;
+                        CurrentNavigator.IsBackgroundTransparent = false;
+                    }
+                    else
+                    {
+                        CurrentNavigator.BarTextColor = Color.Black;
+                    }
+                }
 
                 if (viewModel != null)
                 {
                     page.BindingContext = viewModel;
+
+                   
                 }
 
                 if (page.BindingContext != null)
