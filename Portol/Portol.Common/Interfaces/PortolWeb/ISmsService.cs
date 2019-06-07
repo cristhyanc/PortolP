@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Portol.Common.Interfaces.PortolWeb
 {
     public interface ISmsService
     {
-        void SendNewCode(string mobileNumber, string countryCode);
+        Task SendNewCode(long mobileNumber, Int32 countryCode);
     }
 }

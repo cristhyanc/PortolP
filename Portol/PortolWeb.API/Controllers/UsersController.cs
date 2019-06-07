@@ -22,13 +22,13 @@ namespace PortolWeb.API.Controllers
     [Route("api/[controller]")]
     public class UsersController : ControllerBase
     {
-        private IUserService _userService;
+        private ICustomerService _userService;
         ISmsService _smsService;
         private readonly AppSettings _appSettings;
 
-        public UsersController(IUserService userService, IOptions<AppSettings> appSettings, ISmsService smsService)
+        public UsersController(ICustomerService userService, IOptions<AppSettings> appSettings, ISmsService smsService)
         {
-            _userService = userService;          
+            _userService = userService;
             _appSettings = appSettings.Value;
             _smsService = smsService;
         }
@@ -51,9 +51,14 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
-       
-        [HttpGet("getall")]       
+
+        [HttpGet("getall")]
         public IActionResult GetAll()
         {
             try
@@ -71,43 +76,21 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
-        //[HttpGet("{id}")]
-        //public IActionResult GetById(int id)
-        //{
-        //    var user = _userService.GetById(id);
-        //    var userDto = _mapper.Map<UserDto>(user);
-        //    return Ok(userDto);
-        //}
-
-        //[HttpPut("{id}")]
-        //public IActionResult Update(int id, [FromBody]UserDto userDto)
-        //{
-        //    // map dto to entity and set id
-        //    var user = _mapper.Map<User>(userDto);
-        //    user.Id = id;
-
-        //    try
-        //    {
-        //        // save 
-        //        _userService.Update(user, userDto.Password);
-        //        return Ok();
-        //    }
-        //    catch (AppException ex)
-        //    {
-        //        // return error message if there was an exception
-        //        return BadRequest(new { message = ex.Message });
-        //    }
-        //}
 
         [AllowAnonymous]
         [HttpPost("VerifyCode")]
-        public IActionResult VerifyCode([FromBody]UserDto details)
+        public IActionResult VerifyCode([FromBody]CustomerDto details)
         {
             try
             {
-                
+
 
                 if (_userService.ValidateVerificationCode(details.PhoneNumber, details.PhoneCountryCode, Int16.Parse(details.Token)))
                 {
@@ -115,9 +98,9 @@ namespace PortolWeb.API.Controllers
                 }
                 else
                 {
-                    return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed,StringResources.WrongCode));
-                }               
-                
+                    return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, StringResources.WrongCode));
+                }
+
             }
             catch (AppException ex)
             {
@@ -129,11 +112,16 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
         [AllowAnonymous]
         [HttpPost("ResetPassword")]
-        public IActionResult ResetPassword([FromBody]UserDto details)
+        public IActionResult ResetPassword([FromBody]CustomerDto details)
         {
             try
             {
@@ -151,9 +139,13 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
-        
 
         [AllowAnonymous]
         [HttpPost("VerifyEmailUniqueness")]
@@ -174,14 +166,19 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
         [AllowAnonymous]
         [HttpPost("VerifyMobileUniqueness")]
-        public IActionResult VerifyMobileUniqueness([FromBody]UserDto phoneDetails)
+        public IActionResult VerifyMobileUniqueness([FromBody]CustomerDto phoneDetails)
         {
             try
-            {                
+            {
                 return Ok(_userService.VerifyMobileUniqueness(phoneDetails));
 
             }
@@ -195,15 +192,20 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
         [AllowAnonymous]
         [HttpPost("SendVerificationCode")]
-        public IActionResult SendVerificationCode([FromBody]UserDto details)
+        public  IActionResult SendVerificationCode([FromBody]CustomerDto details)
         {
             try
             {
-                _smsService.SendNewCode(details.PhoneNumber.ToString(), details.PhoneCountryCode.ToString());
+                _smsService.SendNewCode(details.PhoneNumber, details.PhoneCountryCode).Wait();
                 return Ok();
             }
             catch (AppException ex)
@@ -216,6 +218,11 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
         // GET api/values
@@ -228,20 +235,19 @@ namespace PortolWeb.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("authenticate")]
-        public IActionResult Authenticate([FromBody]UserDto userDto)
+        public IActionResult Authenticate([FromBody]CustomerDto userDto)
         {
 
             try
             {
-                var user = _userService.Authenticate(userDto.Email, userDto.Password);
-
+                var user = _userService.Authenticate(userDto.Email, userDto.Password);               
                 var tokenHandler = new JwtSecurityTokenHandler();
                 var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
                 var tokenDescriptor = new SecurityTokenDescriptor
                 {
                     Subject = new ClaimsIdentity(new Claim[]
                     {
-                    new Claim(ClaimTypes.Name, user.UserID.ToString())
+                    new Claim(ClaimTypes.Name, user.CustomerID.ToString())
                     }),
                     Expires = DateTime.UtcNow.AddDays(7),
                     SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
@@ -262,12 +268,16 @@ namespace PortolWeb.API.Controllers
                 Log.Error(ex, "User.Authenticate");
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
             }
+            finally
+            {
+                _userService.Dispose();
+            }
 
         }
 
         [AllowAnonymous]
         [HttpPost("RegisterNewuser")]
-        public IActionResult RegisterNewuser([FromBody]UserDto userDto)
+        public IActionResult RegisterNewuser([FromBody]CustomerDto userDto)
         {
 
             try
@@ -285,6 +295,146 @@ namespace PortolWeb.API.Controllers
                 return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
 
             }
+            finally
+            {
+                _userService.Dispose();
+            }
+
+        }
+
+
+        [HttpPost("SaveUser")]
+        public IActionResult SaveUser([FromBody]CustomerDto userDto)
+        {
+
+            try
+            {
+                var result = _userService.SaveCustomer(userDto);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.SaveUser");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+            finally
+            {
+                _userService.Dispose();
+            }
+
+        }
+
+        [HttpGet("GetCustomerByPhoneNumber")]
+        public IActionResult GetCustomerByPhoneNumber([FromQuery]string phoneNumber, [FromQuery]string countryCode)
+        {
+            try
+            {
+                long phone;
+                int country;
+
+                long.TryParse(phoneNumber, out phone);
+                int.TryParse(countryCode, out country);
+
+                var result = _userService.GetCustomerByPhoneNumber(phone, country);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.GetCustomerByPhoneNumber");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+            finally
+            {
+                _userService.Dispose();
+            }
+
+        }
+
+        [HttpGet("GetCustomer")]
+        public IActionResult GetCustomer([FromQuery]Guid customerID)
+        {
+            try
+            {
+                var result = _userService.GetCustomer(customerID);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.GetCustomer");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+            finally
+            {
+                _userService.Dispose();
+            }
+
+        }
+
+        [HttpGet("GetCustomerByEmail")]
+        public IActionResult GetCustomerByEmail([FromQuery]string email)
+        {
+            try
+            {
+                var result = _userService.GetCustomerByEmail(email);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.GetCustomerByEmail");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+            finally
+            {
+                _userService.Dispose();
+            }
+
+        }
+
+
+        [HttpPost("SavePaymentMethod")]
+        public IActionResult SavePaymentMethod([FromBody]PaymentMethodDto paymentMethod)
+        {
+
+            try
+            {
+                var result = _userService.SavePaymentMethod(paymentMethod);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.SavePaymentMethod");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+            finally
+            {
+                _userService.Dispose();
+            }
+
         }
 
 

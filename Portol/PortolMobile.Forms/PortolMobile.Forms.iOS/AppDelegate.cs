@@ -4,7 +4,12 @@ using System.Linq;
 using FFImageLoading;
 using FFImageLoading.Forms.Platform;
 using Foundation;
+using ImageCircle.Forms.Plugin.iOS;
 using UIKit;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Push;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace PortolMobile.Forms.iOS
 {
@@ -25,7 +30,8 @@ namespace PortolMobile.Forms.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             CachedImageRenderer.Init();
-
+            Xamarin.FormsMaps.Init();
+            ImageCircleRenderer.Init();
             var config = new FFImageLoading.Config.Configuration()
             {
                 VerboseLogging = false,
@@ -35,6 +41,7 @@ namespace PortolMobile.Forms.iOS
                 Logger = new CustomLogger(),
             };
             ImageService.Instance.Initialize(config);
+            AppCenter.Start("4ed6ca26-4973-4eb7-b67b-80dc6903cfe5", typeof(Push), typeof(Analytics), typeof(Crashes));
 
             LoadApplication(new App());
 

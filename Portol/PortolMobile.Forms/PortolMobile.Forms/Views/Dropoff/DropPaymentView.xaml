@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PortolMobile.Forms.Views.Dropoff.DropPaymentView"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
+             xmlns:localResources="clr-namespace:PortolMobile.Forms.Resources"
+             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
+             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             BackgroundImage="Map_image"
+             xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
+    <controls:ExtendedContentPage.Resources>
+        <DropoffStyle:DropoffStyles/>
+    </controls:ExtendedContentPage.Resources>
+    <controls:ExtendedContentPage.Content>
+
+        <Grid VerticalOptions="FillAndExpand" x:Name="MainGrid" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <StackLayout BackgroundColor="White" >
+                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" Margin="0,30,0,0"  />
+            </StackLayout>
+
+
+            <RelativeLayout   Grid.Row="1" >
+
+                <Frame  Style="{StaticResource FrameBox}" x:Name="frmDetailBox"
+                            RelativeLayout.XConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Width,
+                            Factor=0.15 }"
+                        
+                            RelativeLayout.YConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Height,
+                            Factor=0.55 }"
+                            
+                            RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Height,
+                            Factor=0.4 }"
+                        
+                            RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Width,
+                            Factor=0.7 }">
+                    <StackLayout Style="{StaticResource StackLayoutFrameBox}" >
+
+                        <StackLayout Orientation="Horizontal" >
+                            <Label Text="{i18n:Translate EstimatedCost}"  Margin="0,0,5,0" Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
+                            <Label Text="{Binding EstimatedMinCost}"   Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
+                            <Label Text="-"   Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
+                            <Label Text="{Binding EstimatedMaxCost}"   Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
+                        </StackLayout>
+
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding PaymentMethodListCommand}">
+
+                                </TapGestureRecognizer>
+                            </StackLayout.GestureRecognizers>
+
+                            <ffimageloadingsvg:SvgCachedImage Margin="0,0,5,0" DownsampleToViewSize="True" WidthRequest="30" HeightRequest="25"  HorizontalOptions="Start" 
+                                                                  Source ="{Binding PaymentMethodSelected.IconResourcePath, Converter={StaticResource SvgImageSourceConverter}}" />
+
+                            <Label Text="{Binding PaymentMethodSelected.CardNumber}"   Style="{StaticResource DropoffLabelDefaultStyle}" HorizontalOptions="Start" ></Label>
+
+                        </StackLayout>
+
+                        <Label Text="Add Payment Method"   Style="{StaticResource DropoffLabelDefaultStyle}" TextColor="White"  HorizontalOptions="EndAndExpand" >
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding AddPaymentMethodCommand}">
+                                </TapGestureRecognizer>
+                            </Label.GestureRecognizers>
+                        </Label>
+
+                        <Button Margin="0,7,0,7" Text="{i18n:Translate Confirm}" TextColor="White" Command="{Binding ConfirmCommand}" BackgroundColor="#4c4c4c"   ></Button>
+
+                    </StackLayout>
+                </Frame>
+
+                <Frame Style="{StaticResource FrameImageProfile}"
+                       
+                                    RelativeLayout.XConstraint="{ConstraintExpression
+                                      Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=0.5, Constant=-35 }"                   
+                                    
+                                    RelativeLayout.YConstraint="{ConstraintExpression
+                                    Type=RelativeToParent,
+                                    Property=Height,
+                                    Factor=0.55,Constant=-35 }"   >
+
+                    <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"  
+                       Source="{localResources:ImageResource PortolMobile.Forms.Resources.ic_dollar.png}"  
+                                           x:Name="ProfileImage"  />
+
+                </Frame>
+
+
+            </RelativeLayout>
+
+        </Grid>
+    </controls:ExtendedContentPage.Content>
+</controls:ExtendedContentPage>

@@ -5,16 +5,25 @@ using PortolMobile.Forms.Views;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels.Login;
 using System.Threading.Tasks;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Push;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
+using PortolMobile.Forms.Controls;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace PortolMobile.Forms
 {
     public partial class App : Application
     {
-
+            
         public App()
         {
             InitializeComponent();
+            AppCenter.Start("android=952146a6-94b4-4717-9d75-546346e67f3a;" +
+                  "uwp={Your UWP App secret here};" +
+                  "ios=4ed6ca26-4973-4eb7-b67b-80dc6903cfe5", typeof(Push), typeof(Analytics), typeof(Crashes));
+
             ViewModelLocator.RegisterDependencies(false);
             InitNavigation();
         }
@@ -23,9 +32,9 @@ namespace PortolMobile.Forms
         {
             try
             {
-                
-                NavigationPage navigationPage = new NavigationPage();               
-                navigationPage.BarBackgroundColor = Color.FromHex("#121010");              
+
+                CustomNavigationPage navigationPage = new CustomNavigationPage();               
+              //  navigationPage.BarBackgroundColor = Color.FromHex("#121010");              
                 MainPage = navigationPage;
                 var navigationService = ViewModelLocator.Resolve<INavigationService>();
                 navigationService.SetNavigationPage(navigationPage);

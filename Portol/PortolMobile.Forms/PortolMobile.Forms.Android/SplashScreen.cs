@@ -2,7 +2,7 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
-
+using Microsoft.AppCenter.Push;
 
 namespace PortolMobile.Forms.Droid
 {
@@ -13,11 +13,14 @@ namespace PortolMobile.Forms.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
-
-            base.OnCreate(savedInstanceState);
-            //  System.Threading.Thread.Sleep(3000);
-            this.StartActivity(typeof(MainActivity));
-            // Create your application here
+            base.OnCreate(savedInstanceState);          
+            this.StartActivity(typeof(MainActivity));          
         }
+
+        //protected override void OnNewIntent(Android.Content.Intent intent)
+        //{
+        //    base.OnNewIntent(intent);
+        //    Push.CheckLaunchedFromNotification(this, intent);
+        //}
     }
 }

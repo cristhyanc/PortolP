@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using PortolMobile.Forms.Services.Navigation;
+using Acr.UserDialogs;
 
 namespace PortolMobile.Forms.ViewModels.SignUp
 {
     public class SignupStepCodeViewModel : BaseViewModel
     {
         public ICommand GotoNamesPageCommand { get; private set; }     
-        private readonly ILoginService _loginService;
+        private readonly ILoginCore _loginCore;
 
         private string _mobileNumber;
         public string MobileNumber
@@ -163,12 +165,13 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             }
         }
 
-        UserDto _userDto;
-
-        public SignupStepCodeViewModel(  ILoginService loginService)
+        CustomerDto _userDto;
+        IUserCore _userCore;
+        public SignupStepCodeViewModel(  ILoginCore loginCore, INavigationService navigationService, IUserDialogs userDialogs, IUserCore userCore ) : base(navigationService, userDialogs)
         {          
-            _loginService = loginService;
-            GotoNamesPageCommand = new Command(GotoNamesPage);
+            _loginCore = loginCore;
+            _userCore = userCore;
+            GotoNamesPageCommand = new Command(GotoNamesPage, () => { return !IsBusy; });
         }
 
         private async void GotoNamesPage()
@@ -189,7 +192,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
 
                 var code = Int16.Parse(this.FirstNumber + this.SecondNumber + this.ThirdNumber + this.FourNumber);
 
-                await _loginService.VerifyCode(_userDto.PhoneNumber, _userDto.PhoneCountryCode, code);
+               await _userCore.VerifyCode(_userDto.PhoneNumber, _userDto.PhoneCountryCode, code);
 
                 await NavigationService.NavigateToAsync<SignupStepDetailsViewModel>(_userDto);
              
@@ -208,7 +211,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
         {
             try
             {
-                _userDto =(UserDto)navigationData;
+                _userDto =(CustomerDto)navigationData;
                 if (_userDto != null)
                 {
                     MobileNumber = "+" + _userDto.PhoneCountryCode.ToString() + _userDto.PhoneNumber.ToString();

@@ -1,4 +1,5 @@
 ﻿using Acr.UserDialogs;
+using Microsoft.AppCenter.Crashes;
 using Portol.Common;
 using Portol.Common.Helper;
 using System;
@@ -17,18 +18,18 @@ namespace PortolMobile.Forms.Helper
                 userDialogs.Alert(new AlertConfig
                 {
                     Message = ex.Message,
-                    Title = pageTitle,
+                    Title = "",
                     OkText = StringResources.Ok
                 });
             }
             else
             {
+
                 if (string.IsNullOrEmpty(methodName))
                 {
                     methodName = StringResources.GeneralError;
                 }
-                //TODO
-              //  Logs.Instance.ErrorException(methodName, ex);
+                Crashes.TrackError(ex);
 
                 if (userDialogs != null)
                 {
@@ -43,11 +44,5 @@ namespace PortolMobile.Forms.Helper
             }
         }
     }
-
-    public static class Logs
-    {
-        //TODO
-     //   public static IMvxLog Instance { get; } = Mvx.IoCProvider.Resolve<IMvxLogProvider>().GetLogFor("PortolMobile");
-
-    }
+    
 }

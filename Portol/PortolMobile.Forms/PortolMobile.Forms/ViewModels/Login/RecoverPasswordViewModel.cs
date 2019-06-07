@@ -4,6 +4,7 @@ using Portol.Common.DTO;
 using Portol.Common.Helper;
 using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Forms.Helper;
+using PortolMobile.Forms.Services.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,7 @@ namespace PortolMobile.Forms.ViewModels.Login
         public ICommand SelectCountryCommand { get; private set; }
         
        
-        private readonly ILoginService _loginService;
+        private readonly IUserCore _userCore;
 
         private string _newPassword;
         public string NewPassword
@@ -271,22 +272,22 @@ namespace PortolMobile.Forms.ViewModels.Login
             }
         }
 
-        public RecoverPasswordViewModel(ILoginService loginService)
+        public RecoverPasswordViewModel(IUserCore userCore, INavigationService navigationService, IUserDialogs userDialogs) : base(navigationService, userDialogs)
         {
            
-            _loginService = loginService;
+            _userCore = userCore;
             CountryItems = new List<CountryDto>(Constants.CountryList);
-            CountrySelected = CountryItems.Where(x => x.Country == EnumCountries.Australia).FirstOrDefault();
-            SendCodeButtonCommand = new Command(SendCodeVerification);
-            ReSendCodeButtonCommand = new Command(ResendCode);
-            VerifyCodeButtonCommand = new Command(VerifyCodeVerification);
-            SaveNewPasswordCommand = new Command(SaveNewPassword);
-            SelectCountryCommand = new Command(OpenCountryList);
+            CountrySelected = CountryItems.Where(x => x.Country == AvailableCountries.Australia).FirstOrDefault();
+            SendCodeButtonCommand = new Command(SendCodeVerification, () => { return !IsBusy; });
+            ReSendCodeButtonCommand = new Command(ResendCode, () => { return !IsBusy; });
+            VerifyCodeButtonCommand = new Command(VerifyCodeVerification, () => { return !IsBusy; });
+            SaveNewPasswordCommand = new Command(SaveNewPassword, () => { return !IsBusy; });
+            SelectCountryCommand = new Command(OpenCountryList, () => { return !IsBusy; });
             LoginCommand = new Command(async () =>
             {
                 await NavigationService.NavigateToAsync<LoginViewModel>();
                
-            });
+            }, () => { return !IsBusy; });
 
             this.IsMobileSectionVisible = true;
         }
@@ -347,7 +348,7 @@ namespace PortolMobile.Forms.ViewModels.Login
 
                 this.IsBusy = true;
 
-                await _loginService.ResetNewPassword(Int32.Parse(this.MobileNumber), this.NewPassword);
+                await _userCore.ResetNewPassword(Int32.Parse(this.MobileNumber), this.NewPassword);
 
                 UserDialogs.Alert(new AlertConfig
                 {
@@ -427,7 +428,7 @@ namespace PortolMobile.Forms.ViewModels.Login
                     return;
                 }
 
-                var isUniqui = await _loginService.VerifyMobileUniqueness(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country);
+                var isUniqui = await _userCore.VerifyMobileUniqueness(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country);
 
                 if (isUniqui)
                 {
@@ -440,11 +441,11 @@ namespace PortolMobile.Forms.ViewModels.Login
                     return;
                 }
 
-                //var resutl = await _loginService.SendVerificationCode(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country);
-                //if (resutl)
-                //{
+                var resutl = await _userCore.SendVerificationCode(Int32.Parse(this.MobileNumber), (int)CountrySelected.Country);
+                if (resutl)
+                {
                     this.IsCodeSectionVisible = true;
-                //}
+                }
             }
             catch (System.Exception ex)
             {

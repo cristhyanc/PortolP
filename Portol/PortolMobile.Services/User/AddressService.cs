@@ -4,6 +4,7 @@ using Portol.Common.Interfaces.PortolMobile;
 using PortolMobile.Services.Rest;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,18 +23,30 @@ namespace PortolMobile.Services.User
             _addressKey = addressKey;
             _addressSecret = addressSecret;
         }
-        public async Task<AddressFinderDto> GetPosibleAddresses(AddressDto tentativeAddress)
+
+        public async Task<AddressFinderDto> GetPosibleAddresses(string address)
         {
-            string query = "format=json&key=" + _addressKey + "&secret=" + _addressSecret + "&domain=" + Constants.PortolDomain;
-            query += "&q=" + tentativeAddress.FullAddress;
-            return await _restClient.MakeApiCall<AddressFinderDto>($"{Constants.BaseAddressApiUrl}/autocomplete", HttpMethod.Get, query);
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["format"] = "json";
+            queryString["key"] = _addressKey;
+            queryString["secret"] = _addressSecret;
+            queryString["domain"] = Constants.PortolDomain;
+            queryString["q"] = address;
+          
+            return await _restClient.MakeApiCall<AddressFinderDto>($"{Constants.BaseAddressApiUrl}/autocomplete", HttpMethod.Get, queryString.ToString());
         }
 
         public async Task<AddressFinderDetail> GetAddressMetadata(string addressId)
         {
-            string query = "format=json&key=" + _addressKey + "&secret=" + _addressSecret + "&domain=" + Constants.PortolDomain;
-            query += "&id=" + addressId;
-            return await _restClient.MakeApiCall<AddressFinderDetail>($"{Constants.BaseAddressApiUrl}/info", HttpMethod.Get, query);
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["format"] = "json";
+            queryString["key"] = _addressKey;
+            queryString["gps"] = "1";
+            queryString["secret"] = _addressSecret;
+            queryString["domain"] = Constants.PortolDomain;
+            queryString["id"] = addressId;
+            
+            return await _restClient.MakeApiCall<AddressFinderDetail>($"{Constants.BaseAddressApiUrl}/info", HttpMethod.Get, queryString.ToString());
         }
     }
 }

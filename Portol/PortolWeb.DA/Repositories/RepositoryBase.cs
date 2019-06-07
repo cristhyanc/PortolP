@@ -1,4 +1,5 @@
-﻿using PortolWeb.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using PortolWeb.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Text;
 
 namespace PortolWeb.DA.Repositories
 {
-   public class RepositoryBase<T> : IDisposable, IRepositoryBasey<T> where T : class, new()
+   public class RepositoryBase<T> : IDisposable, IRepositoryBase<T> where T : class, new()
     {
 
 
@@ -16,6 +17,7 @@ namespace PortolWeb.DA.Repositories
         public RepositoryBase(DataContext context)
         {
             _context = context;
+            _context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
         }
 
        
@@ -52,7 +54,7 @@ namespace PortolWeb.DA.Repositories
 
         public virtual void Update(T entity)
         {
-            this._context.Set<T>().Update(entity);
+            this._context.Set<T>().Update (entity);
         }
 
         public virtual void Update(IEnumerable<T> entities)

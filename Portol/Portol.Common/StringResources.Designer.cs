@@ -19,7 +19,7 @@ namespace Portol.Common {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class StringResources {
@@ -70,6 +70,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The Address is required.
+        /// </summary>
+        public static string AddressRequired {
+            get {
+                return ResourceManager.GetString("AddressRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to All fields are required.
         /// </summary>
         public static string AllFieldsRequired {
@@ -106,6 +115,51 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Was it delivered?.
+        /// </summary>
+        public static string ConfirmDelivered {
+            get {
+                return ResourceManager.GetString("ConfirmDelivered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Did the driver pick the parcel up?.
+        /// </summary>
+        public static string ConfirmPickup {
+            get {
+                return ResourceManager.GetString("ConfirmPickup", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Continue.
+        /// </summary>
+        public static string Continue {
+            get {
+                return ResourceManager.GetString("Continue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Continue as a guess.
+        /// </summary>
+        public static string ContinueGuess {
+            get {
+                return ResourceManager.GetString("ContinueGuess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Cost couldn&apos;t be estimated, pls try again.
+        /// </summary>
+        public static string CostNotEstimatedTryAgain {
+            get {
+                return ResourceManager.GetString("CostNotEstimatedTryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Countries.
         /// </summary>
         public static string Countries {
@@ -124,6 +178,51 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Credit Card Number Required.
+        /// </summary>
+        public static string CreditCardNumberRequired {
+            get {
+                return ResourceManager.GetString("CreditCardNumberRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Customer Details are required.
+        /// </summary>
+        public static string CustomerDetailsRequired {
+            get {
+                return ResourceManager.GetString("CustomerDetailsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delivery.
+        /// </summary>
+        public static string Delivery {
+            get {
+                return ResourceManager.GetString("Delivery", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delivery not found.
+        /// </summary>
+        public static string DeliveryNotFound {
+            get {
+                return ResourceManager.GetString("DeliveryNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A description is required.
+        /// </summary>
+        public static string DescriptionRequired {
+            get {
+                return ResourceManager.GetString("DescriptionRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to D.O.B.
         /// </summary>
         public static string DOB {
@@ -138,6 +237,33 @@ namespace Portol.Common {
         public static string DOBRequired {
             get {
                 return ResourceManager.GetString("DOBRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The driver is on the way.
+        /// </summary>
+        public static string DriverOnWay {
+            get {
+                return ResourceManager.GetString("DriverOnWay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Dropoff address is required.
+        /// </summary>
+        public static string DropoffAddressRequired {
+            get {
+                return ResourceManager.GetString("DropoffAddressRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        public static string Email {
+            get {
+                return ResourceManager.GetString("Email", resourceCulture);
             }
         }
         
@@ -187,6 +313,24 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Expiry Month Required.
+        /// </summary>
+        public static string ExpiryMonthRequired {
+            get {
+                return ResourceManager.GetString("ExpiryMonthRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expiry Year Required.
+        /// </summary>
+        public static string ExpiryYearRequired {
+            get {
+                return ResourceManager.GetString("ExpiryYearRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First name.
         /// </summary>
         public static string FirstName {
@@ -210,6 +354,33 @@ namespace Portol.Common {
         public static string GeneralError {
             get {
                 return ResourceManager.GetString("GeneralError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Guess.
+        /// </summary>
+        public static string Guess {
+            get {
+                return ResourceManager.GetString("Guess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to guess@email.com.
+        /// </summary>
+        public static string GuessEmail {
+            get {
+                return ResourceManager.GetString("GuessEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hello {0}!.
+        /// </summary>
+        public static string HelloMessage {
+            get {
+                return ResourceManager.GetString("HelloMessage", resourceCulture);
             }
         }
         
@@ -259,6 +430,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Login again.
+        /// </summary>
+        public static string LoginAgain {
+            get {
+                return ResourceManager.GetString("LoginAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Let&apos;s get started with Portol.
         /// </summary>
         public static string LoginPortolLabel {
@@ -268,11 +448,74 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to m3.
+        /// </summary>
+        public static string M3 {
+            get {
+                return ResourceManager.GetString("M3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Main page.
+        /// </summary>
+        public static string MainPage {
+            get {
+                return ResourceManager.GetString("MainPage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Measurements.
+        /// </summary>
+        public static string Measurements {
+            get {
+                return ResourceManager.GetString("Measurements", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The measurements of the parcel are required.
+        /// </summary>
+        public static string MeasurementsRequired {
+            get {
+                return ResourceManager.GetString("MeasurementsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Missing information.
+        /// </summary>
+        public static string MissingInformation {
+            get {
+                return ResourceManager.GetString("MissingInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The mobile number is already in use.
         /// </summary>
         public static string MobileInUse {
             get {
                 return ResourceManager.GetString("MobileInUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mobile Number.
+        /// </summary>
+        public static string MobileNumber {
+            get {
+                return ResourceManager.GetString("MobileNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The mobile number or email is required.
+        /// </summary>
+        public static string MobileNumberEmailRequiered {
+            get {
+                return ResourceManager.GetString("MobileNumberEmailRequiered", resourceCulture);
             }
         }
         
@@ -322,6 +565,78 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Looks like you next to the destination.
+        /// </summary>
+        public static string NexToDestination {
+            get {
+                return ResourceManager.GetString("NexToDestination", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No.
+        /// </summary>
+        public static string No {
+            get {
+                return ResourceManager.GetString("No", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no available camera.
+        /// </summary>
+        public static string NoAvailableCamera {
+            get {
+                return ResourceManager.GetString("NoAvailableCamera", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to We couldn&apos;t find the Delivery information.
+        /// </summary>
+        public static string NoDeliveryInfo {
+            get {
+                return ResourceManager.GetString("NoDeliveryInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The mobile number is not registered in the App, do you want to try the Email?.
+        /// </summary>
+        public static string NoMobileNumberEmail {
+            get {
+                return ResourceManager.GetString("NoMobileNumberEmail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pickup photos is not supported in this phone.
+        /// </summary>
+        public static string NoPickPhotoSupported {
+            get {
+                return ResourceManager.GetString("NoPickPhotoSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pickup Videos is not supported in this phone.
+        /// </summary>
+        public static string NoPickVideoSupported {
+            get {
+                return ResourceManager.GetString("NoPickVideoSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Taking videos is not supported in this phone.
+        /// </summary>
+        public static string NoTakeVideoSupported {
+            get {
+                return ResourceManager.GetString("NoTakeVideoSupported", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email and confirm email don&apos;t match.
         /// </summary>
         public static string NotMatchEmails {
@@ -340,11 +655,38 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Looks like we don&apos;t have an available vehicule for this type of parcel .
+        /// </summary>
+        public static string NoVehiculeTypeForParcel {
+            get {
+                return ResourceManager.GetString("NoVehiculeTypeForParcel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Ok.
         /// </summary>
         public static string Ok {
             get {
                 return ResourceManager.GetString("Ok", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parcel has been delivered.
+        /// </summary>
+        public static string ParcelDelivered {
+            get {
+                return ResourceManager.GetString("ParcelDelivered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Parcel on Board.
+        /// </summary>
+        public static string ParcelOnBoard {
+            get {
+                return ResourceManager.GetString("ParcelOnBoard", resourceCulture);
             }
         }
         
@@ -403,6 +745,24 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Payment Method.
+        /// </summary>
+        public static string PaymentMethod {
+            get {
+                return ResourceManager.GetString("PaymentMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Person you are trying to send the parcel to is not registered in our App.
+        /// </summary>
+        public static string PersonNoRegistered {
+            get {
+                return ResourceManager.GetString("PersonNoRegistered", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The mobile phone does not exist.
         /// </summary>
         public static string PhoneNotExist {
@@ -412,11 +772,65 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The pickup address is required.
+        /// </summary>
+        public static string PickupAddressRequired {
+            get {
+                return ResourceManager.GetString("PickupAddressRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enter at least one picture of the parcel.
+        /// </summary>
+        public static string PictureParcelRequired {
+            get {
+                return ResourceManager.GetString("PictureParcelRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Postcode Required.
         /// </summary>
         public static string PostCodeRequired {
             get {
                 return ResourceManager.GetString("PostCodeRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There was a problem, pls try again.
+        /// </summary>
+        public static string ProblemTryAgain {
+            get {
+                return ResourceManager.GetString("ProblemTryAgain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receiver information.
+        /// </summary>
+        public static string ReceiverInformation {
+            get {
+                return ResourceManager.GetString("ReceiverInformation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Receiver Name.
+        /// </summary>
+        public static string ReceiverName {
+            get {
+                return ResourceManager.GetString("ReceiverName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The Receiver name is required.
+        /// </summary>
+        public static string ReceiverNameRequired {
+            get {
+                return ResourceManager.GetString("ReceiverNameRequired", resourceCulture);
             }
         }
         
@@ -502,11 +916,47 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Validation.
+        /// </summary>
+        public static string Validation {
+            get {
+                return ResourceManager.GetString("Validation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to There is no type of vehicules available.
+        /// </summary>
+        public static string VehiculeTypeNoAvailable {
+            get {
+                return ResourceManager.GetString("VehiculeTypeNoAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Where are we sending it to?.
+        /// </summary>
+        public static string WhereSendingTo {
+            get {
+                return ResourceManager.GetString("WhereSendingTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Code you entered is incorrect.
         /// </summary>
         public static string WrongCode {
             get {
                 return ResourceManager.GetString("WrongCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Yes.
+        /// </summary>
+        public static string Yes {
+            get {
+                return ResourceManager.GetString("Yes", resourceCulture);
             }
         }
     }

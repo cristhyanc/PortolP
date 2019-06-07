@@ -1,4 +1,5 @@
-﻿using PortolMobile.Forms.ViewModels;
+﻿using PortolMobile.Forms.Controls;
+using PortolMobile.Forms.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -17,11 +18,11 @@ namespace PortolMobile.Forms.Services.Navigation
 
         Task RemoveCurrentPage();
 
-        Page CreatePage(Type viewModelType, object parameter);
+        Page CreatePage(Type viewModelType);
 
         Task GoToPreviousPageAsync();
 
-        ContentPage CreateContentPage(Type viewModelType, object parameter);
+        ContentPage CreateContentPage(Type viewModelType );
 
        // Task OpenPopup(BaseViewModel viewModel, object parameter = null);
 
@@ -29,7 +30,7 @@ namespace PortolMobile.Forms.Services.Navigation
 
       //  Task ClosePopup();
 
-        void SetNavigationPage(NavigationPage navigation);
+        void SetNavigationPage(CustomNavigationPage navigation);
 
         void Logout();
     }

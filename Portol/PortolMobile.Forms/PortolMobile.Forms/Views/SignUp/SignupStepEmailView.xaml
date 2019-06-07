@@ -9,7 +9,7 @@
              x:Class="PortolMobile.Forms.Views.SignUp.SignupStepEmailView">
     <ContentPage.Content>
         <ScrollView >
-            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="40,0,40,0">
+            <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="40,40,40,0">
 
                 <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Center"  VerticalOptions="Start" Margin="0,20,0,0"
                                            Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms" >

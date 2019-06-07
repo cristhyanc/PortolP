@@ -1,29 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Version>0.5.2.0</Version>
+    <AssemblyVersion>0.5.2.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Acr.UserDialogs" Version="7.0.4" />
-    <PackageReference Include="Autofac" Version="4.9.2" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
-    <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.5.870-pre" />
-    <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.5.870-pre" />
-    <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.5.870-pre" />
-    <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.5.870-pre" />
-    <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.5.870-pre" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Portol.Common\Portol.Common.csproj" />
-    <ProjectReference Include="..\PortolMobile.Services\PortolMobile.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Helper\" />
-    <Folder Include="Resources\" />
-    <Folder Include="Services\Navigation\" />
   </ItemGroup>
 
 </Project>

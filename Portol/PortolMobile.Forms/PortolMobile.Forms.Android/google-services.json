@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1067061831800",
+    "firebase_url": "https://portoltest.firebaseio.com",
+    "project_id": "portoltest",
+    "storage_bucket": "portoltest.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1067061831800:android:921e5eda8125fbf3",
+        "android_client_info": {
+          "package_name": "com.PortolMobile"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1067061831800-7ipevq7s7on1lbio85a732c4rnsenr6q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApYBaXl29-63apKsWWrUSJyFH39tdzEIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1067061831800-7ipevq7s7on1lbio85a732c4rnsenr6q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -11,9 +11,9 @@ namespace PortolWeb.API.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
-        IUserService _service;
+        ICustomerService _service;
 
-        public ValuesController(IUserService service)
+        public ValuesController(ICustomerService service)
         {
             _service = service;
         }

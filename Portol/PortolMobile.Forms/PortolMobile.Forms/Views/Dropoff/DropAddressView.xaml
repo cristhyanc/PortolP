@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<controls:ExtendedContentPage  xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"             
+             x:Class="PortolMobile.Forms.Views.Dropoff.DropAddressView"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
+             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+              BackgroundColor="White"
+             xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
+    <controls:ExtendedContentPage.Resources>
+        <DropoffStyle:DropoffStyles/>
+    </controls:ExtendedContentPage.Resources>
+    <controls:ExtendedContentPage.Content>
+        <ScrollView  >
+            <Grid VerticalOptions="FillAndExpand" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                
+                
+                  <ffimageloading:CachedImage  Grid.RowSpan="2" HorizontalOptions="FillAndExpand " VerticalOptions="FillAndExpand"
+                                        Source="Map_image" />
+                
+                <StackLayout BackgroundColor="White"   >
+                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" Margin="0,0,0,0"/>
+                    
+                </StackLayout>
+
+
+                <RelativeLayout   Grid.Row="1" >
+
+                    <Frame  Style="{StaticResource FrameBox}" x:Name="frmDetailBox"
+                            RelativeLayout.XConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Width,
+                            Factor=0.15 }"
+                        
+                            RelativeLayout.YConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Height,
+                            Factor=0.08 }"
+                            
+                            RelativeLayout.HeightConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Height,
+                            Factor=0.7 }"
+                        
+                            RelativeLayout.WidthConstraint="{ConstraintExpression
+                            Type=RelativeToParent,
+                            Property=Width,
+                            Factor=0.7 }">
+                        <StackLayout Style="{StaticResource StackLayoutFrameBox}" >
+                            <Label Text="{Binding SenderName}"  Style="{StaticResource GreetingStyle}"  ></Label>
+                            <Label Text="{i18n:Translate WhereSendingTo}"   Style="{StaticResource DropoffLabelStyle}" ></Label>
+
+                            <Grid ColumnSpacing="0" RowSpacing="0" VerticalOptions="CenterAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition Height="Auto"></RowDefinition>
+                                </Grid.RowDefinitions>
+
+                                <ffimageloading:CachedImage Style="{StaticResource GpsIconStyle}" />
+                                <ffimageloadingsvg:SvgCachedImage Grid.Column="1" Style="{StaticResource DoorIconStyle}" />
+
+                                <BoxView  Grid.Column="0" Grid.Row="1" Style="{StaticResource BoxSeparatorLeft}" ></BoxView>
+                                <BoxView  Grid.Column="1" Grid.Row="1" Style="{StaticResource BoxSeparatorRight}" ></BoxView>
+
+                            </Grid>
+
+
+
+                            <controls:ExtendedEntry Text="{Binding PickupAddressStr }" Placeholder="{i18n:Translate PickupAddress}"  
+                                                OnFocusCommand="{Binding AddressEntryCommand}" OnFocusCommandParameter="pickup" VerticalOptions="Start" 
+                                                Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                            <controls:ExtendedEntry Text="{Binding DropoffAddressStr }" Placeholder="{i18n:Translate DropoffAddress}"  VerticalOptions="Start" 
+                                                OnFocusCommand="{Binding AddressEntryCommand}" OnFocusCommandParameter="dropoff"
+                                                Margin="0,0,0,5"  Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+
+                            <controls:ExtendedEntry Text="{Binding Description, Mode=TwoWay }"         Placeholder="{i18n:Translate Description}"  Margin="0,0,0,5"  
+                                                Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+
+
+
+                        </StackLayout>
+                    </Frame>
+
+                    <Frame Style="{StaticResource FrameImageProfile}"
+                       
+                                    RelativeLayout.XConstraint="{ConstraintExpression
+                                      Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=0.5, Constant=-35 }"                   
+                                    
+                                    RelativeLayout.YConstraint="{ConstraintExpression
+                                    Type=RelativeToParent,
+                                    Property=Height,
+                                    Factor=0.08,Constant=-35 }"   >
+
+                        <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"  
+                      Source="{Binding ProfilePicture}"  
+                                           x:Name="ProfileImage"  />
+
+                    </Frame>
+
+                    <Frame  Style="{StaticResource ButtonFrameStyle}"  
+                                        RelativeLayout.XConstraint="{ConstraintExpression
+                                        Type=RelativeToParent,
+                                        Property=Width,
+                                        Factor=0.5, Constant=-35 }"                   
+                                    
+                                        RelativeLayout.YConstraint="{ConstraintExpression
+                                        Type=RelativeToView,
+                                        ElementName=frmDetailBox,
+                                        Property=Height,
+                                        Factor=1.15}"  >
+                        <Frame.GestureRecognizers >
+                            <TapGestureRecognizer Command="{Binding GotoPicturesCommand}"  ></TapGestureRecognizer>
+                        </Frame.GestureRecognizers>
+                        <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" >
+                        </ffimageloadingsvg:SvgCachedImage>
+
+                    </Frame>
+                </RelativeLayout>
+
+            </Grid>
+        </ScrollView>
+    </controls:ExtendedContentPage.Content>
+</controls:ExtendedContentPage>

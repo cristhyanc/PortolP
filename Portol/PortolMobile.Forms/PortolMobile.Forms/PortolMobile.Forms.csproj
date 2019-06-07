@@ -2,6 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyVersion>0.5.2.0</AssemblyVersion>
+    <FileVersion>0.5.2.0</FileVersion>
+    <Version>0.5.2.0</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -11,37 +14,118 @@
 
   <ItemGroup>
     <None Remove="Resources\btn_background.svg" />
+    <None Remove="Resources\Group_2.png" />
     <None Remove="Resources\ic_ActionButton.svg" />
     <None Remove="Resources\ic_australia.svg" />
+    <None Remove="Resources\ic_bell.svg" />
+    <None Remove="Resources\ic_bellRed.svg" />
+    <None Remove="Resources\ic_button.svg" />
+    <None Remove="Resources\ic_camerabutton.svg" />
+    <None Remove="Resources\ic_cameraicon.svg" />
+    <None Remove="Resources\ic_cameraiconwhite.svg" />
+    <None Remove="Resources\ic_car.png" />
+    <None Remove="Resources\ic_creditcard.svg" />
+    <None Remove="Resources\ic_delete.png" />
+    <None Remove="Resources\ic_delete.svg" />
+    <None Remove="Resources\ic_deliveryline.svg" />
+    <None Remove="Resources\ic_dollar.png" />
+    <None Remove="Resources\ic_door.svg" />
+    <None Remove="Resources\ic_dropoffcamera.svg" />
+    <None Remove="Resources\ic_genericdriver.png" />
+    <None Remove="Resources\ic_home.svg" />
+    <None Remove="Resources\ic_homeAddress.svg" />
+    <None Remove="Resources\ic_line.svg" />
+    <None Remove="Resources\ic_mastercard.svg" />
     <None Remove="Resources\ic_newzealand.svg" />
+    <None Remove="Resources\ic_parcel.png" />
+    <None Remove="Resources\ic_parcelbox.png" />
+    <None Remove="Resources\ic_paypal.svg" />
+    <None Remove="Resources\ic_phone.png" />
+    <None Remove="Resources\ic_profile.svg" />
+    <None Remove="Resources\ic_redbacground.png" />
+    <None Remove="Resources\ic_redbackground.svg" />
+    <None Remove="Resources\ic_schedule.svg" />
+    <None Remove="Resources\ic_search.svg" />
+    <None Remove="Resources\ic_squad.svg" />
+    <None Remove="Resources\ic_star.svg" />
+    <None Remove="Resources\ic_tickblack.svg" />
+    <None Remove="Resources\ic_triangle.svg" />
     <None Remove="Resources\ic_unitedkingdom.svg" />
+    <None Remove="Resources\ic_visa.svg" />
     <None Remove="Resources\portol_logo_long.svg" />
+    <None Remove="Resources\ShopPict_mockup.svg" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Resources\Group_2.png" />
     <EmbeddedResource Include="Resources\ic_ActionButton.svg" />
     <EmbeddedResource Include="Resources\btn_background.svg" />
     <EmbeddedResource Include="Resources\ic_australia.svg" />
+    <EmbeddedResource Include="Resources\ic_bell.svg" />
+    <EmbeddedResource Include="Resources\ic_bellRed.svg" />
+    <EmbeddedResource Include="Resources\ic_button.svg" />
+    <EmbeddedResource Include="Resources\ic_camerabutton.svg" />
+    <EmbeddedResource Include="Resources\ic_cameraicon.svg" />
+    <EmbeddedResource Include="Resources\ic_cameraiconwhite.svg" />
+    <EmbeddedResource Include="Resources\ic_car.png" />
+    <EmbeddedResource Include="Resources\ic_creditcard.svg" />
+    <EmbeddedResource Include="Resources\ic_delete.png" />
+    <EmbeddedResource Include="Resources\ic_deliveryline.svg" />
+    <EmbeddedResource Include="Resources\ic_dollar.png" />
+    <EmbeddedResource Include="Resources\ic_door.svg" />
+    <EmbeddedResource Include="Resources\ic_dropoffcamera.svg" />
+    <EmbeddedResource Include="Resources\ic_genericdriver.png" />
+    <EmbeddedResource Include="Resources\ic_home.svg" />
+    <EmbeddedResource Include="Resources\ic_homeAddress.svg" />
+    <EmbeddedResource Include="Resources\ic_line.svg" />
+    <EmbeddedResource Include="Resources\ic_mastercard.svg" />
     <EmbeddedResource Include="Resources\ic_newzealand.svg" />
+    <EmbeddedResource Include="Resources\ic_parcel.png" />
+    <EmbeddedResource Include="Resources\ic_parcelbox.png" />
+    <EmbeddedResource Include="Resources\ic_paypal.svg" />
+    <EmbeddedResource Include="Resources\ic_phone.png" />
+    <EmbeddedResource Include="Resources\ic_profile.svg" />
+    <EmbeddedResource Include="Resources\ic_redbacground.png" />
+    <EmbeddedResource Include="Resources\ic_redbackground.svg" />
+    <EmbeddedResource Include="Resources\ic_schedule.svg" />
+    <EmbeddedResource Include="Resources\ic_search.svg" />
+    <EmbeddedResource Include="Resources\ic_squad.svg" />
+    <EmbeddedResource Include="Resources\ic_star.svg" />
+    <EmbeddedResource Include="Resources\ic_tickblack.svg" />
+    <EmbeddedResource Include="Resources\ic_triangle.svg" />
     <EmbeddedResource Include="Resources\ic_unitedkingdom.svg" />
+    <EmbeddedResource Include="Resources\ic_visa.svg" />
     <EmbeddedResource Include="Resources\portol_logo_long.svg" />
+    <EmbeddedResource Include="Resources\ShopPict_mockup.svg" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Acr.UserDialogs" Version="7.0.4" />
     <PackageReference Include="Autofac" Version="4.9.2" />
+    <PackageReference Include="Microsoft.AppCenter.Analytics" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AppCenter.Crashes" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AppCenter.Push" Version="2.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
     <PackageReference Include="Plugin.Multilingual" Version="1.0.2" />
+    <PackageReference Include="SkiaSharp" Version="1.68.0" />
+    <PackageReference Include="SkiaSharp.Views" Version="1.68.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
+    <PackageReference Include="Xam.Plugin.Media" Version="4.0.1.5" />
+    <PackageReference Include="Xam.Plugins.Forms.ImageCircle" Version="3.0.0.5" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.1.0" />
     <PackageReference Include="Xamarin.FFImageLoading" Version="2.4.5.870-pre" />
     <PackageReference Include="Xamarin.FFImageLoading.Forms" Version="2.4.5.870-pre" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg" Version="2.4.5.870-pre" />
     <PackageReference Include="Xamarin.FFImageLoading.Svg.Forms" Version="2.4.5.870-pre" />
     <PackageReference Include="Xamarin.FFImageLoading.Transformations" Version="2.4.5.870-pre" />
-    <PackageReference Include="Xamarin.Forms" Version="3.6.0.264807" />  
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.482894" />
+    <PackageReference Include="Xamarin.Forms.Maps" Version="4.0.0.482894" />  
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Portol.Calculator\Portol.Calculator.csproj" />
     <ProjectReference Include="..\..\Portol.Common\Portol.Common.csproj" />
+    <ProjectReference Include="..\..\PortolMobile.Core\PortolMobile.Core.csproj" />
     <ProjectReference Include="..\..\PortolMobile.Services\PortolMobile.Services.csproj" />
   </ItemGroup>
 
@@ -51,12 +135,60 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\Dropoff\DropIncomingDeliveriesView.xaml.cs">
+      <DependentUpon>DropIncomingDeliveriesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\UserControls\AddressPickerView.xaml.cs">
+      <DependentUpon>AddressPickerView.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Update="Controls\CustomNavigationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Resources\AppResources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AppResources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Styles\CustomerStyles.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Styles\DropoffStyles.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Customer\CustomerAccountDetailView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Customer\CustomerAccountView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Customer\CustomerPaymentMethodsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Customer\CustomerPaymentMethodView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Dropoff\DropAddressView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Dropoff\DropDriverInfoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Dropoff\DropIncomingDeliveriesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Dropoff\DropIncomingDeliveryView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Dropoff\DropMeasurementsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Dropoff\DropPaymentView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Dropoff\DropPicturesView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\DropView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
@@ -65,9 +197,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Login\RecoverPasswordView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\MainView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\ShopView.xaml">
@@ -86,6 +215,15 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\SignUp\SignupStepMobileView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\UserControls\AddressPickerView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\UserControls\PaymentMethodsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\UserControls\PicturePickerView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

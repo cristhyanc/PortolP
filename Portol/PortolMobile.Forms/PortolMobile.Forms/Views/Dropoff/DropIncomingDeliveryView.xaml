@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PortolMobile.Forms.Views.Dropoff.DropIncomingDeliveryView"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"           
+             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"         
+             xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
+             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             BackgroundColor="#F0F0F0"
+             xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles">
+    <controls:ExtendedContentPage.Content>
+        <StackLayout  Spacing="0" Padding="0" >
+            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+            <Grid>
+                <Image Source="ic_redbacground.png" Aspect="Fill"  VerticalOptions="StartAndExpand"/>
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+
+                    <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"   VerticalOptions="Center" HorizontalOptions="Center"  HeightRequest="120" WidthRequest="120"
+                       Source="{Binding ProfilePicture}"  
+                                           x:Name="ProfileImage"  />
+                    <Label Text="{Binding User.FullName}" HorizontalOptions="Center" Style="{StaticResource LabelBaseStyleWhite}" HorizontalTextAlignment="Center" ></Label>
+                </StackLayout>
+
+            </Grid>
+
+            <Grid Margin="0,20,0,0">
+
+
+                <StackLayout BackgroundColor="White" Margin="0,25,0,30" VerticalOptions="EndAndExpand" >
+
+                    <StackLayout Margin="70,0,0,0">
+                        <Label Text="{Binding Delivery.Sender.FullName}"  Style="{StaticResource LabelBaseBlackBoldLarge}"  ></Label>
+                        <Label Text="{Binding Delivery.PickupAddress.FullAddress}"   ></Label>
+                        <Label Text="{i18n:Translate HasSentPackageTo}"  Style="{StaticResource LabelBaseBold}"  ></Label>
+                        <Label Text="{Binding Delivery.DropoffAddress.FullAddress}"   ></Label>
+                        <Label Text="{i18n:Translate Message}"  Style="{StaticResource LabelBaseBlackBoldLarge}"  ></Label>
+                        <Label Text="{Binding Delivery.Description}"   ></Label>
+                    </StackLayout>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>                           
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Delivered" Grid.Column="0" Margin="35,5,5,5"  Style="{StaticResource ProfileButtonStyle}" Command="{Binding DeliveredCommand }">
+
+                        </Button>
+                    </Grid>
+                   
+
+                   
+                </StackLayout>
+
+                <circleIma:CircleImage Style="{StaticResource CircleImageProfileMedium}" Margin="10,0,0,0"  HorizontalOptions="Start"  VerticalOptions="StartAndExpand" 
+                      Source="{Binding Delivery.Sender.ProfilePhoto.ImageUrl}"     />
+            </Grid>
+
+
+        </StackLayout>
+    </controls:ExtendedContentPage.Content>
+</controls:ExtendedContentPage>

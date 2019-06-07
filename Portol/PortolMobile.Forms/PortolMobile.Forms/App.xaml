@@ -1,39 +1,112 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+              xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"         
              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms" 
+              xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              x:Class="PortolMobile.Forms.App">
-    <Application.Resources>
+    <Application.Resources>      
         <ResourceDictionary>
             <!--Global Styles-->
 
             <ffimageloadingsvg:SvgImageSourceConverter x:Key="SvgImageSourceConverter" ></ffimageloadingsvg:SvgImageSourceConverter>
             
             <Color x:Key="NavigationPrimary">#2196F3</Color>
-            <Color x:Key="EntryWhiteSmokeAppColor">#f7f7f7</Color>
+            <Color x:Key="EntryWhiteSmokeAppColor">#f2f2f2</Color>
+            <Color x:Key="ButtonTabUnSelectedColor">#f7f7f7</Color>
+            <Color x:Key="ButtonTextTabUnSelectedColor">#8c919e</Color>
+            
+
+            <Style x:Key="BoxSeparatorRight"   TargetType="BoxView">
+                <Setter Property="HeightRequest" Value="1" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="BackgroundColor" Value="#EE0B0B"  />
+                <Setter Property="Color" Value="#EE0B0B" />
+            </Style>
+
+            <Style x:Key="BoxSeparatorLeft"   TargetType="BoxView">
+                <Setter Property="HeightRequest" Value="1" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="BackgroundColor" Value="#1a1717"  />
+                <Setter Property="Color" Value="#1a1717" />
+            </Style>
+
+            <Style x:Key="GpsIconStyle"  TargetType="ffimageloading:CachedImage">
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="WidthRequest" Value="45" />
+                <Setter Property="HeightRequest" Value="60"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand" />
+                <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_parcel.png?assembly=PortolMobile.Forms" />
+            </Style>
+
+          
+
+            <Style x:Key="BoxSeparator"   TargetType="BoxView">
+                <Setter Property="HeightRequest" Value="1" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="BackgroundColor" Value="LightGray"   />
+                <Setter Property="Color" Value="LightGray" />
+            </Style>
 
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
 
+            <!--Main style label-->
             <Style TargetType="Label"  >
-                <Setter Property="TextColor" Value="#000000" />
-                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontSize" Value="Default"  />
                 <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
 
+            
             <Style TargetType="Label" x:Key="LabelBaseStyle" >
-                <Setter Property="TextColor" Value="#000000" />
-                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontSize" Value="Default" />
                 <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
-
+            <!--Main style label-->
+            
             <Style TargetType="Label" x:Key="LabelRequired"  BaseResourceKey="LabelBaseStyle"  >
                 <Setter Property="TextColor" Value="Red" />
-                <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="FontFamily" Value="Lucida Grande" />
+                <Setter Property="FontSize" Value="Medium" />               
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelBaseBlack" >
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelBaseBlackSmall" >
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Small" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelBaseBlackBold" >
+                <Setter Property="FontAttributes" Value="Bold"  />
+                <Setter Property="TextColor" Value="Black" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelBaseBlackBoldLarge" >
+                <Setter Property="FontAttributes" Value="Bold"  />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelBaseBlackBoldSmall" >
+                <Setter Property="FontAttributes" Value="Bold"  />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Small" />
+            </Style>
+
+            <Style TargetType="Label" x:Key="LabelBaseBold" >              
+                <Setter Property="FontAttributes" Value="Bold"  />
+            </Style>
+
+            <Style TargetType="Label" x:Key="labelListSecondLine" >
+                <Setter Property="TextColor" Value="Gray"  />
+                <Setter Property="FontSize" Value="Small" />                
             </Style>
 
             <Style TargetType="Label" x:Key="LabelBaseStyleWhite" >
@@ -41,22 +114,23 @@
                 <Setter Property="FontSize" Value="Medium" />
                 <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
-
-            <Style BaseResourceKey="LabelBaseStyle" TargetType="Entry">
-                <Setter Property="PlaceholderColor" Value="Gray" />
-                <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
+            
+            
+            <Style BaseResourceKey="LabelBaseStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="Black"  />                
             </Style>
+
+            <Style x:Key="ButtonUnselectedTab"  BaseResourceKey="LabelBaseStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="{StaticResource ButtonTextTabUnSelectedColor}" />
+                <Setter Property="BackgroundColor"  Value="{StaticResource ButtonTabUnSelectedColor}" />
+            </Style>
+
+            <Style x:Key="ButtonSelectedTab"  BaseResourceKey="LabelBaseStyle" TargetType="Button">
+                <Setter Property="TextColor" Value="Black"  />
+                <Setter Property="BackgroundColor"  Value="White"   />
+            </Style>
+
            
-            <Style x:Key="EntryBaseStyleWhite"  BaseResourceKey="LabelBaseStyleWhite" TargetType="Entry">
-                <Setter Property="PlaceholderColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
-                <Setter Property="BackgroundColor" Value="Transparent" />
-            </Style>
-
-            <Style BaseResourceKey="Entry" TargetType="controls:ExtendedEntry">
-                <Setter Property="PlaceholderColor" Value="Gray" />
-                <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
-            </Style>
-
             <Style x:Key="ActivityIndicatorStyle"   TargetType="ActivityIndicator">
                 <Setter Property="Color" Value="Gray" />
             </Style>
@@ -64,8 +138,103 @@
             <Style BaseResourceKey="LabelBaseStyle" TargetType="DatePicker">
                 <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
             </Style>
-            
 
+            <Style   TargetType="controls:ExtendedContentPage">
+                <Setter Property="BackgroundColor"  Value="White"  />
+            </Style>
+
+            <Style BaseResourceKey="LabelBaseStyle" TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="Gray" />
+                <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
+            </Style>
+
+            <Style x:Key="EntryBaseStyleWhite"  BaseResourceKey="LabelBaseStyleWhite" TargetType="Entry">
+                <Setter Property="PlaceholderColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+
+            <Style BaseResourceKey="LabelBaseStyle" TargetType="controls:ExtendedSearchBar">
+                <Setter Property="PlaceholderColor" Value="Gray" />
+                <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
+            </Style>
+
+            <Style BaseResourceKey="LabelBaseStyle" TargetType="controls:ExtendedEntry">
+                <Setter Property="PlaceholderColor" Value="Gray" />
+                <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
+            </Style>
+
+            <Style x:Key="AccountEntrySmallStyle" BaseResourceKey="LabelBaseStyle" TargetType="controls:ExtendedEntry">
+                <Setter Property="PlaceholderColor" Value="#939393" />
+                <Setter Property="TextColor" Value="#686868" ></Setter>
+                <Setter Property="FontSize" Value="Small" > </Setter>
+                <Setter Property="BackgroundColor" Value="Transparent" />
+            </Style>
+
+            <Style x:Key="ListViewStyle" TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="White" />
+                <Setter Property="Margin" Value="0,4,0,0" />
+                <Setter Property="SeparatorVisibility" Value="None" />
+                <Setter Property="HasUnevenRows" Value="true" />
+                <Setter Property="IsPullToRefreshEnabled" Value="true" />
+            </Style>
+
+
+
+            <Style x:Key="LineDeliveryStyle"  TargetType="ffimageloadingsvg:SvgCachedImage">
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="WidthRequest" Value="200" />
+                <Setter Property="HeightRequest" Value="10"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_deliveryline.svg?assembly=PortolMobile.Forms" />
+            </Style>
+
+            <Style x:Key="StarStyle"  TargetType="ffimageloadingsvg:SvgCachedImage">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="WidthRequest" Value="12" />
+                <Setter Property="HeightRequest" Value="12"/>
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_star.svg?assembly=PortolMobile.Forms" />
+            </Style>
+
+            <Style x:Key="PhoneStyle"  TargetType="ffimageloading:CachedImage">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="WidthRequest" Value="20" />
+                <Setter Property="HeightRequest" Value="20"/>
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_phone.png?assembly=PortolMobile.Forms" />
+            </Style>
+
+            <Style x:Key="CarDeliveryStyle"  TargetType="ffimageloading:CachedImage">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="WidthRequest" Value="35" />
+                <Setter Property="HeightRequest" Value="25"/>
+                <Setter Property="VerticalOptions" Value="Center" />
+                <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_car.png?assembly=PortolMobile.Forms" />
+            </Style>
+
+            <Style x:Key="CircleImageProfile" TargetType="circleIma:CircleImage">
+                <Setter Property="WidthRequest" Value="70" />
+                <Setter Property="HeightRequest" Value="70" />
+                <Setter Property="Aspect" Value="AspectFill" />
+            </Style>
+
+            <Style x:Key="CircleImageProfileMedium" TargetType="circleIma:CircleImage">
+                <Setter Property="WidthRequest" Value="50" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="Aspect" Value="AspectFill" />
+            </Style>
+
+            <Style x:Key="ProfileButtonStyle" TargetType="Button" >
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="WidthRequest" Value="35" />
+                <Setter Property="HeightRequest" Value="35" />
+                <Setter Property="BackgroundColor" Value="#1d1e1f" />
+            </Style>
         </ResourceDictionary>
+       
     </Application.Resources>
 </Application>
