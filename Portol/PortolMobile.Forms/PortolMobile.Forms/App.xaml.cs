@@ -22,7 +22,7 @@ namespace PortolMobile.Forms
             InitializeComponent();
             AppCenter.Start("android=952146a6-94b4-4717-9d75-546346e67f3a;" +
                   "uwp={Your UWP App secret here};" +
-                  "ios={Your iOS App secret here}", typeof(Push), typeof(Analytics), typeof(Crashes));
+                  "ios=4ed6ca26-4973-4eb7-b67b-80dc6903cfe5", typeof(Push), typeof(Analytics), typeof(Crashes));
 
             ViewModelLocator.RegisterDependencies(false);
             InitNavigation();

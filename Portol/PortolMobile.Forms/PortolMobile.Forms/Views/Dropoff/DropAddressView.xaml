@@ -9,7 +9,7 @@
              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-             BackgroundImage="Map_image"
+              BackgroundColor="White"
              xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Resources>
         <DropoffStyle:DropoffStyles/>
@@ -21,7 +21,11 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="*"></RowDefinition>
                 </Grid.RowDefinitions>
-
+                
+                
+                  <ffimageloading:CachedImage  Grid.RowSpan="2" HorizontalOptions="FillAndExpand " VerticalOptions="FillAndExpand"
+                                        Source="Map_image" />
+                
                 <StackLayout BackgroundColor="White"   >
                 <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
                     <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" Margin="0,0,0,0"/>

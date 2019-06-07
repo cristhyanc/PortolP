@@ -24,8 +24,7 @@ namespace PortolMobile.Forms.Controls
 
         public bool IgnoreLayoutChange { get; set; } = false;
 
-        public bool IsBackgroundTransparent { get; set; } = true;
-
+       
         protected override void OnSizeAllocated(double width, double height)
         {
             if (!IgnoreLayoutChange)

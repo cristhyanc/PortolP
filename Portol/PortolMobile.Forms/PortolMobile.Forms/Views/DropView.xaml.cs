@@ -17,6 +17,7 @@ namespace PortolMobile.Forms.Views
         {
             InitializeComponent();
             ProfileImage.Focus();
+          
         }
     }
 }

@@ -8,7 +8,7 @@
              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-             BackgroundImage="Map_image"
+             BackgroundImage="Map_image" 
               xmlns:Helpers="clr-namespace:PortolMobile.Forms.Helper"
              xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles"
              x:Class="PortolMobile.Forms.Views.DropView">

@@ -138,12 +138,11 @@ namespace PortolMobile.Forms.Services.Navigation
 
                     if (basePage.IsTextBarWhite)
                     {
-                        CurrentNavigator.BarTextColor = Color.White;
-                        CurrentNavigator.IsBackgroundTransparent = false;
+                        CurrentNavigator.BarTextColor = Color.White;                      
                     }
                     else
                     {
-                        CurrentNavigator.BarTextColor = Color.Black;
+                        CurrentNavigator.BarTextColor = Color.Black;                     
                     }
                 }
 

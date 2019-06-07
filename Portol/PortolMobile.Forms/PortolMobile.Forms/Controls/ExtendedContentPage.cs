@@ -10,7 +10,7 @@ namespace PortolMobile.Forms.Controls
     public class ExtendedContentPage : ContentPage
     {
 
-        public bool IsTextBarWhite { get; set; } = false;
+        public bool IsTextBarWhite { get; set; }
 
         public static readonly BindableProperty PageAppearingCommandProperty =
         BindableProperty.Create(nameof(PageAppearingCommand), typeof(ICommand), typeof(ExtendedContentPage), null);

@@ -41,7 +41,7 @@ namespace PortolMobile.Forms.iOS
                 Logger = new CustomLogger(),
             };
             ImageService.Instance.Initialize(config);
-            AppCenter.Start("952146a6-94b4-4717-9d75-546346e67f3a", typeof(Push), typeof(Analytics), typeof(Crashes));
+            AppCenter.Start("4ed6ca26-4973-4eb7-b67b-80dc6903cfe5", typeof(Push), typeof(Analytics), typeof(Crashes));
 
             LoadApplication(new App());
 

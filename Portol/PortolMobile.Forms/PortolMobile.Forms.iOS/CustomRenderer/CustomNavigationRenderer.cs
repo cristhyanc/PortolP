@@ -15,12 +15,14 @@ namespace PortolMobile.Forms.iOS.CustomRenderer
 {
     public class CustomNavigationRenderer : NavigationRenderer
     {
+
+
         public override void ViewDidLoad()
         {
             base.ViewDidLoad();
 
-          //  UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
-          //  UINavigationBar.Appearance.ShadowImage = new UIImage();
+            UINavigationBar.Appearance.SetBackgroundImage(new UIImage(), UIBarMetrics.Default);
+            UINavigationBar.Appearance.ShadowImage = new UIImage();
             UINavigationBar.Appearance.BackgroundColor = UIColor.Clear;
             UINavigationBar.Appearance.TintColor = UIColor.White;
             UINavigationBar.Appearance.BarTintColor = UIColor.Clear;
@@ -30,33 +32,16 @@ namespace PortolMobile.Forms.iOS.CustomRenderer
         protected override void OnElementChanged(VisualElementChangedEventArgs e)
         {
             base.OnElementChanged(e);
-            if(e.NewElement is CustomNavigationPage customNavigation)
-            {
-                if (customNavigation.IsBackgroundTransparent)
-                {
-                    NavigationBar.SetBackgroundImage(new UIKit.UIImage(), UIKit.UIBarMetrics.Default);
-                    NavigationBar.ShadowImage = new UIKit.UIImage();
-                    UINavigationBar.Appearance.BackgroundColor = UIColor.Clear;
-                    UINavigationBar.Appearance.TintColor = UIColor.White;
-                    UINavigationBar.Appearance.BarTintColor = UIColor.Clear;
-                    UINavigationBar.Appearance.Translucent = true;
-                }
-                else
-                {
-                    UINavigationBar.Appearance.BackgroundColor = UIColor.White;
-                    UINavigationBar.Appearance.TintColor = UIColor.White;
-                    UINavigationBar.Appearance.BarTintColor = UIColor.White;
-                    UINavigationBar.Appearance.Translucent = false;
-                }
-                    
-            }
-           
+
+            NavigationBar.SetBackgroundImage(new UIKit.UIImage(), UIKit.UIBarMetrics.Default);
+            NavigationBar.ShadowImage = new UIKit.UIImage();
         }
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
             {
+              
             }
 
             base.Dispose(disposing);
