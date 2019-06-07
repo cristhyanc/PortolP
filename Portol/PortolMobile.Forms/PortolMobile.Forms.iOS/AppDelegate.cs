@@ -30,7 +30,7 @@ namespace PortolMobile.Forms.iOS
         {
             global::Xamarin.Forms.Forms.Init();
             CachedImageRenderer.Init();
-        
+            Xamarin.FormsMaps.Init();
             ImageCircleRenderer.Init();
             var config = new FFImageLoading.Config.Configuration()
             {

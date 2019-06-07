@@ -9,7 +9,8 @@
              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-             BackgroundImage="Map_image"
+             BackgroundColor="#F0F0F0"
+             xmlns:localResources="clr-namespace:PortolMobile.Forms.Resources"
               x:Name="page"
              xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Resources>
@@ -19,17 +20,18 @@
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
 
             <StackLayout BackgroundColor="White" >
-
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" Margin="0,20,0,0"  />
                 <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
-
             </StackLayout>
 
+            <Grid Margin="0,40,0,0" >               
+                <BoxView   WidthRequest="3" Style="{StaticResource BoxSeparator}" VerticalOptions="Center"></BoxView>
+                <ffimageloading:CachedImage WidthRequest="80" HeightRequest="80" HorizontalOptions="Center" 
+                                        Source="resource://PortolMobile.Forms.Resources.ic_parcelbox.png?assembly=PortolMobile.Forms" />
+            </Grid>
 
-            <Label Text="{i18n:Translate IncomingDeliveries}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,30,0,0" ></Label>
-
-
-            <ListView                
+            <Label Text="{i18n:Translate ComingDeliveries}" Margin="10,0,0,0"  Style="{StaticResource LabelBaseBlackBoldLarge}" VerticalOptions="Center" ></Label>
+            <ListView 
+                    SeparatorVisibility="None" 
                     SelectedItem="{Binding SelectedDelivery, Mode=TwoWay }" 
                     CachingStrategy="RecycleElement" HasUnevenRows="true"
                     RefreshCommand="{Binding RefreshListCommand}"
@@ -37,29 +39,27 @@
                     ItemsSource="{Binding Deliveries}">
                 <ListView.ItemTemplate>
                     <DataTemplate >
-                        <ViewCell >                         
-                            <Frame CornerRadius="4" BackgroundColor="LightGray"  Padding="0" >
-                                <StackLayout VerticalOptions="Fill" Padding="5" Orientation="Horizontal"  >
-                                    <StackLayout>
-                                        <Label Text="{Binding Description}"></Label>
-                                        <Label Text="{Binding Sender.FullName}"></Label>
-                                        <Label Text="{Binding DropoffAddress.FullAddress}"></Label>
-                                    </StackLayout>
-                                    <Button Margin="0,7,0,7"  Text="{i18n:Translate Delivered}"   
-                                            Command="{Binding Source={x:Reference page}, Path = BindingContext.DeliveredCommand }" 
-                                            CommandParameter="{Binding DeliveryID}" 
-                                    TextColor="White"  BackgroundColor="#4c4c4c"   ></Button>
+                        <ViewCell >
+                            <Grid >
+                                <StackLayout BackgroundColor="White" Margin="0,25,0,30" VerticalOptions="EndAndExpand" >
 
+                                    <StackLayout Margin="70,10,0,10" Spacing="0">
+                                        <Label Text="{Binding Sender.FullName}"  Style="{StaticResource LabelBaseBlackBoldSmall}"  ></Label>
+                                        <Label Text="{i18n:Translate HasSentPackageTo}" FontSize="Small"  Style="{StaticResource LabelBaseBold}"  ></Label>
+                                        <Label Text="{Binding DropoffAddress.FullAddress}"  FontSize="Small"  ></Label>
+                                        <Label Text="{i18n:Translate Message}"  Style="{StaticResource LabelBaseBlackBoldSmall}"  ></Label>
+                                        <Label Text="{Binding Description}"   FontSize="Small" ></Label>
+                                    </StackLayout>
                                 </StackLayout>
-                            </Frame>
+
+                                <circleIma:CircleImage Style="{StaticResource CircleImageProfileMedium}" Margin="10,0,0,0"  HorizontalOptions="Start"  VerticalOptions="StartAndExpand" 
+                                        Source="{Binding Sender.ProfilePhoto.ImageUrl}"     />
+                            </Grid>
+
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
-                <ListView.Footer>
-                    <StackLayout>
-
-                    </StackLayout>
-                </ListView.Footer>
+               
             </ListView>
 
         </StackLayout>

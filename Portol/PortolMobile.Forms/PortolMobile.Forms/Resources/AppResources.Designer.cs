@@ -133,6 +133,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Coming Deliveries.
+        /// </summary>
+        internal static string ComingDeliveries {
+            get {
+                return ResourceManager.GetString("ComingDeliveries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Confirm.
         /// </summary>
         internal static string Confirm {

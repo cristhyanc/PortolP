@@ -94,6 +94,12 @@
                 <Setter Property="FontSize" Value="Large" />
             </Style>
 
+            <Style TargetType="Label" x:Key="LabelBaseBlackBoldSmall" >
+                <Setter Property="FontAttributes" Value="Bold"  />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Small" />
+            </Style>
+
             <Style TargetType="Label" x:Key="LabelBaseBold" >              
                 <Setter Property="FontAttributes" Value="Bold"  />
             </Style>

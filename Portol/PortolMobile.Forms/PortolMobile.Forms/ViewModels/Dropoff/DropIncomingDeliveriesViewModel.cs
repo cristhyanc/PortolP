@@ -56,8 +56,6 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             _deliveryCore = deliveryCore;
             _sessionData = sessionData;
-         
-            
         }
 
         protected override async void PageAppearing()

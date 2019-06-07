@@ -423,4 +423,7 @@
   <data name="Message" xml:space="preserve">
     <value>Message</value>
   </data>
+  <data name="ComingDeliveries" xml:space="preserve">
+    <value>Coming Deliveries</value>
+  </data>
 </root>

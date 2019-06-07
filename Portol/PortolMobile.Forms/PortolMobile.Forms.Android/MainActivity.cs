@@ -38,6 +38,7 @@ namespace PortolMobile.Forms.Droid
                 FFImageLoading.Forms.Platform.CachedImageRenderer.Init(true);
                 AppCenter.Start("952146a6-94b4-4717-9d75-546346e67f3a", typeof(Push),typeof(Analytics), typeof(Crashes));
 
+                Xamarin.FormsMaps.Init(this, bundle);
 
                 var config = new FFImageLoading.Config.Configuration()
                 {
