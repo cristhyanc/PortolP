@@ -2,65 +2,62 @@
 <controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PortolMobile.Forms.Views.Dropoff.DropIncomingDeliveryView"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"           
+             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"         
              xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-             BackgroundImage="Map_image"
-              x:Name="page"
-             xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
-    <controls:ExtendedContentPage.Resources>
-        <DropoffStyle:DropoffStyles/>
-    </controls:ExtendedContentPage.Resources>
+             BackgroundColor="#F0F0F0"
+             xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+        <StackLayout  Spacing="0" Padding="0" >
+            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+            <Grid>
+                <Image Source="ic_redbacground.png" Aspect="Fill"  VerticalOptions="StartAndExpand"/>
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
 
-            <StackLayout BackgroundColor="White" >
+                    <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"   VerticalOptions="Center" HorizontalOptions="Center"  HeightRequest="120" WidthRequest="120"
+                       Source="{Binding ProfilePicture}"  
+                                           x:Name="ProfileImage"  />
+                    <Label Text="{Binding User.FullName}" HorizontalOptions="Center" Style="{StaticResource LabelBaseStyleWhite}" HorizontalTextAlignment="Center" ></Label>
+                </StackLayout>
 
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" Margin="0,20,0,0"  />
-                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+            </Grid>
 
-            </StackLayout>
-
-
-            <Label Text="{i18n:Translate IncomingDeliveries}" HorizontalOptions="Center" HorizontalTextAlignment="Center" Margin="0,30,0,0" ></Label>
+            <Grid Margin="0,20,0,0">
 
 
-            <ListView                
-                    SelectedItem="{Binding SelectedSafetyC, Mode=TwoWay }" 
-                    CachingStrategy="RecycleElement" HasUnevenRows="true"
-                    RefreshCommand="{Binding RefreshListCommand}"
-                    IsRefreshing="{Binding IsBusy, Mode=TwoWay}" 
-                    ItemsSource="{Binding Deliveries}">
-                <ListView.ItemTemplate>
-                    <DataTemplate >
-                        <ViewCell >                         
-                            <Frame CornerRadius="4" BackgroundColor="LightGray"  Padding="0" >
-                                <StackLayout VerticalOptions="Fill" Padding="5" Orientation="Horizontal"  >
-                                    <StackLayout>
-                                        <Label Text="{Binding Description}"></Label>
-                                        <Label Text="{Binding Sender.FullName}"></Label>
-                                        <Label Text="{Binding DropoffAddress.FullAddress}"></Label>
-                                    </StackLayout>
-                                    <Button Margin="0,7,0,7"  Text="{i18n:Translate Delivered}"   
-                                            Command="{Binding Source={x:Reference page}, Path = BindingContext.DeliveredCommand }" 
-                                            CommandParameter="{Binding DeliveryID}" 
-                                    TextColor="White"  BackgroundColor="#4c4c4c"   ></Button>
+                <StackLayout BackgroundColor="White" Margin="0,25,0,30" VerticalOptions="EndAndExpand" >
 
-                                </StackLayout>
-                            </Frame>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-                <ListView.Footer>
-                    <StackLayout>
-
+                    <StackLayout Margin="70,0,0,0">
+                        <Label Text="{Binding Delivery.Sender.FullName}"  Style="{StaticResource LabelBaseBlackBoldLarge}"  ></Label>
+                        <Label Text="{Binding Delivery.PickupAddress.FullAddress}"   ></Label>
+                        <Label Text="{i18n:Translate HasSentPackageTo}"  Style="{StaticResource LabelBaseBold}"  ></Label>
+                        <Label Text="{Binding Delivery.DropoffAddress.FullAddress}"   ></Label>
+                        <Label Text="{i18n:Translate Message}"  Style="{StaticResource LabelBaseBlackBoldLarge}"  ></Label>
+                        <Label Text="{Binding Delivery.Description}"   ></Label>
                     </StackLayout>
-                </ListView.Footer>
-            </ListView>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>                           
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Button Text="Delivered" Grid.Column="0" Margin="35,5,5,5"  Style="{StaticResource ProfileButtonStyle}" Command="{Binding DeliveredCommand }">
+
+                        </Button>
+                    </Grid>
+                   
+
+                   
+                </StackLayout>
+
+                <circleIma:CircleImage Style="{StaticResource CircleImageProfileMedium}" Margin="10,0,0,0"  HorizontalOptions="Start"  VerticalOptions="StartAndExpand" 
+                      Source="{Binding Delivery.Sender.ProfilePhoto.ImageUrl}"     />
+            </Grid>
+
 
         </StackLayout>
     </controls:ExtendedContentPage.Content>

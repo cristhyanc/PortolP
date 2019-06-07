@@ -27,6 +27,11 @@ namespace PortolMobile.GeneralTest.MockupServices
             User= await _loginService.Authenticate("cristhyan@outlook.com", "");
         }
 
+        public void LogoutUser()
+        {
+            throw new NotImplementedException();
+        }
+
         public Task RefreshUserDetails(IUserCore userCore)
         {
             throw new NotImplementedException();

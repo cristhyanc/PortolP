@@ -188,11 +188,11 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 LoadGallery();
 
                 //test
-                //_dropoffParcel.Parcel = new ParcelDto();
-                //_dropoffParcel.Parcel.Height = 2;
-                //_dropoffParcel.Parcel.Weight = 2;
-                //_dropoffParcel.Parcel.Length = 2;
-                //_dropoffParcel.Parcel.Width = 2;
+                _dropoffParcel.Parcel = new ParcelDto();
+                _dropoffParcel.Parcel.Height = 2;
+                _dropoffParcel.Parcel.Weight = 2;
+                _dropoffParcel.Parcel.Length = 2;
+                _dropoffParcel.Parcel.Width = 2;
 
                 //test
             }

@@ -134,6 +134,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>AppResources.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\Dropoff\DropIncomingDeliveriesView.xaml.cs">
+      <DependentUpon>DropIncomingDeliveriesView.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\UserControls\AddressPickerView.xaml.cs">
       <DependentUpon>AddressPickerView.xaml</DependentUpon>
     </Compile>
@@ -169,6 +172,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Dropoff\DropDriverInfoView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Dropoff\DropIncomingDeliveriesView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Dropoff\DropIncomingDeliveryView.xaml">

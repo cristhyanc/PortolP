@@ -46,15 +46,15 @@
                            Source="resource://PortolMobile.Forms.Resources.ic_schedule.svg?assembly=PortolMobile.Forms" >
                 </ffimageloadingsvg:SvgCachedImage>
 
-                <Button CornerRadius="5" Grid.Column="0" Grid.Row="1" FontSize="Micro" Margin="5" Padding="0" Text="Drop Squad" TextColor="White"  BackgroundColor="#1d1e1f" WidthRequest="35"  HeightRequest="25">
+                <Button  Grid.Column="0" Grid.Row="1"  Text="Drop Squad" Style="{StaticResource ProfileButtonStyle}">
 
                 </Button>
 
-                <Button CornerRadius="5" Grid.Column="1" Grid.Row="1" FontSize="Micro" Margin="5" Padding="0" Text="Schedules" TextColor="White"  BackgroundColor="#1d1e1f" WidthRequest="35"  HeightRequest="25">
+                <Button  Grid.Column="1" Grid.Row="1"  Text="Schedules" Style="{StaticResource ProfileButtonStyle}">
 
                 </Button>
 
-                <Button CornerRadius="5" Grid.Column="4" Grid.Row="1" FontSize="Micro" Margin="5" Padding="0" Text="Edit" Command="{Binding EditCommand}" TextColor="White"  BackgroundColor="#1d1e1f" WidthRequest="35"  HeightRequest="25">
+                <Button  Grid.Column="4" Grid.Row="1"  Text="Edit" Command="{Binding EditCommand}" Style="{StaticResource ProfileButtonStyle}">
 
                 </Button>
 

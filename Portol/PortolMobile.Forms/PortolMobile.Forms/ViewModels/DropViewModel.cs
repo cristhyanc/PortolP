@@ -35,7 +35,18 @@ namespace PortolMobile.Forms.ViewModels
             }
         }
 
+        string _bellIcon= "resource://PortolMobile.Forms.Resources.ic_bell.svg?assembly=PortolMobile.Forms";
+        public string BellIcon
+        {
+            get { return _bellIcon; }
+            set
+            {
+                _bellIcon = value;
+                OnPropertyChanged();
+            }
+        }
 
+        
 
         bool _isDeliveryOnItsWay;
         public bool IsDeliveryOnItsWay
@@ -91,8 +102,8 @@ namespace PortolMobile.Forms.ViewModels
                 ExceptionHelper.ProcessException(ex, UserDialogs, "DropViewModel", "DropViewModel");
             }
 
-            //this.EmailMobileNumber = "0405593357";
-            //this.ReceiverName = "Sophie";
+            this.EmailMobileNumber = "0405593357";
+            this.ReceiverName = "Sophie";
 
         }
 
@@ -103,9 +114,18 @@ namespace PortolMobile.Forms.ViewModels
                 this.IsBusy = true;
                 var delivery = await _deliveryCore.GetSendertDeliveryInProgress(_sessionData.User.CustomerID);
                 if(delivery!=null)
-                {
+                {                   
                     await NavigationService.NavigateToAsync<DropDriverInfoViewModel>(delivery);
                 }
+
+                BellIcon = "resource://PortolMobile.Forms.Resources.ic_bell.svg?assembly=PortolMobile.Forms";
+                var incoming= await _deliveryCore.GetPendingReceiverDeliveries(_sessionData.User.CustomerID);
+                if(incoming?.Count>0)
+                {
+                    BellIcon = "resource://PortolMobile.Forms.Resources.ic_bellRed.svg?assembly=PortolMobile.Forms";
+                }
+
+                
                 OnPropertyChanged("ProfilePicture");
             }
             catch (System.Exception ex)
@@ -134,7 +154,7 @@ namespace PortolMobile.Forms.ViewModels
         {
             try
             {
-                await NavigationService.NavigateToAsync<DropIncomingDeliveryViewModel>();
+                await NavigationService.NavigateToAsync<DropIncomingDeliveriesViewModel>();
 
             }
             catch (System.Exception ex)

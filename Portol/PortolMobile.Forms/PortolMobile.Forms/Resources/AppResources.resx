@@ -417,4 +417,10 @@
   <data name="Delivered" xml:space="preserve">
     <value>Delivered</value>
   </data>
+  <data name="HasSentPackageTo" xml:space="preserve">
+    <value>has sent you a package to</value>
+  </data>
+  <data name="Message" xml:space="preserve">
+    <value>Message</value>
+  </data>
 </root>

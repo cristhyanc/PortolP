@@ -403,6 +403,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to has sent you a package to.
+        /// </summary>
+        internal static string HasSentPackageTo {
+            get {
+                return ResourceManager.GetString("HasSentPackageTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Height (cm).
         /// </summary>
         internal static string HeightCm {
@@ -516,6 +525,15 @@ namespace PortolMobile.Forms.Resources {
         internal static string Logout {
             get {
                 return ResourceManager.GetString("Logout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Message.
+        /// </summary>
+        internal static string Message {
+            get {
+                return ResourceManager.GetString("Message", resourceCulture);
             }
         }
         

@@ -88,6 +88,12 @@
                 <Setter Property="TextColor" Value="Black" />
             </Style>
 
+            <Style TargetType="Label" x:Key="LabelBaseBlackBoldLarge" >
+                <Setter Property="FontAttributes" Value="Bold"  />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Large" />
+            </Style>
+
             <Style TargetType="Label" x:Key="LabelBaseBold" >              
                 <Setter Property="FontAttributes" Value="Bold"  />
             </Style>
@@ -204,6 +210,23 @@
                 <Setter Property="WidthRequest" Value="70" />
                 <Setter Property="HeightRequest" Value="70" />
                 <Setter Property="Aspect" Value="AspectFill" />
+            </Style>
+
+            <Style x:Key="CircleImageProfileMedium" TargetType="circleIma:CircleImage">
+                <Setter Property="WidthRequest" Value="50" />
+                <Setter Property="HeightRequest" Value="50" />
+                <Setter Property="Aspect" Value="AspectFill" />
+            </Style>
+
+            <Style x:Key="ProfileButtonStyle" TargetType="Button" >
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="CornerRadius" Value="5" />
+                <Setter Property="Margin" Value="5" />
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="TextColor" Value="White" />
+                <Setter Property="WidthRequest" Value="35" />
+                <Setter Property="HeightRequest" Value="35" />
+                <Setter Property="BackgroundColor" Value="#1d1e1f" />
             </Style>
         </ResourceDictionary>
        

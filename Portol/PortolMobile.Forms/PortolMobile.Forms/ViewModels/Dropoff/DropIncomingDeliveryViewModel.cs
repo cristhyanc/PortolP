@@ -13,45 +13,71 @@ using Xamarin.Forms;
 
 namespace PortolMobile.Forms.ViewModels.Dropoff
 {
-    public class DropIncomingDeliveryViewModel : BaseViewModel
+    public class DropIncomingDeliveryViewModel: BaseViewModel
     {
         public ICommand DeliveredCommand { get; private set; }
-        
-        private List<DeliveryDto> _deliveries;
-        public List<DeliveryDto> Deliveries
+
+        IDeliveryCore _deliveryCore;
+        ISessionData _sessionData;
+       
+        private DeliveryDto _delivery;
+        public DeliveryDto Delivery
         {
             get
             {
-                return _deliveries;
+                return _delivery;
             }
             set
             {
-                _deliveries = value;
+                _delivery = value;
                 OnPropertyChanged();
             }
         }
 
-        IDeliveryCore _deliveryCore;
-        ISessionData _sessionData;
+        public string ProfilePicture
+        {
+            get { return _sessionData?.User?.ProfilePhoto?.ImageUrl; }
+
+        }
+
 
         public DropIncomingDeliveryViewModel(INavigationService navigationService, IUserDialogs userDialogs, ISessionData sessionData, IDeliveryCore deliveryCore) : base(navigationService, userDialogs)
         {
             _deliveryCore = deliveryCore;
             _sessionData = sessionData;
-            DeliveredCommand = new Command<Guid>(((Guid deliveryid) => MarkAsDelivered(deliveryid)), (Guid deliveryid) => { return !IsBusy; });
-            
+            DeliveredCommand = new Command((( ) => MarkAsDelivered()), ( ) => { return !IsBusy; });
+
+        }
+        
+        public override  Task InitializeAsync(object navigationData)
+        {
+            try
+            {
+                this.IsBusy = true;
+                Delivery = (DeliveryDto)navigationData;
+                
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropIncomingDeliveryViewModel", "InitializeAsync");
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
+            return base.InitializeAsync(navigationData);
         }
 
-        private async Task MarkAsDelivered(Guid deliveryID)
+        private async Task MarkAsDelivered( )
         {
             try
             {
                 this.IsBusy = true;
                 if (await this.UserDialogs.ConfirmAsync(StringResources.ConfirmDelivered, StringResources.Delivery))
                 {
-                    await _deliveryCore.MarkAsDelivered(deliveryID);
-                    Deliveries = await _deliveryCore.GetPendingReceiverDeliveries(_sessionData.User.CustomerID);
-                }                   
+                    await _deliveryCore.MarkAsDelivered(Delivery.DeliveryID);
+                    await this.NavigationService.GoToPreviousPageAsync();
+                }
             }
             catch (Exception ex)
             {
@@ -63,22 +89,6 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             }
         }
 
-        public override async Task InitializeAsync(object navigationData)
-        {
-            try
-            {
-                this.IsBusy = true;
-                Deliveries = await _deliveryCore.GetPendingReceiverDeliveries(_sessionData.User.CustomerID);
-            }
-            catch (Exception ex)
-            {
-                ExceptionHelper.ProcessException(ex, UserDialogs, "DropIncomingDeliveryViewModel", "InitializeAsync");                
-            }
-            finally
-            {
-                this.IsBusy = false;
-            }
-        }
 
     }
 }

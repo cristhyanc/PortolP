@@ -22,7 +22,7 @@ namespace PortolWeb.Core.SmsServices
             _uow = uow;
         }
 
-        public void SendNewCode(long mobileNumber, Int32 countryCode)
+        public async Task SendNewCode(long mobileNumber, Int32 countryCode)
         {
             if (mobileNumber == 0 || countryCode == 0)
             {
@@ -38,16 +38,27 @@ namespace PortolWeb.Core.SmsServices
             codeNumber = "+" + countryCode.ToString() + mobileNumber.ToString();
             //}
 
+            //try
+            //{
+                Random random = new Random();
+                int code = random.Next(1000, 9999);
+                string fullNumber = codeNumber;
+                //TODO: string resource
+                var result = await _smsApi.Sms(fullNumber, "Your SMS Code from Portol is: " + code.ToString()).Send();
+                await Task.Delay(TimeSpan.FromSeconds(10)); // May take a second or two to be delivered.
 
-            Random random = new Random();
-            int code = random.Next(1000, 9999);
-            string fullNumber = codeNumber;
-            //TODO: string resource
-            _smsApi.Sms(fullNumber, "Your SMS Code from Portol is: " + code.ToString()).Send();
-            codeVeri.CodeNumber = code;
-            codeVeri.PhoneNumber = mobileNumber;
-            _uow.CodeVerificationRepository.Insert(codeVeri);
-            _uow.SaveChanges();
+                var smsMessageStatusResponse = await _smsApi.GetSmsStatus(result.MessageId);
+                codeVeri.CodeNumber = code;
+                codeVeri.PhoneNumber = mobileNumber;
+                _uow.CodeVerificationRepository.Insert(codeVeri);
+                _uow.SaveChanges();
+            //}
+            //catch (Exception ex)
+            //{
+
+            //    throw ex;
+            //}
+          
         }
     }
 }

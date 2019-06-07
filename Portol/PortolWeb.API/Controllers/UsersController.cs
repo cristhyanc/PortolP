@@ -201,11 +201,11 @@ namespace PortolWeb.API.Controllers
 
         [AllowAnonymous]
         [HttpPost("SendVerificationCode")]
-        public IActionResult SendVerificationCode([FromBody]CustomerDto details)
+        public  IActionResult SendVerificationCode([FromBody]CustomerDto details)
         {
             try
             {
-                _smsService.SendNewCode(details.PhoneNumber, details.PhoneCountryCode);
+                _smsService.SendNewCode(details.PhoneNumber, details.PhoneCountryCode).Wait();
                 return Ok();
             }
             catch (AppException ex)
