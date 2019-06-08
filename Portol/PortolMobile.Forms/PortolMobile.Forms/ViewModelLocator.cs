@@ -186,25 +186,19 @@ namespace PortolMobile.Forms
                 var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
                 var location = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
 
-                if (location != PermissionStatus.Granted)
+                var permissions = new[] { Permission.Camera, Permission.Storage, Permission.Location };
+
+                if (cameraStatus != PermissionStatus.Granted || storageStatus != PermissionStatus.Granted || location != PermissionStatus.Granted)
                 {
-                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Location });
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(permissions);
+                    cameraStatus = results[Permission.Camera];
+                    storageStatus = results[Permission.Storage];
                     location = results[Permission.Location];
                 }
 
-                if (cameraStatus != PermissionStatus.Granted)
-                {
-                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Camera });
-                    cameraStatus = results[Permission.Camera];
-                }
-
-                if (storageStatus != PermissionStatus.Granted)
-                {
-                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage });
-                    storageStatus = results[Permission.Storage];
-                }
+               
             }  
-             catch (Exception)
+             catch (Exception ex)
             {
                 //TODO: Log
             }

@@ -30,7 +30,7 @@
             </Grid>
 
             <Label Text="{i18n:Translate ComingDeliveries}" Margin="10,0,0,0"  Style="{StaticResource LabelBaseBlackBoldLarge}" VerticalOptions="Center" ></Label>
-            <ListView 
+            <ListView  BackgroundColor="Transparent"
                     SeparatorVisibility="None" 
                     SelectedItem="{Binding SelectedDelivery, Mode=TwoWay }" 
                     CachingStrategy="RecycleElement" HasUnevenRows="true"

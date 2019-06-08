@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PortolMobile.Forms.Views.UserControls.AddressPickerView"
@@ -10,15 +10,11 @@
     <ContentPage.Content>
         <StackLayout Margin="0,50,0,0">
 
-            <Frame Padding="1,1,1,3" >
-                <!--<controls:ExtendedEntry  Placeholder="{i18n:Translate Address}"  TextChangedCommand="{Binding TextChangedCommand}" x:Name="txtSearch"
-                                     HorizontalTextAlignment="Center" Text="{Binding SearchText, Mode=OneWay}" 
-                   HorizontalOptions="FillAndExpand"  ></controls:ExtendedEntry>-->
-
-                <controls:ExtendedSearchBar  Placeholder="{i18n:Translate Address}"  TextChangedCommand="{Binding TextChangedCommand}" x:Name="txtSearch"
+         
+                <controls:ExtendedSearchBar  Placeholder="{i18n:Translate Address}"  TextChangedCommand="{Binding TextChangedCommand}" x:Name="txtSearch"   Margin="0,10,0,0"
                                      HorizontalTextAlignment="Center" Text="{Binding SearchText, Mode=OneWay}" 
                    HorizontalOptions="FillAndExpand"></controls:ExtendedSearchBar>
-            </Frame>
+          
          
             <ListView  
                     SelectedItem="{Binding SelectedAddress, Mode=TwoWay }"

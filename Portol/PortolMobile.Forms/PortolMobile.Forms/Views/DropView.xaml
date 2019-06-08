@@ -31,6 +31,7 @@
                     <ffimageloadingsvg:SvgCachedImage.Margin>
                         <OnPlatform x:TypeArguments="Thickness">
                             <On Platform="Android" Value="0,40,0,0" />
+                            <On Platform="iOS" Value="0, 40, 0, 0"/>
                         </OnPlatform>
                     </ffimageloadingsvg:SvgCachedImage.Margin>
                 </ffimageloadingsvg:SvgCachedImage>
@@ -40,9 +41,9 @@
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <!--<Button  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" HeightRequest="60"
+                    <Button  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" HeightRequest="60"
                             Style="{StaticResource ButtonUnselectedTab}"  Command="{Binding GotoShopCommand}"
-                            Grid.Column="0" Text="Shop"></Button>-->
+                            Grid.Column="0" Text="Shop"></Button>
 
                     <Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
                         Style="{StaticResource ButtonSelectedTab}"

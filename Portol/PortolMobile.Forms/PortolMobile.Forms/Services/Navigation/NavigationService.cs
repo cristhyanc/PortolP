@@ -9,6 +9,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
+using System.Linq;
 
 namespace PortolMobile.Forms.Services.Navigation
 {
@@ -27,10 +28,15 @@ namespace PortolMobile.Forms.Services.Navigation
         public void SetNavigationPage(CustomNavigationPage navigation)
         {
             CurrentNavigator = navigation;
-          
+          //  CurrentNavigator.Navigation..Appearing += CurrentNavigator_Appearing;
+
+
         }
 
-      
+        void CurrentNavigator_Appearing(object sender, EventArgs e)
+        {
+            SetNavigationColor();
+        }
 
         public async Task NavigateToAsync<TViewModel>() where TViewModel : BaseViewModel
         {
@@ -49,6 +55,7 @@ namespace PortolMobile.Forms.Services.Navigation
             if (CurrentNavigator != null)
             {
                 await CurrentNavigator.Navigation.PopAsync();
+                SetNavigationColor();
             }
 
         }
@@ -59,6 +66,7 @@ namespace PortolMobile.Forms.Services.Navigation
             if (CurrentNavigator != null)
             {
                 await CurrentNavigator.Navigation.PopToRootAsync();
+                SetNavigationColor();
             }
         }
 
@@ -67,6 +75,22 @@ namespace PortolMobile.Forms.Services.Navigation
             if (CurrentNavigator != null)
             {
                 await CurrentNavigator.Navigation.PopAsync();
+               SetNavigationColor();
+            }
+        }
+
+        private void SetNavigationColor()
+        {
+            if (CurrentNavigator?.CurrentPage is ExtendedContentPage contentPage)
+            {
+                if (contentPage.IsTextBarWhite)
+                {
+                    CurrentNavigator.BarTextColor = Color.White;
+                }
+                else
+                {
+                    CurrentNavigator.BarTextColor = Color.Black;
+                }
             }
         }
 
@@ -111,11 +135,15 @@ namespace PortolMobile.Forms.Services.Navigation
                         }
                     }
 
+                    if(CurrentNavigator!=null)
+                    {
+                        CurrentNavigator.Appearing -= CurrentNavigator_Appearing;
+                    }
+
                     CurrentNavigator = new CustomNavigationPage(page);
 
-                    // CurrentNavigator.BackgroundColor= Color.White;
+                    CurrentNavigator.Appearing += CurrentNavigator_Appearing;
 
-                    // CurrentNavigator.BackgroundImage = "logo_long_white.png";
                     Application.Current.MainPage = CurrentNavigator;
 
                 }
@@ -124,6 +152,7 @@ namespace PortolMobile.Forms.Services.Navigation
                     if (CurrentNavigator == null)
                     {
                         CurrentNavigator = new CustomNavigationPage(page);
+                        CurrentNavigator.Appearing += CurrentNavigator_Appearing;
                     }
                     else
                     {
@@ -133,18 +162,7 @@ namespace PortolMobile.Forms.Services.Navigation
 
                 }
 
-                if (page is ExtendedContentPage basePage)
-                {
-
-                    if (basePage.IsTextBarWhite)
-                    {
-                        CurrentNavigator.BarTextColor = Color.White;                        
-                    }
-                    else
-                    {
-                        CurrentNavigator.BarTextColor = Color.Black;                     
-                    }
-                }
+                SetNavigationColor();
 
                 if (viewModel != null)
                 {

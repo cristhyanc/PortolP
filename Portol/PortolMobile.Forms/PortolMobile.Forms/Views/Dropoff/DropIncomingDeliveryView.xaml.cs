@@ -17,6 +17,7 @@ namespace PortolMobile.Forms.Views.Dropoff
         public DropIncomingDeliveryView()
         {
             InitializeComponent();
+            this.IsTextBarWhite = true;
         }
 
         private void MyMap_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)

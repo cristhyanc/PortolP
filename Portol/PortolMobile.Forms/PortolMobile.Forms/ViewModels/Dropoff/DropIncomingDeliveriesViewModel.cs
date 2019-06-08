@@ -65,7 +65,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             {
                 this.IsBusy = true;
                 Deliveries = await _deliveryCore.GetPendingReceiverDeliveries(_sessionData.User.CustomerID);
-                await ViewModelLocator.CheckCameraStoragePermission();
+                 ViewModelLocator.CheckCameraStoragePermission();
             }
             catch (Exception ex)
             {

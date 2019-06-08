@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PortolMobile.Forms.Views.Customer.CustomerPaymentMethodView"
@@ -14,7 +14,7 @@
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
         <StackLayout Margin="10,20">
-            <Label Text="{i18n:Translate PaymentMethods}" Margin="0,15,0,0"  Style="{StaticResource TitleLabel}" ></Label>
+            <Label Text="{i18n:Translate PaymentMethods}" Margin="0,50,0,0"  Style="{StaticResource TitleLabel}" ></Label>
 
 
             <controls:ExtendedEntry Placeholder="{i18n:Translate CreditCardNumber}" HorizontalOptions="FillAndExpand" x:Name="txtCreditNumber" Keyboard="Numeric"  HorizontalTextAlignment="Center"  Text="{Binding PaymentMethod.CardNumber}" >
