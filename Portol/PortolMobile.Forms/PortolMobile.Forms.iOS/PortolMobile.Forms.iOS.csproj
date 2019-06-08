@@ -237,6 +237,9 @@
     <ImageAsset Include="Assets.xcassets\ic_paypal.imageset\ic_paypal.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <BundleResource Include="Resources\rating_star_on.png" />
+    <BundleResource Include="Resources\rating_star_off.png" />
+    <BundleResource Include="Resources\rating_star_half.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

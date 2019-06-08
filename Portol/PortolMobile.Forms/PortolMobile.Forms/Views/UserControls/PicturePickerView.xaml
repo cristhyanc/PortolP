@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PortolMobile.Forms.Views.UserControls.PicturePickerView"
               xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
@@ -10,13 +10,13 @@
              Title="Snap"
              x:Name="page"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true">
-    <ContentPage.ToolbarItems>       
+    <controls:ExtendedContentPage.ToolbarItems>       
         <ToolbarItem   Text="Done"  Command="{Binding DoneCommand}"   >
         </ToolbarItem>
         <ToolbarItem     Command="{Binding DoneCommand}"   >
         </ToolbarItem>
-    </ContentPage.ToolbarItems>
-    <ContentPage.Content>
+    </controls:ExtendedContentPage.ToolbarItems>
+    <controls:ExtendedContentPage.Content>
         <StackLayout Margin="0,80,0,0">
             <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
 
@@ -55,5 +55,5 @@
                 </StackLayout>
             </ScrollView>
         </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+    </controls:ExtendedContentPage.Content>
+</controls:ExtendedContentPage>
