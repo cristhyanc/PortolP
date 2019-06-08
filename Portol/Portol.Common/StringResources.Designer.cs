@@ -250,6 +250,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Dropoff.
+        /// </summary>
+        public static string Dropoff {
+            get {
+                return ResourceManager.GetString("Dropoff", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The Dropoff address is required.
         /// </summary>
         public static string DropoffAddressRequired {
@@ -768,6 +777,15 @@ namespace Portol.Common {
         public static string PhoneNotExist {
             get {
                 return ResourceManager.GetString("PhoneNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pickup.
+        /// </summary>
+        public static string Pickup {
+            get {
+                return ResourceManager.GetString("Pickup", resourceCulture);
             }
         }
         

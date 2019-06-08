@@ -6,10 +6,11 @@
              xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
              xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
              xmlns:localResources="clr-namespace:PortolMobile.Forms.Resources"
-             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
+             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-             BackgroundImage="Map_image"
+             BackgroundColor="White"
              xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Resources>
         <DropoffStyle:DropoffStyles/>
@@ -22,9 +23,20 @@
                 <RowDefinition Height="*"></RowDefinition>
             </Grid.RowDefinitions>
 
+            <ffimageloading:CachedImage  Grid.RowSpan="2" HorizontalOptions="FillAndExpand " VerticalOptions="FillAndExpand"
+                                        Source="Map_image" />
+            
             <StackLayout BackgroundColor="White" >
+                
+                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}"  >
+                    <ffimageloadingsvg:SvgCachedImage.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="0,40,0,0" />
+                        </OnPlatform>
+                    </ffimageloadingsvg:SvgCachedImage.Margin>
+                </ffimageloadingsvg:SvgCachedImage>
+
                 <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" Margin="0,30,0,0"  />
             </StackLayout>
 
 

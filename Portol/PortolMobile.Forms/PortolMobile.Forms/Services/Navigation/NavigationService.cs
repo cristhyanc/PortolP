@@ -138,7 +138,7 @@ namespace PortolMobile.Forms.Services.Navigation
 
                     if (basePage.IsTextBarWhite)
                     {
-                        CurrentNavigator.BarTextColor = Color.White;                      
+                        CurrentNavigator.BarTextColor = Color.White;                        
                     }
                     else
                     {

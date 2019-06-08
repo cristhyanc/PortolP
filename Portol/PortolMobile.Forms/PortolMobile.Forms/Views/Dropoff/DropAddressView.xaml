@@ -9,31 +9,37 @@
              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-              BackgroundColor="White"
+             BackgroundColor="White"
              xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Resources>
         <DropoffStyle:DropoffStyles/>
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
-        <ScrollView  >
-            <Grid VerticalOptions="FillAndExpand" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-                
-                
-                  <ffimageloading:CachedImage  Grid.RowSpan="2" HorizontalOptions="FillAndExpand " VerticalOptions="FillAndExpand"
+
+        <Grid VerticalOptions="FillAndExpand" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+
+
+            <ffimageloading:CachedImage  Grid.RowSpan="2" HorizontalOptions="FillAndExpand " VerticalOptions="FillAndExpand"  
                                         Source="Map_image" />
-                
-                <StackLayout BackgroundColor="White"   >
+
+            <StackLayout BackgroundColor="White"   >
                 <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
-                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" Margin="0,0,0,0"/>
-                    
-                </StackLayout>
+                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" >
+                    <ffimageloading:CachedImage.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="0,40,0,0" />
+                        </OnPlatform>
+                    </ffimageloading:CachedImage.Margin>
+                </ffimageloadingsvg:SvgCachedImage>
+            </StackLayout>
 
+            <ScrollView  Grid.Row="1">
 
-                <RelativeLayout   Grid.Row="1" >
+                <RelativeLayout    >
 
                     <Frame  Style="{StaticResource FrameBox}" x:Name="frmDetailBox"
                             RelativeLayout.XConstraint="{ConstraintExpression
@@ -131,8 +137,8 @@
 
                     </Frame>
                 </RelativeLayout>
+            </ScrollView>
+        </Grid>
 
-            </Grid>
-        </ScrollView>
     </controls:ExtendedContentPage.Content>
 </controls:ExtendedContentPage>

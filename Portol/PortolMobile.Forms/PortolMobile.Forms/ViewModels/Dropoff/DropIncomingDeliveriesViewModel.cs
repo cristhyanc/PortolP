@@ -56,6 +56,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             _deliveryCore = deliveryCore;
             _sessionData = sessionData;
+            
         }
 
         protected override async void PageAppearing()
@@ -64,6 +65,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             {
                 this.IsBusy = true;
                 Deliveries = await _deliveryCore.GetPendingReceiverDeliveries(_sessionData.User.CustomerID);
+                await ViewModelLocator.CheckCameraStoragePermission();
             }
             catch (Exception ex)
             {

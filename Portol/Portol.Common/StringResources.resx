@@ -417,4 +417,10 @@
   <data name="ConfirmDelivered" xml:space="preserve">
     <value>Was it delivered?</value>
   </data>
+  <data name="Dropoff" xml:space="preserve">
+    <value>Dropoff</value>
+  </data>
+  <data name="Pickup" xml:space="preserve">
+    <value>Pickup</value>
+  </data>
 </root>

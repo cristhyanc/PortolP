@@ -18,7 +18,8 @@ namespace PortolMobile.Forms.ViewModels.Customer
         
         public ICommand EditCommand { get; private set; }
         public ICommand LogoutCommand { get; private set; }
-        
+        public ICommand PaymentMethodCommand { get; private set; }
+
         string _userAddress;
         public string UserAddress
         {
@@ -51,6 +52,24 @@ namespace PortolMobile.Forms.ViewModels.Customer
             _sessionData = sessionData;
             EditCommand = new Command((() => GoToEditPage()), () => { return !IsBusy; });
             LogoutCommand = new Command((() => Logout()), () => { return !IsBusy; });
+            PaymentMethodCommand = new Command((() => GoToPaymentMethod()), () => { return !IsBusy; });
+        }
+
+        private async Task GoToPaymentMethod()
+        {
+            try
+            {               
+                await this.NavigationService.NavigateToAsync<CustomerPaymentMethodsViewModel>();
+            }
+            catch (Exception ex)
+            {
+                
+                ExceptionHelper.ProcessException(ex, UserDialogs, "CustomerAccountViewModel", "GoToPaymentMethod");
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
         }
 
         private async Task Logout()

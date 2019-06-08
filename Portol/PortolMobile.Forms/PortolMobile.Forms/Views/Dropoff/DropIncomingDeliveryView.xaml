@@ -9,6 +9,7 @@
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
              BackgroundColor="#F0F0F0"
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
              xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Content>
         <StackLayout  Spacing="0" Padding="0" >
@@ -24,41 +25,54 @@
                 </StackLayout>
 
             </Grid>
+            
+          
+                <Grid Margin="0,20,0,0">
+                    <StackLayout BackgroundColor="White" Margin="0,25,0,30" VerticalOptions="EndAndExpand" >
 
-            <Grid Margin="0,20,0,0">
+                        <StackLayout Margin="70,0,0,0">
+                            <Label Text="{Binding Delivery.Sender.FullName}"  Style="{StaticResource LabelBaseBlackBoldLarge}"  ></Label>
+                            <Label Text="{Binding Delivery.PickupAddress.FullAddress}"   ></Label>
+                            <Label Text="{i18n:Translate HasSentPackageTo}"  Style="{StaticResource LabelBaseBold}"  ></Label>
+                            <Label Text="{Binding Delivery.DropoffAddress.FullAddress}"   ></Label>
+                            <Label Text="{i18n:Translate Message}"  Style="{StaticResource LabelBaseBlackBoldLarge}"  ></Label>
+                            <Label Text="{Binding Delivery.Description}"   ></Label>
+                        </StackLayout>
+
+                        <maps:Map VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  HeightRequest="250"   PropertyChanged="MyMap_PropertyChanged"
+                      x:Name="MyMap"
+                      IsShowingUser="true"
+                      ItemsSource="{Binding Locations}"
+                      MapType="Street" >
+                            <maps:Map.ItemTemplate>
+                                <DataTemplate>
+                                    <maps:Pin Position="{Binding Position}"
+                              Address="{Binding Address}"
+                              Label="{Binding Label}" />
+                                </DataTemplate>
+                            </maps:Map.ItemTemplate>
+                        </maps:Map>
+
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button Text="Delivered" Grid.Column="0" Margin="35,5,5,5"  Style="{StaticResource ProfileButtonStyle}" Command="{Binding DeliveredCommand }">
+
+                            </Button>
+                        </Grid>
 
 
-                <StackLayout BackgroundColor="White" Margin="0,25,0,30" VerticalOptions="EndAndExpand" >
 
-                    <StackLayout Margin="70,0,0,0">
-                        <Label Text="{Binding Delivery.Sender.FullName}"  Style="{StaticResource LabelBaseBlackBoldLarge}"  ></Label>
-                        <Label Text="{Binding Delivery.PickupAddress.FullAddress}"   ></Label>
-                        <Label Text="{i18n:Translate HasSentPackageTo}"  Style="{StaticResource LabelBaseBold}"  ></Label>
-                        <Label Text="{Binding Delivery.DropoffAddress.FullAddress}"   ></Label>
-                        <Label Text="{i18n:Translate Message}"  Style="{StaticResource LabelBaseBlackBoldLarge}"  ></Label>
-                        <Label Text="{Binding Delivery.Description}"   ></Label>
                     </StackLayout>
 
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>                           
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <Button Text="Delivered" Grid.Column="0" Margin="35,5,5,5"  Style="{StaticResource ProfileButtonStyle}" Command="{Binding DeliveredCommand }">
 
-                        </Button>
-                    </Grid>
-                   
 
-                   
-                </StackLayout>
-
-                <circleIma:CircleImage Style="{StaticResource CircleImageProfileMedium}" Margin="10,0,0,0"  HorizontalOptions="Start"  VerticalOptions="StartAndExpand" 
+                    <circleIma:CircleImage Style="{StaticResource CircleImageProfileMedium}" Margin="10,0,0,0"  HorizontalOptions="Start"  VerticalOptions="StartAndExpand" 
                       Source="{Binding Delivery.Sender.ProfilePhoto.ImageUrl}"     />
-            </Grid>
-
-
+                </Grid> 
         </StackLayout>
     </controls:ExtendedContentPage.Content>
 </controls:ExtendedContentPage>

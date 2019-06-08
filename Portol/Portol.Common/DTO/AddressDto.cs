@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
+
 namespace Portol.Common.DTO
 {
     public class AddressDto
@@ -21,6 +22,7 @@ namespace Portol.Common.DTO
         public Guid ParentID { get; set; }
         public bool IsStarterPoint { get; set; }
         public bool IsCurrentAddress { get; set; }
+
 
     }
 }

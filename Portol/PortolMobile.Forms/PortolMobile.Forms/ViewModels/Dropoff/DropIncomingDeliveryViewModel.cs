@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace PortolMobile.Forms.ViewModels.Dropoff
 {
@@ -34,6 +35,21 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             }
         }
 
+        private List<Pin> _locations;
+        public List<Pin> Locations
+        {
+            get
+            {
+                return _locations;
+            }
+            set
+            {
+                _locations = value;
+                OnPropertyChanged();
+            }
+        }
+
+        
         public string ProfilePicture
         {
             get { return _sessionData?.User?.ProfilePhoto?.ImageUrl; }
@@ -45,8 +61,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             _deliveryCore = deliveryCore;
             _sessionData = sessionData;
-            DeliveredCommand = new Command((( ) => MarkAsDelivered()), ( ) => { return !IsBusy; });
-
+            DeliveredCommand = new Command((( ) => MarkAsDelivered()), ( ) => { return !IsBusy; });           
         }
         
         public override  Task InitializeAsync(object navigationData)
@@ -55,7 +70,39 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             {
                 this.IsBusy = true;
                 Delivery = (DeliveryDto)navigationData;
-                
+                _locations = new List<Pin>();
+
+                if (Delivery != null)
+                {
+                    
+                    double latitude, longitude;
+                    Pin pin;
+                    if (Delivery.PickupAddress != null)
+                    {
+                        pin = new Pin {Label= StringResources.Pickup };
+                        double.TryParse(Delivery.PickupAddress.Latitude, out latitude);
+                        double.TryParse(Delivery.PickupAddress.Longitude, out longitude);
+                        Position position = new Position(latitude, longitude);
+                        pin.Position = position;
+                        pin.Address = Delivery.PickupAddress.FullAddress;
+                      
+                        _locations.Add(pin);
+                    }
+
+                    if (Delivery.DropoffAddress != null)
+                    {
+                        pin = new Pin { Label = StringResources.Dropoff };
+                        double.TryParse(Delivery.DropoffAddress.Latitude, out latitude);
+                        double.TryParse(Delivery.DropoffAddress.Longitude, out longitude);
+                        Position position = new Position(latitude, longitude);
+                        pin.Position = position;
+                        pin.Address = Delivery.DropoffAddress.FullAddress;                        
+                        _locations.Add(pin);
+
+                    }
+
+                    Locations = _locations;
+                }
             }
             catch (Exception ex)
             {

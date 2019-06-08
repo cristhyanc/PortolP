@@ -184,6 +184,14 @@ namespace PortolMobile.Forms
                 await CrossMedia.Current.Initialize();
                 var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
                 var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
+                var location = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+
+                if (location != PermissionStatus.Granted)
+                {
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Location });
+                    location = results[Permission.Location];
+                }
+
                 if (cameraStatus != PermissionStatus.Granted)
                 {
                     var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Camera });

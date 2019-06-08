@@ -10,13 +10,10 @@
              Title="Snap"
              x:Name="page"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true">
-    <ContentPage.ToolbarItems>
-       
+    <ContentPage.ToolbarItems>       
         <ToolbarItem   Text="Done"  Command="{Binding DoneCommand}"   >
-
         </ToolbarItem>
         <ToolbarItem     Command="{Binding DoneCommand}"   >
-
         </ToolbarItem>
     </ContentPage.ToolbarItems>
     <ContentPage.Content>

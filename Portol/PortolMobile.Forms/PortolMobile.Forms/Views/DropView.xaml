@@ -27,16 +27,22 @@
             
             <StackLayout BackgroundColor="White"   >
                 <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"   IsVisible="{Binding IsBusy}"  />
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" Margin="0,30,0,0" />
+                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" >
+                    <ffimageloadingsvg:SvgCachedImage.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <On Platform="Android" Value="0,40,0,0" />
+                        </OnPlatform>
+                    </ffimageloadingsvg:SvgCachedImage.Margin>
+                </ffimageloadingsvg:SvgCachedImage>
 
                 <Grid  HorizontalOptions="CenterAndExpand" ColumnSpacing="0"  >
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <Button  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" HeightRequest="60"
+                    <!--<Button  HorizontalOptions="FillAndExpand"  VerticalOptions="FillAndExpand" HeightRequest="60"
                             Style="{StaticResource ButtonUnselectedTab}"  Command="{Binding GotoShopCommand}"
-                            Grid.Column="0" Text="Shop"></Button>
+                            Grid.Column="0" Text="Shop"></Button>-->
 
                     <Button  HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" HeightRequest="60"
                         Style="{StaticResource ButtonSelectedTab}"
@@ -138,9 +144,9 @@
             </ScrollView>
             
             <StackLayout Orientation="Horizontal" BackgroundColor="White" VerticalOptions="End" Grid.Row="1" Spacing="0"  >
-                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="StartAndExpand"  Margin="30,5,0,5"   WidthRequest="37" HeightRequest="35" Source="resource://PortolMobile.Forms.Resources.ic_home.svg?assembly=PortolMobile.Forms" />
+                <!--<ffimageloadingsvg:SvgCachedImage HorizontalOptions="StartAndExpand"  Margin="30,5,0,5"   WidthRequest="37" HeightRequest="35" Source="resource://PortolMobile.Forms.Resources.ic_home.svg?assembly=PortolMobile.Forms" />
                 
-                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="CenterAndExpand" Margin="0,5,0,5"    WidthRequest="32" HeightRequest="32" Source="resource://PortolMobile.Forms.Resources.ic_search.svg?assembly=PortolMobile.Forms" />
+                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="CenterAndExpand" Margin="0,5,0,5"    WidthRequest="32" HeightRequest="32" Source="resource://PortolMobile.Forms.Resources.ic_search.svg?assembly=PortolMobile.Forms" />-->
 
                 <ffimageloadingsvg:SvgCachedImage HorizontalOptions="CenterAndExpand" Margin="0,5,0,5"    WidthRequest="90" HeightRequest="35" Source="{Binding BellIcon}" >
                     <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
@@ -149,8 +155,8 @@
                         </TapGestureRecognizer>
                     </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
                 </ffimageloadingsvg:SvgCachedImage>
-                
-                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="EndAndExpand"    Margin="-5,5,30,5"    WidthRequest="25" HeightRequest="35" Source="resource://PortolMobile.Forms.Resources.ic_profile.svg?assembly=PortolMobile.Forms" >
+
+                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="CenterAndExpand"    Margin="-5,5,30,5"    WidthRequest="25" HeightRequest="35" Source="resource://PortolMobile.Forms.Resources.ic_profile.svg?assembly=PortolMobile.Forms" >
                     <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding GoToAccountCommand }">
 

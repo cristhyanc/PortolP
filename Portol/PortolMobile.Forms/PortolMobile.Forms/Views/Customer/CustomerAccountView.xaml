@@ -71,9 +71,15 @@
                 <Label Text="{Binding UserAddress}"  Margin="5"  Style="{StaticResource labelListSecondLine}"  ></Label>
             </StackLayout>
 
-            
             <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="5,0,0,15" VerticalOptions="EndAndExpand" >
                 <Label Text="{i18n:Translate History}" Margin="5" Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
+            </StackLayout>
+
+            <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="5,0,0,15" >
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding PaymentMethodCommand}"></TapGestureRecognizer>
+                </StackLayout.GestureRecognizers>
+                <Label Text="{i18n:Translate PaymentMethods}" Margin="5" Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
             </StackLayout>
 
             <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="5,0" >
