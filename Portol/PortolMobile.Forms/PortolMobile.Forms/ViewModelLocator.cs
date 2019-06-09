@@ -185,21 +185,42 @@ namespace PortolMobile.Forms
                 await CrossMedia.Current.Initialize();
                 var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
                 var storageStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-                var location = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+               
 
-                var permissions = new[] { Permission.Camera, Permission.Storage, Permission.Location };
+                var permissions = new[] { Permission.Camera, Permission.Storage };
 
-                if (cameraStatus != PermissionStatus.Granted || storageStatus != PermissionStatus.Granted || location != PermissionStatus.Granted)
+                if (cameraStatus != PermissionStatus.Granted || storageStatus != PermissionStatus.Granted )
                 {
                     var results = await CrossPermissions.Current.RequestPermissionsAsync(permissions);
                     cameraStatus = results[Permission.Camera];
                     storageStatus = results[Permission.Storage];
-                    location = results[Permission.Location];
+
                 }
 
                
             }  
              catch (Exception ex)
+            {
+                //TODO: Log
+            }
+        }
+
+        public static async Task CheckMapPermission()
+        {
+            try
+            {
+                await CrossMedia.Current.Initialize();               
+                var location = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+
+                var permissions = new[] { Permission.Location };
+
+                if ( location != PermissionStatus.Granted)
+                {
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(permissions);                   
+                    location = results[Permission.Location];
+                }
+            }
+            catch (Exception ex)
             {
                 //TODO: Log
             }
