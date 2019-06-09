@@ -18,6 +18,14 @@ namespace Portol.Calculator.Delivery
             _mapService = mapService;
         }
 
+        public async Task<decimal> CalculatePrice(ParcelDto measurement, AddressDto pickup, AddressDto dropoff, VehiculeTypeDto vehiculeType)
+        {
+            var listTypes =new  List<VehiculeTypeDto>();
+            listTypes.Add(vehiculeType);
+            var estimates = await EstimatePrice(measurement, pickup, dropoff, listTypes);
+            return estimates.Average();
+        }
+
         public async Task<List<decimal>> EstimatePrice(ParcelDto measurement, AddressDto pickup, AddressDto dropoff, List<VehiculeTypeDto> vehiculeTypes)
         {
             if (vehiculeTypes == null || vehiculeTypes.Count == 0)

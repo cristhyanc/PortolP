@@ -241,6 +241,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to There was a problem finding the driver, pls try again later.
+        /// </summary>
+        public static string DriverNotFound {
+            get {
+                return ResourceManager.GetString("DriverNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The driver is on the way.
         /// </summary>
         public static string DriverOnWay {
@@ -408,6 +417,33 @@ namespace Portol.Common {
         public static string IncorrectEmailformat {
             get {
                 return ResourceManager.GetString("IncorrectEmailformat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hi there
+        ///
+        ///{0} wants to invite you to try Portol today,
+        ///Please follow the link to download the App
+        ///
+        ///Android
+        ///{1}
+        ///
+        ///iPhone
+        ///{2}.
+        /// </summary>
+        public static string InvitationDownloadAppMessage {
+            get {
+                return ResourceManager.GetString("InvitationDownloadAppMessage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This mobile number is not registered yet, do you want to invite this person?.
+        /// </summary>
+        public static string InvitePersonQuestion {
+            get {
+                return ResourceManager.GetString("InvitePersonQuestion", resourceCulture);
             }
         }
         

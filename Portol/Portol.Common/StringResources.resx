@@ -423,4 +423,22 @@
   <data name="Pickup" xml:space="preserve">
     <value>Pickup</value>
   </data>
+  <data name="InvitationDownloadAppMessage" xml:space="preserve">
+    <value>Hi there
+
+{0} wants to invite you to try Portol today,
+Please follow the link to download the App
+
+Android
+{1}
+
+iPhone
+{2}</value>
+  </data>
+  <data name="InvitePersonQuestion" xml:space="preserve">
+    <value>This mobile number is not registered yet, do you want to invite this person?</value>
+  </data>
+  <data name="DriverNotFound" xml:space="preserve">
+    <value>There was a problem finding the driver, pls try again later</value>
+  </data>
 </root>

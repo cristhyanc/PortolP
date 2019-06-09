@@ -200,12 +200,12 @@ namespace PortolWeb.API.Controllers
         }
 
         [AllowAnonymous]
-        [HttpPost("SendVerificationCode")]
-        public  IActionResult SendVerificationCode([FromBody]CustomerDto details)
+        [HttpGet("SendVerificationCode")]
+        public  IActionResult SendVerificationCode([FromQuery]long phoneNumber, [FromQuery]int phoneCountryCode)
         {
             try
             {
-                _smsService.SendNewCode(details.PhoneNumber, details.PhoneCountryCode).Wait();
+                _smsService.SendNewCode(phoneNumber, phoneCountryCode).Wait();
                 return Ok();
             }
             catch (AppException ex)
@@ -222,7 +222,36 @@ namespace PortolWeb.API.Controllers
             {
                 _userService.Dispose();
             }
+        }
 
+        [HttpGet("SendInvitationMessage")]
+        public IActionResult SendInvitationMessage([FromQuery]long phoneNumber, [FromQuery]int phoneCountryCode, [FromQuery]string fullName)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(fullName))
+                {
+                    throw new AppException(StringResources.FirstNameRequired);
+                }
+                string message = StringResources.InvitationDownloadAppMessage;
+                message = string.Format(message, fullName, "test.com.au", "test.com.au");
+                _smsService.SendMessage(phoneNumber, phoneCountryCode, fullName, message).Wait();
+                return Ok();
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.SendInvitationMessage");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+            finally
+            {
+                _userService.Dispose();
+            }
         }
 
         // GET api/values

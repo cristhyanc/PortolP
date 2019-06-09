@@ -7,12 +7,12 @@ namespace Portol.Common.DTO
 {
     public class AddressDto
     {
-        //public string StreetName { get; set; }
-        //public string Suburb { get; set; }
-        //public string State { get; set; }
-        //public string FlatNumber { get; set; }
-       // public string Country { get; set; }
-        //public string PostCode { get; set; }
+        public string Line1 { get; set; }
+        public string Line2 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }        
+        public string Country { get; set; }
+        public string PostCode { get; set; }
 
         public bool  AddressValidated { get; set; }
         public string FullAddress { get; set; }

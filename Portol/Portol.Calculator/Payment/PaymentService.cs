@@ -20,6 +20,29 @@ namespace Portol.Calculator.Payment
             StripeConfiguration.SetApiKey(secretKey);
         }
 
+        public async  Task<string> ChargeCustomer(string customerId, string paymentMethodId, decimal amount)
+        {
+            try
+            {
+                //Australia so far
+                long serviceAmount = (long)(Math.Round(amount,2) * 100);
+                var options = new ChargeCreateOptions
+                {
+                    Amount = serviceAmount,
+                    Currency = "aud",
+                    Description = "PortolApp Service",
+                    CustomerId = customerId                    
+                      
+                };
+                var service = new ChargeService();
+                Charge charge = await service.CreateAsync(options);
+                return charge.Id;
+            }
+            catch (Exception ex)
+            {
+                throw HandleStripeExceptions(ex);
+            }
+        }
 
         public async Task<string> CreateCustomer(CustomerDto customer)
         {
@@ -45,39 +68,73 @@ namespace Portol.Calculator.Payment
             }   
         }
 
-        public async Task<string > LinkNewCreditCard(string customerServiceID, PaymentMethodDto paymentMethod)
+        //public async Task<string > LinkNewCreditCard(string customerServiceID, PaymentMethodDto paymentMethod)
+        //{
+        //    try
+        //    {               
+        //        var options = new PaymentMethodCreateOptions
+        //        {        
+        //            Type="card",
+        //            Card = new PaymentMethodCardCreateOptions
+        //            {
+        //                Cvc = paymentMethod.CVV,
+        //                ExpMonth = paymentMethod.ExpMonth,
+        //                ExpYear = paymentMethod.ExpYear,
+        //                Number = paymentMethod.CardNumber
+        //            }
+        //        };
+
+        //        var service = new PaymentMethodService();
+        //        var newPaymentMethod = await service.CreateAsync(options);
+
+        //        var optionsAttach = new PaymentMethodAttachOptions
+        //        {
+        //             CustomerId= customerServiceID
+        //        };
+
+        //         var response = await service.AttachAsync(newPaymentMethod.Id, optionsAttach);
+        //        return response.Id;
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw HandleStripeExceptions(ex);
+        //    }
+        //}
+
+        public async Task<string> LinkNewCreditCard(string customerServiceID, PaymentMethodDto paymentMethod)
         {
             try
-            {               
-                var options = new PaymentMethodCreateOptions
-                {        
-                    Type="card",
-                    Card = new PaymentMethodCardCreateOptions
+            {
+                var tokenOptions = new TokenCreateOptions
+                {
+                    Card = new CreditCardOptions
                     {
-                        Cvc = paymentMethod.CVV,
+                        Number = paymentMethod.CardNumber.Replace(" ", ""),
+                        ExpYear = paymentMethod.ExpYear ,
                         ExpMonth = paymentMethod.ExpMonth,
-                        ExpYear = paymentMethod.ExpYear,
-                        Number = paymentMethod.CardNumber
+                        Cvc = paymentMethod.CVV 
                     }
                 };
 
-                var service = new PaymentMethodService();
-                var newPaymentMethod = await service.CreateAsync(options);
+                var tokenService = new TokenService();
+                Token stripeToken = await tokenService.CreateAsync(tokenOptions);
 
-                var optionsAttach = new PaymentMethodAttachOptions
+                var carOptions = new CardCreateOptions
                 {
-                     CustomerId= customerServiceID
+                    SourceToken = stripeToken.Id
                 };
 
-                 var response = await service.AttachAsync(newPaymentMethod.Id, optionsAttach);
-                return response.Id;
-
+                var carService = new CardService();
+                var card = await carService.CreateAsync(customerServiceID, carOptions);               
+                return card.Id;
             }
             catch (Exception ex)
             {
                 throw HandleStripeExceptions(ex);
             }
         }
+
 
         public async Task<List<PaymentMethodDto>> GetCustomerPaymentMethods(string customerServiceID)
         {
@@ -90,26 +147,19 @@ namespace Portol.Calculator.Payment
 
                 List<PaymentMethodDto> result = new List<PaymentMethodDto>();
 
-                var service = new PaymentMethodService();
-                var options = new PaymentMethodListOptions
+                var service = new CardService();
+                var cards = await service.ListAsync(customerServiceID, null);                
+                if (cards != null && cards.Data?.Count>0 )
                 {
-                     CustomerId= customerServiceID,
-                     Type="card"
-                };
-
-                var payments = await service.ListAsync(options);
-
-                if(payments!=null && payments.Data?.Count>0 )
-                {
-                    payments.Data.ForEach((x) =>
+                    cards.Data.ForEach((x) =>
                     {
                         result.Add(
                             new PaymentMethodDto
                             {
-                                CardNumber = x.Card.Last4,
-                                ExpMonth = (int)x.Card.ExpMonth,
-                                ExpYear = (int)x.Card.ExpYear,
-                                CreditCardType = GetMethodType(x.Card.Brand ),
+                                CardNumber = x.Last4,
+                                ExpMonth = (int)x.ExpMonth,
+                                ExpYear = (int)x.ExpYear,
+                                CreditCardType = GetMethodType(x.Brand),
                                  CardServiceID=x.Id
                             });
                     });

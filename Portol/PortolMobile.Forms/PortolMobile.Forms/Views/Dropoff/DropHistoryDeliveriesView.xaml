@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PortolMobile.Forms.Views.Dropoff.DropHistoryDeliveriesView"
+                xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
+             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+             BackgroundColor="#F0F0F0"
+             xmlns:localResources="clr-namespace:PortolMobile.Forms.Resources"
+              x:Name="page"
+             xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
+    <controls:ExtendedContentPage.Resources>
+        <DropoffStyle:DropoffStyles/>
+    </controls:ExtendedContentPage.Resources>
+    <controls:ExtendedContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+
+
+            <!--<ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />-->
+
+
+            <Grid Margin="0,30,0,0" >
+                <BoxView   WidthRequest="3" Style="{StaticResource BoxSeparator}" VerticalOptions="Center"></BoxView>
+                <ffimageloading:CachedImage WidthRequest="80" HeightRequest="80" HorizontalOptions="Center" 
+                                        Source="resource://PortolMobile.Forms.Resources.ic_parcelbox.png?assembly=PortolMobile.Forms" />
+            </Grid>
+
+            <Label Text="{i18n:Translate History}" Margin="10,0,0,0"  Style="{StaticResource LabelBaseBlackBoldLarge}" VerticalOptions="Center" ></Label>
+            <ListView  BackgroundColor="Transparent"
+                    SeparatorVisibility="None" 
+                    SelectedItem="{Binding SelectedDelivery, Mode=TwoWay }" 
+                    CachingStrategy="RecycleElement" HasUnevenRows="true"
+                    RefreshCommand="{Binding RefreshListCommand}"
+                    IsRefreshing="{Binding IsBusy, Mode=TwoWay}" 
+                    ItemsSource="{Binding Deliveries}">
+                <ListView.ItemTemplate>
+                    <DataTemplate >
+                        <ViewCell >
+                            <Grid >
+                                <StackLayout BackgroundColor="White" Margin="0,5,0,5" VerticalOptions="EndAndExpand" >
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition></ColumnDefinition>
+                                            <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackLayout Spacing="0" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="Center" VerticalOptions="Center" >
+                                                <ffimageloading:CachedImage WidthRequest="20" HeightRequest="20" HorizontalOptions="Center" VerticalOptions="Center"
+                                                    Source="resource://PortolMobile.Forms.Resources.ic_star.png?assembly=PortolMobile.Forms" />
+
+                                                <Label Text="{Binding DriverInformation.Rating}"  Style="{StaticResource LabelBaseBlackSmall}" HorizontalOptions="Center" VerticalOptions="Center" ></Label>
+                                            </StackLayout>
+
+                                            <Label Text="{Binding CreatedDate}"  Style="{StaticResource LabelBaseBlackSmall}" HorizontalTextAlignment="Center"  FontSize="Micro" HorizontalOptions="Center" VerticalOptions="Center"  ></Label>
+                                        </StackLayout>
+
+                                        <circleIma:CircleImage Grid.Column="1" Style="{StaticResource CircleImageProfileMedium}"   HorizontalOptions="Center"  VerticalOptions="Center" 
+                                        Source="{Binding Sender.ProfilePhoto.ImageUrl}"     />
+
+                                        <StackLayout Grid.Column="2" Spacing="0" >
+                                            <Label Text="{Binding DriverInformation.Details.FirstName}" VerticalOptions="Center" FontSize="Small"  Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
+                                            <Label Text="{i18n:Translate DropPackageTo}" FontSize="Small" VerticalOptions="Center" Style="{StaticResource LabelBaseBold}"  ></Label>
+                                            <Label Text="{Binding Receiver.FirstName}" Style="{StaticResource LabelBaseBlackSmall}" FontSize="Small" VerticalOptions="Center" ></Label>
+                                            <Label Text="{Binding Description}" Style="{StaticResource LabelBaseBlackSmall}" FontSize="Small" VerticalOptions="Center" ></Label>
+                                        </StackLayout>                                       
+                                        
+                                    </Grid>                                  
+                                </StackLayout>
+
+                               
+                            </Grid>
+
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+
+        </StackLayout>
+    </controls:ExtendedContentPage.Content>
+    </controls:ExtendedContentPage>

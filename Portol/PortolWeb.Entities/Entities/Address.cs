@@ -21,8 +21,14 @@ namespace PortolWeb.Entities
         public bool IsCurrentAddress { get; set; }
         public ParentType ParentAddressType { get; set; }
         public bool IsStarterPoint { get; set; }
-        
-        public static Address Create(AddressDto addressDto, ParentType parentAddressType, IUnitOfWork uow)
+        public string Line1 { get; set; }
+        public string Line2 { get; set; }
+        public string City { get; set; }
+        public string State { get; set; }
+        public string Country { get; set; }
+        public string PostCode { get; set; }
+
+        public static Address Save(AddressDto addressDto, ParentType parentAddressType, IUnitOfWork uow)
         {
             Address address = new Address();
             address.AddressValidated = addressDto.AddressValidated;
@@ -33,7 +39,25 @@ namespace PortolWeb.Entities
             address.IsStarterPoint = addressDto.IsStarterPoint;
             address.IsCurrentAddress = addressDto.IsCurrentAddress;
             address.ParentAddressType = parentAddressType;
-            uow.AddressRepository.Insert(address);
+            address.Line1 = addressDto.Line1;
+            address.Line2 = addressDto.Line2;
+            address.City = addressDto.City;
+            address.State = addressDto.State;
+            address.Country = addressDto.Country;
+            address.PostCode = addressDto.PostCode;            
+
+            if (addressDto.AddressID == Guid.Empty)
+            {
+                address.AddressID = Guid.NewGuid();
+                uow.AddressRepository.Insert(address);
+            }
+            else
+            {
+                address.AddressID = addressDto.AddressID;
+                uow.AddressRepository.Update(address);
+            }
+
+            
             return address;
         }
 
@@ -63,6 +87,12 @@ namespace PortolWeb.Entities
             addressDto.Latitude = this.Latitude;
             addressDto.Longitude = this.Longitude;
             addressDto.ParentID  = this.ParentID;
+            addressDto.Line1 = this.Line1;
+            addressDto.Line2 = this.Line2;
+            addressDto.City = this.City;
+            addressDto.State = this.State;
+            addressDto.Country = this.Country;
+            addressDto.PostCode = this.PostCode;
             return addressDto;
         }
 

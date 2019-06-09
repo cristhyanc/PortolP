@@ -2,6 +2,7 @@
 using Portol.Common.DTO;
 using PortolMobile.Forms.Helper;
 using PortolMobile.Forms.Services.Navigation;
+using PortolMobile.Forms.ViewModels.Dropoff;
 using PortolMobile.Forms.ViewModels.Login;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,8 @@ namespace PortolMobile.Forms.ViewModels.Customer
         public ICommand EditCommand { get; private set; }
         public ICommand LogoutCommand { get; private set; }
         public ICommand PaymentMethodCommand { get; private set; }
-
+        public ICommand HistoryCommand { get; private set; }
+        
         string _userAddress;
         public string UserAddress
         {
@@ -53,7 +55,26 @@ namespace PortolMobile.Forms.ViewModels.Customer
             EditCommand = new Command((() => GoToEditPage()), () => { return !IsBusy; });
             LogoutCommand = new Command((() => Logout()), () => { return !IsBusy; });
             PaymentMethodCommand = new Command((() => GoToPaymentMethod()), () => { return !IsBusy; });
+            HistoryCommand = new Command((() => GoToHistory()), () => { return !IsBusy; });
         }
+
+        private async Task GoToHistory()
+        {
+            try
+            {
+                await this.NavigationService.NavigateToAsync<DropHistoryDeliveriesViewModel>();
+            }
+            catch (Exception ex)
+            {
+
+                ExceptionHelper.ProcessException(ex, UserDialogs, "CustomerAccountViewModel", "GoToHistory");
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
+        }
+
 
         private async Task GoToPaymentMethod()
         {
@@ -91,6 +112,7 @@ namespace PortolMobile.Forms.ViewModels.Customer
             try
             {
                 User = _sessionData.User;
+                OnPropertyChanged("Address");
             }
             catch (Exception ex)
             {

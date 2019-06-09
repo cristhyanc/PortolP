@@ -84,8 +84,9 @@ namespace PortolMobile.Forms
                 builder.RegisterType<CustomerAccountViewModel>();
                 builder.RegisterType<CustomerAccountDetailViewModel>();
                 builder.RegisterType<DropIncomingDeliveryViewModel>();
-                
+                builder.RegisterType<DropHistoryDeliveriesViewModel>();
 
+                
                 builder.Register(c => UserDialogs.Instance).As<IUserDialogs>().SingleInstance();
                 builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
 

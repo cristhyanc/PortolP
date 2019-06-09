@@ -25,8 +25,9 @@ namespace PortolWeb.Entities
         public decimal TotalCost { get; set; }
         public DateTime CreatedDate { get; set; }
         public int Rating { get; set; }
-        
+        public string PaymentID { get; set; }
 
+        
         public DeliveryStatus DeliveryStatus { get; set; }
 
         [NotMapped]
@@ -95,8 +96,8 @@ namespace PortolWeb.Entities
             deliveryDto.PickupAddress.ParentID = delivery.DeliveryID;
             deliveryDto.DropoffAddress.ParentID = delivery.DeliveryID;
 
-            Address.Create(deliveryDto.PickupAddress, ParentType.Delivery, uow);
-            Address.Create(deliveryDto.DropoffAddress, ParentType.Delivery, uow);
+            Address.Save(deliveryDto.PickupAddress, ParentType.Delivery, uow);
+            Address.Save(deliveryDto.DropoffAddress, ParentType.Delivery, uow);
             Parcel.Create(deliveryDto.Parcel, ParentType.Delivery, uow);
 
             return delivery;
@@ -192,19 +193,22 @@ namespace PortolWeb.Entities
         }
 
 
-        public static void MarkAsDelivered(Guid deliveryID, IUnitOfWork uow)
+        public static void MarkAsDelivered(Guid deliveryID, string paymentid, decimal totalCost, IUnitOfWork uow)
         {
             Delivery result = uow.DeliveryRepository.Get(x => x.DeliveryID == deliveryID);
             if (result != null)
             {
                 result.DeliveryStatus = DeliveryStatus.Delivered ;
+                result.PaymentID = paymentid;
+                result.TotalCost = totalCost;
                 uow.DeliveryRepository.Update(result);
+                result = null;
             }
             else
             {
                 throw new AppException(StringResources.DeliveryNotFound);
             }
-        }
+        }      
 
         public static DeliveryStatus GetDeliveryStatus(Guid deliveryID, IUnitOfWork uow)
         {
@@ -237,6 +241,24 @@ namespace PortolWeb.Entities
             return result;
         }
 
+        public static List<Delivery> GetSentDeliveriesByCustomer(Guid customerId, IUnitOfWork uow)
+        {
+            List<Delivery> result = new List<Delivery>();
+            List<Delivery> deliveries = uow.DeliveryRepository.GetAll(x => x.CustomerSenderID.Equals(customerId) && x.DeliveryStatus > DeliveryStatus.InProgress).ToList();
+            if (deliveries?.Count > 0)
+            {
+                foreach (var item in deliveries)
+                {
+                    var delivery = Delivery.GetDeliveryDetails(item.DeliveryID, uow);
+                    if (delivery != null)
+                    {
+                        result.Add(delivery);
+                    }
+                }
+            }
+            return result;
+        }
+
 
         public DeliveryDto ToDto()
         {
@@ -246,6 +268,8 @@ namespace PortolWeb.Entities
             delivery.Description = this.Description;
             delivery.CreatedDate = this.CreatedDate;
             delivery.Rating = this.Rating;
+            delivery.TotalCost = this.TotalCost;
+            
             if (this.DropoffAddress!=null)
             {
                 delivery.DropoffAddress = this.DropoffAddress.ToDto();
@@ -281,7 +305,12 @@ namespace PortolWeb.Entities
             {
                 delivery.Sender = this.CustomerSender.ToDto();
             }
-          
+
+            if (DriverInformation != null)
+            {
+                delivery.DriverInformation = this.DriverInformation.ToDto();
+            }
+
             delivery.TravelDistance = this.TravelDistance;
          
 

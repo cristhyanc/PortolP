@@ -21,7 +21,8 @@ namespace Portol.Common.DTO
         public decimal EstimatedCost { get; set; }
         public DeliveryStatus DeliveryStatus { get; set; }
         public int Rating { get; set; }
-
+        public decimal TotalCost { get; set; }
+        public DriverDto DriverInformation { get; set; }
 
     }
 }

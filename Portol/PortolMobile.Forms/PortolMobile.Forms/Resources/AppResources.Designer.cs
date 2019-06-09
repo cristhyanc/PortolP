@@ -268,6 +268,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Drop package to.
+        /// </summary>
+        internal static string DropPackageTo {
+            get {
+                return ResourceManager.GetString("DropPackageTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Email.
         /// </summary>
         internal static string Email {

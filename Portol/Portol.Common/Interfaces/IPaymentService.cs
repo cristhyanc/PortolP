@@ -13,5 +13,6 @@ namespace Portol.Common.Interfaces
         Task<string> CreateCustomer(CustomerDto customer);
         Task<string> LinkNewCreditCard(string customerServiceID, PaymentMethodDto paymentMethod);
         Task<List<PaymentMethodDto>> GetCustomerPaymentMethods(string customerServiceID);
+        Task<string> ChargeCustomer(string customerId, string paymentMethodId, decimal amount);
     }
 }

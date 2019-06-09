@@ -67,6 +67,11 @@ namespace PortolMobile.GeneralTest.MockupServices
             throw new NotImplementedException();
         }
 
+        public Task<bool> SendInvitationMessage(long mobileNumber, int countryCode, CustomerDto customer)
+        {
+            throw new NotImplementedException();
+        }
+
         public Task<bool> SendVerificationCode(long mobilePhoned, int code)
         {
             throw new NotImplementedException();

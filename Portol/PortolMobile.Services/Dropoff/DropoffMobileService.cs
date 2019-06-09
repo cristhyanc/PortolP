@@ -73,7 +73,12 @@ namespace PortolMobile.Services.Dropoff
             queryString["receiverID"] = receiverID.ToString();
             return await _restClient.MakeApiCall<List<DeliveryDto>>($"{Constants.BaseDropoffApiUrl}/GetPendingReceiverDeliveries", HttpMethod.Get, queryString.ToString());
         }
-
+        public async Task<List<DeliveryDto>> GetSentDeliveriesByCustomer(Guid customerId)
+        {
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["customerId"] = customerId.ToString();
+            return await _restClient.MakeApiCall<List<DeliveryDto>>($"{Constants.BaseDropoffApiUrl}/GetSentDeliveriesByCustomer", HttpMethod.Get, queryString.ToString());
+        }
         public async Task<Guid> CreateDeliveryRequest(DeliveryDto dropoffParcel)
         {
             return await _restClient.MakeApiCallRaw<Guid>($"{Constants.BaseDropoffApiUrl}/CreateDropoffRequest", HttpMethod.Post , dropoffParcel);

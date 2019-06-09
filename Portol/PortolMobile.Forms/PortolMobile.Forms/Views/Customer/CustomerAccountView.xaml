@@ -72,6 +72,9 @@
             </StackLayout>
 
             <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="5,0,0,15" VerticalOptions="EndAndExpand" >
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding HistoryCommand}"></TapGestureRecognizer>
+                </StackLayout.GestureRecognizers>
                 <Label Text="{i18n:Translate History}" Margin="5" Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
             </StackLayout>
 

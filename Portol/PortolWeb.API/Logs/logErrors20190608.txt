@@ -121,3 +121,85 @@ Error Number:2705,State:4,Class:16
 2019-06-08 11:43:27.553 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
 2019-06-08 11:43:27.569 +10:00 [WRN] No XML encryptor configured. Key "90e00522-1458-4d0c-aebc-7bb8cdbd3172" may be persisted to storage in unencrypted form.
 2019-06-08 11:43:27.709 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-06-08 18:07:41.693 +10:00 [WRN] No type was specified for the decimal column 'EstimatedCost' on entity type 'Delivery'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:07:41.780 +10:00 [WRN] No type was specified for the decimal column 'TotalCost' on entity type 'Delivery'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:07:41.781 +10:00 [WRN] No type was specified for the decimal column 'TravelDistance' on entity type 'Delivery'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:07:41.781 +10:00 [WRN] No type was specified for the decimal column 'Rating' on entity type 'Driver'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:07:41.781 +10:00 [WRN] No type was specified for the decimal column 'Worth' on entity type 'Parcel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:07:41.781 +10:00 [WRN] No type was specified for the decimal column 'CostPerkilometre' on entity type 'VehiculeType'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:07:41.781 +10:00 [WRN] No type was specified for the decimal column 'StartingFee' on entity type 'VehiculeType'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:07:41.781 +10:00 [WRN] No type was specified for the decimal column 'CostPerExtraUnit' on entity type 'VehiculeTypeRange'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:07:41.781 +10:00 [WRN] No type was specified for the decimal column 'MaximumValue' on entity type 'VehiculeTypeRange'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:07:41.781 +10:00 [WRN] No type was specified for the decimal column 'MinimumValue' on entity type 'VehiculeTypeRange'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:07:41.781 +10:00 [WRN] No type was specified for the decimal column 'Unit' on entity type 'VehiculeTypeRange'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:07:42.262 +10:00 [ERR] Failed executing DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [dbo].[tblAddress](	[AddressID] [uniqueidentifier] NOT NULL,	[ParentID] [uniqueidentifier] NOT NULL,	[AddressValidated] [bit] NOT NULL,	[FullAddress] [nvarchar](500) NOT NULL,	[Latitude] [nvarchar](15) NULL,	[Longitude] [nvarchar](15) NULL,	[IsCurrentAddress] [bit] NOT NULL,	[ParentAddressType] [int] NOT NULL,	[IsStarterPoint] [bit] NOT NULL, CONSTRAINT [PK_tblAddress] PRIMARY KEY CLUSTERED (	[AddressID] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]) ON [PRIMARY]
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'tblAddress' in the database.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:47b63aec-7e77-4c58-913f-6d91e3bfad08
+Error Number:2714,State:6,Class:16
+2019-06-08 18:07:42.391 +10:00 [ERR] Failed executing DbCommand (13ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE dbo.tblDriver ADD	TotalTrips bigint NOT NULL CONSTRAINT DF_tblDriver_TotalTrips DEFAULT 0
+System.Data.SqlClient.SqlException (0x80131904): Column names in each table must be unique. Column name 'TotalTrips' in table 'dbo.tblDriver' is specified more than once.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:47b63aec-7e77-4c58-913f-6d91e3bfad08
+Error Number:2705,State:4,Class:16
+2019-06-08 18:07:42.464 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-06-08 18:07:42.464 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-06-08 18:07:42.484 +10:00 [WRN] No XML encryptor configured. Key "17d3ea83-6ab3-40a6-8944-c665e1d42c34" may be persisted to storage in unencrypted form.
+2019-06-08 18:07:42.825 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-06-08 18:14:24.855 +10:00 [WRN] No type was specified for the decimal column 'EstimatedCost' on entity type 'Delivery'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:14:24.949 +10:00 [WRN] No type was specified for the decimal column 'TotalCost' on entity type 'Delivery'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:14:24.949 +10:00 [WRN] No type was specified for the decimal column 'TravelDistance' on entity type 'Delivery'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:14:24.949 +10:00 [WRN] No type was specified for the decimal column 'Rating' on entity type 'Driver'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:14:24.949 +10:00 [WRN] No type was specified for the decimal column 'Worth' on entity type 'Parcel'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:14:24.949 +10:00 [WRN] No type was specified for the decimal column 'CostPerkilometre' on entity type 'VehiculeType'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:14:24.949 +10:00 [WRN] No type was specified for the decimal column 'StartingFee' on entity type 'VehiculeType'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:14:24.949 +10:00 [WRN] No type was specified for the decimal column 'CostPerExtraUnit' on entity type 'VehiculeTypeRange'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:14:24.949 +10:00 [WRN] No type was specified for the decimal column 'MaximumValue' on entity type 'VehiculeTypeRange'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:14:24.949 +10:00 [WRN] No type was specified for the decimal column 'MinimumValue' on entity type 'VehiculeTypeRange'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:14:24.949 +10:00 [WRN] No type was specified for the decimal column 'Unit' on entity type 'VehiculeTypeRange'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values using 'HasColumnType()'.
+2019-06-08 18:14:25.449 +10:00 [ERR] Failed executing DbCommand (15ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE [dbo].[tblAddress](	[AddressID] [uniqueidentifier] NOT NULL,	[ParentID] [uniqueidentifier] NOT NULL,	[AddressValidated] [bit] NOT NULL,	[FullAddress] [nvarchar](500) NOT NULL,	[Latitude] [nvarchar](15) NULL,	[Longitude] [nvarchar](15) NULL,	[IsCurrentAddress] [bit] NOT NULL,	[ParentAddressType] [int] NOT NULL,	[IsStarterPoint] [bit] NOT NULL, CONSTRAINT [PK_tblAddress] PRIMARY KEY CLUSTERED (	[AddressID] ASC)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]) ON [PRIMARY]
+System.Data.SqlClient.SqlException (0x80131904): There is already an object named 'tblAddress' in the database.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:7474f5a7-5f38-4fa8-8ec7-d6086929532a
+Error Number:2714,State:6,Class:16
+2019-06-08 18:14:25.586 +10:00 [ERR] Failed executing DbCommand (16ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+ALTER TABLE dbo.tblDriver ADD	TotalTrips bigint NOT NULL CONSTRAINT DF_tblDriver_TotalTrips DEFAULT 0
+System.Data.SqlClient.SqlException (0x80131904): Column names in each table must be unique. Column name 'TotalTrips' in table 'dbo.tblDriver' is specified more than once.
+   at System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at System.Data.SqlClient.SqlCommand.RunExecuteNonQueryTds(String methodName, Boolean async, Int32 timeout, Boolean asyncWrite)
+   at System.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean asyncWrite, String methodName)
+   at System.Data.SqlClient.SqlCommand.ExecuteNonQuery()
+   at Microsoft.EntityFrameworkCore.Storage.Internal.RelationalCommand.Execute(IRelationalConnection connection, DbCommandMethod executeMethod, IReadOnlyDictionary`2 parameterValues)
+ClientConnectionId:7474f5a7-5f38-4fa8-8ec7-d6086929532a
+Error Number:2705,State:4,Class:16
+2019-06-08 18:14:25.695 +10:00 [WRN] Using an in-memory repository. Keys will not be persisted to storage.
+2019-06-08 18:14:25.695 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
+2019-06-08 18:14:25.720 +10:00 [WRN] No XML encryptor configured. Key "0b16ab79-f13a-4d59-822e-a47a623dcdba" may be persisted to storage in unencrypted form.
+2019-06-08 18:14:26.132 +10:00 [WRN] Failed to determine the https port for redirect.

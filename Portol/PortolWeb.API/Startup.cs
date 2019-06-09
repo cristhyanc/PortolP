@@ -17,6 +17,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Portol.Calculator.Delivery;
+using Portol.Calculator.Map;
+using Portol.Calculator.Payment;
 using Portol.Common.Interfaces;
 using Portol.Common.Interfaces.PortolWeb;
 using PortolWeb.API.Helper;
@@ -44,18 +46,18 @@ namespace PortolWeb.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors();
-           
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
 
             var appSettings = appSettingsSection.Get<AppSettings>();
-           
+
             var key = Encoding.ASCII.GetBytes(appSettings.Secret);
 
             services.AddDbContext<DataContext>(x => x.UseSqlServer(appSettings.ConnectionString));
-           
+
             services.AddAuthentication(x =>
             {
                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -89,19 +91,23 @@ namespace PortolWeb.API
                 };
             });
 
-            var smsApi = Sinch.ServerSdk.SinchFactory.CreateApiFactory (appSettings.SinchAppKey, appSettings.SinchAppSecret).CreateSmsApi();
+            var smsApi = Sinch.ServerSdk.SinchFactory.CreateApiFactory(appSettings.SinchAppKey, appSettings.SinchAppSecret).CreateSmsApi();
 
             services.AddSingleton<AppSettings>(appSettings);
-            services.AddSingleton<ISmsApi>(smsApi);
+
+            services.AddScoped<ISmsApi>(x => Sinch.ServerSdk.SinchFactory.CreateApiFactory(appSettings.SinchAppKey, appSettings.SinchAppSecret).CreateSmsApi());
             services.AddScoped<ISmsService, SmsService>();
             services.AddScoped<ICustomerService, CustomerService>();
             services.AddScoped<IDeliveryService, DeliveryService>();
             services.AddScoped<IDatabaseManagement, DatabaseManagement>();
             services.AddScoped<IDataContext, DataContext>();
-            services.AddScoped<IUnitOfWork, UnitOfWork>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();            
             services.AddScoped<IImageManager, ImageManager>();
             services.AddScoped<IDeliveryCalculator, DeliveryCalculator>();
+            services.AddScoped<IPaymentService>(x => new PaymentService("sk_test_RCIYxJRaaXpKMgOIJnAvCrle00HTrJc29p", "pk_test_anYBo8LB4sisfeaXq8VvJOOJ00z6gDKo7R"));
+            services.AddScoped<IMapService>(x => new MapService("AjPaETRxkyP3rSDJ7vu2nce9mlY66bgZu0DvY_eIVpeSM5PES53q_9IGzOrxahcL"));
             
+
             // loggerFactory.AddSerilog();
         }
 

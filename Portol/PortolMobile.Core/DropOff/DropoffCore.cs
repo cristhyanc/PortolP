@@ -24,6 +24,11 @@ namespace PortolMobile.Core.DropOff
         {
             return await _deliveryService.GetPendingReceiverDeliveries(receiverID);
         }
+
+        public async Task<List<DeliveryDto>> GetSentDeliveriesByCustomer(Guid customerId)
+        {
+            return await _deliveryService.GetSentDeliveriesByCustomer(customerId);
+        }
         public async Task<Guid> CreateDropoffRequest(DeliveryDto dropoffParcel)
         {
             return await _deliveryService.CreateDeliveryRequest(dropoffParcel);

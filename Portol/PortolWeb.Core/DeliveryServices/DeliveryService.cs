@@ -1,6 +1,7 @@
 ﻿using Portol.Common;
 using Portol.Common.DTO;
 using Portol.Common.Helper;
+using Portol.Common.Interfaces;
 using Portol.Common.Interfaces.PortolWeb;
 using PortolWeb.Entities;
 using Serilog;
@@ -15,10 +16,14 @@ namespace PortolWeb.Core.DeliveryServices
     {
         IUnitOfWork _uow;
         IImageManager _imageManager;
-        public DeliveryService(IUnitOfWork uow, IImageManager imageManager)
+        IPaymentService _paymentService;
+        IDeliveryCalculator _deliveryCalculator;
+        public DeliveryService(IUnitOfWork uow, IImageManager imageManager, IPaymentService paymentService, IDeliveryCalculator deliveryCalculator  )
         {
             _uow = uow;
             _imageManager = imageManager;
+            _paymentService = paymentService;
+            _deliveryCalculator = deliveryCalculator;
         }
 
         public void AssignDriver()
@@ -96,6 +101,19 @@ namespace PortolWeb.Core.DeliveryServices
             return result;
         }
 
+        public List<DeliveryDto> GetSentDeliveriesByCustomer(Guid customerId)
+        {
+            List<DeliveryDto> result = null;
+            var deliveries = Delivery.GetSentDeliveriesByCustomer(customerId, _uow);
+            if (deliveries?.Count > 0)
+            {
+                result = deliveries.Select(x => x.ToDto()).ToList();
+            }
+
+            return result;
+        }
+
+        
         public DeliveryDto GetSendertDeliveryInProgress(Guid customerID)
         {
           
@@ -126,10 +144,34 @@ namespace PortolWeb.Core.DeliveryServices
             _uow.SaveChanges();
         }
 
-        public void MarkAsDelivered(Guid deliveryID)
+        public async Task MarkAsDelivered(Guid deliveryID)
         {
-            Delivery.MarkAsDelivered(deliveryID, _uow);
-            _uow.SaveChanges();
+           
+            //calculate value
+            var delivery = Delivery.GetDeliveryDetails(deliveryID, _uow).ToDto();
+            string paymentid=null;
+            if (delivery != null)
+            {
+                if (delivery.DriverInformation?.CurrentVehicule?.VehiculeType == null)
+                {
+                    throw new AppException(StringResources.DriverNotFound);
+                }
+
+                delivery.TotalCost = await _deliveryCalculator.CalculatePrice(delivery.Parcel, delivery.PickupAddress, delivery.DropoffAddress, delivery.DriverInformation.CurrentVehicule.VehiculeType);
+                try
+                {
+                    var paymentMethod = delivery.Sender.PaymentMethods?.Where(x => x.PaymentMethodID == delivery.PaymentMethod?.PaymentMethodID).FirstOrDefault();
+                    paymentid = await _paymentService.ChargeCustomer(delivery.Sender.CustomerPaymentID, paymentMethod?.CardServiceID, delivery.TotalCost);
+                }
+                catch (Exception ex)
+                {
+                    Log.Error(ex, "DeliveryService.MarkAsDelivered");
+                }              
+
+                Delivery.MarkAsDelivered(deliveryID, paymentid, delivery.TotalCost, _uow);
+                _uow.SaveChanges();
+            }
+
         }
     }
 }

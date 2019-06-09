@@ -156,7 +156,7 @@ namespace Portol.Common.Helper
         PickingUp = 3,
         InProgress=4,
         Delivered = 5,
-        Ranked = 6,
+        Ranked = 6,      
         Rejected = 7,
         Cancelled = 8,
     }

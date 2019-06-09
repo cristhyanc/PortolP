@@ -426,4 +426,7 @@
   <data name="ComingDeliveries" xml:space="preserve">
     <value>Coming Deliveries</value>
   </data>
+  <data name="DropPackageTo" xml:space="preserve">
+    <value>Drop package to</value>
+  </data>
 </root>

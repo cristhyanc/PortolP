@@ -29,17 +29,33 @@ namespace PortolWeb.DA.Repositories
 
         public IEnumerable<T> GetAll(Expression<Func<T, bool>> expression)
         {
-            return _context.Set<T>().Where(expression);
+            var result = _context.Set<T>().Where(expression);
+            //if (result != null)
+            //{
+                
+            //    _context.Entry(result).State = EntityState.Detached;
+            //}
+            return result;
         }
 
         public virtual T Get(Guid id)
         {          
-            return _context.Find<T>(id);           
+            var result= _context.Find<T>(id);
+            if(result!=null)
+            {
+                _context.Entry(result).State = EntityState.Detached;
+            }            
+            return result;
         }
 
         public virtual T Get(Expression<Func<T, bool>> expression)
         {           
-            return _context.Set<T>().Where(expression).FirstOrDefault();
+            var result= _context.Set<T>().Where(expression).FirstOrDefault();
+            if (result != null)
+            {
+                _context.Entry(result).State = EntityState.Detached;
+            }
+            return result;
         }
 
         public virtual void Insert(T entity)

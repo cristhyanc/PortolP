@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Text;
 
 namespace PortolWeb.Entities
@@ -29,7 +30,8 @@ namespace PortolWeb.Entities
         public string CustomerPaymentID { get; set; }
         public string ProfilePhoto { get; set; }
 
-        
+        [NotMapped]
+        public List<PaymentMethod> PaymentMethods { get; set; }
 
         [NotMapped]
         public Address CurrentAddress { get; set; }
@@ -74,7 +76,7 @@ namespace PortolWeb.Entities
             if (customer != null)
             {
                 customer.CurrentAddress = _uow.AddressRepository.Get(x => x.ParentID == customer.CustomerID && x.ParentAddressType == ParentType.Customer);
-
+                customer.PaymentMethods = _uow.PaymentMethodRepository.GetAll(x => x.CustomerID == customer.CustomerID).ToList();
             }
             return customer;
         }
@@ -97,12 +99,12 @@ namespace PortolWeb.Entities
             result.IsGuess = this.IsGuess;
             if (this.CurrentAddress != null)
             {
-                result.CustomerAddress.AddressID = this.CurrentAddress.AddressID;
-                result.CustomerAddress.ParentID = this.CurrentAddress.ParentID;
-                result.CustomerAddress.AddressValidated = this.CurrentAddress.AddressValidated;
-                result.CustomerAddress.FullAddress = this.CurrentAddress.FullAddress;
-                result.CustomerAddress.Latitude = this.CurrentAddress.Latitude;
-                result.CustomerAddress.Longitude = this.CurrentAddress.Longitude;
+                result.CustomerAddress = this.CurrentAddress.ToDto();               
+            }
+
+            if(PaymentMethods?.Count>0)
+            {
+                result.PaymentMethods = this.PaymentMethods.Select(x => x.ToDto()).ToList();
             }
 
             return result;
@@ -132,6 +134,14 @@ namespace PortolWeb.Entities
             user.PasswordHash = dbuser.PasswordHash;
             user.PasswordSalt = dbuser.PasswordSalt;
             uow.CustomerRepository.Update(user);
+
+            if (user.CurrentAddress != null)
+            {
+                newUser.CustomerAddress.IsCurrentAddress = true;
+                newUser.CustomerAddress.ParentID = user.CustomerID;
+                user.CurrentAddress = Address.Save(newUser.CustomerAddress, ParentType.Customer, uow);
+            }
+
             return true;
         }
 
@@ -150,18 +160,7 @@ namespace PortolWeb.Entities
             user.PhoneCountryCode = newUser.PhoneCountryCode;
             user.CustomerPaymentID = newUser.CustomerPaymentID;
             user.PhoneNumber = newUser.PhoneNumber;
-            user.IsGuess = user.IsGuess;
-            if (newUser.CustomerAddress != null)
-            {
-                user.CurrentAddress = new Address();
-                user.CurrentAddress.ParentID = newUser.CustomerID;
-                user.CurrentAddress.FullAddress = newUser.CustomerAddress.FullAddress;
-                user.CurrentAddress.Latitude = newUser.CustomerAddress.Latitude;
-                user.CurrentAddress.Longitude = newUser.CustomerAddress.Longitude;
-                user.CurrentAddress.IsCurrentAddress = true;
-                user.CurrentAddress.ParentAddressType = ParentType.Customer;
-                user.CurrentAddress.AddressValidated = newUser.CustomerAddress.AddressValidated;
-            }
+            user.IsGuess = user.IsGuess;          
 
             if (user.DOB == DateTime.MinValue)
             {
@@ -219,7 +218,7 @@ namespace PortolWeb.Entities
             {
                 newUser.CustomerAddress.IsCurrentAddress = true;
                 newUser.CustomerAddress.ParentID = user.CustomerID;
-                user.CurrentAddress = Address.Create(newUser.CustomerAddress, ParentType.Customer, uow);
+                user.CurrentAddress = Address.Save(newUser.CustomerAddress, ParentType.Customer, uow);
             }
             return user;
         }

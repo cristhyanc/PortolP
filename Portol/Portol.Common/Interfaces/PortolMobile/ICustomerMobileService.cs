@@ -19,5 +19,7 @@ namespace Portol.Common.Interfaces.PortolMobile
         Task<bool> SendVerificationCode(long mobilePhoned, Int32 code);
         Task<bool> VerifyCode(long mobilePhoned, Int32 countryCode, Int32 code);
         Task<bool> ResetNewPassword(long mobilePhoned, string newPassword);
+        Task<bool> SendInvitationMessage(long mobileNumber, Int32 countryCode, CustomerDto customer);
+
     }
 }

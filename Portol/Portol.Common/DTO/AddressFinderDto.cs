@@ -76,21 +76,21 @@ namespace Portol.Common.DTO
             result.FullAddress = this.full_address;
             result.Latitude = this.latitude;
             result.Longitude = this.longitude;
-            //if (!string.IsNullOrEmpty(address_line_2))
-            //{
-            //    result.FlatNumber = address_line_1;
-            //    result.StreetName = address_line_2;
-            //}
-            //else
-            //{
-            //    result.StreetName = address_line_1;
-            //}
+            if (!string.IsNullOrEmpty(address_line_2))
+            {
+                result.Line1  = address_line_1;
+                result.Line2  = address_line_2;
+            }
+            else
+            {
+                result.Line1  = address_line_1;
+            }
 
-            //result.State = state_territory;
-            //result.Suburb = locality_name;
-            //result.PostCode = postcode;
+            result.State = state_territory;
+            result.City = locality_name;
+            result.PostCode = postcode;
 
-            // result.Country = "AU";
+            result.Country = "AU";
             return result;
         }
     }

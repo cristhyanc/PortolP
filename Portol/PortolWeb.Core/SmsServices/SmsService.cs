@@ -2,6 +2,7 @@
 using Portol.Common.Helper;
 using Portol.Common.Interfaces.PortolWeb;
 using PortolWeb.Entities;
+using Serilog;
 using Sinch.ServerSdk;
 using Sinch.ServerSdk.Messaging;
 using System;
@@ -33,32 +34,40 @@ namespace PortolWeb.Core.SmsServices
             CodeVerification codeVeri = new CodeVerification();
             codeVeri.CountryCode = countryCode;
 
-            //if (!countryCode.Contains("+"))
-            //{
             codeNumber = "+" + countryCode.ToString() + mobileNumber.ToString();
-            //}
 
-            //try
-            //{
-                Random random = new Random();
-                int code = random.Next(1000, 9999);
-                string fullNumber = codeNumber;
-                //TODO: string resource
-                var result = await _smsApi.Sms(fullNumber, "Your SMS Code from Portol is: " + code.ToString()).Send();
+            Random random = new Random();
+            int code = random.Next(1000, 9999);
+            string fullNumber = codeNumber;
+
+            var result = await _smsApi.Sms(fullNumber, "Your SMS Code from Portol is: " + code.ToString()).Send();
+            await Task.Delay(TimeSpan.FromSeconds(10)); // May take a second or two to be delivered.
+
+            var smsMessageStatusResponse = await _smsApi.GetSmsStatus(result.MessageId);
+            codeVeri.CodeNumber = code;
+            codeVeri.PhoneNumber = mobileNumber;
+            _uow.CodeVerificationRepository.Insert(codeVeri);
+            _uow.SaveChanges();
+        }
+
+        public async Task SendMessage(long mobileNumber, Int32 countryCode, string fullName, string message)
+        {
+            if (mobileNumber == 0 || countryCode == 0)
+            {
+                throw new AppException(StringResources.MobileNumberRequiered);
+            }
+
+            try
+            {               
+                string fullNumber = "+" + countryCode.ToString() + mobileNumber.ToString();
+                var result = await _smsApi.Sms(fullNumber, message).Send();
                 await Task.Delay(TimeSpan.FromSeconds(10)); // May take a second or two to be delivered.
-
                 var smsMessageStatusResponse = await _smsApi.GetSmsStatus(result.MessageId);
-                codeVeri.CodeNumber = code;
-                codeVeri.PhoneNumber = mobileNumber;
-                _uow.CodeVerificationRepository.Insert(codeVeri);
-                _uow.SaveChanges();
-            //}
-            //catch (Exception ex)
-            //{
-
-            //    throw ex;
-            //}
-          
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "SmsService.SendMessage");
+            }         
         }
     }
 }

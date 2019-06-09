@@ -109,6 +109,27 @@ namespace PortolWeb.API.Controllers
             }
         }
 
+        [HttpGet("GetSentDeliveriesByCustomer")]
+        public IActionResult GetSentDeliveriesByCustomer([FromQuery] Guid customerId)
+        {
+            try
+            {
+
+                var result = _deliveryService.GetSentDeliveriesByCustomer(customerId);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "DropoffController.GetSentDeliveriesByCustomer");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
+
         [HttpGet("GetSendertDeliveryInProgress")]
         public IActionResult GetSendertDeliveryInProgress([FromQuery] Guid customerID)
         {
@@ -196,7 +217,7 @@ namespace PortolWeb.API.Controllers
         {
             try
             {
-                _deliveryService.MarkAsDelivered(deliveryId);
+                _deliveryService.MarkAsDelivered(deliveryId).Wait();
                 return Ok(true);
             }
             catch (AppException ex)

@@ -13,55 +13,51 @@
              xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Content>
         <StackLayout  Spacing="0" Padding="0" >
-            
-            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
-            
+           
             <Grid VerticalOptions="Start">
                 <Image Source="ic_redbacground.png" Aspect="AspectFit"  VerticalOptions="StartAndExpand"/>
-                
-                    <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"   VerticalOptions="Center" HorizontalOptions="Center"  HeightRequest="70" WidthRequest="70"
+
+                <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"   VerticalOptions="Center" HorizontalOptions="Center"  HeightRequest="70" WidthRequest="70"
                        Source="{Binding ProfilePicture}"  
                                            x:Name="ProfileImage"  />
-              
+
             </Grid>
-          
-                <Grid VerticalOptions="FillAndExpand " Margin="0,20,0,0">
-                    <StackLayout BackgroundColor="White" Margin="0,20,0,30" VerticalOptions="EndAndExpand" >
 
-                        <StackLayout Margin="70,0,0,0">
-                            <Label Text="{Binding Delivery.Sender.FullName}"  Style="{StaticResource LabelBaseBlackBold}"  ></Label>
-                            <Label Text="{Binding Delivery.PickupAddress.FullAddress}"   Style="{StaticResource LabelBaseBlackSmall}" ></Label>
-                            <Label Text="{i18n:Translate HasSentPackageTo}"  Style="{StaticResource LabelBaseBold}"  ></Label>
-                            <Label Text="{Binding Delivery.DropoffAddress.FullAddress}"  Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
-                            <Label Text="{i18n:Translate Message}"  Style="{StaticResource LabelBaseBlackBold}"  ></Label>
-                            <Label Text="{Binding Delivery.Description}" Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
-                        </StackLayout>
+            <Grid VerticalOptions="FillAndExpand " Margin="0,20,0,0">
+                <StackLayout BackgroundColor="White" Margin="0,20,0,30" VerticalOptions="StartAndExpand" >
+                    <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+                    <StackLayout Margin="70,0,0,0">
+                        <Label Text="{Binding Delivery.Sender.FullName}"  Style="{StaticResource LabelBaseBlackBold}"  ></Label>
+                        <Label Text="{Binding Delivery.PickupAddress.FullAddress}"   Style="{StaticResource LabelBaseBlackSmall}" ></Label>
+                        <Label Text="{i18n:Translate HasSentPackageTo}"  Style="{StaticResource LabelBaseBold}"  ></Label>
+                        <Label Text="{Binding Delivery.DropoffAddress.FullAddress}"  Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
+                        <Label Text="{i18n:Translate Message}"  Style="{StaticResource LabelBaseBlackBold}"  ></Label>
+                        <Label Text="{Binding Delivery.Description}" Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
+                    </StackLayout>
 
-                        <maps:Map VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  HeightRequest="250"   PropertyChanged="MyMap_PropertyChanged"
+                    <maps:Map VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  HeightRequest="250"   PropertyChanged="MyMap_PropertyChanged"
                           x:Name="MyMap"
                           IsShowingUser="true"
                           ItemsSource="{Binding Locations}"
                           MapType="Street" >
-                            <maps:Map.ItemTemplate>
-                                <DataTemplate>
-                                    <maps:Pin Position="{Binding Position}"
+                        <maps:Map.ItemTemplate>
+                            <DataTemplate>
+                                <maps:Pin Position="{Binding Position}"
                               Address="{Binding Address}"
                               Label="{Binding Label}" />
-                                </DataTemplate>
-                            </maps:Map.ItemTemplate>
-                        </maps:Map>
+                            </DataTemplate>
+                        </maps:Map.ItemTemplate>
+                    </maps:Map>
 
-                      <Button Text="Delivered" WidthRequest="100" Margin="35,5,5,5" HorizontalOptions="Start" Style="{StaticResource ProfileButtonStyle}" Command="{Binding DeliveredCommand }">
+                    <Button Text="Delivered" WidthRequest="100" Margin="35,5,5,5" HorizontalOptions="Start" Style="{StaticResource ProfileButtonStyle}" Command="{Binding DeliveredCommand }">
 
-                      </Button>
+                    </Button>
 
-                    </StackLayout>
-
-
-
-                    <circleIma:CircleImage Style="{StaticResource CircleImageProfileMedium}" Margin="10,0,0,0"  HorizontalOptions="Start"  VerticalOptions="StartAndExpand" 
+                </StackLayout>
+                <circleIma:CircleImage Style="{StaticResource CircleImageProfileMedium}" Margin="10,0,0,0"  HorizontalOptions="Start"  VerticalOptions="StartAndExpand" 
                       Source="{Binding Delivery.Sender.ProfilePhoto.ImageUrl}"     />
-                </Grid> 
+
+            </Grid>
         </StackLayout>
     </controls:ExtendedContentPage.Content>
 </controls:ExtendedContentPage>

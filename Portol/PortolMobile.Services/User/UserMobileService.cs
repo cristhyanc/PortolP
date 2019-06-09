@@ -83,8 +83,20 @@ namespace PortolMobile.Services.User
 
         public async Task<bool> SendVerificationCode(long mobilePhoned, Int32 code)
         {
-            CustomerDto user = new CustomerDto { PhoneNumber = mobilePhoned, PhoneCountryCode = code };
-            return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/SendVerificationCode", HttpMethod.Post, user);
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["phoneNumber"] = mobilePhoned.ToString();
+            queryString["phoneCountryCode"] = code.ToString();
+          
+            return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/SendVerificationCode", HttpMethod.Get, queryString);
+        }
+
+        public async Task<bool> SendInvitationMessage(long mobileNumber, Int32 countryCode, CustomerDto customer )
+        {
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["phoneNumber"] = mobileNumber.ToString();
+            queryString["phoneCountryCode"] = countryCode.ToString();
+            queryString["fullName"] = customer.FullName;
+            return await _restClient.MakeApiCall($"{Constants.BaseUserApiUrl}/SendInvitationMessage", HttpMethod.Get, queryString);
         }
 
     }

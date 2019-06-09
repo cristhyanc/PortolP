@@ -8,5 +8,6 @@ namespace Portol.Common.Interfaces.PortolWeb
     public interface ISmsService
     {
         Task SendNewCode(long mobileNumber, Int32 countryCode);
+        Task SendMessage(long mobileNumber, Int32 countryCode, string fullName, string message);
     }
 }

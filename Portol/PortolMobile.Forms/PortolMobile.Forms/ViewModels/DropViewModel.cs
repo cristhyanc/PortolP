@@ -102,8 +102,8 @@ namespace PortolMobile.Forms.ViewModels
                 ExceptionHelper.ProcessException(ex, UserDialogs, "DropViewModel", "DropViewModel");
             }
 
-            this.EmailMobileNumber = "0405593357";
-            this.ReceiverName = "Sophie";
+            //this.EmailMobileNumber = "0405593357";
+            //this.ReceiverName = "Sophie";
 
         }
 
@@ -190,9 +190,9 @@ namespace PortolMobile.Forms.ViewModels
                 {
                     return;
                 }
-
+                
                 this.UserDialogs.ShowLoading();
-
+                this.ReceiverName = "";
                 CustomerDto customer = null;
                 long number = 0;
 
@@ -255,7 +255,19 @@ namespace PortolMobile.Forms.ViewModels
 
                 if (customer == null)
                 {
-                    this.UserDialogs.Alert(StringResources.PersonNoRegistered, StringResources.Validation);
+                    if (number > 0)
+                    {
+                        if (await UserDialogs.ConfirmAsync(StringResources.InvitePersonQuestion))
+                        {
+                            await _customerService.SendInvitationMessage(number, _sessionData.User.PhoneCountryCode, _sessionData.User);
+                        }
+                    }
+                    else
+                    {
+                        this.UserDialogs.Alert(StringResources.PersonNoRegistered, StringResources.Validation);
+
+                    }
+                   
                     return;
                 }
 
