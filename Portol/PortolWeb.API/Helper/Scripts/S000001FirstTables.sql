@@ -1,5 +1,6 @@
 
-/****** Object:  Table [dbo].[tblAddress]    Script Date: 02/06/2019 9:53:15 AM ******/
+GO
+/****** Object:  Table [dbo].[tblAddress]    Script Date: 10/06/2019 8:31:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -14,13 +15,19 @@ CREATE TABLE [dbo].[tblAddress](
 	[IsCurrentAddress] [bit] NOT NULL,
 	[ParentAddressType] [int] NOT NULL,
 	[IsStarterPoint] [bit] NOT NULL,
+	[City] [nvarchar](20) NOT NULL,
+	[Country] [nvarchar](20) NOT NULL,
+	[PostCode] [nvarchar](20) NOT NULL,
+	[State] [nvarchar](20) NOT NULL,
+	[Line1] [nvarchar](20) NULL,
+	[Line2] [nvarchar](20) NULL,
  CONSTRAINT [PK_tblAddress] PRIMARY KEY CLUSTERED 
 (
 	[AddressID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblBusiness]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblBusiness]    Script Date: 10/06/2019 8:31:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -34,7 +41,7 @@ CREATE TABLE [dbo].[tblBusiness](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblCodeVerification]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblCodeVerification]    Script Date: 10/06/2019 8:31:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -51,7 +58,7 @@ CREATE TABLE [dbo].[tblCodeVerification](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblCustomer]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblCustomer]    Script Date: 10/06/2019 8:31:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -77,7 +84,7 @@ CREATE TABLE [dbo].[tblCustomer](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblDelivery]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblDelivery]    Script Date: 10/06/2019 8:31:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -94,13 +101,15 @@ CREATE TABLE [dbo].[tblDelivery](
 	[DeliveryStatus] [int] NOT NULL,
 	[DriverID] [uniqueidentifier] NULL,
 	[CreatedDate] [datetime] NOT NULL,
+	[Rating] [int] NOT NULL,
+	[PaymentID] [nvarchar](50) NULL,
  CONSTRAINT [PK_tblDelivery] PRIMARY KEY CLUSTERED 
 (
 	[DeliveryID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblDriver]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblDriver]    Script Date: 10/06/2019 8:31:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -109,14 +118,15 @@ CREATE TABLE [dbo].[tblDriver](
 	[DirverLicenceNumber] [nvarchar](50) NOT NULL,
 	[CustomerID] [uniqueidentifier] NOT NULL,
 	[IsOnDuty] [bit] NOT NULL,
-	[Rating] [decimal](2, 1) NOT NULL,
+	[Rating] [decimal](4, 2) NOT NULL,
+	[TotalTrips] [bigint] NOT NULL,
  CONSTRAINT [PK_tblDriver_1] PRIMARY KEY CLUSTERED 
 (
 	[CustomerID] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblGallery]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblGallery]    Script Date: 10/06/2019 8:31:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -133,7 +143,7 @@ CREATE TABLE [dbo].[tblGallery](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblLogErrors]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblLogErrors]    Script Date: 10/06/2019 8:31:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -152,7 +162,7 @@ CREATE TABLE [dbo].[tblLogErrors](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblParcel]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblParcel]    Script Date: 10/06/2019 8:31:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -172,7 +182,7 @@ CREATE TABLE [dbo].[tblParcel](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblParcelItem]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblParcelItem]    Script Date: 10/06/2019 8:31:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -188,7 +198,7 @@ CREATE TABLE [dbo].[tblParcelItem](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblPaymentMethod]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblPaymentMethod]    Script Date: 10/06/2019 8:31:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -203,7 +213,7 @@ CREATE TABLE [dbo].[tblPaymentMethod](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblPicture]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblPicture]    Script Date: 10/06/2019 8:31:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -219,7 +229,7 @@ CREATE TABLE [dbo].[tblPicture](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblScript]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblScript]    Script Date: 10/06/2019 8:31:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -235,7 +245,7 @@ CREATE TABLE [dbo].[tblScript](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblUser]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblUser]    Script Date: 10/06/2019 8:31:13 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -263,7 +273,7 @@ CREATE TABLE [dbo].[tblUser](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblVehicule]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblVehicule]    Script Date: 10/06/2019 8:31:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -280,7 +290,7 @@ CREATE TABLE [dbo].[tblVehicule](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblVehiculeType]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblVehiculeType]    Script Date: 10/06/2019 8:31:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -302,7 +312,7 @@ CREATE TABLE [dbo].[tblVehiculeType](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[tblVehiculeTypeRange]    Script Date: 02/06/2019 9:53:15 AM ******/
+/****** Object:  Table [dbo].[tblVehiculeTypeRange]    Script Date: 10/06/2019 8:31:14 PM ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -349,7 +359,13 @@ ALTER TABLE [dbo].[tblCustomer] ADD  CONSTRAINT [DF_tblCustomer_IsGuess]  DEFAUL
 GO
 ALTER TABLE [dbo].[tblDelivery] ADD  CONSTRAINT [DF_tblDelivery_DeliveryID]  DEFAULT (newid()) FOR [DeliveryID]
 GO
+ALTER TABLE [dbo].[tblDelivery] ADD  CONSTRAINT [DF_tblDelivery_Rating]  DEFAULT ((0)) FOR [Rating]
+GO
 ALTER TABLE [dbo].[tblDriver] ADD  CONSTRAINT [DF_tblDriver_IsOnDuty]  DEFAULT ((0)) FOR [IsOnDuty]
+GO
+ALTER TABLE [dbo].[tblDriver] ADD  CONSTRAINT [DF_tblDriver_Rating]  DEFAULT ((5)) FOR [Rating]
+GO
+ALTER TABLE [dbo].[tblDriver] ADD  CONSTRAINT [DF_tblDriver_TotalTrips]  DEFAULT ((0)) FOR [TotalTrips]
 GO
 ALTER TABLE [dbo].[tblGallery] ADD  CONSTRAINT [DF_tblGallery_GalleryID]  DEFAULT (newid()) FOR [GalleryID]
 GO
@@ -371,6 +387,7 @@ ALTER TABLE [dbo].[tblVehiculeType] ADD  CONSTRAINT [DF_tblVehiculeType_Vehicule
 GO
 ALTER TABLE [dbo].[tblVehiculeTypeRange] ADD  CONSTRAINT [DF_tblVehiculeTypeRange_VehiculeTypeRangeID]  DEFAULT (newid()) FOR [VehiculeTypeRangeID]
 GO
+
 INSERT [dbo].[tblCustomer] ([CustomerID], [BusinessID], [FirstName], [LastName], [Email], [DOB], [PhoneNumber], [PhoneCountryCode], [PasswordHash], [PasswordSalt], [Deleted], [IsGuess], [CustomerPaymentID]) VALUES (N'bc2a41c8-e4f6-433c-2676-08d6dbeb22de', NULL, N'Sophie', N'Chung', N'driver@portol.com.au', CAST(N'1983-12-01' AS Date), 405593357, 61, NULL, NULL, 0, 0, NULL)
 INSERT [dbo].[tblDriver] ([DirverLicenceNumber], [CustomerID], [IsOnDuty], [Rating]) VALUES (N'4565456', N'bc2a41c8-e4f6-433c-2676-08d6dbeb22de', 1, CAST(5.0 AS Decimal(2, 1)))
 INSERT [dbo].[tblVehicule] ([VehiculeID], [VehiculeTypeID], [DriverID], [IsInUsed], [Plate]) VALUES (N'eb00363b-506b-482b-acab-5bbb075c23ef', N'8bab89c9-0e24-4d05-a371-5b994328de8b', N'bc2a41c8-e4f6-433c-2676-08d6dbeb22de', 1, N'SZY 987')
