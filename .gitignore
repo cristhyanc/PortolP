@@ -329,3 +329,4 @@ ASALocalRun/
 # MFractors (Xamarin productivity tool) working folder 
 .mfractor/
 /Portol/PortolWeb.API/Images
+Portol/PortolWeb.API/Logs/logErrors20190610.txt
