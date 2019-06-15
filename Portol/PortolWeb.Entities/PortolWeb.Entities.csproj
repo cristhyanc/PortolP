@@ -5,6 +5,10 @@
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <ApplicationIcon />
     <StartupObject />
+    <Version>0.5.2.6</Version>
+    <Authors>Cristhyan Cardona</Authors>
+    <Company>Portol</Company>
+    <Product>Portol</Product>
   </PropertyGroup>
 
   <ItemGroup>

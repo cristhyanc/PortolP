@@ -38,9 +38,9 @@
 	<key>XSLaunchImageAssets</key>
 	<string>Assets.xcassets/LaunchImage.launchimage</string>
 	<key>CFBundleShortVersionString</key>
-	<string>0.52.5</string>
+	<string>0.52.6</string>
 	<key>CFBundleVersion</key>
-	<string>0.52.5</string>
+	<string>0.52.6</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This allows us to know your location and deliver your parcel</string>
 	<key>NSLocationAlwaysUsageDescription</key>

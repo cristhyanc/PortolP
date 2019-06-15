@@ -3,6 +3,10 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
     <UserSecretsId>46df2a59-9f63-46bb-8025-900a30035541</UserSecretsId>
+    <Version>0.5.2.6</Version>
+    <Authors>Cristhyan Cardona</Authors>
+    <Company>Portol</Company>
+    <Product>Portol</Product>
   </PropertyGroup>
 
   <ItemGroup>
