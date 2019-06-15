@@ -23,6 +23,8 @@ namespace Portol.Common.Interfaces.PortolWeb
         CustomerDto GetCustomerByEmail(string email);
         CustomerDto GetCustomer(Guid customerID);
         bool SavePaymentMethod(PaymentMethodDto paymentMethod);
+        bool DeletePaymentMethodByServiceID(string serviceId);
+        List<PaymentMethodDto> GetCustomerPaymentMethods(Guid customerId);
 
     }
 }

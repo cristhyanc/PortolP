@@ -196,6 +196,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to delete this payment method?.
+        /// </summary>
+        public static string DeletePaymentMethodQuestion {
+            get {
+                return ResourceManager.GetString("DeletePaymentMethodQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delivery.
         /// </summary>
         public static string Delivery {
@@ -795,6 +804,15 @@ namespace Portol.Common {
         public static string PaymentMethod {
             get {
                 return ResourceManager.GetString("PaymentMethod", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Payment Method Does not exist.
+        /// </summary>
+        public static string PaymentMethodNotFound {
+            get {
+                return ResourceManager.GetString("PaymentMethodNotFound", resourceCulture);
             }
         }
         

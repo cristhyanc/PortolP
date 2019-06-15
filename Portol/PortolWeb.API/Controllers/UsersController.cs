@@ -466,6 +466,57 @@ namespace PortolWeb.API.Controllers
 
         }
 
+        [HttpGet("DeletePaymentMethodByServiceID")]
+        public IActionResult DeletePaymentMethodByServiceID([FromQuery]string serviceId)
+        {
+
+            try
+            {
+                var result = _userService.DeletePaymentMethodByServiceID(serviceId);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.DeletePaymentMethodByServiceID");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+            finally
+            {
+                _userService.Dispose();
+            }
+
+        }
+
+        [HttpGet("GetCustomerPaymentMethods")]
+        public IActionResult GetCustomerPaymentMethods([FromQuery]Guid  customerId)
+        {
+
+            try
+            {
+                var result = _userService.GetCustomerPaymentMethods(customerId);
+                return Ok(result);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.GetCustomerPaymentMethods");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+            finally
+            {
+                _userService.Dispose();
+            }
+
+        }
 
     }
 }

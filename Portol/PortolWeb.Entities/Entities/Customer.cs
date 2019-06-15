@@ -135,7 +135,7 @@ namespace PortolWeb.Entities
             user.PasswordSalt = dbuser.PasswordSalt;
             uow.CustomerRepository.Update(user);
 
-            if (user.CurrentAddress != null)
+            if (newUser.CustomerAddress != null)
             {
                 newUser.CustomerAddress.IsCurrentAddress = true;
                 newUser.CustomerAddress.ParentID = user.CustomerID;

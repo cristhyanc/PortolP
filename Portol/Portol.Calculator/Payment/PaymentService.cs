@@ -68,40 +68,6 @@ namespace Portol.Calculator.Payment
             }   
         }
 
-        //public async Task<string > LinkNewCreditCard(string customerServiceID, PaymentMethodDto paymentMethod)
-        //{
-        //    try
-        //    {               
-        //        var options = new PaymentMethodCreateOptions
-        //        {        
-        //            Type="card",
-        //            Card = new PaymentMethodCardCreateOptions
-        //            {
-        //                Cvc = paymentMethod.CVV,
-        //                ExpMonth = paymentMethod.ExpMonth,
-        //                ExpYear = paymentMethod.ExpYear,
-        //                Number = paymentMethod.CardNumber
-        //            }
-        //        };
-
-        //        var service = new PaymentMethodService();
-        //        var newPaymentMethod = await service.CreateAsync(options);
-
-        //        var optionsAttach = new PaymentMethodAttachOptions
-        //        {
-        //             CustomerId= customerServiceID
-        //        };
-
-        //         var response = await service.AttachAsync(newPaymentMethod.Id, optionsAttach);
-        //        return response.Id;
-
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw HandleStripeExceptions(ex);
-        //    }
-        //}
-
         public async Task<string> LinkNewCreditCard(string customerServiceID, PaymentMethodDto paymentMethod)
         {
             try
@@ -128,6 +94,20 @@ namespace Portol.Calculator.Payment
                 var carService = new CardService();
                 var card = await carService.CreateAsync(customerServiceID, carOptions);               
                 return card.Id;
+            }
+            catch (Exception ex)
+            {
+                throw HandleStripeExceptions(ex);
+            }
+        }
+
+        public async Task<bool> DeleteCreditCard(string customerServiceID, string creditcardId)
+        {
+            try
+            { 
+                var carService = new CardService();
+                var card = await carService.DeleteAsync(customerServiceID, creditcardId);
+                return card.Deleted.Value ;
             }
             catch (Exception ex)
             {
@@ -174,7 +154,7 @@ namespace Portol.Calculator.Payment
 
         private PaymentMethodType GetMethodType (string brand)
 {
-            switch (brand)
+            switch (brand.ToLower())
             {
                 case "visa":
                 return PaymentMethodType.Visa;
@@ -210,9 +190,7 @@ namespace Portol.Calculator.Payment
                 switch (e.StripeError.ErrorType)
                 {
                     case "card_error":
-                        Console.WriteLine("Code: " + e.StripeError.Code);
-                        Console.WriteLine("Message: " + e.StripeError.Message);
-                        break;
+                        throw new AppException(e.StripeError.Message); 
                     case "api_connection_error":
                         break;
                     case "api_error":

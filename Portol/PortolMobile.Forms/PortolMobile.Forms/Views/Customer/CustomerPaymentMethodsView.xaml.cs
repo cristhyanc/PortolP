@@ -16,7 +16,7 @@ namespace PortolMobile.Forms.Views.Customer
 		public CustomerPaymentMethodsView ()
 		{
 			InitializeComponent ();
-           
+            
         }
 	}
 }

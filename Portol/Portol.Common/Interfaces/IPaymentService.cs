@@ -6,13 +6,14 @@ using System.Threading.Tasks;
 
 namespace Portol.Common.Interfaces
 {
-   public interface IPaymentService
+    public interface IPaymentService
     {
-      
+
         void GetCustomers();
         Task<string> CreateCustomer(CustomerDto customer);
         Task<string> LinkNewCreditCard(string customerServiceID, PaymentMethodDto paymentMethod);
         Task<List<PaymentMethodDto>> GetCustomerPaymentMethods(string customerServiceID);
         Task<string> ChargeCustomer(string customerId, string paymentMethodId, decimal amount);
+        Task<bool> DeleteCreditCard(string customerServiceID, string creditcardId);
     }
 }

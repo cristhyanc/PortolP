@@ -152,6 +152,19 @@ namespace PortolWeb.Core.UserServices
 
         }
 
+        public bool DeletePaymentMethodByServiceID(string serviceId)
+        {
+            PaymentMethod.DeletePaymentMethodByServiceID(serviceId, _uow);
+            _uow.SaveChanges();
+            return true;
+        }
+
+        public List<PaymentMethodDto> GetCustomerPaymentMethods(Guid customerId)
+        {
+            var paymethods = PaymentMethod.GetCustomerPaymentMethods(customerId, _uow);
+            return paymethods.Select(x => x.ToDto()).ToList();
+        }
+
         public CustomerDto Create(CustomerDto newUser, string password)
         {
 

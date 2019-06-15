@@ -6,6 +6,7 @@ using PortolMobile.Forms.Helper;
 using PortolMobile.Forms.Services.Navigation;
 using PortolMobile.Forms.ViewModels.Customer;
 using PortolMobile.Forms.ViewModels.Dropoff;
+using PortolMobile.Forms.ViewModels.UserControls;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -19,8 +20,7 @@ namespace PortolMobile.Forms.ViewModels
         public ICommand GotoShopCommand { get; private set; }
 
         public ICommand FindCustomerCommand { get; private set; }
-        public ICommand GoToDeliveriesCommand { get; private set; }
-        public ICommand GoToAccountCommand { get; private set; }
+       
 
         private IUserMobileService _customerService;
 
@@ -34,19 +34,7 @@ namespace PortolMobile.Forms.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        string _bellIcon= "resource://PortolMobile.Forms.Resources.ic_bell.svg?assembly=PortolMobile.Forms";
-        public string BellIcon
-        {
-            get { return _bellIcon; }
-            set
-            {
-                _bellIcon = value;
-                OnPropertyChanged();
-            }
-        }
-
-        
+       
 
         bool _isDeliveryOnItsWay;
         public bool IsDeliveryOnItsWay
@@ -55,6 +43,17 @@ namespace PortolMobile.Forms.ViewModels
             set
             {
                 _isDeliveryOnItsWay = value;
+                OnPropertyChanged();
+            }
+        }
+
+        BottomMenuControlModel _bottomMenuControl;
+        public BottomMenuControlModel BottomMenuControl
+        {
+            get { return _bottomMenuControl; }
+            set
+            {
+                _bottomMenuControl = value;
                 OnPropertyChanged();
             }
         }
@@ -91,8 +90,7 @@ namespace PortolMobile.Forms.ViewModels
                 GetCustomerCommand = new Command((() => GotoAddressStep()), () => { return !IsBusy; });
                 GotoShopCommand = new Command(GotoShop, () => { return !IsBusy; });
                 FindCustomerCommand = new Command((() => FindCustomer()), () => { return !IsBusy; });
-                GoToAccountCommand = new Command((() => GoToAccount()), () => { return !IsBusy; });
-                GoToDeliveriesCommand = new Command((() => GoToIncomingDeliveries()), () => { return !IsBusy; });
+                BottomMenuControl = new BottomMenuControlModel(navigationService, userDialogs, deliveryCore, sessionData);
                 _customerService = customerService;
                 _sessionData = sessionData;
                 _deliveryCore = deliveryCore;
@@ -117,16 +115,7 @@ namespace PortolMobile.Forms.ViewModels
                 {                   
                     await NavigationService.NavigateToAsync<DropDriverInfoViewModel>(delivery);
                 }
-
-                BellIcon = "resource://PortolMobile.Forms.Resources.ic_bell.svg?assembly=PortolMobile.Forms";
-                var incoming= await _deliveryCore.GetPendingReceiverDeliveries(_sessionData.User.CustomerID);
-                if(incoming?.Count>0)
-                {
-                    BellIcon = "resource://PortolMobile.Forms.Resources.ic_bellRed.svg?assembly=PortolMobile.Forms";
-                }
-
-                
-                OnPropertyChanged("ProfilePicture");
+                await BottomMenuControl.InitControl();
             }
             catch (System.Exception ex)
             {
@@ -137,31 +126,7 @@ namespace PortolMobile.Forms.ViewModels
             }
         }
 
-        private async void GoToAccount()
-        {
-            try
-            {
-                await NavigationService.NavigateToAsync<CustomerAccountViewModel>();
-
-            }
-            catch (System.Exception ex)
-            {
-                ExceptionHelper.ProcessException(ex, UserDialogs, "DropViewModel", "GoToAccount");
-            }
-        }
-
-        private async void GoToIncomingDeliveries()
-        {
-            try
-            {
-                await NavigationService.NavigateToAsync<DropIncomingDeliveriesViewModel>();
-
-            }
-            catch (System.Exception ex)
-            {
-                ExceptionHelper.ProcessException(ex, UserDialogs, "DropViewModel", "GoToIncomingDeliveries");
-            }
-        }
+       
 
         private async void GotoShop()
         {

@@ -1,61 +1,86 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PortolMobile.Forms.Views.Dropoff.DropIncomingDeliveryView"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"           
-             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"         
-             xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
-             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
-             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-             BackgroundColor="#F0F0F0"
-             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles">
+<controls:ExtendedContentPage
+    x:Class="PortolMobile.Forms.Views.Dropoff.DropIncomingDeliveryView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles"
+    xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+    BackgroundColor="#F0F0F0">
     <controls:ExtendedContentPage.Content>
-        <StackLayout  Spacing="0" Padding="0" >
-           
-            <Grid VerticalOptions="Start">
-                <Image Source="ic_redbacground.png" Aspect="AspectFit"  VerticalOptions="StartAndExpand"/>
+        <StackLayout Padding="0" Spacing="0">
 
-                <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"   VerticalOptions="Center" HorizontalOptions="Center"  HeightRequest="70" WidthRequest="70"
-                       Source="{Binding ProfilePicture}"  
-                                           x:Name="ProfileImage"  />
-
+            <Grid Margin="0,30,0,0">
+                <BoxView
+                    Style="{StaticResource BoxSeparator}"
+                    VerticalOptions="Center"
+                    WidthRequest="3" />
+                <ffimageloading:CachedImage
+                    HeightRequest="80"
+                    HorizontalOptions="Center"
+                    Source="resource://PortolMobile.Forms.Resources.ic_parcelbox.png?assembly=PortolMobile.Forms"
+                    WidthRequest="80" />
             </Grid>
 
-            <Grid VerticalOptions="FillAndExpand " Margin="0,20,0,0">
-                <StackLayout BackgroundColor="White" Margin="0,20,0,30" VerticalOptions="StartAndExpand" >
-                    <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+            <ActivityIndicator
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                Style="{StaticResource ActivityIndicatorStyle}" />
+
+            <Grid Margin="0,20,0,0" VerticalOptions="FillAndExpand ">
+                <StackLayout
+                    Margin="0,20,0,30"
+                    BackgroundColor="White"
+                    VerticalOptions="StartAndExpand">
+
                     <StackLayout Margin="70,0,0,0">
-                        <Label Text="{Binding Delivery.Sender.FullName}"  Style="{StaticResource LabelBaseBlackBold}"  ></Label>
-                        <Label Text="{Binding Delivery.PickupAddress.FullAddress}"   Style="{StaticResource LabelBaseBlackSmall}" ></Label>
-                        <Label Text="{i18n:Translate HasSentPackageTo}"  Style="{StaticResource LabelBaseBold}"  ></Label>
-                        <Label Text="{Binding Delivery.DropoffAddress.FullAddress}"  Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
-                        <Label Text="{i18n:Translate Message}"  Style="{StaticResource LabelBaseBlackBold}"  ></Label>
-                        <Label Text="{Binding Delivery.Description}" Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
+                        <Label Style="{StaticResource LabelBaseBlackBold}" Text="{Binding Delivery.Sender.FullName}" />
+                        <Label Style="{StaticResource LabelBaseBlackSmall}" Text="{Binding Delivery.PickupAddress.FullAddress}" />
+                        <Label Style="{StaticResource LabelBaseBold}" Text="{i18n:Translate HasSentPackageTo}" />
+                        <Label Style="{StaticResource LabelBaseBlackSmall}" Text="{Binding Delivery.DropoffAddress.FullAddress}" />
+                        <Label Style="{StaticResource LabelBaseBlackBold}" Text="{i18n:Translate Message}" />
+                        <Label Style="{StaticResource LabelBaseBlackSmall}" Text="{Binding Delivery.Description}" />
                     </StackLayout>
 
-                    <maps:Map VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand"  HeightRequest="250"   PropertyChanged="MyMap_PropertyChanged"
-                          x:Name="MyMap"
-                          IsShowingUser="true"
-                          ItemsSource="{Binding Locations}"
-                          MapType="Street" >
+                    <maps:Map
+                        x:Name="MyMap"
+                        HeightRequest="250"
+                        HorizontalOptions="FillAndExpand"
+                        IsShowingUser="true"
+                        ItemsSource="{Binding Locations}"
+                        MapType="Street"
+                        PropertyChanged="MyMap_PropertyChanged"
+                        VerticalOptions="FillAndExpand">
                         <maps:Map.ItemTemplate>
                             <DataTemplate>
-                                <maps:Pin Position="{Binding Position}"
-                              Address="{Binding Address}"
-                              Label="{Binding Label}" />
+                                <maps:Pin
+                                    Address="{Binding Address}"
+                                    Label="{Binding Label}"
+                                    Position="{Binding Position}" />
                             </DataTemplate>
                         </maps:Map.ItemTemplate>
                     </maps:Map>
 
-                    <Button Text="Delivered" WidthRequest="100" Margin="35,5,5,5" HorizontalOptions="Start" Style="{StaticResource ProfileButtonStyle}" Command="{Binding DeliveredCommand }">
-
-                    </Button>
+                    <Button
+                        Margin="35,5,5,5"
+                        Command="{Binding DeliveredCommand}"
+                        HorizontalOptions="Start"
+                        Style="{StaticResource ProfileButtonStyle}"
+                        Text="Delivered"
+                        WidthRequest="100" />
 
                 </StackLayout>
-                <circleIma:CircleImage Style="{StaticResource CircleImageProfileMedium}" Margin="10,0,0,0"  HorizontalOptions="Start"  VerticalOptions="StartAndExpand" 
-                      Source="{Binding Delivery.Sender.ProfilePhoto.ImageUrl}"     />
+                <circleIma:CircleImage
+                    Margin="10,0,0,0"
+                    HorizontalOptions="Start"
+                    Source="{Binding Delivery.Sender.ProfilePhoto.ImageUrl}"
+                    Style="{StaticResource CircleImageProfileMedium}"
+                    VerticalOptions="StartAndExpand" />
 
             </Grid>
         </StackLayout>

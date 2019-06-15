@@ -7,32 +7,34 @@
              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
              viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-            
+             x:Name="page"
              xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles">
     <controls:ExtendedContentPage.Resources>
         <CustomerStyles:CustomerStyles/>
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
         <StackLayout Margin="10,20,0,0" VerticalOptions="FillAndExpand">
-            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+           
 
             <Label Text="{i18n:Translate PaymentMethods}" Margin="0,15,0,10"  Style="{StaticResource SubTitleLabel}" ></Label>
-         
 
+          
             <ListView  
                     Style="{StaticResource ListViewStyle}"
                     CachingStrategy="RecycleElement"
                     IsPullToRefreshEnabled="false"
                     HasUnevenRows="true"
+                     IsRefreshing="{Binding IsBusy, Mode=TwoWay}" 
                     ItemsSource="{Binding PaymentMethods}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell >
-                            <!--<ViewCell.ContextActions>
-                                <MenuItem Text="{Binding MenuItemDeleteTitle}"   Command="{Binding Source={x:Reference page}, Path = BindingContext.DeleteEventCommand }" CommandParameter="{Binding EventId}" IsDestructive="{Binding IsLocalEvent}" />
-                            </ViewCell.ContextActions>-->
+                            <ViewCell.ContextActions>
+                                <MenuItem Icon="ic_itemdelete" Text="Delete"   Command="{Binding Source={x:Reference page}, Path = BindingContext.DeleteCreditCardCommand }" 
+                                          CommandParameter="{Binding PaymentMethodID}" IsDestructive="true" />
+                            </ViewCell.ContextActions>
                             <StackLayout BackgroundColor="White" Padding  ="0,5,0,5">
-                                <Grid     Padding  ="2,10,1,10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
+                                <Grid     Padding  ="15,10,1,10" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
                                     <Grid.ColumnDefinitions>
 
                                         <ColumnDefinition Width="Auto" ></ColumnDefinition>

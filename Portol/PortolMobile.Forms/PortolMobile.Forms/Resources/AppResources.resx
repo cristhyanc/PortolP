@@ -429,4 +429,7 @@
   <data name="DropPackageTo" xml:space="preserve">
     <value>Drop package to</value>
   </data>
+  <data name="DeleteCreditCard" xml:space="preserve">
+    <value>Delete Credit Card</value>
+  </data>
 </root>

@@ -22,16 +22,10 @@ namespace PortolMobile.Forms.Services.Navigation
 
         Task GoToPreviousPageAsync();
 
-        ContentPage CreateContentPage(Type viewModelType );
-
-       // Task OpenPopup(BaseViewModel viewModel, object parameter = null);
-
-       // Task OpenPopup(PopupPage page);
-
-      //  Task ClosePopup();
+        ContentPage CreateContentPage(Type viewModelType );      
 
         void SetNavigationPage(CustomNavigationPage navigation);
 
-        void Logout();
+        Task Logout();
     }
 }

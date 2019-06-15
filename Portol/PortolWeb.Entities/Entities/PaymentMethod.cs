@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using System.Text;
 
 namespace PortolWeb.Entities
@@ -40,6 +41,30 @@ namespace PortolWeb.Entities
             this.PaymentMethodID = paymentMethod.PaymentMethodID;       
             uow.PaymentMethodRepository.Update(this);
             return true;
+        }
+
+        public static PaymentMethod  GetPaymentMethod(Guid paymentId, IUnitOfWork uow)
+        {
+            return uow.PaymentMethodRepository.Get(paymentId);
+        }
+
+        public static List<PaymentMethod> GetCustomerPaymentMethods(Guid customerId, IUnitOfWork uow)
+        {
+            return uow.PaymentMethodRepository.GetAll(x => x.CustomerID == customerId).ToList();
+        }
+
+        public static void DeletePaymentMethodByServiceID(string serviceId, IUnitOfWork uow)
+        {
+            var payment = uow.PaymentMethodRepository.Get(x=> x.CardServiceID.Equals(serviceId));
+            if (payment != null)
+            {
+                uow.PaymentMethodRepository.Delete(payment);                
+            }
+            else
+            {
+                throw new AppException(StringResources.PaymentMethodNotFound);
+            }
+            
         }
 
         public PaymentMethodDto ToDto()

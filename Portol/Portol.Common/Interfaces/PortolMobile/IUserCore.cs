@@ -19,6 +19,8 @@ namespace Portol.Common.Interfaces.PortolMobile
         Task<bool> ResetNewPassword(long mobilePhoned, string newPassword);
         Task<bool> VerifyCode(long mobilePhoned, Int32 countryCode, Int32 code);
         Task<bool> SendVerificationCode(long mobilePhoned, Int32 code);
+        Task<Boolean> DeletePaymentMethodByServiceID(string serviceId);
+        Task<List<PaymentMethodDto>> GetCustomerPaymentMethods(Guid customerId);
 
     }
 }

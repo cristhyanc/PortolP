@@ -324,4 +324,16 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_redbacground.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_mastercard.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_paypal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\ic_visa.png" />
+  </ItemGroup>
 </Project>

@@ -20,6 +20,17 @@ namespace PortolMobile.Core.User
             return await _userMobileService.SavePaymentMethod(paymentMethod);
         }
 
+        public async Task<List<PaymentMethodDto>> GetCustomerPaymentMethods(Guid customerId)
+        {
+            return await _userMobileService.GetCustomerPaymentMethods(customerId);
+        }
+
+        public async Task<Boolean> DeletePaymentMethodByServiceID(string serviceId)
+        {
+            return await _userMobileService.DeletePaymentMethodByServiceID(serviceId);
+        }
+               
+
         public async Task<bool> ResetNewPassword(long mobilePhoned, string newPassword)
         {
             return await _userMobileService.ResetNewPassword(mobilePhoned, newPassword);

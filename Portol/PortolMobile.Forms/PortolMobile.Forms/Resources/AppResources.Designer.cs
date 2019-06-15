@@ -205,6 +205,15 @@ namespace PortolMobile.Forms.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Delete Credit Card.
+        /// </summary>
+        internal static string DeleteCreditCard {
+            get {
+                return ResourceManager.GetString("DeleteCreditCard", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Delivered.
         /// </summary>
         internal static string Delivered {

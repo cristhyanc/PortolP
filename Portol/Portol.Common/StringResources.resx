@@ -441,4 +441,10 @@ iPhone
   <data name="DriverNotFound" xml:space="preserve">
     <value>There was a problem finding the driver, pls try again later</value>
   </data>
+  <data name="PaymentMethodNotFound" xml:space="preserve">
+    <value>Payment Method Does not exist</value>
+  </data>
+  <data name="DeletePaymentMethodQuestion" xml:space="preserve">
+    <value>Do you want to delete this payment method?</value>
+  </data>
 </root>

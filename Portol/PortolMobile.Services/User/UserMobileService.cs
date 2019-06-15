@@ -29,6 +29,20 @@ namespace PortolMobile.Services.User
             return await _restClient.MakeApiCallRaw<Boolean>($"{Constants.BaseUserApiUrl}/SavePaymentMethod", HttpMethod.Post, paymentMethod);
         }
 
+        public async Task<List<PaymentMethodDto>> GetCustomerPaymentMethods(Guid customerId)
+        {
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["customerId"] = customerId.ToString();
+            return await _restClient.MakeApiCall<List<PaymentMethodDto>>($"{Constants.BaseUserApiUrl}/GetCustomerPaymentMethods", HttpMethod.Get, queryString);
+        }
+
+        public async Task<Boolean> DeletePaymentMethodByServiceID(string serviceId)
+        {
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["serviceId"] = serviceId;
+            return await _restClient.MakeApiCallRaw<Boolean>($"{Constants.BaseUserApiUrl}/DeletePaymentMethodByServiceID", HttpMethod.Get , queryString);
+        }
+                       
         public async Task<Boolean> CreateNewCustomer(CustomerDto newUser)
         {
             return await _restClient.MakeApiCallRaw<Boolean>($"{Constants.BaseUserApiUrl}/RegisterNewuser", HttpMethod.Post, newUser);

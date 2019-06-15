@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    x:Class="PortolMobile.Forms.Views.UserControls.BottomMenuControl"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
+    <ContentView.Content>
+        <StackLayout
+            BackgroundColor="White"
+            Orientation="Horizontal"
+            Spacing="0">
+            <!--<ffimageloadingsvg:SvgCachedImage HorizontalOptions="StartAndExpand"  Margin="30,5,0,5"   WidthRequest="37" HeightRequest="35" Source="resource://PortolMobile.Forms.Resources.ic_home.svg?assembly=PortolMobile.Forms" />
+
+                <ffimageloadingsvg:SvgCachedImage HorizontalOptions="CenterAndExpand" Margin="0,5,0,5"    WidthRequest="32" HeightRequest="32" Source="resource://PortolMobile.Forms.Resources.ic_search.svg?assembly=PortolMobile.Forms" />-->
+
+            <ffimageloadingsvg:SvgCachedImage
+                Margin="0,5,0,5"
+                HeightRequest="35"
+                HorizontalOptions="CenterAndExpand"
+                Source="{Binding BellIcon}"
+                WidthRequest="90">
+                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToDeliveriesCommand}" />
+                </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+            </ffimageloadingsvg:SvgCachedImage>
+
+            <ffimageloadingsvg:SvgCachedImage
+                Margin="-5,5,30,5"
+                HeightRequest="35"
+                HorizontalOptions="CenterAndExpand"
+                Source="resource://PortolMobile.Forms.Resources.ic_profile.svg?assembly=PortolMobile.Forms"
+                WidthRequest="25">
+                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GoToAccountCommand}" />
+                </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+            </ffimageloadingsvg:SvgCachedImage>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

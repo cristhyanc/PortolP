@@ -1,161 +1,273 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PortolMobile.Forms.Views.Dropoff.DropDriverInfoView"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
-             xmlns:localResources="clr-namespace:PortolMobile.Forms.Resources"
-             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
-             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
-             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-             BackgroundColor="White"
-             xmlns:Helpers="clr-namespace:PortolMobile.Forms.Helper"
-             xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
+<controls:ExtendedContentPage
+    x:Class="PortolMobile.Forms.Views.Dropoff.DropDriverInfoView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles"
+    xmlns:Helpers="clr-namespace:PortolMobile.Forms.Helper"
+    xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
+    xmlns:localResources="clr-namespace:PortolMobile.Forms.Resources"
+    xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+    xmlns:userControls="clr-namespace:PortolMobile.Forms.Views.UserControls"
+    xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+    BackgroundColor="White">
     <controls:ExtendedContentPage.Resources>
-        <DropoffStyle:DropoffStyles/>
+        <DropoffStyle:DropoffStyles />
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
 
-        <Grid VerticalOptions="FillAndExpand" x:Name="MainGrid" >
+        <Grid x:Name="MainGrid" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <ffimageloading:CachedImage  Grid.RowSpan="2" HorizontalOptions="FillAndExpand " VerticalOptions="FillAndExpand"
-                                        Source="Map_image" />
+            <!--<ffimageloading:CachedImage
+                Grid.RowSpan="2"
+                HorizontalOptions="FillAndExpand "
+                Source="Map_image"
+                VerticalOptions="FillAndExpand" />-->
 
-            <StackLayout BackgroundColor="White"   >              
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}"  >
+
+            <maps:Map
+                x:Name="MyMap"
+                Grid.RowSpan="2"
+                Margin="0,0,0,30"
+                HorizontalOptions="FillAndExpand"
+                IsShowingUser="true"
+                ItemsSource="{Binding Locations}"
+                MapType="Street"
+                PropertyChanged="MyMap_PropertyChanged"
+                VerticalOptions="FillAndExpand">
+                <maps:Map.ItemTemplate>
+                    <DataTemplate>
+                        <maps:Pin
+                            Address="{Binding Address}"
+                            Label="{Binding Label}"
+                            Position="{Binding Position}" />
+                    </DataTemplate>
+                </maps:Map.ItemTemplate>
+            </maps:Map>
+
+
+
+
+
+            <StackLayout BackgroundColor="White">
+                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}">
                     <ffimageloadingsvg:SvgCachedImage.Margin>
                         <OnPlatform x:TypeArguments="Thickness">
                             <On Platform="Android" Value="0,40,0,0" />
-                            <On Platform="iOS" Value="0, 40, 0, 0"/>
+                            <On Platform="iOS" Value="0, 40, 0, 0" />
                         </OnPlatform>
                     </ffimageloadingsvg:SvgCachedImage.Margin>
                 </ffimageloadingsvg:SvgCachedImage>
-                
-                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+
+                <ActivityIndicator
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    Style="{StaticResource ActivityIndicatorStyle}" />
             </StackLayout>
 
 
-            <RelativeLayout   Grid.Row="1" >
+            <RelativeLayout Grid.Row="1">
 
-                <Frame  Style="{StaticResource FrameBox}" x:Name="frmDetailBox"
-                            RelativeLayout.XConstraint="{ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Width,
-                            Factor=0.15 }"
-                        
-                            RelativeLayout.YConstraint="{ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Height,
-                            Factor=0.55 }"
-                            
-                            RelativeLayout.HeightConstraint="{ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Height,
-                            Factor=0.4 }"
-                        
-                            RelativeLayout.WidthConstraint="{ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Width,
-                            Factor=0.7 }">
-                    <StackLayout Spacing="0" VerticalOptions="StartAndExpand" >
+                <Frame
+                    x:Name="frmDetailBox"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                           Property=Height,
+                                                                           Factor=0.4}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                          Property=Width,
+                                                                          Factor=0.7}"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Width,
+                                                                      Factor=0.15}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Height,
+                                                                      Factor=0.45}"
+                    Style="{StaticResource FrameBox}">
+                    <StackLayout Spacing="0" VerticalOptions="StartAndExpand">
 
-                        <Grid VerticalOptions="StartAndExpand"  IsVisible="{Binding IsSearchingDriver, Converter={Helpers:InverseBoolConverter}}" >
+                        <Grid IsVisible="{Binding IsSearchingDriver, Converter={Helpers:InverseBoolConverter}}" VerticalOptions="StartAndExpand">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>                                
-                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition />
+                                <ColumnDefinition />
                             </Grid.ColumnDefinitions>
 
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"></RowDefinition>                               
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition Height="Auto"></RowDefinition>
-                                <RowDefinition Height="Auto"></RowDefinition>
-                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
                             </Grid.RowDefinitions>
-                            
-                            <Frame HasShadow="False" Padding="0" BorderColor="Gray" CornerRadius="0" BackgroundColor="Transparent"  HorizontalOptions="StartAndExpand"  VerticalOptions="Start"  >
-                                <Label Text="{Binding DriverInfo.CurrentVehicule.Plate}" Style="{StaticResource labelListSecondLine}"  HorizontalOptions="Center"  Margin="5,0"
-                                       VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"   ></Label>
+
+                            <Frame
+                                Padding="0"
+                                BackgroundColor="Transparent"
+                                BorderColor="Gray"
+                                CornerRadius="0"
+                                HasShadow="False"
+                                HorizontalOptions="StartAndExpand"
+                                VerticalOptions="Start">
+                                <Label
+                                    Margin="5,0"
+                                    HorizontalOptions="Center"
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource labelListSecondLine}"
+                                    Text="{Binding DriverInfo.CurrentVehicule.Plate}"
+                                    VerticalOptions="Center"
+                                    VerticalTextAlignment="Center" />
                             </Frame>
 
-                            <StackLayout Grid.Column="1" HorizontalOptions="EndAndExpand" VerticalOptions="Start" Orientation="Horizontal" >
-                                
-                                <Frame HasShadow="False" Padding="0" BorderColor="Gray" CornerRadius="0" BackgroundColor="Transparent">
-                                    <StackLayout Orientation="Horizontal" Margin="5,0">
+                            <StackLayout
+                                Grid.Column="1"
+                                HorizontalOptions="EndAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="Start">
+
+                                <Frame
+                                    Padding="0"
+                                    BackgroundColor="Transparent"
+                                    BorderColor="Gray"
+                                    CornerRadius="0"
+                                    HasShadow="False">
+                                    <StackLayout Margin="5,0" Orientation="Horizontal">
 
                                         <ffimageloadingsvg:SvgCachedImage Style="{StaticResource StarStyle}" />
 
-                                        <Label Text="{Binding DriverInfo.Rating}" Style="{StaticResource labelListSecondLine}"  HorizontalOptions="Center"  Margin="1,0,0,0"
-                                        VerticalOptions="Center" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"   ></Label>
-                                        
+                                        <Label
+                                            Margin="1,0,0,0"
+                                            HorizontalOptions="Center"
+                                            HorizontalTextAlignment="Center"
+                                            Style="{StaticResource labelListSecondLine}"
+                                            Text="{Binding DriverInfo.Rating}"
+                                            VerticalOptions="Center"
+                                            VerticalTextAlignment="Center" />
+
                                     </StackLayout>
                                 </Frame>
-                                
-                                <Label Text="X" Margin="5,0,0,0"  Style="{StaticResource DropoffLabelDefaultStyle}" 
-                                       HorizontalTextAlignment="End" VerticalTextAlignment="Center" ></Label>
-                                
+
+                                <Label
+                                    Margin="5,0,0,0"
+                                    HorizontalTextAlignment="End"
+                                    IsVisible="{Binding IsCancelOptionVisible}"
+                                    Style="{StaticResource DropoffLabelDefaultStyle}"
+                                    Text="X"
+                                    VerticalTextAlignment="Center" />
+
                             </StackLayout>
 
-                            <StackLayout Grid.Row="1" Grid.ColumnSpan="2" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0" >
-                                <Label  Text="{Binding DriverInfo.Details.FullName}"  Style="{StaticResource DropoffLabelDefaultStyle}"  ></Label>
+                            <StackLayout
+                                Grid.Row="1"
+                                Grid.ColumnSpan="2"
+                                Margin="0,10,0,0"
+                                HorizontalOptions="CenterAndExpand">
+                                <Label Style="{StaticResource DropoffLabelDefaultStyle}" Text="{Binding DriverInfo.Details.FullName}" />
                                 <ffimageloading:CachedImage Style="{StaticResource PhoneStyle}" />
 
-                                <Label Text="{Binding DeliveryStatusMessage}" Style="{StaticResource labelListSecondLine}"   HorizontalTextAlignment="Center" 
-                                       VerticalTextAlignment="Center"   ></Label>                               
-                                
+                                <Label
+                                    HorizontalTextAlignment="Center"
+                                    Style="{StaticResource labelListSecondLine}"
+                                    Text="{Binding DeliveryStatusMessage}"
+                                    VerticalTextAlignment="Center" />
+
                             </StackLayout>
 
 
-                            <ffimageloading:CachedImage Grid.Column="0" Margin="0,10,0,0" HorizontalOptions="Start" Grid.Row="2" Style="{StaticResource CarDeliveryStyle}"  IsVisible="{Binding IsRatingVisible, Converter={Helpers:InverseBoolConverter}}"/>
+                            <ffimageloading:CachedImage
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Margin="0,10,0,0"
+                                HorizontalOptions="Start"
+                                IsVisible="{Binding IsRatingVisible, Converter={Helpers:InverseBoolConverter}}"
+                                Style="{StaticResource CarDeliveryStyle}" />
 
-                            <BoxView  Grid.Column="0" Grid.Row="3" Style="{StaticResource BoxSeparatorLeft}" VerticalOptions="Start"  IsVisible="{Binding IsRatingVisible, Converter={Helpers:InverseBoolConverter}}"></BoxView>
-                            <BoxView  Grid.Column="1" Grid.Row="3" Style="{StaticResource BoxSeparatorRight}" VerticalOptions="Start" IsVisible="{Binding IsRatingVisible, Converter={Helpers:InverseBoolConverter}}"></BoxView>
+                            <BoxView
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                IsVisible="{Binding IsRatingVisible, Converter={Helpers:InverseBoolConverter}}"
+                                Style="{StaticResource BoxSeparatorLeft}"
+                                VerticalOptions="Start" />
+                            <BoxView
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                IsVisible="{Binding IsRatingVisible, Converter={Helpers:InverseBoolConverter}}"
+                                Style="{StaticResource BoxSeparatorRight}"
+                                VerticalOptions="Start" />
 
-                            <StackLayout  Grid.Row="4" Grid.ColumnSpan="2" HorizontalOptions="Center" >
-                                <Button Margin="0,7,0,7" WidthRequest="200" Text="{i18n:Translate PickedUp}" IsVisible="{Binding IsPickedupButtonVisible}" 
-                                    TextColor="White" Command="{Binding ConfirmPickupCommand}" BackgroundColor="#4c4c4c"   ></Button>
+                            <StackLayout
+                                Grid.Row="4"
+                                Grid.ColumnSpan="2"
+                                HorizontalOptions="Center">
+                                <Button
+                                    Margin="0,7,0,7"
+                                    BackgroundColor="#4c4c4c"
+                                    Command="{Binding ConfirmPickupCommand}"
+                                    IsVisible="{Binding IsPickedupButtonVisible}"
+                                    Text="{i18n:Translate PickedUp}"
+                                    TextColor="White"
+                                    WidthRequest="200" />
 
-                                <Label Text="{i18n:Translate RateService}" Style="{StaticResource labelListSecondLine}"  IsVisible="{Binding IsRatingVisible}"  HorizontalTextAlignment="Center" 
-                                       VerticalTextAlignment="Center"   ></Label>
+                                <Label
+                                    HorizontalTextAlignment="Center"
+                                    IsVisible="{Binding IsRatingVisible}"
+                                    Style="{StaticResource labelListSecondLine}"
+                                    Text="{i18n:Translate RateService}"
+                                    VerticalTextAlignment="Center" />
 
-                                <controls:RatingStars TotalStars="5"  CurrentReview="{Binding DriverRating, Mode=TwoWay}" IsVisible="{Binding IsRatingVisible}" ></controls:RatingStars>
+                                <controls:RatingStars
+                                    CurrentReview="{Binding DriverRating, Mode=TwoWay}"
+                                    IsVisible="{Binding IsRatingVisible}"
+                                    TotalStars="5" />
                             </StackLayout>
-                           
+
                         </Grid>
 
-                        <Label Text="{i18n:Translate SearchingDriver}"  Margin="0,30,0,0" Style="{StaticResource DropoffLabelDefaultStyle}"  IsVisible="{Binding IsSearchingDriver}"></Label>
-                        <ActivityIndicator   IsRunning="{Binding IsSearchingDriver}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsSearchingDriver}"  />                       
-                     
+                        <Label
+                            Margin="0,30,0,0"
+                            IsVisible="{Binding IsSearchingDriver}"
+                            Style="{StaticResource DropoffLabelDefaultStyle}"
+                            Text="{i18n:Translate SearchingDriver}" />
+                        <ActivityIndicator
+                            IsRunning="{Binding IsSearchingDriver}"
+                            IsVisible="{Binding IsSearchingDriver}"
+                            Style="{StaticResource ActivityIndicatorStyle}" />
+
                     </StackLayout>
                 </Frame>
 
-                <Frame Style="{StaticResource FrameImageProfile}"
-                       
-                                    RelativeLayout.XConstraint="{ConstraintExpression
-                                      Type=RelativeToParent,
-                                        Property=Width,
-                                        Factor=0.5, Constant=-35 }"                   
-                                    
-                                    RelativeLayout.YConstraint="{ConstraintExpression
-                                    Type=RelativeToParent,
-                                    Property=Height,
-                                    Factor=0.55,Constant=-35 }"   >
+                <Frame
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Width,
+                                                                      Factor=0.5,
+                                                                      Constant=-35}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Height,
+                                                                      Factor=0.45,
+                                                                      Constant=-35}"
+                    Style="{StaticResource FrameImageProfile}">
 
-                    <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"  
-                       Source="{localResources:ImageResource PortolMobile.Forms.Resources.ic_genericdriver.png}"  
-                                           x:Name="ProfileImage"  />
+                    <circleIma:CircleImage
+                        x:Name="ProfileImage"
+                        Source="{localResources:ImageResource PortolMobile.Forms.Resources.ic_genericdriver.png}"
+                        Style="{StaticResource CircleImageProfile}" />
 
                 </Frame>
 
 
             </RelativeLayout>
 
+            <userControls:BottomMenuControl
+                Grid.Row="1"
+                BindingContext="{Binding BottomMenuControl}"
+                VerticalOptions="End" />
         </Grid>
     </controls:ExtendedContentPage.Content>
 </controls:ExtendedContentPage>

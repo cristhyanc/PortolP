@@ -19,10 +19,6 @@
     <controls:ExtendedContentPage.Content>
         <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" >
 
-          
-                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
-          
-
             <Grid Margin="0,30,0,0" >               
                 <BoxView   WidthRequest="3" Style="{StaticResource BoxSeparator}" VerticalOptions="Center"></BoxView>
                 <ffimageloading:CachedImage WidthRequest="80" HeightRequest="80" HorizontalOptions="Center" 

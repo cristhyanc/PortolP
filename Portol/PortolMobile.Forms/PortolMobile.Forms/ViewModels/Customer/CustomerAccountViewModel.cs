@@ -98,12 +98,12 @@ namespace PortolMobile.Forms.ViewModels.Customer
             try
             {
                 _sessionData.LogoutUser();
-                await this.NavigationService.NavigateToAsync<LoginViewModel>();
+                await this.NavigationService.Logout();
             }
             catch (Exception ex)
             {
                 this.IsBusy = false;
-                ExceptionHelper.ProcessException(ex, UserDialogs, "CustomerAccountViewModel", "PageAppearing");
+                ExceptionHelper.ProcessException(ex, UserDialogs, "CustomerAccountViewModel", "Logout");
             }
         }
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+using System.Linq;
 
 namespace PortolWeb.Entities
 {
@@ -48,6 +49,11 @@ namespace PortolWeb.Entities
 
             if (addressDto.AddressID == Guid.Empty)
             {
+                var oldAddress = uow.AddressRepository.GetAll(x => x.ParentAddressType == parentAddressType && x.ParentID == address.ParentID);
+                if(oldAddress?.Count()>0)
+                {
+                    uow.AddressRepository.Delete(oldAddress);
+                }
                 address.AddressID = Guid.NewGuid();
                 uow.AddressRepository.Insert(address);
             }

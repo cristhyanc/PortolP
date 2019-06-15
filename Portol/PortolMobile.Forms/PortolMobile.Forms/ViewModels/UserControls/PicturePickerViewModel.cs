@@ -140,12 +140,14 @@ namespace PortolMobile.Forms.ViewModels.UserControls
                     {
                         Pictures = new ObservableCollection<PictureDto>(picturesDtos);
                         SelectedPicture = Pictures.FirstOrDefault();
+                        this.IsBusy = false;
                     }
                     else
                     {
                         Pictures = new ObservableCollection<PictureDto>();
                         TakePhoto();
                     }
+
                     this.MaximunPicturesAllowed = picturePicker.MaximunPicturesAllowed;
 
                 }
@@ -153,12 +155,10 @@ namespace PortolMobile.Forms.ViewModels.UserControls
             }
             catch (Exception ex)
             {
+                this.IsBusy = false;
                 ExceptionHelper.ProcessException(ex, UserDialogs, "PicturePickerViewModel", "InitializeAsync");
             }
-            finally
-            {
-                this.IsBusy = false;
-            }
+           
             return base.InitializeAsync(navigationData);
         }
 

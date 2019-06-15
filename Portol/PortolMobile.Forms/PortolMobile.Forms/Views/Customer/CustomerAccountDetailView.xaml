@@ -1,80 +1,124 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PortolMobile.Forms.Views.Customer.CustomerAccountDetailView"
-              xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"           
-             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"         
-              xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
-             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
-             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-             BackgroundColor="#F0F0F0"
-             xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles">
+<controls:ExtendedContentPage
+    x:Class="PortolMobile.Forms.Views.Customer.CustomerAccountDetailView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles"
+    xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
+    xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+    BackgroundColor="#F0F0F0">
     <controls:ExtendedContentPage.Content>
-        <StackLayout  Spacing="0" Padding="0" >
-            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+        <StackLayout Padding="0" Spacing="0">
+
             <Grid>
-                <Image Source="ic_redbacground.png" Aspect="Fill"  VerticalOptions="StartAndExpand"/>
-                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                  
-                    <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"   VerticalOptions="Center" HorizontalOptions="Center"  HeightRequest="120" WidthRequest="120"
-                       Source="{Binding User.ProfilePhoto.ImageUrl}"  
-                                           x:Name="ProfileImage"  />
-                   
-                    <ffimageloadingsvg:SvgCachedImage  WidthRequest="25" HeightRequest="25"	Margin="0,-10,0,0" 
-                           Source="resource://PortolMobile.Forms.Resources.ic_cameraiconwhite.svg?assembly=PortolMobile.Forms" >
+                <Image
+                    Aspect="Fill"
+                    Source="ic_redbacground.png"
+                    VerticalOptions="StartAndExpand" />
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+
+                    <circleIma:CircleImage
+                        x:Name="ProfileImage"
+                        HeightRequest="120"
+                        HorizontalOptions="Center"
+                        Source="{Binding User.ProfilePhoto.ImageUrl}"
+                        Style="{StaticResource CircleImageProfile}"
+                        VerticalOptions="Center"
+                        WidthRequest="120" />
+
+                    <ffimageloadingsvg:SvgCachedImage
+                        Margin="0,-10,0,0"
+                        HeightRequest="25"
+                        Source="resource://PortolMobile.Forms.Resources.ic_cameraiconwhite.svg?assembly=PortolMobile.Forms"
+                        WidthRequest="25">
                         <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToPictureCommand}"></TapGestureRecognizer>
+                            <TapGestureRecognizer Command="{Binding GoToPictureCommand}" />
                         </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
 
                     </ffimageloadingsvg:SvgCachedImage>
 
-                    <Label Text="{Binding User.FullName}" HorizontalOptions="Center" Style="{StaticResource LabelBaseStyleWhite}" HorizontalTextAlignment="Center" ></Label>
+                    <Label
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelBaseStyleWhite}"
+                        Text="{Binding User.FullName}" />
                 </StackLayout>
 
             </Grid>
-
+            <ActivityIndicator
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                Style="{StaticResource ActivityIndicatorStyle}" />
             <ScrollView>
                 <StackLayout>
 
-                    <controls:ExtendedEntry Placeholder="{i18n:Translate FirstName}"  Margin="10,0,0,-4" Text="{Binding User.FirstName}"  Style="{StaticResource AccountEntrySmallStyle}" ></controls:ExtendedEntry>
+                    <controls:ExtendedEntry
+                        Margin="10,0,0,-4"
+                        Placeholder="{i18n:Translate FirstName}"
+                        Style="{StaticResource AccountEntrySmallStyle}"
+                        Text="{Binding User.FirstName}" />
 
-                    <BoxView   WidthRequest="1" Style="{StaticResource BoxSeparator}" ></BoxView>
+                    <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
 
-                    <controls:ExtendedEntry  Margin="10,0,0,-4" Placeholder="{i18n:Translate LastName}" Text="{Binding User.LastName}"  Style="{StaticResource AccountEntrySmallStyle}" ></controls:ExtendedEntry>
+                    <controls:ExtendedEntry
+                        Margin="10,0,0,-4"
+                        Placeholder="{i18n:Translate LastName}"
+                        Style="{StaticResource AccountEntrySmallStyle}"
+                        Text="{Binding User.LastName}" />
 
-                    <BoxView   WidthRequest="1" Style="{StaticResource BoxSeparator}" ></BoxView>
+                    <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
 
-                    <controls:ExtendedEntry  Margin="10,0,0,-4" Placeholder="{i18n:Translate Email}" Text="{Binding User.Email}"  Style="{StaticResource AccountEntrySmallStyle}"  ></controls:ExtendedEntry>
+                    <controls:ExtendedEntry
+                        Margin="10,0,0,-4"
+                        Placeholder="{i18n:Translate Email}"
+                        Style="{StaticResource AccountEntrySmallStyle}"
+                        Text="{Binding User.Email}" />
 
-                    <BoxView   WidthRequest="1" Style="{StaticResource BoxSeparator}" ></BoxView>
+                    <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
 
-                    <controls:ExtendedEntry  Margin="10,0,0,-4" Placeholder="{i18n:Translate MobileNumber}" Text="{Binding User.PhoneNumber}"  Style="{StaticResource AccountEntrySmallStyle}"  ></controls:ExtendedEntry>
+                    <controls:ExtendedEntry
+                        Margin="10,0,0,-4"
+                        Placeholder="{i18n:Translate MobileNumber}"
+                        Style="{StaticResource AccountEntrySmallStyle}"
+                        Text="{Binding User.PhoneNumber}" />
 
-                    <BoxView   WidthRequest="1" Style="{StaticResource BoxSeparator}" ></BoxView>
+                    <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
 
 
 
-                    <StackLayout Margin="16,7,0,7" BackgroundColor="Transparent"   Orientation="Horizontal" >
+                    <StackLayout
+                        Margin="16,7,0,7"
+                        BackgroundColor="Transparent"
+                        Orientation="Horizontal">
                         <StackLayout.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GoToAddressCommand}"></TapGestureRecognizer>
+                            <TapGestureRecognizer Command="{Binding GoToAddressCommand}" />
                         </StackLayout.GestureRecognizers>
 
-                        <ffimageloadingsvg:SvgCachedImage  WidthRequest="15" HeightRequest="15"	
-                           Source="resource://PortolMobile.Forms.Resources.ic_homeAddress.svg?assembly=PortolMobile.Forms" >
-                        </ffimageloadingsvg:SvgCachedImage>
+                        <ffimageloadingsvg:SvgCachedImage
+                            HeightRequest="15"
+                            Source="resource://PortolMobile.Forms.Resources.ic_homeAddress.svg?assembly=PortolMobile.Forms"
+                            WidthRequest="15" />
 
-                        <Label  TextColor="#686868"  Text="{Binding User.CustomerAddress.FullAddress}"  Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
+                        <Label
+                            Style="{StaticResource LabelBaseBlackSmall}"
+                            Text="{Binding User.CustomerAddress.FullAddress}"
+                            TextColor="#686868" />
                     </StackLayout>
 
-                    <BoxView   WidthRequest="1" Style="{StaticResource BoxSeparator}" ></BoxView>
+                    <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
 
-                    <ffimageloadingsvg:SvgCachedImage HorizontalOptions="StartAndExpand" WidthRequest="40" HeightRequest="40"  Margin="20,20,0,0"
-                                              Source="resource://PortolMobile.Forms.Resources.ic_tickblack.svg?assembly=PortolMobile.Forms" >
+                    <ffimageloadingsvg:SvgCachedImage
+                        Margin="20,20,0,0"
+                        HeightRequest="40"
+                        HorizontalOptions="StartAndExpand"
+                        Source="resource://PortolMobile.Forms.Resources.ic_tickblack.svg?assembly=PortolMobile.Forms"
+                        WidthRequest="40">
                         <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SaveCommand }">
-
-                            </TapGestureRecognizer>
+                            <TapGestureRecognizer Command="{Binding SaveCommand}" />
                         </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
                     </ffimageloadingsvg:SvgCachedImage>
                 </StackLayout>

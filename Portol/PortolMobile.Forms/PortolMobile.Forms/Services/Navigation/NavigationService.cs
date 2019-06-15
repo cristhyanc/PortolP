@@ -83,9 +83,11 @@ namespace PortolMobile.Forms.Services.Navigation
         {
             if (CurrentNavigator?.CurrentPage is ExtendedContentPage contentPage)
             {
+                
                 if (contentPage.IsTextBarWhite)
                 {
                     CurrentNavigator.BarTextColor = Color.White;
+
                 }
                 else
                 {
@@ -94,9 +96,12 @@ namespace PortolMobile.Forms.Services.Navigation
             }
         }
 
-        public void Logout()
+        public async Task Logout()
         {
-          
+            _dropOffPage = null;
+            _shopPage = null;
+            CurrentNavigator = null;
+            await InternalNavigateToAsync(typeof(ViewModels.Login.LoginViewModel), null);
         }
 
         private async Task InternalNavigateToAsync(Type viewModelType, object parameter, BaseViewModel viewModel = null)
@@ -153,6 +158,7 @@ namespace PortolMobile.Forms.Services.Navigation
                     {
                         CurrentNavigator = new CustomNavigationPage(page);
                         CurrentNavigator.Appearing += CurrentNavigator_Appearing;
+                        Application.Current.MainPage = CurrentNavigator;
                     }
                     else
                     {
