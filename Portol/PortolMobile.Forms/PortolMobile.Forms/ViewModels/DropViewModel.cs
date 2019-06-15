@@ -110,13 +110,14 @@ namespace PortolMobile.Forms.ViewModels
             try
             {
                 this.IsBusy = true;
+                await ViewModelLocator.CheckMapPermission();
                 var delivery = await _deliveryCore.GetSendertDeliveryInProgress(_sessionData.User.CustomerID);
                 if(delivery!=null)
                 {                   
                     await NavigationService.NavigateToAsync<DropDriverInfoViewModel>(delivery);
                 }
                 await BottomMenuControl.InitControl();
-                await ViewModelLocator.CheckMapPermission();
+               
             }
             catch (System.Exception ex)
             {
