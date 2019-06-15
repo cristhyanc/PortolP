@@ -33,12 +33,18 @@
                 Style="{StaticResource ActivityIndicatorStyle}" />
 
             <Grid Margin="0,20,0,0" VerticalOptions="FillAndExpand ">
-                <StackLayout
+                <Grid
                     Margin="0,20,0,30"
                     BackgroundColor="White"
-                    VerticalOptions="StartAndExpand">
+                    VerticalOptions="FillAndExpand">
 
-                    <StackLayout Margin="70,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <StackLayout Grid.Row="0" Margin="70,0,0,0">
                         <Label Style="{StaticResource LabelBaseBlackBold}" Text="{Binding Delivery.Sender.FullName}" />
                         <Label Style="{StaticResource LabelBaseBlackSmall}" Text="{Binding Delivery.PickupAddress.FullAddress}" />
                         <Label Style="{StaticResource LabelBaseBold}" Text="{i18n:Translate HasSentPackageTo}" />
@@ -49,7 +55,7 @@
 
                     <maps:Map
                         x:Name="MyMap"
-                        HeightRequest="250"
+                        Grid.Row="1"
                         HorizontalOptions="FillAndExpand"
                         IsShowingUser="true"
                         ItemsSource="{Binding Locations}"
@@ -67,6 +73,7 @@
                     </maps:Map>
 
                     <Button
+                        Grid.Row="2"
                         Margin="35,5,5,5"
                         Command="{Binding DeliveredCommand}"
                         HorizontalOptions="Start"
@@ -75,9 +82,9 @@
                         Text="Delivered"
                         WidthRequest="100" />
 
-                </StackLayout>
+                </Grid>
                 <circleIma:CircleImage
-                    Margin="10,0,0,0"
+                    Margin="10,10"
                     HorizontalOptions="Start"
                     Source="{Binding Delivery.Sender.ProfilePhoto.ImageUrl}"
                     Style="{StaticResource CircleImageProfileMedium}"

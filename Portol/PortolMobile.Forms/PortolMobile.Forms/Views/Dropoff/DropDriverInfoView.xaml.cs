@@ -37,17 +37,17 @@ namespace PortolMobile.Forms.Views.Dropoff
                         Distance radius = Distance.FromKilometers(10);
                         if (maxLongitude - minLongitude > maxLatitude - minLatitude)
                         {
-                            radius = Distance.FromKilometers(100 * (maxLongitude - minLongitude));
+                            radius = Distance.FromKilometers(150 * (maxLongitude - minLongitude));
                         }
                         else
                         {
-                            radius = Distance.FromKilometers(100 * (maxLatitude - minLatitude));
+                            radius = Distance.FromKilometers(150 * (maxLatitude - minLatitude));
                         }
 
                         minLatitude = pins.Min(x => x.Position.Latitude);
                         var maxlLongitude = pins.Max(x => x.Position.Longitude);
                         var averageLongitude = pins.Average(x => x.Position.Longitude);
-                        Position pin = new Position(minLatitude - 0.005, averageLongitude);
+                        Position pin = new Position(minLatitude - 0.00, averageLongitude);
 
                         MyMap. MoveToRegion(
                             MapSpan.FromCenterAndRadius(
