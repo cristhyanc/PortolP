@@ -304,3 +304,5 @@ Error Number:2714,State:6,Class:16
 2019-06-15 14:31:58.350 +10:00 [WRN] Neither user profile nor HKLM registry available. Using an ephemeral key repository. Protected data will be unavailable when application exits.
 2019-06-15 14:31:58.363 +10:00 [WRN] No XML encryptor configured. Key "f6485e80-f54f-4147-a5e9-b9c4e47bc940" may be persisted to storage in unencrypted form.
 2019-06-15 14:31:58.506 +10:00 [WRN] Failed to determine the https port for redirect.
+2019-06-15 14:57:48.806 +10:00 [WRN] A SQL parameter or literal was generated for the type 'DeliveryStatus' using the ValueConverter 'EnumToNumberConverter<DeliveryStatus, int>'. Review the generated SQL for correctness and consider evaluating the target expression in-memory instead.
+2019-06-15 14:57:48.808 +10:00 [WRN] A SQL parameter or literal was generated for the type 'DeliveryStatus' using the ValueConverter 'EnumToNumberConverter<DeliveryStatus, int>'. Review the generated SQL for correctness and consider evaluating the target expression in-memory instead.

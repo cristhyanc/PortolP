@@ -116,6 +116,7 @@ namespace PortolMobile.Forms.ViewModels
                     await NavigationService.NavigateToAsync<DropDriverInfoViewModel>(delivery);
                 }
                 await BottomMenuControl.InitControl();
+                await ViewModelLocator.CheckMapPermission();
             }
             catch (System.Exception ex)
             {
