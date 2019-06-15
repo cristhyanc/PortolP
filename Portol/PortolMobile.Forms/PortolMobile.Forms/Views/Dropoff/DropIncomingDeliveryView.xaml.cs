@@ -24,14 +24,35 @@ namespace PortolMobile.Forms.Views.Dropoff
         {
             try
             {
-                if (e.PropertyName.Equals("ItemsSource") && MyMap.ItemsSource!=null)
+                if (e.PropertyName.Equals("ItemsSource") && MyMap.ItemsSource != null)
                 {
                     List<Pin> pins = (List<Pin>)MyMap.ItemsSource;
-                    if(pins?.FirstOrDefault()!=null)
+                    if (pins?.FirstOrDefault() != null)
                     {
+                        var minLatitude = pins.Min(x => Math.Abs(x.Position.Latitude));
+                        var maxLatitude = pins.Max(x => Math.Abs(x.Position.Latitude));
+
+                        var minLongitude = pins.Min(x => Math.Abs(x.Position.Longitude));
+                        var maxLongitude = pins.Max(x => Math.Abs(x.Position.Longitude));
+
+                        Distance radius = Distance.FromKilometers(10);
+                        if (maxLongitude - minLongitude > maxLatitude - minLatitude)
+                        {
+                            radius = Distance.FromKilometers(90 * (maxLongitude - minLongitude));
+                        }
+                        else
+                        {
+                            radius = Distance.FromKilometers(90 * (maxLatitude - minLatitude));
+                        }
+                                             
+                        var averageLatitude = pins.Average(x => x.Position.Latitude );
+                        var averageLongitude = pins.Average(x => x.Position.Longitude);
+                        Position pin = new Position(averageLatitude, averageLongitude);
+
                         MyMap.MoveToRegion(
                             MapSpan.FromCenterAndRadius(
-                                pins.FirstOrDefault().Position , Distance.FromKilometers (4)));
+                                pin, radius));
+
                     }
                 }
             }

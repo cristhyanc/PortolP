@@ -34,7 +34,7 @@ namespace PortolMobile.Core.DropOff
             return await _deliveryService.CreateDeliveryRequest(dropoffParcel);
         }
 
-        public async Task<bool > ConfirmDeliveryPickUp(Guid deliveryID)
+        public async Task<bool> ConfirmDeliveryPickUp(Guid deliveryID)
         {
             return await _deliveryService.ConfirmDeliveryPickUp(deliveryID);
         }
@@ -51,7 +51,10 @@ namespace PortolMobile.Core.DropOff
         {
             return await _deliveryService.GetSendertDeliveryInProgress(customerID);
         }
-        
+        public async Task<bool> CancelDelivery(Guid deliveryID)
+        {
+            return await _deliveryService.CancelDelivery(deliveryID);
+        }
         public async Task<bool> RateDelivery(Guid deliveryID, int rate)
         {
             return await _deliveryService.RateDelivery(deliveryID, rate);

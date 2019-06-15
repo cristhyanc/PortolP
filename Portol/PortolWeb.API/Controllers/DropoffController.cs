@@ -231,5 +231,25 @@ namespace PortolWeb.API.Controllers
 
             }
         }
+
+        [HttpGet("CancelDelivery")]
+        public IActionResult CancelDelivery([FromQuery] Guid deliveryId)
+        {
+            try
+            {
+                _deliveryService.CancelDelivery(deliveryId);
+                return Ok(true);
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "DropoffController.CancelDelivery");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+        }
     }
 }

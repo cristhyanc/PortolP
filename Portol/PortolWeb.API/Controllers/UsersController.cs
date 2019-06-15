@@ -25,6 +25,7 @@ namespace PortolWeb.API.Controllers
         private ICustomerService _userService;
         ISmsService _smsService;
         private readonly AppSettings _appSettings;
+        
 
         public UsersController(ICustomerService userService, IOptions<AppSettings> appSettings, ISmsService smsService)
         {
@@ -285,6 +286,11 @@ namespace PortolWeb.API.Controllers
                 var tokenString = tokenHandler.WriteToken(token);
 
                 user.Token = tokenString;
+                user.AddressAppPublicKey = _appSettings.AddressAppPublicKey;
+                user.AddressAppSecretKey = _appSettings.AddressAppSecretKey;
+                user.StripeAppPublicKey = _appSettings.StripeAppPublicKey;
+                user.StripeAppSecretKey = _appSettings.StripeAppSecretKey;
+                user.MapAppKey = _appSettings.MapAppKey;
                 // return basic user info (without password) and token to store client side
                 return Ok(user);
             }

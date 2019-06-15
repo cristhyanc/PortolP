@@ -104,8 +104,8 @@ namespace PortolWeb.API
             services.AddScoped<IUnitOfWork, UnitOfWork>();            
             services.AddScoped<IImageManager, ImageManager>();
             services.AddScoped<IDeliveryCalculator, DeliveryCalculator>();
-            services.AddScoped<IPaymentService>(x => new PaymentService("sk_test_RCIYxJRaaXpKMgOIJnAvCrle00HTrJc29p", "pk_test_anYBo8LB4sisfeaXq8VvJOOJ00z6gDKo7R"));
-            services.AddScoped<IMapService>(x => new MapService("AjPaETRxkyP3rSDJ7vu2nce9mlY66bgZu0DvY_eIVpeSM5PES53q_9IGzOrxahcL"));
+            services.AddScoped<IPaymentService>(x => new PaymentService(appSettings.StripeAppSecretKey, appSettings.StripeAppPublicKey ));
+            services.AddScoped<IMapService>(x => new MapService(appSettings.MapAppKey));
             
 
             // loggerFactory.AddSerilog();

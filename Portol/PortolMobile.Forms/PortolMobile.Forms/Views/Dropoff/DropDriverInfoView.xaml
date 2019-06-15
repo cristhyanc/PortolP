@@ -160,7 +160,11 @@
                                     IsVisible="{Binding IsCancelOptionVisible}"
                                     Style="{StaticResource DropoffLabelDefaultStyle}"
                                     Text="X"
-                                    VerticalTextAlignment="Center" />
+                                    VerticalTextAlignment="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding CancelServiceCommand}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
 
                             </StackLayout>
 

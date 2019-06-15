@@ -97,6 +97,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Do you want to cancel this service?.
+        /// </summary>
+        public static string CancelServiceQuestion {
+            get {
+                return ResourceManager.GetString("CancelServiceQuestion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to City is required.
         /// </summary>
         public static string CityRequired {

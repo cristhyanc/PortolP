@@ -35,20 +35,20 @@ namespace Portol.Calculator.Map
             var routeRequest = new RouteRequest()
             {
 
-                WaypointOptimization = TspOptimizationType.TravelDistance,                 
+                WaypointOptimization = TspOptimizationType.TravelDistance,
                 RouteOptions = new RouteOptions()
                 {
                     TravelMode = TravelModeType.Driving,
                     Optimize = RouteOptimizationType.Distance,
                     RouteAttributes = new List<RouteAttributeType>()
                         {
-                            RouteAttributeType.RoutePath                      
+                            RouteAttributeType.RoutePath
                         }
                 },
 
                 //When straight line distances are used, the distance matrix API is not used, so a session key can be used.
                 BingMapsKey = _mapApikey,
-                
+
             };
 
             routeRequest.Waypoints = new List<SimpleWaypoint>();
@@ -65,7 +65,7 @@ namespace Portol.Calculator.Map
                && response.ResourceSets[0].Resources[0] is Route)
             {
                 var route = response.ResourceSets[0].Resources[0] as Route;
-                if(route.RouteLegs?.Length>0)
+                if (route.RouteLegs?.Length > 0)
                 {
                     return route.RouteLegs.Average(x => x.TravelDistance);
                 }
@@ -73,8 +73,9 @@ namespace Portol.Calculator.Map
                 {
                     return route.TravelDistance;
                 }
-                
+
             }
+
 
             return 0;
         }

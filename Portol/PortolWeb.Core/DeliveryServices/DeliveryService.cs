@@ -144,6 +144,12 @@ namespace PortolWeb.Core.DeliveryServices
             _uow.SaveChanges();
         }
 
+        public void CancelDelivery(Guid deliveryID)
+        {
+            Delivery.CancelDelivery(deliveryID, _uow);
+            _uow.SaveChanges();
+        }
+
         public async Task MarkAsDelivered(Guid deliveryID)
         {
            

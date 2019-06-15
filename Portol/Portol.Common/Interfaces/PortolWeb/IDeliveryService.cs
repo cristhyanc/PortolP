@@ -22,6 +22,7 @@ namespace Portol.Common.Interfaces.PortolWeb
         DeliveryStatus GetDeliveryStatus(Guid deliveryID);
         void RateDelivery(Guid deliveryID, int rate);
         Task MarkAsDelivered(Guid deliveryID);
+        void CancelDelivery(Guid deliveryID);
 
     }
 }

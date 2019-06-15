@@ -14,6 +14,11 @@ namespace PortolWeb.API.Helper
         public string LogPaht { get; set; }
         public string SinchAppKey { get; set; }
         public string SinchAppSecret { get; set; }
+        public string StripeAppSecretKey { get; set; }
+        public string StripeAppPublicKey { get; set; }
+        public string MapAppKey { get; set; }
+        public string AddressAppSecretKey { get; set; }
+        public string AddressAppPublicKey { get; set; }
 
     }
 }

@@ -330,3 +330,4 @@ ASALocalRun/
 .mfractor/
 /Portol/PortolWeb.API/Images
 Portol/PortolWeb.API/Logs/logErrors20190610.txt
+Portol/PortolWeb.API/appsettings.Development.json

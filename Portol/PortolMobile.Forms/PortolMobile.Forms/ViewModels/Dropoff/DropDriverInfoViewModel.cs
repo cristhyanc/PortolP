@@ -150,15 +150,42 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             }
         }
 
-        bool _stopDeliveryStatusLoop;
+        
         public ICommand ConfirmPickupCommand { get; private set; }
+        public ICommand CancelServiceCommand { get; private set; }
+
+        bool _stopDeliveryStatusLoop;
         DeliveryDto delivery;
         IDeliveryCore _deliveryCore;
+
+
         public DropDriverInfoViewModel(INavigationService navigationService, IUserDialogs userDialogs, IDeliveryCore deliveryCore, ISessionData sessionData) : base(navigationService, userDialogs)
         {
             _deliveryCore = deliveryCore;
             ConfirmPickupCommand = new Command((() => ConfirmPickup()), () => { return !IsBusy; });
             BottomMenuControl = new BottomMenuControlModel(navigationService, userDialogs, deliveryCore, sessionData);
+            CancelServiceCommand = new Command((() => CancelService()), () => { return !IsBusy; });
+        }
+
+
+        private async void CancelService()
+        {
+            try
+            {
+                if (await UserDialogs.ConfirmAsync(StringResources.CancelServiceQuestion))
+                {
+                    await _deliveryCore.CancelDelivery(delivery.DeliveryID);
+                    await this.NavigationService.GoToMainPage();
+                }
+            }
+            catch (Exception ex)
+            {
+                ExceptionHelper.ProcessException(ex, UserDialogs, "DropDriverInfoViewModel", "CancelService");
+            }
+            finally
+            {
+                this.IsBusy = false;
+            }
         }
 
         private async Task SendRateService()
@@ -167,7 +194,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             {
                 this.IsBusy = true;
                 await _deliveryCore.RateDelivery(delivery.DeliveryID, this.DriverRating);
-                await this.NavigationService.GoToPreviousPageAsync();
+                await this.NavigationService.GoToMainPage();
             }
             catch (Exception ex)
             {

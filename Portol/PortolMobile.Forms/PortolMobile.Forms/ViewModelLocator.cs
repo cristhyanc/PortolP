@@ -49,7 +49,7 @@ namespace PortolMobile.Forms
         {
             bindable.SetValue(ViewModelLocator.AutoWireViewModelProperty, value);
         }
-      
+
 
         public static void RegisterDependencies(bool useMockServices)
         {
@@ -61,11 +61,11 @@ namespace PortolMobile.Forms
 
                 builder.RegisterType<ShopViewModel>().SingleInstance();
                 builder.RegisterType<DropViewModel>().SingleInstance();
-                
+
                 // View models
                 builder.RegisterType<LoginViewModel>();
                 builder.RegisterType<DropAddressViewModel>();
-                builder.RegisterType<MainViewModel>();                
+                builder.RegisterType<MainViewModel>();
                 builder.RegisterType<RecoverPasswordViewModel>();
                 builder.RegisterType<SignupStepMobileViewModel>();
                 builder.RegisterType<SignupStepEmailViewModel>();
@@ -86,7 +86,7 @@ namespace PortolMobile.Forms
                 builder.RegisterType<DropIncomingDeliveryViewModel>();
                 builder.RegisterType<DropHistoryDeliveriesViewModel>();
 
-                
+                builder.RegisterType<SessionData>().As<ISessionData>().SingleInstance();
                 builder.Register(c => UserDialogs.Instance).As<IUserDialogs>().SingleInstance();
                 builder.RegisterType<NavigationService>().As<INavigationService>().SingleInstance();
 
@@ -94,8 +94,7 @@ namespace PortolMobile.Forms
                 builder.RegisterType<LoginService>().As<ILoginService>();
 
                 builder.RegisterType<DeliveryCalculator>().As<IDeliveryCalculator>();
-                builder.Register(c => new MapService("AjPaETRxkyP3rSDJ7vu2nce9mlY66bgZu0DvY_eIVpeSM5PES53q_9IGzOrxahcL")).As<IMapService>();
-
+                builder.Register(c => new MapService(_container.Resolve<ISessionData>()?.User?.MapAppKey)).As<IMapService>();
                 builder.RegisterType<DeliveryCore>().As<IDeliveryCore>();
                 builder.Register(c => CrossMedia.Current).As<IMedia>();
 
@@ -106,15 +105,16 @@ namespace PortolMobile.Forms
                 builder.RegisterType<LoginCore>().As<ILoginCore>();
 
 
-                builder.Register(c => new PaymentService("sk_test_RCIYxJRaaXpKMgOIJnAvCrle00HTrJc29p", "pk_test_anYBo8LB4sisfeaXq8VvJOOJ00z6gDKo7R")).As<IPaymentService>();
+                builder.Register(c => new PaymentService(_container.Resolve<ISessionData>()?.User?.StripeAppSecretKey, _container.Resolve<ISessionData>()?.User?.StripeAppPublicKey)).As<IPaymentService>();
 
 
-                builder.RegisterType<SessionData>().As<ISessionData>().SingleInstance();
+
                 builder.RegisterType<RestClient>().As<IRestClient>().WithParameter(new ResolvedParameter(
                                                                        (pi, ctx) => pi.ParameterType == typeof(string) && pi.Name == "toke",
                                                                        (pi, ctx) => _container.Resolve<ISessionData>().GetCurrentToken()));
 
-                builder.Register(c =>new AddressService(_container.Resolve<IRestClient>(), "HW8AXP9FEKDCQ7L46JVM", "N3A6GXYLD978JTHC4RFU")).As<IAddressService>().SingleInstance();
+                builder.Register(c => new AddressService(_container.Resolve<IRestClient>(), _container.Resolve<ISessionData>()?.User?.AddressAppPublicKey, _container.Resolve<ISessionData>()?.User?.AddressAppSecretKey
+                    )).As<IAddressService>();
 
                 if (_container != null)
                 {

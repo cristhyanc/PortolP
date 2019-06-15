@@ -35,6 +35,20 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             }
         }
 
+        private Boolean _isDeliveryButtonVisible;
+        public Boolean IsDeliveryButtonVisible
+        {
+            get
+            {
+                return _isDeliveryButtonVisible;
+            }
+            set
+            {
+                _isDeliveryButtonVisible = value;
+                OnPropertyChanged();
+            }
+        }
+        
         private List<Pin> _locations;
         public List<Pin> Locations
         {
@@ -74,7 +88,13 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
 
                 if (Delivery != null)
                 {
-                    
+                    IsDeliveryButtonVisible = false;
+
+                    if (_delivery.DeliveryStatus == Portol.Common.Helper.DeliveryStatus.InProgress)
+                    {
+                        IsDeliveryButtonVisible = true;
+                    }
+
                     double latitude, longitude;
                     Pin pin;
                     if (Delivery.PickupAddress != null)

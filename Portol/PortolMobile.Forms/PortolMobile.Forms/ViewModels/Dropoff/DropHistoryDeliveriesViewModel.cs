@@ -36,12 +36,12 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             }
             set
             {
-                //if (value != null)
-                //{
-                //    this.NavigationService.NavigateToAsync<DropIncomingDeliveryViewModel>(value);
-                //}
+                if (value != null)
+                {
+                    this.NavigationService.NavigateToAsync<DropIncomingDeliveryViewModel>(value);
+                }
 
-               // OnPropertyChanged();
+              //  OnPropertyChanged();
             }
         }
 
