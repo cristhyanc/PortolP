@@ -7,6 +7,7 @@ using Portol.Common.DTO;
 using Portol.Common.Helper;
 using System.Net.Http;
 using Portol.Common.Interfaces.PortolMobile;
+using System.Collections.Specialized;
 
 namespace PortolMobile.Services.User
 {
@@ -27,8 +28,14 @@ namespace PortolMobile.Services.User
                 return user; 
         }
 
-               
-      
+        public async Task<MetadataDto> GetMetadata(string appKey)
+        {
+            NameValueCollection queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryString["metadatakey"] = appKey.ToString();            
+            var result = await _restClient.MakeApiCall<MetadataDto>($"{Constants.BaseUserApiUrl}/GetMetaData", HttpMethod.Get , queryString);
+            return result;
+        }
+
 
     }
 }

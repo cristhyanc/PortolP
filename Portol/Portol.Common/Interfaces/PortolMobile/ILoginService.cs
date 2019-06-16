@@ -9,7 +9,9 @@ namespace Portol.Common.Interfaces.PortolMobile
     public interface ILoginService
     {
         Task<CustomerDto> Authenticate(string email, string password);
-     
-        
+        Task<MetadataDto> GetMetadata(string appKey);
+
+
+
     }
 }

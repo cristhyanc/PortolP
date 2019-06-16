@@ -94,7 +94,7 @@ namespace PortolMobile.Forms
                 builder.RegisterType<LoginService>().As<ILoginService>();
 
                 builder.RegisterType<DeliveryCalculator>().As<IDeliveryCalculator>();
-                builder.Register(c => new MapService(_container.Resolve<ISessionData>()?.User?.MapAppKey)).As<IMapService>();
+                builder.Register(c => new MapService(_container.Resolve<ISessionData>()?.MapAppKey)).As<IMapService>();
                 builder.RegisterType<DeliveryCore>().As<IDeliveryCore>();
                 builder.Register(c => CrossMedia.Current).As<IMedia>();
 
@@ -104,16 +104,13 @@ namespace PortolMobile.Forms
                 builder.RegisterType<UserCore>().As<IUserCore>();
                 builder.RegisterType<LoginCore>().As<ILoginCore>();
 
-
-                builder.Register(c => new PaymentService(_container.Resolve<ISessionData>()?.User?.StripeAppSecretKey, _container.Resolve<ISessionData>()?.User?.StripeAppPublicKey)).As<IPaymentService>();
-
-
+                builder.Register(c => new PaymentService(_container.Resolve<ISessionData>()?.StripeAppSecretKey, _container.Resolve<ISessionData>()?.StripeAppPublicKey)).As<IPaymentService>();
 
                 builder.RegisterType<RestClient>().As<IRestClient>().WithParameter(new ResolvedParameter(
                                                                        (pi, ctx) => pi.ParameterType == typeof(string) && pi.Name == "toke",
                                                                        (pi, ctx) => _container.Resolve<ISessionData>().GetCurrentToken()));
 
-                builder.Register(c => new AddressService(_container.Resolve<IRestClient>(), _container.Resolve<ISessionData>()?.User?.AddressAppPublicKey, _container.Resolve<ISessionData>()?.User?.AddressAppSecretKey
+                builder.Register(c => new AddressService(_container.Resolve<IRestClient>(), _container.Resolve<ISessionData>()?.AddressAppPublicKey, _container.Resolve<ISessionData>()?.AddressAppSecretKey
                     )).As<IAddressService>();
 
                 if (_container != null)

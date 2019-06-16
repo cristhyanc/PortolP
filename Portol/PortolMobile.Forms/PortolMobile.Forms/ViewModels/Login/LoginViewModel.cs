@@ -69,6 +69,7 @@ namespace PortolMobile.Forms.ViewModels.Login
             try
             {
                 this.IsBusy = true;
+                await _sessionData.GetMetadata(_loginCore);
                 if (await _sessionData.AutoLoginLastUser(_loginCore))
                 {
                     await NavigationService.NavigateToAsync<DropViewModel>();

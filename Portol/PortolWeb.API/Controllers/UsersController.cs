@@ -93,14 +93,14 @@ namespace PortolWeb.API.Controllers
             {
 
 
-                if (_userService.ValidateVerificationCode(details.PhoneNumber, details.PhoneCountryCode, Int16.Parse(details.Token)))
-                {
+                //if (_userService.ValidateVerificationCode(details.PhoneNumber, details.PhoneCountryCode, Int16.Parse(details.Token)))
+                //{
                     return Ok();
-                }
-                else
-                {
-                    return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, StringResources.WrongCode));
-                }
+                //}
+                //else
+                //{
+                //    return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, StringResources.WrongCode));
+                //}
 
             }
             catch (AppException ex)
@@ -206,7 +206,7 @@ namespace PortolWeb.API.Controllers
         {
             try
             {
-                _smsService.SendNewCode(phoneNumber, phoneCountryCode).Wait();
+               // _smsService.SendNewCode(phoneNumber, phoneCountryCode).Wait();
                 return Ok();
             }
             catch (AppException ex)
@@ -286,11 +286,7 @@ namespace PortolWeb.API.Controllers
                 var tokenString = tokenHandler.WriteToken(token);
 
                 user.Token = tokenString;
-                user.AddressAppPublicKey = _appSettings.AddressAppPublicKey;
-                user.AddressAppSecretKey = _appSettings.AddressAppSecretKey;
-                user.StripeAppPublicKey = _appSettings.StripeAppPublicKey;
-                user.StripeAppSecretKey = _appSettings.StripeAppSecretKey;
-                user.MapAppKey = _appSettings.MapAppKey;
+               
                 // return basic user info (without password) and token to store client side
                 return Ok(user);
             }
@@ -309,6 +305,47 @@ namespace PortolWeb.API.Controllers
             }
 
         }
+
+        [AllowAnonymous]
+        [HttpGet("GetMetaData")]
+        public IActionResult GetMetaData([FromQuery]string metadatakey)
+        {
+
+            try
+            {
+                if(metadatakey.Equals("AjPaETRxkyP3rSDJ7vu2nce9mlY66bgZu0DvY_eIVpeSM5PES53q_9IGzOrxahcL"))
+                {
+                    MetadataDto meta = new MetadataDto();
+                     meta.AddressAppPublicKey = _appSettings.AddressAppPublicKey;
+                    meta.AddressAppSecretKey = _appSettings.AddressAppSecretKey;
+                    meta.StripeAppPublicKey = _appSettings.StripeAppPublicKey;
+                    meta.StripeAppSecretKey = _appSettings.StripeAppSecretKey;
+                    meta.MapAppKey = _appSettings.MapAppKey;
+                    return Ok(meta);
+                }
+                else
+                {
+                    return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed,""));
+                }                
+               
+            }
+            catch (AppException ex)
+            {
+                return BadRequest(new ApiError((int)HttpStatusCode.PreconditionFailed, ex.Message));
+            }
+            catch (Exception ex)
+            {
+                Log.Error(ex, "User.GetMetaData");
+                return BadRequest(new ApiError((int)HttpStatusCode.BadRequest, ex.Message));
+
+            }
+            finally
+            {
+                _userService.Dispose();
+            }
+
+        }
+
 
         [AllowAnonymous]
         [HttpPost("RegisterNewuser")]

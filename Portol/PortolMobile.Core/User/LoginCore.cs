@@ -27,7 +27,10 @@ namespace PortolMobile.Core.User
             return await _loginService.Authenticate(email, password);
         }
 
-      
+        public async Task<MetadataDto > GetMetadata(string appKey)
+        {
+            return await _loginService.GetMetadata(appKey);
+        }
 
     }
 }

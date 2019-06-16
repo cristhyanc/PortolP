@@ -12,6 +12,11 @@ namespace PortolMobile.Forms
     {
         public CustomerDto User { get; private set; }
 
+        public string StripeAppSecretKey { get; private set; }
+        public string StripeAppPublicKey { get; private set; }
+        public string MapAppKey { get; private set; }
+        public string AddressAppSecretKey { get; private set; }
+        public string AddressAppPublicKey { get; private set; }
 
         public async Task RefreshUserDetails(IUserCore userCore)
         {
@@ -42,6 +47,17 @@ namespace PortolMobile.Forms
             Application.Current.Properties["email"] = email;
             Application.Current.Properties["password"] = password;
             Application.Current.SavePropertiesAsync();
+        }
+
+
+        public async Task GetMetadata(ILoginCore loginCore)
+        {
+            var result = await loginCore.GetMetadata("AjPaETRxkyP3rSDJ7vu2nce9mlY66bgZu0DvY_eIVpeSM5PES53q_9IGzOrxahcL");
+            AddressAppPublicKey = result?.AddressAppPublicKey;
+            AddressAppSecretKey = result?.AddressAppSecretKey;
+            MapAppKey = result?.MapAppKey;
+            StripeAppPublicKey = result?.StripeAppPublicKey;
+            StripeAppSecretKey = result?.StripeAppSecretKey;
         }
 
         public async Task<bool> AutoLoginLastUser(ILoginCore loginCore)

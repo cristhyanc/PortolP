@@ -214,7 +214,7 @@ namespace PortolWeb.Entities
             user.PasswordSalt = passwordSalt;
             uow.CustomerRepository.Insert(user);
 
-            if (user.CurrentAddress != null)
+            if (newUser.CustomerAddress != null)
             {
                 newUser.CustomerAddress.IsCurrentAddress = true;
                 newUser.CustomerAddress.ParentID = user.CustomerID;
