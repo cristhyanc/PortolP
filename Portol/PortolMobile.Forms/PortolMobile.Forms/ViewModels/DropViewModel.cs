@@ -109,9 +109,10 @@ namespace PortolMobile.Forms.ViewModels
         {
             try
             {
-                this.UserDialogs.ShowLoading();
+               
                 // this.IsBusy = true;
                 await ViewModelLocator.CheckMapPermission();
+                this.UserDialogs.ShowLoading();
                 var delivery = await _deliveryCore.GetSendertDeliveryInProgress(_sessionData.User.CustomerID);
                 if(delivery!=null)
                 {                   
