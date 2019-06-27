@@ -11,7 +11,7 @@
   <color name="med_gray">#C7D2DC</color>
   <color name="gray">#5C7082</color>
   <color name="dark_gray">#FF2B343D</color>
-  <color name="black">#0D131A</color>
+  <!--<color name="black">#0D131A</color>-->
   <color name="text_gray">#5A6570</color>
   <color name="menu_background_color">#eaeaea</color>
   <color name="navigation_BarColor">#ffffffff</color>

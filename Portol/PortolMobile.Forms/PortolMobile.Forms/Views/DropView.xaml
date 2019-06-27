@@ -66,24 +66,25 @@
 
 
             </StackLayout>
-            <ScrollView Grid.Row="1">
-                <RelativeLayout>
 
-                    <Frame
-                        x:Name="frmDetailBox"
-                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
-                                                                               Property=Height,
-                                                                               Factor=0.68}"
-                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
-                                                                              Property=Width,
-                                                                              Factor=0.7}"
-                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+            <RelativeLayout Grid.Row="1">
+
+                <Frame
+                    x:Name="frmDetailBox"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                           Property=Height,
+                                                                           Factor=0.68}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
                                                                           Property=Width,
-                                                                          Factor=0.15}"
-                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
-                                                                          Property=Height,
-                                                                          Factor=0.08}"
-                        Style="{StaticResource FrameBox}">
+                                                                          Factor=0.7}"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Width,
+                                                                      Factor=0.15}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Height,
+                                                                      Factor=0.08}"
+                    Style="{StaticResource FrameBox}">
+                    <ScrollView>
                         <StackLayout Style="{StaticResource StackLayoutFrameBox}">
                             <Label Style="{StaticResource GreetingStyle}" Text="{Binding SenderName}" />
                             <Label Style="{StaticResource DropoffLabelStyle}" Text="{i18n:Translate WhatAreSending}" />
@@ -129,45 +130,46 @@
                                 Text="{Binding ReceiverName, Mode=TwoWay}" />
 
                         </StackLayout>
-                    </Frame>
+                    </ScrollView>
+                </Frame>
 
-                    <Frame
-                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
-                                                                          Property=Width,
-                                                                          Factor=0.5,
-                                                                          Constant=-35}"
-                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
-                                                                          Property=Height,
-                                                                          Factor=0.08,
-                                                                          Constant=-35}"
-                        Style="{StaticResource FrameImageProfile}">
+                <Frame
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Width,
+                                                                      Factor=0.5,
+                                                                      Constant=-35}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Height,
+                                                                      Factor=0.08,
+                                                                      Constant=-35}"
+                    Style="{StaticResource FrameImageProfile}">
 
-                        <circleIma:CircleImage
-                            x:Name="ProfileImage"
-                            Source="{Binding ProfilePicture}"
-                            Style="{StaticResource CircleImageProfile}" />
+                    <circleIma:CircleImage
+                        x:Name="ProfileImage"
+                        Source="{Binding ProfilePicture}"
+                        Style="{StaticResource CircleImageProfile}" />
 
-                    </Frame>
+                </Frame>
 
-                    <Frame
-                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
-                                                                          Property=Width,
-                                                                          Factor=0.5,
-                                                                          Constant=-35}"
-                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
-                                                                          ElementName=frmDetailBox,
-                                                                          Property=Height,
-                                                                          Factor=1.15}"
-                        Style="{StaticResource ButtonFrameStyle}">
+                <Frame
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Width,
+                                                                      Factor=0.5,
+                                                                      Constant=-35}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+                                                                      ElementName=frmDetailBox,
+                                                                      Property=Height,
+                                                                      Factor=1.15}"
+                    Style="{StaticResource ButtonFrameStyle}">
 
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GetCustomerCommand}" />
-                        </Frame.GestureRecognizers>
-                        <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" />
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GetCustomerCommand}" />
+                    </Frame.GestureRecognizers>
+                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" />
 
-                    </Frame>
-                </RelativeLayout>
-            </ScrollView>
+                </Frame>
+            </RelativeLayout>
+
 
             <userControls:BottomMenuControl
                 Grid.Row="1"

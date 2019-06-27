@@ -57,9 +57,9 @@
                             Factor=0.7 }">
                         <StackLayout Style="{StaticResource StackLayoutFrameBox}" >
 
-                            <Label Text="{i18n:Translate Measurements}" HorizontalOptions="Center"    Style="{StaticResource DropoffLabelStyle}" ></Label>
+                            <Label Text="{i18n:Translate Measurements}" HorizontalOptions="Center" Margin="0,0,0,20"    Style="{StaticResource DropoffLabelStyle}" ></Label>
 
-                            <Grid ColumnSpacing="0" RowSpacing="0" VerticalOptions="CenterAndExpand">
+                            <!--<Grid ColumnSpacing="0" RowSpacing="0" VerticalOptions="CenterAndExpand">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
@@ -75,7 +75,7 @@
                                 <BoxView  Grid.Column="0" Grid.Row="1" Style="{StaticResource BoxSeparatorLeft}" ></BoxView>
                                 <BoxView  Grid.Column="1" Grid.Row="1" Style="{StaticResource BoxSeparatorRight}" ></BoxView>
 
-                            </Grid>
+                            </Grid>-->
 
                             <Grid VerticalOptions="Center" >
                                 <Grid.ColumnDefinitions>

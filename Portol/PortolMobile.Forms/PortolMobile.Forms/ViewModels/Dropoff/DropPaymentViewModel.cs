@@ -85,7 +85,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
 
 
         IDeliveryCalculator _dropoffCalculatorService;
-        IDeliveryCore _dropoffCore;
+        IDeliveryCore _deliveryCore;
         ISessionData _sessionData;
         IPaymentService _paymentService;
 
@@ -96,7 +96,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             ConfirmCommand = new Command((() => ConfirmService()), () => { return !IsBusy; });
             AddPaymentMethodCommand = new Command((() => GoToPaymentMethods()), () => { return !IsBusy; });
             _dropoffCalculatorService = dropoffCalculator;
-            _dropoffCore = dropoffCore;
+            _deliveryCore = dropoffCore;
             _sessionData = sessionData;
             _paymentService = paymentService;
            
@@ -136,7 +136,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                 if (this.EstimatedMinCost == 0)
                 {
                     LoadInformation();
-                   // UserDialogs.Alert(StringResources.CostNotEstimatedTryAgain);
+                  
                     return;
                 }
 
@@ -151,12 +151,11 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
                     }
                 }
                 this.DropoffDetails.CreatedDate = DateTime.Now;
-                var result = await _dropoffCore.CreateDropoffRequest(this.DropoffDetails);
+                var result = await _deliveryCore.CreateDropoffRequest(this.DropoffDetails);
                 if (result != Guid.Empty )
                 {
-                    this.DropoffDetails.DeliveryID = result;
-                    await this.NavigationService.GoToMainPage();
-                   // await this.NavigationService.NavigateToAsync<DropDriverInfoViewModel>(this.DropoffDetails);
+                    this.DropoffDetails.DeliveryID = result;                  
+                    await this.NavigationService.NavigateToAsync<DropDriverInfoViewModel>(this.DropoffDetails);
                 }
                 else
                 {
@@ -210,7 +209,16 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             try
             {
-               await  LoadInformation();
+                var delivery = await _deliveryCore.GetSendertDeliveryInProgress(_sessionData.User.CustomerID);
+                if (delivery != null)
+                {
+                    await NavigationService.NavigateToAsync<DropDriverInfoViewModel>(delivery);
+                }
+                else
+                {
+                    await LoadInformation();
+                }
+                
             }
             catch (Exception ex)
             {
@@ -259,8 +267,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
             }
 
         }
-
-
+        
         public override async Task InitializeAsync(object navigationData)
         {
             try
@@ -281,7 +288,7 @@ namespace PortolMobile.Forms.ViewModels.Dropoff
         {
             try
             {               
-                List<VehiculeTypeDto> vehiculeTypesAvailable = await _dropoffCore.GetVehiculeTypesAvailables();
+                List<VehiculeTypeDto> vehiculeTypesAvailable = await _deliveryCore.GetVehiculeTypesAvailables();
                 var costs = await _dropoffCalculatorService.EstimatePrice(DropoffDetails.Parcel, DropoffDetails.PickupAddress, DropoffDetails.DropoffAddress, vehiculeTypesAvailable);
                 EstimatedMinCost = costs.Min();
                 EstimatedMaxCost = costs.Max();

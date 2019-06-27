@@ -109,7 +109,8 @@ namespace PortolMobile.Forms.ViewModels
         {
             try
             {
-                this.IsBusy = true;
+                this.UserDialogs.ShowLoading();
+                // this.IsBusy = true;
                 await ViewModelLocator.CheckMapPermission();
                 var delivery = await _deliveryCore.GetSendertDeliveryInProgress(_sessionData.User.CustomerID);
                 if(delivery!=null)
@@ -117,14 +118,15 @@ namespace PortolMobile.Forms.ViewModels
                     await NavigationService.NavigateToAsync<DropDriverInfoViewModel>(delivery);
                 }
                 await BottomMenuControl.InitControl();
-               
+                OnPropertyChanged("ProfilePicture");
             }
             catch (System.Exception ex)
             {
                 ExceptionHelper.ProcessException(ex, UserDialogs, "DropViewModel", "PageAppearing");
             }finally
             {
-                this.IsBusy = false;
+                this.UserDialogs.HideLoading();
+                //this.IsBusy = false;
             }
         }
 

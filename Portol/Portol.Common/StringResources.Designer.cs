@@ -19,7 +19,7 @@ namespace Portol.Common {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     public class StringResources {
@@ -1011,6 +1011,15 @@ namespace Portol.Common {
         public static string VehiculeTypeNoAvailable {
             get {
                 return ResourceManager.GetString("VehiculeTypeNoAvailable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The password needs to be composed of lower and upper letters, numbers and longer that 5 digits.
+        /// </summary>
+        public static string WeakPassword {
+            get {
+                return ResourceManager.GetString("WeakPassword", resourceCulture);
             }
         }
         

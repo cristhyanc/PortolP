@@ -450,4 +450,7 @@ iPhone
   <data name="CancelServiceQuestion" xml:space="preserve">
     <value>Do you want to cancel this service?</value>
   </data>
+  <data name="WeakPassword" xml:space="preserve">
+    <value>The password needs to be composed of lower and upper letters, numbers and longer that 5 digits</value>
+  </data>
 </root>

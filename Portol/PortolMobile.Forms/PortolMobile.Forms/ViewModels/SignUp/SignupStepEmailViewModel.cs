@@ -10,6 +10,7 @@ using System.Windows.Input;
 using Xamarin.Forms;
 using PortolMobile.Forms.Services.Navigation;
 using Acr.UserDialogs;
+using System.Linq;
 
 namespace PortolMobile.Forms.ViewModels.SignUp
 {
@@ -146,6 +147,13 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                 {
                     IsValidationVisible = true;
                     ErrorMessage = StringResources.NotMatchPasswords;
+                    return;
+                }
+
+                if (!this.Password.Any(Char.IsUpper) || !this.Password.Any(Char.IsNumber) || !this.Password.Any(Char.IsLower) || this.Password.Length<5)
+                {
+                    IsValidationVisible = true;
+                    ErrorMessage = StringResources.WeakPassword;
                     return;
                 }
 
