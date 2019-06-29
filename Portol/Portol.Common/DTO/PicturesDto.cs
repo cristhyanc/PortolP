@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Portol.Common.Helper;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
@@ -9,7 +10,7 @@ namespace Portol.Common.DTO
    public class PictureDto
     {
         public Guid PictureID { get; set; }
-        public string ImageUrl { get; set; }        
+        public string ImageUrl { get; set; } = Constants.BaseUrl + "/image/profile_avatar.png";
         public Guid ParentID { get; set; }
         public Byte[] ImageArray { get; set; }
 

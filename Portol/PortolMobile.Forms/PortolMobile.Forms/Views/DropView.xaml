@@ -69,7 +69,7 @@
 
             <RelativeLayout Grid.Row="1">
 
-                <Frame
+                <Frame 
                     x:Name="frmDetailBox"
                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
                                                                            Property=Height,
