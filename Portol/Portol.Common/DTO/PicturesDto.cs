@@ -10,7 +10,24 @@ namespace Portol.Common.DTO
    public class PictureDto
     {
         public Guid PictureID { get; set; }
-        public string ImageUrl { get; set; } = Constants.BaseUrl + "/image/profile_avatar.png";
+
+
+        public string _imageUrl;
+        public string ImageUrl {
+            get
+            {
+                if (string.IsNullOrEmpty(_imageUrl))
+                {
+                    _imageUrl = Constants.BaseUrl + "/images/profile_avatar.png";
+                }
+                return _imageUrl;
+            }
+            set
+            {
+                _imageUrl = value;
+            }
+
+        } 
         public Guid ParentID { get; set; }
         public Byte[] ImageArray { get; set; }
 

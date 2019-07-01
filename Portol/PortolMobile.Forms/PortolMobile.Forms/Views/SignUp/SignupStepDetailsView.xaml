@@ -24,6 +24,7 @@
 
             <Label
                 Margin="0,30,0,0"
+                FontAttributes="Bold"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
                 Text="{i18n:Translate PersonalDetails}" />
@@ -73,13 +74,7 @@
                 IsVisible="{Binding IsBusy}"
                 Style="{StaticResource ActivityIndicatorStyle}" />
 
-            <ffimageloadingsvg:SvgCachedImage
-                Margin="0,15,0,0"
-                HeightRequest="35"
-                HorizontalOptions="Center"
-                Source="resource://PortolMobile.Forms.Resources.btn_background.svg?assembly=PortolMobile.Forms"
-                VerticalOptions="Center"
-                WidthRequest="35">
+            <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonSignupIconStyle}">
                 <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding GotoEmailPageCommand}" />
                 </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>

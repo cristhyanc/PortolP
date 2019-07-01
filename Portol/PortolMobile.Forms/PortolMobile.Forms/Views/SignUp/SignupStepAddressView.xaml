@@ -1,30 +1,42 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-              xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"             
-             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper" 
-              xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
-             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-             x:Class="PortolMobile.Forms.Views.SignUp.SignupStepAddressView">
+<ContentPage
+    x:Class="PortolMobile.Forms.Views.SignUp.SignupStepAddressView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
+    xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="40,40,40,0">
+        <StackLayout
+            Margin="40,40,40,0"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
 
-            <ffimageloadingsvg:SvgCachedImage HorizontalOptions="Center"  VerticalOptions="Start" Margin="0,20,0,0"
-                                           Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms" >
+            <ffimageloadingsvg:SvgCachedImage
+                Margin="0,20,0,0"
+                HorizontalOptions="Center"
+                Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms"
+                VerticalOptions="Start" />
 
-            </ffimageloadingsvg:SvgCachedImage>
 
-           
-            <controls:ExtendedEntry Text="{Binding HomeAddressStr }" Placeholder="{i18n:Translate Address}" Margin="0,15,0,0" HorizontalTextAlignment="Center" 
-                                                OnFocusCommand="{Binding AddressEntryCommand}"  VerticalOptions="Start" ></controls:ExtendedEntry>
-            
-            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+            <controls:ExtendedEntry
+                Margin="0,15,0,0"
+                HorizontalTextAlignment="Center"
+                OnFocusCommand="{Binding AddressEntryCommand}"
+                Placeholder="{i18n:Translate Address}"
+                Text="{Binding HomeAddressStr}"
+                VerticalOptions="Start" />
 
-            <ffimageloadingsvg:SvgCachedImage WidthRequest="35" HeightRequest="35"  Margin="0,15,0,0" HorizontalOptions="Center" VerticalOptions="Center" 
-                  Source="resource://PortolMobile.Forms.Resources.btn_background.svg?assembly=PortolMobile.Forms" >
-                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >
-                    <TapGestureRecognizer Command="{Binding SaveAccountCommand}"  ></TapGestureRecognizer>
+            <ActivityIndicator
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                Style="{StaticResource ActivityIndicatorStyle}" />
+
+            <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonSignupIconStyle}">
+                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding SaveAccountCommand}" />
                 </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
             </ffimageloadingsvg:SvgCachedImage>
 

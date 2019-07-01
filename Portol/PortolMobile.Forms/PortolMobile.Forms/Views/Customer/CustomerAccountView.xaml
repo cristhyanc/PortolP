@@ -1,44 +1,71 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PortolMobile.Forms.Views.Customer.CustomerAccountView"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"           
-             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"         
-              xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
-             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
-             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-             BackgroundColor="#F0F0F0"
-             xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles">
+<controls:ExtendedContentPage
+    x:Class="PortolMobile.Forms.Views.Customer.CustomerAccountView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:CustomerStyles="clr-namespace:PortolMobile.Forms.Styles"
+    xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
+    xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+    BackgroundColor="#F0F0F0">
     <controls:ExtendedContentPage.Content>
-        <StackLayout  >
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="3*" />
+            </Grid.RowDefinitions>
+
             <Grid>
-                <Image Source="ic_redbacground.png" Aspect="Fill"  VerticalOptions="StartAndExpand"/>
-                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-                    <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"   VerticalOptions="Center" HorizontalOptions="Center"  HeightRequest="120" WidthRequest="120"
-                       Source="{Binding User.ProfilePhoto.ImageUrl}"  
-                                           x:Name="ProfileImage"  />
-                    <Label Text="{Binding User.FullName}" HorizontalOptions="Center" Style="{StaticResource LabelBaseStyleWhite}" HorizontalTextAlignment="Center" ></Label>
+                <Image
+                    Aspect="Fill"
+                    Source="ic_redbacground.png"
+                    VerticalOptions="StartAndExpand" />
+                <StackLayout
+                    Margin="0,10,0,0"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <circleIma:CircleImage
+                        x:Name="ProfileImage"
+                        HeightRequest="80"
+                        HorizontalOptions="Center"
+                        Source="{Binding User.ProfilePhoto.ImageUrl}"
+                        Style="{StaticResource CircleImageProfile}"
+                        VerticalOptions="Center"
+                        WidthRequest="80" />
+                    <Label
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelBaseStyleWhite}"
+                        Text="{Binding User.FullName}" />
                 </StackLayout>
 
             </Grid>
-            <Grid RowSpacing="0" ColumnSpacing="0"  Margin="0,-30,0,0" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-
-                <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
+            <StackLayout Grid.Row="1">
 
 
+                <Grid
+                    Margin="0,-30,0,0"
+                    ColumnSpacing="0"
+                    RowSpacing="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
 
-                <ffimageloadingsvg:SvgCachedImage  WidthRequest="25" HeightRequest="15"	
+                    <Grid.RowDefinitions>
+                        <RowDefinition />
+                        <RowDefinition />
+                    </Grid.RowDefinitions>
+
+
+
+                    <!--<ffimageloadingsvg:SvgCachedImage  WidthRequest="25" HeightRequest="15"	
                            Source="resource://PortolMobile.Forms.Resources.ic_squad.svg?assembly=PortolMobile.Forms" >
                 </ffimageloadingsvg:SvgCachedImage>
 
@@ -52,49 +79,87 @@
 
                 <Button  Grid.Column="1" Grid.Row="1"  Text="Schedules" Style="{StaticResource ProfileButtonStyle}">
 
-                </Button>
+                </Button>-->
 
-                <Button  Grid.Column="4" Grid.Row="1"  Text="Edit" Command="{Binding EditCommand}" Style="{StaticResource ProfileButtonStyle}">
+                    <Button
+                        Grid.Row="1"
+                        Grid.Column="4"
+                        Command="{Binding EditCommand}"
+                        Style="{StaticResource ProfileButtonStyle}"
+                        Text="Edit" />
 
-                </Button>
 
+                </Grid>
 
-            </Grid>
+                <Label
+                    Margin="5,0,0,0"
+                    FontAttributes="Bold"
+                    Style="{StaticResource LabelBaseBold}"
+                    Text="{i18n:Translate Address}" />
 
-            <Label Text="{i18n:Translate Address}"  Style="{StaticResource LabelBaseBold}" Margin="5,0,0,0" FontAttributes="Bold"   ></Label>
+                <StackLayout BackgroundColor="White" Orientation="Horizontal">
 
-            <StackLayout BackgroundColor="White" Orientation="Horizontal" >
+                    <ffimageloadingsvg:SvgCachedImage
+                        Margin="5,0,0,0"
+                        HeightRequest="15"
+                        Source="resource://PortolMobile.Forms.Resources.ic_homeAddress.svg?assembly=PortolMobile.Forms"
+                        WidthRequest="15" />
+                    <Label
+                        Margin="5"
+                        Style="{StaticResource labelListSecondLine}"
+                        Text="{Binding UserAddress}" />
+                </StackLayout>
 
-                <ffimageloadingsvg:SvgCachedImage  WidthRequest="15" HeightRequest="15"	 Margin="5,0,0,0"
-                           Source="resource://PortolMobile.Forms.Resources.ic_homeAddress.svg?assembly=PortolMobile.Forms" >
-                </ffimageloadingsvg:SvgCachedImage>
-                <Label Text="{Binding UserAddress}"  Margin="5"  Style="{StaticResource labelListSecondLine}"  ></Label>
+                <StackLayout
+                    Margin="5,0,0,15"
+                    BackgroundColor="White"
+                    Orientation="Horizontal"
+                    VerticalOptions="EndAndExpand">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding HistoryCommand}" />
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Margin="5"
+                        Style="{StaticResource LabelBaseBlackSmall}"
+                        Text="{i18n:Translate History}" />
+                </StackLayout>
+
+                <StackLayout
+                    Margin="5,0,0,15"
+                    BackgroundColor="White"
+                    Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding PaymentMethodCommand}" />
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Margin="5"
+                        Style="{StaticResource LabelBaseBlackSmall}"
+                        Text="{i18n:Translate PaymentMethods}" />
+                </StackLayout>
+
+                <StackLayout
+                    Margin="5,0"
+                    BackgroundColor="White"
+                    Orientation="Horizontal">
+                    <Label
+                        Margin="5"
+                        Style="{StaticResource LabelBaseBlackSmall}"
+                        Text="{i18n:Translate SwitchBusinessAccount}" />
+                </StackLayout>
+
+                <StackLayout
+                    Margin="5,30,5,30"
+                    BackgroundColor="White"
+                    Orientation="Horizontal">
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LogoutCommand}" />
+                    </StackLayout.GestureRecognizers>
+                    <Label
+                        Margin="5"
+                        Style="{StaticResource LabelBaseBlackSmall}"
+                        Text="{i18n:Translate Logout}" />
+                </StackLayout>
             </StackLayout>
-
-            <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="5,0,0,15" VerticalOptions="EndAndExpand" >
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding HistoryCommand}"></TapGestureRecognizer>
-                </StackLayout.GestureRecognizers>
-                <Label Text="{i18n:Translate History}" Margin="5" Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
-            </StackLayout>
-
-            <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="5,0,0,15" >
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding PaymentMethodCommand}"></TapGestureRecognizer>
-                </StackLayout.GestureRecognizers>
-                <Label Text="{i18n:Translate PaymentMethods}" Margin="5" Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
-            </StackLayout>
-
-            <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="5,0" >
-                <Label Text="{i18n:Translate SwitchBusinessAccount}" Margin="5" Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
-            </StackLayout>
-
-            <StackLayout BackgroundColor="White" Orientation="Horizontal" Margin="5,30,5,30"  >
-                <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding LogoutCommand}"></TapGestureRecognizer>
-                </StackLayout.GestureRecognizers>
-                <Label Text="{i18n:Translate Logout}" Margin="5" Style="{StaticResource LabelBaseBlackSmall}"  ></Label>
-            </StackLayout>
-        </StackLayout>
+        </Grid>
     </controls:ExtendedContentPage.Content>
 </controls:ExtendedContentPage>

@@ -36,7 +36,25 @@ namespace PortolMobile.Forms.Views.SignUp
                 {
                     txtN4.Focus();
                 }
-                             
+
+            }
+            else
+            {
+                if (ttxn == txtN4)
+                {
+                    txtN3.Focus();
+                }
+
+                if (ttxn == txtN3)
+                {
+                    txtN2.Focus();
+                }
+
+                if (ttxn == txtN2)
+                {
+                    txtN1.Focus();
+                }
+
             }
 
         }
