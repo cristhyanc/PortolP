@@ -718,6 +718,15 @@ namespace Portol.Common {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to This is a pretty long distance, we don&apos;t have vehicules that can cover it.
+        /// </summary>
+        public static string NoVehiculeTypeForDistance {
+            get {
+                return ResourceManager.GetString("NoVehiculeTypeForDistance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Looks like we don&apos;t have an available vehicule for this type of parcel .
         /// </summary>
         public static string NoVehiculeTypeForParcel {

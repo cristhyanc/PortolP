@@ -101,6 +101,7 @@ namespace PortolMobile.Forms.Services.Navigation
             _dropOffPage = null;
             _shopPage = null;
             CurrentNavigator = null;
+
             await InternalNavigateToAsync(typeof(ViewModels.Login.LoginViewModel), null);
         }
 
@@ -108,36 +109,27 @@ namespace PortolMobile.Forms.Services.Navigation
         {
             try
             {
-                Page page = CreatePage(viewModelType);
 
-
-                if (typeof(DropView) == page.GetType() || typeof(ShopView) == page.GetType())
+                Page page=null;
+                if (typeof(DropViewModel) == viewModelType || typeof(ShopViewModel) == viewModelType)
                 {
 
-                    if (typeof(DropView) == page.GetType())
+                    if (typeof(DropViewModel) == viewModelType)
                     {
                         if (_dropOffPage == null)
                         {
-                            _dropOffPage = page;
+                            _dropOffPage = CreatePage(viewModelType);
                         }
-                        else
-                        {
-                            page = _dropOffPage;
-                            viewModel = null;
-                        }
+                        page = _dropOffPage;
                     }
 
-                    if (typeof(ShopView) == page.GetType())
+                    if (typeof(ShopViewModel) == viewModelType)
                     {
                         if (_shopPage == null)
                         {
-                            _shopPage = page;
+                            _shopPage = CreatePage(viewModelType);
                         }
-                        else
-                        {
-                            page = _shopPage;
-                            viewModel = null;
-                        }
+                        page = _shopPage;
                     }
 
                     if(CurrentNavigator!=null)
@@ -154,6 +146,7 @@ namespace PortolMobile.Forms.Services.Navigation
                 }
                 else
                 {
+                    page = CreatePage(viewModelType);
                     if (CurrentNavigator == null)
                     {
                         CurrentNavigator = new CustomNavigationPage(page);
@@ -164,7 +157,6 @@ namespace PortolMobile.Forms.Services.Navigation
                     {
                         await CurrentNavigator.PushAsync(page);
                     }
-
 
                 }
 

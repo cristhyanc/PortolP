@@ -97,7 +97,10 @@
                     Style="{StaticResource LabelBaseBold}"
                     Text="{i18n:Translate Address}" />
 
-                <StackLayout BackgroundColor="White" Orientation="Horizontal">
+                <StackLayout
+                    Margin="5,0"
+                    BackgroundColor="White"
+                    Orientation="Horizontal">
 
                     <ffimageloadingsvg:SvgCachedImage
                         Margin="5,0,0,0"
@@ -111,7 +114,7 @@
                 </StackLayout>
 
                 <StackLayout
-                    Margin="5,0,0,15"
+                    Margin="5,0,5,15"
                     BackgroundColor="White"
                     Orientation="Horizontal"
                     VerticalOptions="EndAndExpand">
@@ -125,7 +128,7 @@
                 </StackLayout>
 
                 <StackLayout
-                    Margin="5,0,0,15"
+                    Margin="5,0,5,15"
                     BackgroundColor="White"
                     Orientation="Horizontal">
                     <StackLayout.GestureRecognizers>

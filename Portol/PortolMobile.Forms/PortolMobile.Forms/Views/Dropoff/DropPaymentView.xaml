@@ -1,118 +1,137 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PortolMobile.Forms.Views.Dropoff.DropPaymentView"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-             xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
-             xmlns:localResources="clr-namespace:PortolMobile.Forms.Resources"
-             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
-             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-             BackgroundColor="White"
-             xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
+<controls:ExtendedContentPage
+    x:Class="PortolMobile.Forms.Views.Dropoff.DropPaymentView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles"
+    xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
+    xmlns:localResources="clr-namespace:PortolMobile.Forms.Resources"
+    xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+    BackgroundColor="White">
     <controls:ExtendedContentPage.Resources>
-        <DropoffStyle:DropoffStyles/>
+        <DropoffStyle:DropoffStyles />
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
 
-        <Grid VerticalOptions="FillAndExpand" x:Name="MainGrid" >
+        <Grid x:Name="MainGrid" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <ffimageloading:CachedImage  Grid.RowSpan="2" HorizontalOptions="FillAndExpand " VerticalOptions="FillAndExpand"
-                                        Source="Map_image" />
-            
-            <StackLayout BackgroundColor="White" >
-                
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}"  >
+            <ffimageloading:CachedImage
+                Grid.RowSpan="2"
+                HorizontalOptions="FillAndExpand "
+                Source="Map_image"
+                VerticalOptions="FillAndExpand" />
+
+            <StackLayout BackgroundColor="White">
+
+                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}">
                     <ffimageloadingsvg:SvgCachedImage.Margin>
                         <OnPlatform x:TypeArguments="Thickness">
                             <On Platform="Android" Value="0,40,0,0" />
-                            <On Platform="iOS" Value="0, 40, 0, 0"/>
+                            <On Platform="iOS" Value="0, 40, 0, 0" />
                         </OnPlatform>
                     </ffimageloadingsvg:SvgCachedImage.Margin>
                 </ffimageloadingsvg:SvgCachedImage>
 
-                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+                <ActivityIndicator
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    Style="{StaticResource ActivityIndicatorStyle}" />
             </StackLayout>
 
 
-            <RelativeLayout   Grid.Row="1" >
+            <RelativeLayout Grid.Row="1">
 
-                <Frame  Style="{StaticResource FrameBox}" x:Name="frmDetailBox"
-                            RelativeLayout.XConstraint="{ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Width,
-                            Factor=0.15 }"
-                        
-                            RelativeLayout.YConstraint="{ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Height,
-                            Factor=0.55 }"
-                            
-                            RelativeLayout.HeightConstraint="{ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Height,
-                            Factor=0.4 }"
-                        
-                            RelativeLayout.WidthConstraint="{ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Width,
-                            Factor=0.7 }">
-                    <StackLayout Style="{StaticResource StackLayoutFrameBox}" >
+                <Frame
+                    x:Name="frmDetailBox"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                           Property=Height,
+                                                                           Factor=0.4}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                          Property=Width,
+                                                                          Factor=0.7}"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Width,
+                                                                      Factor=0.15}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Height,
+                                                                      Factor=0.55}"
+                    Style="{StaticResource FrameBox}">
+                    <StackLayout Style="{StaticResource StackLayoutFrameBox}">
 
-                        <StackLayout Orientation="Horizontal" >
-                            <Label Text="{i18n:Translate EstimatedCost}"  Margin="0,0,5,0" Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
-                            <Label Text="{Binding EstimatedMinCost}"   Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
-                            <Label Text="-"   Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
-                            <Label Text="{Binding EstimatedMaxCost}"   Style="{StaticResource DropoffLabelDefaultStyle}" ></Label>
+                        <StackLayout Orientation="Horizontal">
+                            <Label
+                                Margin="0,0,5,0"
+                                Style="{StaticResource DropoffLabelDefaultStyle}"
+                                Text="{i18n:Translate EstimatedCost}" />
+                            <Label Style="{StaticResource DropoffLabelDefaultStyle}" Text="{Binding EstimatedMinCost}" />
+                            <Label Style="{StaticResource DropoffLabelDefaultStyle}" Text="-" />
+                            <Label Style="{StaticResource DropoffLabelDefaultStyle}" Text="{Binding EstimatedMaxCost}" />
                         </StackLayout>
 
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
                             <StackLayout.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding PaymentMethodListCommand}">
-
-                                </TapGestureRecognizer>
+                                <TapGestureRecognizer Command="{Binding PaymentMethodListCommand}" />
                             </StackLayout.GestureRecognizers>
 
-                            <ffimageloadingsvg:SvgCachedImage Margin="0,0,5,0" DownsampleToViewSize="True" WidthRequest="30" HeightRequest="25"  HorizontalOptions="Start" 
-                                                                  Source ="{Binding PaymentMethodSelected.IconResourcePath, Converter={StaticResource SvgImageSourceConverter}}" />
+                            <ffimageloadingsvg:SvgCachedImage
+                                Margin="0,0,5,0"
+                                DownsampleToViewSize="True"
+                                HeightRequest="25"
+                                HorizontalOptions="Start"
+                                Source="{Binding PaymentMethodSelected.IconResourcePath, Converter={StaticResource SvgImageSourceConverter}}"
+                                WidthRequest="30" />
 
-                            <Label Text="{Binding PaymentMethodSelected.CardNumber}"   Style="{StaticResource DropoffLabelDefaultStyle}" HorizontalOptions="Start" ></Label>
+                            <Label
+                                HorizontalOptions="Start"
+                                Style="{StaticResource DropoffLabelDefaultStyle}"
+                                Text="{Binding PaymentMethodSelected.CardNumber}" />
 
                         </StackLayout>
 
-                        <Label Text="Add Payment Method"   Style="{StaticResource DropoffLabelDefaultStyle}" TextColor="White"  HorizontalOptions="EndAndExpand" >
+                        <Label
+                            HorizontalOptions="CenterAndExpand"
+                            Style="{StaticResource DropoffLabelDefaultStyle}"
+                            Text="Add Payment Method"
+                            TextColor="White">
                             <Label.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding AddPaymentMethodCommand}">
-                                </TapGestureRecognizer>
+                                <TapGestureRecognizer Command="{Binding AddPaymentMethodCommand}" />
                             </Label.GestureRecognizers>
                         </Label>
 
-                        <Button Margin="0,7,0,7" Text="{i18n:Translate Confirm}" TextColor="White" Command="{Binding ConfirmCommand}" BackgroundColor="#4c4c4c"   ></Button>
+                        <Button
+                            Margin="0,7,0,7"
+                            BackgroundColor="#4c4c4c"
+                            Command="{Binding ConfirmCommand}"
+                            Text="{i18n:Translate Confirm}"
+                            TextColor="White" />
 
                     </StackLayout>
                 </Frame>
 
-                <Frame Style="{StaticResource FrameImageProfile}"
-                       
-                                    RelativeLayout.XConstraint="{ConstraintExpression
-                                      Type=RelativeToParent,
-                                        Property=Width,
-                                        Factor=0.5, Constant=-35 }"                   
-                                    
-                                    RelativeLayout.YConstraint="{ConstraintExpression
-                                    Type=RelativeToParent,
-                                    Property=Height,
-                                    Factor=0.55,Constant=-35 }"   >
+                <Frame
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Width,
+                                                                      Factor=0.5,
+                                                                      Constant=-35}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Height,
+                                                                      Factor=0.55,
+                                                                      Constant=-35}"
+                    Style="{StaticResource FrameImageProfile}">
 
-                    <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"  
-                       Source="{localResources:ImageResource PortolMobile.Forms.Resources.ic_dollar.png}"  
-                                           x:Name="ProfileImage"  />
+                    <circleIma:CircleImage
+                        x:Name="ProfileImage"
+                        Source="{localResources:ImageResource PortolMobile.Forms.Resources.ic_dollar.png}"
+                        Style="{StaticResource CircleImageProfile}" />
 
                 </Frame>
 

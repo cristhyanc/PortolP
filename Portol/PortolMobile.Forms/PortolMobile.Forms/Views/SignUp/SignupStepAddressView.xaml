@@ -3,6 +3,7 @@
     x:Class="PortolMobile.Forms.Views.SignUp.SignupStepAddressView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:Helpers="clr-namespace:PortolMobile.Forms.Helper"
     xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
@@ -21,9 +22,27 @@
                 VerticalOptions="Start" />
 
 
+            <Label
+                Margin="0,30,0,0"
+                FontAttributes="Bold"
+                FontSize="Large"
+                HorizontalOptions="Center"
+                HorizontalTextAlignment="Center"
+                IsVisible="{Binding IsAddressVisible, Converter={Helpers:InverseBoolConverter}}"
+                Text="{i18n:Translate Welcome}"
+                VerticalOptions="Center" />
+
+            <ProgressBar
+                x:Name="pgRight"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsAddressVisible, Converter={Helpers:InverseBoolConverter}}"
+                Progress="0"
+                PropertyChanged="PgRight_PropertyChanged" />
+
             <controls:ExtendedEntry
                 Margin="0,15,0,0"
                 HorizontalTextAlignment="Center"
+                IsVisible="{Binding IsAddressVisible}"
                 OnFocusCommand="{Binding AddressEntryCommand}"
                 Placeholder="{i18n:Translate Address}"
                 Text="{Binding HomeAddressStr}"
@@ -34,7 +53,7 @@
                 IsVisible="{Binding IsBusy}"
                 Style="{StaticResource ActivityIndicatorStyle}" />
 
-            <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonSignupIconStyle}">
+            <ffimageloadingsvg:SvgCachedImage IsVisible="{Binding IsAddressVisible}" Style="{StaticResource ButtonSignupIconStyle}">
                 <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding SaveAccountCommand}" />
                 </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>

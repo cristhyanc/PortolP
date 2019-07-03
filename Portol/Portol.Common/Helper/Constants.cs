@@ -21,8 +21,8 @@ namespace Portol.Common.Helper
         public const string PortolDomain = "https://portolwebapitestenviroment.azurewebsites.net/";
         public const string BaseAddressApiUrl = "https://api.addressfinder.io/api/au/address";
 
-     // public const string BaseUrl = "https://portolwebapitestenviroment.azurewebsites.net/";
-       public const string BaseUrl = "http://192.168.8.116/PortolWeb";
+      public const string BaseUrl = "https://portolwebapitestenviroment.azurewebsites.net/";
+    //   public const string BaseUrl = "http://192.168.8.116/PortolWeb";
 
 
            // public const string BaseUrl = "http://192.168.43.31/portolweb";

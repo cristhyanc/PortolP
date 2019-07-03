@@ -20,7 +20,7 @@ namespace Portol.Calculator.Delivery
 
         public async Task<decimal> CalculatePrice(ParcelDto measurement, AddressDto pickup, AddressDto dropoff, VehiculeTypeDto vehiculeType)
         {
-            var listTypes =new  List<VehiculeTypeDto>();
+            var listTypes = new List<VehiculeTypeDto>();
             listTypes.Add(vehiculeType);
             var estimates = await EstimatePrice(measurement, pickup, dropoff, listTypes);
             return estimates.Average();
@@ -90,7 +90,16 @@ namespace Portol.Calculator.Delivery
             }
             else
             {
-                throw new AppException(StringResources.NoVehiculeTypeForParcel);
+                availableVehiculeTypes = vehiculeTypes.Where(x => x.MaximumDistance >= distance ).ToList();
+                if (availableVehiculeTypes?.Count == 0)
+                {
+                    throw new AppException(StringResources.NoVehiculeTypeForDistance);
+                }
+                else
+                {
+                    throw new AppException(StringResources.NoVehiculeTypeForParcel);
+                }
+
             }
 
 

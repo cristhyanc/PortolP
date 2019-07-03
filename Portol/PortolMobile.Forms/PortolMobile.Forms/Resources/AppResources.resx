@@ -432,4 +432,7 @@
   <data name="DeleteCreditCard" xml:space="preserve">
     <value>Delete Credit Card</value>
   </data>
+  <data name="Welcome" xml:space="preserve">
+    <value>Welcome!!</value>
+  </data>
 </root>

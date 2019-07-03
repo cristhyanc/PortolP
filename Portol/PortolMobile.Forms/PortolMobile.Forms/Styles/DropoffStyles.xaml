@@ -106,7 +106,7 @@
 
     <Style x:Key="StackLayoutFrameBox" TargetType="StackLayout">
         <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-        <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+        <Setter Property="HorizontalOptions" Value="FillAndExpand" />
         <Setter Property="Margin" Value="0,30,0,0" />
     </Style>
 

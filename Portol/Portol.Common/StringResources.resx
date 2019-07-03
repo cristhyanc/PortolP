@@ -453,4 +453,7 @@ iPhone
   <data name="WeakPassword" xml:space="preserve">
     <value>The password needs to be composed of lower and upper letters, numbers and longer that 5 digits</value>
   </data>
+  <data name="NoVehiculeTypeForDistance" xml:space="preserve">
+    <value>This is a pretty long distance, we don't have vehicules that can cover it</value>
+  </data>
 </root>

@@ -91,8 +91,9 @@ namespace PortolMobile.Forms.ViewModels.Login
             try
             {
                 this.IsBusy = true;
+              //  await NavigationService.NavigateToAsync<SignupStepAddressViewModel>();
                 await NavigationService.NavigateToAsync<SignupStepMobileViewModel>();
-               
+                
             }
             catch (System.Exception ex)
             {

@@ -1,53 +1,82 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PortolMobile.Forms.Views.UserControls.PicturePickerView"
-              xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
-             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"  
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
-             Title="Snap"
-             x:Name="page"
-             viewModelBase:ViewModelLocator.AutoWireViewModel="true">
-    <controls:ExtendedContentPage.ToolbarItems>       
-        <ToolbarItem   Text="Done"  Command="{Binding DoneCommand}"   >
-        </ToolbarItem>
-        <ToolbarItem     Command="{Binding DoneCommand}"   >
-        </ToolbarItem>
+<controls:ExtendedContentPage
+    x:Class="PortolMobile.Forms.Views.UserControls.PicturePickerView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
+    xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+    x:Name="page"
+    Title="Snap"
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true">
+    <controls:ExtendedContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding DoneCommand}" Text="Done" />
+        <ToolbarItem Command="{Binding DoneCommand}" />
     </controls:ExtendedContentPage.ToolbarItems>
     <controls:ExtendedContentPage.Content>
         <StackLayout Margin="0,80,0,0">
-            <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
+            <ActivityIndicator
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                Style="{StaticResource ActivityIndicatorStyle}" />
 
             <Grid BackgroundColor="#f2f2f2" VerticalOptions="FillAndExpand">
-                <ffimageloading:CachedImage VerticalOptions="FillAndExpand" DownsampleToViewSize="True" LoadingPlaceholder="Loading..."  Source="{Binding SelectedPicture.ImageUrl}" />
+                <ffimageloading:CachedImage
+                    DownsampleToViewSize="True"
+                    LoadingPlaceholder="Loading..."
+                    Source="{Binding SelectedPicture.ImageUrl}"
+                    VerticalOptions="FillAndExpand" />
 
-                <ffimageloading:CachedImage VerticalOptions="End" HorizontalOptions="Center"  WidthRequest="60" HeightRequest="60" IsVisible="{Binding IsDeleteButtonVisible}"
-                                              Source="resource://PortolMobile.Forms.Resources.ic_delete.png?assembly=PortolMobile.Forms" >
-                    <ffimageloading:CachedImage.GestureRecognizers >
-                        <TapGestureRecognizer Command="{Binding DeletePhotoCommand}"  ></TapGestureRecognizer>
+                <ffimageloading:CachedImage
+                    HeightRequest="60"
+                    HorizontalOptions="End"
+                    IsVisible="{Binding IsDeleteButtonVisible}"
+                    Source="resource://PortolMobile.Forms.Resources.ic_delete.png?assembly=PortolMobile.Forms"
+                    VerticalOptions="Start"
+                    WidthRequest="60">
+                    <ffimageloading:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding DeletePhotoCommand}" />
                     </ffimageloading:CachedImage.GestureRecognizers>
                 </ffimageloading:CachedImage>
-                
-            </Grid>
-          
 
-            <ffimageloadingsvg:SvgCachedImage VerticalOptions="End" HorizontalOptions="Center"  WidthRequest="60" HeightRequest="60"
-                                              Source="resource://PortolMobile.Forms.Resources.ic_camerabutton.svg?assembly=PortolMobile.Forms" >
-                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers >
-                    <TapGestureRecognizer Command="{Binding TakePhotoCommand}"  ></TapGestureRecognizer>
+            </Grid>
+
+
+            <ffimageloadingsvg:SvgCachedImage
+                HeightRequest="60"
+                HorizontalOptions="Center"
+                Source="resource://PortolMobile.Forms.Resources.ic_camerabutton.svg?assembly=PortolMobile.Forms"
+                VerticalOptions="End"
+                WidthRequest="60">
+                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding TakePhotoCommand}" />
                 </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
             </ffimageloadingsvg:SvgCachedImage>
 
-            <ScrollView Orientation="Horizontal" HeightRequest="100" HorizontalOptions="StartAndExpand" Padding="0"  VerticalOptions="End">
-                <StackLayout Orientation="Horizontal" Margin="10" Padding="0"  HorizontalOptions="StartAndExpand"  VerticalOptions="StartAndExpand" 
-                             BindableLayout.ItemsSource="{Binding Pictures,Mode=TwoWay }">
+            <ScrollView
+                Padding="0"
+                HeightRequest="100"
+                HorizontalOptions="StartAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="End">
+                <StackLayout
+                    Margin="10"
+                    Padding="0"
+                    BindableLayout.ItemsSource="{Binding Pictures, Mode=TwoWay}"
+                    HorizontalOptions="StartAndExpand"
+                    Orientation="Horizontal"
+                    VerticalOptions="StartAndExpand">
                     <BindableLayout.ItemTemplate>
                         <DataTemplate>
-                            <ffimageloading:CachedImage VerticalOptions="FillAndExpand"  Source="{Binding ImageUrl}" x:Name="image"  LoadingPlaceholder="Loading..." >
-                                <ffimageloading:CachedImage.GestureRecognizers >
-                                    <TapGestureRecognizer  Command="{Binding Source={x:Reference page}, Path = BindingContext.SelectedPhotoCommand }"  CommandParameter="{Binding PictureID}" ></TapGestureRecognizer>
+                            <ffimageloading:CachedImage
+                                x:Name="image"
+                                LoadingPlaceholder="Loading..."
+                                Source="{Binding ImageUrl}"
+                                VerticalOptions="FillAndExpand">
+                                <ffimageloading:CachedImage.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:Reference page}, Path=BindingContext.SelectedPhotoCommand}" CommandParameter="{Binding PictureID}" />
                                 </ffimageloading:CachedImage.GestureRecognizers>
                             </ffimageloading:CachedImage>
                         </DataTemplate>

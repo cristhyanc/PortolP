@@ -39,6 +39,21 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             }
         }
 
+        bool _isAddressVisible;
+        public bool IsAddressVisible
+        {
+            get
+            {
+                return _isAddressVisible;
+            }
+            set
+            {
+                _isAddressVisible = value;
+                OnPropertyChanged();
+            }
+        }
+
+        
         string _errorMessage;
         public string ErrorMessage
         {
@@ -104,6 +119,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
             AddressEntryCommand = new Command((() => GotoAddressPage()), () => { return !IsBusy; });
             _sessionData = sessionData;
             _loginCore = loginCore;
+           
         }
 
         protected override void PageAppearing()
@@ -150,8 +166,9 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                 MessagingCenter.Subscribe<AddressPickerViewModel, AddressPickerParameters>(this, MessagingCenterCodes.AddressPickerMessage, (sender, arg) =>
                 {
                     if (arg != null && arg.Address != null)
-                    {                       
-                            this.HomeAddress = arg.Address;                       
+                    {
+                        this.HomeAddress = arg.Address;
+                     
                     }
                 });
 
@@ -177,9 +194,12 @@ namespace PortolMobile.Forms.ViewModels.SignUp
                 _userDto.CustomerAddress = this.HomeAddress;
                 if (await _userCore.CreateNewCustomer(_userDto))
                 {
-                    await UserDialogs.ConfirmAsync(StringResources.AccountCreated, StringResources.NewUser);
-                    await _sessionData.LoginUser(_loginCore,_userDto.Email , _userDto.Password );
+                   // await UserDialogs.ConfirmAsync(StringResources.AccountCreated, StringResources.NewUser);
+                    await _sessionData.LoginUser(_loginCore, _userDto.Email, _userDto.Password);
+                    this.IsBusy = false;
+                    IsAddressVisible = false;
 
+                    await Task.Delay(2000);
                     await NavigationService.NavigateToAsync<DropViewModel>();
 
                 }
@@ -198,6 +218,7 @@ namespace PortolMobile.Forms.ViewModels.SignUp
         {
             try
             {
+                IsAddressVisible = true;
                 _userDto = (CustomerDto)navigationData;
             }
             catch (Exception ex)
