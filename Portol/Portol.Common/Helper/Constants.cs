@@ -21,11 +21,11 @@ namespace Portol.Common.Helper
         public const string PortolDomain = "https://portolwebapitestenviroment.azurewebsites.net/";
         public const string BaseAddressApiUrl = "https://api.addressfinder.io/api/au/address";
 
-      public const string BaseUrl = "https://portolwebapitestenviroment.azurewebsites.net/";
-    //   public const string BaseUrl = "http://192.168.8.116/PortolWeb";
+        public const string BaseUrl = "https://portolwebapiproduction.azurewebsites.net/";
+        //   public const string BaseUrl = "http://192.168.8.116/PortolWeb";
 
 
-           // public const string BaseUrl = "http://192.168.43.31/portolweb";
+        // public const string BaseUrl = "http://192.168.43.31/portolweb";
 
         public const string BaseDropoffApiUrl = BaseUrl + "/api/dropoff";
         public const string BaseUserApiUrl = BaseUrl + "/api/users";
@@ -40,13 +40,13 @@ namespace Portol.Common.Helper
                 {
                     var countries = new List<CountryDto>();
 
-                    var country = new CountryDto(AvailableCountries.Australia );
+                    var country = new CountryDto(AvailableCountries.Australia);
                     countries.Add(country);
 
                     country = new CountryDto(AvailableCountries.NewZealand);
                     countries.Add(country);
 
-                    country = new CountryDto(AvailableCountries.UnitedKingdom );
+                    country = new CountryDto(AvailableCountries.UnitedKingdom);
                     countries.Add(country);
                     _countryList = countries.AsReadOnly();
                 }
