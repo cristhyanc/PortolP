@@ -14,8 +14,7 @@ namespace PortolMobile.Forms.Views.SignUp
     {
         public SignupStepAddressView()
         {
-            InitializeComponent();
-            
+            InitializeComponent();           
         }
 
         private void PgRight_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -24,6 +23,7 @@ namespace PortolMobile.Forms.Views.SignUp
             {
                 if(e.PropertyName.Equals("IsVisible") && pgRight.IsVisible )
                 {
+                    txtMessage.IsVisible = true;
                     pgRight.ProgressTo(1, 2000, Easing.Linear);
                 }
             }

@@ -23,12 +23,13 @@
 
 
             <Label
+                x:Name="txtMessage"
                 Margin="0,30,0,0"
                 FontAttributes="Bold"
                 FontSize="Large"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
-                IsVisible="{Binding IsAddressVisible, Converter={Helpers:InverseBoolConverter}}"
+                IsVisible="false"
                 Text="{i18n:Translate Welcome}"
                 VerticalOptions="Center" />
 

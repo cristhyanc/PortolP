@@ -119,6 +119,11 @@
                 <Setter Property="FontFamily" Value="Lucida Grande" />
             </Style>
 
+            <Style x:Key="LabelBaseStyleBlack" TargetType="Label">
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="FontFamily" Value="Lucida Grande" />
+            </Style>
 
             <Style BaseResourceKey="LabelBaseStyle" TargetType="Button">
                 <Setter Property="TextColor" Value="Black" />
@@ -173,6 +178,7 @@
 
             <Style BaseResourceKey="LabelBaseStyle" TargetType="controls:ExtendedEntry">
                 <Setter Property="PlaceholderColor" Value="Gray" />
+                <Setter Property="TextColor" Value="Black" />
                 <Setter Property="BackgroundColor" Value="{StaticResource EntryWhiteSmokeAppColor}" />
             </Style>
 

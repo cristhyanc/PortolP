@@ -23,50 +23,50 @@
 
 
             <Label
-                Margin="0,30,0,0"
+                Margin="0,30,0,30"
                 FontAttributes="Bold"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
                 Text="{i18n:Translate letsCreateAPortol}" />
 
-            <StackLayout
-                Margin="30,0,30,0"
-                BackgroundColor="{StaticResource EntryWhiteSmokeAppColor}"
-                HorizontalOptions="FillAndExpand"
-                Orientation="Horizontal">
+            <StackLayout Margin="30,0,30,0" Spacing="0">
 
-                <ffimageloadingsvg:SvgCachedImage
-                    HeightRequest="30"
-                    HorizontalOptions="Start"
-                    Source="{Binding CountrySelected.CountryFlagFile, Converter={StaticResource SvgImageSourceConverter}}"
-                    VerticalOptions="Center"
-                    WidthRequest="30">
-                    <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding SelectCountryCommand}" />
-                    </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
-                </ffimageloadingsvg:SvgCachedImage>
+                <StackLayout BackgroundColor="{StaticResource EntryWhiteSmokeAppColor}" Orientation="Horizontal">
 
-                <Label
-                    HorizontalOptions="Start"
-                    HorizontalTextAlignment="Center"
-                    Text="{Binding CountrySelected.CountryCode}"
-                    VerticalTextAlignment="Center">
-                    <Label.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding SelectCountryCommand}" />
-                    </Label.GestureRecognizers>
-                </Label>
+                    <ffimageloadingsvg:SvgCachedImage
+                        Margin="10,0,0,0"
+                        HeightRequest="30"
+                        HorizontalOptions="Start"
+                        Source="{Binding CountrySelected.CountryFlagFile, Converter={StaticResource SvgImageSourceConverter}}"
+                        VerticalOptions="Center"
+                        WidthRequest="30">
+                        <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectCountryCommand}" />
+                        </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                    </ffimageloadingsvg:SvgCachedImage>
 
-                <controls:ExtendedEntry
-                    x:Name="txtMobileNumber"
-                    HorizontalOptions="FillAndExpand"
-                    HorizontalTextAlignment="Center"
-                    Keyboard="Numeric"
-                    Placeholder="{i18n:Translate MobileNumber}"
-                    Text="{Binding MobileNumber, Mode=TwoWay}" />
+                    <Label
+                        HorizontalOptions="Start"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource LabelBaseStyleBlack}"
+                        Text="{Binding CountrySelected.CountryCode}"
+                        VerticalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectCountryCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
 
+                    <controls:ExtendedEntry
+                        x:Name="txtMobileNumber"
+                        HorizontalOptions="FillAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Keyboard="Numeric"
+                        Placeholder="{i18n:Translate MobileNumber}"
+                        Text="{Binding MobileNumber, Mode=TwoWay}" />
+
+                </StackLayout>
+                <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
             </StackLayout>
-
-
             <Label
                 Margin="0,5,0,0"
                 HorizontalOptions="Center"

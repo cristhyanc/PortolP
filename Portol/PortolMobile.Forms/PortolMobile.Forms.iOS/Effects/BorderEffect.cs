@@ -46,8 +46,8 @@ namespace PortolMobile.Forms.iOS.Effects
 
                 CALayer border = new CALayer
                 {
-                    BorderColor = Helper.GetUIColor("#ffffff").CGColor,
-                    Frame = new CGRect(x: 0, y: view.Height + 2, width: view.Width, height: 1.0f),
+                    BorderColor = Helper.GetUIColor("#D8D8D8").CGColor,
+                    Frame = new CGRect(x: 0, y: view.Height + 1, width: view.Width, height: 0.6f),
                     BorderWidth = borderSize
                 };
 
