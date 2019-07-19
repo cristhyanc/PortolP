@@ -5,38 +5,46 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
     xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
-    viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-    BackgroundImage="login_background">
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <controls:ExtendedContentPage.Content>
-        <StackLayout
-            Margin="10,25,10,0" 
+        <Grid VerticalOptions="FillAndExpand">
+          
+            <ffimageloading:CachedImage WidthRequest="80" HeightRequest="80" HorizontalOptions="Center" 
+                                        Source="resource://PortolMobile.Forms.Resources.login_page_background.png?assembly=PortolMobile.Forms" />
+            
+        <StackLayout BackgroundColor="Transparent"
+            Margin="10,25,10,0" Spacing="0"
             HorizontalOptions="FillAndExpand"
             VerticalOptions="FillAndExpand">
 
-            <ffimageloadingsvg:SvgCachedImage                
-                HorizontalOptions="Center"
+            <ffimageloadingsvg:SvgCachedImage  WidthRequest="170"
+                HorizontalOptions="Center" 
                 Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms"
                 VerticalOptions="FillAndExpand" />
             <Label
                 HorizontalOptions="Center" Margin="0,0,0,30"
-                HorizontalTextAlignment="Center"
+                HorizontalTextAlignment="Center" TextColor="#4A4A4A"
                 Style="{StaticResource LabelBaseStyleWhite}"
                 Text="{i18n:Translate LoginPortolLabel}"
                 VerticalOptions="Fill" />
 
             <Entry
-                x:Name="txtEmail"
+                x:Name="txtEmail" PlaceholderColor="#4A4A4A"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
                 Placeholder="{i18n:Translate Email}"
                 Style="{StaticResource EntryBaseStyleWhite}"
                 Text="{Binding EmailText, Mode=TwoWay}"
                 WidthRequest="275" />
+            
+             <BoxView Color="#d8d8d8" WidthRequest="0.4" HeightRequest="0.4" BackgroundColor="#d8d8d8" 
+                         Margin="30,0,30,2" Style="{StaticResource BoxSeparator}"/>
 
             <Entry
-                x:Name="txtPassword"
+                x:Name="txtPassword" PlaceholderColor="#4A4A4A"
                 HorizontalOptions="Center"
                 HorizontalTextAlignment="Center"
                 IsPassword="True"
@@ -45,28 +53,29 @@
                 Text="{Binding PasswordText, Mode=TwoWay}"
                 WidthRequest="275" />
 
-
-            <ActivityIndicator
-                IsRunning="{Binding IsBusy}"
-                IsVisible="{Binding IsBusy}"
-                Style="{StaticResource ActivityIndicatorStyle}" />
-
+                <BoxView Color="#d8d8d8" WidthRequest="0.4" HeightRequest="0.4" BackgroundColor="#d8d8d8" 
+                         Margin="30,0,30,2" Style="{StaticResource BoxSeparator}"/>
 
             <ffimageloadingsvg:SvgCachedImage
-                Margin="0,15,0,0"
-                HeightRequest="35"
+                Margin="0,0,0,0"
+                HeightRequest="25"
                 HorizontalOptions="Center"
                 Source="resource://PortolMobile.Forms.Resources.btn_background.svg?assembly=PortolMobile.Forms"
                 VerticalOptions="FillAndExpand"
-                WidthRequest="35">
+                WidthRequest="25">
                 <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding LoginButtonCommand}" />
                 </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
 
             </ffimageloadingsvg:SvgCachedImage>
-
+            
+             <ActivityIndicator
+                IsRunning="{Binding IsBusy}"
+                IsVisible="{Binding IsBusy}"
+                Style="{StaticResource ActivityIndicatorStyle}" />
+            
             <Label
-                HorizontalOptions="Center"
+                HorizontalOptions="Center" TextColor="#F9F9F9"
                 HorizontalTextAlignment="Center"
                 Style="{StaticResource LabelBaseStyleWhite}"
                 Text="{i18n:Translate ForgotPassword}"
@@ -79,7 +88,7 @@
 
 
             <Label
-                HorizontalOptions="Center"
+                HorizontalOptions="Center" TextColor="#9B9B9B"
                 HorizontalTextAlignment="Center"
                 Style="{StaticResource LabelBaseStyleWhite}"
                 Text="{i18n:Translate SignUp}"
@@ -90,5 +99,7 @@
             </Label>
 
         </StackLayout>
+            
+              </Grid>
     </controls:ExtendedContentPage.Content>
 </controls:ExtendedContentPage>

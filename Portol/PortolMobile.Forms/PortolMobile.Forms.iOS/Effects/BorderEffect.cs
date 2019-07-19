@@ -40,14 +40,14 @@ namespace PortolMobile.Forms.iOS.Effects
             if (Element is Entry view)
             {
                 isBorderSetted = true;
-                view.HeightRequest = 35;
+                view.HeightRequest = 40;
                 var controlEntry = Control as UITextField;
-                var borderSize = 1;
+                var borderSize = 0.06f;
 
                 CALayer border = new CALayer
                 {
                     BorderColor = Helper.GetUIColor("#D8D8D8").CGColor,
-                    Frame = new CGRect(x: 0, y: view.Height + 1, width: view.Width, height: 0.6f),
+                    Frame = new CGRect(x: 0, y: view.Height + 0.1f, width: view.Width, height: 0.1f),
                     BorderWidth = borderSize
                 };
 

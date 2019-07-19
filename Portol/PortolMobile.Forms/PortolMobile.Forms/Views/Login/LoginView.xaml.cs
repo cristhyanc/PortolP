@@ -19,8 +19,8 @@ namespace PortolMobile.Forms.Views.Login
             try
             {
                 InitializeComponent();
-               txtEmail.Effects.Add(new BorderEffect());
-                txtPassword.Effects.Add(new BorderEffect());
+                txtEmail.Effects.Add(new BorderlessEffect());
+                txtPassword.Effects.Add(new BorderlessEffect());
                 this.IsTextBarWhite = true;
             }
             catch (Exception ex)
