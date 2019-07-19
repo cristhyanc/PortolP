@@ -19,7 +19,8 @@
                 DownsampleToViewSize="true"
                 HorizontalOptions="Center"
                 Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms"
-                VerticalOptions="Start" />
+                VerticalOptions="Start"
+                WidthRequest="170" />
 
 
             <Label

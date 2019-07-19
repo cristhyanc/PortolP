@@ -38,10 +38,12 @@
     <None Remove="Resources\ic_home.svg" />
     <None Remove="Resources\ic_homeAddress.svg" />
     <None Remove="Resources\ic_line.svg" />
+    <None Remove="Resources\ic_login_user.svg" />
     <None Remove="Resources\ic_mastercard.svg" />
     <None Remove="Resources\ic_newzealand.svg" />
     <None Remove="Resources\ic_parcel.png" />
     <None Remove="Resources\ic_parcelbox.png" />
+    <None Remove="Resources\ic_password.svg" />
     <None Remove="Resources\ic_paypal.svg" />
     <None Remove="Resources\ic_phone.png" />
     <None Remove="Resources\ic_profile.svg" />
@@ -85,10 +87,12 @@
     <EmbeddedResource Include="Resources\ic_home.svg" />
     <EmbeddedResource Include="Resources\ic_homeAddress.svg" />
     <EmbeddedResource Include="Resources\ic_line.svg" />
+    <EmbeddedResource Include="Resources\ic_login_user.svg" />
     <EmbeddedResource Include="Resources\ic_mastercard.svg" />
     <EmbeddedResource Include="Resources\ic_newzealand.svg" />
     <EmbeddedResource Include="Resources\ic_parcel.png" />
     <EmbeddedResource Include="Resources\ic_parcelbox.png" />
+    <EmbeddedResource Include="Resources\ic_password.svg" />
     <EmbeddedResource Include="Resources\ic_paypal.svg" />
     <EmbeddedResource Include="Resources\ic_phone.png" />
     <EmbeddedResource Include="Resources\ic_profile.svg" />
@@ -105,7 +109,6 @@
     <EmbeddedResource Include="Resources\ic_visa.svg" />
     <EmbeddedResource Include="Resources\portol_logo_long.svg" />
     <EmbeddedResource Include="Resources\ShopPict_mockup.svg" />
-    <EmbeddedResource Include="Resources\login_page_background.png" />
   </ItemGroup>
 
   <ItemGroup>
