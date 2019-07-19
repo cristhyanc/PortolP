@@ -324,4 +324,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\ic_visa.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\login_page_background.png" />
+  </ItemGroup>
 </Project>

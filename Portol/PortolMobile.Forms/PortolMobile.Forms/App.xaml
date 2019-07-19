@@ -252,7 +252,7 @@
                 <Setter Property="WidthRequest" Value="35" />
                 <Setter Property="HeightRequest" Value="35" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_button.svg?assembly=PortolMobile.Forms" />
+                <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_next_button_signup.svg?assembly=PortolMobile.Forms" />
             </Style>
 
             <Style x:Key="ProfileButtonStyle" TargetType="Button">
