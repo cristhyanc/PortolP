@@ -8,10 +8,12 @@
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
     xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
-    viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-    BackgroundImageSource="login_page_background">
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true" >
     <controls:ExtendedContentPage.Content>
-
+    <Grid>
+             <Image Source="login_page_background"
+           Aspect="AspectFill"/>
+      
         <StackLayout
             Margin="10,25,10,0"
             BackgroundColor="Transparent"
@@ -63,7 +65,7 @@
 
 
             <BoxView
-                Margin="30,0,30,2"
+                Margin="40,0,40,2"
                 BackgroundColor="#d8d8d8"
                 HeightRequest="0.4"
                 Style="{StaticResource BoxSeparator}"
@@ -99,7 +101,7 @@
 
 
             <BoxView
-                Margin="30,0,30,2"
+                Margin="40,0,40,2"
                 BackgroundColor="#d8d8d8"
                 HeightRequest="0.4"
                 Style="{StaticResource BoxSeparator}"
@@ -151,5 +153,6 @@
             </Label>
 
         </StackLayout>
+              </Grid>
     </controls:ExtendedContentPage.Content>
 </controls:ExtendedContentPage>

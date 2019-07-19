@@ -75,6 +75,7 @@
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Effects\BorderlessEffect.cs" />
+    <Compile Include="CustomRenderer\ExtendedPageRender.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -228,6 +229,7 @@
     <BundleResource Include="Resources\rating_star_on.png" />
     <BundleResource Include="Resources\rating_star_off.png" />
     <BundleResource Include="Resources\rating_star_half.png" />
+    <BundleResource Include="Resources\login_page_background.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -308,6 +310,7 @@
     <Folder Include="Assets.xcassets\ic_visa.imageset\" />
     <Folder Include="Assets.xcassets\login_background.imageset\" />
     <Folder Include="Assets.xcassets\Map_image.imageset\" />
+    <Folder Include="Assets.xcassets\login_page_background.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_redbacground.png" />
@@ -323,8 +326,5 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\ic_visa.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\login_page_background.png" />
   </ItemGroup>
 </Project>

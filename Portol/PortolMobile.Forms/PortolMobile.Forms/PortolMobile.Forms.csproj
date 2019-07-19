@@ -59,7 +59,6 @@
     <None Remove="Resources\ic_triangle.svg" />
     <None Remove="Resources\ic_unitedkingdom.svg" />
     <None Remove="Resources\ic_visa.svg" />
-    <None Remove="Resources\login_page_background.png" />
     <None Remove="Resources\portol_logo_long.svg" />
     <None Remove="Resources\ShopPict_mockup.svg" />
     <None Remove="Resources\login_background.svg" />
@@ -110,7 +109,6 @@
     <EmbeddedResource Include="Resources\ic_triangle.svg" />
     <EmbeddedResource Include="Resources\ic_unitedkingdom.svg" />
     <EmbeddedResource Include="Resources\ic_visa.svg" />
-    <EmbeddedResource Include="Resources\login_page_background.png" />
     <EmbeddedResource Include="Resources\portol_logo_long.svg" />
     <EmbeddedResource Include="Resources\ShopPict_mockup.svg" />
   </ItemGroup>
