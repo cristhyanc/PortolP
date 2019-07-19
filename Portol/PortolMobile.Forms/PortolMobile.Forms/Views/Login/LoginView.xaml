@@ -8,151 +8,150 @@
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
     xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
-    viewModelBase:ViewModelLocator.AutoWireViewModel="true" >
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <controls:ExtendedContentPage.Content>
-    <Grid>
-             <Image Source="login_page_background"
-           Aspect="AspectFill"/>
-      
-        <StackLayout
-            Margin="10,25,10,0"
-            BackgroundColor="Transparent"
-            HorizontalOptions="FillAndExpand"
-            Spacing="0"
-            VerticalOptions="FillAndExpand">
+        <Grid>
+            <Image Aspect="AspectFill" Source="login_page_background" />
 
-            <ffimageloadingsvg:SvgCachedImage
-                HorizontalOptions="Center"
-                Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms"
-                VerticalOptions="FillAndExpand"
-                WidthRequest="170" />
-            <Label
-                Margin="0,0,0,30"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Style="{StaticResource LabelBaseStyleWhite}"
-                Text="{i18n:Translate LoginPortolLabel}"
-                TextColor="#4A4A4A"
-                VerticalOptions="Fill" />
-
-
-            <Grid HorizontalOptions="FillAndExpand">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-
-                <ffimageloadingsvg:SvgCachedImage
-                    HeightRequest="20"
-                    HorizontalOptions="End"
-                    Source="resource://PortolMobile.Forms.Resources.ic_login_user.svg?assembly=PortolMobile.Forms"
-                    WidthRequest="20" />
-
-                <Entry
-                    x:Name="txtEmail"
-                    Grid.Column="1"
-                    Margin="10,0,0,0"
-                    HorizontalOptions="StartAndExpand"
-                    HorizontalTextAlignment="Center"
-                    Placeholder="{i18n:Translate Email}"
-                    PlaceholderColor="#4A4A4A"
-                    Style="{StaticResource EntryBaseStyleWhite}"
-                    Text="{Binding EmailText, Mode=TwoWay}"
-                    WidthRequest="150" />
-
-            </Grid>
-
-
-            <BoxView
-                Margin="40,0,40,2"
-                BackgroundColor="#d8d8d8"
-                HeightRequest="0.4"
-                Style="{StaticResource BoxSeparator}"
-                WidthRequest="0.4"
-                Color="#d8d8d8" />
-
-            <Grid HorizontalOptions="FillAndExpand">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.5*" />
-                    <ColumnDefinition />
-                </Grid.ColumnDefinitions>
-
-
-                <ffimageloadingsvg:SvgCachedImage
-                    HeightRequest="20"
-                    HorizontalOptions="End"
-                    Source="resource://PortolMobile.Forms.Resources.ic_password.svg?assembly=PortolMobile.Forms"
-                    WidthRequest="20" />
-                <Entry
-                    x:Name="txtPassword"
-                    Grid.Column="1"
-                    Margin="10,0,0,0"
-                    HorizontalOptions="StartAndExpand"
-                    HorizontalTextAlignment="Center"
-                    IsPassword="True"
-                    Placeholder="{i18n:Translate Password}"
-                    PlaceholderColor="#4A4A4A"
-                    Style="{StaticResource EntryBaseStyleWhite}"
-                    Text="{Binding PasswordText, Mode=TwoWay}"
-                    WidthRequest="150" />
-
-            </Grid>
-
-
-            <BoxView
-                Margin="40,0,40,2"
-                BackgroundColor="#d8d8d8"
-                HeightRequest="0.4"
-                Style="{StaticResource BoxSeparator}"
-                WidthRequest="0.4"
-                Color="#d8d8d8" />
-
-            <ffimageloadingsvg:SvgCachedImage
-                Margin="0,0,0,0"
-                HeightRequest="25"
-                HorizontalOptions="Center"
-                Source="resource://PortolMobile.Forms.Resources.btn_background.svg?assembly=PortolMobile.Forms"
-                VerticalOptions="FillAndExpand"
-                WidthRequest="25">
-                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding LoginButtonCommand}" />
-                </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
-
-            </ffimageloadingsvg:SvgCachedImage>
-
-            <ActivityIndicator
-                IsRunning="{Binding IsBusy}"
-                IsVisible="{Binding IsBusy}"
-                Style="{StaticResource ActivityIndicatorStyle}" />
-
-            <Label
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Style="{StaticResource LabelBaseStyleWhite}"
-                Text="{i18n:Translate ForgotPassword}"
-                TextColor="#F9F9F9"
+            <StackLayout
+                Margin="10,25,10,0"
+                BackgroundColor="Transparent"
+                HorizontalOptions="FillAndExpand"
+                Spacing="0"
                 VerticalOptions="FillAndExpand">
 
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding RecoverButtonCommand}" />
-                </Label.GestureRecognizers>
-            </Label>
+                <ffimageloadingsvg:SvgCachedImage
+                    HorizontalOptions="Center"
+                    Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="170" />
+                <Label
+                    Margin="0,0,0,30"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource LabelBaseStyleWhite}"
+                    Text="{i18n:Translate LoginPortolLabel}"
+                    TextColor="#4A4A4A"
+                    VerticalOptions="Fill" />
 
 
-            <Label
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Style="{StaticResource LabelBaseStyleWhite}"
-                Text="{i18n:Translate SignUp}"
-                TextColor="#9B9B9B"
-                VerticalOptions="FillAndExpand">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding SignupCommand}" />
-                </Label.GestureRecognizers>
-            </Label>
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
 
-        </StackLayout>
-              </Grid>
+
+                    <ffimageloadingsvg:SvgCachedImage
+                        HeightRequest="20"
+                        HorizontalOptions="End"
+                        Source="resource://PortolMobile.Forms.Resources.ic_login_user.svg?assembly=PortolMobile.Forms"
+                        WidthRequest="20" />
+
+                    <Entry
+                        x:Name="txtEmail"
+                        Grid.Column="1"
+                        Margin="10,0,0,0"
+                        HorizontalOptions="StartAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Placeholder="{i18n:Translate Email}"
+                        PlaceholderColor="#4A4A4A"
+                        Style="{StaticResource EntryBaseStyleWhite}"
+                        Text="{Binding EmailText, Mode=TwoWay}"
+                        WidthRequest="150" />
+
+                </Grid>
+
+
+                <BoxView
+                    Margin="40,0,40,2"
+                    BackgroundColor="#d8d8d8"
+                    HeightRequest="0.4"
+                    Style="{StaticResource BoxSeparator}"
+                    WidthRequest="0.4"
+                    Color="#d8d8d8" />
+
+                <Grid HorizontalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.5*" />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+
+
+                    <ffimageloadingsvg:SvgCachedImage
+                        HeightRequest="20"
+                        HorizontalOptions="End"
+                        Source="resource://PortolMobile.Forms.Resources.ic_password.svg?assembly=PortolMobile.Forms"
+                        WidthRequest="20" />
+                    <Entry
+                        x:Name="txtPassword"
+                        Grid.Column="1"
+                        Margin="10,0,0,0"
+                        HorizontalOptions="StartAndExpand"
+                        HorizontalTextAlignment="Center"
+                        IsPassword="True"
+                        Placeholder="{i18n:Translate Password}"
+                        PlaceholderColor="#4A4A4A"
+                        Style="{StaticResource EntryBaseStyleWhite}"
+                        Text="{Binding PasswordText, Mode=TwoWay}"
+                        WidthRequest="150" />
+
+                </Grid>
+
+
+                <BoxView
+                    Margin="40,0,40,2"
+                    BackgroundColor="#d8d8d8"
+                    HeightRequest="0.4"
+                    Style="{StaticResource BoxSeparator}"
+                    WidthRequest="0.4"
+                    Color="#d8d8d8" />
+
+                <ffimageloadingsvg:SvgCachedImage
+                    Margin="0,0,0,0"
+                    HeightRequest="25"
+                    HorizontalOptions="Center"
+                    Source="resource://PortolMobile.Forms.Resources.btn_background.svg?assembly=PortolMobile.Forms"
+                    VerticalOptions="FillAndExpand"
+                    WidthRequest="25">
+                    <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding LoginButtonCommand}" />
+                    </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+
+                </ffimageloadingsvg:SvgCachedImage>
+
+                <ActivityIndicator
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    Style="{StaticResource ActivityIndicatorStyle}" />
+
+                <Label
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource LabelBaseStyleWhite}"
+                    Text="{i18n:Translate ForgotPassword}"
+                    TextColor="#F9F9F9"
+                    VerticalOptions="FillAndExpand">
+
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding RecoverButtonCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+
+                <Label
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource LabelBaseStyleWhite}"
+                    Text="{i18n:Translate SignUp}"
+                    TextColor="#9B9B9B"
+                    VerticalOptions="FillAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SignupCommand}" />
+                    </Label.GestureRecognizers>
+                </Label>
+
+            </StackLayout>
+        </Grid>
     </controls:ExtendedContentPage.Content>
 </controls:ExtendedContentPage>
