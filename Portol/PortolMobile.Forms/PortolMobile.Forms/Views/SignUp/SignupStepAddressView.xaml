@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:Helpers="clr-namespace:PortolMobile.Forms.Helper"
     xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
     xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
@@ -55,11 +56,11 @@
                 IsVisible="{Binding IsBusy}"
                 Style="{StaticResource ActivityIndicatorStyle}" />
 
-            <ffimageloadingsvg:SvgCachedImage IsVisible="{Binding IsAddressVisible}" Style="{StaticResource ButtonSignupIconStyle}">
-                <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+            <ffimageloading:CachedImage IsVisible="{Binding IsAddressVisible}" Style="{StaticResource ButtonSignupIconStyle}">
+                <ffimageloading:CachedImage.GestureRecognizers>
                     <TapGestureRecognizer Command="{Binding SaveAccountCommand}" />
-                </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
-            </ffimageloadingsvg:SvgCachedImage>
+                </ffimageloading:CachedImage.GestureRecognizers>
+            </ffimageloading:CachedImage>
 
         </StackLayout>
     </ContentPage.Content>

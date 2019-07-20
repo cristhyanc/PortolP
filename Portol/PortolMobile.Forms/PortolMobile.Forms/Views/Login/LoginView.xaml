@@ -27,6 +27,8 @@
                     WidthRequest="170" />
                 <Label
                     Margin="0,0,0,30"
+                    FontAttributes="Bold"
+                    FontSize="15"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource LabelBaseStyleWhite}"
@@ -52,6 +54,7 @@
                         x:Name="txtEmail"
                         Grid.Column="1"
                         Margin="10,0,0,0"
+                        FontSize="17"
                         HorizontalOptions="StartAndExpand"
                         HorizontalTextAlignment="Center"
                         Placeholder="{i18n:Translate Email}"
@@ -87,6 +90,7 @@
                         x:Name="txtPassword"
                         Grid.Column="1"
                         Margin="10,0,0,0"
+                        FontSize="17"
                         HorizontalOptions="StartAndExpand"
                         HorizontalTextAlignment="Center"
                         IsPassword="True"
@@ -126,13 +130,13 @@
                     Style="{StaticResource ActivityIndicatorStyle}" />
 
                 <Label
+                    FontSize="12"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
-                    Style="{StaticResource LabelBaseStyleWhite}"
+                    Style="{StaticResource LabelArialBaseStyle}"
                     Text="{i18n:Translate ForgotPassword}"
-                    TextColor="#F9F9F9"
+                    TextColor="#B8CCDE"
                     VerticalOptions="FillAndExpand">
-
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding RecoverButtonCommand}" />
                     </Label.GestureRecognizers>
@@ -140,6 +144,8 @@
 
 
                 <Label
+                    FontAttributes="Bold"
+                    FontSize="28"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource LabelBaseStyleWhite}"

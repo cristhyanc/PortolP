@@ -55,18 +55,42 @@
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
 
+
+
+
+            <Style x:Key="LabelArialBaseStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray" />
+                <Setter Property="FontSize" Value="Default" />
+                <Setter Property="FontFamily">
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Arial Rounded MT Bold Font" />
+                        <On Platform="Android" Value="ARLRDBD.ttf#Arial Rounded MT Bold Font" />
+                    </OnPlatform>
+                </Setter>
+            </Style>
+
             <!--  Main style label  -->
             <Style TargetType="Label">
                 <Setter Property="TextColor" Value="Gray" />
                 <Setter Property="FontSize" Value="Default" />
-                <Setter Property="FontFamily" Value="Lucida Grande" />
+                <Setter Property="FontFamily">
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Lucida Grande" />
+                        <On Platform="Android" Value="lucidagrande.ttf#Lucida Grande" />
+                    </OnPlatform>
+                </Setter>
             </Style>
 
 
             <Style x:Key="LabelBaseStyle" TargetType="Label">
                 <Setter Property="TextColor" Value="Gray" />
                 <Setter Property="FontSize" Value="Default" />
-                <Setter Property="FontFamily" Value="Lucida Grande" />
+                <Setter Property="FontFamily">
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Lucida Grande" />
+                        <On Platform="Android" Value="lucidagrande.ttf#Lucida Grande" />
+                    </OnPlatform>
+                </Setter>
             </Style>
             <!--  Main style label  -->
 
@@ -116,13 +140,23 @@
             <Style x:Key="LabelBaseStyleWhite" TargetType="Label">
                 <Setter Property="TextColor" Value="#ffffff" />
                 <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="FontFamily" Value="Lucida Grande" />
+                <Setter Property="FontFamily">
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Lucida Grande" />
+                        <On Platform="Android" Value="lucidagrande.ttf#Lucida Grande" />
+                    </OnPlatform>
+                </Setter>
             </Style>
 
             <Style x:Key="LabelBaseStyleBlack" TargetType="Label">
                 <Setter Property="TextColor" Value="Black" />
                 <Setter Property="FontSize" Value="Medium" />
-                <Setter Property="FontFamily" Value="Lucida Grande" />
+                <Setter Property="FontFamily">
+                    <OnPlatform x:TypeArguments="x:String">
+                        <On Platform="iOS" Value="Lucida Grande" />
+                        <On Platform="Android" Value="lucidagrande.ttf#Lucida Grande" />
+                    </OnPlatform>
+                </Setter>
             </Style>
 
             <Style BaseResourceKey="LabelBaseStyle" TargetType="Button">
@@ -246,13 +280,13 @@
                 <Setter Property="Aspect" Value="AspectFill" />
             </Style>
 
-            <Style x:Key="ButtonSignupIconStyle" TargetType="ffimageloadingsvg:SvgCachedImage">
+            <Style x:Key="ButtonSignupIconStyle" TargetType="ffimageloading:CachedImage">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="Margin" Value="0,15,0,0" />
                 <Setter Property="WidthRequest" Value="35" />
                 <Setter Property="HeightRequest" Value="35" />
                 <Setter Property="VerticalOptions" Value="Center" />
-                <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_next_button_signup.svg?assembly=PortolMobile.Forms" />
+                <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_next_button_signup.png?assembly=PortolMobile.Forms" />
             </Style>
 
             <Style x:Key="ProfileButtonStyle" TargetType="Button">
