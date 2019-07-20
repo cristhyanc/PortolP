@@ -45,5 +45,10 @@
 	<string>This allows us to know your location and deliver your parcel</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>This allows us to know your location and deliver your parcel</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>ARLRDBD.ttf</string>
+		<string>lucidagrande.ttf</string>
+	</array>
 </dict>
 </plist>
