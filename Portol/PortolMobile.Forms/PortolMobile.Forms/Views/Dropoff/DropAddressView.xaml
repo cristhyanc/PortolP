@@ -71,22 +71,55 @@
                                 Style="{StaticResource DropoffLabelStyle}"
                                 Text="{i18n:Translate WhereSendingTo}" />
 
-                            <controls:ExtendedEntry
-                                Margin="0,0,0,5"
-                                OnFocusCommand="{Binding AddressEntryCommand}"
-                                OnFocusCommandParameter="pickup"
-                                Placeholder="{i18n:Translate PickupAddress}"
-                                Style="{StaticResource DropoffEntryStyle}"
-                                Text="{Binding PickupAddressStr}"
-                                VerticalOptions="Start" />
-                            <controls:ExtendedEntry
-                                Margin="0,0,0,5"
-                                OnFocusCommand="{Binding AddressEntryCommand}"
-                                OnFocusCommandParameter="dropoff"
-                                Placeholder="{i18n:Translate DropoffAddress}"
-                                Style="{StaticResource DropoffEntryStyle}"
-                                Text="{Binding DropoffAddressStr}"
-                                VerticalOptions="Start" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+
+                                <controls:ExtendedEntry
+                                    Grid.ColumnSpan="2"
+                                    OnFocusCommand="{Binding AddressEntryCommand}"
+                                    OnFocusCommandParameter="pickup"
+                                    Placeholder="{i18n:Translate PickupAddress}"
+                                    Style="{StaticResource DropoffEntryStyle}"
+                                    Text="{Binding PickupAddressStr}"
+                                    VerticalOptions="Center" />
+
+                                <ffimageloadingsvg:SvgCachedImage
+                                    Margin="20,0,0,0"
+                                    HeightRequest="12"
+                                    HorizontalOptions="Start"
+                                    Source="resource://PortolMobile.Forms.Resources.ic_dropoff_entry.svg?assembly=PortolMobile.Forms"
+                                    VerticalOptions="Center"
+                                    WidthRequest="12" />
+                            </Grid>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+
+                                <controls:ExtendedEntry
+                                    Grid.ColumnSpan="2"
+                                    OnFocusCommand="{Binding AddressEntryCommand}"
+                                    OnFocusCommandParameter="dropoff"
+                                    Placeholder="{i18n:Translate DropoffAddress}"
+                                    Style="{StaticResource DropoffEntryStyle}"
+                                    Text="{Binding DropoffAddressStr}"
+                                    VerticalOptions="Center" />
+
+
+                                <ffimageloadingsvg:SvgCachedImage
+                                    Margin="20,0,0,0"
+                                    HeightRequest="10"
+                                    HorizontalOptions="Start"
+                                    Source="resource://PortolMobile.Forms.Resources.ic_pickup_entry.svg?assembly=PortolMobile.Forms"
+                                    VerticalOptions="Center"
+                                    WidthRequest="10" />
+                            </Grid>
 
                             <controls:ExtendedEntry
                                 Margin="0,0,0,5"

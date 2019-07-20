@@ -34,6 +34,7 @@
     <None Remove="Resources\ic_dollar.png" />
     <None Remove="Resources\ic_door.svg" />
     <None Remove="Resources\ic_dropoffcamera.svg" />
+    <None Remove="Resources\ic_dropoff_entry.svg" />
     <None Remove="Resources\ic_genericdriver.png" />
     <None Remove="Resources\ic_home.svg" />
     <None Remove="Resources\ic_homeAddress.svg" />
@@ -47,6 +48,7 @@
     <None Remove="Resources\ic_password.svg" />
     <None Remove="Resources\ic_paypal.svg" />
     <None Remove="Resources\ic_phone.png" />
+    <None Remove="Resources\ic_pickup_entry.svg" />
     <None Remove="Resources\ic_profile.svg" />
     <None Remove="Resources\ic_redbacground.png" />
     <None Remove="Resources\ic_redbackground.svg" />
@@ -84,6 +86,7 @@
     <EmbeddedResource Include="Resources\ic_dollar.png" />
     <EmbeddedResource Include="Resources\ic_door.svg" />
     <EmbeddedResource Include="Resources\ic_dropoffcamera.svg" />
+    <EmbeddedResource Include="Resources\ic_dropoff_entry.svg" />
     <EmbeddedResource Include="Resources\ic_genericdriver.png" />
     <EmbeddedResource Include="Resources\ic_home.svg" />
     <EmbeddedResource Include="Resources\ic_homeAddress.svg" />
@@ -97,6 +100,7 @@
     <EmbeddedResource Include="Resources\ic_password.svg" />
     <EmbeddedResource Include="Resources\ic_paypal.svg" />
     <EmbeddedResource Include="Resources\ic_phone.png" />
+    <EmbeddedResource Include="Resources\ic_pickup_entry.svg" />
     <EmbeddedResource Include="Resources\ic_profile.svg" />
     <EmbeddedResource Include="Resources\ic_redbacground.png" />
     <EmbeddedResource Include="Resources\ic_redbackground.svg" />
