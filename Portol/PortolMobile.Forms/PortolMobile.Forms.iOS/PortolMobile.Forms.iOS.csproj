@@ -166,14 +166,30 @@
     <BundleResource Include="Resources\rating_star_off.png" />
     <BundleResource Include="Resources\rating_star_half.png" />
     <BundleResource Include="Resources\login_page_background.png" />
-    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\40.png" />
-    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\60.png" />
-    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\58.png" />
-    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\87.png" />
-    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\80.png" />
-    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\120.png" />
-    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\120-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\120-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIconPortol.appiconset\180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
