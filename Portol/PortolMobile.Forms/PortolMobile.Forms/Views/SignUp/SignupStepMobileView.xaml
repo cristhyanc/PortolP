@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
     x:Class="PortolMobile.Forms.Views.SignUp.SignupStepMobileView"
     xmlns="http://xamarin.com/schemas/2014/forms"
@@ -10,17 +10,19 @@
     xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
     viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <ContentPage.Content>
-        <Grid Margin="40,20,40,0" HorizontalOptions="FillAndExpand">
+        <Grid Margin="40,50,40,0" HorizontalOptions="FillAndExpand">
 
             <Grid.RowDefinitions>
-                <RowDefinition />
-                <RowDefinition />
+                  <RowDefinition Height="0.2*" />
                 <RowDefinition />
             </Grid.RowDefinitions>
 
             <ffimageloadingsvg:SvgCachedImage Style="{StaticResource SignupLogoStyle}" />
 
-            <StackLayout Grid.Row="1">
+             <ScrollView Grid.Row="1"  VerticalOptions="FillAndExpand">
+
+             <StackLayout VerticalOptions="CenterAndExpand">
+
                 <Label
                     FontAttributes="Bold"
                     HorizontalOptions="Center"
@@ -90,7 +92,7 @@
                     </ffimageloading:CachedImage.GestureRecognizers>
                 </ffimageloading:CachedImage>
             </StackLayout>
-
+                   </ScrollView>
 
         </Grid>
     </ContentPage.Content>

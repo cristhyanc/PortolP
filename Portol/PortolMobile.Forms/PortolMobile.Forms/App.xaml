@@ -254,6 +254,7 @@
 
             <Style x:Key="SignupLogoStyle" TargetType="ffimageloadingsvg:SvgCachedImage">
                 <Setter Property="DownsampleToViewSize" Value="true" />
+                <Setter Property="HeightRequest" Value="140" />
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
                 <Setter Property="VerticalOptions" Value="Start" />
                 <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms" />
