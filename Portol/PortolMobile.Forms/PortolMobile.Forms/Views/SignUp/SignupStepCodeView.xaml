@@ -10,107 +10,112 @@
     xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
     viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <ContentPage.Content>
-        <StackLayout
-            Margin="10,40,10,0"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
+        <ScrollView>
+            <Grid Margin="10,20,10,0" HorizontalOptions="FillAndExpand">
 
-            <ffimageloadingsvg:SvgCachedImage
-                Margin="0,20,0,0"
-                HorizontalOptions="Center"
-                Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms"
-                VerticalOptions="Start"
-                WidthRequest="170" />
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+
+                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource SignupLogoStyle}" />
+
+                <StackLayout Grid.Row="1">
+                    <Label
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{i18n:Translate InsertCode}" />
+
+                    <Label
+                        Margin="0,40,0,10"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding MobileNumber}" />
+
+                    <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                        <controls:ExtendedEntry
+                            x:Name="txtN1"
+                            BackgroundColor="LightGray"
+                            HeightRequest="40"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Numeric"
+                            Text="{Binding FirstNumber}"
+                            TextChanged="TxtN1_TextChanged"
+                            WidthRequest="40" />
+
+                        <controls:ExtendedEntry
+                            x:Name="txtN2"
+                            BackgroundColor="LightGray"
+                            HeightRequest="40"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Numeric"
+                            Text="{Binding SecondNumber}"
+                            TextChanged="TxtN1_TextChanged"
+                            WidthRequest="40" />
+
+                        <controls:ExtendedEntry
+                            x:Name="txtN3"
+                            BackgroundColor="LightGray"
+                            HeightRequest="40"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Numeric"
+                            Text="{Binding ThirdNumber}"
+                            TextChanged="TxtN1_TextChanged"
+                            WidthRequest="40" />
+
+                        <controls:ExtendedEntry
+                            x:Name="txtN4"
+                            BackgroundColor="LightGray"
+                            HeightRequest="40"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Numeric"
+                            Text="{Binding FourNumber}"
+                            TextChanged="TxtN1_TextChanged"
+                            WidthRequest="40" />
+                    </StackLayout>
+
+                    <Label
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{i18n:Translate ReSendCode}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding RecoverButtonCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
 
 
-            <Label
-                Margin="0,30,0,0"
-                FontAttributes="Bold"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Text="{i18n:Translate InsertCode}" />
+                    <Label
+                        Margin="0,5,0,0"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        IsVisible="{Binding IsValidationVisible}"
+                        Style="{StaticResource LabelRequired}"
+                        Text="{Binding ErrorMessage}" />
 
-            <Label
-                Margin="0,5,0,0"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Text="{Binding MobileNumber}" />
+                    <ActivityIndicator
+                        IsRunning="{Binding IsBusy}"
+                        IsVisible="{Binding IsBusy}"
+                        Style="{StaticResource ActivityIndicatorStyle}" />
 
-            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                <controls:ExtendedEntry
-                    x:Name="txtN1"
-                    BackgroundColor="LightGray"
-                    HeightRequest="40"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Keyboard="Numeric"
-                    Text="{Binding FirstNumber}"
-                    TextChanged="TxtN1_TextChanged"
-                    WidthRequest="40" />
+                    <ffimageloading:CachedImage
+                        Margin="0,50,0,0"
+                        Style="{StaticResource ButtonSignupIconStyle}"
+                        VerticalOptions="Start">
+                        <ffimageloading:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GotoNamesPageCommand}" />
+                        </ffimageloading:CachedImage.GestureRecognizers>
+                    </ffimageloading:CachedImage>
+                </StackLayout>
 
-                <controls:ExtendedEntry
-                    x:Name="txtN2"
-                    BackgroundColor="LightGray"
-                    HeightRequest="40"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Keyboard="Numeric"
-                    Text="{Binding SecondNumber}"
-                    TextChanged="TxtN1_TextChanged"
-                    WidthRequest="40" />
 
-                <controls:ExtendedEntry
-                    x:Name="txtN3"
-                    BackgroundColor="LightGray"
-                    HeightRequest="40"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Keyboard="Numeric"
-                    Text="{Binding ThirdNumber}"
-                    TextChanged="TxtN1_TextChanged"
-                    WidthRequest="40" />
 
-                <controls:ExtendedEntry
-                    x:Name="txtN4"
-                    BackgroundColor="LightGray"
-                    HeightRequest="40"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Keyboard="Numeric"
-                    Text="{Binding FourNumber}"
-                    TextChanged="TxtN1_TextChanged"
-                    WidthRequest="40" />
-            </StackLayout>
-
-            <Label
-                Margin="0,5,0,0"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                IsVisible="{Binding IsValidationVisible}"
-                Style="{StaticResource LabelRequired}"
-                Text="{Binding ErrorMessage}" />
-
-            <ActivityIndicator
-                IsRunning="{Binding IsBusy}"
-                IsVisible="{Binding IsBusy}"
-                Style="{StaticResource ActivityIndicatorStyle}" />
-
-            <ffimageloading:CachedImage Style="{StaticResource ButtonSignupIconStyle}">
-                <ffimageloading:CachedImage.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GotoNamesPageCommand}" />
-                </ffimageloading:CachedImage.GestureRecognizers>
-            </ffimageloading:CachedImage>
-
-            <Label
-                Margin="0,5,0,0"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Text="{Binding ReSendCode}">
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding RecoverButtonCommand}" />
-                </Label.GestureRecognizers>
-            </Label>
-
-        </StackLayout>
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -10,79 +10,100 @@
     xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
     viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <ContentPage.Content>
+        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
+            <Grid Margin="40,20,40,0" HorizontalOptions="FillAndExpand">
 
-        <StackLayout
-            Margin="40,40,40,0"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0.5*" />
+                </Grid.RowDefinitions>
 
-            <ffimageloadingsvg:SvgCachedImage
-                Margin="0,20,0,0"
-                HorizontalOptions="Center"
-                Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms"
-                VerticalOptions="Start"
-                WidthRequest="170" />
+                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource SignupLogoStyle}" />
 
-            <Label
-                Margin="0,30,0,0"
-                FontAttributes="Bold"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Text="{i18n:Translate PersonalDetails}" />
+                <StackLayout Grid.Row="1" VerticalOptions="FillAndExpand">
 
-            <controls:ExtendedEntry
-                Margin="0,10,0,0"
-                HorizontalOptions="FillAndExpand"
-                HorizontalTextAlignment="Center"
-                Placeholder="{i18n:Translate FirstName}"
-                Text="{Binding FirstName, Mode=TwoWay}" />
+                    <Label
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{i18n:Translate PersonalDetails}" />
 
-            <controls:ExtendedEntry
-                Margin="0,10,0,0"
-                HorizontalOptions="FillAndExpand"
-                HorizontalTextAlignment="Center"
-                Placeholder="{i18n:Translate LastName}"
-                Text="{Binding LastName, Mode=TwoWay}" />
+                    <StackLayout
+                        Margin="0,0,10,0"
+                        Spacing="0"
+                        VerticalOptions="CenterAndExpand">
+                        <controls:ExtendedEntry
+                            Margin="0,10,0,0"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Placeholder="{i18n:Translate FirstName}"
+                            Text="{Binding FirstName, Mode=TwoWay}" />
 
-            <StackLayout
-                Margin="0,10,0,0"
-                BackgroundColor="{StaticResource EntryWhiteSmokeAppColor}"
-                HorizontalOptions="FillAndExpand">
+                        <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
+                    </StackLayout>
 
-                <Label
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Text="{i18n:Translate DOB}" />
+                    <StackLayout
+                        Margin="0,0,10,0"
+                        Spacing="0"
+                        VerticalOptions="CenterAndExpand">
+                        <controls:ExtendedEntry
+                            Margin="0,10,0,0"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Placeholder="{i18n:Translate LastName}"
+                            Text="{Binding LastName, Mode=TwoWay}" />
 
-                <DatePicker
-                    x:Name="dtpBirth"
-                    Date="{Binding DateOBirth, Mode=TwoWay}"
-                    HorizontalOptions="Center">
-                    <DatePicker.Format>yyyy/MM/dd</DatePicker.Format>
-                </DatePicker>
-            </StackLayout>
+                        <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
+                    </StackLayout>
 
-            <Label
-                Margin="0,5,0,0"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                IsVisible="{Binding IsValidationVisible}"
-                Style="{StaticResource LabelRequired}"
-                Text="{Binding ErrorMessage}" />
+                    <StackLayout Spacing="0" VerticalOptions="CenterAndExpand">
+                        <StackLayout
+                            Margin="0,10,0,0"
+                            BackgroundColor="{StaticResource EntryWhiteSmokeAppColor}"
+                            HorizontalOptions="FillAndExpand">
 
-            <ActivityIndicator
-                IsRunning="{Binding IsBusy}"
-                IsVisible="{Binding IsBusy}"
-                Style="{StaticResource ActivityIndicatorStyle}" />
+                            <Label
+                                Margin="0,5,0,0"
+                                HorizontalOptions="Center"
+                                HorizontalTextAlignment="Center"
+                                Text="{i18n:Translate DOB}" />
 
-            <ffimageloading:CachedImage Style="{StaticResource ButtonSignupIconStyle}">
-                <ffimageloading:CachedImage.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GotoEmailPageCommand}" />
-                </ffimageloading:CachedImage.GestureRecognizers>
-            </ffimageloading:CachedImage>
+                            <DatePicker
+                                x:Name="dtpBirth"
+                                Date="{Binding DateOBirth, Mode=TwoWay}"
+                                HorizontalOptions="Center">
+                                <DatePicker.Format>yyyy/MM/dd</DatePicker.Format>
+                            </DatePicker>
+                        </StackLayout>
+                        <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
+                    </StackLayout>
 
-        </StackLayout>
+                    <Label
+                        Margin="0,5,0,0"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        IsVisible="{Binding IsValidationVisible}"
+                        Style="{StaticResource LabelRequired}"
+                        Text="{Binding ErrorMessage}" />
 
+                    <ActivityIndicator
+                        IsRunning="{Binding IsBusy}"
+                        IsVisible="{Binding IsBusy}"
+                        Style="{StaticResource ActivityIndicatorStyle}" />
+
+                    <ffimageloading:CachedImage
+                        Margin="0,30,0,0"
+                        Style="{StaticResource ButtonSignupIconStyle}"
+                        VerticalOptions="Center">
+                        <ffimageloading:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GotoEmailPageCommand}" />
+                        </ffimageloading:CachedImage.GestureRecognizers>
+                    </ffimageloading:CachedImage>
+                </StackLayout>
+
+            </Grid>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

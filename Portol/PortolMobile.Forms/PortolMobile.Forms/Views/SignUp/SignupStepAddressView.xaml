@@ -11,57 +11,66 @@
     xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
     viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <ContentPage.Content>
-        <StackLayout
-            Margin="40,40,40,0"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
 
-            <ffimageloadingsvg:SvgCachedImage
-                Margin="0,20,0,0"
-                HorizontalOptions="Center"
-                Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms"
-                VerticalOptions="Start"
-                WidthRequest="170" />
+        <Grid Margin="40,20,40,0" HorizontalOptions="FillAndExpand">
 
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-            <Label
-                x:Name="txtMessage"
-                Margin="0,30,0,0"
-                FontAttributes="Bold"
-                FontSize="Large"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                IsVisible="false"
-                Text="{i18n:Translate Welcome}"
-                VerticalOptions="Center" />
+            <ffimageloadingsvg:SvgCachedImage Style="{StaticResource SignupLogoStyle}" />
 
-            <ProgressBar
-                x:Name="pgRight"
-                HorizontalOptions="FillAndExpand"
-                IsVisible="{Binding IsAddressVisible, Converter={Helpers:InverseBoolConverter}}"
-                Progress="0"
-                PropertyChanged="PgRight_PropertyChanged" />
+            <StackLayout Grid.Row="1">
+                <Label
+                    x:Name="txtMessage"
+                    FontAttributes="Bold"
+                    FontSize="Large"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    IsVisible="false"
+                    Text="{i18n:Translate Welcome}"
+                    VerticalOptions="Center" />
 
-            <controls:ExtendedEntry
-                Margin="0,15,0,0"
-                HorizontalTextAlignment="Center"
-                IsVisible="{Binding IsAddressVisible}"
-                OnFocusCommand="{Binding AddressEntryCommand}"
-                Placeholder="{i18n:Translate Address}"
-                Text="{Binding HomeAddressStr}"
-                VerticalOptions="Start" />
+                <ProgressBar
+                    x:Name="pgRight"
+                    HorizontalOptions="FillAndExpand"
+                    IsVisible="{Binding IsAddressVisible, Converter={Helpers:InverseBoolConverter}}"
+                    Progress="0"
+                    PropertyChanged="PgRight_PropertyChanged"
+                    VerticalOptions="Center" />
 
-            <ActivityIndicator
-                IsRunning="{Binding IsBusy}"
-                IsVisible="{Binding IsBusy}"
-                Style="{StaticResource ActivityIndicatorStyle}" />
+                <StackLayout
+                    Margin="0,50,0,0"
+                    IsVisible="{Binding IsAddressVisible}"
+                    Spacing="0"
+                    VerticalOptions="Center">
+                    <controls:ExtendedEntry
+                        Margin="0,15,0,0"
+                        HorizontalTextAlignment="Center"
+                        OnFocusCommand="{Binding AddressEntryCommand}"
+                        Placeholder="{i18n:Translate Address}"
+                        Text="{Binding HomeAddressStr}" />
+                    <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
+                </StackLayout>
 
-            <ffimageloading:CachedImage IsVisible="{Binding IsAddressVisible}" Style="{StaticResource ButtonSignupIconStyle}">
-                <ffimageloading:CachedImage.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding SaveAccountCommand}" />
-                </ffimageloading:CachedImage.GestureRecognizers>
-            </ffimageloading:CachedImage>
+                <ActivityIndicator
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    Style="{StaticResource ActivityIndicatorStyle}" />
 
-        </StackLayout>
+                <ffimageloading:CachedImage
+                    Margin="0,50,0,0"
+                    IsVisible="{Binding IsAddressVisible}"
+                    Style="{StaticResource ButtonSignupIconStyle}"
+                    VerticalOptions="Center">
+                    <ffimageloading:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding SaveAccountCommand}" />
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
+            </StackLayout>
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>

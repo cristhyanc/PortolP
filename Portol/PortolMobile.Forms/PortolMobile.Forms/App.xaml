@@ -252,6 +252,13 @@
                 <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.ic_star.svg?assembly=PortolMobile.Forms" />
             </Style>
 
+            <Style x:Key="SignupLogoStyle" TargetType="ffimageloadingsvg:SvgCachedImage">
+                <Setter Property="DownsampleToViewSize" Value="true" />
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms" />
+            </Style>
+
             <Style x:Key="PhoneStyle" TargetType="ffimageloading:CachedImage">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="WidthRequest" Value="20" />

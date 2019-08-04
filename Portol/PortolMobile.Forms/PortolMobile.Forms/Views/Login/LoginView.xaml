@@ -14,7 +14,7 @@
             <Image Aspect="AspectFill" Source="login_page_background" />
 
             <StackLayout
-                Margin="10,25,10,0"
+                Margin="10,10,10,0"
                 BackgroundColor="Transparent"
                 HorizontalOptions="FillAndExpand"
                 Spacing="0"
@@ -28,7 +28,7 @@
                 <Label
                     Margin="0,0,0,30"
                     FontAttributes="Bold"
-                    FontSize="15"
+                    FontSize="12"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
                     Style="{StaticResource LabelBaseStyleWhite}"
@@ -45,16 +45,16 @@
 
 
                     <ffimageloadingsvg:SvgCachedImage
-                        HeightRequest="20"
+                        HeightRequest="15"
                         HorizontalOptions="End"
                         Source="resource://PortolMobile.Forms.Resources.ic_login_user.svg?assembly=PortolMobile.Forms"
-                        WidthRequest="20" />
+                        WidthRequest="15" />
 
                     <Entry
                         x:Name="txtEmail"
                         Grid.Column="1"
                         Margin="10,0,0,0"
-                        FontSize="17"
+                        FontSize="15"
                         HorizontalOptions="StartAndExpand"
                         HorizontalTextAlignment="Center"
                         Placeholder="{i18n:Translate Email}"
@@ -68,11 +68,11 @@
 
                 <BoxView
                     Margin="40,0,40,2"
-                    BackgroundColor="#d8d8d8"
+                    BackgroundColor="#525252"
                     HeightRequest="0.4"
                     Style="{StaticResource BoxSeparator}"
                     WidthRequest="0.4"
-                    Color="#d8d8d8" />
+                    Color="#525252" />
 
                 <Grid HorizontalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
@@ -82,15 +82,15 @@
 
 
                     <ffimageloadingsvg:SvgCachedImage
-                        HeightRequest="20"
+                        HeightRequest="15"
                         HorizontalOptions="End"
                         Source="resource://PortolMobile.Forms.Resources.ic_password.svg?assembly=PortolMobile.Forms"
-                        WidthRequest="20" />
+                        WidthRequest="15" />
                     <Entry
                         x:Name="txtPassword"
                         Grid.Column="1"
                         Margin="10,0,0,0"
-                        FontSize="17"
+                        FontSize="15"
                         HorizontalOptions="StartAndExpand"
                         HorizontalTextAlignment="Center"
                         IsPassword="True"
@@ -104,32 +104,30 @@
 
 
                 <BoxView
-                    Margin="40,0,40,2"
-                    BackgroundColor="#d8d8d8"
+                    Margin="40,0,40,0"
+                    BackgroundColor="#525252"
                     HeightRequest="0.4"
                     Style="{StaticResource BoxSeparator}"
                     WidthRequest="0.4"
-                    Color="#d8d8d8" />
+                    Color="#525252" />
 
                 <ffimageloadingsvg:SvgCachedImage
-                    Margin="0,0,0,0"
-                    HeightRequest="25"
+                    Margin="0,-5,0,0"
+                    HeightRequest="20"
                     HorizontalOptions="Center"
                     Source="resource://PortolMobile.Forms.Resources.btn_background.svg?assembly=PortolMobile.Forms"
                     VerticalOptions="FillAndExpand"
-                    WidthRequest="25">
+                    WidthRequest="20">
                     <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding LoginButtonCommand}" />
                     </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
 
                 </ffimageloadingsvg:SvgCachedImage>
 
-                <ActivityIndicator
-                    IsRunning="{Binding IsBusy}"
-                    IsVisible="{Binding IsBusy}"
-                    Style="{StaticResource ActivityIndicatorStyle}" />
+
 
                 <Label
+                    Margin="0,-5,0,0"
                     FontSize="12"
                     HorizontalOptions="Center"
                     HorizontalTextAlignment="Center"
@@ -142,6 +140,10 @@
                     </Label.GestureRecognizers>
                 </Label>
 
+                <ActivityIndicator
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    Style="{StaticResource ActivityIndicatorStyle}" />
 
                 <Label
                     FontAttributes="Bold"

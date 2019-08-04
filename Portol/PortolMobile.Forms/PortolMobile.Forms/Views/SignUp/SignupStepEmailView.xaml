@@ -11,80 +11,103 @@
     viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout
-                Margin="40,40,40,0"
-                HorizontalOptions="FillAndExpand"
-                VerticalOptions="FillAndExpand">
 
-                <ffimageloadingsvg:SvgCachedImage
-                    Margin="0,20,0,0"
-                    HorizontalOptions="Center"
-                    Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms"
-                    VerticalOptions="Start"
-                    WidthRequest="170" />
+            <Grid Margin="40,20,40,0" HorizontalOptions="FillAndExpand">
 
-                <Label
-                    Margin="0,30,0,0"
-                    FontAttributes="Bold"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    Text="{i18n:Translate EmailPassword}" />
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.25*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0.25*" />
+                </Grid.RowDefinitions>
 
-                <controls:ExtendedEntry
-                    Margin="0,10,0,0"
-                    HorizontalOptions="FillAndExpand"
-                    HorizontalTextAlignment="Center"
-                    Keyboard="Email"
-                    Placeholder="{i18n:Translate Email}"
-                    Text="{Binding Email, Mode=TwoWay}" />
+                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource SignupLogoStyle}" />
 
+                <StackLayout Grid.Row="1" VerticalOptions="FillAndExpand">
 
-                <controls:ExtendedEntry
-                    Margin="0,10,0,0"
-                    HorizontalOptions="FillAndExpand"
-                    HorizontalTextAlignment="Center"
-                    Keyboard="Email"
-                    Placeholder="{i18n:Translate ConfirmEmail}"
-                    Text="{Binding ConfirmEmail, Mode=TwoWay}" />
+                    <Label
+                        Margin="0,30,0,0"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        Text="{i18n:Translate EmailPassword}"
+                        VerticalOptions="StartAndExpand" />
 
+                    <StackLayout
+                        Margin="0,0,10,0"
+                        Spacing="0"
+                        VerticalOptions="StartAndExpand">
+                        <controls:ExtendedEntry
+                            Margin="0,10,0,0"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Email"
+                            Placeholder="{i18n:Translate Email}"
+                            Text="{Binding Email, Mode=TwoWay}" />
+                        <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
+                    </StackLayout>
 
-                <controls:ExtendedEntry
-                    Margin="0,10,0,0"
-                    HorizontalOptions="FillAndExpand"
-                    HorizontalTextAlignment="Center"
-                    IsPassword="true"
-                    Placeholder="{i18n:Translate Password}"
-                    Text="{Binding Password, Mode=TwoWay}" />
+                    <StackLayout
+                        Margin="0,0,10,0"
+                        Spacing="0"
+                        VerticalOptions="StartAndExpand">
+                        <controls:ExtendedEntry
+                            Margin="0,10,0,0"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Email"
+                            Placeholder="{i18n:Translate ConfirmEmail}"
+                            Text="{Binding ConfirmEmail, Mode=TwoWay}" />
+                        <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
+                    </StackLayout>
 
+                    <StackLayout
+                        Margin="0,0,10,0"
+                        Spacing="0"
+                        VerticalOptions="StartAndExpand">
+                        <controls:ExtendedEntry
+                            Margin="0,10,0,0"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            IsPassword="true"
+                            Placeholder="{i18n:Translate Password}"
+                            Text="{Binding Password, Mode=TwoWay}" />
+                        <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
+                    </StackLayout>
 
-                <controls:ExtendedEntry
-                    Margin="0,10,0,0"
-                    HorizontalOptions="FillAndExpand"
-                    HorizontalTextAlignment="Center"
-                    IsPassword="true"
-                    Placeholder="{i18n:Translate NewPasswordConfirmation}"
-                    Text="{Binding ConfirmPassword, Mode=TwoWay}" />
+                    <StackLayout
+                        Margin="0,0,10,0"
+                        Spacing="0"
+                        VerticalOptions="StartAndExpand">
+                        <controls:ExtendedEntry
+                            Margin="0,10,0,0"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            IsPassword="true"
+                            Placeholder="{i18n:Translate NewPasswordConfirmation}"
+                            Text="{Binding ConfirmPassword, Mode=TwoWay}" />
+                        <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
+                    </StackLayout>
 
-                <Label
-                    Margin="0,5,0,0"
-                    HorizontalOptions="Center"
-                    HorizontalTextAlignment="Center"
-                    IsVisible="{Binding IsValidationVisible}"
-                    Style="{StaticResource LabelRequired}"
-                    Text="{Binding ErrorMessage}" />
+                    <Label
+                        Margin="0,5,0,0"
+                        HorizontalOptions="Center"
+                        HorizontalTextAlignment="Center"
+                        IsVisible="{Binding IsValidationVisible}"
+                        Style="{StaticResource LabelRequired}"
+                        Text="{Binding ErrorMessage}" />
 
-                <ActivityIndicator
-                    IsRunning="{Binding IsBusy}"
-                    IsVisible="{Binding IsBusy}"
-                    Style="{StaticResource ActivityIndicatorStyle}" />
+                    <ActivityIndicator
+                        IsRunning="{Binding IsBusy}"
+                        IsVisible="{Binding IsBusy}"
+                        Style="{StaticResource ActivityIndicatorStyle}" />
 
-                <ffimageloading:CachedImage Style="{StaticResource ButtonSignupIconStyle}">
-                    <ffimageloading:CachedImage.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GotoAddressPageCommand}" />
-                    </ffimageloading:CachedImage.GestureRecognizers>
-                </ffimageloading:CachedImage>
-
-            </StackLayout>
+                    <ffimageloading:CachedImage Style="{StaticResource ButtonSignupIconStyle}" VerticalOptions="StartAndExpand">
+                        <ffimageloading:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GotoAddressPageCommand}" />
+                        </ffimageloading:CachedImage.GestureRecognizers>
+                    </ffimageloading:CachedImage>
+                </StackLayout>
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

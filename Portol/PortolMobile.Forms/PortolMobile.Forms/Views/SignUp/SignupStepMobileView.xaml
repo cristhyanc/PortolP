@@ -10,84 +10,88 @@
     xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
     viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <ContentPage.Content>
-        <StackLayout
-            Margin="10,40,10,0"
-            HorizontalOptions="FillAndExpand"
-            VerticalOptions="FillAndExpand">
+        <Grid Margin="40,20,40,0" HorizontalOptions="FillAndExpand">
 
-            <ffimageloadingsvg:SvgCachedImage
-                Margin="0,20,0,0"
-                DownsampleToViewSize="true"
-                HorizontalOptions="Center"
-                Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms"
-                VerticalOptions="Start"
-                WidthRequest="170" />
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
+            <ffimageloadingsvg:SvgCachedImage Style="{StaticResource SignupLogoStyle}" />
 
-            <Label
-                Margin="0,30,0,30"
-                FontAttributes="Bold"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                Text="{i18n:Translate letsCreateAPortol}" />
+            <StackLayout Grid.Row="1">
+                <Label
+                    FontAttributes="Bold"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    Text="{i18n:Translate letsCreateAPortol}" />
 
-            <StackLayout Margin="30,0,30,0" Spacing="0">
+                <StackLayout Margin="0,50,0,0" Spacing="0">
+                    <StackLayout
+                        BackgroundColor="{StaticResource EntryWhiteSmokeAppColor}"
+                        Orientation="Horizontal"
+                        VerticalOptions="Center">
 
-                <StackLayout BackgroundColor="{StaticResource EntryWhiteSmokeAppColor}" Orientation="Horizontal">
+                        <ffimageloadingsvg:SvgCachedImage
+                            Margin="10,0,0,0"
+                            HeightRequest="30"
+                            HorizontalOptions="Start"
+                            Source="{Binding CountrySelected.CountryFlagFile, Converter={StaticResource SvgImageSourceConverter}}"
+                            VerticalOptions="Center"
+                            WidthRequest="30">
+                            <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectCountryCommand}" />
+                            </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
+                        </ffimageloadingsvg:SvgCachedImage>
 
-                    <ffimageloadingsvg:SvgCachedImage
-                        Margin="10,0,0,0"
-                        HeightRequest="30"
-                        HorizontalOptions="Start"
-                        Source="{Binding CountrySelected.CountryFlagFile, Converter={StaticResource SvgImageSourceConverter}}"
-                        VerticalOptions="Center"
-                        WidthRequest="30">
-                        <ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SelectCountryCommand}" />
-                        </ffimageloadingsvg:SvgCachedImage.GestureRecognizers>
-                    </ffimageloadingsvg:SvgCachedImage>
+                        <Label
+                            HorizontalOptions="Start"
+                            HorizontalTextAlignment="Center"
+                            Style="{StaticResource LabelBaseStyleBlack}"
+                            Text="{Binding CountrySelected.CountryCode}"
+                            VerticalTextAlignment="Center">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectCountryCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
 
-                    <Label
-                        HorizontalOptions="Start"
-                        HorizontalTextAlignment="Center"
-                        Style="{StaticResource LabelBaseStyleBlack}"
-                        Text="{Binding CountrySelected.CountryCode}"
-                        VerticalTextAlignment="Center">
-                        <Label.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding SelectCountryCommand}" />
-                        </Label.GestureRecognizers>
-                    </Label>
+                        <controls:ExtendedEntry
+                            x:Name="txtMobileNumber"
+                            HorizontalOptions="FillAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Keyboard="Numeric"
+                            Placeholder="{i18n:Translate MobileNumber}"
+                            Text="{Binding MobileNumber, Mode=TwoWay}" />
 
-                    <controls:ExtendedEntry
-                        x:Name="txtMobileNumber"
-                        HorizontalOptions="FillAndExpand"
-                        HorizontalTextAlignment="Center"
-                        Keyboard="Numeric"
-                        Placeholder="{i18n:Translate MobileNumber}"
-                        Text="{Binding MobileNumber, Mode=TwoWay}" />
-
+                    </StackLayout>
+                    <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
                 </StackLayout>
-                <BoxView Style="{StaticResource BoxSeparator}" WidthRequest="1" />
+
+                <Label
+                    Margin="0,5,0,0"
+                    HorizontalOptions="Center"
+                    HorizontalTextAlignment="Center"
+                    IsVisible="{Binding IsMobileValidationVisible}"
+                    Style="{StaticResource LabelRequired}"
+                    Text="{Binding ValidationMessage}" />
+
+                <ActivityIndicator
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    Style="{StaticResource ActivityIndicatorStyle}" />
+
+                <ffimageloading:CachedImage
+                    Grid.Row="2"
+                    Margin="0,50,0,0"
+                    Style="{StaticResource ButtonSignupIconStyle}">
+                    <ffimageloading:CachedImage.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GotoCodePageCommand}" />
+                    </ffimageloading:CachedImage.GestureRecognizers>
+                </ffimageloading:CachedImage>
             </StackLayout>
-            <Label
-                Margin="0,5,0,0"
-                HorizontalOptions="Center"
-                HorizontalTextAlignment="Center"
-                IsVisible="{Binding IsMobileValidationVisible}"
-                Style="{StaticResource LabelRequired}"
-                Text="{Binding ValidationMessage}" />
 
-            <ActivityIndicator
-                IsRunning="{Binding IsBusy}"
-                IsVisible="{Binding IsBusy}"
-                Style="{StaticResource ActivityIndicatorStyle}" />
 
-            <ffimageloading:CachedImage Style="{StaticResource ButtonSignupIconStyle}">
-                <ffimageloading:CachedImage.GestureRecognizers>
-                    <TapGestureRecognizer Command="{Binding GotoCodePageCommand}" />
-                </ffimageloading:CachedImage.GestureRecognizers>
-            </ffimageloading:CachedImage>
-
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
