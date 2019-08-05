@@ -106,9 +106,9 @@
                 <BoxView
                     Margin="40,0,40,0"
                     BackgroundColor="#525252"
-                    HeightRequest="0.4"
+                    HeightRequest="0.5"
                     Style="{StaticResource BoxSeparator}"
-                    WidthRequest="0.4"
+                    WidthRequest="0.5"
                     Color="#525252" />
 
                 <ffimageloadingsvg:SvgCachedImage
