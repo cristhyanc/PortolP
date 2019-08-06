@@ -4,6 +4,7 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms">
 
     <Style
@@ -115,12 +116,18 @@
         <Setter Property="BackgroundColor" Value="#383b3b" />
     </Style>
 
-    <Style x:Key="LogoStyle" TargetType="ffimageloadingsvg:SvgCachedImage">
+    <Style x:Key="LogoStyle" TargetType="ffimageloading:CachedImage">
         <Setter Property="HorizontalOptions" Value="Center" />
         <Setter Property="WidthRequest" Value="100" />
         <Setter Property="HeightRequest" Value="50" />
         <Setter Property="VerticalOptions" Value="Start" />
-        <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms" />
+        <Setter Property="Source" Value="resource://PortolMobile.Forms.Resources.portol_logo_long.png?assembly=PortolMobile.Forms" />
+        <Setter Property="Margin">
+            <OnPlatform x:TypeArguments="Thickness">
+                <On Platform="Android" Value="0,40,0,0" />
+                <On Platform="iOS" Value="0, 40, 0, 0" />
+            </OnPlatform>
+        </Setter>
     </Style>
 
 </ResourceDictionary>

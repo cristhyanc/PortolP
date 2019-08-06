@@ -5,30 +5,30 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
     xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
     xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
     viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
 
-            <Grid Margin="40,30,40,0" HorizontalOptions="FillAndExpand">
+        <Grid Margin="40,50,40,0" HorizontalOptions="FillAndExpand">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.5*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="0.5*" />
-                </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*" />
+                <RowDefinition />
+            </Grid.RowDefinitions>
 
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource SignupLogoStyle}" />
+            <ffimageloading:CachedImage Style="{StaticResource SignupLogoStyle}" />
 
-                <StackLayout Grid.Row="1" VerticalOptions="FillAndExpand">
+            <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand">
+
+                <StackLayout VerticalOptions="CenterAndExpand">
 
                     <Label
                         FontAttributes="Bold"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
-                        Text="{i18n:Translate PersonalDetails}" />
+                        Text="{i18n:Translate PersonalDetails}"
+                        VerticalOptions="CenterAndExpand" />
 
                     <StackLayout
                         Margin="0,0,10,0"
@@ -96,14 +96,14 @@
                     <ffimageloading:CachedImage
                         Margin="0,30,0,0"
                         Style="{StaticResource ButtonSignupIconStyle}"
-                        VerticalOptions="Center">
+                        VerticalOptions="CenterAndExpand">
                         <ffimageloading:CachedImage.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GotoEmailPageCommand}" />
                         </ffimageloading:CachedImage.GestureRecognizers>
                     </ffimageloading:CachedImage>
                 </StackLayout>
+            </ScrollView>
+        </Grid>
 
-            </Grid>
-        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

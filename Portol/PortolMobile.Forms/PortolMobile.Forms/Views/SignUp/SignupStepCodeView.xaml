@@ -10,17 +10,17 @@
     xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
     viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <ContentPage.Content>
-            <Grid Margin="40,50,40,0" HorizontalOptions="FillAndExpand">
+        <Grid Margin="40,50,40,0" HorizontalOptions="FillAndExpand">
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.2*" />
-                    <RowDefinition />
-                    <RowDefinition Height="0.2*" />
-                </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*" />
+                <RowDefinition />
+                <RowDefinition Height="0.2*" />
+            </Grid.RowDefinitions>
 
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource SignupLogoStyle}" />
+            <ffimageloading:CachedImage Style="{StaticResource SignupLogoStyle}" />
 
-                <ScrollView Grid.Row="1"  VerticalOptions="FillAndExpand">
+            <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand">
 
                 <StackLayout VerticalOptions="CenterAndExpand">
                     <Label
@@ -81,7 +81,7 @@
                             WidthRequest="40" />
                     </StackLayout>
 
-                   
+
 
 
                     <Label
@@ -93,27 +93,26 @@
                         Text="{Binding ErrorMessage}" />
 
 
-                      <ActivityIndicator
+                    <ActivityIndicator
                         IsRunning="{Binding IsBusy}"
                         IsVisible="{Binding IsBusy}"
                         Style="{StaticResource ActivityIndicatorStyle}" />
 
-                  
-                   
-                  <ffimageloading:CachedImage Margin="0,50,0,0"
-                    Style="{StaticResource ButtonSignupIconStyle}">
-                    <ffimageloading:CachedImage.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding GotoNamesPageCommand}" />
-                    </ffimageloading:CachedImage.GestureRecognizers>
-                </ffimageloading:CachedImage>
+
+
+                    <ffimageloading:CachedImage Margin="0,50,0,0" Style="{StaticResource ButtonSignupIconStyle}">
+                        <ffimageloading:CachedImage.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GotoNamesPageCommand}" />
+                        </ffimageloading:CachedImage.GestureRecognizers>
+                    </ffimageloading:CachedImage>
 
                 </StackLayout>
 
-               </ScrollView>
+            </ScrollView>
 
 
 
-            </Grid>
-       
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>

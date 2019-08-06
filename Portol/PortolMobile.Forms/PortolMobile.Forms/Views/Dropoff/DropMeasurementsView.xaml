@@ -1,63 +1,69 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<controls:ExtendedContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="PortolMobile.Forms.Views.Dropoff.DropMeasurementsView"
-             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
-             xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
-             xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
-             xmlns:localResources="clr-namespace:PortolMobile.Forms.Resources"
-             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
-             xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"                              
-             xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
-             viewModelBase:ViewModelLocator.AutoWireViewModel="true"
-             BackgroundColor="White"
-             xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles">
+<controls:ExtendedContentPage
+    x:Class="PortolMobile.Forms.Views.Dropoff.DropMeasurementsView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:DropoffStyle="clr-namespace:PortolMobile.Forms.Styles"
+    xmlns:circleIma="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin"
+    xmlns:controls="clr-namespace:PortolMobile.Forms.Controls"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+    xmlns:i18n="clr-namespace:PortolMobile.Forms.Helper"
+    xmlns:localResources="clr-namespace:PortolMobile.Forms.Resources"
+    xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
+    viewModelBase:ViewModelLocator.AutoWireViewModel="true"
+    BackgroundColor="White">
     <controls:ExtendedContentPage.Resources>
-        <DropoffStyle:DropoffStyles/>
+        <DropoffStyle:DropoffStyles />
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
 
-        <Grid VerticalOptions="FillAndExpand" x:Name="MainGrid" >
+        <Grid x:Name="MainGrid" VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="*"></RowDefinition>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <ffimageloading:CachedImage  Grid.RowSpan="2" HorizontalOptions="FillAndExpand " VerticalOptions="FillAndExpand"
-                                        Source="Map_image" />
+            <ffimageloading:CachedImage
+                Grid.RowSpan="2"
+                HorizontalOptions="FillAndExpand "
+                Source="Map_image"
+                VerticalOptions="FillAndExpand" />
 
-            <StackLayout BackgroundColor="White" >
-                <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" Margin="0,30,0,0" />
+            <StackLayout BackgroundColor="White">
+                <ActivityIndicator
+                    IsRunning="{Binding IsBusy}"
+                    IsVisible="{Binding IsBusy}"
+                    Style="{StaticResource ActivityIndicatorStyle}" />
+                <ffimageloading:CachedImage Margin="0,30,0,0" Style="{StaticResource LogoStyle}" />
             </StackLayout>
 
-            <ScrollView Grid.Row="1" >
+            <ScrollView Grid.Row="1">
 
-                <RelativeLayout    >
+                <RelativeLayout>
 
-                    <Frame  Style="{StaticResource FrameBox}" x:Name="frmDetailBox"
-                            RelativeLayout.XConstraint="{ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Width,
-                            Factor=0.15 }"
-                        
-                            RelativeLayout.YConstraint="{ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Height,
-                            Factor=0.08 }"
-                            
-                            RelativeLayout.HeightConstraint="{ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Height,
-                            Factor=0.7 }"
-                        
-                            RelativeLayout.WidthConstraint="{ConstraintExpression
-                            Type=RelativeToParent,
-                            Property=Width,
-                            Factor=0.7 }">
-                        <StackLayout Style="{StaticResource StackLayoutFrameBox}" >
+                    <Frame
+                        x:Name="frmDetailBox"
+                        RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                               Property=Height,
+                                                                               Factor=0.7}"
+                        RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                              Property=Width,
+                                                                              Factor=0.7}"
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                          Property=Width,
+                                                                          Factor=0.15}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                          Property=Height,
+                                                                          Factor=0.08}"
+                        Style="{StaticResource FrameBox}">
+                        <StackLayout Style="{StaticResource StackLayoutFrameBox}">
 
-                            <Label Text="{i18n:Translate Measurements}" HorizontalOptions="Center" Margin="0,0,0,20"    Style="{StaticResource DropoffLabelStyle}" ></Label>
+                            <Label
+                                Margin="0,0,0,20"
+                                HorizontalOptions="Center"
+                                Style="{StaticResource DropoffLabelStyle}"
+                                Text="{i18n:Translate Measurements}" />
 
                             <!--<Grid ColumnSpacing="0" RowSpacing="0" VerticalOptions="CenterAndExpand">
                                 <Grid.ColumnDefinitions>
@@ -77,40 +83,48 @@
 
                             </Grid>-->
 
-                            <Grid VerticalOptions="Center" >
+                            <Grid VerticalOptions="Center">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
                                 <Grid.RowDefinitions>
-                                    <RowDefinition></RowDefinition>
-                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition />
+                                    <RowDefinition />
                                 </Grid.RowDefinitions>
 
                                 <StackLayout>
-                                    <Label Text="{i18n:Translate WidthCm}"   Style="{StaticResource GreetingStyleSmall}"   ></Label>
-                                    <controls:ExtendedEntry Text="{Binding Measurements.Width, Mode=TwoWay }"                                            
-                                                Keyboard="Numeric" Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                                    <Label Style="{StaticResource GreetingStyleSmall}" Text="{i18n:Translate WidthCm}" />
+                                    <controls:ExtendedEntry
+                                        Keyboard="Numeric"
+                                        Style="{StaticResource DropoffEntryStyle}"
+                                        Text="{Binding Measurements.Width, Mode=TwoWay}" />
                                 </StackLayout>
 
                                 <StackLayout Grid.Column="1">
-                                    <Label Text="{i18n:Translate HeightCm}"   Style="{StaticResource GreetingStyleSmall}"   ></Label>
-                                    <controls:ExtendedEntry  Text="{Binding Measurements.Height, Mode=TwoWay  }" 
-                                                Keyboard="Numeric" Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                                    <Label Style="{StaticResource GreetingStyleSmall}" Text="{i18n:Translate HeightCm}" />
+                                    <controls:ExtendedEntry
+                                        Keyboard="Numeric"
+                                        Style="{StaticResource DropoffEntryStyle}"
+                                        Text="{Binding Measurements.Height, Mode=TwoWay}" />
 
                                 </StackLayout>
 
                                 <StackLayout Grid.Row="1">
-                                    <Label Text="{i18n:Translate LengthCm}"   Style="{StaticResource GreetingStyleSmall}"   ></Label>
-                                    <controls:ExtendedEntry  Text="{Binding Measurements.Length, Mode=TwoWay  }"
-                                                Keyboard="Numeric" Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                                    <Label Style="{StaticResource GreetingStyleSmall}" Text="{i18n:Translate LengthCm}" />
+                                    <controls:ExtendedEntry
+                                        Keyboard="Numeric"
+                                        Style="{StaticResource DropoffEntryStyle}"
+                                        Text="{Binding Measurements.Length, Mode=TwoWay}" />
 
                                 </StackLayout>
 
                                 <StackLayout Grid.Row="1" Grid.Column="1">
-                                    <Label Text="{i18n:Translate WeightKg}"   Style="{StaticResource GreetingStyleSmall}"   ></Label>
-                                    <controls:ExtendedEntry  Text="{Binding Measurements.Weight, Mode=TwoWay  }" 
-                                                Keyboard="Numeric" Style="{StaticResource DropoffEntryStyle}"></controls:ExtendedEntry>
+                                    <Label Style="{StaticResource GreetingStyleSmall}" Text="{i18n:Translate WeightKg}" />
+                                    <controls:ExtendedEntry
+                                        Keyboard="Numeric"
+                                        Style="{StaticResource DropoffEntryStyle}"
+                                        Text="{Binding Measurements.Weight, Mode=TwoWay}" />
                                 </StackLayout>
                             </Grid>
 
@@ -118,40 +132,38 @@
                         </StackLayout>
                     </Frame>
 
-                    <Frame Style="{StaticResource FrameImageProfile}"
-                       
-                                    RelativeLayout.XConstraint="{ConstraintExpression
-                                      Type=RelativeToParent,
-                                        Property=Width,
-                                        Factor=0.5, Constant=-35 }"                   
-                                    
-                                    RelativeLayout.YConstraint="{ConstraintExpression
-                                    Type=RelativeToParent,
-                                    Property=Height,
-                                    Factor=0.08,Constant=-35 }"   >
+                    <Frame
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                          Property=Width,
+                                                                          Factor=0.5,
+                                                                          Constant=-35}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                          Property=Height,
+                                                                          Factor=0.08,
+                                                                          Constant=-35}"
+                        Style="{StaticResource FrameImageProfile}">
 
-                        <circleIma:CircleImage Style="{StaticResource CircleImageProfile}"  
-                       Source="{localResources:ImageResource PortolMobile.Forms.Resources.ic_parcelbox.png}"  
-                                           x:Name="ProfileImage"  />
+                        <circleIma:CircleImage
+                            x:Name="ProfileImage"
+                            Source="{localResources:ImageResource PortolMobile.Forms.Resources.ic_parcelbox.png}"
+                            Style="{StaticResource CircleImageProfile}" />
 
                     </Frame>
 
-                    <Frame  Style="{StaticResource ButtonFrameStyle}"  
-                                        RelativeLayout.XConstraint="{ConstraintExpression
-                                        Type=RelativeToParent,
-                                        Property=Width,
-                                        Factor=0.5, Constant=-35 }"                   
-                                    
-                                        RelativeLayout.YConstraint="{ConstraintExpression
-                                        Type=RelativeToView,
-                                        ElementName=frmDetailBox,
-                                        Property=Height,
-                                        Factor=1.15}"  >
-                        <Frame.GestureRecognizers >
-                            <TapGestureRecognizer Command="{Binding GoBackToPicturesCommand}"  ></TapGestureRecognizer>
+                    <Frame
+                        RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                          Property=Width,
+                                                                          Factor=0.5,
+                                                                          Constant=-35}"
+                        RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+                                                                          ElementName=frmDetailBox,
+                                                                          Property=Height,
+                                                                          Factor=1.15}"
+                        Style="{StaticResource ButtonFrameStyle}">
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding GoBackToPicturesCommand}" />
                         </Frame.GestureRecognizers>
-                        <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" >
-                        </ffimageloadingsvg:SvgCachedImage>
+                        <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" />
 
                     </Frame>
                 </RelativeLayout>

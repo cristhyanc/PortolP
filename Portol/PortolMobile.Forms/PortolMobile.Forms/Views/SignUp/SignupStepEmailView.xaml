@@ -10,19 +10,20 @@
     xmlns:viewModelBase="clr-namespace:PortolMobile.Forms;assembly=PortolMobile.Forms"
     viewModelBase:ViewModelLocator.AutoWireViewModel="true">
     <ContentPage.Content>
-        <ScrollView>
+        <Grid Margin="40,50,40,0" HorizontalOptions="FillAndExpand">
 
-            <Grid Margin="40,30,40,0" HorizontalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.2*" />
+                <RowDefinition />
+             
+            </Grid.RowDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.25*" />
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="0.25*" />
-                </Grid.RowDefinitions>
+            <ffimageloading:CachedImage Style="{StaticResource SignupLogoStyle}" />
 
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource SignupLogoStyle}" />
+            <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand">
 
-                <StackLayout Grid.Row="1" VerticalOptions="FillAndExpand">
+                <StackLayout VerticalOptions="CenterAndExpand">
+
 
                     <Label
                         Margin="0,30,0,0"
@@ -107,7 +108,9 @@
                         </ffimageloading:CachedImage.GestureRecognizers>
                     </ffimageloading:CachedImage>
                 </StackLayout>
-            </Grid>
-        </ScrollView>
+            </ScrollView>
+
+        </Grid>
+
     </ContentPage.Content>
 </ContentPage>

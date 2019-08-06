@@ -27,14 +27,7 @@
                                         Source="Map_image" />
 
             <StackLayout BackgroundColor="White" >
-                <ffimageloadingsvg:SvgCachedImage Style="{StaticResource LogoStyle}" >
-                    <ffimageloading:CachedImage.Margin>
-                        <OnPlatform x:TypeArguments="Thickness">
-                            <On Platform="Android" Value="0,40,0,0" />
-                            <On Platform="iOS" Value="0, 40, 0, 0"/>
-                        </OnPlatform>
-                    </ffimageloading:CachedImage.Margin>
-                </ffimageloadingsvg:SvgCachedImage>
+              <ffimageloading:CachedImage Style="{StaticResource LogoStyle}" />
                 <ActivityIndicator   IsRunning="{Binding IsBusy}" Style="{StaticResource ActivityIndicatorStyle}"  IsVisible="{Binding IsBusy}"  />
             </StackLayout>
 

@@ -14,17 +14,16 @@
             <Image Aspect="AspectFill" Source="login_page_background" />
 
             <StackLayout
-                Margin="10,10,10,0"
+                Margin="10,30,10,0"
                 BackgroundColor="Transparent"
                 HorizontalOptions="FillAndExpand"
                 Spacing="0"
                 VerticalOptions="FillAndExpand">
 
-                <ffimageloadingsvg:SvgCachedImage
-                    HorizontalOptions="Center"
-                    Source="resource://PortolMobile.Forms.Resources.portol_logo_long.svg?assembly=PortolMobile.Forms"
-                    VerticalOptions="FillAndExpand"
-                    WidthRequest="170" />
+                <ffimageloading:CachedImage
+                    Margin="30,0,30,20"
+                    HeightRequest="100"
+                    Style="{StaticResource SignupLogoStyle}" />
                 <Label
                     Margin="0,0,0,30"
                     FontAttributes="Bold"
@@ -44,10 +43,10 @@
                     </Grid.ColumnDefinitions>
 
 
-                    <ffimageloadingsvg:SvgCachedImage
+                    <ffimageloading:CachedImage
                         HeightRequest="15"
                         HorizontalOptions="End"
-                        Source="resource://PortolMobile.Forms.Resources.ic_login_user.svg?assembly=PortolMobile.Forms"
+                        Source="resource://PortolMobile.Forms.Resources.ic_login_user.png?assembly=PortolMobile.Forms"
                         WidthRequest="15" />
 
                     <Entry
