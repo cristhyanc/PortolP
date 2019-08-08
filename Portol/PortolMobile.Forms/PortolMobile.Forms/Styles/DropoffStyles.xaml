@@ -30,7 +30,7 @@
         BaseResourceKey="LabelBaseStyle"
         TargetType="Label">
         <Setter Property="TextColor" Value="#797878" />
-        <Setter Property="FontSize" Value="Medium" />
+        <Setter Property="FontSize" Value="Small" />
         <Setter Property="HorizontalTextAlignment" Value="Center" />
     </Style>
 

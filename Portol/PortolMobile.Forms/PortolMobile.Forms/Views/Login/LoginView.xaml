@@ -24,7 +24,7 @@
                     Margin="30,0,30,20"
                     HeightRequest="100"
                     Style="{StaticResource SignupLogoStyle}" />
-                <Label
+                <Label 
                     Margin="0,0,0,30"
                     FontAttributes="Bold"
                     FontSize="12"
