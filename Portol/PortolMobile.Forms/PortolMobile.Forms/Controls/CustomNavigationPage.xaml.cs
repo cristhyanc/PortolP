@@ -15,6 +15,7 @@ namespace PortolMobile.Forms.Controls
         public CustomNavigationPage() : base()
         {
             InitializeComponent();
+            SetBackButtonTitle(this, "");
         }
 
         public CustomNavigationPage(Page root) : base(root)

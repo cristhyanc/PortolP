@@ -93,6 +93,7 @@ namespace PortolMobile.Forms.Services.Navigation
                 {
                     CurrentNavigator.BarTextColor = Color.Black;
                 }
+               
             }
         }
 

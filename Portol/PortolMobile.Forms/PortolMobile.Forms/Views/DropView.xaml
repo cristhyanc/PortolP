@@ -63,14 +63,12 @@
 
             <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand">
                 <StackLayout
-                    Grid.Row="1"
+                    Grid.Row="1" Margin="50,0,50,0"
                     Spacing="0"
                     VerticalOptions="FillAndExpand">
-                    <Grid VerticalOptions="FillAndExpand">
-
-                        <Frame
+                    <Grid VerticalOptions="FillAndExpand"  >
+                        <Frame Margin="0,35,0,0"
                             x:Name="frmDetailBox"
-                            Margin="50,35,50,0"
                             Style="{StaticResource FrameBox}"
                             VerticalOptions="FillAndExpand">
 
@@ -131,11 +129,14 @@
 
                         </Frame>
 
-                        <circleIma:CircleImage
-                            x:Name="ProfileImage"
-                            Source="{Binding ProfilePicture}"
+                        <StackLayout Spacing="0" HorizontalOptions="Center" WidthRequest="70" HeightRequest="70" >
+                             <circleIma:CircleImage
+                            x:Name="ProfileImage" 
+                            Source="{Binding ProfilePicture}" 
                             Style="{StaticResource CircleImageProfile}"
                             VerticalOptions="Start" />
+                        </StackLayout>
+                       
                     </Grid>
 
 

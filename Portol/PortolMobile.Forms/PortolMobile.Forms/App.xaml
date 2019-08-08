@@ -286,7 +286,7 @@
             <Style x:Key="CircleImageProfileMedium" TargetType="circleIma:CircleImage">
                 <Setter Property="WidthRequest" Value="50" />
                 <Setter Property="HeightRequest" Value="50" />
-                <Setter Property="Aspect" Value="AspectFill" />
+               
             </Style>
 
             <Style x:Key="ButtonSignupIconStyle" TargetType="ffimageloading:CachedImage">

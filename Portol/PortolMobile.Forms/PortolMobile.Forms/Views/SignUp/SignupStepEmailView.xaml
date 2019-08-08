@@ -15,14 +15,14 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.2*" />
                 <RowDefinition />
-             
+              <RowDefinition Height="0.2*" />
             </Grid.RowDefinitions>
 
             <ffimageloading:CachedImage Style="{StaticResource SignupLogoStyle}" />
 
-            <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand">
+            <ScrollView Grid.Row="1" Margin="0,10,0,0" VerticalOptions="FillAndExpand">
 
-                <StackLayout VerticalOptions="CenterAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
 
 
                     <Label
@@ -31,12 +31,12 @@
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
                         Text="{i18n:Translate EmailPassword}"
-                        VerticalOptions="StartAndExpand" />
+                        VerticalOptions="CenterAndExpand" />
 
                     <StackLayout
                         Margin="0,0,10,0"
                         Spacing="0"
-                        VerticalOptions="StartAndExpand">
+                        VerticalOptions="CenterAndExpand">
                         <controls:ExtendedEntry
                             Margin="0,10,0,0"
                             HorizontalOptions="FillAndExpand"
@@ -50,7 +50,7 @@
                     <StackLayout
                         Margin="0,0,10,0"
                         Spacing="0"
-                        VerticalOptions="StartAndExpand">
+                        VerticalOptions="CenterAndExpand">
                         <controls:ExtendedEntry
                             Margin="0,10,0,0"
                             HorizontalOptions="FillAndExpand"
@@ -64,7 +64,7 @@
                     <StackLayout
                         Margin="0,0,10,0"
                         Spacing="0"
-                        VerticalOptions="StartAndExpand">
+                        VerticalOptions="CenterAndExpand">
                         <controls:ExtendedEntry
                             Margin="0,10,0,0"
                             HorizontalOptions="FillAndExpand"
@@ -78,7 +78,7 @@
                     <StackLayout
                         Margin="0,0,10,0"
                         Spacing="0"
-                        VerticalOptions="StartAndExpand">
+                        VerticalOptions="CenterAndExpand">
                         <controls:ExtendedEntry
                             Margin="0,10,0,0"
                             HorizontalOptions="FillAndExpand"
@@ -102,7 +102,7 @@
                         IsVisible="{Binding IsBusy}"
                         Style="{StaticResource ActivityIndicatorStyle}" />
 
-                    <ffimageloading:CachedImage Style="{StaticResource ButtonSignupIconStyle}" VerticalOptions="StartAndExpand">
+                    <ffimageloading:CachedImage Style="{StaticResource ButtonSignupIconStyle}" VerticalOptions="CenterAndExpand">
                         <ffimageloading:CachedImage.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding GotoAddressPageCommand}" />
                         </ffimageloading:CachedImage.GestureRecognizers>

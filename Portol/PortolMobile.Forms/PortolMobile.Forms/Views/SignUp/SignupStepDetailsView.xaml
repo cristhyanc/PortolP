@@ -15,13 +15,14 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="0.2*" />
                 <RowDefinition />
+                <RowDefinition Height="0.2*" />
             </Grid.RowDefinitions>
 
             <ffimageloading:CachedImage Style="{StaticResource SignupLogoStyle}" />
 
-            <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand">
+            <ScrollView Grid.Row="1" Margin="0,30,0,0" VerticalOptions="FillAndExpand">
 
-                <StackLayout VerticalOptions="CenterAndExpand">
+                <StackLayout VerticalOptions="FillAndExpand">
 
                     <Label
                         FontAttributes="Bold"
