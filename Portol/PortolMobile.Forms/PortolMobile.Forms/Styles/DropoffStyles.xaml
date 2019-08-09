@@ -63,7 +63,15 @@
         <Setter Property="VerticalOptions" Value="Center" />
     </Style>
 
-
+    <Style
+        x:Key="DropoffEditorStyle"
+        BaseResourceKey="EntryBaseStyleWhite"
+        TargetType="controls:ExtenderEditor">
+        <Setter Property="BackgroundColor" Value="#343232" />
+        <Setter Property="FontSize" Value="Small" />
+        <Setter Property="PlaceholderColor" Value="#797878" />       
+        <Setter Property="VerticalOptions" Value="Center" />
+    </Style>
 
 
 

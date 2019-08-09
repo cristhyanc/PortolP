@@ -38,9 +38,9 @@
                 <ffimageloading:CachedImage Style="{StaticResource LogoStyle}" />
             </StackLayout>
 
-            <ScrollView Grid.Row="1">
+            <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand">
 
-                <RelativeLayout>
+                <RelativeLayout VerticalOptions="FillAndExpand">
 
                     <Frame
                         x:Name="frmDetailBox"
@@ -56,29 +56,21 @@
                         RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
                                                                           Property=Height,
                                                                           Factor=0.08}"
-                        Style="{StaticResource FrameBox}">
-                        <StackLayout Style="{StaticResource StackLayoutFrameBox}">
+                        Style="{StaticResource FrameBox}"
+                        VerticalOptions="FillAndExpand">
+
+                        <StackLayout Style="{StaticResource StackLayoutFrameBox}" VerticalOptions="FillAndExpand">
                             <!--<Label Text="{Binding SenderName}"  Style="{StaticResource GreetingStyle}"  ></Label>-->
                             <Label
                                 Margin="0,0,0,20"
                                 Style="{StaticResource DropoffLabelStyle}"
                                 Text="{i18n:Translate WhereSendingTo}" />
 
-                            <Grid>
+                            <Grid BackgroundColor="#343232" VerticalOptions="Center">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
+                                    <ColumnDefinition Width="Auto" />
                                     <ColumnDefinition />
                                 </Grid.ColumnDefinitions>
-
-
-                                <controls:ExtendedEntry
-                                    Grid.ColumnSpan="2"
-                                    OnFocusCommand="{Binding AddressEntryCommand}"
-                                    OnFocusCommandParameter="pickup"
-                                    Placeholder="{i18n:Translate PickupAddress}"
-                                    Style="{StaticResource DropoffEntryStyle}"
-                                    Text="{Binding PickupAddressStr}"
-                                    VerticalOptions="Center" />
 
                                 <ffimageloadingsvg:SvgCachedImage
                                     Margin="20,0,0,0"
@@ -87,23 +79,24 @@
                                     Source="resource://PortolMobile.Forms.Resources.ic_dropoff_entry.svg?assembly=PortolMobile.Forms"
                                     VerticalOptions="Center"
                                     WidthRequest="12" />
-                            </Grid>
-
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition />
-                                    <ColumnDefinition />
-                                </Grid.ColumnDefinitions>
 
                                 <controls:ExtendedEntry
-                                    Grid.ColumnSpan="2"
+                                    Grid.Column="1"
                                     OnFocusCommand="{Binding AddressEntryCommand}"
-                                    OnFocusCommandParameter="dropoff"
-                                    Placeholder="{i18n:Translate DropoffAddress}"
+                                    OnFocusCommandParameter="pickup"
+                                    Placeholder="{i18n:Translate PickupAddress}"
                                     Style="{StaticResource DropoffEntryStyle}"
-                                    Text="{Binding DropoffAddressStr}"
+                                    Text="{Binding PickupAddressStr}"
                                     VerticalOptions="Center" />
 
+
+                            </Grid>
+
+                            <Grid BackgroundColor="#343232" VerticalOptions="Center">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
 
                                 <ffimageloadingsvg:SvgCachedImage
                                     Margin="20,0,0,0"
@@ -112,13 +105,26 @@
                                     Source="resource://PortolMobile.Forms.Resources.ic_pickup_entry.svg?assembly=PortolMobile.Forms"
                                     VerticalOptions="Center"
                                     WidthRequest="10" />
+
+                                <controls:ExtendedEntry
+                                    Grid.Column="1"
+                                    OnFocusCommand="{Binding AddressEntryCommand}"
+                                    OnFocusCommandParameter="dropoff"
+                                    Placeholder="{i18n:Translate DropoffAddress}"
+                                    Style="{StaticResource DropoffEntryStyle}"
+                                    Text="{Binding DropoffAddressStr}"
+                                    VerticalOptions="Center" />
+
+
+
                             </Grid>
 
-                            <controls:ExtendedEntry
+                            <controls:ExtenderEditor
                                 Margin="0,0,0,5"
                                 Placeholder="{i18n:Translate Description}"
-                                Style="{StaticResource DropoffEntryStyle}"
-                                Text="{Binding Description, Mode=TwoWay}" />
+                                Style="{StaticResource DropoffEditorStyle}"
+                                Text="{Binding Description, Mode=TwoWay}"
+                                VerticalOptions="FillAndExpand" />
 
 
 

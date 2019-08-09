@@ -19,11 +19,10 @@
     </controls:ExtendedContentPage.Resources>
     <controls:ExtendedContentPage.Content>
 
-        <Grid RowSpacing="0" VerticalOptions="FillAndExpand">
+        <Grid VerticalOptions="FillAndExpand">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
 
@@ -61,97 +60,122 @@
 
             </StackLayout>
 
-            <ScrollView Grid.Row="1" VerticalOptions="FillAndExpand">
-                <StackLayout
-                    Grid.Row="1" Margin="50,0,50,0"
-                    Spacing="0"
+            <RelativeLayout Grid.Row="1" VerticalOptions="FillAndExpand">
+
+                <Frame
+                    x:Name="frmDetailBox"
+                    RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                           Property=Height,
+                                                                           Factor=0.68}"
+                    RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                          Property=Width,
+                                                                          Factor=0.7}"
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Width,
+                                                                      Factor=0.15}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Height,
+                                                                      Factor=0.08}"
+                    Style="{StaticResource FrameBox}"
                     VerticalOptions="FillAndExpand">
-                    <Grid VerticalOptions="FillAndExpand"  >
-                        <Frame Margin="0,35,0,0"
-                            x:Name="frmDetailBox"
-                            Style="{StaticResource FrameBox}"
-                            VerticalOptions="FillAndExpand">
+                    <ScrollView>
+                        <StackLayout Style="{StaticResource StackLayoutFrameBox}" VerticalOptions="FillAndExpand">
+                            <Label
+                                Style="{StaticResource GreetingStyle}"
+                                Text="{Binding SenderName}"
+                                VerticalOptions="CenterAndExpand" />
+                            <Label
+                                Style="{StaticResource DropoffLabelStyle}"
+                                Text="{i18n:Translate WhatAreSending}"
+                                VerticalOptions="CenterAndExpand" />
 
-                            <StackLayout Style="{StaticResource StackLayoutFrameBox}" VerticalOptions="FillAndExpand">
-                                <Label
-                                    Style="{StaticResource GreetingStyle}"
-                                    Text="{Binding SenderName}"
-                                    VerticalOptions="CenterAndExpand" />
-                                <Label
-                                    Style="{StaticResource DropoffLabelStyle}"
-                                    Text="{i18n:Translate WhatAreSending}"
-                                    VerticalOptions="CenterAndExpand" />
+                            <Grid
+                                ColumnSpacing="0"
+                                RowSpacing="0"
+                                VerticalOptions="CenterAndExpand">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition />
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
 
-                                <Grid
-                                    ColumnSpacing="0"
-                                    RowSpacing="0"
-                                    VerticalOptions="CenterAndExpand">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition />
-                                        <ColumnDefinition />
-                                    </Grid.ColumnDefinitions>
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="Auto" />
-                                        <RowDefinition Height="Auto" />
-                                    </Grid.RowDefinitions>
+                                <ffimageloading:CachedImage Style="{StaticResource GpsIconStyle}" />
+                                <ffimageloadingsvg:SvgCachedImage Grid.Column="1" Style="{StaticResource DoorIconStyle}" />
 
-                                    <ffimageloading:CachedImage Style="{StaticResource GpsIconStyle}" />
-                                    <ffimageloadingsvg:SvgCachedImage Grid.Column="1" Style="{StaticResource DoorIconStyle}" />
+                                <BoxView
+                                    Grid.Row="1"
+                                    Grid.Column="0"
+                                    Style="{StaticResource BoxSeparatorLeft}"
+                                    VerticalOptions="Start" />
+                                <BoxView
+                                    Grid.Row="1"
+                                    Grid.Column="1"
+                                    Style="{StaticResource BoxSeparatorRight}"
+                                    VerticalOptions="Start" />
 
-                                    <BoxView
-                                        Grid.Row="1"
-                                        Grid.Column="0"
-                                        Style="{StaticResource BoxSeparatorLeft}"
-                                        VerticalOptions="Start" />
-                                    <BoxView
-                                        Grid.Row="1"
-                                        Grid.Column="1"
-                                        Style="{StaticResource BoxSeparatorRight}"
-                                        VerticalOptions="Start" />
+                            </Grid>
 
-                                </Grid>
+                            <controls:ExtendedEntry
+                                Margin="0,5,0,0"
+                                OnUnfocusCommand="{Binding FindCustomerCommand}"
+                                Placeholder="{i18n:Translate EmailMobileNumber}"
+                                Style="{StaticResource DropoffEntryStyle}"
+                                Text="{Binding EmailMobileNumber, Mode=TwoWay}"
+                                VerticalOptions="CenterAndExpand" />
 
-                                <controls:ExtendedEntry
-                                    Margin="0,5,0,0"
-                                    OnUnfocusCommand="{Binding FindCustomerCommand}"
-                                    Placeholder="{i18n:Translate EmailMobileNumber}"
-                                    Style="{StaticResource DropoffEntryStyle}"
-                                    Text="{Binding EmailMobileNumber, Mode=TwoWay}"
-                                    VerticalOptions="CenterAndExpand" />
+                            <controls:ExtendedEntry
+                                Placeholder="{i18n:Translate ReceiverName}"
+                                Style="{StaticResource DropoffEntryStyle}"
+                                Text="{Binding ReceiverName, Mode=TwoWay}"
+                                VerticalOptions="CenterAndExpand" />
 
-                                <controls:ExtendedEntry
-                                    Placeholder="{i18n:Translate ReceiverName}"
-                                    Style="{StaticResource DropoffEntryStyle}"
-                                    Text="{Binding ReceiverName, Mode=TwoWay}"
-                                    VerticalOptions="CenterAndExpand" />
-
-                            </StackLayout>
-
-                        </Frame>
-
-                        <StackLayout Spacing="0" HorizontalOptions="Center" WidthRequest="70" HeightRequest="70" >
-                             <circleIma:CircleImage
-                            x:Name="ProfileImage" 
-                            Source="{Binding ProfilePicture}" 
-                            Style="{StaticResource CircleImageProfile}"
-                            VerticalOptions="Start" />
                         </StackLayout>
-                       
-                    </Grid>
+                    </ScrollView>
+                </Frame>
+
+                <Frame
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Width,
+                                                                      Factor=0.5,
+                                                                      Constant=-35}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Height,
+                                                                      Factor=0.08,
+                                                                      Constant=-35}"
+                    Style="{StaticResource FrameImageProfile}">
+
+                    <circleIma:CircleImage
+                        x:Name="ProfileImage"
+                        Source="{Binding ProfilePicture}"
+                        Style="{StaticResource CircleImageProfile}" />
+
+                </Frame>
+
+                <Frame
+                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                                                      Property=Width,
+                                                                      Factor=0.5,
+                                                                      Constant=-35}"
+                    RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView,
+                                                                      ElementName=frmDetailBox,
+                                                                      Property=Height,
+                                                                      Factor=1.15}"
+                    Style="{StaticResource ButtonFrameStyle}">
+
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding GetCustomerCommand}" />
+                    </Frame.GestureRecognizers>
+                    <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" />
+
+                </Frame>
+            </RelativeLayout>
 
 
-                    <Frame Margin="0,10,0,0" Style="{StaticResource ButtonFrameStyle}">
-                        <Frame.GestureRecognizers>
-                            <TapGestureRecognizer Command="{Binding GetCustomerCommand}" />
-                        </Frame.GestureRecognizers>
-                        <ffimageloadingsvg:SvgCachedImage Style="{StaticResource ButtonIconStyle}" />
-                    </Frame>
-
-                </StackLayout>
-
-            </ScrollView>
             <userControls:BottomMenuControl
-                Grid.Row="2"
+                Grid.Row="1"
                 BindingContext="{Binding BottomMenuControl}"
                 VerticalOptions="End" />
         </Grid>
