@@ -16,6 +16,12 @@ namespace PortolMobile.Forms.iOS.CustomRenderer
     public class CustomNavigationRenderer : NavigationRenderer
     {
 
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+
+            NavigationBar.TopItem.BackBarButtonItem = new UIBarButtonItem("", UIBarButtonItemStyle.Plain, null);
+        }
 
         public override void ViewDidLoad()
         {
