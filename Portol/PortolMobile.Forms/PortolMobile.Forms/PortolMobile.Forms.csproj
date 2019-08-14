@@ -25,6 +25,7 @@
     <None Remove="Resources\ic_button.svg" />
     <None Remove="Resources\ic_camerabutton.svg" />
     <None Remove="Resources\ic_cameraicon.svg" />
+    <None Remove="Resources\ic_cameraiconblue.png" />
     <None Remove="Resources\ic_cameraiconwhite.svg" />
     <None Remove="Resources\ic_car.png" />
     <None Remove="Resources\ic_creditcard.svg" />
@@ -79,6 +80,7 @@
     <EmbeddedResource Include="Resources\ic_button.svg" />
     <EmbeddedResource Include="Resources\ic_camerabutton.svg" />
     <EmbeddedResource Include="Resources\ic_cameraicon.svg" />
+    <EmbeddedResource Include="Resources\ic_cameraiconblue.png" />
     <EmbeddedResource Include="Resources\ic_cameraiconwhite.svg" />
     <EmbeddedResource Include="Resources\ic_car.png" />
     <EmbeddedResource Include="Resources\ic_creditcard.svg" />
