@@ -93,7 +93,7 @@ namespace PortolMobile.Forms
                 builder.RegisterType<LoginService>().As<ILoginService>();
 
                 builder.RegisterType<DeliveryCalculator>().As<IDeliveryCalculator>();
-                builder.Register(c => new MapService("AjPaETRxkyP3rSDJ7vu2nce9mlY66bgZu0DvY_eIVpeSM5PES53q_9IGzOrxahcL")).As<IMapService>();
+                builder.Register(c => new MapService("")).As<IMapService>();
 
                 builder.RegisterType<DeliveryCore>().As<IDeliveryCore>();
                 builder.Register(c => CrossMedia.Current).As<IMedia>();
@@ -113,7 +113,7 @@ namespace PortolMobile.Forms
                                                                        (pi, ctx) => pi.ParameterType == typeof(string) && pi.Name == "toke",
                                                                        (pi, ctx) => _container.Resolve<ISessionData>().GetCurrentToken()));
 
-                builder.Register(c =>new AddressService(_container.Resolve<IRestClient>(), "HW8AXP9FEKDCQ7L46JVM", "N3A6GXYLD978JTHC4RFU")).As<IAddressService>().SingleInstance();
+                builder.Register(c =>new AddressService(_container.Resolve<IRestClient>(), "", "")).As<IAddressService>().SingleInstance();
 
                 if (_container != null)
                 {
